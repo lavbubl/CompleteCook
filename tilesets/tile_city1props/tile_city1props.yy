@@ -15,7 +15,10 @@
     "name": "Street",
     "path": "folders/Tile Sets/Street.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_city1props",
+    "path": "sprites/spr_city1props/spr_city1props.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "citygroup",

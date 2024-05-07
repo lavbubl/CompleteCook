@@ -15,7 +15,10 @@
     "name": "Golf",
     "path": "folders/Tile Sets/Golf.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprite_tile_minigolf",
+    "path": "sprites/sprite_tile_minigolf/sprite_tile_minigolf.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "minigolfgroup",

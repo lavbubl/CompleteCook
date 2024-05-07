@@ -15,7 +15,10 @@
     "name": "Dungeon",
     "path": "folders/Tile Sets/Dungeon.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_dungeon2",
+    "path": "sprites/tile_dungeon2/tile_dungeon2.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "dungeongroup",

@@ -12,9 +12,12 @@ if ((global.panic || instance_exists(obj_wartimer)) && sprite_index != spr_pizza
 					lock = true
 				state = states.actor
 				visible = false
+				sprite_index = spr_idle
 				other.sprite_index = spr_pizzaportalend
 				other.image_index = 0
 				other.playerid = id
+				scr_soundeffect(sfx_secretenter)
+				scr_soundeffect(sfx_lapenter)
 				if (ds_list_find_index(global.saveroom, other.id) == -1)
 				{
 					ds_list_add(global.saveroom, other.id)

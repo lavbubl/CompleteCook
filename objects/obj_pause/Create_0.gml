@@ -1,5 +1,6 @@
 pause = 0
 appsprite = -4
+guisprite = -4
 var i = 0
 color = make_color_rgb(121, 103, 151)
 fade = 0

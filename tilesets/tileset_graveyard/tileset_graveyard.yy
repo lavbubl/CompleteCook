@@ -15,7 +15,10 @@
     "name": "Graveyard",
     "path": "folders/Tile Sets/Graveyard.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_graveyard1",
+    "path": "sprites/tile_graveyard1/tile_graveyard1.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "graveyardgroup",

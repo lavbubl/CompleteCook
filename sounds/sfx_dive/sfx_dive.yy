@@ -18,6 +18,6 @@
   "preload": true,
   "sampleRate": 44100,
   "soundFile": "sfx_dive.ogg",
-  "type": 1,
-  "volume": 0.7,
+  "type": 0,
+  "volume": 0.6,
 }

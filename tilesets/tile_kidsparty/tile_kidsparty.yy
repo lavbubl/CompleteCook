@@ -15,7 +15,10 @@
     "name": "Kids Party",
     "path": "folders/Tile Sets/Kids Party.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_kidspartytile",
+    "path": "sprites/spr_kidspartytile/spr_kidspartytile.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "kidspartygroup",

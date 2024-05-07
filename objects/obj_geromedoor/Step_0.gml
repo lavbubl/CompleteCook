@@ -19,6 +19,7 @@ if ((!global.horse) && (obj_player1.state == states.normal or obj_player1.state 
 		obj_player1.state = states.victory
 		obj_player1.image_index = 0
 		scr_soundeffect(sfx_keydoorcheer)
+		scr_soundeffect(sfx_unlock)
 		if (instance_exists(obj_player2) && global.coop == true)
 		{
 			obj_player2.x = obj_player1.x

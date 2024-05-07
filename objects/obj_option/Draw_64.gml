@@ -3,7 +3,7 @@ draw_sprite_tiled_ext(spr_optionbg, bgindex, x, y, 1, 1, c_white, bgalpha)
 draw_set_font(global.bigfont)
 draw_set_halign(fa_center)
 draw_set_color(c_white)
-if (!canchoose)
+if (!canchoose && alarm[0] < 0)
 	exit;
 for (var i = 0; i < array_length(optionarr); i++)
 {

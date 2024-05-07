@@ -15,7 +15,10 @@
     "name": "Chateau",
     "path": "folders/Tile Sets/Chateau.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_chateau1",
+    "path": "sprites/tile_chateau1/tile_chateau1.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "chateaugroup",

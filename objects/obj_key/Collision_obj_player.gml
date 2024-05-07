@@ -12,6 +12,7 @@ with (other)
 		alarm[7] = 30
 		scr_soundeffect(sfx_collecttoppin)
 		state = states.keyget
+		keysound = false
 		image_index = 0
 		global.heattime = 60
 	}

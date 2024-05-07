@@ -180,7 +180,7 @@
 -26,0,1,54,-13,0,3,59,49,56,-26,0,1,54,-13,0,3,59,49,56,-26,0,1,54,-13,0,9,59,49,56,0,0,40,41,41,42,-20,0,1,54,-13,0,3,
 59,49,56,-26,0,1,54,-13,0,3,59,49,56,-26,0,1,54,-13,0,-2,49,1,56,-26,0,1,54,-13,0,-2,65,1,66,-20,0,7,40,41,41,42,0,0,54,
 -42,0,1,54,-42,0,1,54,-13,0,-29,45,1,99,-13,0,-30,49,-13,0,-30,59,-13,0,-30,59,-99,0,],"TileDataFormat":1,},"tilesetId":{"name":"tileset_secret","path":"tilesets/tileset_secret/tileset_secret.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
-    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Backgrounds_scroll","animationFPS":15.0,"animationSpeedType":0,"colour":4294967295,"depth":2147483500,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":1.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":1.0,"vtiled":true,"x":16,"y":0,},
+    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Backgrounds_scroll","animationFPS":15.0,"animationSpeedType":0,"colour":4294967295,"depth":2147483500,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":1.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"bg_secret","path":"sprites/bg_secret/bg_secret.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":1.0,"vtiled":true,"x":16,"y":0,},
   ],
   "parent": {
     "name": "Desert",

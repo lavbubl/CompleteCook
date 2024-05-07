@@ -1,8 +1,12 @@
 if (global.panic == true or global.snickchallenge == 1)
 {
 	global.seconds -= 1
-	if (global.collect >= 5)
-		global.collect -= 5
+	if (global.collect >= 5 && !instance_exists(obj_ghostcollectibles))
+	{
+		global.collect -= 5;
+		with (instance_create(121, 60, obj_negativenumber))
+			number = "-5"
+	}
 	if instance_exists(obj_player2)
 	{
 		if (global.collectN >= 5)

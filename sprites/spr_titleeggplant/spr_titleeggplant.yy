@@ -2,10 +2,10 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "spr_titleeggplant",
-  "bbox_bottom": 270,
-  "bbox_left": 27,
-  "bbox_right": 341,
-  "bbox_top": 20,
+  "bbox_bottom": 331,
+  "bbox_left": 31,
+  "bbox_right": 345,
+  "bbox_top": 19,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"347c91f2-328a-45db-86d2-d7982a62a095",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"889c51cf-df4a-4835-89b2-15a12110926e",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 301,
+  "height": 374,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"13684c77-74f4-4820-a2f3-8267f1922688","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"ef3c1bf3-3d69-44f4-976d-f754b9c9e646","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"347c91f2-328a-45db-86d2-d7982a62a095","path":"sprites/spr_titleeggplant/spr_titleeggplant.yy",},},},"Disabled":false,"id":"cad46cc5-5fe4-43de-9c68-6eb02f833a46","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"889c51cf-df4a-4835-89b2-15a12110926e","path":"sprites/spr_titleeggplant/spr_titleeggplant.yy",},},},"Disabled":false,"id":"78309660-8813-456a-8440-5fbe75d5610c","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 379,
+  "width": 395,
 }

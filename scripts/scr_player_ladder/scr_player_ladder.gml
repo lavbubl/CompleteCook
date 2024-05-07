@@ -14,8 +14,16 @@ function scr_player_ladder()
 	hsp = 0
 	if (key_up && hooked == 0)
 	{
-		sprite_index = spr_laddermove
-		vsp = -6
+		sprite_index = spr_laddermove;
+		vsp = -6;
+		if (steppybuffer > 0)
+			steppybuffer--
+		else
+		{
+			create_particle(x, y + 43, particle.cloudeffect, 0)
+			steppybuffer = 12
+			scr_soundeffectpitched(sfx_step)
+		}
 		image_speed = 0.35
 	}
 	else if (key_down && hooked == 0)

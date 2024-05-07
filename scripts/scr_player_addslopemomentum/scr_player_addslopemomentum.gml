@@ -9,10 +9,6 @@ function scr_player_addslopemomentum(argument0, argument1)
 			else
 				other.movespeed += argument1
 		}
-		else if (abs(image_yscale) < abs(image_xscale))
-			other.movespeed -= argument0
-		else
-			other.movespeed -= argument1
 	}
 	exit;
 }

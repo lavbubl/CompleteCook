@@ -15,7 +15,10 @@
     "name": "Tower",
     "path": "folders/Tile Sets/Tower.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_exittile",
+    "path": "sprites/spr_exittile/spr_exittile.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

@@ -18,6 +18,7 @@ function scr_player_trickjump()
 		state = states.bump
 		image_index = 0
 		sprite_index = spr_player_wallsplat
+		scr_soundeffectpitched(sfx_splat)
 	}
 	if (ramp_buffer > 0)
 		ramp_buffer--

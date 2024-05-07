@@ -1,5 +1,3 @@
-// feather disable all
-// feather ignore all
 if (isOpen) {
 	draw_set_font(consoleFont);
 	draw_set_halign(fa_left);
@@ -15,7 +13,7 @@ if (isOpen) {
 		surface_resize(shellSurface, display_get_gui_width(), display_get_gui_height());
 	}
 	
-	var promptXOffset = consolePaddingH + string_width(prompt) + anchorMargin;
+	var promptXOffset = consolePaddingH + 4 + string_width(prompt) + anchorMargin;
 	
 	outputHeight = 0;
 	for (var i = 0; i < array_length(output); i++) {
@@ -138,7 +136,7 @@ if (isOpen) {
 		} else {
 			draw_set_alpha(consoleAlpha);
 			draw_set_color(consoleColor);
-			draw_roundrect_ext(shellOriginX, shellOriginY, shellOriginX + width, shellOriginY + height, cornerRadius, cornerRadius, false);
+			draw_rectangle(shellOriginX, shellOriginY, shellOriginX + width, shellOriginY + height, false);
 		}
 		
 		// Draw the scroll surface

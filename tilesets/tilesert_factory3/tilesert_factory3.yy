@@ -15,7 +15,10 @@
     "name": "Industrial",
     "path": "folders/Tile Sets/Industrial.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_factory3",
+    "path": "sprites/tile_factory3/tile_factory3.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

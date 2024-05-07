@@ -15,7 +15,10 @@
     "name": "Tile Sets",
     "path": "folders/Tile Sets.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_secret",
+    "path": "sprites/tile_secret/tile_secret.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

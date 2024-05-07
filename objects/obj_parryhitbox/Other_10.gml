@@ -15,5 +15,6 @@ with (myplayer)
 		image_xscale = other.xscale
 	flash = 1
 }
+scr_soundeffect(sfx_parry)
 alarm[0] = die_time
 collisioned = 1

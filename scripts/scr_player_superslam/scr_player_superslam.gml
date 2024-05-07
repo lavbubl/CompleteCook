@@ -4,6 +4,11 @@ function scr_player_superslam()
 	{
 		move = (key_left + key_right)
 		hsp = (move * movespeed)
+		if (move != dir && move != 0)
+		{
+			dir = move
+			movespeed = 0
+		}
 	}
 	else
 	{

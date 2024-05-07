@@ -15,7 +15,10 @@
     "name": "Forest",
     "path": "folders/Tile Sets/Forest.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprite_tile_forest1_shade",
+    "path": "sprites/sprite_tile_forest1_shade/sprite_tile_forest1_shade.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "forestgroup",

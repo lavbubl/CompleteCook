@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 1.605918,
+  "duration": 1.652,
   "parent": {
     "name": "SFX",
     "path": "folders/Sounds/SFX.yy",
   },
   "preload": true,
   "sampleRate": 44100,
-  "soundFile": "sfx_machslide",
+  "soundFile": "sfx_machslide.ogg",
   "type": 0,
   "volume": 1.0,
 }

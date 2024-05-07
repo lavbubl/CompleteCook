@@ -27,7 +27,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_lightlamp",
+    "path": "sprites/spr_lightlamp/spr_lightlamp.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

@@ -1,14 +1,18 @@
 if (instance_exists(obj_option))
 	exit;
-draw_set_color(c_white)
+reset_blendmode()
+reset_shader_fix()
 draw_set_alpha(1)
-if (appsprite != -4 && pause)
+if pause
 {
 	draw_rectangle(0, 0, 960, 540, false)
-	draw_sprite(appsprite, 0, 0, 0)
+	if (appsprite != -4)
+		draw_sprite(appsprite, 0, 0, 0)
+	if (guisprite != -4)
+		draw_sprite(guisprite, 0, 0, 0)
 }
 draw_set_alpha(fade - 0.5)
-draw_rectangle(0, 0, 960, 540, false)
+draw_rectangle_color(0, 0, 960, 540, c_white, c_white, c_white, c_white, false)
 draw_set_alpha(1)
 if pause
 {

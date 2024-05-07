@@ -17,3 +17,4 @@ with (obj_player)
 	if (!place_meeting(x, y, obj_exitgate))
 		global.combodropped = true
 }
+scr_soundeffect(sfx_comboend)

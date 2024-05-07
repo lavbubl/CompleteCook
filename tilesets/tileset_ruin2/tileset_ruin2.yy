@@ -15,7 +15,10 @@
     "name": "Ruin",
     "path": "folders/Tile Sets/Ruin.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_ruin2",
+    "path": "sprites/tile_ruin2/tile_ruin2.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "ruingroup",

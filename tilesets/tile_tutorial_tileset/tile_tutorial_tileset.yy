@@ -15,7 +15,10 @@
     "name": "Tutorial",
     "path": "folders/Tile Sets/Tutorial.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_tutorial",
+    "path": "sprites/tile_tutorial/tile_tutorial.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

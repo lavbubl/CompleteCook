@@ -74,7 +74,7 @@ function scr_hurtplayer(argument0)
 				movespeed = 6
 				vsp = -9
 				flash = 1
-				scr_soundeffect(sfx_pephurt)
+				scr_soundeffectpitched(sfx_pephurt, 0.9, 1.1)
 				alarm[8] = 100
 				hurted = 1
 				instance_create(x, y, obj_spikehurteffect)
@@ -191,7 +191,10 @@ function scr_hurtplayer(argument0)
 				else
 					y = obj_player1.y
 			}
-			scr_soundeffect(sfx_pephurt)
+			scr_soundeffectpitched(sfx_pephurt, 0.9, 1.1)
+			if (irandom(100) <= 50)
+				scr_soundeffectpitched(choose(sfx_pepvoice7, sfx_pepvoice8), 0.9, 1.1)
+			instance_create(x, y, obj_bangeffect)
 			alarm[8] = 100
 			alarm[7] = 50
 			hurted = 1
@@ -206,6 +209,8 @@ function scr_hurtplayer(argument0)
 			state = states.hurt
 			image_index = 0
 			flash = 1
+			repeat (5)
+				instance_create(x, y, obj_hurtstars)
 		}
 		if _hurt
 		{
@@ -216,6 +221,8 @@ function scr_hurtplayer(argument0)
 			var loseamount = (50 * (global.stylethreshold + 1))
 			if (!global.pizzadelivery)
 			{
+				with (instance_create(121, 60, obj_negativenumber))
+					number = concat("-", loseamount)
 				if (global.collect > loseamount)
 					global.collect -= loseamount
 				else

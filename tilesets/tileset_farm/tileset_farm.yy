@@ -15,7 +15,10 @@
     "name": "Farm",
     "path": "folders/Tile Sets/Farm.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_farm",
+    "path": "sprites/tile_farm/tile_farm.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "farmgroup",

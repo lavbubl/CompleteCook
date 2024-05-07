@@ -14,7 +14,6 @@ function scr_dotaunt()
 		}
 		if (!finisher)
 		{
-			scr_soundeffectpitched(sfx_taunt, 0.97, 1.03)
 			if (state != states.backbreaker && sprite_index != spr_supertaunt1 && sprite_index != spr_supertaunt2 && sprite_index != spr_supertaunt3 && sprite_index != spr_supertaunt4)
 			{
 				tauntstoredmovespeed = movespeed
@@ -27,9 +26,11 @@ function scr_dotaunt()
 			{
 				image_index = 0
 				sprite_index = choose(spr_supertaunt1, spr_supertaunt2, spr_supertaunt3, spr_supertaunt4)
+				scr_soundeffect(sfx_supertaunt)
 			}
 			else
 			{
+				scr_soundeffectpitched(sfx_taunt, 0.96, 1.03)
 				taunttimer = 20
 				sprite_index = spr_taunt
 				image_index = random_range(0, 11)

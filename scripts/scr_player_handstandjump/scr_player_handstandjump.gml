@@ -127,6 +127,7 @@ function scr_player_handstandjump()
 			vsp = -4
 			sprite_index = spr_suplexbump
 			instance_create((x + (xscale * 10)), (y + 10), obj_bumpeffect)
+			scr_soundeffectpitched(sfx_splat)
 		}
 	}
 	if ((!instance_exists(obj_slidecloud)) && grounded && movespeed > 5)
@@ -144,6 +145,7 @@ function scr_player_handstandjump()
 			jumpAnim = 1
 			grav = 0.5
 			state = states.jump
+			scr_soundeffect(sfx_grabcancel)
 		}
 		else
 		{

@@ -15,7 +15,10 @@
     "name": "Space",
     "path": "folders/Tile Sets/Space.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_space3props",
+    "path": "sprites/spr_space3props/spr_space3props.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "spacegroup",

@@ -7,6 +7,7 @@ global.mu = -4
 music = -4
 secretmusic = -4
 musicID = -4
+prevmuID = -4
 secretmusicID = -4
 pillarmusicID = -4
 secret = 0
@@ -14,8 +15,9 @@ secretend = 0
 pillar_on_camera = 0
 prevpillar_on_camera = 0
 secretmusicpos = 0
-
+timewarning = false
 room_arr = [
 	[Realtitlescreen, mu_title, mu_medievalsecret, false], 
-	[desert_1, mu_ufo, mu_desertsecret, false]
+	[desert_1, mu_ufo, mu_desertsecret, false],
+	[desert_8, mu_medievalremix, mu_desertsecret, true]
 ]

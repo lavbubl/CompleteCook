@@ -6,6 +6,6 @@ static_max = 15
 static_dir = 1
 use_static = true
 alarm[0] = 80
-//fmod_event_one_shot("event:/sfx/ui/tvswitchback");
+scr_soundeffect(sfx_tvswitch)
 with (obj_player)
 	state = states.actor

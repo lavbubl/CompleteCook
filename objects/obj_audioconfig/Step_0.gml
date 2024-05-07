@@ -35,47 +35,38 @@ if (key_jump or keyboard_check_pressed(vk_return))
 	}
 
 }
-var increment = (key_attack ? 10 : 1)
-if (key_buffer > 0)
-	key_buffer--
-else
+var increment = 1
+if ((-key_left) or keyboard_check(vk_left))
 {
-	if ((-key_left) or keyboard_check(vk_left))
+	switch audio_select
 	{
-		switch audio_select
-		{
-			case 0:
-				audiosaved_master -= increment
-				break
-			case 1:
-				audiosaved_music -= increment
-				break
-			case 2:
-				audiosaved_sfx -= increment
-				break
-		}
-
-		key_buffer = key_max
-	}
-	if (key_right or keyboard_check(vk_right))
-	{
-		switch audio_select
-		{
-			case 0:
-				audiosaved_master += increment
-				break
-			case 1:
-				audiosaved_music += increment
-				break
-			case 2:
-				audiosaved_sfx += increment
-				break
-		}
-
-		key_buffer = key_max
+		case 0:
+			audiosaved_master -= increment
+			break
+		case 1:
+			audiosaved_music -= increment
+			break
+		case 2:
+			audiosaved_sfx -= increment
+			break
 	}
 }
-audio_sound_gain(mu_pause, (audiosaved_music * 0.8) / 100, 0)
+if (key_right or keyboard_check(vk_right))	
+{
+	switch audio_select
+	{
+		case 0:
+			audiosaved_master += increment
+			break
+		case 1:
+			audiosaved_music += increment
+			break
+		case 2:
+			audiosaved_sfx += increment
+			break
+	}
+}
+set_audio_volume()
 audiosaved_master = clamp(audiosaved_master, 0, 100)
 audiosaved_music = clamp(audiosaved_music, 0, 100)
 audiosaved_sfx = clamp(audiosaved_sfx, 0, 100)

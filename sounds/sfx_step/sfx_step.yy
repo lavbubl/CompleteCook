@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.452,
+  "duration": 0.492,
   "parent": {
     "name": "SFX",
     "path": "folders/Sounds/SFX.yy",
   },
   "preload": true,
   "sampleRate": 44100,
-  "soundFile": "sfx_step",
+  "soundFile": "sfx_step.ogg",
   "type": 0,
   "volume": 1.0,
 }

@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "sfx_taunt.ogg",
   "type": 1,
-  "volume": 0.6,
+  "volume": 0.5,
 }

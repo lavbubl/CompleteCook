@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 1.443628,
+  "duration": 1.793333,
   "parent": {
     "name": "SFX",
     "path": "folders/Sounds/SFX.yy",
   },
   "preload": true,
   "sampleRate": 44100,
-  "soundFile": "sfx_comboend",
-  "type": 0,
-  "volume": 1.0,
+  "soundFile": "sfx_comboend.ogg",
+  "type": 1,
+  "volume": 0.3,
 }

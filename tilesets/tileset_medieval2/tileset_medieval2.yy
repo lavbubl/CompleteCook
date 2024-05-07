@@ -15,7 +15,10 @@
     "name": "Medieval",
     "path": "folders/Tile Sets/Medieval.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_medieval2",
+    "path": "sprites/tile_medieval2/tile_medieval2.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "medievalgroup",

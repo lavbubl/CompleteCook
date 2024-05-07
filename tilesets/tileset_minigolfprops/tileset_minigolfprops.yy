@@ -15,7 +15,10 @@
     "name": "Golf",
     "path": "folders/Tile Sets/Golf.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_minigolfprops",
+    "path": "sprites/spr_minigolfprops/spr_minigolfprops.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

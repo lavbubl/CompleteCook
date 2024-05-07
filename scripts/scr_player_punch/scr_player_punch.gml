@@ -26,7 +26,7 @@ function scr_player_punch()
 		}
 		if (punch_afterimage > 0)
 			punch_afterimage--
-		else
+		else if (vsp < 0)
 		{
 			punch_afterimage = 5
 			with (create_mach3effect(x, y, sprite_index, image_index))

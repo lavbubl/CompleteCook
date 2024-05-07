@@ -15,7 +15,10 @@
     "name": "Street",
     "path": "folders/Tile Sets/Street.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprite_tile_citycarnival",
+    "path": "sprites/sprite_tile_citycarnival/sprite_tile_citycarnival.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

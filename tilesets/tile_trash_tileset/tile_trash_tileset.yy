@@ -15,7 +15,10 @@
     "name": "Sewer",
     "path": "folders/Tile Sets/Sewer.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_trash",
+    "path": "sprites/tile_trash/tile_trash.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

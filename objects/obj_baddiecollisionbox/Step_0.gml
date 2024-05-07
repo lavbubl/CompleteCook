@@ -115,6 +115,7 @@ for (var i = 0; i < 2; i++)
 						sprite_index = spr_piledriver
 						vsp = -14
 						state = states.superslam
+						dir = move
 						image_index = 0
 						image_speed = 0.35
 					}
@@ -241,6 +242,7 @@ for (var i = 0; i < 2; i++)
 						invtime = (lag + 5)
 						flash = 1
 					}
+					scr_soundeffectpitched(sfx_mach2bump)
 					tauntstoredstate = state
 					tauntstoredsprite = sprite_index
 					tauntstoredmovespeed = movespeed

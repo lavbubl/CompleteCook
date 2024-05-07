@@ -15,7 +15,10 @@
     "name": "Tower",
     "path": "folders/Tile Sets/Tower.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_entrancedeco",
+    "path": "sprites/spr_entrancedeco/spr_entrancedeco.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "entrancegroup",

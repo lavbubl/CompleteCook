@@ -26,6 +26,16 @@ function scr_player_comingoutdoor()
 	}
 	if (sprite_index != spr_Timesup)
 	{
+		if (steppybuffer > 0)
+			steppybuffer--
+		else
+		{
+			steppybuffer = 16
+			scr_soundeffectpitched(sfx_step)
+		}
+	}
+	if (sprite_index != spr_Timesup)
+	{
 		if isgustavo
 			sprite_index = spr_ratmount_exitdoor
 		else

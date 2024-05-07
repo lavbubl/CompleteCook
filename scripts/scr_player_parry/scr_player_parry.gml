@@ -6,8 +6,6 @@ function scr_player_parry()
 		if tauntstoredisgustavo
 			state = states.ratmount
 	}
-	if (!audio_is_playing(sfx_parry))
-		scr_soundeffect(sfx_parry)
 	hsp = ((-xscale) * movespeed)
 	image_speed = 0.5
 	if (movespeed > 0)

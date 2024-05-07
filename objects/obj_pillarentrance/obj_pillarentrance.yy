@@ -31,7 +31,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_entrancepillar",
+    "path": "sprites/spr_entrancepillar/spr_entrancepillar.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

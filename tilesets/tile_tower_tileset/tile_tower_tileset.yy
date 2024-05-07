@@ -15,7 +15,10 @@
     "name": "Tower",
     "path": "folders/Tile Sets/Tower.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_tower",
+    "path": "sprites/tile_tower/tile_tower.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "entrancegroup",

@@ -1,6 +1,6 @@
 tex_list = -4
 draw_flush()
-group_arr = ["playergroup", "backgroundgroup", "hudgroup", "smallgroup", "baddiegroup", "levelstructuregroup"]
+group_arr = ["playergroup", "hudgroup", "smallgroup", "baddiegroup", "levelstructuregroup"]
 currenttexture = 0
 tex_list = ds_list_create()
 tex_pos = 0

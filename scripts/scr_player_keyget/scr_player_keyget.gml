@@ -14,6 +14,11 @@ function scr_player_keyget()
 	crouchAnim = 1
 	machhitAnim = 0
 	sprite_index = spr_keyget
+	if (!keysound && floor(image_index) >= 16)
+	{
+		keysound = true
+		scr_soundeffectpitched(choose(sfx_pepvoice6, sfx_pepvoice3, sfx_pepvoice5), 0.9, 1.1)
+	}
 	if (floor(image_index) == (image_number - 1))
 	{
 		instance_create(x, y, obj_keyfollow)

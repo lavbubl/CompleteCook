@@ -1,4 +1,4 @@
-function scr_getallrooms()
+/*function scr_getallrooms()
 {
 	return [
 		tower_entrancehall, 
@@ -357,3 +357,4 @@ function scr_getallrooms()
 		boss_pizzaface
 	];
 }
+rest in p[eace

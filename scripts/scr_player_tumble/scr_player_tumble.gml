@@ -92,6 +92,7 @@ function scr_player_tumble()
 			state = states.bump
 			image_index = 0
 			sprite_index = spr_player_wallsplat
+			scr_soundeffectpitched(sfx_splat)
 		}
 	}
 	if key_jump

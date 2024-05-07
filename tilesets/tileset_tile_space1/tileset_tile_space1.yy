@@ -15,7 +15,10 @@
     "name": "Space",
     "path": "folders/Tile Sets/Space.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprite_tile_space1",
+    "path": "sprites/sprite_tile_space1/sprite_tile_space1.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

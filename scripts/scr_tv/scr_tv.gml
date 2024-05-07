@@ -123,6 +123,8 @@ function tv_do_expression(spr)
 					expressionbuffer = 150
 					if obj_player.isgustavo
 						expressionsprite = spr_tv_happyG
+					if (irandom(100) <= 50)
+						scr_soundeffectpitched(choose(sfx_pepvoice6, sfx_pepvoice3, sfx_pepvoice5), 0.9, 1.1)
 					break
 			}
 		}

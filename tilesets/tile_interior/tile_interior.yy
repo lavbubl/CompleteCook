@@ -15,7 +15,10 @@
     "name": "Street",
     "path": "folders/Tile Sets/Street.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_interiortile",
+    "path": "sprites/spr_interiortile/spr_interiortile.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",

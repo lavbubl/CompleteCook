@@ -51,8 +51,6 @@ savedHistoryFilePath = working_directory + "rt-shell-saved-history.data";
 loadedSavedHistory = false;
 loadedHistoryScrolled = false;
 
-depth = -9999
-
 // Mouse-argument data types
 enum mouseArgumentType {
 	worldX,

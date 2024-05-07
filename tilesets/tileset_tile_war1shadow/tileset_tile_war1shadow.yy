@@ -15,7 +15,10 @@
     "name": "War",
     "path": "folders/Tile Sets/War.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprite_tile_war1shadow",
+    "path": "sprites/sprite_tile_war1shadow/sprite_tile_war1shadow.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "wargroup",

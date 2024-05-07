@@ -217,7 +217,7 @@
 2,22,23,-14,0,2,21,22,-14,18,2,22,23,-14,0,2,21,22,-14,18,2,22,23,-14,0,2,21,22,-14,18,2,22,
 23,-12,0,4,56,57,21,22,-14,18,2,22,23,-12,0,4,66,67,73,22,-14,18,2,22,71,-13,12,3,73,22,22,-14,
 18,-17,22,-201,18,],"TileDataFormat":1,},"tilesetId":{"name":"tileset_medieval2","path":"tilesets/tileset_medieval2/tileset_medieval2.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
-    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Backgrounds_1","animationFPS":15.0,"animationSpeedType":0,"colour":4294967295,"depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":0,},
+    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Backgrounds_1","animationFPS":15.0,"animationSpeedType":0,"colour":4294967295,"depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"bg_medievallibrairy1","path":"sprites/bg_medievallibrairy1/bg_medievallibrairy1.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":0,},
   ],
   "parent": {
     "name": "Dragonlair",

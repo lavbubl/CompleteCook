@@ -25,6 +25,7 @@ switch sprite_index
 		drop = 0
 		if (floor(image_index) == (image_number - 1))
 		{
+			scr_soundeffect(sfx_secretexit)
 			sprite_index = spr_secretportal_spawnidle
 			with (obj_player)
 			{

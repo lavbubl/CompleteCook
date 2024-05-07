@@ -134,13 +134,23 @@ function scr_player_grab()
 			sprite_index = spr_haulingidle
 		swingdingendcooldown++
 		hsp = (xscale * movespeed)
+		if (floor(image_index) == 0 && spinsndbuffer == 0)
+		{
+			scr_soundeffect(sfx_spin)
+			spinsndbuffer = 5
+		}
+		else if spinsndbuffer > 0
+			spinsndbuffer--
 		if (scr_solid((x + xscale), y) && ((!(place_meeting((x + sign(hsp)), y, obj_slope))) or scr_solid_slope((x + sign(hsp)), y)) && (!(place_meeting((x + sign(hsp)), y, obj_destructibles))))
 		{
-			vsp = -4
-			sprite_index = spr_player_kungfujump
+			if (move != 0)
+				move = xscale
+			hsp = (xscale * movespeed)
+			movespeed = hsp
+			swingdingendcooldown = 0
+			state = states.finishingblow
+			sprite_index = spr_swingdingend
 			image_index = 0
-			state = states.punch
-			movespeed = -6
 		}
 		with (instance_place((x + xscale), y, obj_destructibles))
 			instance_destroy()
@@ -201,6 +211,7 @@ function scr_player_grab()
 		sprite_index = spr_piledriver
 		vsp = -5
 		state = states.superslam
+		dir = move
 		image_index = 0
 		image_speed = 0.35
 	}

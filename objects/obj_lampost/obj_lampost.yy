@@ -28,7 +28,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_lampostpanic",
+    "path": "sprites/spr_lampostpanic/spr_lampostpanic.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

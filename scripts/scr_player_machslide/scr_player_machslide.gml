@@ -40,6 +40,7 @@ function scr_player_machslide()
 		sprite_index = spr_player_wallsplat
 		state = states.bump
 		image_index = 0
+		scr_soundeffectpitched(sfx_splat)
 	}
 	if (((floor(image_index) == (image_number - 1) && sprite_index == spr_machslideboost) || sprite_index == spr_player_machslideboostfall) && grounded)
 	{

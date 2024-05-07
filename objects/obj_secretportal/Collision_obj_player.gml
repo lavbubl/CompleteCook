@@ -8,7 +8,7 @@ if (active && sprite_index != spr_secretportal_open && (!instance_exists(obj_jum
 	if (!touched)
 	{
 		obj_camera.lock = true
-		scr_soundeffect(sfx_box)
+		scr_soundeffect(sfx_secretenter)
 		if (!obj_music.secret)
 		{
 			obj_music.secret = 1
@@ -28,7 +28,7 @@ if (active && sprite_index != spr_secretportal_open && (!instance_exists(obj_jum
 		case states.knightpepattack:
 		case states.knightpepbump:
 		case states.knightpepslopes:
-			other.sprite_index = other.spr_knightpep_fall
+			other.sprite_index = spr_knightpep_fall
 			break;
 		case states.firemouth:
 			other.sprite_index = spr_player_firemouthspin

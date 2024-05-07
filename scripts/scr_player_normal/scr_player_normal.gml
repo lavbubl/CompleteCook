@@ -18,7 +18,14 @@ function state_player_normal()
 		input_up_buffer = 0
 		input_down_buffer = 0
 	}
-	if key_taunt
+	if (key_taunt)
+	{
+		if (breakdance_buffer > 0)
+			breakdance_buffer--
+	}
+	else
+		breakdance_buffer = 15
+	if (breakdance_buffer == 0)
 		breakdance_speed = Approach(breakdance_speed, 0.6, 0.005)
 	else
 		breakdance_speed = 0.25
@@ -67,7 +74,7 @@ function state_player_normal()
 				sprite_index = spr_pistolwalk
 			else if mort
 				sprite_index = spr_player_mortwalk
-			else if key_taunt
+			else if (key_taunt && breakdance_buffer == 0)
 				sprite_index = spr_player_breakdance
 			else if (global.minutes == 0 && global.seconds == 0)
 				sprite_index = spr_hurtwalk
@@ -80,6 +87,17 @@ function state_player_normal()
 		}
 		if (scr_solid((x + sign(hsp)), y) && (!(scr_solid_slope((x + sign(hsp)), y))) && xscale == move && (!(place_meeting(x, (y + 1), obj_slope))))
 			movespeed = 0
+		if (grounded && vsp > 0)
+		{
+			if (steppybuffer > 0)
+				steppybuffer--
+			else if (sprite_index != spr_player_breakdance)
+			{
+				instance_create(x, (y + 48), obj_cloudeffect)
+				steppybuffer = 12
+				scr_soundeffectpitched(sfx_step, 0.9, 1.1)
+			}
+		}
 		if ((!steppy) && character != "V" && (floor(image_index == 3) or floor(image_index) == 8))
 		{
 			create_particle(x, (y + 43), particle.cloudeffect, 0)
@@ -97,9 +115,9 @@ function state_player_normal()
 		movespeed = 0
 		if ((!machslideAnim) && (!landAnim) && (!shotgunAnim))
 		{
-			if (idle < 400 && (!key_up))
+			if (idle < 400 && (!key_taunt))
 				idle++
-			if (idle >= 150 && (!key_up))
+			if (idle >= 150 && (!key_taunt))
 			{
 				if (sprite_index != spr_idle && floor(image_index) == (image_number - 1))
 				{
@@ -110,6 +128,8 @@ function state_player_normal()
 				{
 					idleanim = random_range(0, 100)
 					image_index = 0
+					if (irandom(100) <= 25)
+						scr_soundeffectpitched(choose(sfx_pepvoice1, sfx_pepvoice2, sfx_pepvoice3, sfx_pepvoice4, sfx_pepvoice3), 0.9, 1.1)
 					if (idleanim <= 16)
 						sprite_index = spr_idle1
 					else if (idleanim > 16 && idleanim <= 32)
@@ -134,7 +154,7 @@ function state_player_normal()
 						sprite_index = spr_player_pistolidle
 					else if mort
 						sprite_index = spr_player_mortidle
-					else if key_taunt
+					else if (key_taunt && breakdance_buffer == 0)
 						sprite_index = spr_player_breakdance
 					else if (global.fill <= 0 && global.panic)
 						sprite_index = spr_hurtidle
@@ -152,7 +172,7 @@ function state_player_normal()
 					idle = 0
 					windingAnim--
 					sprite_index = spr_winding
-					if key_taunt
+					if (key_taunt && breakdance_buffer == 0)
 						sprite_index = spr_player_breakdance
 				}
 			}
@@ -161,7 +181,7 @@ function state_player_normal()
 				windingAnim = 0
 				if (sprite_index != spr_facehurt && floor(image_index) == (image_number - 1))
 					sprite_index = spr_facehurt
-				if key_taunt
+				if (key_taunt && breakdance_buffer == 0)
 					sprite_index = spr_player_breakdance
 			}
 		}

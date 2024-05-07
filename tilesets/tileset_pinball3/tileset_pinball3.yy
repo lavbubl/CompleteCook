@@ -15,7 +15,10 @@
     "name": "Pinball",
     "path": "folders/Tile Sets/Pinball.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_pinball3",
+    "path": "sprites/tile_pinball3/tile_pinball3.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "pinballgroup",

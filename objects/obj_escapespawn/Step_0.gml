@@ -37,6 +37,7 @@ switch state
 				stunned = 20
 				boundbox = 0
 				instance_create(x, y, obj_genericpoofeffect)
+				scr_soundeffectpitched(sfx_escapespawn)
 			}
 			state = 3
 		}

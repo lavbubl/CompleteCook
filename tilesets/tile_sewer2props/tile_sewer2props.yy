@@ -15,7 +15,10 @@
     "name": "Sewer",
     "path": "folders/Tile Sets/Sewer.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_sewer2props",
+    "path": "sprites/spr_sewer2props/spr_sewer2props.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "sewergroup",

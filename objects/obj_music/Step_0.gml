@@ -36,6 +36,17 @@ if global.panic
 			audio_stop_sound(pillarmusicID)
 		pillarmusicID = -4
 	}
+	if (music == mu_pizzatime && global.fill <= 672 && !timewarning)
+	{
+		timewarning = true
+		prevmuID = musicID
+		audio_sound_gain(prevmuID, 0, 4000)
+		musicID = scr_music(music)
+		audio_sound_set_track_position(musicID, 170)
+		var sndgain = (audio_sound_get_gain(musicID) * 0.8) * global.option_music_volume
+		audio_sound_gain(musicID, 0, 0)
+		audio_sound_gain(musicID, sndgain, 2000)
+	}
 	else if (music != mu_chase && global.lap)
 	{
 		music = mu_chase
@@ -47,3 +58,7 @@ if global.panic
 		musicID = scr_music(music)
 	}
 }
+if (!global.panic)
+	timewarning = false
+if (audio_is_playing(prevmuID) && audio_sound_get_gain(prevmuID) <= 0.05)
+	audio_stop_sound(prevmuID)

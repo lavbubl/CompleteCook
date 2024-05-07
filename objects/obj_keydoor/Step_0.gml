@@ -3,6 +3,7 @@ if ((!global.horse) && (!instance_exists(obj_jumpscare)) && (obj_player1.state =
 	ds_list_add(global.saveroom, id)
 	obj_player1.state = states.victory
 	scr_soundeffect(sfx_keydoorcheer)
+	scr_soundeffect(sfx_unlock)
 	obj_player1.image_index = 0
 	if (instance_exists(obj_player2) && global.coop == true)
 	{

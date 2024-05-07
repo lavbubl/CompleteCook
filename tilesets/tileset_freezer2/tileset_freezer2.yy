@@ -15,7 +15,10 @@
     "name": "Freezer",
     "path": "folders/Tile Sets/Freezer.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "tile_freezer2",
+    "path": "sprites/tile_freezer2/tile_freezer2.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "freezergroup",

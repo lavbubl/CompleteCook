@@ -34,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_player_ladder",
-    "path": "sprites/spr_player_ladder/spr_player_ladder.yy",
+    "name": "spr_technicaldifficulty3",
+    "path": "sprites/spr_technicaldifficulty3/spr_technicaldifficulty3.yy",
   },
   "spriteMaskId": null,
   "visible": true,

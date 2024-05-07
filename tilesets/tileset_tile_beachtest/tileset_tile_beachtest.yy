@@ -15,7 +15,10 @@
     "name": "Beach",
     "path": "folders/Tile Sets/Beach.yy",
   },
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprite_tile_beachtest",
+    "path": "sprites/sprite_tile_beachtest/sprite_tile_beachtest.yy",
+  },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "beachgroup",

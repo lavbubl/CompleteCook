@@ -2,12 +2,12 @@ function scr_playersounds()
 {
 	with (obj_player)
 	{
-		if (state == states.mach1 && (!audio_is_playing(sfx_mach1)) && grounded)
+		if (sprite_index == spr_mach1 && (!audio_is_playing(sfx_mach1)) && grounded)
 		{
 			mach1snd = audio_play_sound(sfx_mach1, 1, true)
 			sfx_gain(mach1snd)
 		}
-		else if (state != states.mach1 or (!grounded) or move == (-xscale))
+		else if (sprite_index != spr_mach1 or (!grounded) or move == (-xscale))
 			audio_stop_sound(mach1snd)
 		if ((sprite_index == spr_mach or state == states.climbwall) && (!audio_is_playing(sfx_mach2)))
 		{

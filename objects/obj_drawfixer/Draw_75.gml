@@ -1,0 +1,6 @@
+surface_reset_target()
+shader_reset()
+draw_set_alpha(1)
+draw_set_color(c_white)
+draw_surface(gui_surf, 0, 0)
+gpu_set_blendmode(bm_normal)

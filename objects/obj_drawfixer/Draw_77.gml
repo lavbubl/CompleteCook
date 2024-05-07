@@ -1,0 +1,7 @@
+draw_set_alpha(1)
+gpu_set_blendmode(bm_normal)
+draw_set_color(c_white)
+draw_rectangle_color(-100, -100, 960 + 100, 540 + 100, 0, 0, 0, 0, false)
+gpu_set_blendenable(false)
+draw_surface(application_surface, 0, 0)
+gpu_set_blendenable(true)

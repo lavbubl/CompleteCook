@@ -1,0 +1,1 @@
+electricity = 0

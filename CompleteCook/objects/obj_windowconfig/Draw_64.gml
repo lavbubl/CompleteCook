@@ -1,0 +1,23 @@
+draw_set_font(global.bigfont)
+draw_set_halign(fa_left)
+draw_set_color(c_gray)
+var isfullscreen = global.option_fullscreen ? "TRUE" : "FALSE"
+if (selected == -1)
+	draw_set_color(c_white)
+draw_text(150, 100, "BACK")
+draw_set_color(c_gray)
+if (selected == 0)
+	draw_set_color(c_white)
+draw_text(150, 148, concat("FULLSCREEN: ", isfullscreen))
+draw_set_color(c_gray)
+if (selected >= 1)
+	draw_set_color(c_white)
+draw_text(150, 196, "RESOLUTION")
+for (var i = 0; i < array_length(sizes); i++) 
+{
+	draw_set_color(c_gray)
+	if (selected == i + 1)
+		draw_set_color(c_white)
+    draw_text(150, 244 + (48 * i), concat(sizes[i][0], "X", sizes[i][1]))
+}
+draw_set_color(c_white)

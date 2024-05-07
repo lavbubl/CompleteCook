@@ -1,0 +1,1 @@
+prompt_array = [tv_create_prompt(choose("If you hold JUMP while landing on the ground, you will bounce! Keep JUMP held to keep bouncing on the ground and on the walls!"), tvprompt.trigger, spr_tv_exprheat, 2.5)]

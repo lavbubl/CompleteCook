@@ -1,0 +1,16 @@
+hsp = 0
+vsp = 0
+grav = 0.5
+grounded = false
+drop = 0
+movespeed = 0
+image_speed = 0.35
+countdownmax = 120
+countdown = countdownmax
+depth = -10
+playercollision = 1
+kick = 0
+mask_index = spr_player_mask
+platformid = -4
+hsp_carry = 0
+vsp_carry = 0

@@ -1,0 +1,4 @@
+these objects are to be spawned in gameplay, so don't place them directly in rooms.
+for rooms, use the room structure folder instead.
+
+unless you like chaos.

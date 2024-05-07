@@ -27,7 +27,10 @@ var _minX = (_cx - 56)
 var _maxX = (_cx + 59)
 combofill_x = lerp(combofill_x, (_minX + ((_maxX - _minX) * _perc)), 0.5)
 combofill_y = _cy
+shader_set(global.Pal_Shader)
+pal_swap_set(spr_tv_combofillpalette, (!global.combodropped) ? 2 : 1, false)
 draw_sprite(spr_tv_combobubblefill, combofill_index, combofill_x, combofill_y)
+reset_shader_fix()
 draw_sprite(spr_tv_combobubble, -1, _cx, _cy)
 draw_set_font(global.combofont2)
 draw_set_halign(fa_left)
@@ -43,13 +46,16 @@ for (var i = num; i > 0; i--)
 	_tx -= 22
 	_ty -= 8
 }
+shader_set(global.Pal_Shader)
 if (room != strongcold_endscreen)
 {
 	draw_sprite_ext(spr_tv_bg, 0, (tv_x + collect_x), ((tv_y + collect_y) + hud_posY), 1, 1, 0, c_white, alpha)
+	pal_swap_set(obj_player1.spr_palette, obj_player1.paletteselect, false)
 	draw_sprite_ext(sprite_index, image_index, (tv_x + collect_x), ((tv_y + collect_y) + hud_posY), 1, 1, 0, c_white, alpha)
 	if (state = states.tv_whitenoise)
 		draw_sprite_ext(spr_tv_whitenoise, floor(noiseindex), (tv_x + collect_x), ((tv_y + collect_y) + hud_posY), 1, 1, 0, c_white, alpha)
 }
+reset_shader_fix()
 if (bubblespr != -4)
 	draw_sprite_ext(bubblespr, bubbleindex, 512, 53, 1, 1, 1, c_white, alpha)
 if (!surface_exists(promptsurface))

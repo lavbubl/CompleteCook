@@ -6,7 +6,7 @@ if (other.state != states.gotoplayer)
 	scr_soundeffect(sfx_collectpizza)
 	instance_destroy()
 	global.combotime = 60
-	var val = heat_calculate(100)
+	var val = value
 	if (other.object_index == obj_player1)
 		global.collect += val
 	else

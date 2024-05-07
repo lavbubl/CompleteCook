@@ -267,7 +267,8 @@ enum states
 	unused_10,
 	magnet,
 	antigrav,
-	secret
+	secret,
+	transition
 }
 pal_swap_init_system(shd_pal_swapper)
 global.coop = false

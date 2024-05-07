@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "sfx_secretenter.ogg",
   "type": 1,
-  "volume": 0.7,
+  "volume": 0.6,
 }

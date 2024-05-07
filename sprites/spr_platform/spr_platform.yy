@@ -2,7 +2,7 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "spr_platform",
-  "bbox_bottom": 10,
+  "bbox_bottom": 31,
   "bbox_left": 0,
   "bbox_right": 31,
   "bbox_top": 0,
@@ -25,7 +25,7 @@
   "nineSlice": {
     "resourceType": "GMNineSliceData",
     "resourceVersion": "1.0",
-    "bottom": 22,
+    "bottom": 0,
     "enabled": true,
     "guideColour": [
       4294902015,
@@ -35,8 +35,8 @@
     ],
     "highlightColour": 1728023040,
     "highlightStyle": 0,
-    "left": 1,
-    "right": 1,
+    "left": 15,
+    "right": 15,
     "tileMode": [
       0,
       0,
@@ -44,7 +44,7 @@
       0,
       0,
     ],
-    "top": 1,
+    "top": 0,
   },
   "origin": 0,
   "parent": {

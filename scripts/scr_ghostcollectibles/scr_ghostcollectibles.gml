@@ -1,4 +1,4 @@
-function scr_ghostcollectible()
+function scr_ghostcollectible(pizzasona = false)
 {
 	var q = -4
 	var b = id
@@ -12,9 +12,9 @@ function scr_ghostcollectible()
 			image_speed: b.image_speed,
 			image_number: b.image_number,
 			image_alpha: 0.5,
-			image_index: 0
+			image_index: 0,
+			pizzasona: pizzasona
 		}
-
 		trace(q)
 		ds_list_add(collectiblelist, q)
 	}

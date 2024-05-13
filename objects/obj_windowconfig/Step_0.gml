@@ -17,6 +17,7 @@ if (key_jump)
 		case 4:
 			global.option_resolution = selected - 1
 			window_set_size(sizes[selected - 1][0], sizes[selected - 1][1])
+			window_center()
 			break;
 	}
 }

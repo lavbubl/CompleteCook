@@ -51,7 +51,9 @@ if (room != strongcold_endscreen)
 {
 	draw_sprite_ext(spr_tv_bg, 0, (tv_x + collect_x), ((tv_y + collect_y) + hud_posY), 1, 1, 0, c_white, alpha)
 	pal_swap_set(obj_player1.spr_palette, obj_player1.paletteselect, false)
+	pattern_set(global.Base_Pattern_Color, sprite_index, image_index, image_xscale, image_yscale, global.patterntexture)
 	draw_sprite_ext(sprite_index, image_index, (tv_x + collect_x), ((tv_y + collect_y) + hud_posY), 1, 1, 0, c_white, alpha)
+	pattern_reset()
 	if (state = states.tv_whitenoise)
 		draw_sprite_ext(spr_tv_whitenoise, floor(noiseindex), (tv_x + collect_x), ((tv_y + collect_y) + hud_posY), 1, 1, 0, c_white, alpha)
 }

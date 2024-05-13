@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "shd_alphafix",
   "parent": {
-    "name": "Cutscene",
-    "path": "folders/Scripts/Cutscene.yy",
+    "name": "Shaders",
+    "path": "folders/Shaders.yy",
   },
   "type": 1,
 }

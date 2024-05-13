@@ -20,26 +20,38 @@ if (active && sprite_index != spr_secretportal_open && (!instance_exists(obj_jum
 			obj_music.secret = 0
 		}
 	}
-	touched = 1
 	playerid = other.id
-	switch other.state
+	other.x = x;
+	other.y = y - 30;
+	other.vsp = 0;
+	other.hsp = 0;
+	other.cutscene = true;
+	if !touched
 	{
-		case states.knightpep:
-		case states.knightpepattack:
-		case states.knightpepbump:
-		case states.knightpepslopes:
-			other.sprite_index = spr_knightpep_fall
-			break;
-		case states.firemouth:
-			other.sprite_index = spr_player_firemouthspin
-			break;
-		default:
-			other.sprite_index = other.spr_hurt
-			break;
+		other.superchargedeffectid = -4;
+		if other.state != states.knightpep && other.state != states.knightpepslopes && other.state != states.knightpepbump && other.state != states.firemouth
+		{
+			if !other.isgustavo
+				other.sprite_index = other.spr_hurt;
+			else
+				other.sprite_index = spr_player_ratmounthurt;
+			other.image_speed = 0.35;
+		}
+		if other.state == states.knightpepslopes
+		{
+			other.sprite_index = other.spr_knightpepfall;
+			other.state = states.knightpep;
+			other.hsp = 0;
+			other.vsp = 0;
+		}
+		other.tauntstoredstate = other.state;
+		other.tauntstoredmovespeed = other.movespeed;
+		other.tauntstoredhsp = other.hsp;
+		other.tauntstoredvsp = other.vsp;
+		other.tauntstoredsprite = other.sprite_index;
+		other.state = states.secretenter;
 	}
-	other.state = states.actor
-	other.vsp = 0
-	other.hsp = 0
+	touched = 1
 	with (obj_heatafterimage)
 		visible = false
 }

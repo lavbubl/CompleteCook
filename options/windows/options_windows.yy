@@ -10,7 +10,7 @@
   "option_windows_description_info": "",
   "option_windows_disable_sandbox": false,
   "option_windows_display_cursor": true,
-  "option_windows_display_name": "Vigi Fangame",
+  "option_windows_display_name": "Complete Cook Engine",
   "option_windows_enable_steam": false,
   "option_windows_executable_name": "${project_name}.exe",
   "option_windows_icon": "icons/icon.ico",

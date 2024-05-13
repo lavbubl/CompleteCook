@@ -30,9 +30,6 @@
   "properties": [],
   "solid": false,
   "spriteId": null,
-  "spriteMaskId": {
-    "name": "spr_pizzacollect1halloween",
-    "path": "sprites/spr_pizzacollect1halloween/spr_pizzacollect1halloween.yy",
-  },
+  "spriteMaskId": null,
   "visible": true,
 }

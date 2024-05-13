@@ -9,6 +9,7 @@ with (other)
 				xscale = sign(hsp)
 			movespeed = abs(hsp)
 		}
+		transformationsnd = false
 		state = states.normal
 		dir = xscale
 		_transfo = 1
@@ -17,6 +18,7 @@ with (other)
 }
 if _transfo
 {
+	scr_soundeffect(sfx_pray)
 	var p = other.id
 	with (instance_create((other.x - 540), (camera_get_view_y(view_camera[0]) - 100), obj_priestangel))
 	{

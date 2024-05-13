@@ -2,6 +2,26 @@ function scr_playersounds()
 {
 	with (obj_player)
 	{
+		if (state != states.tube && sprite_index != spr_knightpepstart && state != states.bombgrab && state != states.chainsaw && state != states.door && state != states.secretenter && state != states.victory && state != states.stunned && state != states.fireass)
+		{
+			if (!scr_transformationcheck())
+			{
+				if !transformationsnd
+				{
+					transformationsnd = true;
+					//if (irandom(100) <= 70)
+					//	fmod_event_instance_play(snd_voicetransfo);
+				scr_soundeffect(sfx_transfo)
+				}
+			}
+			else if transformationsnd
+			{
+				transformationsnd = false;
+				///if (irandom(100) <= 70)
+					///fmod_event_instance_play(snd_voiceouttransfo);
+				scr_soundeffect(sfx_detransfo)
+			}
+		}
 		if (sprite_index == spr_mach1 && (!audio_is_playing(sfx_mach1)) && grounded)
 		{
 			mach1snd = audio_play_sound(sfx_mach1, 1, true)

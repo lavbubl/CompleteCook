@@ -32,6 +32,9 @@ if ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge == fal
 	instance_create(x, y, obj_baddiegibs)
 	instance_create(x, y, obj_baddiegibs)
 	
+	global.combotime = 60
+	global.combo++
+	
 	if global.coop == true
 	{
 		obj_player1.x = x

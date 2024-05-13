@@ -262,6 +262,7 @@ function scr_playerreset()
 			bounce = 0
 			a = 0
 			idle = 0
+			transformationsnd = false
 			attacking = 0
 			slamming = 0
 			superslam = 0

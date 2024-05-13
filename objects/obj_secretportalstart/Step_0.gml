@@ -1,3 +1,4 @@
+depth = 0
 image_speed = 0.35
 switch sprite_index
 {
@@ -8,17 +9,15 @@ switch sprite_index
 		{
 			if (object_index != obj_player2 or global.coop)
 			{
-				state = states.actor
 				x = other.x
 				y = other.y
 				roomstartx = x
 				roomstarty = y
 				hsp = 0
 				vsp = 0
+				movespeed = 0
 				cutscene = 1
 				visible = false
-				//if ((!isgustavo) && state != states.knightpep && state != states.knightpepslopes && state != states.knightpepbump)
-					//state = states.normal
 			}
 		}
 		waitbuffer = 80
@@ -31,7 +30,7 @@ switch sprite_index
 			{
 				if (object_index != obj_player2 or global.coop)
 				{
-					if ((!isgustavo) && state != states.knightpep && state != states.knightpepslopes && state != states.knightpepbump)
+					if ((!isgustavo) && tauntstoredstate != states.knightpep && tauntstoredstate != states.knightpepslopes && tauntstoredstate != states.knightpepbump && tauntstoredstate != states.firemouth)
 					{
 						visible = true
 						cutscene = 0
@@ -39,6 +38,14 @@ switch sprite_index
 						image_index = 0
 						state = states.freefallprep
 						vsp = (character == "P" ? -5 : -7)
+					}
+					else if isgustavo
+						state = states.ratmount;
+					else
+					{
+						if state == states.knightpep
+							hsp = 0;
+						sprite_index = tauntstoredsprite;
 					}
 				}
 			}
@@ -57,12 +64,52 @@ switch sprite_index
 					y = (other.y - 10)
 					visible = true
 					hsp = 0
+					movespeed = 0
 					vsp = 10
 					scale_xs = Approach(scale_xs, 1, 0.05)
 					scale_ys = Approach(scale_ys, 1, 0.05)
 					fallinganimation = 0
 					if (scale_xs == 1)
 						other.drop = 1
+					if other.drop
+					{
+						if (!isgustavo && (tauntstoredstate == states.knightpep || tauntstoredstate == states.knightpepslopes || tauntstoredstate == states.knightpepbump || tauntstoredstate == states.firemouth))
+						{
+							state = tauntstoredstate;
+							movespeed = tauntstoredmovespeed;
+							hsp = tauntstoredhsp;
+							sprite_index = tauntstoredsprite;
+							if (state == states.actor || state == states.backbreaker || state == states.chainsaw)
+							{
+								sprite_index = spr_bodyslamstart;
+								image_index = 0;
+								state = states.freefallprep;
+								freefallsmash = 0;
+								vsp = (character == "P") ? -5 : -7;
+							}
+							if state == states.knightpep
+							{
+								hsp = 0;
+								movespeed = 0;
+							}
+							else if state == states.knightpepslopes
+							{
+								movespeed = 0;
+								hsp = 0;
+								state = states.knightpep;
+								sprite_index = spr_knightpepfall;
+							}
+							else if state == states.firemouth
+							{
+								if sprite_index == spr_player_firemouthdash
+								{
+									hsp = 0;
+									movespeed = 0;
+									sprite_index = spr_player_firemouthidle;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

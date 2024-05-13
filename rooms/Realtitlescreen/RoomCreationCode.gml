@@ -268,7 +268,8 @@ enum states
 	magnet,
 	antigrav,
 	secret,
-	transition
+	transition,
+	secretenter
 }
 pal_swap_init_system(shd_pal_swapper)
 global.coop = false

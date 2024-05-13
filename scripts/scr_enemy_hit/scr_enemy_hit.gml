@@ -22,7 +22,8 @@ function scr_enemy_hit()
 		global.hit += 1
 		if (other.object_index == obj_pizzaball)
 			global.golfhit += 1
-		global.combotime = 60
+		if (thrown)
+			global.combotime = 60
 		global.heattime = 60
 		alarm[1] = 5
 		var _hp = 0

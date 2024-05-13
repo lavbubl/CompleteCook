@@ -102,7 +102,7 @@ function scr_collide_player()
 	grounded |= (vsp > 0 && (!(place_meeting(x, y, obj_platform))) && place_meeting(x, (y + 1), obj_platform))
 	grinding = ((!(place_meeting(x, y, obj_grindrail))) && place_meeting(x, (y + 1), obj_grindrail))
 	grounded |= grinding
-	if (platformid != -4 or (place_meeting(x, (y + 1), obj_movingplatform) && (!(place_meeting(x, (y - 3), obj_movingplatform)))) or place_meeting(x, (y + 8), (101 && (!(place_meeting(x, (y + 6), obj_movingplatform))))))
+	if (platformid != -4 or (place_meeting(x, (y + 1), obj_movingplatform) && (!(place_meeting(x, (y - 3), obj_movingplatform)))) or (place_meeting(x, (y + 8), obj_movingplatform) && (!(place_meeting(x, (y + 6), obj_movingplatform)))))
 		grounded = true
 	if (grounded && platformid == -4)
 		y = floor(y)

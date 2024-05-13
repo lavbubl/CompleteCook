@@ -31,12 +31,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_pizzacollect1",
-    "path": "sprites/spr_pizzacollect1/spr_pizzacollect1.yy",
+    "name": "spr_pizzasona1",
+    "path": "sprites/spr_pizzasona1/spr_pizzasona1.yy",
   },
-  "spriteMaskId": {
-    "name": "spr_pizzacollect1halloween",
-    "path": "sprites/spr_pizzacollect1halloween/spr_pizzacollect1halloween.yy",
-  },
+  "spriteMaskId": null,
   "visible": true,
 }

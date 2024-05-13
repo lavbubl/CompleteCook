@@ -34,36 +34,4 @@ if pause
 	}
 	xx = 256
 	yy = 192
-	shader_set(global.Pal_Shader)
-	pal_swap_set(spr_palette, paletteselect, 0)
-	draw_sprite(peppino_sprite, peppino_index, xx, yy)
-	shader_reset()
-	draw_set_font(global.collectfont)
-	draw_set_halign(fa_center)
-	xx = 689
-	yy = 416
-	draw_sprite(spr_pizzascore, 0, xx, yy)
-	if (global.collect >= global.crank)
-		draw_sprite(spr_pizzascore_pepper, 0, xx, yy)
-	if (global.collect >= global.brank)
-		draw_sprite(spr_pizzascore_pepperoni, 0, xx, yy)
-	if (global.collect >= global.arank)
-		draw_sprite(spr_pizzascore_olive, 0, xx, yy)
-	if (global.collect >= global.srank)
-		draw_sprite(spr_pizzascore_shroom, 0, xx, yy)
-	draw_text(xx, (yy - 54), global.collect)
-	var rank = "D"
-	if (global.collect >= global.crank)
-		rank = "C"
-	if (global.collect >= global.brank)
-		rank = "B"
-	if (global.collect >= global.arank)
-		rank = "A"
-	if (global.collect >= global.srank)
-		rank = "S"
-	xx = 172
-	yy = 404
-	pad = 40
-	for (i = 0; i < array_length(toppin_sprite); i++)
-		draw_sprite_ext(toppin_sprite[i], toppin_index[i], (xx + (pad * i)), yy, 1, 1, 0, c_white, (toppin_has[i] ? 1 : 0.5))
 }

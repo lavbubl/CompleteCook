@@ -99,11 +99,6 @@ if (pause && (!instance_exists(obj_option)))
 					pause = 0
 					instance_activate_all()
 					room = Titlescreen
-					with (obj_player1)
-					{
-						character = "V"
-						scr_characterspr()
-					}
 					scr_playerreset()
 					obj_player1.targetDoor = "A"
 					if instance_exists(obj_player2)

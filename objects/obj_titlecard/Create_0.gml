@@ -1,0 +1,9 @@
+fadedin = false
+fadealpha = 0
+fadeout = false
+image_speed = 0
+image_index = 0
+depth = 1
+alarm[0] = 10
+titleix = 0
+titlecardmu = mu_title_entrance

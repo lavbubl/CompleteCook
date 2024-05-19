@@ -1,7 +1,15 @@
 if (ds_list_find_index(global.saveroom, id) == -1)
 {
-	with (instance_create((x + 32), (y + 32), obj_sausageman_dead))
-		sprite_index = spr_harddoughblockdead
+	repeat (8 * max(abs(image_xscale), abs(image_yscale)))
+	{
+		with (create_debris(x + random_range(0, sprite_width), y + random_range(0, sprite_height), spr_eyedebris))
+		{
+			hsp = random_range(-5, 5);
+			vsp = random_range(-10, 10);
+			image_index = random_range(0, image_number - 1);
+			image_speed = 0;
+		}
+	}
 	GamepadSetVibration(playerindex, 1, 1, 0.8)
 	tile_layer_delete_at(1, x, y)
 	tile_layer_delete_at(1, (x + 32), y)

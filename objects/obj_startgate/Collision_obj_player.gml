@@ -76,27 +76,29 @@ with (obj_player2)
 }
 if ((floor(obj_player1.image_index) == (obj_player1.image_number - 1) && obj_player1.state == states.victory) or (floor(obj_player2.image_index) == (obj_player2.image_number - 1) && obj_player2.state == states.victory))
 {
-	with (obj_player)
+    with (obj_player)
+    {
+        if (other.level == "snickchallenge")
+        {
+            global.wave = 0
+            global.maxwave = (((global.minutes * 60) + global.seconds) * 60)
+            if global.panicbg
+                scr_panicbg_init()
+            global.snickchallenge = 1
+            global.collect = 10000
+            with (obj_camera)
+            {
+                alarm[1] = 60
+                global.seconds = 59
+                global.minutes = 9
+            }
+        }
+    }
+	with (instance_create_unique(0, 0, obj_titlecard))
 	{
-		if (other.level == "snickchallenge")
-		{
-			global.wave = 0
-			global.maxwave = (((global.minutes * 60) + global.seconds) * 60)
-			if global.panicbg
-				scr_panicbg_init()
-			global.snickchallenge = 1
-			global.collect = 10000
-			with (obj_camera)
-			{
-				alarm[1] = 60
-				global.seconds = 59
-				global.minutes = 9
-			}
-		}
-		obj_music.fadeoff = 0
-		targetDoor = "A"
-		targetRoom = other.targetRoom
-		if (!instance_exists(obj_fadeout))
-			instance_create(x, y, obj_fadeout)
+		image_index = other.titlecardix
+		titleix = other.titleix
 	}
+	if (alarm[0] == -1)
+		alarm[0] = 240
 }

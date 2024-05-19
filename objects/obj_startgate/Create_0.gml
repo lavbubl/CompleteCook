@@ -8,3 +8,5 @@ msg = ""
 highscore = 0
 secret_count = 0
 toppin = array_create(5, 0)
+titlecardix = 0
+titleix = 0

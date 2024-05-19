@@ -17,7 +17,7 @@ prevpillar_on_camera = 0
 secretmusicpos = 0
 timewarning = false
 room_arr = [
-	[Realtitlescreen, mu_title, mu_medievalsecret, false], 
+	[Titlescreen, mu_title, mu_medievalsecret, false], 
 	[desert_1, mu_ufo, mu_desertsecret, false],
 	[desert_8, mu_medievalremix, mu_desertsecret, true]
 ]

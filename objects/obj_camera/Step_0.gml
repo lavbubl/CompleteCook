@@ -40,7 +40,7 @@ else
 	p2pdistancex = 0
 if (floor(image_index) == 10)
 	shoving = 0
-if (room == strongcold_endscreen or room == rm_eggplantdisclaimer or room == rm_levelselect or room == rank_room or room == timesuproom or room == Realtitlescreen or room == characterselect or room == hub_loadingscreen)
+if (room == strongcold_endscreen or room == rm_eggplantdisclaimer or room == rm_levelselect or room == rank_room or room == timesuproom or room == Realtitlescreen or room == Titlescreen or room == characterselect or room == hub_loadingscreen)
 	visible = false
 else
 	visible = true

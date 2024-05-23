@@ -215,7 +215,7 @@
 -18,0,1,2,-30,6,1,10,-11,0,2,1,9,-5,0,1,2,-31,6,1,9,-10,0,2,2,10,-5,0,1,2,-32,6,-7,5,5,9,0,1,29,24,-5,5,1,29,-39,6,3,10,0,2,
 -47,6,3,10,0,2,-32,6,1,23,-14,7,3,11,0,3,-14,7,1,28,-17,6,1,10,-31,0,1,2,-17,6,1,10,-31,0,1,2,-17,6,1,10,-31,0,1,2,-9,6,-8,7,1,11,
 -31,0,1,3,-9,7,-18,0,-13,5,-36,0,1,1,-13,6,1,9,-34,0,1,1,-15,6,1,9,-17,0,-16,5,-17,6,-17,5,-350,6,],"TileDataFormat":1,},"tilesetId":{"name":"tileset_tile_war3","path":"tilesets/tileset_tile_war3/tileset_tile_war3.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
-    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Backgrounds_1","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"bg_war2","path":"sprites/bg_war2/bg_war2.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":-200,},
+    {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Backgrounds_1","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":-200,},
   ],
   "parent": {
     "name": "War",

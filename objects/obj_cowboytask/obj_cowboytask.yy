@@ -29,10 +29,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "bg_SAGEsnickshotgun",
-    "path": "sprites/bg_SAGEsnickshotgun/bg_SAGEsnickshotgun.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

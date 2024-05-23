@@ -29,10 +29,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "bg_SAGEknight",
-    "path": "sprites/bg_SAGEknight/bg_SAGEknight.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

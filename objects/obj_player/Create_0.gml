@@ -294,7 +294,7 @@ transformation[9] = states.firemouth
 transformation[10] = states.fireass
 transformation[11] = states.stunned
 transformation[12] = states.rideweenie
-transformation[13] = states.gameover
+transformation[13] = states.rocketslide
 transformation[14] = states.door
 transformation[15] = states.ghost
 transformation[16] = states.ghostpossess
@@ -317,7 +317,6 @@ transformation[32] = states.morthook
 transformation[33] = states.mortjump
 transformation[34] = states.boxxedpepjump
 transformation[35] = states.boxxedpepspin
-transformation[36] = states.rocketslide
 c = 0
 stallblock = 0
 breakdance = 50
@@ -442,6 +441,7 @@ if (!variable_global_exists("saveroom"))
 		resolutionY = 1080
 	}
 	window_set_size(resolutionX, resolutionY)
+	window_center()
 	set_master_gain(global.option_master_volume)
 	global.style = -1
 	global.secretfound = 0

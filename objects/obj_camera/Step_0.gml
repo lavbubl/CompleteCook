@@ -1,0 +1,1 @@
+mag -= mag_decel

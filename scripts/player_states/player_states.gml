@@ -680,11 +680,11 @@ function player_groundpound()
 		if (move == 0)
 			movespeed = 0
 		//if ((move == 0 && momemtum == 0) || scr_solid(x + hsp, y))
-		if (move != 0 && movespeed < 7 && !place_meeting(x + xscale, y, obj_solid))
+		if (move != 0 && movespeed < 7)
 			movespeed += 0.25
-		if (movespeed > 7 && !place_meeting(x + xscale, y, obj_solid))
+		if (movespeed > 7)
 			movespeed -= 0.05
-		if (place_meeting(x + xscale, y, obj_solid))
+		if (place_meeting(x + move, y, obj_solid))
 		{
 			hsp = 0
 			movespeed = 0

@@ -3,6 +3,8 @@ get_input()
 if grounded
 	coyote_time = 10
 	
+#macro move_cal -key_left.down + key_right.down
+
 switch (state)
 {
 	case states.normal:
@@ -34,6 +36,9 @@ switch (state)
 		break;
 	case states.grab:
 		player_grab()
+		break;
+	case states.superjump:
+		player_superjump()
 		break;
 }
 

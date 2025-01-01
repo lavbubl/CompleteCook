@@ -10,3 +10,5 @@ mach4mode = false
 wallspeed = 0
 flash = 0
 afterimage_timer = 0
+dir = 0
+freefallsmash = 0

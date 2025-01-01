@@ -29,6 +29,9 @@ switch (state)
 	case states.bump:
 		player_bump()
 		break;
+	case states.groundpound:
+		player_groundpound()
+		break;
 }
 
 if key_attack.down

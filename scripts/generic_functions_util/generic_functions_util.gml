@@ -24,8 +24,21 @@ function quick_shader_set_uniform_f(shader, uniform_name, val)
 	shader_set_uniform_f(f, val)
 }
 
-function shake_camera(_mag = 15, _mag_decel = 0.5)
+function shake_camera(_mag = 5, _mag_decel = 0.25)
 {
 	obj_camera.mag = _mag
 	obj_camera.mag_decel = _mag_decel
 }
+
+function reset_anim(spr)
+{
+	sprite_index = spr
+	image_index = 0
+}
+
+function reset_anim_on_end(spr)
+{
+	if (anim_ended())
+		reset_anim(spr)
+}
+

@@ -7,7 +7,8 @@ enum states
 	tumble,
 	climbwall,
 	slide,
-	bump
+	bump,
+	groundpound
 }
 
 function player_normal()
@@ -25,23 +26,27 @@ function player_normal()
 	hsp = movespeed * xscale
 	
 	if move != 0
-		sprite_index = spr_player_move
-	else if (sprite_index != spr_player_machslideend)
-		sprite_index = spr_player_idle
+	{
+		if (sprite_index != spr_player_landmove)
+			sprite_index = spr_player_move
+	}
+	else
+	{
+		if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land)
+			sprite_index = spr_player_idle
+	}
 	
 	if !grounded
 	{
 		state = states.jump
-		sprite_index = spr_player_fall
-		image_index = 0
+		reset_anim(spr_player_fall)
 	}
 	
 	if (coyote_time && key_jump.pressed)
 	{
 		vsp = -12
 		state = states.jump
-		sprite_index = spr_player_jump
-		image_index = 0
+		reset_anim(spr_player_jump)
 		jumpstop = false
 	}
 	
@@ -50,21 +55,22 @@ function player_normal()
 		state = states.mach2
 		if (movespeed < 6)
 			movespeed = 6
-		sprite_index = spr_player_mach1
-		image_index = 0
+		reset_anim(spr_player_mach1)
 	}
 	
+	image_speed = 0.35
 	switch (sprite_index)
 	{
 		case spr_player_move:
 			image_speed = movespeed / 15
 			break
-		case spr_player_idle:
-			image_speed = 0.35
-			break
 		case spr_player_machslideend:
-			if anim_ended()
-				sprite_index = spr_player_idle
+		case spr_player_land:
+			reset_anim_on_end(spr_player_idle)
+			break
+		case spr_player_landmove:
+			image_speed = movespeed / 15
+			reset_anim_on_end(spr_player_idle)
 			break
 	}
 }
@@ -79,7 +85,7 @@ function player_jump()
 		xscale = move
 	}
 	else if (move == 0 || xscale != move)
-		movespeed = 0
+		movespeed = approach(movespeed, 0, 0.5)
 	
 	hsp = movespeed * xscale
 	
@@ -89,18 +95,19 @@ function player_jump()
 		vsp /= 10
 	}
 	
+	do_groundpound()
+	
 	if (grounded)
 	{
 		state = states.normal
-		sprite_index = movespeed > 1 ? spr_player_land : spr_player_landmove
+		reset_anim(movespeed < 1 ? spr_player_land : spr_player_landmove)
 	}
 	
 	image_speed = 0.35
 	switch (sprite_index)
 	{
 		case spr_player_jump:
-			if anim_ended()
-				sprite_index = spr_player_fall
+			reset_anim_on_end(spr_player_fall)
 			break;
 	}
 }
@@ -129,8 +136,7 @@ function player_mach2() {
 			}
 			else
 			{
-				sprite_index = spr_player_machslidestart
-				image_index = 0
+				reset_anim(spr_player_machslidestart)
 				state = states.slide
 			}
 		}
@@ -143,8 +149,7 @@ function player_mach2() {
 			}
 			else
 			{
-				sprite_index = spr_player_machslideboost
-				image_index = 0
+				reset_anim(spr_player_machslideboost)
 				state = states.slide
 			}
 		}
@@ -160,10 +165,7 @@ function player_mach2() {
 	else
 	{
 		if (sprite_index != spr_player_secondjump && sprite_index != spr_player_secondjumploop && sprite_index != spr_player_walljump && sprite_index != spr_player_walljumpfall)
-		{
-			sprite_index = spr_player_secondjump
-			image_index = 0
-		}
+			reset_anim(spr_player_secondjump)
 		if (!jumpstop && !key_jump.down && vsp < 0)
 		{
 			jumpstop = true
@@ -175,10 +177,7 @@ function player_mach2() {
 	{
 		state = states.tumble
 		if (grounded)
-		{
-			sprite_index = spr_player_machroll
-			image_index = 0
-		}
+			reset_anim(spr_player_machroll)
 		else
 		{
 			sprite_index = spr_player_dive
@@ -197,13 +196,12 @@ function player_mach2() {
 	else if (grounded && place_meeting(x + xscale, y, obj_solid))
 	{
 		state = states.bump
-		sprite_index = spr_player_wallsplat
-		image_index = 0
+		reset_anim(spr_player_wallsplat)
 	}
 	/*if ((key_x.down || keyfastfall) && !key_up.down && sprite_index != 'dashpadmach.down
 	{
 		createEffect('jumpdust', depth - 10, xscale)
-		sprite_index = 'suplexdash'
+		sprite_index = spr_player_suplexdash'
 		state = 'grab'
 		if (movespeed < 5)
 			movespeed = 5
@@ -211,7 +209,7 @@ function player_mach2() {
 	}
 	if (key_x.down && key_up.down && sprite_index != 'dashpadmach.down
 	{
-		sprite_index = 'uppercut'
+		sprite_index = spr_player_uppercut'
 		state = 'punch'
 		animbuffer = 48
 		movespeed = hsp
@@ -222,35 +220,28 @@ function player_mach2() {
 	{
 		case spr_player_mach1:
 			image_speed = 0.5
-			if anim_ended()
-				sprite_index = spr_player_mach2
+			reset_anim_on_end(spr_player_mach2)
 			break
 		case spr_player_secondjump:
 			image_speed = 0.4
-			if anim_ended()
-				sprite_index = spr_player_secondjumploop
+			reset_anim_on_end(spr_player_secondjumploop)
 			break
 		case spr_player_walljump:
 			image_speed = 0.4
-			if anim_ended()
-			{
-				sprite_index = spr_player_walljumpfall
-				image_index = 0
-			}
+			reset_anim_on_end(spr_player_walljumpfall)
 			break
 		case spr_player_rollgetup:
 			image_speed = 0.4
-			if anim_ended()
-				sprite_index = spr_player_mach2
+			reset_anim_on_end(spr_player_mach2)
 			break
 		/*case spr_player_secondjump:
 			sprite_index = spr_player_secondjumploop
 			break
 		case 'longjump':
-			sprite_index = 'longjumpend'
+			sprite_index = spr_player_longjumpend'
 			break
 		case 'walljump':
-			sprite_index = 'walljumpfall'
+			sprite_index = spr_player_walljumpfall'
 			break*/
 	}
 	//dotaunt()
@@ -286,8 +277,7 @@ function player_mach3() {
 	{
 		vsp = -11
 		jumpstop = false
-		sprite_index = spr_player_mach3jump
-		image_index = 0
+		reset_anim(spr_player_mach3jump)
 	}
 	if (grounded)
 	{
@@ -297,16 +287,12 @@ function player_mach3() {
 		}*/
 		if (!key_dash.down)
 		{
-			{
-				sprite_index = spr_player_machslidestart
-				image_index = 0
-				state = states.slide
-			}
+			reset_anim(spr_player_machslidestart)
+			state = states.slide
 		}
 		if (move != 0 && move != xscale)
 		{
-			sprite_index = spr_player_machslideboost3
-			image_index = 0
+			reset_anim(spr_player_machslideboost3)
 			state = states.slide
 		}
 		if (movespeed < 20 && move == xscale)
@@ -327,7 +313,7 @@ function player_mach3() {
 		{
 			animbuffer = 20
 			state = 'superjump'
-			sprite_index = 'superjumpprep'
+			sprite_index = spr_player_superjumpprep'
 			playSound('sfx_superjumpprep.wav.down
 			setTimeout(function()
 			{
@@ -350,10 +336,7 @@ function player_mach3() {
 	{
 		state = states.tumble
 		if (grounded)
-		{
-			sprite_index = spr_player_machroll
-			image_index = 0
-		}
+			reset_anim(spr_player_machroll)
 		else
 		{
 			sprite_index = spr_player_dive
@@ -363,7 +346,7 @@ function player_mach3() {
 	/*if ((key_x.down || keyfastfall) && !key_up.down && sprite_index != 'dashpadmach.down
 	{
 		createEffect('jumpdust', depth - 10, xscale)
-		sprite_index = 'suplexdash'
+		sprite_index = spr_player_suplexdash'
 		state = 'grab'
 		if (movespeed < 5)
 			movespeed = 5
@@ -371,7 +354,7 @@ function player_mach3() {
 	}
 	if (key_x.down && key_up.down && sprite_index != 'dashpadmach.down
 	{
-		sprite_index = 'uppercut'
+		sprite_index = spr_player_uppercut'
 		state = 'punch'
 		animbuffer = 48
 		movespeed = hsp
@@ -391,8 +374,7 @@ function player_mach3() {
 	else if (grounded && place_meeting(x + xscale, y, obj_solid))
 	{
 		state = states.bump
-		sprite_index = spr_player_mach3hitwall
-		image_index = 0
+		reset_anim(spr_player_mach3hitwall)
 		vsp = -6
 		hsp = xscale * -6
 		shake_camera()
@@ -441,33 +423,27 @@ function player_tumble() {
 			movespeed = approach(movespeed, 10, 0.25)
 	}
 	if (grounded && sprite_index == spr_player_dive)
+		reset_anim(spr_player_machroll)
+	if (sprite_index == spr_player_dive && key_jump.pressed)
 	{
-		sprite_index = spr_player_machroll
-		image_index = 0
-	}
-	/*if (sprite_index == spr_player_dive && key_z.pressed)
-	{
-		sprite_index = 'poundcancel1'
-		state = 'groundpound'
+		sprite_index = spr_player_poundcancel1
+		state = states.groundpound
 		vsp = -6
 		dir = xscale
-	}*/
+	}
 	if movespeed <= 2
 		state = states.normal
 	if (sprite_index == spr_player_mach2jump && grounded)
 		sprite_index = spr_player_machroll
 	/*if (sprite_index == spr_player_crouchslip && !grounded)
-		sprite_index = 'jumpdive2'
+		sprite_index = spr_player_jumpdive2'
 	if (sprite_index == 'jumpdive2' && grounded)
 		sprite_index = spr_player_crouchslip*/
-	if (anim_ended() && sprite_index == spr_player_machroll && movespeed > 12)
-	{
-		sprite_index = spr_player_backslide
-		image_index = 0
-	}
+	if (sprite_index == spr_player_machroll && movespeed > 12)
+		reset_anim_on_end(spr_player_backslide)
 	if (sprite_index == spr_player_machroll && !grounded)
 		sprite_index = spr_player_mach2jump
-	//if (state != 'groundpound' && plusone.isTouching(solids))
+	//if (state != 'groundpound' && place_meeting(x + xscale, y, obj_solid))
 	if place_meeting(x + xscale, y, obj_solid)
 	{
 		hsp = 0
@@ -475,7 +451,7 @@ function player_tumble() {
 		/*if (sprite_index == spr_player_ball || sprite_index == 'tumblestart)
 		{
 			state = states.bump
-			sprite_index = 'tumbleend'
+			sprite_index = spr_player_tumbleend'
 			hsp = -xscale * 2
 			vsp = -3
 			jumpstop = true
@@ -483,8 +459,7 @@ function player_tumble() {
 		else
 		{*/
 			state = states.bump
-			sprite_index = spr_player_wallsplat
-			image_index = 0
+			reset_anim(spr_player_wallsplat)
 		//}
 	}
 	if (grounded && vsp > 0)
@@ -502,8 +477,7 @@ function player_tumble() {
 				state = states.mach3
 			else
 				state = states.mach2
-			sprite_index = spr_player_rollgetup
-			image_index = 0
+			reset_anim(spr_player_rollgetup)
 		//}
 	}
 	//if (!keyDown('down.pressed && !keyDown('shift.pressed && grounded && vsp > 0 && state != 'bump' && (sprite_index != spr_player_ball && sprite_index != 'tumbleend.pressed && sprite_index != 'breakdance' && !canuncrouch.isTouching(solids))
@@ -514,8 +488,7 @@ function player_tumble() {
 			if (movespeed > 6)
 			{
 				state = states.slide
-				sprite_index = spr_player_machslidestart
-				image_index = 0
+				reset_anim(spr_player_machslidestart)
 			}
 			else
 				state = states.normal
@@ -570,13 +543,13 @@ function player_climbwall()
 	}
 	if (!key_dash.down)
 	{
-		state = states.normal
+		state = states.jump
+		sprite_index = spr_player_fall
 		movespeed = -5
 	}
 	if (key_jump.pressed)
 	{
-		sprite_index = spr_player_walljump
-		image_index = 0
+		reset_anim(spr_player_walljump)
 		movespeed = 10
 		state = states.mach2
 		vsp = -11
@@ -586,8 +559,7 @@ function player_climbwall()
 	if scr_solid(x, y - 1)
 	{
 		state = states.bump
-		sprite_index = spr_player_ceilinghit
-		image_index = 0
+		reset_anim(spr_player_ceilinghit)
 	}
 }
 
@@ -640,16 +612,14 @@ function player_slide()
 				image_index--
 			if (place_meeting(x + xscale, y, obj_solid))
 			{
-				sprite_index = spr_player_wallsplat
-				image_index = 0
+				reset_anim(spr_player_wallsplat)
 				state = states.bump
 			}
 			if (movespeed > 0)
 				movespeed -= 0.3;
 			else
 			{
-				sprite_index = spr_player_machslideend
-				image_index = 0
+				reset_anim(spr_player_machslideend)
 				state = states.normal
 			}
 			break;
@@ -671,5 +641,145 @@ function player_bump()
 	{
 		state = states.normal
 		sprite_index = spr_player_idle
+		if (sprite_index == spr_player_bodyslamland)
+			reset_anim(spr_player_facehurt)
+	}
+}
+
+function player_groundpound()
+{
+	if (vsp >= 2)
+	{
+		/*if (vsp > 17)
+		{
+			if punch_afterimage > 0
+				punch_afterimage--
+			else
+			{
+				punch_afterimage = 5
+				with (create_mach3effect(x, y, sprite_index, image_index, true))
+				{
+					image_xscale = other.xscale
+					playerid = other.id
+					maxmovespeed = 6
+					vertical = true
+					fadeoutstate = states.freefall
+				}
+			}
+			if (superjumpeffect > 0)
+				superjumpeffect--
+			else
+			{
+				createEffect('freefalleffect')
+				superjumpeffect = 15
+			}
+		}
+		  */
+		vsp += 0.5
+	}
+	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
+		sprite_index = spr_player_bodyslamfall
+	/*
+	if (floor(image_index) == image_number - 1 && sprite_index == spr_shotgunjump1)
+		sprite_index = spr_shotgunjump3*/
+	move = -key_left.down + key_right.down
+	if (!grounded)
+	{
+		//if (sprite_index != 'rockethitwall')
+			hsp = move * movespeed
+		/*else
+			hsp = 0*/
+		if (move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
+			movespeed -= 0.05
+		//if (movespeed == 0)
+		//	momemtum = false
+		if (move != dir && move != 0)
+		{
+			dir = move
+			movespeed = 0
+		}
+		if (move == 0)
+			movespeed = 0
+		//if ((move == 0 && momemtum == 0) || scr_solid(x + hsp, y))
+		if (move != 0 && movespeed < 7 && !place_meeting(x + xscale, y, obj_solid))
+			movespeed += 0.25
+		if (movespeed > 7 && !place_meeting(x + xscale, y, obj_solid))
+			movespeed -= 0.05
+		if (place_meeting(x + xscale, y, obj_solid))
+		{
+			hsp = 0
+			movespeed = 0
+		}
+		if (move != 0 && sprite_index != spr_player_poundcancel1)
+			xscale = move
+	}
+	if (vsp > 0)
+		freefallsmash++
+	else if (vsp < 0)
+		freefallsmash = -14
+	/*if (freefallsmash >= 10 && !instance_exists(superslameffectid))
+	{
+		with (instance_create(x, y, obj_superslameffect))
+		{
+			playerid = other.object_index
+			other.superslameffectid = id
+		}
+	}*/
+	//if (grounded && vsp > 0 && (freefallsmash < 10 || !place_meeting(x, y + vsp, obj_metalblock)) && !place_meeting(x, y + 1, obj_destructibles) && !place_meeting(x, y + vsp, obj_destructibles) && !place_meeting(x, y + vsp + 6, obj_destructibles))
+	if (grounded && vsp > 0)
+	{
+		if (scr_slope(x, y + 1))
+		{
+			with (instance_place(x, y + 1, obj_slope))
+			{
+				other.xscale = -sign(image_xscale)
+				other.state = states.tumble
+				other.sprite_index = spr_player_crouchslip
+				if other.freefallsmash > 20
+					other.movespeed = 12
+				else
+					other.movespeed = 8
+				/*with (instance_create(other.x, other.y, obj_jumpdust))
+					image_xscale = -sign(other.image_xscale)*/
+			}
+		}
+		else
+		{
+			if sprite_index == spr_player_poundcancel1
+				sprite_index = spr_player_poundcancel2
+			else
+				sprite_index = spr_player_bodyslamland
+			/*else if shotgunAnim == 0
+				sprite_index = spr_bodyslamland
+			else
+				sprite_index = spr_shotgunjump2*/
+			image_index = 0
+			state = states.bump
+			shake_camera()
+			if freefallsmash >= 10
+			{
+				/*with obj_baddie
+				{
+					if (shakestun && grounded && point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
+					{
+						state = states.stun
+						if stunned < 60
+							stunned = 60
+						vsp = -11
+						image_xscale *= -1
+						hsp = 0
+						momentum = 0
+					}
+				}
+				with obj_camera
+				{
+					shake_mag = 10
+					shake_mag_acc = 30 / room_speed
+				}
+				combo = 0
+				bounce = false*/
+				shake_camera(10, 0.5)
+			}
+		}
 	}
 }

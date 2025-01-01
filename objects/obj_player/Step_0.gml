@@ -32,10 +32,10 @@ switch (state)
 	case states.groundpound:
 		player_groundpound()
 		break;
+	case states.grab:
+		player_grab()
+		break;
 }
-
-if key_attack.down
-	vsp = -10
 
 if coyote_time > 0
 	coyote_time--
@@ -59,7 +59,7 @@ else
 		afterimage_timer = 8
 		afterimage_create(after_images.mach)
 	}
-	if (state == states.tumble)
+	if (state == states.tumble || state == states.grab || state == states.groundpound)
 	{
 		afterimage_timer = 4
 		afterimage_create(after_images.blur)

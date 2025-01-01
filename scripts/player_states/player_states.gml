@@ -8,7 +8,8 @@ enum states
 	climbwall,
 	slide,
 	bump,
-	groundpound
+	groundpound,
+	grab
 }
 
 function player_normal()
@@ -32,7 +33,7 @@ function player_normal()
 	}
 	else
 	{
-		if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land)
+		if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt)
 			sprite_index = spr_player_idle
 	}
 	
@@ -58,20 +59,25 @@ function player_normal()
 		reset_anim(spr_player_mach1)
 	}
 	
+	do_grab()
+	
 	image_speed = 0.35
 	switch (sprite_index)
 	{
 		case spr_player_move:
 			image_speed = movespeed / 15
-			break
+			break;
 		case spr_player_machslideend:
 		case spr_player_land:
 			reset_anim_on_end(spr_player_idle)
-			break
+			break;
 		case spr_player_landmove:
 			image_speed = movespeed / 15
 			reset_anim_on_end(spr_player_idle)
-			break
+			break;
+		case spr_player_facehurt:
+			reset_anim_on_end(spr_player_idle)
+			break;
 	}
 }
 
@@ -95,6 +101,7 @@ function player_jump()
 		vsp /= 10
 	}
 	
+	do_grab()
 	do_groundpound()
 	
 	if (grounded)
@@ -107,8 +114,9 @@ function player_jump()
 	switch (sprite_index)
 	{
 		case spr_player_jump:
+		case spr_player_grabcancel:
 			reset_anim_on_end(spr_player_fall)
-			break;
+			break
 	}
 }
 
@@ -122,7 +130,7 @@ function player_mach2() {
 		vsp = -11
 	}
 	
-	if (grounded)
+	if (grounded && vsp >= 0)
 	{
 		//if (sprite_index != spr_player_mach1 && sprite_index != 'rollgetup.down
 		if (sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup)
@@ -164,7 +172,7 @@ function player_mach2() {
 	}
 	else
 	{
-		if (sprite_index != spr_player_secondjump && sprite_index != spr_player_secondjumploop && sprite_index != spr_player_walljump && sprite_index != spr_player_walljumpfall)
+		if (sprite_index != spr_player_secondjump && sprite_index != spr_player_secondjumploop && sprite_index != spr_player_walljump && sprite_index != spr_player_walljumpfall && sprite_index != spr_player_longjump)
 			reset_anim(spr_player_secondjump)
 		if (!jumpstop && !key_jump.down && vsp < 0)
 		{
@@ -198,23 +206,9 @@ function player_mach2() {
 		state = states.bump
 		reset_anim(spr_player_wallsplat)
 	}
-	/*if ((key_x.down || keyfastfall) && !key_up.down && sprite_index != 'dashpadmach.down
-	{
-		createEffect('jumpdust', depth - 10, xscale)
-		sprite_index = spr_player_suplexdash'
-		state = 'grab'
-		if (movespeed < 5)
-			movespeed = 5
-		animbuffer = 33
-	}
-	if (key_x.down && key_up.down && sprite_index != 'dashpadmach.down
-	{
-		sprite_index = spr_player_uppercut'
-		state = 'punch'
-		animbuffer = 48
-		movespeed = hsp
-		vsp = -10
-	}*/
+	
+	do_grab()
+	
 	image_speed = movespeed / 20
 	switch (sprite_index)
 	{
@@ -233,6 +227,11 @@ function player_mach2() {
 		case spr_player_rollgetup:
 			image_speed = 0.4
 			reset_anim_on_end(spr_player_mach2)
+			break
+		case spr_player_longjump:
+			image_speed = 0.4
+			if (anim_ended())
+				image_index = 10
 			break
 		/*case spr_player_secondjump:
 			sprite_index = spr_player_secondjumploop
@@ -343,23 +342,7 @@ function player_mach3() {
 			vsp = 10
 		}
 	}
-	/*if ((key_x.down || keyfastfall) && !key_up.down && sprite_index != 'dashpadmach.down
-	{
-		createEffect('jumpdust', depth - 10, xscale)
-		sprite_index = spr_player_suplexdash'
-		state = 'grab'
-		if (movespeed < 5)
-			movespeed = 5
-		animbuffer = 33
-	}
-	if (key_x.down && key_up.down && sprite_index != 'dashpadmach.down
-	{
-		sprite_index = spr_player_uppercut'
-		state = 'punch'
-		animbuffer = 48
-		movespeed = hsp
-		vsp = -10
-	}*/
+	do_grab()
 	if ((!grounded || scr_slope(x, y + 1)) && place_meeting(x + xscale, y, obj_solid))
 	{
 		{
@@ -395,13 +378,13 @@ function player_mach3() {
 		case spr_player_mach3:
 		case spr_player_mach4:
 			image_speed = movespeed / 40
-			break;
+			break
 		case spr_player_mach3jump:
 		case spr_player_rollgetup:
 			image_speed = 0.4
 			if anim_ended()
 				sprite_index = spr_player_mach3
-			break;
+			break
 	}
 }
 
@@ -466,33 +449,27 @@ function player_tumble() {
 		jumpstop = false
 	if (key_jump.pressed && state != states.bump && hsp != 0 && sprite_index == spr_player_ball)
 		vsp = -11
-	/*if (crouchslipbuffer > 0)
-		crouchslipbuffer--*/
+	if (crouchslipbuffer > 0)
+		crouchslipbuffer--
 	//if (!key_down.down && key_dash.down && grounded && state != 1000 && (sprite_index != spr_player_ball && sprite_index != 'tumbleend) && !canuncrouch.isTouching(solids))
-	if (!key_down.down && key_dash.down && grounded && !scr_solid(x, y - 1))
+	if (!key_down.down && key_dash.down && grounded && !scr_solid(x, y - 1) && crouchslipbuffer <= 0)
 	{
-		//if (crouchslipbuffer == 0)
-		//{
-			if (movespeed >= 12)
-				state = states.mach3
-			else
-				state = states.mach2
-			reset_anim(spr_player_rollgetup)
-		//}
+		if (movespeed >= 12)
+			state = states.mach3
+		else
+			state = states.mach2
+		reset_anim(spr_player_rollgetup)
 	}
 	//if (!keyDown('down.pressed && !keyDown('shift.pressed && grounded && vsp > 0 && state != 'bump' && (sprite_index != spr_player_ball && sprite_index != 'tumbleend.pressed && sprite_index != 'breakdance' && !canuncrouch.isTouching(solids))
-	if (!key_down.down && !key_dash.down && grounded && vsp > 0 && state != states.bump && !scr_solid(x, y - 1))
+	if (!key_down.down && !key_dash.down && grounded && vsp > 0 && state != states.bump && !scr_solid(x, y - 1) && crouchslipbuffer <= 0)
 	{
-		//if (crouchslipbuffer == 0)
-		///{
-			if (movespeed > 6)
-			{
-				state = states.slide
-				reset_anim(spr_player_machslidestart)
-			}
-			else
-				state = states.normal
-		//}
+		if (movespeed > 6)
+		{
+			state = states.slide
+			reset_anim(spr_player_machslidestart)
+		}
+		else
+			state = states.normal
 	}
 	if (sprite_index == spr_player_dive && vsp < 10)
 		vsp = 10
@@ -541,7 +518,8 @@ function player_climbwall()
 			movespeed = wallspeed
 		}
 	}
-	if (!key_dash.down)
+	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
+	if (!key_dash.down && grabclimbbuffer <= 0)
 	{
 		state = states.jump
 		sprite_index = spr_player_fall
@@ -565,7 +543,7 @@ function player_climbwall()
 
 function player_slide() 
 {
-	hsp = movespeed * xscale;
+	hsp = movespeed * xscale
 	image_speed = 0.35
 	switch (sprite_index)
 	{
@@ -589,7 +567,7 @@ function player_slide()
 				else
 					sprite_index = ismach2 ? spr_player_machslideboostfall : spr_player_machslideboost3fall
 			}
-			break;
+			break
 		case spr_player_machslideboostfall:
 		case spr_player_machslideboost3fall:
 			var ismach2 = sprite_index == spr_player_machslideboostfall
@@ -606,7 +584,7 @@ function player_slide()
 				movespeed = ismach2 ? 8 : 12
 				xscale *= -1
 			}
-			break;
+			break
 		case spr_player_machslidestart:
 			if (anim_ended())
 				image_index--
@@ -616,13 +594,13 @@ function player_slide()
 				state = states.bump
 			}
 			if (movespeed > 0)
-				movespeed -= 0.3;
+				movespeed -= 0.3
 			else
 			{
 				reset_anim(spr_player_machslideend)
 				state = states.normal
 			}
-			break;
+			break
 	}
 }
 
@@ -640,9 +618,10 @@ function player_bump()
 	if anim_ended()
 	{
 		state = states.normal
-		sprite_index = spr_player_idle
 		if (sprite_index == spr_player_bodyslamland)
 			reset_anim(spr_player_facehurt)
+		else
+			sprite_index = spr_player_idle
 	}
 }
 
@@ -781,5 +760,86 @@ function player_groundpound()
 				shake_camera(10, 0.5)
 			}
 		}
+	}
+	image_speed = 0.35
+}
+
+function player_grab() {
+	move = -key_left.down + key_right.down
+	hsp = xscale * movespeed
+	if (movespeed < 10)
+	{
+		movespeed += 0.5
+	}
+	if (!key_jump.down && !jumpstop && vsp < 0.5)
+	{
+		vsp /= 20
+		jumpstop = true
+	}
+	if (key_jump.pressed && !key_down.down && grounded)
+	{
+		jumpstop = false
+		vsp = -11
+		state = states.mach2
+		reset_anim(spr_player_longjump)
+	}
+	if (key_down.down && !key_jump.down && grounded)
+	{
+		movespeed = 12
+		crouchslipbuffer = 25
+		state = states.tumble
+		sprite_index = spr_player_crouchslip
+	}
+	if (sprite_index == spr_player_suplexgrab && !grounded)
+		reset_anim(spr_player_suplexgrabjump)
+	if (grounded && sprite_index == spr_player_suplexgrabjump && key_dash.down)
+	{
+		state = states.mach2
+		sprite_index = spr_player_mach2
+	}
+	if (place_meeting(x + xscale, y, obj_solid) && !grounded)
+	{
+		wallspeed = 6
+		grabclimbbuffer = 10
+		state = states.climbwall
+	}
+	else if (place_meeting(x + xscale, y, obj_solid) && grounded)
+	{
+		sprite_index = spr_player_grabbump
+		state = states.jump
+		jumpstop = true
+		hsp = 0
+		movespeed = 0
+		vsp = -5
+	}
+	image_speed = 0.35
+	switch (sprite_index)
+	{
+		case spr_player_suplexgrab:
+			if anim_ended()
+				state = states.normal
+			break;
+		case spr_player_suplexgrabjump:
+			if anim_ended()
+				image_index = 5
+			if (grounded && !key_dash.down)
+				state = states.normal
+			break;
+	}
+	if (anim_ended() && key_dash.down && sprite_index == spr_player_suplexgrab)
+	{
+		state = states.mach2
+		sprite_index = spr_player_mach2
+	}
+	if (move != 0 && move != xscale)
+	{
+		if !grounded
+		{
+			reset_anim(spr_player_grabcancel)
+			state = states.jump
+		}
+		else
+			state = states.normal
+		movespeed = 0
 	}
 }

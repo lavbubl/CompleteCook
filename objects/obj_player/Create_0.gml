@@ -12,3 +12,5 @@ flash = 0
 afterimage_timer = 0
 dir = 0
 freefallsmash = 0
+crouchslipbuffer = 0
+grabclimbbuffer = 0

@@ -13,3 +13,17 @@ function do_groundpound()
 		vsp = -6
 	}
 }
+
+function do_grab()
+{
+	if (key_attack.pressed)
+	{
+		if (!key_up.down)
+		{
+			if (movespeed < 6)
+				movespeed = 6
+			state = states.grab
+			reset_anim(spr_player_suplexgrab)
+		}
+	}
+}

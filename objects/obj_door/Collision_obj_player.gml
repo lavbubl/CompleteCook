@@ -6,6 +6,8 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	{
 		reset_anim(spr_player_enterdoor)
 		state = states.actor
+		hsp = 0
+		movespeed = 0
 		image_speed = 0.35
 	}
 	do_fade(t_room, t_door, fade_types.door)

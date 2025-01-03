@@ -1,4 +1,4 @@
-function afterimage_create(afterimage)
+function afterimage_create(a_type)
 {
 	var inst = {
 		sprite_index: self.sprite_index,
@@ -10,9 +10,9 @@ function afterimage_create(afterimage)
 		image_angle: self.image_angle,
 		image_blend: self.image_blend,
 		image_alpha: self.image_alpha,
-		effect: afterimage
+		effect: a_type
 	}
-	switch (afterimage)
+	switch (a_type)
 	{
 		case after_images.mach:
 			inst.image_blend = choose(c_red, c_lime)
@@ -26,4 +26,15 @@ function afterimage_create(afterimage)
 	}
 	with (obj_afterimagecontroller)
 		ds_list_add(aftimg_list, inst)
+}
+
+function do_afterimage(timer, reset_point, effect, spd = 1)
+{
+	if (timer > 0)
+		timer--
+	else
+	{
+		afterimage_create(effect)
+		timer = reset_point
+	}
 }

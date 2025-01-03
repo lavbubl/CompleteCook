@@ -47,7 +47,8 @@ enum fade_types
 	none,
 	hallway,
 	v_hallway,
-	door
+	door,
+	box
 }
 
 function do_fade(t_room, t_door, type)
@@ -55,17 +56,12 @@ function do_fade(t_room, t_door, type)
 	switch (type)
 	{
 		case fade_types.hallway:
-			obj_player.hallxscale = sign(image_xscale)
+			obj_player.doorxscale = sign(image_xscale)
 			break;
 		case fade_types.v_hallway:
-			obj_player.hallyscale = sign(image_yscale)
+			obj_player.dooryscale = sign(image_yscale)
 			if obj_player.state = states.climbwall
 				obj_player.wasclimbingwall = true
-			break;
-		case fade_types.door:
-			obj_player.state = states.actor
-			obj_player.hsp = 0
-			obj_player.movespeed = 0
 			break;
 	}
 	with (obj_fade)

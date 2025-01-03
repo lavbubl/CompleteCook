@@ -62,23 +62,38 @@ if (state == states.tumble || state == states.crouch)
 else
 	mask_index = mask_player
 	
+if taunttimer > 0
+	taunttimer--
+	
 collide()
 
-if (taunttimer > 0)
-	taunttimer--
-
-if (afterimage_timer > 0)
-	afterimage_timer--
-else
+struct_foreach(aftimg_timers, function(_name, _data)
 {
-	if (state == states.mach2 || state == states.mach3)
+	var conditional = false
+	switch (_name)
 	{
-		afterimage_timer = 8
-		afterimage_create(after_images.mach)
+		case "mach":
+			if (self.state == states.mach2 || self.state == states.mach3)
+				conditional = true
+			break;
+		case "blur":
+			if (self.state == states.grab || self.state == states.tumble || self.state == states.groundpound)
+				conditional = true
+			break;
+		default:
+			conditional = true
+			break;
 	}
-	if (state == states.tumble || state == states.grab || state == states.groundpound)
+	if (_data.timer > 0)
+		_data.timer--
+	else if conditional
 	{
-		afterimage_timer = 2
-		afterimage_create(after_images.blur)
+		afterimage_create(_data.effect)
+		_data.timer = _data.resetpoint
 	}
-}
+})
+
+if particletimer > 0
+	particletimer--
+else
+	particle_create(x - 128, y, particles.bleh)

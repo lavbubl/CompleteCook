@@ -10,10 +10,10 @@ with (obj_spawnpoint)
 		switch (other.door_type)
 		{
 			case fade_types.hallway:
-				other.x += other.hallxscale * 64
+				other.x += other.doorxscale * 64
 				break;
 			case fade_types.v_hallway:
-				other.y += other.hallyscale * 128
+				other.y += other.dooryscale * 128
 				if (other.wasclimbingwall)
 				{
 					other.wasclimbingwall = false
@@ -36,6 +36,11 @@ with (obj_spawnpoint)
 			case fade_types.door:
 				if (!place_meeting(x, y, obj_exitgate))
 					other.x += sprite_width / 2
+				break;
+			case fade_types.box:
+				if (other.dooryscale == 1)
+					other.y += 5
+				other.state = states.normal
 				break;
 		}
 	}

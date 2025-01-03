@@ -9,4 +9,6 @@ if (mag > 0)
 	campos.y += random_range(mag, -mag)
 }
 
+campos.x += cam_charge
+
 camera_set_view_pos(view_camera[0], campos.x, campos.y)

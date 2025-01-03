@@ -7,7 +7,8 @@ function get_input()
 		down: vk_down,
 		jump: ord("Z"),
 		attack: ord("X"),
-		dash: vk_shift
+		dash: vk_shift,
+		taunt: ord("C")
 	}
 	
 	key_left = setkey(keybinds.left)
@@ -17,6 +18,7 @@ function get_input()
 	key_jump = setkey(keybinds.jump)
 	key_attack = setkey(keybinds.attack)
 	key_dash = setkey(keybinds.dash)
+	key_taunt = setkey(keybinds.taunt)
 }
 
 function setkey(keybind)

@@ -7,6 +7,9 @@ if grounded
 
 switch (state)
 {
+	case states.taunt:
+		player_taunt()
+		break;
 	case states.normal:
 		player_normal()
 		break;
@@ -55,6 +58,9 @@ else
 	
 collide()
 
+if (taunttimer > 0)
+	taunttimer--
+
 if (afterimage_timer > 0)
 	afterimage_timer--
 else
@@ -66,7 +72,7 @@ else
 	}
 	if (state == states.tumble || state == states.grab || state == states.groundpound)
 	{
-		afterimage_timer = 4
+		afterimage_timer = 2
 		afterimage_create(after_images.blur)
 	}
 }

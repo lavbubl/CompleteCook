@@ -27,3 +27,20 @@ function do_grab()
 		}
 	}
 }
+
+function do_taunt()
+{
+	if (key_taunt.pressed)
+	{
+		prev = {
+			state: self.state,
+			hsp: self.hsp,
+			vsp: self.vsp,
+			sprite_index: self.sprite_index,
+		}
+		sprite_index = spr_player_taunt
+		image_index = random_range(0, image_number)
+		taunttimer = 20
+		state = states.taunt
+	}
+}

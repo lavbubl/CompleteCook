@@ -129,8 +129,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texg_player",
+    "path":"texturegroups/texg_player",
   },
   "type":0,
   "VTile":false,

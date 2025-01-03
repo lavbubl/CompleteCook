@@ -192,5 +192,5 @@ function do_slope_momentum(spd_up = 20)
 			go_down = true
 	}
 	if (go_down)
-		movespeed = approach(movespeed, spd_up, 0.15)
+		movespeed = approach(movespeed, spd_up, 0.1)
 }

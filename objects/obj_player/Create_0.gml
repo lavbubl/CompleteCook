@@ -14,3 +14,10 @@ dir = 0
 freefallsmash = 0
 crouchslipbuffer = 0
 grabclimbbuffer = 0
+prev = {
+	state: self.state,
+	hsp: self.hsp,
+	vsp: self.vsp,
+	sprite_index: self.sprite_index,
+}
+taunttimer = 0

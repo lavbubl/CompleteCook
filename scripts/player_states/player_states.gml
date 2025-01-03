@@ -10,7 +10,8 @@ enum states
 	bump,
 	groundpound,
 	grab,
-	superjump
+	superjump,
+	taunt
 }
 
 function player_normal()
@@ -19,7 +20,9 @@ function player_normal()
 	
 	if (move != 0)
 	{
-		movespeed = approach(movespeed, 6, 0.5)
+		movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
+		if (floor(movespeed) == 8)
+			movespeed = 6
 		xscale = move
 	}
 	else
@@ -80,6 +83,7 @@ function player_normal()
 			reset_anim_on_end(spr_player_idle)
 			break;
 	}
+	do_taunt()
 }
 
 function player_jump()
@@ -102,13 +106,21 @@ function player_jump()
 		vsp /= 10
 	}
 	
-	do_grab()
+	if sprite_index != spr_player_grabbump
+		do_grab()
 	do_groundpound()
 	
 	if (grounded)
 	{
 		state = states.normal
 		reset_anim(movespeed < 1 ? spr_player_land : spr_player_landmove)
+		if (key_dash.down)
+		{
+			state = states.mach2
+			if (movespeed < 6)
+				movespeed = 6
+			reset_anim(spr_player_mach1)
+		}
 	}
 	
 	image_speed = 0.35
@@ -119,17 +131,12 @@ function player_jump()
 			reset_anim_on_end(spr_player_fall)
 			break
 	}
+	do_taunt()
 }
 
 function player_mach2() {
 	move = move_cal
 	hsp = xscale * movespeed
-	
-	if (key_jump.pressed && coyote_time) 
-	{
-		jumpstop = false
-		vsp = -11
-	}
 	
 	if (grounded && vsp >= 0)
 	{
@@ -181,6 +188,11 @@ function player_mach2() {
 			vsp /= 10
 		}
 	}
+	if (key_jump.pressed && coyote_time) 
+	{
+		jumpstop = false
+		vsp = -11
+	}
 	do_slope_momentum()
 	if (key_down.down)
 	{
@@ -230,7 +242,7 @@ function player_mach2() {
 			reset_anim_on_end(spr_player_mach2)
 			break
 		case spr_player_longjump:
-			image_speed = 0.4
+			image_speed = 0.35
 			if (anim_ended())
 				image_index = 10
 			break
@@ -244,13 +256,13 @@ function player_mach2() {
 			sprite_index = spr_player_walljumpfall'
 			break*/
 	}
-	//dotaunt()
+	do_taunt()
 }
 
 function player_mach3() {
 	move = move_cal
 	hsp = xscale * movespeed
-	mach4mode = movespeed > 18
+	mach4mode = movespeed > 16
 	if (mach4mode)
 	{
 		if (sprite_index != spr_player_mach4)
@@ -352,17 +364,6 @@ function player_mach3() {
 		hsp = xscale * -6
 		shake_camera()
 	}
-	/*if (round(image_index) == image_number)
-	{
-		switch (sprite_index)
-		{
-			case 'mach3jump':
-			case 'rollgetup':
-				sprite_index = spr_player_mach3
-				break
-		}
-	}
-	dotaunt()*/
 	image_speed = 0.4
 	switch (sprite_index)
 	{
@@ -370,7 +371,7 @@ function player_mach3() {
 			image_speed = 0.35
 			break
 		case spr_player_mach4:
-			image_speed = movespeed / 40
+			image_speed = movespeed / 30
 			break
 		case spr_player_mach3jump:
 		case spr_player_rollgetup:
@@ -378,6 +379,7 @@ function player_mach3() {
 				sprite_index = spr_player_mach3
 			break
 	}
+	do_taunt()
 }
 
 function player_tumble() {
@@ -612,6 +614,11 @@ function player_bump()
 		state = states.normal
 		if (sprite_index == spr_player_bodyslamland)
 			reset_anim(spr_player_facehurt)
+		else if (sprite_index == spr_player_ceilinghit)
+		{
+			reset_anim(spr_player_superjumpfall)
+			state = states.jump
+		}
 		else
 			sprite_index = spr_player_idle
 	}
@@ -701,7 +708,14 @@ function player_groundpound()
 	{
 		if (scr_slope(x, y + 1))
 		{
+			var slopeinst = -4
 			with (instance_place(x, y + 1, obj_slope))
+				slopeinst = id
+			//intentionally overwrites if touching a slope platform
+			with (instance_place(x, y + 1, obj_slopeplatform))
+				slopeinst = id
+			
+			with slopeinst 
 			{
 				other.xscale = -sign(image_xscale)
 				other.state = states.tumble
@@ -809,7 +823,10 @@ function player_grab() {
 	{
 		case spr_player_suplexgrab:
 			if anim_ended()
+			{
+				reset_anim(spr_player_land)
 				state = states.normal
+			}
 			break;
 		case spr_player_suplexgrabjump:
 			if anim_ended()
@@ -913,5 +930,18 @@ function player_superjump()
 			reset_anim(spr_player_ceilinghit)
 			state = states.bump
 		}
+	}
+}
+
+function player_taunt()
+{
+	hsp = 0
+	vsp = 0
+	if (taunttimer <= 0)
+	{
+		state = prev.state
+		hsp = prev.hsp
+		vsp = prev.vsp
+		sprite_index = prev.sprite_index
 	}
 }

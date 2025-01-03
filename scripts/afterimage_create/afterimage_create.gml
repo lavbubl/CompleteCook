@@ -16,14 +16,14 @@ function afterimage_create(afterimage)
 	{
 		case after_images.mach:
 			inst.image_blend = choose(c_red, c_lime)
-			inst.lifetime = 8
+			inst.lifetime = 15
 			break;
 		case after_images.blur:
-			inst.image_alpha = 4
+			inst.image_alpha = 2
 			inst.hsp = hsp
 			inst.vsp = vsp
 			break;
 	}
 	with (obj_afterimagecontroller)
-		array_push(aftimg_insts, inst)
+		ds_list_add(aftimg_list, inst)
 }

@@ -14,6 +14,6 @@ if (!ds_list_empty(tex_list))
 else
 {
 	ds_list_destroy(tex_list)
-	room_goto(init_objs)
+	room_goto(init_objs_room)
 }
 alarm[0] = 1

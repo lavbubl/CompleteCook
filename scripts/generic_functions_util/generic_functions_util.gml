@@ -42,3 +42,45 @@ function reset_anim_on_end(spr)
 		reset_anim(spr)
 }
 
+enum fade_types
+{
+	none,
+	hallway,
+	v_hallway,
+	door
+}
+
+function do_fade(t_room, t_door, type)
+{
+	switch (type)
+	{
+		case fade_types.hallway:
+			obj_player.hallxscale = sign(image_xscale)
+			break;
+		case fade_types.v_hallway:
+			obj_player.hallyscale = sign(image_yscale)
+			if obj_player.state = states.climbwall
+				obj_player.wasclimbingwall = true
+			break;
+		case fade_types.door:
+			obj_player.state = states.actor
+			obj_player.hsp = 0
+			obj_player.movespeed = 0
+			break;
+	}
+	with (obj_fade)
+	{
+		if !fade
+		{
+			fade = true
+			target_room = t_room
+			pos = {
+				x: obj_player.x,
+				y: obj_player.y
+			}
+			obj_player.spawn = t_door
+			obj_player.door_type = type
+		}
+	}
+}
+

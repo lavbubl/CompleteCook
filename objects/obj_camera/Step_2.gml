@@ -1,3 +1,6 @@
+if (obj_fade.fade)
+	exit;
+
 var campos = {
 	x: obj_player.x - (screen_w / 2),
 	y: obj_player.y - (screen_h / 2),

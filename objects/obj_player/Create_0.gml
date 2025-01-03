@@ -1,5 +1,10 @@
 init_collide()
 spawn = "a"
+door_type = fade_types.none
+hallxscale = 1
+hallyscale = 1
+wasclimbingwall = false
+prevwallspd = 0
 coyote_time = 0
 movespeed = 0
 state = states.normal
@@ -20,3 +25,4 @@ prev = {
 	sprite_index: self.sprite_index,
 }
 taunttimer = 0
+depth = -999

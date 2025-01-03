@@ -12,7 +12,8 @@ enum states
 	grab,
 	superjump,
 	taunt,
-	crouch
+	crouch,
+	actor
 }
 
 function player_normal()
@@ -40,7 +41,7 @@ function player_normal()
 			sprite_index = spr_player_idle
 	}
 	
-	if (key_down.down)
+	if (key_down.down || scr_solid(x, y - 16))
 	{
 		reset_anim(spr_player_crouchdown)
 		state = states.crouch
@@ -787,7 +788,7 @@ function player_grab() {
 		vsp /= 20
 		jumpstop = true
 	}
-	if (key_jump.pressed && !key_down.down && grounded)
+	if (key_jump.pressed && !key_down.down && coyote_time)
 	{
 		jumpstop = false
 		vsp = -11
@@ -954,13 +955,8 @@ function player_taunt()
 function player_crouch()
 {
 	if move != 0
-	{
-		movespeed = 5
 		xscale = move
-	}
-	else
-		movespeed = 0
-	hsp = movespeed * xscale
+	hsp = move * 4
 	image_speed = 0.4
 	
 	if !grounded 
@@ -986,6 +982,18 @@ function player_crouch()
 			vsp = -12
 	}
 	
-	if !key_down.down && grounded && vsp >= 0
+	if !key_down.down && !scr_solid(x, y - 16) && grounded && vsp >= 0
 		state = states.normal
+}
+
+function player_actor()
+{
+	switch (sprite_index)
+	{
+		case spr_player_exitdoor:
+		case spr_player_timesup:
+			if anim_ended()
+				state = states.normal
+			break;
+	}
 }

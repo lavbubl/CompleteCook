@@ -21,5 +21,7 @@ for (var inst = 0; inst < ds_list_size(aftimg_list); inst++)
 					ds_list_delete(other.aftimg_list, inst)
 				break;
 		}
+		if (obj_fade.fade)
+			ds_list_delete(other.aftimg_list, inst)
 	}
 }

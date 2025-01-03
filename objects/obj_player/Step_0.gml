@@ -3,7 +3,7 @@ get_input()
 if grounded
 	coyote_time = 10
 	
-#macro move -key_left.down + key_right.down
+#macro move (-key_left.down + key_right.down)
 
 switch (state)
 {
@@ -45,6 +45,9 @@ switch (state)
 		break;
 	case states.crouch:
 		player_crouch()
+		break;
+	case states.actor:
+		player_actor()
 		break;
 }
 

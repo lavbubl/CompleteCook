@@ -1,0 +1,1 @@
+halltype = 2

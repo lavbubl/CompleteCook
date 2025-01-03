@@ -2,11 +2,15 @@ get_input()
 
 var up = key_up.down
 var down = key_down.down
-live++
+
+var livemax = 15
+
+if (live <= livemax)
+	live++
 
 with (obj_player)
 {
-	if (state != states.actor && other.live > 5)
+	if (state != states.actor && other.live > livemax)
 	{
 		if ((down || state == states.groundpound) && place_meeting(x, y + 1, other) && other.image_yscale == 1)
 		{

@@ -29,7 +29,7 @@
   ],
   "name":"spr_player_wallsplat",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Player",
     "path":"folders/Sprites/Player.yy",
@@ -99,7 +99,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":46,
+    "xorigin":37,
     "yorigin":65,
   },
   "swatchColours":null,

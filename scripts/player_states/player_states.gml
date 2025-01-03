@@ -11,13 +11,12 @@ enum states
 	groundpound,
 	grab,
 	superjump,
-	taunt
+	taunt,
+	crouch
 }
 
 function player_normal()
 {
-	move = move_cal
-	
 	if (move != 0)
 	{
 		movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
@@ -39,6 +38,12 @@ function player_normal()
 	{
 		if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt)
 			sprite_index = spr_player_idle
+	}
+	
+	if (key_down.down)
+	{
+		reset_anim(spr_player_crouchdown)
+		state = states.crouch
 	}
 	
 	if !grounded
@@ -88,7 +93,7 @@ function player_normal()
 
 function player_jump()
 {
-	move = move_cal
+	
 	
 	if (move != 0)
 	{
@@ -135,7 +140,7 @@ function player_jump()
 }
 
 function player_mach2() {
-	move = move_cal
+	
 	hsp = xscale * movespeed
 	
 	if (grounded && vsp >= 0)
@@ -260,7 +265,7 @@ function player_mach2() {
 }
 
 function player_mach3() {
-	move = move_cal
+	
 	hsp = xscale * movespeed
 	mach4mode = movespeed > 16
 	if (mach4mode)
@@ -384,7 +389,7 @@ function player_mach3() {
 
 function player_tumble() {
 	hsp = xscale * movespeed
-	move = move_cal
+	
 	if (!grounded && (sprite_index == spr_player_crouchslip || sprite_index == spr_player_machroll || sprite_index == spr_player_mach2jump || sprite_index == spr_player_backslide))
 	{
 		vsp = 10
@@ -479,7 +484,7 @@ function player_tumble() {
 
 function player_climbwall() 
 {
-	move = move_cal
+	
 	vsp = -wallspeed
 	hsp = 0
 	
@@ -660,7 +665,7 @@ function player_groundpound()
 	/*
 	if (floor(image_index) == image_number - 1 && sprite_index == spr_shotgunjump1)
 		sprite_index = spr_shotgunjump3*/
-	move = move_cal
+	
 	if (!grounded)
 	{
 		//if (sprite_index != 'rockethitwall')
@@ -771,7 +776,7 @@ function player_groundpound()
 }
 
 function player_grab() {
-	move = move_cal
+	
 	hsp = xscale * movespeed
 	if (movespeed < 10)
 	{
@@ -855,7 +860,7 @@ function player_grab() {
 
 function player_superjump() 
 {
-	move = move_cal
+	
 	hsp = xscale * movespeed
 	image_speed = 0.35
 	
@@ -944,4 +949,43 @@ function player_taunt()
 		vsp = prev.vsp
 		sprite_index = prev.sprite_index
 	}
+}
+
+function player_crouch()
+{
+	if move != 0
+	{
+		movespeed = 5
+		xscale = move
+	}
+	else
+		movespeed = 0
+	hsp = movespeed * xscale
+	image_speed = 0.4
+	
+	if !grounded 
+	{
+		if sprite_index != spr_player_crouchfall
+			reset_anim(spr_player_crouchfall)
+		
+		if anim_ended()
+			image_index = 5
+	}
+	else
+	{
+		if sprite_index == spr_player_crouchfall
+			reset_anim(spr_player_crouchdown)
+			
+		if sprite_index == spr_player_crouchdown
+			reset_anim_on_end(spr_player_crouch)
+		
+		if (sprite_index != spr_player_crouchdown)
+			sprite_index = move != 0 ? spr_player_crawl : spr_player_crouch
+	
+		if coyote_time && key_jump.pressed
+			vsp = -12
+	}
+	
+	if !key_down.down && grounded && vsp >= 0
+		state = states.normal
 }

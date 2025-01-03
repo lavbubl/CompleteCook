@@ -2,7 +2,6 @@ init_collide()
 spawn = "a"
 coyote_time = 0
 movespeed = 0
-move = 0
 state = states.normal
 xscale = 1
 jumpstop = false

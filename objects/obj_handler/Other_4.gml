@@ -1,4 +1,5 @@
 ds_list_clear(global.col_obj_list)
+
 var o = 0
 repeat (array_length(solids_to_add))
 {

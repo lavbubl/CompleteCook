@@ -49,6 +49,9 @@ switch (state)
 	case states.actor:
 		player_actor()
 		break;
+	case states.ladder:
+		player_ladder()
+		break;
 }
 
 if coyote_time > 0

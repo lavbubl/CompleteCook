@@ -145,7 +145,8 @@ function collide_slopeplatform(player, _x, _y)
 		side = _x + (player.bbox_left - player.x)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
-	check_1 = _y + height > slope_y
+	
+	check_1 = _y + height > max(slope_y, bbox_top)
 	
 	if (image_xscale > 0)
 	{
@@ -157,7 +158,8 @@ function collide_slopeplatform(player, _x, _y)
 		side = player.old_x2 + (player.bbox_left - player.x)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
-	check_2 = player.old_y2 + height <= max(slope_y, bbox_top)
+	
+	check_2 = player.old_y2 + height <= max(slope_y, bbox_top) + 1
 	
 	return check_1 && check_2
 }

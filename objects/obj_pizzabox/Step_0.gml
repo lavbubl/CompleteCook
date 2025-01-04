@@ -16,6 +16,9 @@ with (obj_player)
 		{
 			dooryscale = 1
 			state = states.actor
+			hsp = 0
+			vsp = 0
+			movespeed = 0
 			reset_anim(spr_player_downbox)
 			image_speed = 0.35
 		}
@@ -24,8 +27,12 @@ with (obj_player)
 		{
 			dooryscale = -1
 			state = states.actor
+			hsp = 0
+			vsp = 0
+			movespeed = 0
 			reset_anim(spr_player_upbox)
 			image_speed = 0.35
+			y = other.bbox_bottom + 18
 		}
 	}
 	
@@ -36,6 +43,7 @@ with (obj_player)
 		if anim_ended()
 		{
 			do_fade(other.t_room, other.t_door, fade_types.box)
+			image_index = image_number - 1
 			image_speed = 0
 		}
 	}

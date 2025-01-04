@@ -94,8 +94,6 @@ function player_normal()
 
 function player_jump()
 {
-	
-	
 	if (move != 0)
 	{
 		movespeed = approach(movespeed, 6, 0.5)
@@ -141,7 +139,6 @@ function player_jump()
 }
 
 function player_mach2() {
-	
 	hsp = xscale * movespeed
 	
 	if (grounded && vsp >= 0)
@@ -517,6 +514,12 @@ function player_climbwall()
 			sprite_index = spr_player_mach3
 			movespeed = wallspeed
 		}
+		x += xscale
+	}
+	else if scr_solid(x, y - 1)
+	{
+		state = states.bump
+		reset_anim(spr_player_ceilinghit)
 	}
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
 	if (!key_dash.down && grabclimbbuffer <= 0)
@@ -533,11 +536,6 @@ function player_climbwall()
 		vsp = -11
 		xscale *= -1
 		jumpstop = false
-	}
-	if scr_solid(x, y - 1)
-	{
-		state = states.bump
-		reset_anim(spr_player_ceilinghit)
 	}
 }
 

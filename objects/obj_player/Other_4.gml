@@ -39,7 +39,7 @@ with (obj_spawnpoint)
 				break;
 			case fade_types.box:
 				if (other.dooryscale == 1)
-					other.y += 5
+					other.y += 15
 				other.state = states.normal
 				break;
 		}

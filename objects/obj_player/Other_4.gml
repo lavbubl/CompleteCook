@@ -24,7 +24,7 @@ with (obj_spawnpoint)
 						w++
 						with (other)
 						{
-							if (scr_solid(x + xscale, y))
+							if (place_meeting(x + xscale, y, obj_solid))
 								w = m
 							else
 								x += xscale

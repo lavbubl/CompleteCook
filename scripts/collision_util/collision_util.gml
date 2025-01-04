@@ -92,19 +92,44 @@ function init_collide()
 function scr_solid(_x, _y)
 {
 	var collided = false
-	
-	if (place_meeting(_x, _y, obj_solid))
-		collided = true
-	
-	with (instance_place(_x, _y, obj_platform))
+	var player = id
+	var do_parent_check = false
+	for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
 	{
-		if (other.bbox_bottom <= bbox_top + 1 && (other.y - other.old_y2) >= 0)
-			collided = true
+		var _id = ds_list_find_value(global.col_obj_list, i)
+		with (instance_place(_x, _y, _id))
+		{
+			switch (object_index)
+			{
+				case obj_solid:
+					collided = true
+					break;
+				case obj_platform:
+					if (player.bbox_bottom <= bbox_top + 1 && (player.y - player.old_y2) >= 0)
+						collided = true
+					break;
+				case obj_slope:
+					if (collide_slope(player, _x, _y))
+						collided = true
+					break;
+				case obj_slopeplatform:
+					if (collide_slopeplatform(player, _x, _y))
+						collided = true
+					break;
+				default:
+					do_parent_check = true
+			}
+			if (do_parent_check)
+			{
+				switch (object_get_parent(object_index))
+				{
+					case obj_solid:
+						collided = true
+						break;
+				}
+			}
+		}
 	}
-	
-	if scr_slope(_x, _y)
-		collided = true
-	
 	return collided;
 }
 
@@ -166,17 +191,26 @@ function collide_slopeplatform(player, _x, _y)
 
 function scr_slope(_x, _y)
 {
-	with (instance_place(_x, _y, obj_slope))
-	{
-		if (collide_slope(other, _x, _y))
-			return true;
+	var s_list = ds_list_create()
+	instance_place_list(_x, _y, obj_slope, s_list, false)
+	for (var i = 0; i < ds_list_size(s_list); i++) {
+	    with (ds_list_find_value(s_list, i))
+		{
+			if (collide_slope(other, _x, _y))
+				return true;
+		}
 	}
 	
-	with (instance_place(_x, _y, obj_slopeplatform))
-	{
-		if (collide_slopeplatform(other, _x, _y))
-			return true;
+	instance_place_list(_x, _y, obj_slopeplatform, s_list, false)
+	for (var i = 0; i < ds_list_size(s_list); i++) {
+	    with (ds_list_find_value(s_list, i))
+		{
+			if (collide_slope(other, _x, _y))
+				return true;
+		}
 	}
+	
+	return false;
 }
 
 function do_slope_momentum(spd_up = 20)

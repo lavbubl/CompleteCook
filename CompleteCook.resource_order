@@ -25,6 +25,7 @@
     {"name":"obj_fade","order":10,"path":"objects/obj_fade/obj_fade.yy",},
     {"name":"obj_gotolevel","order":9,"path":"objects/obj_gotolevel/obj_gotolevel.yy",},
     {"name":"obj_hallway","order":11,"path":"objects/obj_hallway/obj_hallway.yy",},
+    {"name":"obj_handler","order":17,"path":"objects/obj_handler/obj_handler.yy",},
     {"name":"obj_loading","order":2,"path":"objects/obj_loading/obj_loading.yy",},
     {"name":"obj_movingplatform_arrow","order":6,"path":"objects/obj_movingplatform_arrow/obj_movingplatform_arrow.yy",},
     {"name":"obj_movingplatform","order":5,"path":"objects/obj_movingplatform/obj_movingplatform.yy",},

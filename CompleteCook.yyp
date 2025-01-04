@@ -43,6 +43,7 @@
     {"id":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},},
     {"id":{"name":"obj_gotolevel","path":"objects/obj_gotolevel/obj_gotolevel.yy",},},
     {"id":{"name":"obj_hallway","path":"objects/obj_hallway/obj_hallway.yy",},},
+    {"id":{"name":"obj_handler","path":"objects/obj_handler/obj_handler.yy",},},
     {"id":{"name":"obj_loading","path":"objects/obj_loading/obj_loading.yy",},},
     {"id":{"name":"obj_movingplatform_arrow","path":"objects/obj_movingplatform_arrow/obj_movingplatform_arrow.yy",},},
     {"id":{"name":"obj_movingplatform","path":"objects/obj_movingplatform/obj_movingplatform.yy",},},

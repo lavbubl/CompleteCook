@@ -25,6 +25,14 @@ function do_grab()
 			state = states.grab
 			reset_anim(spr_player_suplexgrab)
 		}
+		else
+		{
+			vsp = grounded ? -14 : -8
+			hsp = abs(hsp) * xscale
+			state = states.punch
+			reset_anim(spr_player_uppercut)
+			image_speed = 0.35
+		}
 	}
 }
 

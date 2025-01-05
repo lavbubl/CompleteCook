@@ -105,7 +105,7 @@ function scr_solid(_x, _y)
 					collided = true
 					break;
 				case obj_platform:
-					if (player.bbox_bottom <= bbox_top + 1 && (player.y - player.old_y2) >= 0)
+					if (player.bbox_bottom <= bbox_top + 1 && (player.y - player.old_y2) >= 0 && player.state != states.ladder)
 						collided = true
 					break;
 				case obj_slope:
@@ -113,7 +113,7 @@ function scr_solid(_x, _y)
 						collided = true
 					break;
 				case obj_slopeplatform:
-					if (collide_slopeplatform(player, _x, _y))
+					if (collide_slopeplatform(player, _x, _y) && player.state != states.ladder)
 						collided = true
 					break;
 				default:

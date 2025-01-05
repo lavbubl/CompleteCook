@@ -14,7 +14,8 @@ enum states
 	taunt,
 	crouch,
 	actor,
-	ladder
+	ladder,
+	punch
 }
 
 function player_normal()
@@ -28,18 +29,23 @@ function player_normal()
 	}
 	else
 		movespeed = 0
+		
+		
 	
 	hsp = movespeed * xscale
 	
-	if move != 0
+	if (!key_taunt.down)
 	{
-		if (sprite_index != spr_player_landmove)
-			sprite_index = spr_player_move
-	}
-	else
-	{
-		if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt)
-			sprite_index = spr_player_idle
+		if move != 0
+		{
+			if (sprite_index != spr_player_landmove)
+				sprite_index = spr_player_move
+		}
+		else
+		{
+			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt)
+				sprite_index = spr_player_idle
+		}
 	}
 	
 	if (key_down.down || scr_solid(x, y - 16))
@@ -90,6 +96,30 @@ function player_normal()
 			reset_anim_on_end(spr_player_idle)
 			break;
 	}
+	
+	if key_taunt.down
+	{
+		if breakdance_secret.buffer < 10
+			breakdance_secret.buffer++
+		else
+		{
+			sprite_index = spr_player_breakdance
+			breakdance_secret.spd = approach(breakdance_secret.spd, 0.5, 0.005)
+			image_speed = breakdance_secret.spd
+		}
+		if breakdance_secret.spd > 0.48
+		{
+			aftimg_timers.blur.do_it = true
+			if (!instance_exists(obj_beatbox))
+				instance_create(x, y, obj_beatbox)
+		}
+	}
+	else
+	{
+		breakdance_secret.buffer = 0
+		breakdance_secret.spd = 0.1
+	}
+	
 	do_taunt()
 }
 
@@ -115,7 +145,7 @@ function player_jump()
 		do_grab()
 	do_groundpound()
 	
-	if (grounded)
+	if (grounded && vsp >= 0)
 	{
 		state = states.normal
 		reset_anim(movespeed < 1 ? spr_player_land : spr_player_landmove)
@@ -261,6 +291,8 @@ function player_mach2() {
 			break*/
 	}
 	do_taunt()
+	
+	aftimg_timers.mach.do_it = true
 }
 
 function player_mach3() {
@@ -384,6 +416,8 @@ function player_mach3() {
 			break
 	}
 	do_taunt()
+	
+	aftimg_timers.mach.do_it = true
 }
 
 function player_tumble() {
@@ -479,6 +513,7 @@ function player_tumble() {
 		if (anim_ended())
 			image_index = 2
 	}
+	aftimg_timers.blur.do_it = true
 }
 
 function player_climbwall() 
@@ -528,6 +563,7 @@ function player_climbwall()
 		state = states.jump
 		sprite_index = spr_player_fall
 		movespeed = -5
+		jumpstop = false
 	}
 	if (key_jump.pressed)
 	{
@@ -773,6 +809,7 @@ function player_groundpound()
 		}
 	}
 	image_speed = 0.35
+	aftimg_timers.blur.do_it = true
 }
 
 function player_grab() {
@@ -856,11 +893,11 @@ function player_grab() {
 			state = states.normal
 		movespeed = 0
 	}
+	aftimg_timers.blur.do_it = true
 }
 
 function player_superjump() 
 {
-	
 	hsp = xscale * movespeed
 	image_speed = 0.35
 	
@@ -935,6 +972,7 @@ function player_superjump()
 			reset_anim(spr_player_ceilinghit)
 			state = states.bump
 		}
+		aftimg_timers.blur.do_it = true
 	}
 }
 
@@ -958,7 +996,7 @@ function player_crouch()
 	hsp = move * 4
 	image_speed = 0.4
 	
-	if !grounded 
+	if (!(grounded && vsp >= 0))
 	{
 		if sprite_index != spr_player_crouchfall
 			reset_anim(spr_player_crouchfall)
@@ -1004,7 +1042,7 @@ function player_ladder()
 {
 	var move_v = (-key_up.down + key_down.down)
 	
-	vsp = move_v * 5
+	vsp = move_v * 6
 	
 	if (move_v != 0)
 		sprite_index = vsp <= 0 ? spr_player_laddermove : spr_player_ladderdown
@@ -1013,7 +1051,7 @@ function player_ladder()
 		
 	image_speed = 0.35
 	
-	if (!place_meeting(x, y, obj_ladder) || place_meeting(x, y + sign(vsp), obj_solid))
+	if (!place_meeting(x, y + 1, obj_ladder) || place_meeting(x, y + sign(vsp), obj_solid))
 	{
 		state = states.normal
 		vsp = 0
@@ -1025,5 +1063,28 @@ function player_ladder()
 		state = states.jump
 		reset_anim(spr_player_jump)
 		jumpstop = false
+		ladderbuffer = 20
 	}
+}
+
+function player_punch()
+{
+	hsp = approach(hsp, move * 4, 0.4)
+	
+	if image_index < 2
+		image_speed = 0.35
+	
+	if anim_ended()
+		image_speed = 0
+	
+	if grounded
+	{
+		state = states.normal
+		movespeed = abs(hsp)
+		if move != 0
+			xscale = move
+	}
+	
+	if (vsp < 0)
+		aftimg_timers.mach.do_it = true
 }

@@ -7,10 +7,15 @@ for (var inst = 0; inst < ds_list_size(aftimg_list); inst++)
 		switch (effect)
 		{
 			case after_images.mach:
-				image_alpha = round((sin(lifetime) / 2) + 0.5) * (obj_player.movespeed / 12)
+				var s  = obj_player.state
 				
-				var s = obj_player.state
-				if (s != states.mach2 && s != states.mach3)
+				var m = 1
+				if (s == states.mach2 || s == states.mach3)
+					m = (obj_player.movespeed / 12)
+					
+				image_alpha = round((sin(lifetime) / 2) + 0.5) * m
+				
+				if (!obj_player.aftimg_timers.mach.do_it)
 					ds_list_delete(other.aftimg_list, inst)
 				
 				lifetime -= 1

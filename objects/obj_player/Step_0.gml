@@ -1,7 +1,14 @@
 get_input()
 
+struct_foreach(aftimg_timers, function(_name, _data)
+{
+	_data.do_it = false
+})
+
 if grounded
 	coyote_time = 10
+else if vsp < 0
+	coyote_time = 0
 	
 #macro move (-key_left.down + key_right.down)
 
@@ -52,6 +59,9 @@ switch (state)
 	case states.ladder:
 		player_ladder()
 		break;
+	case states.punch:
+		player_punch()
+		break;
 }
 
 if coyote_time > 0
@@ -68,25 +78,17 @@ else
 if taunttimer > 0
 	taunttimer--
 	
+grav = 0.5
+if (state == states.ladder)
+	grav = 0
+	
 collide()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {
 	var conditional = false
-	switch (_name)
-	{
-		case "mach":
-			if (self.state == states.mach2 || self.state == states.mach3)
-				conditional = true
-			break;
-		case "blur":
-			if (self.state == states.grab || self.state == states.tumble || self.state == states.groundpound)
-				conditional = true
-			break;
-		default:
-			conditional = true
-			break;
-	}
+	if (_data.do_it)
+		conditional = true
 	if (_data.timer > 0)
 		_data.timer--
 	else if conditional
@@ -96,7 +98,10 @@ struct_foreach(aftimg_timers, function(_name, _data)
 	}
 })
 
-if particletimer > 0
+if ladderbuffer > 0
+	ladderbuffer--
+
+/*if particletimer > 0
 	particletimer--
 else
-	particle_create(x - 128, y, particles.bleh)
+	particle_create(x - 128, y, particles.bleh)*/

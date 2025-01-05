@@ -14,8 +14,8 @@ wallspeed = 0
 flash = 0
 
 aftimg_timers = {
-	mach: {timer: 0, effect: after_images.mach, resetpoint: 8},
-	blur: {timer: 0, effect: after_images.blur, resetpoint: 2}
+	mach: {timer: 0, effect: after_images.mach, resetpoint: 8, do_it: false},
+	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false}
 }
 
 ptcl_timers = {
@@ -26,12 +26,20 @@ dir = 0
 freefallsmash = 0
 crouchslipbuffer = 0
 grabclimbbuffer = 0
+ladderbuffer = 0
+
 prev = {
 	state: self.state,
 	hsp: self.hsp,
 	vsp: self.vsp,
 	sprite_index: self.sprite_index,
 }
+
+breakdance_secret = {
+	buffer: 0,
+	spd: 0.1
+}
+
 particletimer = 0
 taunttimer = 0
 depth = -999

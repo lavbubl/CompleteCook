@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_gui_bg_remove",
+  "name":"shd_gui_bg_remove",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

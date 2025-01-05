@@ -15,28 +15,27 @@ enum states
 	crouch,
 	actor,
 	ladder,
-	punch
+	punch,
+	hold
 }
 
 function player_normal()
 {
-	if (move != 0)
+	if (p_move != 0)
 	{
 		movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
 		if (floor(movespeed) == 8)
 			movespeed = 6
-		xscale = move
+		xscale = p_move
 	}
 	else
 		movespeed = 0
-		
-		
 	
 	hsp = movespeed * xscale
 	
-	if (!key_taunt.down)
+	if (breakdance_secret.buffer < 10)
 	{
-		if move != 0
+		if p_move != 0
 		{
 			if (sprite_index != spr_player_landmove)
 				sprite_index = spr_player_move
@@ -46,6 +45,31 @@ function player_normal()
 			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt)
 				sprite_index = spr_player_idle
 		}
+	}
+	
+	image_speed = 0.35
+	
+	if key_taunt.down
+	{
+		if breakdance_secret.buffer < 10
+			breakdance_secret.buffer++
+		else
+		{
+			sprite_index = spr_player_breakdance
+			breakdance_secret.spd = approach(breakdance_secret.spd, 0.5, 0.005)
+			image_speed = breakdance_secret.spd
+		}
+		if breakdance_secret.spd > 0.48
+		{
+			aftimg_timers.blur.do_it = true
+			if (!instance_exists(obj_beatbox))
+				instance_create(x, y, obj_beatbox)
+		}
+	}
+	else
+	{
+		breakdance_secret.buffer = 0
+		breakdance_secret.spd = 0.1
 	}
 	
 	if (key_down.down || scr_solid(x, y - 16))
@@ -78,7 +102,6 @@ function player_normal()
 	
 	do_grab()
 	
-	image_speed = 0.35
 	switch (sprite_index)
 	{
 		case spr_player_move:
@@ -97,40 +120,17 @@ function player_normal()
 			break;
 	}
 	
-	if key_taunt.down
-	{
-		if breakdance_secret.buffer < 10
-			breakdance_secret.buffer++
-		else
-		{
-			sprite_index = spr_player_breakdance
-			breakdance_secret.spd = approach(breakdance_secret.spd, 0.5, 0.005)
-			image_speed = breakdance_secret.spd
-		}
-		if breakdance_secret.spd > 0.48
-		{
-			aftimg_timers.blur.do_it = true
-			if (!instance_exists(obj_beatbox))
-				instance_create(x, y, obj_beatbox)
-		}
-	}
-	else
-	{
-		breakdance_secret.buffer = 0
-		breakdance_secret.spd = 0.1
-	}
-	
 	do_taunt()
 }
 
 function player_jump()
 {
-	if (move != 0)
+	if (p_move != 0)
 	{
 		movespeed = approach(movespeed, 6, 0.5)
-		xscale = move
+		xscale = p_move
 	}
-	else if (move == 0 || xscale != move)
+	else if (p_move == 0 || xscale != p_move)
 		movespeed = approach(movespeed, 0, 0.5)
 	
 	hsp = movespeed * xscale
@@ -189,11 +189,11 @@ function player_mach2() {
 				state = states.slide
 			}
 		}
-		if (move != 0 && move != xscale)
+		if (p_move != 0 && p_move != xscale)
 		{
 			if (movespeed < 8)
 			{
-				xscale = move
+				xscale = p_move
 				movespeed = 6
 			}
 			else
@@ -336,12 +336,12 @@ function player_mach3() {
 			reset_anim(spr_player_machslidestart)
 			state = states.slide
 		}
-		if (move != 0 && move != xscale)
+		if (p_move != 0 && p_move != xscale)
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
 		}
-		if (movespeed < 20 && move == xscale)
+		if (movespeed < 20 && p_move == xscale)
 		{
 			if (mach4mode)
 			{
@@ -352,7 +352,7 @@ function player_mach3() {
 				movespeed += 0.025
 			}
 		}
-		if (move != xscale && movespeed > 13)
+		if (p_move != xscale && movespeed > 13)
 			movespeed -= 0.1
 		if (key_up.down)
 		{
@@ -430,9 +430,9 @@ function player_tumble() {
 	}
 	if (sprite_index == spr_player_ball && grounded)
 	{
-		if (move == xscale)
+		if (p_move == xscale)
 			movespeed = approach(movespeed, 12, 0.25)
-		else if (move == -xscale)
+		else if (p_move == -xscale)
 			movespeed = approach(movespeed, 8, 0.25)
 		else
 			movespeed = approach(movespeed, 10, 0.25)
@@ -484,7 +484,7 @@ function player_tumble() {
 	if (crouchslipbuffer > 0)
 		crouchslipbuffer--
 	//if (!key_down.down && key_dash.down && grounded && state != 1000 && (sprite_index != spr_player_ball && sprite_index != 'tumbleend) && !canuncrouch.isTouching(solids))
-	if (!key_down.down && key_dash.down && grounded && !scr_solid(x, y - 1) && crouchslipbuffer <= 0)
+	if (!key_down.down && key_dash.down && grounded && !scr_solid(x, y - 16) && crouchslipbuffer <= 0)
 	{
 		if (movespeed >= 12)
 			state = states.mach3
@@ -493,7 +493,7 @@ function player_tumble() {
 		reset_anim(spr_player_rollgetup)
 	}
 	//if (!keyDown('down.pressed && !keyDown('shift.pressed && grounded && vsp > 0 && state != 'bump' && (sprite_index != spr_player_ball && sprite_index != 'tumbleend.pressed && sprite_index != 'breakdance' && !canuncrouch.isTouching(solids))
-	if (!key_down.down && !key_dash.down && grounded && vsp > 0 && state != states.bump && !scr_solid(x, y - 1) && crouchslipbuffer <= 0)
+	if (!key_down.down && !key_dash.down && grounded && vsp > 0 && state != states.bump && !scr_solid(x, y - 16) && crouchslipbuffer <= 0)
 	{
 		if (movespeed > 6)
 		{
@@ -705,32 +705,32 @@ function player_groundpound()
 	if (!grounded)
 	{
 		//if (sprite_index != 'rockethitwall')
-			hsp = move * movespeed
+			hsp = p_move * movespeed
 		/*else
 			hsp = 0*/
-		if (move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
+		if (p_move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
 			movespeed -= 0.05
 		//if (movespeed == 0)
 		//	momemtum = false
-		if (move != dir && move != 0)
+		if (p_move != dir && p_move != 0)
 		{
-			dir = move
+			dir = p_move
 			movespeed = 0
 		}
-		if (move == 0)
+		if (p_move == 0)
 			movespeed = 0
-		//if ((move == 0 && momemtum == 0) || scr_solid(x + hsp, y))
-		if (move != 0 && movespeed < 7)
+		//if ((p_move == 0 && momemtum == 0) || scr_solid(x + hsp, y))
+		if (p_move != 0 && movespeed < 7)
 			movespeed += 0.25
 		if (movespeed > 7)
 			movespeed -= 0.05
-		if (place_meeting(x + move, y, obj_solid))
+		if (place_meeting(x + p_move, y, obj_solid))
 		{
 			hsp = 0
 			movespeed = 0
 		}
-		if (move != 0 && sprite_index != spr_player_poundcancel1)
-			xscale = move
+		if (p_move != 0 && sprite_index != spr_player_poundcancel1)
+			xscale = p_move
 	}
 	if (vsp > 0)
 		freefallsmash++
@@ -882,7 +882,7 @@ function player_grab() {
 		state = states.mach2
 		sprite_index = spr_player_mach2
 	}
-	if (move != 0 && move != xscale)
+	if (p_move != 0 && p_move != xscale)
 	{
 		if !grounded
 		{
@@ -911,18 +911,18 @@ function player_superjump()
 	{
 		image_speed = 0.5
 		vsp = 0
-		if (move != 0)
-		  xscale = move
+		if (p_move != 0)
+		  xscale = p_move
 	}
 	if ((key_up.down || !grounded) && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
 	{
 		if (!place_meeting(x + xscale, y, obj_solid))
-			movespeed = 2 * abs(move)
+			movespeed = 2 * abs(p_move)
 		else
 			movespeed = 0
-		if (abs(move))
+		if (abs(p_move))
 		{
-			xscale = move
+			xscale = p_move
 			sprite_index = spr_player_superjumpmove
 		}
 		else
@@ -955,6 +955,7 @@ function player_superjump()
 			createEffect('genericdust')
 		}*/
 		movespeed = 0
+		
 		if (place_meeting(x, y - 1, obj_solid))
 		{
 			reset_anim(spr_player_ceilinghit)
@@ -964,14 +965,9 @@ function player_superjump()
 		if (sprite_index != spr_player_Sjumpcancelstart)
 			vsp -= 0.6
 		
-		if (key_attack.pressed)
+		if (key_attack.pressed && state != states.bump)
 			reset_anim(spr_player_Sjumpcancelstart)
 		
-		if (place_meeting(x, y - 1, obj_solid))
-		{
-			reset_anim(spr_player_ceilinghit)
-			state = states.bump
-		}
 		aftimg_timers.blur.do_it = true
 	}
 }
@@ -991,9 +987,9 @@ function player_taunt()
 
 function player_crouch()
 {
-	if move != 0
-		xscale = move
-	hsp = move * 4
+	if p_move != 0
+		xscale = p_move
+	hsp = p_move * 4
 	image_speed = 0.4
 	
 	if (!(grounded && vsp >= 0))
@@ -1013,9 +1009,9 @@ function player_crouch()
 			reset_anim_on_end(spr_player_crouch)
 		
 		if (sprite_index != spr_player_crouchdown)
-			sprite_index = move != 0 ? spr_player_crawl : spr_player_crouch
+			sprite_index = p_move != 0 ? spr_player_crawl : spr_player_crouch
 	
-		if coyote_time && key_jump.pressed
+		if (coyote_time && key_jump.pressed && !scr_solid(x, y - 16))
 			vsp = -12
 	}
 	
@@ -1069,7 +1065,7 @@ function player_ladder()
 
 function player_punch()
 {
-	hsp = approach(hsp, move * 4, 0.4)
+	hsp = approach(hsp, p_move * 4, 0.4)
 	
 	if image_index < 2
 		image_speed = 0.35
@@ -1081,10 +1077,62 @@ function player_punch()
 	{
 		state = states.normal
 		movespeed = abs(hsp)
-		if move != 0
-			xscale = move
+		if p_move != 0
+			xscale = p_move
 	}
 	
 	if (vsp < 0)
 		aftimg_timers.mach.do_it = true
+}
+
+function player_hold()
+{
+	if (p_move != 0)
+	{
+		movespeed = approach(movespeed, 6, 0.5)
+		xscale = p_move
+	}
+	else
+		movespeed = 0
+		
+	hsp = movespeed * xscale
+	
+	if grounded
+	{
+		if (sprite_index == spr_player_holdjump || sprite_index == spr_player_holdfall)
+			reset_anim(spr_player_holdland)
+		if (sprite_index != spr_player_holdland && sprite_index != spr_player_holdrise)
+			sprite_index = p_move != 0 ? spr_player_holdmove : spr_player_holdidle
+	}
+	else
+	{
+		if (sprite_index != spr_player_holdjump && sprite_index != spr_player_holdfall)
+			reset_anim(spr_player_holdjump)
+		if (!jumpstop && !key_jump.down && vsp < 0)
+		{
+			jumpstop = true
+			vsp /= 10
+		}
+	}
+	
+	if (coyote_time && key_jump.pressed)
+	{
+		vsp = -12
+		jumpstop = false
+	}
+		
+	if p_move != 0
+		xscale = p_move
+	
+	image_speed = 0.35
+	switch (sprite_index)
+	{
+		case spr_player_holdland:
+		case spr_player_holdrise:
+			reset_anim_on_end(spr_player_holdidle)
+			break;
+		case spr_player_holdjump:
+			reset_anim_on_end(spr_player_holdfall)
+			break;
+	}
 }

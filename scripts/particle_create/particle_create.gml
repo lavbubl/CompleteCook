@@ -1,3 +1,10 @@
+enum particles {
+	bleh,
+	genericpoof,
+	gib,
+	parry
+}
+
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 {
 	var p = {
@@ -15,6 +22,19 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 		case particles.bleh:
 			p.sprite_index = particle_1
 			break;
+		case particles.genericpoof:
+			p.sprite_index = spr_genericpoofeffect
+			break;
+		case particles.gib:
+			p.sprite_index = choose(spr_gibs, spr_gibstars)
+			p.image_index = random_range(0, sprite_get_number(p.sprite_index))
+			p.image_speed = 0
+			p.hsp = irandom_range(6, -6)
+			p.vsp = irandom_range(12, -12)
+			p.image_angle = random_range(0, 360)
+			break;
+		case particles.parry:
+			p.sprite_index = spr_parryflash
 	}
 	p.image_number = sprite_get_number(p.sprite_index)
 	with (obj_particlecontroller)

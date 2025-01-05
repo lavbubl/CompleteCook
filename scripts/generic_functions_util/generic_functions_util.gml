@@ -82,6 +82,12 @@ function do_fade(t_room, t_door, type)
 
 function instance_create(_x, _y, obj)
 {
-	instance_create_depth(x, y, 1, obj)
+	return instance_create_depth(x, y, 1, obj);
 }
 
+function sleep(o)
+{
+	var t = current_time + o;
+	while (current_time < t) 
+		do {};
+}

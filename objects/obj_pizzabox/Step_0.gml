@@ -8,7 +8,7 @@ var livemax = 15
 if (live <= livemax)
 	live++
 
-with (obj_player)
+with (instance_place(x, y - image_yscale, obj_player))
 {
 	if (state != states.actor && other.live > livemax)
 	{
@@ -39,7 +39,7 @@ with (obj_player)
 	if (sprite_index == spr_player_upbox || sprite_index == spr_player_downbox)
 	{
 		hsp = 0
-		x = other.x
+		x = other.x + 32
 		if anim_ended()
 		{
 			do_fade(other.t_room, other.t_door, fade_types.box)
@@ -48,3 +48,5 @@ with (obj_player)
 		}
 	}
 }
+
+depth = (obj_player.sprite_index == spr_player_upbox || obj_player.sprite_index == spr_player_downbox) ? -1000 : 50

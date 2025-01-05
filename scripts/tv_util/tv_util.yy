@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"tv_util",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"tv_util",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

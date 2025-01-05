@@ -38,9 +38,12 @@ with (obj_spawnpoint)
 					other.x += sprite_width / 2
 				break;
 			case fade_types.box:
-				if (other.dooryscale == 1)
-					other.y += 15
-				other.state = states.normal
+				with (obj_player)
+				{
+					if (place_meeting(x, y - 1, obj_pizzabox))
+						y += 10
+					state = states.normal
+				}
 				break;
 		}
 	}

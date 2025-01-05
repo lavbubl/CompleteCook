@@ -11,6 +11,8 @@ function make_pause_image()
 	draw_surface(application_surface, 0, 0)
 	gpu_set_alphatestenable(true)
 	
+	draw_surface(obj_handler.gui_surf, 0, 0)
+	
 	surface_reset_target()
 	
 	return sprite_create_from_surface(surface, 0, 0, screen_w, screen_h, false, false, 0, 0)

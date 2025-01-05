@@ -4,3 +4,4 @@ pos = {
 	y: obj_player.y
 }
 target_room = level_1
+depth = -50

@@ -10,7 +10,7 @@ if grounded
 else if vsp < 0
 	coyote_time = 0
 	
-#macro move (-key_left.down + key_right.down)
+#macro p_move (-key_left.down + key_right.down)
 
 switch (state)
 {
@@ -62,6 +62,15 @@ switch (state)
 	case states.punch:
 		player_punch()
 		break;
+	case states.hold:
+		player_hold()
+		break;
+}
+
+if (state != states.normal)
+{
+	breakdance_secret.buffer = 0
+	breakdance_secret.spd = 0.1
 }
 
 if coyote_time > 0

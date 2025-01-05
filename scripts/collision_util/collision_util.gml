@@ -92,7 +92,7 @@ function init_collide()
 function scr_solid(_x, _y)
 {
 	var collided = false
-	var player = id
+	var master = id
 	var do_parent_check = false
 	for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
 	{
@@ -105,15 +105,15 @@ function scr_solid(_x, _y)
 					collided = true
 					break;
 				case obj_platform:
-					if (player.bbox_bottom <= bbox_top + 1 && (player.y - player.old_y2) >= 0 && player.state != states.ladder)
+					if (master.bbox_bottom <= bbox_top + 1 && (master.y - master.old_y2) >= 0 && master.state != states.ladder)
 						collided = true
 					break;
 				case obj_slope:
-					if (collide_slope(player, _x, _y))
+					if (collide_slope(master, _x, _y))
 						collided = true
 					break;
 				case obj_slopeplatform:
-					if (collide_slopeplatform(player, _x, _y) && player.state != states.ladder)
+					if (collide_slopeplatform(master, _x, _y) && master.state != states.ladder)
 						collided = true
 					break;
 				default:
@@ -133,41 +133,41 @@ function scr_solid(_x, _y)
 	return collided;
 }
 
-function collide_slope(player, _x, _y)
+function collide_slope(master, _x, _y)
 {
 	var side = 0
-	var height = player.bbox_bottom - player.y
+	var height = master.bbox_bottom - master.y
 	var slope_y = 0
 	var slope = (bbox_bottom - bbox_top) / (bbox_right - bbox_left)
 	if (image_xscale > 0)
 	{
-		side = _x + (player.bbox_right - player.x)
+		side = _x + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
 	}
 	else
 	{
-		side = _x + (player.bbox_left - player.x)
+		side = _x + (master.bbox_left - master.x)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	return _y + height > slope_y;
 }
 
-function collide_slopeplatform(player, _x, _y)
+function collide_slopeplatform(master, _x, _y)
 {
 	var side = 0
-	var height = player.bbox_bottom - player.y
+	var height = master.bbox_bottom - master.y
 	var slope_y = 0
 	var slope = (bbox_bottom - bbox_top) / (bbox_right - bbox_left)
 	var check_1 = false
 	var check_2 = false
 	if (image_xscale > 0)
 	{
-		side = _x + (player.bbox_right - player.x)
+		side = _x + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
 	}
 	else
 	{
-		side = _x + (player.bbox_left - player.x)
+		side = _x + (master.bbox_left - master.x)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	
@@ -175,16 +175,16 @@ function collide_slopeplatform(player, _x, _y)
 	
 	if (image_xscale > 0)
 	{
-		side = player.old_x2 + (player.bbox_right - player.x)
+		side = master.old_x2 + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
 	}
 	else
 	{
-		side = player.old_x2 + (player.bbox_left - player.x)
+		side = master.old_x2 + (master.bbox_left - master.x)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	
-	check_2 = player.old_y2 + height <= max(slope_y, bbox_top) + 1
+	check_2 = master.old_y2 + height <= max(slope_y, bbox_top) + 1
 	
 	return check_1 && check_2
 }

@@ -1,6 +1,9 @@
 yscale = 1
 
-if (obj_player.state != states.hold && obj_player.state != states.piledriver && obj_player.state != states.punchenemy)
+if (obj_player.state != states.hold && 
+	obj_player.state != states.piledriver && 
+	obj_player.state != states.punchenemy &&
+	obj_player.state != states.swingding)
 	follow_player = false
 
 if (!follow_player && state == e_states.grabbed)
@@ -30,7 +33,7 @@ if follow_player
 					other.y += floor(image_number - image_index) * 10
 				break;
 			case spr_player_piledriver:
-				other.x = x + image_index
+				other.x = x
 				other.y = y
 				other.yscale = -1
 				break;
@@ -50,6 +53,14 @@ if follow_player
 			case spr_player_finishingblowup:
 				other.x = x + xscale * 10
 				other.y = y - 64
+				break;
+			case spr_player_swingding:
+				other.x = x
+				other.y = y - 16
+				break;
+			case spr_player_swingdingend:
+				other.x = x + xscale * 64
+				other.y = y - 16
 				break;
 		}
 		other.state = e_states.grabbed
@@ -77,16 +88,25 @@ if follow_player
 		if (image_index >= image_number - 1 && sprite_index == spr_player_piledriverland)
 		{
 			other.alarm[0] = 1
-			do_enemygibs()
+			with (other)
+				do_enemygibs()
 			vsp = -12
 			jumpstop = false
 			state = states.jump
 			reset_anim(spr_player_piledriverjump)
 		}
-		var ixcheck = sprite_index == spr_player_finishingblowup ? 5 : 7
+		
+		var ixcheck = 7
+		if sprite_index == spr_player_finishingblowup
+			ixcheck = 5
+		if sprite_index == spr_player_swingdingend
+			ixcheck = 1
+			
 		if (state = states.punchenemy && floor(image_index) == ixcheck)
 		{
 			shake_camera()
+			with (other)
+				do_enemygibs()
 			other.follow_player = false
 			other.state = e_states.hit
 			other.hsp = xscale * 20

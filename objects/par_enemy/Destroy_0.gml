@@ -5,6 +5,10 @@ if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 
 	global.combo.timer = 60
 	global.combo.count++
+	
+	particle_create(x, y, particles.bang)
+	repeat (3)
+		particle_create(x, y, particles.yellowstar)
 }
 
 ds_list_add(global.ds_dead_enemies, id)

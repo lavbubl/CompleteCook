@@ -8,6 +8,7 @@ for (var p = 0; p < ds_list_size(particle_list); p++)
 		{
 			case particles.gib:
 			case particles.stars:
+			case particles.yellowstar:
 				x += hsp
 				y += vsp
 				vsp += 0.5

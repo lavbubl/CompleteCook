@@ -73,6 +73,9 @@ switch (state)
 	case states.piledriver:
 		player_piledriver()
 		break;
+	case states.swingding:
+		player_swingding()
+		break;
 }
 
 if (state != states.normal)

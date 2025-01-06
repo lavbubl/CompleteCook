@@ -31,9 +31,9 @@ if (place_meeting(x, y, obj_player))
 		{
 			if (state == states.mach3)
 				reset_anim(spr_player_mach3kill)
-			if (key_jump.down && state != states.groundpound)
+			if ((key_jump.down && state != states.groundpound) || state == states.swingding)
 			{
-				vsp = -12
+				vsp = -10
 				jumpstop = false
 			}
 		}
@@ -41,6 +41,7 @@ if (place_meeting(x, y, obj_player))
 		sprite_index = sprs.dead
 		
 		do_enemygibs()
+		particle_create(x, y, particles.genericpoof)
 		shake_camera()
 		
 		alarm[0] = 1
@@ -66,6 +67,12 @@ if (place_meeting(x, y, obj_player))
 			other.follow_player = true
 			reset_anim(spr_player_holdrise)
 			state = states.hold
+			if (abs(hsp) > 10)
+			{
+				state = states.swingding
+				sprite_index = spr_player_swingding
+				vsp = -5
+			}
 			if (key_up.down)
 			{
 				state = states.piledriver

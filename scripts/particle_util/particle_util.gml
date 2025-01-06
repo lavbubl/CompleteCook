@@ -5,7 +5,9 @@ enum particles {
 	stars,
 	parry,
 	taunt,
-	machcharge
+	machcharge,
+	bang,
+	yellowstar
 }
 
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
@@ -41,17 +43,28 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 			p.vsp = irandom_range(12, -12)
 			p.image_angle = random_range(0, 360)
 			break;
+		case particles.yellowstar:
+			p.sprite_index = spr_gibstars
+			p.image_speed = 0
+			p.hsp = random_range(6, -6)
+			p.vsp = random_range(12, -12)
+			p.image_angle = random_range(0, 360)
+			break;
 		case particles.parry:
 			p.sprite_index = spr_parryflash
+			p.depth = -230
 			break;
 		case particles.taunt:
 			p.sprite_index = spr_taunteffect
 			break;
 		case particles.machcharge:
 			p.sprite_index = spr_mach3charge
-			p.image_alpha = 0.5
-			p.depth = -230
+			p.image_speed = 0.5
 			obj_particlecontroller.active_particles.machcharge = true
+			break;
+		case particles.bang:
+			p.sprite_index = spr_bangeffect
+			p.image_speed = 0.5
 			break;
 	}
 	p.image_number = sprite_get_number(p.sprite_index)

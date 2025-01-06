@@ -51,10 +51,7 @@ function enemy_hit()
 {
 	sprite_index = sprs.dead
 	if (place_meeting(x + hsp, y + vsp, obj_solid))
-	{
-		do_enemygibs()
 		instance_destroy()
-	}
 	if (place_meeting(x + hsp, y, obj_solid) && scr_slope(x, y + 1))
 	{
 		hsp = 0
@@ -80,9 +77,9 @@ function do_scared()
 
 function do_enemygibs()
 {
-	particle_create(x, y, particles.genericpoof)
+	particle_create(x, y, particles.bang)
 	particle_create(x, y, particles.parry)
-	repeat (4)
+	repeat (3)
 	{
 		particle_create(x, y, particles.gib)
 		particle_create(x, y, particles.stars)

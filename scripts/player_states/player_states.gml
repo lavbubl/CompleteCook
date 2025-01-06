@@ -18,7 +18,8 @@ enum states
 	punch,
 	hold,
 	piledriver,
-	punchenemy
+	punchenemy,
+	swingding
 }
 
 function player_normal()
@@ -828,11 +829,13 @@ function player_grab() {
 	{
 		movespeed += 0.5
 	}
+	
 	if (!key_jump.down && !jumpstop && vsp < 0.5)
 	{
 		vsp /= 20
 		jumpstop = true
 	}
+	
 	if (key_jump.pressed && !key_down.down && coyote_time)
 	{
 		jumpstop = false
@@ -840,6 +843,7 @@ function player_grab() {
 		state = states.mach2
 		reset_anim(spr_player_longjump)
 	}
+	
 	if (key_down.down && !key_jump.down && grounded)
 	{
 		movespeed = 12
@@ -847,6 +851,7 @@ function player_grab() {
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
 	}
+	
 	if (sprite_index == spr_player_suplexgrab && !grounded)
 		reset_anim(spr_player_suplexgrabjump)
 	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && key_dash.down)
@@ -854,6 +859,7 @@ function player_grab() {
 		state = states.mach2
 		sprite_index = spr_player_mach2
 	}
+	
 	if (place_meeting(x + xscale, y, obj_solid) && !grounded)
 	{
 		wallspeed = 6
@@ -869,6 +875,7 @@ function player_grab() {
 		movespeed = 0
 		vsp = -5
 	}
+	
 	image_speed = 0.35
 	switch (sprite_index)
 	{
@@ -886,11 +893,13 @@ function player_grab() {
 				state = states.normal
 			break;
 	}
+	
 	if (anim_ended() && key_dash.down && sprite_index == spr_player_suplexgrab)
 	{
 		state = states.mach2
 		sprite_index = spr_player_mach2
 	}
+	
 	if (p_move != 0 && p_move != xscale)
 	{
 		if !grounded
@@ -904,6 +913,8 @@ function player_grab() {
 	}
 	aftimg_timers.blur.do_it = true
 }
+
+
 
 function player_superjump() 
 {
@@ -1157,7 +1168,30 @@ function player_hold()
 		if (key_up.down)
 			reset_anim(spr_player_finishingblowup)
 	}
+}
+
+
+function player_swingding()
+{
+	image_speed = abs(hsp) / 24
 	
+	if grounded
+		hsp = approach(hsp, 0, 0.2)
+		
+	if abs(hsp) <= 3
+	{
+		state = states.hold
+		sprite_index = spr_player_holdidle
+	}
+	
+	if (key_attack.pressed || place_meeting(x + xscale, y, obj_solid))
+	{
+		state = states.punchenemy
+		reset_anim(spr_player_swingdingend)
+	}
+	
+	aftimg_timers.blur.do_it = true
+	instakill = true
 }
 
 function player_punchenemy()
@@ -1166,12 +1200,17 @@ function player_punchenemy()
 	hsp = approach(hsp, 0, 0.4)
 	movespeed = 0
 	
-	var ixcheck = sprite_index == spr_player_finishingblowup ? 5 : 7
+	var ixcheck = 7
+	
+	if sprite_index == spr_player_finishingblowup
+		ixcheck = 5
+	if sprite_index == spr_player_swingdingend
+		ixcheck = 1
 	
 	if (floor(image_index) == ixcheck)
 	{
 		hsp = xscale * -5
-		vsp = -5
+		vsp = -6
 	}
 	
 	if anim_ended()

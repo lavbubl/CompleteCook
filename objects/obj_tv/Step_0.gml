@@ -1,12 +1,26 @@
+var p = obj_player
+
 switch (state)
 {
+	case tv_states.off:
+		sprite_index = spr_tv_off
+		if !visible
+			image_index = 0
+		if anim_ended()
+			state = tv_states.normal
+		break;
 	case tv_states.normal:
 		sprite_index = spr_tv_idle
 		if global.combo.count >= 3
 			sprite_index = spr_tv_combo
 		
-		if (obj_player.state == states.mach3)
-			tv_expression(spr_tv_mach3)
+		if (p.state == states.mach3)
+		{
+			if (abs(obj_player.hsp) >= 16)
+				tv_expression(spr_tv_mach4)
+			else
+				tv_expression(spr_tv_mach3)
+		}
 		break;
 	case tv_states.transition:
 		if t_index + 0.35 < sprite_get_number(spr_tv_trans)
@@ -18,8 +32,19 @@ switch (state)
 		}
 		break;
 	case tv_states.expr:
-		if (obj_player.state != states.mach3)
-			tv_expression(spr_tv_idle)
+		switch (sprite_index)
+		{
+			case spr_tv_mach3:
+				if (p.state != states.mach3 && p.state != states.climbwall && p.sprite_index != spr_player_machslideboost3)
+					tv_expression(spr_tv_idle)
+				if (abs(obj_player.hsp) >= 16 && p.state == states.mach3)
+					tv_expression(spr_tv_mach4)
+				break;
+			case spr_tv_mach4:
+				if (obj_player.state != states.mach3 && p.state != states.climbwall)
+					tv_expression(spr_tv_idle)
+				break;
+		}
 		break;
 }
 

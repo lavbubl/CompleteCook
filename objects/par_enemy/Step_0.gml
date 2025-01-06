@@ -45,7 +45,7 @@ if (place_meeting(x, y, obj_player))
 		sleep(50)
 		hsp = obj_player.xscale * 18
 		xscale = -obj_player.xscale
-		warp = 0.5
+		warp = 0.4
 		state = e_states.stun
 		stun_timer = 180
 		vsp = -5
@@ -75,6 +75,38 @@ if (place_meeting(x, y, obj_player))
 				vsp = -18
 			}
 		}
+		if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2)
+		{
+			if (state == states.jump)
+			{
+				vsp = key_jump.down ? -15 : -10
+				jumpstop = true
+				reset_anim(spr_player_stomp)
+				with (other)
+				{
+					xscale = -obj_player.xscale
+					hsp = obj_player.xscale * 5
+					vsp = -5
+					state = e_states.stun
+					stun_timer = 180
+					warp = -0.4
+				}
+			}
+			if (state == states.hold)
+			{
+				vsp = key_jump.down ? -15 : -10
+				jumpstop = true
+				with (other)
+				{
+					xscale = -obj_player.xscale
+					hsp = obj_player.xscale * 5
+					vsp = -5
+					state = e_states.stun
+					stun_timer = 180
+					warp = -0.4
+				}
+			}
+		}
 	}
 }
 
@@ -92,8 +124,7 @@ if (obj_player.state == states.taunt)
 	stun_timer = 0
 }
 
-if warp > 0
-	warp -= 0.05
+warp = approach(warp, 0, 0.025)
 
 if flash > 0
 	flash--

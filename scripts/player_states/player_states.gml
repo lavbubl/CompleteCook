@@ -169,7 +169,11 @@ function player_jump()
 		case spr_player_grabcancel:
 		case spr_player_piledriverjump:
 			reset_anim_on_end(spr_player_fall)
-			break
+			break;
+		case spr_player_stomp:
+			if anim_ended()
+				image_index = 3
+			break;
 	}
 	do_taunt()
 }
@@ -1191,6 +1195,7 @@ function player_swingding()
 	{
 		state = states.hold
 		sprite_index = spr_player_holdidle
+		movespeed = 0
 	}
 	
 	if (key_attack.pressed || place_meeting(x + xscale, y, obj_solid))
@@ -1257,6 +1262,13 @@ function player_grind()
 	sprite_index = spr_player_grind
 	image_speed = 0.35
 	
+	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))
+	{
+		state = states.mach2
+		sprite_index = spr_player_mach2jump
+		movespeed = abs(hsp)
+	}
+	
 	if (key_jump.pressed && place_meeting(x, y + 1, obj_grindrail))
 	{
 		vsp = -12
@@ -1264,12 +1276,6 @@ function player_grind()
 		state = states.mach2
 		sprite_index = spr_player_mach2jump
 		movespeed = abs(hsp)
-	}
-	
-	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))
-	{
-		state = states.mach2
-		sprite_index = spr_player_mach2jump
-		movespeed = abs(hsp)
+		y -= 12
 	}
 }

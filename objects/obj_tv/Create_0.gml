@@ -1,4 +1,5 @@
 enum tv_states {
+	off,
 	normal,
 	transition,
 	expr
@@ -13,7 +14,7 @@ ystart = y
 
 expr_sprite = spr_tv_mach3
 state_togo = tv_states.expr
-state = tv_states.normal
+state = tv_states.off
 
 combo_val = false
 
@@ -25,6 +26,6 @@ combo = {
 		y: 0
 	},
 	x: 0,
-	y: 0,
+	y: -500,
 	vsp: 0
 }

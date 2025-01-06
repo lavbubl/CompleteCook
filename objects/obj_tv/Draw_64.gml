@@ -17,6 +17,7 @@ for (var i = num; i > 0; i--)
 	_ty -= 8
 }
 
+draw_sprite(spr_tv_bg, 0, x, y)
 draw_self()
 
 if state == tv_states.transition

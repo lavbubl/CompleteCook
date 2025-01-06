@@ -41,7 +41,8 @@ function enemy_grabbed()
 
 function enemy_stun()
 {
-	hsp = approach(hsp, 0, 0.4)
+	if grounded
+		hsp = approach(hsp, 0, 0.25)
 	sprite_index = sprs.stun
 	image_speed = 0.35
 	if (stun_timer <= 0)

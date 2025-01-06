@@ -15,11 +15,11 @@ function afterimage_create(a_type)
 	switch (a_type)
 	{
 		case after_images.mach:
-			inst.image_blend = choose(c_red, c_lime)
-			inst.lifetime = 15
+			inst.image_blend = choose(obj_afterimagecontroller.mach_color1, obj_afterimagecontroller.mach_color2)
+			inst.lifetime = 10
 			break;
 		case after_images.blur:
-			inst.image_alpha = 2
+			inst.image_alpha = 0.8
 			inst.hsp = hsp
 			inst.vsp = vsp
 			break;

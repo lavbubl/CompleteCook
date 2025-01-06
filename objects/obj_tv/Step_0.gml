@@ -25,7 +25,7 @@ switch (combo.state)
 	case -1:
 		combo.vsp = 0
 		combo.y = approach(combo.y, -500, 4)
-		if global.combo.timer > 0
+		if global.combo.count > 0
 			combo.state++
 		break;
 	case 0:
@@ -67,7 +67,7 @@ combo.ghost.y = combo.y
 combo.ghost.image_index += 0.35
 combo.ghost.image_index = wrap(sprite_get_number(spr_tv_c_ghost), combo.ghost.image_index)
 
-if global.combo.timer <= 0
+if global.combo.count <= 0
 	combo.state = -1
 
 var y_goto = ystart

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"particle_create",
+  "%Name":"particle_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"particle_create",
+  "name":"particle_util",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

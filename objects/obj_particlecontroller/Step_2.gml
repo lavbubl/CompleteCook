@@ -22,6 +22,15 @@ for (var p = 0; p < ds_list_size(particle_list); p++)
 				if (obj_player.taunttimer < 1 || obj_player.state != states.taunt)
 					ds_list_delete(other.particle_list, p)
 				break;
+			case particles.machcharge:
+				x = obj_player.x
+				y = obj_player.y
+				if (obj_player.state != states.mach3)
+				{
+					other.active_particles.machcharge = false
+					ds_list_delete(other.particle_list, p)
+				}
+				break;
 			default:
 				if anim_ended()
 					ds_list_delete(other.particle_list, p)

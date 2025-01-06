@@ -45,7 +45,7 @@ if follow_player
 			case spr_player_finishingblow_4:
 			case spr_player_finishingblow_5:
 				other.x = x + xscale * 64
-				other.y = y
+				other.y = y - 16
 				break;
 			case spr_player_finishingblowup:
 				other.x = x + xscale * 10
@@ -96,6 +96,7 @@ if follow_player
 				other.hsp = 0
 				other.vsp = -20
 			}
-}
+			global.combo.timer = 60
+		}
 	}
 }

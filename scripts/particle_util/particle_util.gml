@@ -4,7 +4,8 @@ enum particles {
 	gib,
 	stars,
 	parry,
-	taunt
+	taunt,
+	machcharge
 }
 
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
@@ -17,6 +18,10 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 		y: _y,
 		image_xscale: _xscale,
 		image_yscale: _yscale,
+		image_blend: c_white,
+		image_angle: 0,
+		image_alpha: 1,
+		depth: 0,
 		type: p_type
 	}
 	switch (p_type)
@@ -41,6 +46,12 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 			break;
 		case particles.taunt:
 			p.sprite_index = spr_taunteffect
+			break;
+		case particles.machcharge:
+			p.sprite_index = spr_mach3charge
+			p.image_alpha = 0.5
+			p.depth = -230
+			obj_particlecontroller.active_particles.machcharge = true
 			break;
 	}
 	p.image_number = sprite_get_number(p.sprite_index)

@@ -641,6 +641,8 @@ function player_slide()
 			}
 			break
 	}
+	if (sprite_index == spr_player_machslideboost3)
+		instakill = true
 }
 
 function player_bump() 

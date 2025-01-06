@@ -112,20 +112,22 @@ collide()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {
-	var conditional = false
-	if (_data.do_it)
-		conditional = true
 	if (_data.timer > 0)
 		_data.timer--
-	else if conditional
+	else if _data.do_it
 	{
 		afterimage_create(_data.effect)
 		_data.timer = _data.resetpoint
 	}
 })
 
+if (state == states.mach3 && !obj_particlecontroller.active_particles.machcharge)
+	particle_create(x, y, particles.machcharge, xscale)
+
 if ladderbuffer > 0
 	ladderbuffer--
+
+
 
 /*if particletimer > 0
 	particletimer--

@@ -13,7 +13,7 @@ function enemy_normal()
 	movespeed = 1
 	hsp = movespeed * xscale
 	
-	if (place_meeting(x + xscale, y, obj_solid))
+	if (place_meeting(x + xscale, y, obj_solid) || !scr_solid(x + hsp, y + 4))
 		xscale *= -1
 }
 
@@ -50,7 +50,7 @@ function enemy_stun()
 function enemy_hit()
 {
 	sprite_index = sprs.dead
-	if ((place_meeting(x + hsp, y + vsp, obj_solid) && !scr_slope(x, y + 1)) || scr_slope(x, y - 1))
+	if (place_meeting(x + hsp, y + vsp, obj_solid))
 	{
 		do_enemygibs()
 		instance_destroy()
@@ -66,7 +66,7 @@ function do_scared()
 {
 	if scared_timer > 0
 		scared_timer--
-	else if (obj_player.state == states.mach3)
+	else if (obj_player.state == states.mach3 && distance_to_object(obj_player) < 200 && state != e_states.hit)
 	{
 		state = e_states.scared
 		hsp = 0

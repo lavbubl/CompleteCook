@@ -1,3 +1,9 @@
+if (ds_list_find_index(global.ds_dead_enemies, id) != -1)
+{
+	instance_destroy()
+	exit;
+}
+
 struct_foreach(state_struct, function(_name, _data)
 {
 	var func_todo = _data.func
@@ -51,6 +57,7 @@ if (place_meeting(x, y, obj_player))
 		repeat (4)
 			particle_create(x, y, particles.stars)
 		flash = 8
+		global.combo.timer = 60
 	}
 	with (obj_player)
 	{
@@ -75,6 +82,12 @@ else if state == e_states.hit
 {
 	afterimage_create(after_images.blur)
 	blur_timer = 2
+}
+
+if (obj_player.state == states.taunt)
+{
+	scared_timer = 0
+	stun_timer = 0
 }
 
 if warp > 0

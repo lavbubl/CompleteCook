@@ -33,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_techdiff_bg",
+    "path":"sprites/spr_techdiff_bg/spr_techdiff_bg.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

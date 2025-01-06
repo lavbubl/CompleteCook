@@ -1,2 +1,2 @@
 instance_destroy()
-sleep(100)
+sleep(75)

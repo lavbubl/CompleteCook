@@ -94,6 +94,12 @@ function scr_solid(_x, _y)
 	var collided = false
 	var master = id
 	var do_parent_check = false
+	var climbingladder = false
+	if variable_instance_exists(master, "state")
+	{
+		if (master.state == states.ladder)
+			climbingladder = true
+	}
 	for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
 	{
 		var _id = ds_list_find_value(global.col_obj_list, i)
@@ -105,7 +111,7 @@ function scr_solid(_x, _y)
 					collided = true
 					break;
 				case obj_platform:
-					if (master.bbox_bottom <= bbox_top + 1 && (master.y - master.old_y2) >= 0 && master.state != states.ladder)
+					if (master.bbox_bottom <= bbox_top + 1 && (master.y - master.old_y2) >= 0 && !climbingladder)
 						collided = true
 					break;
 				case obj_slope:
@@ -113,7 +119,7 @@ function scr_solid(_x, _y)
 						collided = true
 					break;
 				case obj_slopeplatform:
-					if (collide_slopeplatform(master, _x, _y) && master.state != states.ladder)
+					if (collide_slopeplatform(master, _x, _y) && !climbingladder)
 						collided = true
 					break;
 				default:

@@ -7,5 +7,6 @@ with (obj_player)
 {
 	x = xstart
 	y = ystart
+	vsp = 0
 	state = states.normal
 }

@@ -12,6 +12,8 @@ else if vsp < 0
 	
 #macro p_move (-key_left.down + key_right.down)
 
+instakill = false
+
 switch (state)
 {
 	case states.taunt:
@@ -65,6 +67,12 @@ switch (state)
 	case states.hold:
 		player_hold()
 		break;
+	case states.punchenemy:
+		player_punchenemy()
+		break;
+	case states.piledriver:
+		player_piledriver()
+		break;
 }
 
 if (state != states.normal)
@@ -90,6 +98,15 @@ if taunttimer > 0
 grav = 0.5
 if (state == states.ladder)
 	grav = 0
+	
+if (y > room_height + 200 && state != states.actor)
+{
+	instance_create(0, 0, obj_technicaldifficulty)
+	state = states.actor
+	hsp = 0
+	vsp = 0
+	sprite_index = spr_player_idle
+}
 	
 collide()
 

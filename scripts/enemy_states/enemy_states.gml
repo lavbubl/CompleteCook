@@ -2,7 +2,8 @@ enum e_states {
 	normal,
 	scared,
 	grabbed,
-	stun
+	stun,
+	hit
 }
 
 function enemy_normal()
@@ -10,10 +11,10 @@ function enemy_normal()
 	image_speed = 0.35
 	
 	movespeed = 1
-	hsp = movespeed * image_xscale
+	hsp = movespeed * xscale
 	
-	if (place_meeting(x + image_xscale, y, obj_solid))
-		image_xscale *= -1
+	if (place_meeting(x + xscale, y, obj_solid))
+		xscale *= -1
 }
 
 function enemy_scared()
@@ -30,14 +31,35 @@ function enemy_grabbed()
 	hsp = 0
 	sprite_index = sprs.stun
 	image_speed = 0.35
-	image_xscale = -obj_player.xscale
 }
 
 function enemy_stun()
 {
-	hsp = approach(hsp, 0, 0.01)
+	hsp = approach(hsp, 0, 0.4)
 	sprite_index = sprs.stun
 	image_speed = 0.35
+	if (stun_timer <= 0)
+	{
+		state = states.normal
+		sprite_index = sprs.move
+	}
+	else
+		stun_timer--
+}
+
+function enemy_hit()
+{
+	sprite_index = sprs.dead
+	if ((place_meeting(x + hsp, y + vsp, obj_solid) && !scr_slope(x, y + 1)) || scr_slope(x, y - 1))
+	{
+		do_enemygibs()
+		instance_destroy()
+	}
+	if (place_meeting(x + hsp, y, obj_solid) && scr_slope(x, y + 1))
+	{
+		hsp = 0
+		vsp = -20
+	}
 }
 
 function do_scared()
@@ -51,7 +73,18 @@ function do_scared()
 		vsp = -5
 		movespeed = 0
 		sprite_index = sprs.scared
-		image_xscale = obj_player.x > x ? 1 : -1
+		xscale = obj_player.x > x ? 1 : -1
 		scared_timer = 180
+	}
+}
+
+function do_enemygibs()
+{
+	particle_create(x, y, particles.genericpoof)
+	particle_create(x, y, particles.parry)
+	repeat (4)
+	{
+		particle_create(x, y, particles.gib)
+		particle_create(x, y, particles.stars)
 	}
 }

@@ -1,0 +1,1 @@
+ds_list_clear(particle_list)

@@ -6,7 +6,7 @@ with (obj_spawnpoint)
 	if (other.spawn == spawn)
 	{
 		other.x = x
-		other.y = y - 15
+		other.y = y - 14
 		switch (other.door_type)
 		{
 			case fade_types.hallway:
@@ -50,3 +50,6 @@ with (obj_spawnpoint)
 	else
 		state = states.normal
 }
+
+other.xstart = other.x
+other.ystart = other.y

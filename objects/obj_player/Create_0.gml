@@ -1,4 +1,5 @@
 init_collide()
+
 spawn = "a"
 door_type = fade_types.none
 hallxscale = 1
@@ -14,7 +15,7 @@ wallspeed = 0
 flash = 0
 
 aftimg_timers = {
-	mach: {timer: 0, effect: after_images.mach, resetpoint: 8, do_it: false},
+	mach: {timer: 0, effect: after_images.mach, resetpoint: 6, do_it: false},
 	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false}
 }
 
@@ -40,6 +41,7 @@ breakdance_secret = {
 	spd: 0.1
 }
 
+instakill = false
 particletimer = 0
 taunttimer = 0
-depth = -999
+depth = -200

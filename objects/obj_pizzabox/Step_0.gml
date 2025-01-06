@@ -12,7 +12,7 @@ with (instance_place(x, y - image_yscale, obj_player))
 {
 	if (state != states.actor && other.live > livemax)
 	{
-		if ((down || state == states.groundpound) && place_meeting(x, y + 1, other) && other.image_yscale == 1)
+		if ((down || state == states.groundpound || state == states.piledriver) && place_meeting(x, y + 1, other) && other.image_yscale == 1)
 		{
 			dooryscale = 1
 			state = states.actor

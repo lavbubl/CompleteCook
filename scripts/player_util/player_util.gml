@@ -27,7 +27,7 @@ function do_grab()
 		}
 		else
 		{
-			vsp = grounded ? -14 : -8
+			vsp = grounded ? -18 : -8
 			hsp = abs(hsp) * xscale
 			state = states.punch
 			reset_anim(spr_player_uppercut)
@@ -50,5 +50,6 @@ function do_taunt()
 		image_index = random_range(0, image_number)
 		taunttimer = 20
 		state = states.taunt
+		particle_create(x, y, particles.taunt)
 	}
 }

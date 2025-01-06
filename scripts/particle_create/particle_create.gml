@@ -2,7 +2,9 @@ enum particles {
 	bleh,
 	genericpoof,
 	gib,
-	parry
+	stars,
+	parry,
+	taunt
 }
 
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
@@ -26,7 +28,8 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 			p.sprite_index = spr_genericpoofeffect
 			break;
 		case particles.gib:
-			p.sprite_index = choose(spr_gibs, spr_gibstars)
+		case particles.stars:
+			p.sprite_index = p_type == particles.gib ? spr_gibs : spr_gibstars
 			p.image_index = random_range(0, sprite_get_number(p.sprite_index))
 			p.image_speed = 0
 			p.hsp = irandom_range(6, -6)
@@ -35,6 +38,10 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 			break;
 		case particles.parry:
 			p.sprite_index = spr_parryflash
+			break;
+		case particles.taunt:
+			p.sprite_index = spr_taunteffect
+			break;
 	}
 	p.image_number = sprite_get_number(p.sprite_index)
 	with (obj_particlecontroller)

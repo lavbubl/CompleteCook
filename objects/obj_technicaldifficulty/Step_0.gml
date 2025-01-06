@@ -1,12 +1,12 @@
 if (state != 1)
 {
-	if (state == 0 && round(image_index) == image_number - 1)
+	if (state == 0 && anim_ended())
 	{
-		state = 1
+		state++
 		alarm[0] = 80
 		image_speed = 0
-		image_index = irandom(2)
-		sprite_index = spr_techdiff
+		t_ix = irandom(2)
+		sprite_index = spr_techdiff_bg
 	}
 	if (state == 2 && round(image_index) == 0)
 		instance_destroy()

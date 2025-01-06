@@ -16,7 +16,9 @@ enum states
 	actor,
 	ladder,
 	punch,
-	hold
+	hold,
+	piledriver,
+	punchenemy
 }
 
 function player_normal()
@@ -163,6 +165,7 @@ function player_jump()
 	{
 		case spr_player_jump:
 		case spr_player_grabcancel:
+		case spr_player_piledriverjump:
 			reset_anim_on_end(spr_player_fall)
 			break
 	}
@@ -411,13 +414,14 @@ function player_mach3() {
 			break
 		case spr_player_mach3jump:
 		case spr_player_rollgetup:
-			if anim_ended()
-				sprite_index = spr_player_mach3
+		case spr_player_mach3kill:
+			reset_anim_on_end(spr_player_mach3)
 			break
 	}
 	do_taunt()
 	
 	aftimg_timers.mach.do_it = true
+	instakill = true
 }
 
 function player_tumble() {
@@ -694,6 +698,8 @@ function player_groundpound()
 			}
 		}
 		  */
+		if (vsp > 17)
+			aftimg_timers.mach.do_it = true
 		vsp += 0.5
 	}
 	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
@@ -810,6 +816,7 @@ function player_groundpound()
 	}
 	image_speed = 0.35
 	aftimg_timers.blur.do_it = true
+	instakill = true
 }
 
 function player_grab() {
@@ -945,6 +952,7 @@ function player_superjump()
 	}
 	if (sprite_index == spr_player_superjump)
 	{
+		instakill = true
 		image_speed = abs(vsp) / 25
 		/*if (superjumpeffecttimer > 0)
 			superjumpeffecttimer--
@@ -1082,7 +1090,10 @@ function player_punch()
 	}
 	
 	if (vsp < 0)
+	{
 		aftimg_timers.mach.do_it = true
+		instakill = true
+	}
 }
 
 function player_hold()
@@ -1135,4 +1146,56 @@ function player_hold()
 			reset_anim_on_end(spr_player_holdfall)
 			break;
 	}
+	
+	if (key_attack.pressed)
+	{
+		state = states.punchenemy
+		var str = string_concat("spr_player_finishingblow_", string(irandom_range(1, 5)))
+		reset_anim(asset_get_index(str))
+		if (key_up.down)
+			reset_anim(spr_player_finishingblowup)
+	}
+	
+}
+
+function player_punchenemy()
+{
+	image_speed = 0.4
+	hsp = approach(hsp, 0, 0.4)
+	movespeed = 0
+	
+	var ixcheck = sprite_index == spr_player_finishingblowup ? 5 : 7
+	
+	if (floor(image_index) == ixcheck)
+	{
+		hsp = xscale * -5
+		vsp = -5
+	}
+	
+	if anim_ended()
+		state = states.normal
+		
+	aftimg_timers.mach.do_it = true
+}
+
+function player_piledriver()
+{
+	if (vsp > 0)
+		vsp += 0.5
+		
+	if (p_move != 0)
+		movespeed = approach(movespeed, 4, 0.2)
+	if (p_move == 0 || sprite_index == spr_player_piledriverland)
+		movespeed = 0
+		
+	dir = p_move
+	
+	hsp = movespeed * dir
+	if (grounded && sprite_index != spr_player_piledriverland && vsp >= 0)
+	{
+		reset_anim(spr_player_piledriverland)
+		shake_camera()
+	}
+	
+	instakill = true
 }

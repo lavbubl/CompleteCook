@@ -11,10 +11,16 @@ function enemy_normal()
 	image_speed = 0.35
 	
 	movespeed = 1
-	hsp = movespeed * xscale
 	
-	if (place_meeting(x + xscale, y, obj_solid) || !scr_solid(x + hsp, y + 4))
-		xscale *= -1
+	if grounded
+	{
+		hsp = movespeed * xscale
+	
+		if (place_meeting(x + xscale, y, obj_solid) || !scr_solid(x + hsp + xscale, y + 4))
+			xscale *= -1
+	}
+	else
+		hsp = 0
 }
 
 function enemy_scared()
@@ -63,7 +69,7 @@ function do_scared()
 {
 	if scared_timer > 0
 		scared_timer--
-	else if (obj_player.state == states.mach3 && distance_to_object(obj_player) < 200 && state != e_states.hit)
+	else if (obj_player.state == states.mach3 && distance_to_object(obj_player) < 200 && state != e_states.hit && grounded)
 	{
 		state = e_states.scared
 		hsp = 0

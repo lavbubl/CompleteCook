@@ -19,7 +19,8 @@ enum states
 	hold,
 	piledriver,
 	punchenemy,
-	swingding
+	swingding,
+	grind
 }
 
 function player_normal()
@@ -218,7 +219,12 @@ function player_mach2() {
 	}
 	else
 	{
-		if (sprite_index != spr_player_secondjump && sprite_index != spr_player_secondjumploop && sprite_index != spr_player_walljump && sprite_index != spr_player_walljumpfall && sprite_index != spr_player_longjump)
+		if (sprite_index != spr_player_secondjump && 
+			sprite_index != spr_player_secondjumploop && 
+			sprite_index != spr_player_walljump && 
+			sprite_index != spr_player_walljumpfall && 
+			sprite_index != spr_player_longjump &&
+			sprite_index != spr_player_mach2jump)
 			reset_anim(spr_player_secondjump)
 		if (!jumpstop && !key_jump.down && vsp < 0)
 		{
@@ -423,6 +429,9 @@ function player_mach3() {
 	
 	aftimg_timers.mach.do_it = true
 	instakill = true
+	
+	if !obj_particlecontroller.active_particles.machcharge
+		particle_create(x, y, particles.machcharge, xscale)
 }
 
 function player_tumble() {
@@ -536,7 +545,7 @@ function player_climbwall()
 		else
 			movespeed += 0.4
 	}
-	sprite_index = spr_player_climbwall
+	sprite_index = wallspeed > 4 ? spr_player_climbwall : spr_player_clingwall
 	image_speed = 0.5
 	if (!place_meeting(x + xscale, y, obj_solid))
 	{
@@ -1239,4 +1248,28 @@ function player_piledriver()
 	}
 	
 	instakill = true
+}
+
+function player_grind()
+{
+	if ((hsp < 10 && xscale == 1) || (hsp > -10 && xscale == -1))
+		hsp = approach(hsp, xscale * 10, 0.4)
+	sprite_index = spr_player_grind
+	image_speed = 0.35
+	
+	if (key_jump.pressed && place_meeting(x, y + 1, obj_grindrail))
+	{
+		vsp = -12
+		jumpstop = false
+		state = states.mach2
+		sprite_index = spr_player_mach2jump
+		movespeed = abs(hsp)
+	}
+	
+	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))
+	{
+		state = states.mach2
+		sprite_index = spr_player_mach2jump
+		movespeed = abs(hsp)
+	}
 }

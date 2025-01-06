@@ -76,6 +76,9 @@ switch (state)
 	case states.swingding:
 		player_swingding()
 		break;
+	case states.grind:
+		player_grind()
+		break;
 }
 
 if (state != states.normal)
@@ -104,6 +107,7 @@ if (state == states.ladder)
 	
 if (y > room_height + 200 && state != states.actor)
 {
+	shake_camera()
 	instance_create(0, 0, obj_technicaldifficulty)
 	state = states.actor
 	hsp = 0
@@ -123,9 +127,6 @@ struct_foreach(aftimg_timers, function(_name, _data)
 		_data.timer = _data.resetpoint
 	}
 })
-
-if (state == states.mach3 && !obj_particlecontroller.active_particles.machcharge)
-	particle_create(x, y, particles.machcharge, xscale)
 
 if ladderbuffer > 0
 	ladderbuffer--

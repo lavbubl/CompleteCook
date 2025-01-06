@@ -1,9 +1,3 @@
-if (ds_list_find_index(global.ds_dead_enemies, id) != -1)
-{
-	instance_destroy()
-	exit;
-}
-
 struct_foreach(state_struct, function(_name, _data)
 {
 	var func_todo = _data.func
@@ -71,7 +65,8 @@ if (place_meeting(x, y, obj_player))
 			{
 				state = states.swingding
 				sprite_index = spr_player_swingding
-				vsp = -5
+				if !grounded
+					vsp = -5
 			}
 			if (key_up.down)
 			{

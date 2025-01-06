@@ -51,5 +51,7 @@ with (obj_spawnpoint)
 		state = states.normal
 }
 
+if (state == states.hold || state == states.swingding)
+	state = states.normal
 other.xstart = other.x
 other.ystart = other.y

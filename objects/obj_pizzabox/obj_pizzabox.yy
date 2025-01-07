@@ -9,8 +9,8 @@
   "name":"obj_pizzabox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Warps",
+    "path":"folders/Objects/Level Structure/Warps.yy",
   },
   "parentObjectId":{
     "name":"obj_solid",

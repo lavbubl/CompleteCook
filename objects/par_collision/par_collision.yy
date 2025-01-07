@@ -8,8 +8,8 @@
   "name":"par_collision",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Collision",
+    "path":"folders/Objects/Level Structure/Collision.yy",
   },
   "parentObjectId":null,
   "persistent":false,

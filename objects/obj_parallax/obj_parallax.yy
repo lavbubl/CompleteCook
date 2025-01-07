@@ -9,8 +9,8 @@
   "name":"obj_parallax",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Essentials",
+    "path":"folders/Objects/Essentials.yy",
   },
   "parentObjectId":null,
   "persistent":true,

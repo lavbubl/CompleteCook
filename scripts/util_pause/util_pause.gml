@@ -11,7 +11,7 @@ function make_pause_image()
 	draw_surface(application_surface, 0, 0)
 	gpu_set_alphatestenable(true)
 	
-	draw_surface(obj_handler.gui_surf, 0, 0)
+	draw_surface(obj_generichandler.gui_surf, 0, 0)
 	
 	surface_reset_target()
 	

@@ -10,8 +10,8 @@
   "name":"obj_afterimagecontroller",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Controllers",
+    "path":"folders/Objects/Essentials/Controllers.yy",
   },
   "parentObjectId":null,
   "persistent":true,

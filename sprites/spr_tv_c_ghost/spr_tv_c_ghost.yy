@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Tv",
-    "path":"folders/Sprites/Tv.yy",
+    "name":"TV",
+    "path":"folders/Sprites/HUD/TV.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

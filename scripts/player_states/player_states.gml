@@ -806,26 +806,18 @@ function player_groundpound()
 			shake_camera()
 			if freefallsmash >= 10
 			{
-				/*with obj_baddie
+				with (par_enemy)
 				{
-					if (shakestun && grounded && point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
+					//if (shakestun && grounded && view point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
+					if (grounded && vsp >= 0)
 					{
-						state = states.stun
-						if stunned < 60
-							stunned = 60
+						state = e_states.stun
+						stun_timer = 60
 						vsp = -11
-						image_xscale *= -1
+						xscale *= -1
 						hsp = 0
-						momentum = 0
 					}
 				}
-				with obj_camera
-				{
-					shake_mag = 10
-					shake_mag_acc = 30 / room_speed
-				}
-				combo = 0
-				bounce = false*/
 				shake_camera(10, 0.5)
 			}
 		}

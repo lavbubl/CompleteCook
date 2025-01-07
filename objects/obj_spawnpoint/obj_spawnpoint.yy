@@ -8,8 +8,8 @@
   "name":"obj_spawnpoint",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Warps",
+    "path":"folders/Objects/Level Structure/Warps.yy",
   },
   "parentObjectId":null,
   "persistent":false,

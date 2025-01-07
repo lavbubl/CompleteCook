@@ -8,8 +8,8 @@
   "name":"obj_ladder",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Misc",
+    "path":"folders/Objects/Level Structure/Misc.yy",
   },
   "parentObjectId":{
     "name":"par_collision",

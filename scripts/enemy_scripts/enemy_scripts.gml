@@ -17,10 +17,20 @@ function enemy_normal()
 		hsp = movespeed * xscale
 	
 		if (place_meeting(x + xscale, y, obj_solid) || !scr_solid(x + hsp + xscale, y + 4))
+		{
 			xscale *= -1
+			if do_turn
+				reset_anim(sprs.turn)
+		}
 	}
 	else
 		hsp = 0
+		
+	if (do_turn && sprite_index == sprs.turn)
+	{
+		hsp = 0
+		reset_anim_on_end(sprs.move)
+	}
 }
 
 function enemy_scared()

@@ -5,3 +5,5 @@ if obj_player.state != states.actor
 
 if global.combo.timer <= 0
 	global.combo.count = 0
+	
+

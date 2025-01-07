@@ -38,8 +38,8 @@
     "path":"sprites/door/door.yy",
   },
   "spriteMaskId":{
-    "name":"Sprite75",
-    "path":"sprites/Sprite75/Sprite75.yy",
+    "name":"spr_olddoor",
+    "path":"sprites/spr_olddoor/spr_olddoor.yy",
   },
   "visible":true,
 }

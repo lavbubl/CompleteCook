@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"grindrailslope",
-    "path":"sprites/grindrailslope/grindrailslope.yy",
+    "name":"spr_railslope",
+    "path":"sprites/spr_railslope/spr_railslope.yy",
   },
   "spriteMaskId":null,
   "visible":true,

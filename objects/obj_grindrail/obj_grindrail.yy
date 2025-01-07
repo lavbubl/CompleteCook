@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite134",
-    "path":"sprites/Sprite134/Sprite134.yy",
+    "name":"spr_rail",
+    "path":"sprites/spr_rail/spr_rail.yy",
   },
   "spriteMaskId":null,
   "visible":true,

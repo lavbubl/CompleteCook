@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite9",
-    "path":"sprites/Sprite9/Sprite9.yy",
+    "name":"spr_movingplatform",
+    "path":"sprites/spr_movingplatform/spr_movingplatform.yy",
   },
   "spriteMaskId":null,
   "visible":true,

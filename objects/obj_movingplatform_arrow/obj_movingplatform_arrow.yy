@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite10",
-    "path":"sprites/Sprite10/Sprite10.yy",
+    "name":"spr_mp_arrow",
+    "path":"sprites/spr_mp_arrow/spr_mp_arrow.yy",
   },
   "spriteMaskId":null,
   "visible":true,

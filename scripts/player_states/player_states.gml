@@ -1262,13 +1262,6 @@ function player_grind()
 	sprite_index = spr_player_grind
 	image_speed = 0.35
 	
-	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))
-	{
-		state = states.mach2
-		sprite_index = spr_player_mach2jump
-		movespeed = abs(hsp)
-	}
-	
 	if (key_jump.pressed && place_meeting(x, y + 1, obj_grindrail))
 	{
 		vsp = -12
@@ -1276,6 +1269,12 @@ function player_grind()
 		state = states.mach2
 		sprite_index = spr_player_mach2jump
 		movespeed = abs(hsp)
-		y -= 12
+	}
+	
+	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))
+	{
+		state = states.mach2
+		sprite_index = spr_player_mach2jump
+		movespeed = abs(hsp)
 	}
 }

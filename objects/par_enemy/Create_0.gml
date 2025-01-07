@@ -11,6 +11,9 @@ scared_timer = 0
 stun_timer = 0
 blur_timer = 0
 
+follow_player = false
+pd_frame_offset = [2, 1, 0, -1, -2, -1, 0, 1]
+
 state_struct = {
 	normal: {state: e_states.normal, func: enemy_normal},
 	scared: {state: e_states.scared, func: enemy_scared},
@@ -25,7 +28,3 @@ sprs = {
 	dead: spr_slime_dead,
 	stun: spr_slime_stun
 }
-
-pd_frame_offset = [2, 1, 0, -1, -2, -1, 0, 1]
-
-follow_player = false

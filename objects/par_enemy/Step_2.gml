@@ -77,7 +77,7 @@ if follow_player
 					stun_timer = 180
 				}
 			}
-			if (!grounded && state != states.piledriver)
+			if (!grounded && state == states.hold || state == states.hold)
 			{
 				movespeed = abs(hsp)
 				state = states.piledriver

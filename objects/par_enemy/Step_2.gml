@@ -79,10 +79,11 @@ if follow_player
 			}
 			if (!grounded && state == states.hold || state == states.swingding)
 			{
+				sprite_index = spr_player_piledriver
 				movespeed = abs(hsp)
 				state = states.piledriver
 				vsp = -8
-				sprite_index = spr_player_piledriver
+				other.yscale = -1
 			}
 		}
 		if (image_index >= image_number - 1 && sprite_index == spr_player_piledriverland)
@@ -106,15 +107,17 @@ if follow_player
 		{
 			shake_camera()
 			with (other)
-				do_enemygibs()
-			other.follow_player = false
-			other.state = e_states.hit
-			other.hsp = xscale * 20
-			other.vsp = 0
-			if obj_player.sprite_index == spr_player_finishingblowup
 			{
-				other.hsp = 0
-				other.vsp = -20
+				do_enemygibs()
+				follow_player = false
+				state = e_states.hit
+				hsp = xscale * -20
+				vsp = 0
+				if obj_player.sprite_index == spr_player_finishingblowup
+				{
+					hsp = 0
+					vsp = -20
+				}
 			}
 			global.combo.timer = 60
 		}

@@ -47,6 +47,7 @@
     {"name":"obj_loading","order":6,"path":"objects/obj_loading/obj_loading.yy",},
     {"name":"obj_movingplatform_arrow","order":5,"path":"objects/obj_movingplatform_arrow/obj_movingplatform_arrow.yy",},
     {"name":"obj_movingplatform","order":4,"path":"objects/obj_movingplatform/obj_movingplatform.yy",},
+    {"name":"obj_options","order":8,"path":"objects/obj_options/obj_options.yy",},
     {"name":"obj_parallax","order":4,"path":"objects/obj_parallax/obj_parallax.yy",},
     {"name":"obj_particlecontroller","order":2,"path":"objects/obj_particlecontroller/obj_particlecontroller.yy",},
     {"name":"obj_pause","order":5,"path":"objects/obj_pause/obj_pause.yy",},

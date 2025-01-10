@@ -73,6 +73,7 @@
     {"id":{"name":"obj_loading","path":"objects/obj_loading/obj_loading.yy",},},
     {"id":{"name":"obj_movingplatform_arrow","path":"objects/obj_movingplatform_arrow/obj_movingplatform_arrow.yy",},},
     {"id":{"name":"obj_movingplatform","path":"objects/obj_movingplatform/obj_movingplatform.yy",},},
+    {"id":{"name":"obj_options","path":"objects/obj_options/obj_options.yy",},},
     {"id":{"name":"obj_parallax","path":"objects/obj_parallax/obj_parallax.yy",},},
     {"id":{"name":"obj_particlecontroller","path":"objects/obj_particlecontroller/obj_particlecontroller.yy",},},
     {"id":{"name":"obj_pause","path":"objects/obj_pause/obj_pause.yy",},},

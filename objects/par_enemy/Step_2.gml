@@ -18,49 +18,27 @@ if follow_player
 	vsp = 0
 	with (obj_player)
 	{
-		switch (sprite_index)
+		switch (state)
 		{
-			case spr_player_holdidle:
-			case spr_player_holdmove:
-			case spr_player_holdjump:
-			case spr_player_holdfall:
-			case spr_player_holdland:
-			case spr_player_holdrise:
+			case states.hold:
 				other.x = x
 				other.y = y - 64
 				other.xscale = -xscale
-				if (sprite_index == spr_player_holdrise)
+				if sprite_index == spr_player_holdrise
 					other.y += floor(image_number - image_index) * 10
 				break;
-			case spr_player_piledriver:
+			case states.piledriver:
 				other.x = x
 				other.y = y
 				other.yscale = -1
 				break;
-			case spr_player_piledriverland:
+			case states.punchenemy:
+				other.x = x + xscale * 48
+				other.y = y - 20
+				break;
+			case states.swingding:
 				other.x = x
-				other.y = y
-				other.yscale = -1
-				break;
-			case spr_player_finishingblow_1:
-			case spr_player_finishingblow_2:
-			case spr_player_finishingblow_3:
-			case spr_player_finishingblow_4:
-			case spr_player_finishingblow_5:
-				other.x = x + xscale * 64
-				other.y = y - 16
-				break;
-			case spr_player_finishingblowup:
-				other.x = x + xscale * 10
-				other.y = y - 64
-				break;
-			case spr_player_swingding:
-				other.x = x
-				other.y = y - 16
-				break;
-			case spr_player_swingdingend:
-				other.x = x + xscale * 64
-				other.y = y - 16
+				other.y = y - 20
 				break;
 		}
 		other.state = e_states.grabbed
@@ -111,9 +89,9 @@ if follow_player
 				do_enemygibs()
 				follow_player = false
 				state = e_states.hit
-				hsp = xscale * -20
+				hsp = other.xscale * 20
 				vsp = 0
-				if obj_player.sprite_index == spr_player_finishingblowup
+				if other.sprite_index == spr_player_finishingblowup
 				{
 					hsp = 0
 					vsp = -20

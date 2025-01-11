@@ -53,21 +53,12 @@ enum fade_types
 
 function do_fade(t_room, t_door, type)
 {
-	switch (type)
-	{
-		case fade_types.hallway:
-			obj_player.doorxscale = sign(image_xscale)
-			break;
-		case fade_types.v_hallway:
-			obj_player.dooryscale = sign(image_yscale)
-			if obj_player.state = states.climbwall
-				obj_player.wasclimbingwall = true
-			break;
-	}
 	with (obj_fade)
 	{
 		if !fade
 		{
+			if (type != fade_types.box)
+				scr_sound(sfx_door)
 			fade = true
 			target_room = t_room
 			pos = {

@@ -90,10 +90,11 @@ function player_normal()
 	
 	if (coyote_time && key_jump.pressed)
 	{
-		vsp = -12
+		vsp = -11
 		state = states.jump
 		reset_anim(spr_player_jump)
 		jumpstop = false
+		scr_sound(sfx_jump)
 	}
 	
 	if (key_dash.down && !place_meeting(x + xscale, y, obj_solid))
@@ -240,6 +241,7 @@ function player_mach2() {
 	{
 		jumpstop = false
 		vsp = -11
+		scr_sound(sfx_jump)
 	}
 	do_slope_momentum()
 	if (key_down.down)
@@ -340,6 +342,7 @@ function player_mach3() {
 		vsp = -11
 		jumpstop = false
 		reset_anim(spr_player_mach3jump)
+		scr_sound(sfx_jump)
 	}
 	if (grounded)
 	{
@@ -413,6 +416,7 @@ function player_mach3() {
 		vsp = -6
 		hsp = xscale * -6
 		shake_camera()
+		scr_sound(sfx_groundpound)
 	}
 	image_speed = 0.4
 	switch (sprite_index)
@@ -591,6 +595,7 @@ function player_climbwall()
 		vsp = -11
 		xscale *= -1
 		jumpstop = false
+		scr_sound(sfx_jump)
 	}
 }
 
@@ -804,6 +809,7 @@ function player_groundpound()
 			image_index = 0
 			state = states.bump
 			shake_camera()
+			scr_sound(sfx_groundpound)
 			if freefallsmash >= 10
 			{
 				with (par_enemy)
@@ -986,6 +992,7 @@ function player_superjump()
 		{
 			reset_anim(spr_player_ceilinghit)
 			state = states.bump
+			scr_sound(sfx_groundpound)
 		}
 		
 		if (sprite_index != spr_player_Sjumpcancelstart)
@@ -1038,7 +1045,10 @@ function player_crouch()
 			sprite_index = p_move != 0 ? spr_player_crawl : spr_player_crouch
 	
 		if (coyote_time && key_jump.pressed && !scr_solid(x, y - 16))
+		{
 			vsp = -12
+			scr_sound(sfx_jump)
+		}
 	}
 	
 	if !key_down.down && !scr_solid(x, y - 16) && grounded && vsp >= 0
@@ -1148,6 +1158,7 @@ function player_hold()
 	{
 		vsp = -12
 		jumpstop = false
+		scr_sound(sfx_jump)
 	}
 		
 	if p_move != 0
@@ -1242,6 +1253,7 @@ function player_piledriver()
 	{
 		reset_anim(spr_player_piledriverland)
 		shake_camera()
+		scr_sound(sfx_groundpound)
 	}
 	
 	instakill = true
@@ -1261,6 +1273,7 @@ function player_grind()
 		state = states.mach2
 		sprite_index = spr_player_mach2jump
 		movespeed = abs(hsp)
+		scr_sound(sfx_jump)
 	}
 	
 	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))

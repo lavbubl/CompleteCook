@@ -4,3 +4,5 @@ mag_decel = 0.5
 target_spd = 0
 appr_spd = 0
 cam_charge = 0
+
+depth = -999

@@ -26,6 +26,7 @@ for (var p = 0; p < ds_list_size(particle_list); p++)
 			case particles.machcharge:
 				x = obj_player.x
 				y = obj_player.y
+				image_xscale = obj_player.xscale
 				if (obj_player.state != states.mach3)
 				{
 					other.active_particles.machcharge = false

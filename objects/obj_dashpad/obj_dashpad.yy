@@ -1,11 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_grindrail",
+  "%Name":"obj_dashpad",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_grindrail",
+  "name":"obj_dashpad",
   "overriddenProperties":[],
   "parent":{
     "name":"Misc",
@@ -30,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_rail",
-    "path":"sprites/spr_rail/spr_rail.yy",
+    "name":"spr_dashpad",
+    "path":"sprites/spr_dashpad/spr_dashpad.yy",
   },
   "spriteMaskId":null,
   "visible":true,

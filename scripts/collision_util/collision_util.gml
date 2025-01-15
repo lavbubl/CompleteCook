@@ -72,9 +72,6 @@ function collide()
 		}
 	}
 	
-	old_x2 = x
-	old_y2 = y
-	
 	if !grounded
 		grounded = scr_solid(x, y + 1)
 }

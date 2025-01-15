@@ -23,6 +23,8 @@ enum states
 	grind
 }
 
+#region the states
+
 function player_normal()
 {
 	if (p_move != 0)
@@ -315,6 +317,9 @@ function player_mach3() {
 	
 	hsp = xscale * movespeed
 	mach4mode = movespeed > 16
+	
+	var dashpad = sprite_index == spr_player_dashpad
+	
 	if (mach4mode)
 	{
 		if (sprite_index != spr_player_mach4)
@@ -337,6 +342,7 @@ function player_mach3() {
 		flash = 8
 		sprite_index = spr_player_mach3
 	}
+	
 	if (key_jump.pressed && coyote_time) 
 	{
 		vsp = -11
@@ -344,16 +350,17 @@ function player_mach3() {
 		reset_anim(spr_player_mach3jump)
 		scr_sound(sfx_jump)
 	}
+	
 	if (grounded)
 	{
 		if (sprite_index == spr_player_Sjumpcancel)
 			sprite_index = spr_player_mach3
-		if (!key_dash.down)
+		if (!key_dash.down && !dashpad)
 		{
 			reset_anim(spr_player_machslidestart)
 			state = states.slide
 		}
-		if (p_move != 0 && p_move != xscale)
+		if (p_move != 0 && p_move != xscale && !dashpad)
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
@@ -371,7 +378,7 @@ function player_mach3() {
 		}
 		if (p_move != xscale && movespeed > 13)
 			movespeed -= 0.1
-		if (key_up.down)
+		if (key_up.down && !dashpad)
 		{
 			state = states.superjump
 			reset_anim(spr_player_superjumpprep)
@@ -385,7 +392,9 @@ function player_mach3() {
 			vsp /= 10
 		}
 	}
+	
 	do_slope_momentum()
+	
 	if (key_down.down)
 	{
 		state = states.tumble
@@ -397,7 +406,9 @@ function player_mach3() {
 			vsp = 10
 		}
 	}
+	
 	do_grab()
+	
 	if ((!grounded || scr_slope(x, y + 1)) && place_meeting(x + xscale, y, obj_solid))
 	{
 		{
@@ -430,6 +441,7 @@ function player_mach3() {
 		case spr_player_mach3jump:
 		case spr_player_rollgetup:
 		case spr_player_mach3kill:
+		case spr_player_dashpad:
 			reset_anim_on_end(spr_player_mach3)
 			break
 	}
@@ -1266,7 +1278,7 @@ function player_grind()
 	sprite_index = spr_player_grind
 	image_speed = 0.35
 	
-	if (key_jump.pressed && place_meeting(x, y + 1, obj_grindrail))
+	if (key_jump.pressed && (place_meeting(x, y + 1, obj_grindrail) || place_meeting(x, y + 1, obj_grindrailslope)))
 	{
 		vsp = -12
 		jumpstop = false
@@ -1283,3 +1295,5 @@ function player_grind()
 		movespeed = abs(hsp)
 	}
 }
+
+#endregion

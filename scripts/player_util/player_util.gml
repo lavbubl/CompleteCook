@@ -55,3 +55,23 @@ function do_taunt()
 		scr_sound_pitched(sfx_taunt)
 	}
 }
+
+function player_sounds()
+{
+	struct_foreach(loop_sounds, function(_name, _data)
+	{
+		var _id = obj_player
+		
+		if (_id.state == _data.state && !audio_is_playing(_data.sound))
+			_data.sndid = scr_sound(_data.sound, true)
+		
+		if (_id.state != _data.state && _data.sndid != -1)
+			audio_stop_sound(_data.sndid)
+		
+		if _data.func != -1
+		{
+			if _data.func()
+				audio_stop_sound(_data.sndid)
+		}
+	})
+}

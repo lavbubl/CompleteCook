@@ -14,6 +14,8 @@ else if vsp < 0
 
 instakill = false
 
+prevstate = state
+
 switch (state)
 {
 	case states.taunt:
@@ -128,6 +130,8 @@ struct_foreach(aftimg_timers, function(_name, _data)
 	}
 })
 
+player_sounds()
+
 if ladderbuffer > 0
 	ladderbuffer--
 
@@ -137,3 +141,4 @@ if ladderbuffer > 0
 	particletimer--
 else
 	particle_create(x - 128, y, particles.bleh)*/
+

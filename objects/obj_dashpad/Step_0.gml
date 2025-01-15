@@ -20,6 +20,7 @@ if (place_meeting(x, y, obj_player) && available)
 			movespeed += 0.5
 	}
 	
+	scr_sound(sfx_dashpad)
 	available = false
 	alarm[0] = 30
 }

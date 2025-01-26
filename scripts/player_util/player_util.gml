@@ -24,6 +24,7 @@ function do_grab()
 				movespeed = 6
 			state = states.grab
 			reset_anim(spr_player_suplexgrab)
+			scr_sound(sfx_suplexdash)
 		}
 		else
 		{
@@ -74,4 +75,18 @@ function player_sounds()
 				audio_stop_sound(_data.sndid)
 		}
 	})
+	
+	if (state != states.grab)
+		audio_stop_sound(sfx_suplexdash)
+		
+}
+
+function do_hurt()
+{
+	state = states.hurt
+	hsp = -8 * xscale
+	vsp = -12
+	global.combo.timer -= 30
+	i_frames = 100
+	scr_sound_pitched(sfx_hurt)
 }

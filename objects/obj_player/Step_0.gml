@@ -81,6 +81,9 @@ switch (state)
 	case states.grind:
 		player_grind()
 		break;
+	case states.hurt:
+		player_hurt()
+		break;
 }
 
 if (state != states.normal)
@@ -95,13 +98,23 @@ if coyote_time > 0
 if flash > 0
 	flash--
 	
+if taunttimer > 0
+	taunttimer--
+	
+if state != states.normal
+	idletimer = 180
+	
+if (idletimer > 0 && state == states.normal)
+	idletimer--
+
+if (i_frames > 0 && state != states.hurt)
+	i_frames--
+
 if (state == states.tumble || state == states.crouch)
 	mask_index = mask_player_small
 else
 	mask_index = mask_player
 	
-if taunttimer > 0
-	taunttimer--
 	
 grav = 0.5
 if (state == states.ladder)

@@ -8,6 +8,11 @@ wasclimbingwall = false
 coyote_time = 0
 movespeed = 0
 state = states.normal
+//exitdoor properties
+state = states.actor
+sprite_index = spr_player_exitdoor
+image_speed = 0.35
+//the end
 prevstate = states.normal
 xscale = 1
 jumpstop = false
@@ -52,9 +57,7 @@ loop_sounds = {
 			return true;}
 	},
 	mach3: {state: states.mach3, sound: sfx_mach3, sndid: -1, func: function() {
-		if (obj_player.sprite_index == spr_player_mach3kill && obj_player.image_index < 2)
-			return true;
-		if (obj_player.sprite_index == spr_player_mach4)
+		if ((obj_player.sprite_index == spr_player_mach3kill && obj_player.image_index < 2) || obj_player.sprite_index == spr_player_mach4)
 			return true;}
 	},
 	mach4: {state: states.mach3, sound: sfx_mach4, sndid: -1, func: function() {
@@ -62,10 +65,16 @@ loop_sounds = {
 			return true;}
 	},
 	climbwall: {state: states.climbwall, sound: sfx_mach2, sndid: -1, func: -1},
-	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, sndid: -1, func: -1}
+	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, sndid: -1, func: -1},
+	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: -1, func: function() {
+		if (obj_player.sprite_index == spr_player_piledriverland)
+			return true;}
+	}
 }
 
+idletimer = 120
 instakill = false
 particletimer = 0
 taunttimer = 0
+i_frames = 0
 depth = -200

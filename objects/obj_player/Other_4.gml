@@ -1,4 +1,3 @@
-
 if (sprite_index == spr_player_enterdoor)
 	reset_anim(spr_player_exitdoor)
 with (obj_spawnpoint)

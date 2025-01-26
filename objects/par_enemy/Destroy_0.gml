@@ -9,6 +9,7 @@ if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 	particle_create(x, y, particles.bang)
 	repeat (3)
 		particle_create(x, y, particles.yellowstar)
+	scr_sound(sfx_killenemy)
 }
 
 ds_list_add(global.ds_dead_enemies, id)

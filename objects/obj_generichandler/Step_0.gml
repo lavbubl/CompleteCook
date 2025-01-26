@@ -3,6 +3,8 @@ if obj_player.state != states.actor
 
 #macro combo_active global.combo.count > 0
 
+global.combo.timer = max(global.combo.timer, 0)
+
 if global.combo.timer <= 0
 	global.combo.count = 0
 	

@@ -20,7 +20,8 @@ enum states
 	piledriver,
 	punchenemy,
 	swingding,
-	grind
+	grind,
+	hurt
 }
 
 #region the states
@@ -39,6 +40,18 @@ function player_normal()
 	
 	hsp = movespeed * xscale
 	
+	var idlegestures = [
+	spr_player_idlefrown, 
+	spr_player_idledance, 
+	spr_player_idlehand, 
+	spr_player_idlecareless, 
+	spr_player_idlewhat,
+	spr_player_idlebite
+	]
+	
+	if p_move != 0
+		idletimer = 120
+	
 	if (breakdance_secret.buffer < 10)
 	{
 		if p_move != 0
@@ -48,7 +61,19 @@ function player_normal()
 		}
 		else
 		{
-			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt)
+			if (idletimer <= 0 && idletimer != -4)
+			{
+				reset_anim(idlegestures[irandom(5)])
+				idletimer = -4
+			}
+			
+			if (anim_ended() && idletimer == -4)
+			{
+				reset_anim(spr_player_idle)
+				idletimer = 180
+			}
+			
+			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt && idletimer > 0)
 				sprite_index = spr_player_idle
 		}
 	}
@@ -99,6 +124,8 @@ function player_normal()
 		scr_sound(sfx_jump)
 	}
 	
+	do_grab() //intentional game design
+	
 	if (key_dash.down && !place_meeting(x + xscale, y, obj_solid))
 	{
 		state = states.mach2
@@ -106,8 +133,6 @@ function player_normal()
 			movespeed = 6
 		reset_anim(spr_player_mach1)
 	}
-	
-	do_grab()
 	
 	switch (sprite_index)
 	{
@@ -255,6 +280,7 @@ function player_mach2() {
 		{
 			sprite_index = spr_player_dive
 			vsp = 10
+			scr_sound_pitched(sfx_dive, 1.3, 1.315)
 		}
 	}
 	if ((!grounded || scr_slope(x, y + 1)) && place_meeting(x + xscale, y, obj_solid))
@@ -404,6 +430,7 @@ function player_mach3() {
 		{
 			sprite_index = spr_player_dive
 			vsp = 10
+			scr_sound_pitched(sfx_dive, 1.3, 1.315)
 		}
 	}
 	
@@ -461,6 +488,7 @@ function player_tumble() {
 	{
 		vsp = 10
 		sprite_index = spr_player_dive
+		scr_sound_pitched(sfx_dive, 1.3, 1.315)
 	}
 	if (sprite_index == spr_player_ball && grounded)
 	{
@@ -479,6 +507,7 @@ function player_tumble() {
 		state = states.groundpound
 		vsp = -6
 		dir = xscale
+		scr_sound_pitched(sfx_dive, 1.3, 1.315)
 	}
 	if movespeed <= 2
 		state = states.normal
@@ -525,6 +554,7 @@ function player_tumble() {
 		else
 			state = states.mach2
 		reset_anim(spr_player_rollgetup)
+		scr_sound(sfx_rollgetup)
 	}
 	//if (!keyDown('down.pressed && !keyDown('shift.pressed && grounded && vsp > 0 && state != 'bump' && (sprite_index != spr_player_ball && sprite_index != 'tumbleend.pressed && sprite_index != 'breakdance' && !canuncrouch.isTouching(solids))
 	if (!key_down.down && !key_dash.down && grounded && vsp > 0 && state != states.bump && !scr_solid(x, y - 16) && crouchslipbuffer <= 0)
@@ -846,8 +876,8 @@ function player_groundpound()
 }
 
 function player_grab() {
-	
 	hsp = xscale * movespeed
+	
 	if (movespeed < 10)
 	{
 		movespeed += 0.5
@@ -865,6 +895,7 @@ function player_grab() {
 		vsp = -11
 		state = states.mach2
 		reset_anim(spr_player_longjump)
+		scr_sound(sfx_rollgetup)
 	}
 	
 	if (key_down.down && !key_jump.down && grounded)
@@ -873,6 +904,7 @@ function player_grab() {
 		crouchslipbuffer = 25
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
+		scr_sound(sfx_dive)
 	}
 	
 	if (sprite_index == spr_player_suplexgrab && !grounded)
@@ -1296,4 +1328,16 @@ function player_grind()
 	}
 }
 
+function player_hurt()
+{
+	image_speed = 0.35
+	if grounded && vsp >= 0
+	{
+		state = states.normal
+		hsp = 0
+		movespeed = 0
+	}
+}
+
 #endregion
+

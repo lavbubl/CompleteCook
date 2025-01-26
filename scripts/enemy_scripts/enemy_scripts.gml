@@ -142,6 +142,7 @@ function do_enemy_generics()
 			do_enemygibs()
 			particle_create(x, y, particles.genericpoof)
 			shake_camera()
+			scr_sound(sfx_punch)
 		
 			alarm[0] = 1
 		}

@@ -35,6 +35,7 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"fmod","order":1,"path":"notes/fmod/fmod.yy",},
     {"name":"obj_afterimagecontroller","order":1,"path":"objects/obj_afterimagecontroller/obj_afterimagecontroller.yy",},
     {"name":"obj_camera","order":3,"path":"objects/obj_camera/obj_camera.yy",},
     {"name":"obj_cheeseslime","order":2,"path":"objects/obj_cheeseslime/obj_cheeseslime.yy",},

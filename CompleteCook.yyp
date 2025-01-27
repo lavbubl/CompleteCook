@@ -55,6 +55,7 @@
   },
   "name":"CompleteCook",
   "resources":[
+    {"id":{"name":"fmod","path":"notes/fmod/fmod.yy",},},
     {"id":{"name":"Guide","path":"notes/Guide/Guide.yy",},},
     {"id":{"name":"obj_afterimagecontroller","path":"objects/obj_afterimagecontroller/obj_afterimagecontroller.yy",},},
     {"id":{"name":"obj_beatbox","path":"objects/obj_beatbox/obj_beatbox.yy",},},

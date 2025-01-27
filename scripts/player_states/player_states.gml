@@ -28,6 +28,19 @@ enum states
 
 function player_normal()
 {
+	var default_idle = spr_player_idle
+	var default_move = spr_player_move
+	if global.panic
+	{
+		default_idle = spr_player_panic
+		
+		if global.panic_timer <= 0
+		{
+			default_idle = spr_player_weak
+			default_move = spr_player_weakmove
+		}
+	}
+	
 	if (p_move != 0)
 	{
 		movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
@@ -57,7 +70,7 @@ function player_normal()
 		if p_move != 0
 		{
 			if (sprite_index != spr_player_landmove)
-				sprite_index = spr_player_move
+				sprite_index = default_move
 		}
 		else
 		{
@@ -69,12 +82,12 @@ function player_normal()
 			
 			if (anim_ended() && idletimer == -4)
 			{
-				reset_anim(spr_player_idle)
+				reset_anim(default_idle)
 				idletimer = 180
 			}
 			
 			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt && idletimer > 0)
-				sprite_index = spr_player_idle
+				sprite_index = default_idle
 		}
 	}
 	

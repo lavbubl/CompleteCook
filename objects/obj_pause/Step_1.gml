@@ -1,3 +1,9 @@
+with obj_shell
+{
+	if isOpen
+		exit;
+}
+
 if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter))
 {
 	if (!pause)

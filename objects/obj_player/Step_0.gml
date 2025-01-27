@@ -129,6 +129,8 @@ if (y > room_height + 200 && state != states.actor)
 	vsp = 0
 	sprite_index = spr_player_idle
 }
+
+break_destroyables()
 	
 collide()
 
@@ -145,10 +147,9 @@ struct_foreach(aftimg_timers, function(_name, _data)
 
 player_sounds()
 
+
 if ladderbuffer > 0
 	ladderbuffer--
-
-
 
 /*if particletimer > 0
 	particletimer--

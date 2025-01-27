@@ -129,6 +129,9 @@ function scr_solid(_x, _y)
 					case obj_solid:
 						collided = true
 						break;
+					case obj_destroyable:
+						collided = true
+						break;
 				}
 			}
 		}

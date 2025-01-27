@@ -12,7 +12,7 @@ draw_set_color(c_white)
 draw_text(0, 0, $"fps : {fps}")
 draw_text(0, 20, $"fps_real: {fps_real}")
 
-var ver_str = "Complete Cook Alpha v1.0.0"
+var ver_str = $"Complete Cook {version}" //haha yes overcomplicated code >:)
 
 draw_set_halign(fa_right)
 draw_set_valign(fa_bottom)

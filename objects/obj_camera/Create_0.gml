@@ -5,4 +5,6 @@ target_spd = 0
 appr_spd = 0
 cam_charge = 0
 
+version = "Alpha v1.0.2"
+
 depth = -999

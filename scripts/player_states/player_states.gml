@@ -224,6 +224,7 @@ function player_mach2() {
 			{
 				reset_anim(spr_player_machslidestart)
 				state = states.slide
+				scr_sound(sfx_break)
 			}
 		}
 		if (p_move != 0 && p_move != xscale)
@@ -237,6 +238,7 @@ function player_mach2() {
 			{
 				reset_anim(spr_player_machslideboost)
 				state = states.slide
+				scr_sound(sfx_machslideboost)
 			}
 		}
 		if (movespeed < 12)
@@ -385,11 +387,13 @@ function player_mach3() {
 		{
 			reset_anim(spr_player_machslidestart)
 			state = states.slide
+			scr_sound(sfx_break)
 		}
 		if (p_move != 0 && p_move != xscale && !dashpad)
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
+			scr_sound(sfx_machslideboost)
 		}
 		if (movespeed < 20 && p_move == xscale)
 		{
@@ -455,6 +459,7 @@ function player_mach3() {
 		hsp = xscale * -6
 		shake_camera()
 		scr_sound(sfx_groundpound)
+		scr_sound(sfx_bumpwall)
 	}
 	image_speed = 0.4
 	switch (sprite_index)
@@ -563,6 +568,7 @@ function player_tumble() {
 		{
 			state = states.slide
 			reset_anim(spr_player_machslidestart)
+			scr_sound(sfx_break)
 		}
 		else
 			state = states.normal
@@ -620,6 +626,7 @@ function player_climbwall()
 	{
 		state = states.bump
 		reset_anim(spr_player_ceilinghit)
+		scr_sound(sfx_groundpound)
 	}
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
 	if (!key_dash.down && grabclimbbuffer <= 0)

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_escaperumble",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":21.601334,
+  "name":"sfx_escaperumble",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_escaperumble.ogg",
+  "type":1,
+  "volume":1.0,
+}

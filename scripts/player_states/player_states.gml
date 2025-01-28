@@ -1009,6 +1009,7 @@ function player_superjump()
 		if (p_move != 0)
 		  xscale = p_move
 	}
+	
 	if ((key_up.down || !grounded) && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
 	{
 		if (!place_meeting(x + xscale, y, obj_solid))
@@ -1023,6 +1024,7 @@ function player_superjump()
 		else
 			sprite_index = spr_player_superjumpflash
 	}
+	
 	if (anim_ended() && sprite_index == spr_player_Sjumpcancelstart)
 	{
 		state = states.mach3
@@ -1033,11 +1035,14 @@ function player_superjump()
 		movespeed = 12
 		image_speed = 0.35
 	}
+	
 	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !key_up.down && grounded)
 	{
 		vsp = -11
 		sprite_index = spr_player_superjump
+		scr_sound(sfx_superjumprelease)
 	}
+	
 	if (sprite_index == spr_player_superjump)
 	{
 		instakill = true
@@ -1063,7 +1068,11 @@ function player_superjump()
 			vsp -= 0.6
 		
 		if (key_attack.pressed && state != states.bump)
+		{
 			reset_anim(spr_player_Sjumpcancelstart)
+			scr_sound(sfx_superjumpcancel)
+			audio_stop_sound(sfx_superjumprelease)
+		}
 		
 		aftimg_timers.blur.do_it = true
 	}

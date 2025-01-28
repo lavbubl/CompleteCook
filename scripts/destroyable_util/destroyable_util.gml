@@ -8,28 +8,30 @@ function break_destroyables()
 		states.mach3,
 		states.grab,
 		states.tumble,
-		states.punch
+		states.punch,
+		e_states.hit
 	]
 	
 	var vertical_states = [
 		states.groundpound,
 		states.tumble,
-		states.punch
+		states.punch,
+		e_states.hit
 	]
 	
 	var is_h_state = false
 	var is_v_state = false
 	
-	for (var i = 0; i < array_length(vertical_states); i++) 
-	{
-	    if (state == vertical_states[i])
-			is_v_state = true
-	}
-	
 	for (var i = 0; i < array_length(horizontal_states); i++) 
 	{
 	    if (state == horizontal_states[i])
 			is_h_state = true
+	}
+	
+	for (var i = 0; i < array_length(vertical_states); i++) 
+	{
+	    if (state == vertical_states[i])
+			is_v_state = true
 	}
 	
 	for (var i = 0; i < ds_list_size(d_list); i++) 

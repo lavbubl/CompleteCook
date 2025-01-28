@@ -67,13 +67,8 @@ function enemy_stun()
 function enemy_hit()
 {
 	sprite_index = sprs.dead
-	if (place_meeting(x + hsp, y + vsp, obj_solid))
+	if (place_meeting(x + hsp, y, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
 		instance_destroy()
-	if (place_meeting(x + hsp, y, obj_solid) && scr_slope(x, y + 1))
-	{
-		hsp = 0
-		vsp = -20
-	}
 }
 
 function do_scared()
@@ -240,10 +235,12 @@ function do_enemy_generics()
 
 	for (var i = 0; i < ds_list_size(en_list); i++) {
 	    var _id = ds_list_find_value(en_list, i)
-		if (place_meeting(x, y, _id) && _id.state == e_states.hit)
+		if place_meeting(x, y, _id)
 		{
-			instance_destroy()
-			do_enemygibs()
+			if _id.state == e_states.hit
+				instance_destroy()
 		}
 	}
+	
+	break_destroyables()
 }

@@ -138,7 +138,7 @@ if (isOpen) {
 		} else {
 			draw_set_alpha(consoleAlpha);
 			draw_set_color(consoleColor);
-			draw_roundrect_ext(shellOriginX, shellOriginY, shellOriginX + width, shellOriginY + height, cornerRadius, cornerRadius, false);
+			draw_rectangle(shellOriginX, shellOriginY, shellOriginX + width, shellOriginY + height, false);
 		}
 		
 		// Draw the scroll surface

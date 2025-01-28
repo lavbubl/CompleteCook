@@ -19,4 +19,5 @@ if (pause)
 	draw_text(sw, sh, "PAUSE")
 	
 	draw_text(sw, sh + 20, $"FULLSCREEN: {global.fullscreen} | PRESS F")
+	draw_text(sw, sh + 40, $"MUTE ALL: {global.mute_all} | PRESS M")
 }

@@ -69,12 +69,15 @@ loop_sounds = {
 	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: -1, func: function() {
 		if (obj_player.sprite_index == spr_player_piledriverland)
 			return true;}
+	},
+	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: -1, func: function() {
+		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart)
+			return true;}, looppoints: [0.64, 1.84]
 	}
 }
 
 idletimer = 120
 instakill = false
-particletimer = 0
 taunttimer = 0
 i_frames = 0
 depth = -200

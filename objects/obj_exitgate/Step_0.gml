@@ -1,3 +1,6 @@
+if global.panic
+	exit;
+
 with instance_place(x, y, obj_player)
 {
 	if (anim_ended() && sprite_index == spr_player_exitdoor)

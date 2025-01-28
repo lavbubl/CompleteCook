@@ -13,3 +13,12 @@ f_id.pillar_id = p_id
 
 global.panic = true
 global.panic_timer = 5000
+global.doorshut = false
+
+scr_sound(sfx_killenemy)
+scr_sound(sfx_pillarimpact)
+scr_sound(sfx_escaperumble)
+do_enemygibs()
+
+global.combo.count++
+global.combo.timer = 60

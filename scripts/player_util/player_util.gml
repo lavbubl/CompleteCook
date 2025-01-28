@@ -64,7 +64,14 @@ function player_sounds()
 		var _id = obj_player
 		
 		if (_id.state == _data.state && !audio_is_playing(_data.sound))
+		{
 			_data.sndid = scr_sound(_data.sound, true)
+			if struct_exists(_data, "looppoints")
+			{
+				audio_sound_loop_start(_data.sndid, _data.looppoints[0])
+				audio_sound_loop_end(_data.sndid, _data.looppoints[1])
+			}
+		}
 		
 		if (_id.state != _data.state && _data.sndid != -1)
 			audio_stop_sound(_data.sndid)

@@ -13,6 +13,8 @@ switch (state)
 		sprite_index = spr_tv_idle
 		if global.combo.count >= 3
 			sprite_index = spr_tv_combo
+		if global.panic
+			sprite_index = spr_tv_panic
 		
 		if (p.state == states.mach3)
 		{

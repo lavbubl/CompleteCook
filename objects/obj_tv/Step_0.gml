@@ -43,6 +43,8 @@ switch (state)
 			case spr_tv_mach4:
 				if (obj_player.state != states.mach3 && p.state != states.climbwall)
 					tv_expression(spr_tv_idle)
+				if (abs(obj_player.hsp) < 16)
+					tv_expression(spr_tv_mach3)
 				break;
 		}
 		break;

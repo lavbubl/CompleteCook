@@ -94,6 +94,7 @@ function set_globals()
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_hurt_boxes = ds_list_create()
 	global.doorshut = false
+	global.scorefont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
 }
 
 function bbox_in_camera()

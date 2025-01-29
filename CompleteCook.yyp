@@ -61,6 +61,7 @@
   "resources":[
     {"id":{"name":"font_console","path":"fonts/font_console/font_console.yy",},},
     {"id":{"name":"Guide","path":"notes/Guide/Guide.yy",},},
+    {"id":{"name":"obj_3d_sound","path":"objects/obj_3d_sound/obj_3d_sound.yy",},},
     {"id":{"name":"obj_afterimagecontroller","path":"objects/obj_afterimagecontroller/obj_afterimagecontroller.yy",},},
     {"id":{"name":"obj_beatbox","path":"objects/obj_beatbox/obj_beatbox.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
@@ -136,6 +137,7 @@
     {"id":{"name":"mu_pillar","path":"sounds/mu_pillar/mu_pillar.yy",},},
     {"id":{"name":"mu_pizzatime","path":"sounds/mu_pizzatime/mu_pizzatime.yy",},},
     {"id":{"name":"mu_sundogfunk","path":"sounds/mu_sundogfunk/mu_sundogfunk.yy",},},
+    {"id":{"name":"sfx_beatbox","path":"sounds/sfx_beatbox/sfx_beatbox.yy",},},
     {"id":{"name":"sfx_box","path":"sounds/sfx_box/sfx_box.yy",},},
     {"id":{"name":"sfx_break","path":"sounds/sfx_break/sfx_break.yy",},},
     {"id":{"name":"sfx_breakdance","path":"sounds/sfx_breakdance/sfx_breakdance.yy",},},

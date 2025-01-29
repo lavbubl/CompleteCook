@@ -84,8 +84,8 @@ if follow_player
 		if (state = states.punchenemy && floor(image_index) == ixcheck)
 		{
 			shake_camera()
-			scr_sound(sfx_punch)
-			scr_sound(sfx_killingblow)
+			scr_sound_3d(sfx_punch, x, y)
+			scr_sound_3d(sfx_killingblow, x, y)
 			with (other)
 			{
 				do_enemygibs()

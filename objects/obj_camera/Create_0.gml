@@ -10,6 +10,6 @@ campos = {
 	y: 0
 }
 
-version = "Alpha v1.1.2"
+version = "Alpha v1.1.3"
 
 depth = -250

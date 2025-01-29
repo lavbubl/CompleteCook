@@ -134,7 +134,7 @@ function player_normal()
 		state = states.jump
 		reset_anim(spr_player_jump)
 		jumpstop = false
-		scr_sound(sfx_jump)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 	
 	do_grab() //intentional game design
@@ -237,7 +237,7 @@ function player_mach2() {
 			{
 				reset_anim(spr_player_machslidestart)
 				state = states.slide
-				scr_sound(sfx_break)
+				scr_sound_3d(sfx_break, x, y)
 			}
 		}
 		if (p_move != 0 && p_move != xscale)
@@ -251,7 +251,7 @@ function player_mach2() {
 			{
 				reset_anim(spr_player_machslideboost)
 				state = states.slide
-				scr_sound(sfx_machslideboost)
+				scr_sound_3d(sfx_machslideboost, x, y)
 			}
 		}
 		if (movespeed < 12)
@@ -283,7 +283,7 @@ function player_mach2() {
 	{
 		jumpstop = false
 		vsp = -11
-		scr_sound(sfx_jump)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 	do_slope_momentum()
 	if (key_down.down)
@@ -295,7 +295,7 @@ function player_mach2() {
 		{
 			sprite_index = spr_player_dive
 			vsp = 10
-			scr_sound_pitched(sfx_dive, 1.3, 1.315)
+			scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 		}
 	}
 	if ((!grounded || scr_slope(x, y + 1)) && place_meeting(x + xscale, y, obj_solid))
@@ -389,7 +389,7 @@ function player_mach3() {
 		vsp = -11
 		jumpstop = false
 		reset_anim(spr_player_mach3jump)
-		scr_sound(sfx_jump)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 	
 	if (grounded)
@@ -400,13 +400,13 @@ function player_mach3() {
 		{
 			reset_anim(spr_player_machslidestart)
 			state = states.slide
-			scr_sound(sfx_break)
+			scr_sound_3d(sfx_break, x, y)
 		}
 		if (p_move != 0 && p_move != xscale && !dashpad)
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
-			scr_sound(sfx_machslideboost)
+			scr_sound_3d(sfx_machslideboost, x, y)
 		}
 		if (movespeed < 20 && p_move == xscale)
 		{
@@ -447,7 +447,7 @@ function player_mach3() {
 		{
 			sprite_index = spr_player_dive
 			vsp = 10
-			scr_sound_pitched(sfx_dive, 1.3, 1.315)
+			scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 		}
 	}
 	
@@ -471,8 +471,8 @@ function player_mach3() {
 		vsp = -6
 		hsp = xscale * -6
 		shake_camera()
-		scr_sound(sfx_groundpound)
-		scr_sound(sfx_bumpwall)
+		scr_sound_3d(sfx_groundpound, x, y)
+		scr_sound_3d(sfx_bumpwall, x, y)
 	}
 	image_speed = 0.4
 	switch (sprite_index)
@@ -506,7 +506,7 @@ function player_tumble() {
 	{
 		vsp = 10
 		sprite_index = spr_player_dive
-		scr_sound_pitched(sfx_dive, 1.3, 1.315)
+		scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 	}
 	if (sprite_index == spr_player_ball && grounded)
 	{
@@ -525,7 +525,7 @@ function player_tumble() {
 		state = states.groundpound
 		vsp = -6
 		dir = xscale
-		scr_sound_pitched(sfx_dive, 1.3, 1.315)
+		scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 	}
 	if movespeed <= 2
 		state = states.normal
@@ -572,7 +572,7 @@ function player_tumble() {
 		else
 			state = states.mach2
 		reset_anim(spr_player_rollgetup)
-		scr_sound(sfx_rollgetup)
+		scr_sound_3d(sfx_rollgetup, x, y)
 	}
 	//if (!keyDown('down.pressed && !keyDown('shift.pressed && grounded && vsp > 0 && state != 'bump' && (sprite_index != spr_player_ball && sprite_index != 'tumbleend.pressed && sprite_index != 'breakdance' && !canuncrouch.isTouching(solids))
 	if (!key_down.down && !key_dash.down && grounded && vsp > 0 && state != states.bump && !scr_solid(x, y - 16) && crouchslipbuffer <= 0)
@@ -581,7 +581,6 @@ function player_tumble() {
 		{
 			state = states.slide
 			reset_anim(spr_player_machslidestart)
-			scr_sound(sfx_break)
 		}
 		else
 			state = states.normal
@@ -639,7 +638,7 @@ function player_climbwall()
 	{
 		state = states.bump
 		reset_anim(spr_player_ceilinghit)
-		scr_sound(sfx_groundpound)
+		scr_sound_3d(sfx_groundpound, x, y)
 	}
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
 	if (!key_dash.down && grabclimbbuffer <= 0)
@@ -657,7 +656,7 @@ function player_climbwall()
 		vsp = -11
 		xscale *= -1
 		jumpstop = false
-		scr_sound(sfx_jump)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 }
 
@@ -871,7 +870,7 @@ function player_groundpound()
 			image_index = 0
 			state = states.bump
 			shake_camera()
-			scr_sound(sfx_groundpound)
+			scr_sound_3d(sfx_groundpound, x, y)
 			if freefallsmash >= 10
 			{
 				with (par_enemy)
@@ -915,7 +914,7 @@ function player_grab() {
 		vsp = -11
 		state = states.mach2
 		reset_anim(spr_player_longjump)
-		scr_sound(sfx_rollgetup)
+		scr_sound_3d(sfx_rollgetup, x, y)
 	}
 	
 	if (key_down.down && !key_jump.down && grounded)
@@ -924,7 +923,7 @@ function player_grab() {
 		crouchslipbuffer = 25
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
-		scr_sound(sfx_dive)
+		scr_sound_3d(sfx_dive, x, y)
 	}
 	
 	if (sprite_index == spr_player_suplexgrab && !grounded)
@@ -1040,7 +1039,7 @@ function player_superjump()
 	{
 		vsp = -11
 		sprite_index = spr_player_superjump
-		scr_sound(sfx_superjumprelease)
+		scr_sound_3d(sfx_superjumprelease, x, y)
 	}
 	
 	if (sprite_index == spr_player_superjump)
@@ -1061,7 +1060,7 @@ function player_superjump()
 		{
 			reset_anim(spr_player_ceilinghit)
 			state = states.bump
-			scr_sound(sfx_groundpound)
+			scr_sound_3d(sfx_groundpound, x, y)
 		}
 		
 		if (sprite_index != spr_player_Sjumpcancelstart)
@@ -1070,7 +1069,7 @@ function player_superjump()
 		if (key_attack.pressed && state != states.bump)
 		{
 			reset_anim(spr_player_Sjumpcancelstart)
-			scr_sound(sfx_superjumpcancel)
+			scr_sound_3d(sfx_superjumpcancel, x, y)
 			audio_stop_sound(sfx_superjumprelease)
 		}
 		
@@ -1120,7 +1119,7 @@ function player_crouch()
 		if (coyote_time && key_jump.pressed && !scr_solid(x, y - 16))
 		{
 			vsp = -12
-			scr_sound(sfx_jump)
+			scr_sound_3d(sfx_jump, x, y)
 		}
 	}
 	
@@ -1231,7 +1230,7 @@ function player_hold()
 	{
 		vsp = -12
 		jumpstop = false
-		scr_sound(sfx_jump)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 		
 	if p_move != 0
@@ -1326,7 +1325,7 @@ function player_piledriver()
 	{
 		reset_anim(spr_player_piledriverland)
 		shake_camera()
-		scr_sound(sfx_groundpound)
+		scr_sound_3d(sfx_groundpound, x, y)
 	}
 	
 	instakill = true
@@ -1346,7 +1345,7 @@ function player_grind()
 		state = states.mach2
 		sprite_index = spr_player_mach2jump
 		movespeed = abs(hsp)
-		scr_sound(sfx_jump)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 	
 	if (!place_meeting(x, y + 4, obj_grindrail) && !place_meeting(x, y + 4, obj_grindrailslope))

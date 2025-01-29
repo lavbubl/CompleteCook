@@ -24,7 +24,7 @@ function do_grab()
 				movespeed = 6
 			state = states.grab
 			reset_anim(spr_player_suplexgrab)
-			scr_sound(sfx_suplexdash)
+			scr_sound_3d(sfx_suplexdash, x, y)
 		}
 		else
 		{
@@ -63,23 +63,65 @@ function player_sounds()
 	{
 		var _id = obj_player
 		
-		if (_id.state == _data.state && !audio_is_playing(_data.sound))
-		{
-			_data.sndid = scr_sound(_data.sound, true)
-			if struct_exists(_data, "looppoints")
-			{
-				audio_sound_loop_start(_data.sndid, _data.looppoints[0])
-				audio_sound_loop_end(_data.sndid, _data.looppoints[1])
-			}
-		}
+		var dont_play = false
 		
-		if (_id.state != _data.state && _data.sndid != -1)
-			audio_stop_sound(_data.sndid)
+		if _id.state != _data.state
+			dont_play = true
 		
-		if _data.func != -1
+		if variable_struct_exists(_data, "func")
 		{
 			if _data.func()
+				dont_play = true
+		}
+		
+		var confirmed_3d = false
+		
+		if (variable_struct_exists(_data, "is_3d"))
+			confirmed_3d = _data.is_3d
+		
+		if confirmed_3d
+		{
+			if (_data.sndid == -1 && !dont_play)
+			{
+				_data.sndid = 1
+				_data.emitter = emitter_create_quick(_id.x, _id.y, _id)
+				var s = scr_sound_3d_on(_data.emitter, _data.sound, true)
+				
+				if struct_exists(_data, "looppoints")
+				{
+					audio_sound_loop_start(s, _data.looppoints[0])
+					audio_sound_loop_end(s, _data.looppoints[1])
+				}
+			}
+			
+			if (_data.sndid != -1 && dont_play)
+			{
+				if _data.emitter != -1
+				{
+					audio_emitter_free(_data.emitter)
+					_data.emitter = -1
+				}
+				
+				_data.sndid = -1
+			}
+		}
+		else
+		{
+			if (_id.state == _data.state && !dont_play && _data.sndid == -1)
+			{
+				_data.sndid = scr_sound(_data.sound, true)
+				if struct_exists(_data, "looppoints")
+				{
+					audio_sound_loop_start(_data.sndid, _data.looppoints[0])
+					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
+				}
+			}
+			
+			if (_data.sndid != -1 && dont_play)
+			{
 				audio_stop_sound(_data.sndid)
+				_data.sndid = -1
+			}
 		}
 	})
 	

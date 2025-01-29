@@ -15,7 +15,6 @@ ystart = y
 expr_sprite = spr_tv_mach3
 state_togo = tv_states.expr
 state = tv_states.off
-
 combo_val = false
 
 combo = {

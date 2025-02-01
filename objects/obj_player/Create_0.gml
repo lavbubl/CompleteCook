@@ -1,5 +1,31 @@
 init_collide()
 
+enum states 
+{
+	normal,
+	jump,
+	mach2,
+	mach3,
+	tumble,
+	climbwall,
+	slide,
+	bump,
+	groundpound,
+	grab,
+	superjump,
+	taunt,
+	crouch,
+	actor,
+	ladder,
+	punch,
+	hold,
+	piledriver,
+	punchenemy,
+	swingding,
+	grind,
+	hurt
+}
+
 spawn = "a"
 door_type = fade_types.none
 hallxscale = 1

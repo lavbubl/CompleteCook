@@ -67,7 +67,7 @@ function enemy_stun()
 function enemy_hit()
 {
 	sprite_index = sprs.dead
-	if (place_meeting(x + hsp, y, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
+	if (place_meeting(x + hsp, y + vsp, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
 		instance_destroy()
 }
 

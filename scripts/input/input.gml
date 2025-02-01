@@ -1,8 +1,6 @@
 function get_input()
 {
-	gamepad_set_colour(0, c_red);
-	show_debug_message(gamepad_is_connected(1))
-	if (!gamepad_is_connected(0)) {
+	if (!gamepad_is_connected(global.maingamepad)) {
 		var keybinds = {
 			left: vk_left,
 			right: vk_right,
@@ -38,7 +36,7 @@ function get_input()
 
 function setkey(keybind)
 {
-	if (!gamepad_is_connected(0)) {
+	if (!gamepad_is_connected(global.maingamepad)) {
 		var k = {
 			down: keyboard_check(keybind),
 			pressed: keyboard_check_pressed(keybind),
@@ -47,9 +45,9 @@ function setkey(keybind)
 	}
 	else {
 		var k = {
-			down: gamepad_button_check(0, keybind),
-			pressed: gamepad_button_check_pressed(0, keybind),
-			released: gamepad_button_check_released(0, keybind),
+			down: gamepad_button_check(global.maingamepad, keybind),
+			pressed: gamepad_button_check_pressed(global.maingamepad, keybind),
+			released: gamepad_button_check_released(global.maingamepad, keybind),
 		}
 	}
 	return k

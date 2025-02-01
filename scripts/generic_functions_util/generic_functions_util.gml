@@ -2,12 +2,10 @@ function wrap(m, n) {
   return n >= 0 ? n % m : (n % m + m) % m;
 }
 
-function approach(_start, _end, _shift) {
-  if (_start < _end) {
-    return min(_start + _shift, _end);
-  } else {
-    return max(_start - _shift, _end);
-  }
+function approach(value, target, increment = 0.5)
+{
+	var t = target - value;
+	return value + clamp(t, -increment, increment);
 }
 
 

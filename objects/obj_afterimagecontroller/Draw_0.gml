@@ -1,6 +1,6 @@
-for (var inst = 0; inst < ds_list_size(aftimg_list); inst++) 
+for (var inst = 0; inst < array_length(aftimg_list); inst++) 
 {
-	var inst_id = ds_list_find_value(aftimg_list, inst)
+	var inst_id = aftimg_list[inst]
 	
 	with (inst_id)
 	{

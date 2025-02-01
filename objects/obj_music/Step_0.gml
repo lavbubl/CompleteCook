@@ -22,28 +22,41 @@ with obj_pillar
 
 if !global.panic
 {
-	if pillar_visible
+	if instance_exists(obj_pillar)
 	{
-		audio_sound_gain(mu, 0, 2000)
-		if (pillar_mu != -1)
-			audio_sound_gain(pillar_mu, 1, 1000)
+		if pillar_visible
+		{
+			if mu != -1
+				audio_sound_gain(mu, 0, 2000)
+			if (pillar_mu != -1)
+				audio_sound_gain(pillar_mu, 1, 1000)
+		}
+		else
+		{
+			if mu != -1
+				audio_sound_gain(mu, 1, 2000)
+			if (pillar_mu != -1)
+				audio_sound_gain(pillar_mu, 0, 1000)
+		}
 	}
-	else
-	{
-		audio_sound_gain(mu, 1, 2000)
-		if (pillar_mu != -1)
-			audio_sound_gain(pillar_mu, 0, 1000)
-	}
+	
 	if panic_mu != -1
 	{
 		audio_stop_sound(panic_mu)
 		panic_mu = -1
 	}
+	
+	if panic_pinch_mu != -1
+	{
+		audio_stop_sound(panic_pinch_mu)
+		panic_pinch_mu = -1
+	}
+	
 	panic_music_initiated = false
 	pinch_init = false
 }
 
-var pinch_point = 672
+var pinch_point = 662
 
 if global.panic
 {
@@ -70,10 +83,9 @@ if global.panic
 		audio_stop_sound(panic_mu)
 		panic_mu = -1
 		
-		
-		var snd = scr_sound(mu_pizzatime)
-		audio_sound_set_track_position(snd, 170.63)
-		audio_sound_gain(snd, 0, 0)
-		audio_sound_gain(snd, 1, 2000)
+		panic_pinch_mu = scr_sound(mu_pizzatime)
+		audio_sound_set_track_position(panic_pinch_mu, 170.63)
+		audio_sound_gain(panic_pinch_mu, 0, 0)
+		audio_sound_gain(panic_pinch_mu, 1, 2000)
 	}
 }

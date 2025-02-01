@@ -63,8 +63,6 @@ function player_mach3()
 				movespeed += 0.025
 			}
 		}
-		if (p_move != xscale && movespeed > 13)
-			movespeed -= 0.1
 		if (key_up.down && !dashpad)
 		{
 			state = states.superjump

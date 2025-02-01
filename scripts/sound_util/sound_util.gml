@@ -38,7 +38,7 @@ function emitter_create_quick(x, y, follow_obj = -1, z = 0)
 		global.sound_3d.max_distance, 
 		global.sound_3d.multiplier)
 	
-	ds_list_add(obj_3d_sound.emitters, [e, follow_obj])
+	array_push(obj_3d_sound.emitters, [e, follow_obj])
 	
 	return e;
 }

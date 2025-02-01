@@ -5,4 +5,4 @@ global.sound_3d = {
 }
 
 audio_listener_orientation(0, 0, 1, 0, -1, 0)
-emitters = ds_list_create()
+emitters = []

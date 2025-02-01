@@ -2,10 +2,9 @@ if !global.panic
 	exit;
 
 if global.panic_timer > 0
-	global.panic_timer -= 0.2
+	global.panic_timer = max(global.panic_timer - 0.2, 0)
 else
 {
-	global.panic_timer = 0
 	if !instance_exists(obj_pizzaface)
 	{
 		instance_create(obj_player.x, obj_player.y, obj_pizzaface)

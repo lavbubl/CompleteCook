@@ -46,5 +46,4 @@ function break_destroyables()
 	}
 	
 	ds_list_destroy(d_list)
-	
 }

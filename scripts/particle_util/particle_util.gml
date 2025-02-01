@@ -69,5 +69,5 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 	}
 	p.image_number = sprite_get_number(p.sprite_index)
 	with (obj_particlecontroller)
-		ds_list_add(particle_list, p)
+		array_push(particle_list, p)
 }

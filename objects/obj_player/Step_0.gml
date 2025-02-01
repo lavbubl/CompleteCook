@@ -126,7 +126,7 @@ grav = 0.5
 if (state == states.ladder)
 	grav = 0
 	
-if (y > room_height + 200 && state != states.actor)
+if ((y > room_height + 200 || y < -200) && state != states.actor)
 {
 	shake_camera()
 	instance_create(0, 0, obj_technicaldifficulty)

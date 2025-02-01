@@ -6,9 +6,12 @@ function player_jump()
 		xscale = p_move
 	}
 	else if (p_move == 0 || xscale != p_move)
-		movespeed = approach(movespeed, 0, 0.5)
+		movespeed = 0
 	
 	hsp = movespeed * xscale
+	
+	if place_meeting(x + hsp, y, obj_solid)
+		movespeed = 0
 	
 	if (!jumpstop && !key_jump.down && vsp < 0)
 	{

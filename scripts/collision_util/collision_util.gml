@@ -48,19 +48,18 @@ function collide()
 		x += sign(hsp_final)
 		
 		var h = 4
-    
-		if (!scr_solid(x, y - h))
+		
+		for (var i = 1; i < h; i++) 
 		{
-			while (scr_solid(x, y))
+			if !scr_solid(x, y - i)
 			{
-				y--
+				while scr_solid(x, y)
+					y--
 			}
-		}
-		if (scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1))
-		{
-			while (!scr_solid(x, y + 1))
+			if (scr_solid(x, y + i + 1) && scr_solid(x - sign(hsp_final), y + 1))
 			{
-				y++
+				while !scr_solid(x, y + 1)
+					y++
 			}
 		}
 		
@@ -72,8 +71,7 @@ function collide()
 		}
 	}
 	
-	if !grounded
-		grounded = scr_solid(x, y + 1)
+	grounded |= scr_solid(x, y + 1)
 }
 
 function init_collide()
@@ -216,6 +214,7 @@ function scr_slope(_x, _y)
 		}
 	}
 	
+	ds_list_destroy(s_list)
 	return false;
 }
 

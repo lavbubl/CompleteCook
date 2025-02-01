@@ -251,6 +251,7 @@ function do_enemy_generics()
 		}
 	}
 	
+	ds_list_destroy(en_list)
 	break_destroyables()
 }
 

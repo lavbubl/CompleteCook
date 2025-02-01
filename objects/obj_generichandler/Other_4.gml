@@ -1,5 +1,4 @@
 ds_list_clear(global.col_obj_list)
-ds_list_clear(global.ds_hurt_boxes)
 
 var o = 0
 repeat (array_length(solids_to_add))

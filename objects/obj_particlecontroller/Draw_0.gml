@@ -1,7 +1,7 @@
 depth = 0
-for (var p = 0; p < ds_list_size(particle_list); p++) 
+for (var p = 0; p < array_length(particle_list); p++) 
 {
-	var p_id = ds_list_find_value(particle_list, p)
+	var p_id = particle_list[p]
 	with (p_id)
 	{
 		other.depth = depth

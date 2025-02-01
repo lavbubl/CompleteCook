@@ -23,7 +23,9 @@ enum states
 	punchenemy,
 	swingding,
 	grind,
-	hurt
+	hurt,
+	parry,
+	noclip
 }
 
 spawn = "a"

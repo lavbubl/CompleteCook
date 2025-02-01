@@ -19,3 +19,16 @@ function meta_panic() {
 		deferred: false
 	}
 }
+
+function sh_noclip (args) {
+	obj_player.state = states.noclip
+}
+
+function meta_noclip() {
+	return {
+		description: "Resets state and you can move anywhere",
+		hidden: false,
+		deferred: false
+	}
+}
+

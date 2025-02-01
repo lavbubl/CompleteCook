@@ -48,6 +48,10 @@ switch (state)
 				if (abs(obj_player.hsp) < 16)
 					tv_expression(spr_tv_mach3)
 				break;
+			case spr_tv_hurt:
+				if p.state == states.hurt
+					alarm[0] = 120
+				break;
 		}
 		break;
 }

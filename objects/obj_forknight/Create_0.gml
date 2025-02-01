@@ -8,3 +8,4 @@ sprs.turn = spr_forknight_turn
 
 do_turn = true
 
+create_hurtbox()

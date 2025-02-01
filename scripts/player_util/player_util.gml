@@ -48,12 +48,14 @@ function do_taunt()
 			vsp: self.vsp,
 			sprite_index: self.sprite_index,
 		}
+		
 		sprite_index = spr_player_taunt
 		image_index = random_range(0, image_number)
 		taunttimer = 20
 		state = states.taunt
 		particle_create(x, y, particles.taunt)
 		scr_sound_pitched(sfx_taunt)
+		instance_create(x, y, obj_parrybox)
 	}
 }
 
@@ -138,4 +140,6 @@ function do_hurt()
 	global.combo.timer -= 30
 	i_frames = 100
 	scr_sound_pitched(sfx_hurt)
+	with obj_tv
+		tv_expression(spr_tv_hurt)
 }

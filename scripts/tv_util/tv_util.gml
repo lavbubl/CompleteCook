@@ -5,6 +5,11 @@ function tv_expression(spr)
 		case spr_tv_idle:
 			state_togo = tv_states.normal
 			break;
+		case spr_tv_hurt:
+			state_togo = tv_states.expr
+			alarm[0] = 120
+			expr_sprite = spr
+			break;
 		default:
 			state_togo = tv_states.expr
 			expr_sprite = spr

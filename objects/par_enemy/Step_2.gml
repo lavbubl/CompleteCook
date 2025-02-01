@@ -12,6 +12,16 @@ if (!follow_player && state == e_states.grabbed)
 	state = e_states.stun
 }
 
+switch (object_index)
+{
+	case obj_forknight:
+		if (sprite_index == sprs.move && hurtbox_id == -4)
+			create_hurtbox()
+		else if (sprite_index != sprs.move && hurtbox_id != -4)
+			destroy_hurtbox()
+		break;
+}
+
 if follow_player
 {
 	hsp = 0

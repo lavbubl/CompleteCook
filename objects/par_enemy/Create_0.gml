@@ -11,6 +11,7 @@ scared_timer = 0
 stun_timer = 0
 blur_timer = 0
 do_turn = false
+hurtbox_id = -4
 
 follow_player = false
 pd_frame_offset = [2, 1, 0, -1, -2, -1, 0, 1]

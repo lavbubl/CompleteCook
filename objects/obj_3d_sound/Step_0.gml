@@ -9,7 +9,7 @@ for (var i = 0; i < ds_list_size(emitters); i++) {
 		continue;
 	}
 	
-	var obj_to_follow = e_id[1]
-	if (obj_to_follow != -1)
-		audio_emitter_position(e_id[0], obj_to_follow.x, obj_to_follow.y, 0)
+	var follow_obj = e_id[1]
+	if (follow_obj != -1)
+		audio_emitter_position(e_id[0], follow_obj.x, follow_obj.y, 0)
 }

@@ -8,6 +8,11 @@ enum e_states {
 
 function enemy_normal()
 {
+	var hurtbox_needed = false
+	
+	if (object_index == obj_forknight) //REPLACE WITH SWITCH STATEMENT
+		hurtbox_needed = true
+	
 	image_speed = 0.35
 	
 	movespeed = 1
@@ -29,7 +34,11 @@ function enemy_normal()
 	if (do_turn && sprite_index == sprs.turn)
 	{
 		hsp = 0
-		reset_anim_on_end(sprs.move)
+		if anim_ended()
+		{
+			reset_anim(sprs.move)
+			create_hurtbox()
+		}
 	}
 }
 
@@ -243,4 +252,19 @@ function do_enemy_generics()
 	}
 	
 	break_destroyables()
+}
+
+function create_hurtbox()
+{
+	with instance_create(x, y, obj_hurtbox)
+	{
+		other.hurtbox_id = id
+		follow_obj = other.id
+	}
+}
+
+function destroy_hurtbox()
+{
+	instance_destroy(hurtbox_id)
+	hurtbox_id = -4
 }

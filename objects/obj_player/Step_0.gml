@@ -84,6 +84,12 @@ switch (state)
 	case states.hurt:
 		player_hurt()
 		break;
+	case states.parry:
+		player_parry()
+		break;
+	case states.noclip:
+		player_noclip()
+		break;
 }
 
 if (state != states.normal)
@@ -132,7 +138,8 @@ if (y > room_height + 200 && state != states.actor)
 
 break_destroyables()
 	
-collide()
+if state != states.noclip
+	collide()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {

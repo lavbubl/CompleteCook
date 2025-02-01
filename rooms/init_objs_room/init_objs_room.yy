@@ -1,7 +1,7 @@
 {
   "$GMRoom":"v1",
   "%Name":"init_objs_room",
-  "creationCodeFile":"",
+  "creationCodeFile":"rooms/init_objs_room/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,

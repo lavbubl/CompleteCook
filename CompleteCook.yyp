@@ -3,6 +3,7 @@
   "%Name":"CompleteCook",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"","%Name":"audiogroup_music","name":"audiogroup_music","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -39,7 +40,6 @@
     {"$GMFolder":"","%Name":"Enemies","folderPath":"folders/Sprites/Enemies.yy","name":"Enemies","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Cheeseslime","folderPath":"folders/Sprites/Enemies/Cheeseslime.yy","name":"Cheeseslime","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Forknight","folderPath":"folders/Sprites/Enemies/Forknight.yy","name":"Forknight","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Miscellaneous","folderPath":"folders/Sprites/Miscellaneous.yy","name":"Miscellaneous","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"HUD","folderPath":"folders/Sprites/HUD.yy","name":"HUD","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Score","folderPath":"folders/Sprites/HUD/Score.yy","name":"Score","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"TV","folderPath":"folders/Sprites/HUD/TV.yy","name":"TV","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -51,6 +51,7 @@
     {"$GMFolder":"","%Name":"Masks","folderPath":"folders/Sprites/Masks.yy","name":"Masks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hurt Boxes","folderPath":"folders/Sprites/Masks/Hurt Boxes.yy","name":"Hurt Boxes","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Sprites/Masks/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Miscellaneous","folderPath":"folders/Sprites/Miscellaneous.yy","name":"Miscellaneous","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Particles","folderPath":"folders/Sprites/Particles.yy","name":"Particles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Sprites/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},

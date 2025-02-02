@@ -1,10 +1,14 @@
 global.col_obj_list = ds_list_create()
 global.maingamepad = 0
+gamepadarr = []
+var p = 0
 for (var i = 0; i < gamepad_get_device_count(); i++) {
 	if (gamepad_is_connected(i)) {
-		global.maingamepad = i
+		array_push(gamepadarr, i)
 	}
 }
+show_debug_message(gamepadarr)
+global.maingamepad = gamepadarr[p]
 
 solids_to_add = [obj_solid, obj_pizzabox, obj_platform, obj_slope, obj_slopeplatform]
 gui_surf = surface_create(screen_w, screen_h)

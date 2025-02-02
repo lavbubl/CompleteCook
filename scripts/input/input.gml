@@ -13,6 +13,7 @@ function get_input()
 		}
 	}
 	else {
+		gamepad_set_color(global.maingamepad, c_red)
 		var keybinds = {
 			left: gp_padl,
 			right: gp_padr,

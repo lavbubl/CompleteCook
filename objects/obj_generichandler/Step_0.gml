@@ -16,3 +16,21 @@ if (array_length(gamepadarr) > 1) {
 		}
 	}
 }
+if (keyboard_check(vk_backspace)) {
+	gamepadarr = []
+	var p = 0
+	for (var i = 0; i < gamepad_get_device_count(); i++) {
+		if (gamepad_is_connected(i)) {
+			array_push(gamepadarr, i)
+		}
+	}
+	show_debug_message(gamepadarr)
+	if (array_length(gamepadarr) > 0) {
+		global.maingamepad = gamepadarr[p]
+		show_message("Switched to controller " + string(p))
+	}
+	else {
+		global.maingamepad = 0
+		show_message("No controllers found")
+	}
+}

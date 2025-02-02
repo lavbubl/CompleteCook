@@ -1,5 +1,7 @@
 global.col_obj_list = ds_list_create()
 global.maingamepad = 0
+global.saveroom = ds_list_create()
+ds_list_add(global.saveroom, -4) // idk why but this fixes one problem.
 gamepadarr = []
 var p = 0
 for (var i = 0; i < gamepad_get_device_count(); i++) {

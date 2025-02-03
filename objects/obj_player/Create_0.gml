@@ -63,6 +63,7 @@ crouchslipbuffer = 0
 grabclimbbuffer = 0
 ladderbuffer = 0
 
+
 prev = {
 	state: self.state,
 	hsp: self.hsp,

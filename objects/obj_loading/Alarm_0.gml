@@ -11,5 +11,9 @@ if (array_length(tex_list) > 0)
 		currenttexture++
 	alarm[0] = 1
 }
-else
-	room_goto(init_objs_room)
+else {
+	if (audio_group_is_loaded(audiogroup_music))
+		room_goto(init_objs_room)
+	else
+		alarm[0] = 1
+}

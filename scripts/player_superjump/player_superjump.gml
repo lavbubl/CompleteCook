@@ -74,7 +74,7 @@ function player_superjump()
 		if (sprite_index != spr_player_Sjumpcancelstart)
 			vsp -= 0.6
 		
-		if (key_attack.pressed && state != states.bump)
+		if ((key_attack.pressed || key_dash.pressed) && state != states.bump)
 		{
 			reset_anim(spr_player_Sjumpcancelstart)
 			scr_sound_3d(sfx_superjumpcancel, x, y)

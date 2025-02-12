@@ -44,7 +44,7 @@ function enemy_normal()
 
 function enemy_scared()
 {
-	if (scared_timer <= 0)
+	if (scared_timer <= 0 && grounded)
 	{
 		state = states.normal
 		sprite_index = sprs.move
@@ -64,7 +64,7 @@ function enemy_stun()
 		hsp = approach(hsp, 0, 0.25)
 	sprite_index = sprs.stun
 	image_speed = 0.35
-	if (stun_timer <= 0)
+	if (stun_timer <= 0 && grounded)
 	{
 		state = states.normal
 		sprite_index = sprs.move
@@ -185,36 +185,22 @@ function do_enemy_generics()
 					vsp = -18
 				}
 			}
-			if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2)
+			if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold))
 			{
 				if (state == states.jump)
-				{
-					vsp = key_jump.down ? -15 : -10
-					jumpstop = true
 					reset_anim(spr_player_stomp)
-					with (other)
-					{
-						xscale = -obj_player.xscale
-						hsp = obj_player.xscale * 5
-						vsp = -5
-						state = e_states.stun
-						stun_timer = 180
-						warp = -0.4
-					}
-				}
-				if (state == states.hold)
+				vsp = key_jump.down ? -15 : -10
+				jumpstop = true
+				
+				scr_sound_3d(sfx_stompenemy, x, y)
+				with (other)
 				{
-					vsp = key_jump.down ? -15 : -10
-					jumpstop = true
-					with (other)
-					{
-						xscale = -obj_player.xscale
-						hsp = obj_player.xscale * 5
-						vsp = -5
-						state = e_states.stun
-						stun_timer = 180
-						warp = -0.4
-					}
+					xscale = -obj_player.xscale
+					hsp = obj_player.xscale * 5
+					vsp = -5
+					state = e_states.stun
+					stun_timer = 180
+					warp = -0.4
 				}
 			}
 		}

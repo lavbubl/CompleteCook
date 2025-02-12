@@ -7,6 +7,7 @@ function do_groundpound()
 {
 	if (key_down.pressed)
 	{
+		dir = p_move
 		state = states.groundpound
 		sprite_index = spr_player_bodyslamstart
 		image_index = 0
@@ -46,7 +47,7 @@ function do_taunt()
 			state: self.state,
 			hsp: self.hsp,
 			vsp: self.vsp,
-			sprite_index: self.sprite_index,
+			sprite_index: self.sprite_index
 		}
 		
 		sprite_index = spr_player_taunt
@@ -132,14 +133,33 @@ function player_sounds()
 		
 }
 
+function decrease_score(val)
+{
+	var s = global.score - val
+	var num = -val
+	
+	if s < 0
+		num += abs(0 - s)
+	
+	if num < 0
+	{
+		with instance_create(0, 0, obj_negativenumber)
+			number = string(num)
+	}
+	
+	global.score = max(global.score - val, 0)
+}
+
 function do_hurt()
 {
 	state = states.hurt
 	hsp = -8 * xscale
 	vsp = -12
 	global.combo.timer -= 30
+	decrease_score(50)
 	i_frames = 100
 	scr_sound_pitched(sfx_hurt)
+	
 	with obj_tv
 		tv_expression(spr_tv_hurt)
 }

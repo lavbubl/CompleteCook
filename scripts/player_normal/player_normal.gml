@@ -2,11 +2,11 @@ function player_normal()
 {
 	var default_idle = spr_player_idle
 	var default_move = spr_player_move
-	if global.panic
+	if global.panic.active
 	{
 		default_idle = spr_player_panic
 		
-		if global.panic_timer <= 0
+		if global.panic.timer <= 0
 		{
 			default_idle = spr_player_weak
 			default_move = spr_player_weakmove

@@ -48,6 +48,7 @@ function player_grab()
 	else if (place_meeting(x + xscale, y, obj_solid) && grounded)
 	{
 		sprite_index = spr_player_grabbump
+		scr_sound_3d(sfx_splat, x, y)
 		state = states.jump
 		jumpstop = true
 		hsp = 0

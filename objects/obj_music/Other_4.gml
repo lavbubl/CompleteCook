@@ -1,4 +1,4 @@
-if global.panic
+if global.panic.active
 	exit;
 
 for (var i = 0; i < array_length(levelsongs); i++) 
@@ -27,7 +27,8 @@ for (var i = 0; i < array_length(levelsongs); i++)
 			}
 			audio_stop_sound(mu)
 			mu = scr_sound(levelsongs[i][1], true)
-			audio_sound_set_track_position(mu, wrap(prevpos, prevsoundlength))
+			if prevsoundlength > 0
+				audio_sound_set_track_position(mu, wrap(prevpos, prevsoundlength))
 			audio_sound_gain(mu, 0, 0)
 			audio_sound_gain(mu, 1, 2000)
 		}

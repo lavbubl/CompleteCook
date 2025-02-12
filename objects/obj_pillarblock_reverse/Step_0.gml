@@ -1,4 +1,4 @@
-if global.panic
+if global.panic.active
 {
 	x = -1000
 	y = -1000

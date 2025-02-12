@@ -65,6 +65,7 @@ function player_tumble()
 		{*/
 			state = states.bump
 			reset_anim(spr_player_wallsplat)
+			scr_sound_3d(sfx_splat, x, y)
 		//}
 	}
 	

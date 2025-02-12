@@ -4,7 +4,7 @@ if (prevmu != -1 && audio_sound_get_gain(prevmu) <= 0)
 	prevmu = -1
 }
 
-if (mu != -1 && audio_sound_get_gain(mu) <= 0 && global.panic)
+if (mu != -1 && audio_sound_get_gain(mu) <= 0 && global.panic.active)
 {
 	audio_stop_sound(mu)
 	mu = -1
@@ -20,7 +20,7 @@ with obj_pillar
 	}
 }
 
-if !global.panic
+if !global.panic.active
 {
 	if instance_exists(obj_pillar)
 	{
@@ -56,9 +56,43 @@ if !global.panic
 	pinch_init = false
 }
 
+if (global.secret && !secret_init) //move this to room start, im just lazy
+{	
+	secret_mu = scr_sound(mu_secret, true)
+	
+	if (!global.panic.active && mu != -1)
+	{
+		var t_pos = wrap(audio_sound_get_track_position(mu), audio_sound_length(mu))
+		audio_sound_set_track_position(secret_mu, t_pos)
+	}
+	
+	secret_init = true
+	
+	if mu != -1
+		audio_pause_sound(mu)
+	
+	if prevmu != -1
+		audio_pause_sound(prevmu)
+	
+	if panic_mu != -1
+		audio_pause_sound(panic_mu)
+	
+	if panic_pinch_mu != -1
+		audio_pause_sound(panic_pinch_mu)
+}
+else if (!global.secret && secret_init)
+{
+	audio_stop_sound(secret_mu)
+	secret_mu = -1
+	
+	secret_init = false
+	
+	alarm[0] = 20
+}
+
 var pinch_point = 662
 
-if global.panic
+if global.panic.active
 {
 	if (!panic_music_initiated && !pinch_init)
 	{
@@ -71,7 +105,7 @@ if global.panic
 		audio_sound_loop_end(panic_mu, 159.94)
 	}
 	
-	if (global.panic_timer < pinch_point && !pinch_init)
+	if (global.panic.timer < pinch_point && !pinch_init)
 	{
 		pinch_init = true
 		

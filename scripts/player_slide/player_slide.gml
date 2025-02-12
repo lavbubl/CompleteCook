@@ -48,6 +48,7 @@ function player_slide()
 			if (place_meeting(x + xscale, y, obj_solid))
 			{
 				reset_anim(spr_player_wallsplat)
+				scr_sound_3d(sfx_splat, x, y)
 				state = states.bump
 			}
 			if (movespeed > 0)

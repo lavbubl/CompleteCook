@@ -5,8 +5,7 @@ function player_taunt()
 	if (taunttimer <= 0)
 	{
 		state = prev.state
-		hsp = prev.hsp
-		vsp = prev.vsp
+		vsp = prev.vsp + grav
 		sprite_index = prev.sprite_index
 	}
 }

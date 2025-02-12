@@ -104,6 +104,9 @@ loop_sounds = {
 	}
 }
 
+visual_size = 1
+secret_exit = false
+secret_cutscene = false
 idletimer = 120
 instakill = false
 taunttimer = 0

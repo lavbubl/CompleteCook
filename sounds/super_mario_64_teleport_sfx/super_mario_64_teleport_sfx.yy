@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"super_mario_64_teleport_sfx",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":1.201633,
+  "name":"super_mario_64_teleport_sfx",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"super_mario_64_teleport_sfx.mp3",
+  "type":0,
+  "volume":1.0,
+}

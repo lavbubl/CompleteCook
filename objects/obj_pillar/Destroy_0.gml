@@ -11,8 +11,9 @@ with p_id
 var f_id = instance_create(0, 0, obj_pillarflash)
 f_id.pillar_id = p_id
 
-global.panic = true
-global.panic_timer = 5000
+global.panic.active = true
+global.panic.timer = 5000
+global.panic.timer_max = 5000
 global.doorshut = false
 
 scr_sound(sfx_killenemy)

@@ -16,6 +16,8 @@ instakill = false
 
 prevstate = state
 
+break_destroyables()
+
 switch (state)
 {
 	case states.taunt:
@@ -135,8 +137,6 @@ if ((y > room_height + 200 || y < -200) && state != states.actor)
 	vsp = 0
 	sprite_index = spr_player_idle
 }
-
-break_destroyables()
 	
 if state != states.noclip
 	collide()
@@ -157,9 +157,10 @@ player_sounds()
 
 if ladderbuffer > 0
 	ladderbuffer--
+	
+var spd = 0.05
 
-/*if particletimer > 0
-	particletimer--
+if secret_cutscene
+	visual_size = max(visual_size - spd, 0)
 else
-	particle_create(x - 128, y, particles.bleh)*/
-
+	visual_size = min(visual_size + spd, 1)

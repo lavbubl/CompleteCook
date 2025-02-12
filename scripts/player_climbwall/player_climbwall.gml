@@ -31,7 +31,18 @@ function player_climbwall()
 			sprite_index = spr_player_mach3
 			movespeed = wallspeed
 		}
+		
 		x += xscale
+		
+		var h = wallspeed
+		
+		if scr_solid(x, y + h)
+		{
+			for (var i = 1; i < h; i++) {
+			    if !scr_solid(x, y + 1)
+					y++
+			}
+		}
 	}
 	else if scr_solid(x, y - 1)
 	{

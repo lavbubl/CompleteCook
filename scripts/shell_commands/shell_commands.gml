@@ -1,6 +1,7 @@
 function sh_panic (args) {
-	global.panic = args[1]
-	global.panic_timer = args[2]
+	global.panic.active = args[1]
+	global.panic.timer = args[2]
+	global.panic.timer_max = args[2]
 }
 
 function meta_panic() {
@@ -27,6 +28,26 @@ function sh_noclip (args) {
 function meta_noclip() {
 	return {
 		description: "Resets state and you can move anywhere",
+		hidden: false,
+		deferred: false
+	}
+}
+
+function sh_room_goto (args) {
+	room_goto(asset_get_index(args[1]))
+	obj_player.spawn = args[2]
+}
+
+function meta_room_goto() {
+	return {
+		description: "Goes to any room",
+		arguments: ["room", "door"],
+		suggestions: [
+			function() {
+				return "S"
+			},
+			["a", "b", "c", "d", "e", "f", "g"]
+		],
 		hidden: false,
 		deferred: false
 	}

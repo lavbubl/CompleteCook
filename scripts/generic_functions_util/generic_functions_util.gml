@@ -51,11 +51,11 @@ enum fade_types
 
 function do_fade(t_room, t_door, type)
 {
-	with (obj_fade)
+	with obj_fade
 	{
 		if !fade
 		{
-			if (type != fade_types.box)
+			if type != fade_types.box
 				scr_sound(sfx_door)
 			fade = true
 			target_room = t_room
@@ -66,6 +66,37 @@ function do_fade(t_room, t_door, type)
 			obj_player.spawn = t_door
 			obj_player.door_type = type
 		}
+	}
+}
+
+function do_secret_fade()
+{
+	with obj_fade
+	{
+		if !fade
+		{
+			fade = true
+			target_room = other.t_room
+		}
+	}
+	obj_player.secret_exit = true
+}
+
+function do_hold_player(_exit)
+{
+	with obj_player
+	{
+		x = other.x
+		y = other.y - 20
+		xstart = x
+		ystart = y
+		hsp = 0
+		vsp = 0
+		state = states.actor
+		secret_exit = _exit
+		secret_cutscene = _exit
+		sprite_index = _exit ? spr_player_hurt : spr_player_bodyslamfall
+		image_speed = 0.35
 	}
 }
 
@@ -90,9 +121,17 @@ function set_globals()
 	}
 
 	global.ds_dead_enemies = ds_list_create()
-	global.ds_hurt_boxes = ds_list_create()
+	global.ds_broken_destroyables = ds_list_create()
+	global.ds_secrets = ds_list_create()
 	global.doorshut = false
 	global.scorefont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
+	global.generic_font = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?.1234567890:", true, 0)
+	global.hud_negativefont = font_add_sprite_ext(spr_negativenumber_font, "0123456789$-", true, 0)
+	global.secret = false
+	global.level_data = {
+		treasure: false,
+		level_name: "entrance"
+	}
 }
 
 function bbox_in_camera()

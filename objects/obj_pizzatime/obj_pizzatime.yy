@@ -10,8 +10,8 @@
   "name":"obj_pizzatime",
   "overriddenProperties":[],
   "parent":{
-    "name":"Essentials",
-    "path":"folders/Objects/Essentials.yy",
+    "name":"HUD",
+    "path":"folders/Objects/HUD.yy",
   },
   "parentObjectId":null,
   "persistent":true,

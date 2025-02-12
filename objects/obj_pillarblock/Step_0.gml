@@ -1,4 +1,4 @@
-if global.panic
+if global.panic.active
 {
 	x = xstart
 	y = ystart

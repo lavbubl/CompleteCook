@@ -1,5 +1,6 @@
 function player_piledriver()
 {
+	image_speed = 0.35
 	if (vsp > 0)
 		vsp += 0.5
 		

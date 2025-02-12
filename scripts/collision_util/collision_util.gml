@@ -30,10 +30,17 @@ function collide()
 	var hsp_final = hsp + hsp_plat
 	var vsp_final = vsp + vsp_plat
 	
-	repeat (abs(round(vsp_final)))
+	var abs_final = abs(vsp_final);
+	
+	repeat round(abs_final)
 	{
 		old_y = y
-		y += sign(vsp_final)
+		
+		if abs_final
+			y += sign(vsp_final);
+		else
+			y += vsp_final;
+		
 		if (scr_solid(x, y))
 		{
 			y = old_y
@@ -42,10 +49,16 @@ function collide()
 		}
 	}
 		
-	repeat (abs(round(hsp_final)))
+	abs_final = abs(hsp_final);
+		
+	repeat round(abs_final)
 	{
 		old_x = x
-		x += sign(hsp_final)
+		
+		if abs_final
+			x += sign(hsp_final)
+		else
+			x += hsp_final;
 		
 		var h = 4
 		
@@ -54,7 +67,7 @@ function collide()
 			if !scr_solid(x, y - i)
 			{
 				while scr_solid(x, y)
-					y--
+					y--;
 			}
 			if (scr_solid(x, y + i + 1) && scr_solid(x - sign(hsp_final), y + 1))
 			{

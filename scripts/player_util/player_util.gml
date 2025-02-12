@@ -1,6 +1,6 @@
 function anim_ended()
 {
-	return image_index + image_speed >= image_number
+	return image_index >= image_number - 1;
 }
 
 function do_groundpound()
@@ -84,7 +84,7 @@ function player_sounds()
 		
 		if confirmed_3d
 		{
-			if (_data.sndid == -1 && !dont_play)
+			if (_data.sndid == noone && !dont_play)
 			{
 				_data.sndid = 1
 				_data.emitter = emitter_create_quick(_id.x, _id.y, _id)
@@ -97,20 +97,20 @@ function player_sounds()
 				}
 			}
 			
-			if (_data.sndid != -1 && dont_play)
+			if (_data.sndid != noone && dont_play)
 			{
-				if _data.emitter != -1
+				if _data.emitter != noone
 				{
 					audio_emitter_free(_data.emitter)
-					_data.emitter = -1
+					_data.emitter = noone
 				}
 				
-				_data.sndid = -1
+				_data.sndid = noone
 			}
 		}
 		else
 		{
-			if (_id.state == _data.state && !dont_play && _data.sndid == -1)
+			if (_id.state == _data.state && !dont_play && _data.sndid == noone)
 			{
 				_data.sndid = scr_sound(_data.sound, true)
 				if struct_exists(_data, "looppoints")
@@ -120,10 +120,10 @@ function player_sounds()
 				}
 			}
 			
-			if (_data.sndid != -1 && dont_play)
+			if (_data.sndid != noone && dont_play)
 			{
 				audio_stop_sound(_data.sndid)
-				_data.sndid = -1
+				_data.sndid = noone
 			}
 		}
 	})

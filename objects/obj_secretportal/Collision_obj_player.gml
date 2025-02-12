@@ -1,4 +1,4 @@
-if ds_list_find_index(global.ds_secrets, id) != -1
+if ds_list_find_index(global.ds_secrets, id) != noone
 	exit;
 
 if sprite_index != spr_secretportal_enter

@@ -29,7 +29,7 @@ function scr_sound_3d(snd, x, y, loop = false)
 	return played_snd;
 }
 
-function emitter_create_quick(x, y, follow_obj = -1, z = 0)
+function emitter_create_quick(x, y, follow_obj = noone, z = 0)
 {
 	var e = audio_emitter_create()
 	audio_emitter_position(e, x, y, z)

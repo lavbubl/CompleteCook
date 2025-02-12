@@ -24,9 +24,9 @@ with (instance_place(x, y - image_yscale, obj_player))
 			scr_sound(sfx_box)
 		}
 		
-		if ((up || state == states.superjump) && place_meeting(x, y - 1, other) && other.image_yscale == -1)
+		if ((up || state == states.superjump) && place_meeting(x, y - 1, other) && other.image_yscale == noone)
 		{
-			dooryscale = -1
+			dooryscale = noone
 			state = states.actor
 			hsp = 0
 			vsp = 0

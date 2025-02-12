@@ -1,9 +1,9 @@
 if (!global.panic.active)
 {
-	if bar_surface != -1
+	if bar_surface != noone
 	{
 		surface_free(bar_surface)
-		bar_surface = -1
+		bar_surface = noone
 	}
 	exit;
 }

@@ -122,20 +122,22 @@ function player_normal()
 	switch (sprite_index)
 	{
 		case spr_player_move:
-			image_speed = movespeed / 15
+			image_speed = clamp(movespeed / 15, 0.35, 0.6);
 			break;
 		case spr_player_machslideend:
 		case spr_player_land:
 			reset_anim_on_end(spr_player_idle)
 			break;
 		case spr_player_landmove:
-			image_speed = movespeed / 15
-			reset_anim_on_end(spr_player_idle)
+			image_speed = clamp(movespeed / 15, 0.35, 0.6);
+			reset_anim_on_end(spr_player_move);
 			break;
 		case spr_player_facehurt:
 			reset_anim_on_end(spr_player_idle)
 			break;
 	}
+	
+	
 	
 	do_taunt()
 }

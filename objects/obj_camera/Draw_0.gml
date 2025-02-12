@@ -1,5 +1,5 @@
 draw_set_color(c_black)
-draw_rectangle(-64, -64, -1, room_height, false)
-draw_rectangle(-64, -64, room_width + 64, -1, false)
+draw_rectangle(-64, -64, noone, room_height, false)
+draw_rectangle(-64, -64, room_width + 64, noone, false)
 draw_rectangle(room_width, -64, room_width + 64, room_height + 64, false)
 draw_rectangle(-64, room_height, room_width + 64, room_height + 64, false)

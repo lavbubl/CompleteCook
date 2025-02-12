@@ -30,8 +30,7 @@ function player_jump()
 		if (key_dash.down)
 		{
 			state = states.mach2
-			if (movespeed < 6)
-				movespeed = 6
+			movespeed = max(movespeed, 6);
 			reset_anim(spr_player_mach1)
 		}
 	}

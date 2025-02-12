@@ -66,7 +66,7 @@ switch (state)
 
 switch (combo.state)
 {
-	case -1:
+	case noone:
 		combo.vsp = 0
 		combo.y = approach(combo.y, -500, 4)
 		if combo_active
@@ -112,7 +112,7 @@ combo.ghost.image_index += 0.35
 combo.ghost.image_index = wrap(sprite_get_number(spr_tv_c_ghost), combo.ghost.image_index)
 
 if !combo_active
-	combo.state = -1
+	combo.state = noone
 
 var y_goto = ystart
 if (obj_player.x > room_width - 250 && obj_player.y < 175)

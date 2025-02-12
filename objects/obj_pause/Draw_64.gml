@@ -11,7 +11,7 @@ if (pause)
 	draw_set_color(c_white)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_center)
-	draw_set_font(-1)
+	draw_set_font(noone)
 	
 	var sw = screen_w / 2
 	var sh = screen_h / 2

@@ -1,6 +1,6 @@
 function player_grind()
 {
-	if ((hsp < 10 && xscale == 1) || (hsp > -10 && xscale == -1))
+	if ((hsp < 10 && xscale == 1) || (hsp > -10 && xscale == noone))
 		hsp = approach(hsp, xscale * 10, 0.4)
 	sprite_index = spr_player_grind
 	image_speed = 0.35

@@ -31,13 +31,13 @@ function shake_camera(_mag = 5, _mag_decel = 0.25)
 function reset_anim(spr)
 {
 	sprite_index = spr
-	image_index = 0
+	image_index = 0;
 }
 
 function reset_anim_on_end(spr)
 {
-	if (anim_ended())
-		reset_anim(spr)
+	if anim_ended()
+		return reset_anim(spr);
 }
 
 enum fade_types
@@ -108,7 +108,7 @@ function instance_create(_x, _y, obj)
 function sleep(o)
 {
 	var t = current_time + o;
-	while (current_time < t) 
+	while current_time < t
 		do {};
 }
 

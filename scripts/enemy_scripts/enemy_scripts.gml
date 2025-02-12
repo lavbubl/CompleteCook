@@ -91,7 +91,7 @@ function do_scared()
 		vsp = -5
 		movespeed = 0
 		sprite_index = sprs.scared
-		xscale = obj_player.x > x ? 1 : -1
+		xscale = obj_player.x > x ? 1 : noone
 		scared_timer = 180
 	}
 }
@@ -128,7 +128,7 @@ function do_enemy_generics()
 
 	if (place_meeting(x, y, obj_player))
 	{
-		if (obj_player.instakill && alarm[0] == -1 && !follow_player)
+		if (obj_player.instakill && alarm[0] == noone && !follow_player)
 		{
 			with (obj_player)
 			{

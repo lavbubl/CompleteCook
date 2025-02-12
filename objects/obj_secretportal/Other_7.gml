@@ -1,6 +1,6 @@
 if ((sprite_index == spr_secretportal_enter || sprite_index == spr_secretportal_spawnclose) && image_speed != 0)
 {
-	if ds_list_find_index(global.ds_secrets, id) == -1
+	if ds_list_find_index(global.ds_secrets, id) == noone
 	{
 		image_index = image_number - 1
 		image_speed = 0

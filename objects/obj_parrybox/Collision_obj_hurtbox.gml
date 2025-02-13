@@ -9,7 +9,7 @@ with obj_player
 with other
 {
 	var xh = lerp(bbox_left, bbox_right, 0.5)
-	obj_player.xscale = x - xh > 0 ? 1 : noone
+	obj_player.xscale = x - xh > 0 ? 1 : -1
 	
 	if (follow_obj != -4)
 	{

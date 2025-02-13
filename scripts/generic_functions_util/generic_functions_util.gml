@@ -16,6 +16,13 @@ function wave(from, to, duration, offset)
 	return from + _wave + sin((((current_time * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
+function draw_set_align(halign, valign, color = c_white) 
+{
+	draw_set_halign(halign) 
+	draw_set_valign(valign)
+	draw_set_color(color)
+}
+
 function quick_shader_set_uniform_f(shader, uniform_name, val)
 {
 	var f = shader_get_uniform(shader, uniform_name)
@@ -55,8 +62,6 @@ function do_fade(t_room, t_door, type)
 	{
 		if !fade
 		{
-			if type != fade_types.box
-				scr_sound(sfx_door)
 			fade = true
 			target_room = t_room
 			pos = {

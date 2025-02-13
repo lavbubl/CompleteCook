@@ -65,3 +65,13 @@ function scr_sound_3d_pitched(snd, x, y, pitch_start = 0.95, pitch_end = 1.05, l
 	
 	return played_snd;
 }
+
+function scr_sound_multiple(snd)
+{
+	if audio_is_playing(snd)
+		audio_stop_sound(snd)
+	
+	var s = scr_sound(snd)
+	
+	return s;
+}

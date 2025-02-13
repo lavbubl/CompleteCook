@@ -12,5 +12,5 @@ if sprite_index == spr_secretportal_spawn
 }
 
 if sprite_index == spr_secretportal_spawnclose
-	visible = false
+	instance_destroy()
 

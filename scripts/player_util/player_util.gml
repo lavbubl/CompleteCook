@@ -86,7 +86,7 @@ function player_sounds()
 		{
 			if (_data.sndid == noone && !dont_play)
 			{
-				_data.sndid = 1
+				_data.sndid = 1 //tjhis is a shitty hack :(
 				_data.emitter = emitter_create_quick(_id.x, _id.y, _id)
 				var s = scr_sound_3d_on(_data.emitter, _data.sound, true)
 				
@@ -119,8 +119,7 @@ function player_sounds()
 					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
 				}
 			}
-			
-			if (_data.sndid != noone && dont_play)
+			else if (_data.sndid != noone && dont_play)
 			{
 				audio_stop_sound(_data.sndid)
 				_data.sndid = noone

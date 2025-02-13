@@ -67,8 +67,7 @@ draw_sprite(pizzaface.sprite_index, pizzaface.image_index, x + 150, y + 10)
 draw_set_font(global.generic_font)
 draw_set_color(c_white)
 draw_set_alpha(1)
-draw_set_halign(fa_center)
-draw_set_valign(fa_top)
+draw_set_align(fa_center, fa_top)
 
 var minutes = 0
 for (var seconds = ceil(global.panic.timer / 12); seconds > 59; seconds -= 60)

@@ -1,9 +1,9 @@
-//args room, sound asset, continous, 
+//args room, sound asset, continous, secret music
 
 levelsongs = 
 [
-	[level_1, mu_sundogfunk, false],
-	[tower_1, mu_preheat, false],
+	[level_1, mu_sundogfunk, false, mu_secret],
+	[tower_1, mu_preheat, false, mu_secret],
 	[Room6, mu_dropit, true]
 ]
 
@@ -20,15 +20,12 @@ pauseIDS = function(pause = true)
 	for (var i = 0; i < array_length(pauseSounds); i++)
 	{
 		var variableAttempt = variable_instance_get(id, pauseSounds[i]);
-			
-		if variable_instance_exists(id, variableAttempt)
+		
+		if variableAttempt != noone
 		{
 			if pause
-			{
-				if audio_is_playing(variableAttempt)
-					audio_pause_sound(variableAttempt);
-			}
-			else if !audio_is_playing(variableAttempt)
+				audio_pause_sound(variableAttempt);
+			else
 				audio_resume_sound(variableAttempt);		
 		}
 	}
@@ -40,6 +37,6 @@ panic_mu = noone;
 panic_pinch_mu = noone
 pillar_mu = noone
 secret_mu = noone
+secret_mu_to_play = noone
 panic_music_initiated = false
 pinch_init = false
-secret_init = false

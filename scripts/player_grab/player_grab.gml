@@ -61,10 +61,7 @@ function player_grab()
 	{
 		case spr_player_suplexgrab:
 			if anim_ended()
-			{
-				reset_anim(spr_player_land)
 				state = states.normal
-			}
 			break;
 		case spr_player_suplexgrabjump:
 			if anim_ended()

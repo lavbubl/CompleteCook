@@ -1,5 +1,4 @@
-draw_set_halign(fa_left)
-draw_set_valign(fa_bottom)
+draw_set_align(fa_left, fa_bottom)
 
 x = 121 + irandom_range(shake_mag, -shake_mag)
 y = 90 + irandom_range(shake_mag, -shake_mag) //hud_posY

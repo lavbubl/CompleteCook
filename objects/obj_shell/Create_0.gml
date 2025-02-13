@@ -6,8 +6,8 @@ depth = -500
 isOpen = false;
 isAutocompleteOpen = false;
 
-shellSurface = noone;
-scrollSurface = noone;
+shellSurface = -1;
+scrollSurface = -1;
 shellOriginX = 0;
 shellOriginY = 0;
 visibleWidth = 0;

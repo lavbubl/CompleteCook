@@ -14,7 +14,6 @@ function break_destroyables()
 	
 	var vertical_states = [
 		states.groundpound,
-		states.tumble,
 		states.punch,
 		e_states.hit
 	]

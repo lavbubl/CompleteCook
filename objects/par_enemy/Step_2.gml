@@ -40,7 +40,7 @@ if follow_player
 			case states.piledriver:
 				other.x = x
 				other.y = y
-				other.yscale = noone
+				other.yscale = -1
 				break;
 			case states.punchenemy:
 				other.x = x + xscale * 48
@@ -71,7 +71,7 @@ if follow_player
 				movespeed = abs(hsp)
 				state = states.piledriver
 				vsp = -8
-				other.yscale = noone
+				other.yscale = -1
 			}
 		}
 		if (image_index >= image_number - 1 && sprite_index == spr_player_piledriverland)

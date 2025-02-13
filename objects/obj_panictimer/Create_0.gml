@@ -16,10 +16,12 @@ pizzaface = {
 }
 
 barfill_x = 0
-bar_surface = -4
+bar_surface = noone
 showtime_buffer = 0
 
 xstart = screen_w / 2
 ystart = screen_h - 76
 x = xstart
 y = ystart + 212
+
+depth = -200

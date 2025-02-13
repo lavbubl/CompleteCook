@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite167",
-    "path":"sprites/Sprite167/Sprite167.yy",
+    "name":"mask_collect",
+    "path":"sprites/mask_collect/mask_collect.yy",
   },
   "spriteMaskId":null,
   "visible":true,

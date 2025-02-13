@@ -15,7 +15,7 @@ hurtbox_id = -4
 taunted = false
 
 follow_player = false
-pd_frame_offset = [2, 1, 0, noone, -2, noone, 0, 1]
+pd_frame_offset = [2, 1, 0, -1, -2, -1, 0, 1] //can be truncated to.. some sort of math thing idfk
 
 state_struct = {
 	normal: {state: e_states.normal, func: enemy_normal},

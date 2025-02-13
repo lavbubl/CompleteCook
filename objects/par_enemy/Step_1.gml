@@ -1,4 +1,4 @@
-if (ds_list_find_index(global.ds_dead_enemies, id) != noone)
+if (ds_list_find_index(global.ds_dead_enemies, id) != -1)
 {
 	instance_destroy()
 	exit;

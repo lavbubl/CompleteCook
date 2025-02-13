@@ -2,8 +2,7 @@
 // feather ignore all
 if (isOpen) {
 	draw_set_font(consoleFont);
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_top);
+	draw_set_align(fa_left, fa_top);
 	// pre-calculate one "em" of width & height
 	var emWidth = string_width("M");
 	var emHeight = string_height("M");
@@ -19,7 +18,7 @@ if (isOpen) {
 	
 	outputHeight = 0;
 	for (var i = 0; i < array_length(output); i++) {
-		outputHeight += string_height_ext(output[i], noone, visibleWidth - promptXOffset);
+		outputHeight += string_height_ext(output[i], -1, visibleWidth - promptXOffset);
 	}
 	if (!surface_exists(scrollSurface)) {
 		scrollSurface = surface_create(display_get_gui_width(), visibleHeight);
@@ -55,12 +54,12 @@ if (isOpen) {
 			if (string_char_at(outputStr, 1) == ">") {
 				draw_set_color(fontColorSecondary);
 				draw_text(shellOriginX + consolePaddingH, yOffset, prompt);
-				draw_text_ext(shellOriginX + promptXOffset, yOffset, string_delete(outputStr, 1, 1), noone, visibleWidth - promptXOffset);
+				draw_text_ext(shellOriginX + promptXOffset, yOffset, string_delete(outputStr, 1, 1), -1, visibleWidth - promptXOffset);
 			} else {
 				draw_set_color(fontColor);
-				draw_text_ext(shellOriginX + promptXOffset, yOffset, outputStr, noone, visibleWidth - promptXOffset);
+				draw_text_ext(shellOriginX + promptXOffset, yOffset, outputStr, -1, visibleWidth - promptXOffset);
 			}
-			yOffset += string_height_ext(outputStr, noone, visibleWidth - promptXOffset);
+			yOffset += string_height_ext(outputStr, -1, visibleWidth - promptXOffset);
 		}
 		
 		// Draw our command prompt
@@ -257,7 +256,7 @@ if (isOpen) {
 		
 		draw_set_color(c_white);
 		draw_set_alpha(1);
-		draw_set_font(noone);
+		draw_set_font(-1);
 	surface_reset_target();
 	
 	draw_surface(shellSurface, 0, 0);

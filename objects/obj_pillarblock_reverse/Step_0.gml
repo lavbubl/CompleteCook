@@ -2,11 +2,11 @@ if global.panic.active
 {
 	x = -1000
 	y = -1000
-	image_alpha = 0.5
+	sprite_index = spr_pillarblock
 }
 else
 {
 	x = xstart
 	y = ystart
-	image_alpha = 1
+	sprite_index = spr_pillarblock_awake
 }

@@ -4,5 +4,5 @@ global.sound_3d = {
 	multiplier: 2
 }
 
-audio_listener_orientation(0, 0, 1, 0, noone, 0)
+audio_listener_orientation(0, 0, 1, 0, -1, 0)
 emitters = []

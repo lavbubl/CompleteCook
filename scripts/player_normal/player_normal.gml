@@ -13,7 +13,7 @@ function player_normal()
 		}
 	}
 	
-	if (p_move != 0)
+	if (p_move != 0 && !place_meeting(x + p_move, y, obj_solid))
 	{
 		movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
 		if (floor(movespeed) == 8)
@@ -25,13 +25,14 @@ function player_normal()
 	
 	hsp = movespeed * xscale
 	
-	var idlegestures = [
-	spr_player_idlefrown, 
-	spr_player_idledance, 
-	spr_player_idlehand, 
-	spr_player_idlecareless, 
-	spr_player_idlewhat,
-	spr_player_idlebite
+	var idlegestures = 
+	[
+		spr_player_idlefrown, 
+		spr_player_idledance, 
+		spr_player_idlehand, 
+		spr_player_idlecareless, 
+		spr_player_idlewhat,
+		spr_player_idlebite
 	]
 	
 	if p_move != 0

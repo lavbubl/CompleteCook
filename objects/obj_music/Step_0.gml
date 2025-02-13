@@ -1,11 +1,12 @@
 var isPanic = global.panic.active;
 
-if isPanic && audio_is_playing(mu) && !audio_sound_get_gain(mu)
+if isPanic && mu != noone && audio_sound_get_gain(mu) <= 0
 {
 	audio_stop_sound(mu);
 	mu = noone;
 }
-if audio_is_playing(prevmu) && !audio_sound_get_gain(prevmu)
+
+if prevmu != noone && audio_sound_get_gain(prevmu) <= 0
 {
 	audio_stop_sound(prevmu);
 	prevmu = noone;
@@ -22,26 +23,27 @@ if !isPanic
 	{
 		if pillar_visible
 		{
-			if audio_is_playing(mu)
+			if mu != noone
 				audio_sound_gain(mu, 0, 2000);
-			if audio_is_playing(pillar_mu)
+			if pillar_mu != noone
 				audio_sound_gain(pillar_mu, 1, 1000);
 		}
 		else
 		{
-			if audio_is_playing(mu)
+			if mu != noone
 				audio_sound_gain(mu, 1, 2000);
-			if audio_is_playing(pillar_mu)
+			if pillar_mu != noone
 				audio_sound_gain(pillar_mu, 0, 1000);
 		}
 	}
 	
-	if audio_is_playing(panic_mu)
+	if panic_mu != noone
 	{
 		audio_stop_sound(panic_mu);
 		panic_mu = noone;
 	}
-	if audio_is_playing(panic_pinch_mu)
+	
+	if panic_pinch_mu != noone
 	{
 		audio_stop_sound(panic_pinch_mu);
 		panic_pinch_mu = noone;

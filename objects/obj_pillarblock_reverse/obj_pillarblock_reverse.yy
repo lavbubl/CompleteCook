@@ -4,6 +4,7 @@
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_pillarblock_reverse",
@@ -34,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_placeholderescapeblock_escape",
-    "path":"sprites/spr_placeholderescapeblock_escape/spr_placeholderescapeblock_escape.yy",
+    "name":"spr_pillarblock_awake",
+    "path":"sprites/spr_pillarblock_awake/spr_pillarblock_awake.yy",
   },
   "spriteMaskId":null,
   "visible":true,

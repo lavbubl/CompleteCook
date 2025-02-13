@@ -3,8 +3,8 @@ function player_climbwall()
 	vsp = -wallspeed
 	hsp = 0
 	
-	if (wallspeed < 20000)
-		wallspeed += 0.15
+	wallspeed = min(wallspeed + 0.15, 20)
+	
 	if (wallspeed < 0)
 	{
 		if (mach4mode == 0)
@@ -12,6 +12,7 @@ function player_climbwall()
 		else
 			movespeed += 0.4
 	}
+	
 	sprite_index = wallspeed > 4 ? spr_player_climbwall : spr_player_clingwall
 	image_speed = 0.5
 	if (!place_meeting(x + xscale, y, obj_solid))

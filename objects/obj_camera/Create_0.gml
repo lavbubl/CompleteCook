@@ -1,15 +1,13 @@
 mag = 0
 mag_decel = 0.5
-//camera charge
-target_spd = 0
-appr_spd = 0
 cam_charge = 0
+info_visible = true
 
 campos = {
 	x: 0,
 	y: 0
 }
 
-version = "Alpha v1.1.4"
+version = "Alpha v1.2.3";
 
-depth = -250
+depth = -150

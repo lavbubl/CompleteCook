@@ -8,7 +8,7 @@ var livemax = 15
 if (live <= livemax)
 	live++
 
-with (instance_place(x, y - image_yscale, obj_player))
+with instance_place(x, y - image_yscale, obj_player)
 {
 	if (state != states.actor && other.live > livemax)
 	{
@@ -23,9 +23,10 @@ with (instance_place(x, y - image_yscale, obj_player))
 			image_speed = 0.35
 			scr_sound(sfx_box)
 		}
-		
-		if ((up || state == states.superjump) && place_meeting(x, y - 1, other) && other.image_yscale == -1)
+		else if ((up || state == states.superjump || state == states.climbwall) && place_meeting(x, y - 1, other) && other.image_yscale == -1)
 		{
+			if state == states.climbwall
+				scr_sound_3d(sfx_groundpound, x, y)
 			dooryscale = -1
 			state = states.actor
 			hsp = 0
@@ -42,7 +43,7 @@ with (instance_place(x, y - image_yscale, obj_player))
 	{
 		hsp = 0
 		x = other.x + 32
-		if anim_ended()
+		if (anim_ended() && image_speed != 0)
 		{
 			do_fade(other.t_room, other.t_door, fade_types.box)
 			image_index = image_number - 1

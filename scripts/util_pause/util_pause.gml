@@ -15,5 +15,9 @@ function make_pause_image()
 	
 	surface_reset_target()
 	
-	return sprite_create_from_surface(surface, 0, 0, screen_w, screen_h, false, false, 0, 0)
+	var s = sprite_create_from_surface(surface, 0, 0, screen_w, screen_h, false, false, 0, 0)
+	
+	surface_free(surface)
+	
+	return s;
 }

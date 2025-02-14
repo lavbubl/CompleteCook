@@ -8,6 +8,11 @@ enum e_states {
 
 function enemy_normal()
 {
+	var hurtbox_needed = false
+	
+	if (object_index == obj_forknight) //REPLACE WITH SWITCH STATEMENT
+		hurtbox_needed = true
+	
 	image_speed = 0.35
 	
 	movespeed = 1
@@ -29,13 +34,17 @@ function enemy_normal()
 	if (do_turn && sprite_index == sprs.turn)
 	{
 		hsp = 0
-		reset_anim_on_end(sprs.move)
+		if anim_ended()
+		{
+			reset_anim(sprs.move)
+			create_hurtbox()
+		}
 	}
 }
 
 function enemy_scared()
 {
-	if (scared_timer <= 0)
+	if (scared_timer <= 0 && grounded)
 	{
 		state = states.normal
 		sprite_index = sprs.move
@@ -55,7 +64,7 @@ function enemy_stun()
 		hsp = approach(hsp, 0, 0.25)
 	sprite_index = sprs.stun
 	image_speed = 0.35
-	if (stun_timer <= 0)
+	if (stun_timer <= 0 && grounded)
 	{
 		state = states.normal
 		sprite_index = sprs.move
@@ -67,7 +76,7 @@ function enemy_stun()
 function enemy_hit()
 {
 	sprite_index = sprs.dead
-	if (place_meeting(x + hsp, y, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
+	if (place_meeting(x + hsp, y + vsp, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
 		instance_destroy()
 }
 
@@ -160,6 +169,7 @@ function do_enemy_generics()
 			if (state == states.grab && other.sprite_index != other.sprs.dead)
 			{
 				other.follow_player = true
+				other.sprite_index = other.sprs.stun
 				reset_anim(spr_player_holdrise)
 				state = states.hold
 				if (abs(hsp) > 10)
@@ -176,36 +186,22 @@ function do_enemy_generics()
 					vsp = -18
 				}
 			}
-			if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2)
+			if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold))
 			{
 				if (state == states.jump)
-				{
-					vsp = key_jump.down ? -15 : -10
-					jumpstop = true
 					reset_anim(spr_player_stomp)
-					with (other)
-					{
-						xscale = -obj_player.xscale
-						hsp = obj_player.xscale * 5
-						vsp = -5
-						state = e_states.stun
-						stun_timer = 180
-						warp = -0.4
-					}
-				}
-				if (state == states.hold)
+				vsp = key_jump.down ? -15 : -10
+				jumpstop = true
+				
+				scr_sound_3d(sfx_stompenemy, x, y)
+				with (other)
 				{
-					vsp = key_jump.down ? -15 : -10
-					jumpstop = true
-					with (other)
-					{
-						xscale = -obj_player.xscale
-						hsp = obj_player.xscale * 5
-						vsp = -5
-						state = e_states.stun
-						stun_timer = 180
-						warp = -0.4
-					}
+					xscale = -obj_player.xscale
+					hsp = obj_player.xscale * 5
+					vsp = -5
+					state = e_states.stun
+					stun_timer = 180
+					warp = -0.4
 				}
 			}
 		}
@@ -242,5 +238,21 @@ function do_enemy_generics()
 		}
 	}
 	
+	ds_list_destroy(en_list)
 	break_destroyables()
+}
+
+function create_hurtbox()
+{
+	with instance_create(x, y, obj_hurtbox)
+	{
+		other.hurtbox_id = id
+		follow_obj = other.id
+	}
+}
+
+function destroy_hurtbox()
+{
+	instance_destroy(hurtbox_id)
+	hurtbox_id = -4
 }

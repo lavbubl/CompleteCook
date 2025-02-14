@@ -25,7 +25,7 @@
   ],
   "name":"spr_dashpad",
   "nineSlice":null,
-  "origin":6,
+  "origin":7,
   "parent":{
     "name":"Gimmicks",
     "path":"folders/Sprites/Level Structure/Gimmicks.yy",
@@ -83,7 +83,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":32,
     "yorigin":59,
   },
   "swatchColours":null,

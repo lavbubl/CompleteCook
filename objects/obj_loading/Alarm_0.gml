@@ -1,19 +1,15 @@
-if (!(ds_exists(tex_list, 2)))
-	exit;
-if (!ds_list_empty(tex_list))
+if (array_length(tex_list) > 0)
 {
-	var b = ds_list_find_value(tex_list, 0)
+	var b = tex_list[0]
 	for (var i = 0; i < array_length(b); i++)
 	{
 		if (!texture_is_ready(b[i]))
 			texture_prefetch(b[i])
 	}
-	ds_list_delete(tex_list, 0)
-	currenttexture++
+	array_shift(tex_list)
+	if array_length(tex_list) > 1
+		currenttexture++
+	alarm[0] = 1
 }
 else
-{
-	ds_list_destroy(tex_list)
 	room_goto(init_objs_room)
-}
-alarm[0] = 1

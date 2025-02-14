@@ -11,5 +11,6 @@ if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 	repeat (3)
 		particle_create(x, y, particles.yellowstar)
 	scr_sound_3d(sfx_killenemy, x, y)
+	shake_camera()
 }
 

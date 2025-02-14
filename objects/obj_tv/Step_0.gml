@@ -1,5 +1,13 @@
 var p = obj_player
 
+visible = true
+
+if string_starts_with(room_get_name(room), "tower")
+	visible = false
+
+if !visible
+	state = tv_states.off
+
 switch (state)
 {
 	case tv_states.off:
@@ -13,7 +21,7 @@ switch (state)
 		sprite_index = spr_tv_idle
 		if global.combo.count >= 3
 			sprite_index = spr_tv_combo
-		if global.panic
+		if global.panic.active
 			sprite_index = spr_tv_panic
 		
 		if (p.state == states.mach3)
@@ -47,6 +55,10 @@ switch (state)
 					tv_expression(spr_tv_idle)
 				if (abs(obj_player.hsp) < 16)
 					tv_expression(spr_tv_mach3)
+				break;
+			case spr_tv_hurt:
+				if p.state == states.hurt
+					alarm[0] = 120
 				break;
 		}
 		break;

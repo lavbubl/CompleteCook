@@ -1,6 +1,6 @@
 enum particles {
-	bleh,
-	genericpoof,
+	bleh, // unused
+	genericpoof, // replace with an even more generic name
 	gib,
 	stars,
 	parry,
@@ -10,7 +10,7 @@ enum particles {
 	yellowstar
 }
 
-function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
+function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noone)
 {
 	var p = {
 		sprite_index: spr_null,
@@ -28,11 +28,9 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 	}
 	switch (p_type)
 	{
-		case particles.bleh:
-			p.sprite_index = particle_1
-			break;
 		case particles.genericpoof:
 			p.sprite_index = spr_genericpoofeffect
+			p.image_speed = 0.35
 			break;
 		case particles.gib:
 		case particles.stars:
@@ -67,7 +65,25 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1)
 			p.image_speed = 0.5
 			break;
 	}
+	
+	if _sprite != noone
+		p.sprite_index = _sprite
+	
 	p.image_number = sprite_get_number(p.sprite_index)
 	with (obj_particlecontroller)
-		ds_list_add(particle_list, p)
+		array_push(particle_list, p)
+}
+
+function particle_sprite_exists(sprite)
+{
+	for (var i = 0; i < array_length(obj_particlecontroller.particle_list); i++) 
+	{
+	    var p = obj_particlecontroller.particle_list[i]
+		if p.sprite_index == sprite
+		{
+			return true;
+			break;
+		}
+	}
+	return false;
 }

@@ -1,0 +1,2 @@
+collects = []
+maxspeed = 14

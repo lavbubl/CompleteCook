@@ -29,7 +29,7 @@ function scr_sound_3d(snd, x, y, loop = false)
 	return played_snd;
 }
 
-function emitter_create_quick(x, y, obj_to_follow = -1, z = 0)
+function emitter_create_quick(x, y, follow_obj = noone, z = 0)
 {
 	var e = audio_emitter_create()
 	audio_emitter_position(e, x, y, z)
@@ -38,7 +38,7 @@ function emitter_create_quick(x, y, obj_to_follow = -1, z = 0)
 		global.sound_3d.max_distance, 
 		global.sound_3d.multiplier)
 	
-	ds_list_add(obj_3d_sound.emitters, [e, obj_to_follow])
+	array_push(obj_3d_sound.emitters, [e, follow_obj])
 	
 	return e;
 }
@@ -64,4 +64,14 @@ function scr_sound_3d_pitched(snd, x, y, pitch_start = 0.95, pitch_end = 1.05, l
 		)
 	
 	return played_snd;
+}
+
+function scr_sound_multiple(snd)
+{
+	if audio_is_playing(snd)
+		audio_stop_sound(snd)
+	
+	var s = scr_sound(snd)
+	
+	return s;
 }

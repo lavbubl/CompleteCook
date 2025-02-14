@@ -1,1 +1,1 @@
-room_goto(level_1)
+room_goto(tower_1)

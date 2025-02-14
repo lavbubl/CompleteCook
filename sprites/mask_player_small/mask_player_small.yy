@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Player",
-    "path":"folders/Sprites/Player.yy",
+    "path":"folders/Sprites/Masks/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

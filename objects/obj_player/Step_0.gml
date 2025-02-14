@@ -16,6 +16,8 @@ instakill = false
 
 prevstate = state
 
+break_destroyables()
+
 switch (state)
 {
 	case states.taunt:
@@ -84,12 +86,18 @@ switch (state)
 	case states.hurt:
 		player_hurt()
 		break;
+	case states.parry:
+		player_parry()
+		break;
+	case states.noclip:
+		player_noclip()
+		break;
 }
 
 if (state != states.normal)
 {
 	breakdance_secret.buffer = 0
-	breakdance_secret.spd = 0.1
+	breakdance_secret.spd = 0.25
 }
 
 if coyote_time > 0
@@ -97,9 +105,6 @@ if coyote_time > 0
 	
 if flash > 0
 	flash--
-	
-if taunttimer > 0
-	taunttimer--
 	
 if state != states.normal
 	idletimer = 180
@@ -114,13 +119,12 @@ if (state == states.tumble || state == states.crouch)
 	mask_index = mask_player_small
 else
 	mask_index = mask_player
-	
-	
+
 grav = 0.5
 if (state == states.ladder)
 	grav = 0
 	
-if (y > room_height + 200 && state != states.actor)
+if ((y > room_height + 200 || y < -200) && state != states.actor)
 {
 	shake_camera()
 	instance_create(0, 0, obj_technicaldifficulty)
@@ -129,10 +133,9 @@ if (y > room_height + 200 && state != states.actor)
 	vsp = 0
 	sprite_index = spr_player_idle
 }
-
-break_destroyables()
 	
-collide()
+if state != states.noclip
+	collide()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {
@@ -150,9 +153,10 @@ player_sounds()
 
 if ladderbuffer > 0
 	ladderbuffer--
+	
+var spd = 0.05
 
-/*if particletimer > 0
-	particletimer--
+if secret_cutscene
+	visual_size = max(visual_size - spd, 0)
 else
-	particle_create(x - 128, y, particles.bleh)*/
-
+	visual_size = min(visual_size + spd, 1)

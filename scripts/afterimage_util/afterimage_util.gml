@@ -25,7 +25,7 @@ function afterimage_create(a_type)
 			break;
 	}
 	with (obj_afterimagecontroller)
-		ds_list_add(aftimg_list, inst)
+		array_push(aftimg_list, inst)
 }
 
 function do_afterimage(timer, reset_point, effect, spd = 1)

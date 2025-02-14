@@ -1,5 +1,17 @@
-if ds_list_find_index(global.ds_collect, id) == -1 {
-    global.score += 10
-    ds_list_add(global.ds_collect, id)
-    instance_destroy()
+global.score += val
+global.combo.timer += 10
+
+var c = {
+	sprite_index: self.sprite_index,
+	image_index: self.image_index,
+	x: self.x - obj_camera.campos.x,
+	y: self.y - obj_camera.campos.y,
+	val: self.val
 }
+array_push(obj_collect_got_visual.collects, c)
+
+with instance_create(x, y, obj_collect_number)
+	num = other.val
+
+scr_sound_multiple(sfx_collect)
+instance_destroy()

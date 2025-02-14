@@ -10,6 +10,8 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 		movespeed = 0
 		image_speed = 0.35
 	}
+	if !obj_fade.fade 
+		scr_sound(sfx_door)
 	do_fade(t_room, t_door, fade_types.door)
 }
 

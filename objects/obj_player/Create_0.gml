@@ -1,5 +1,33 @@
 init_collide()
 
+enum states 
+{
+	normal,
+	jump,
+	mach2,
+	mach3,
+	tumble,
+	climbwall,
+	slide,
+	bump,
+	groundpound,
+	grab,
+	superjump,
+	taunt,
+	crouch,
+	actor,
+	ladder,
+	punch,
+	hold,
+	piledriver,
+	punchenemy,
+	swingding,
+	grind,
+	hurt,
+	parry,
+	noclip
+}
+
 spawn = "a"
 door_type = fade_types.none
 hallxscale = 1
@@ -48,36 +76,41 @@ breakdance_secret = {
 }
 
 loop_sounds = {
-	mach1: {state: states.mach2, sound: sfx_mach1, sndid: -1, is_3d: true, func: function() {
+	mach1: {state: states.mach2, sound: sfx_mach1, sndid: noone, is_3d: true, func: function() {
 		if obj_player.sprite_index != spr_player_mach1
 			return true;}
 	},
-	mach2: {state: states.mach2, sound: sfx_mach2, sndid: -1, is_3d: false, func: function() {
+	mach2: {state: states.mach2, sound: sfx_mach2, sndid: noone, is_3d: false, func: function() {
 		if obj_player.sprite_index != spr_player_mach2
 			return true;}
 	},
-	mach3: {state: states.mach3, sound: sfx_mach3, sndid: -1, is_3d: true, func: function() {
+	mach3: {state: states.mach3, sound: sfx_mach3, sndid: noone, is_3d: true, func: function() {
 		if ((obj_player.sprite_index == spr_player_mach3kill && obj_player.image_index < 2) || obj_player.sprite_index == spr_player_mach4)
 			return true;}
 	},
-	mach4: {state: states.mach3, sound: sfx_mach4, sndid: -1, is_3d: true, func: function() {
+	mach4: {state: states.mach3, sound: sfx_mach4, sndid: noone, is_3d: true, func: function() {
 		if obj_player.sprite_index != spr_player_mach4
 			return true;}
 	},
-	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: -1},
-	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, is_3d: true, sndid: -1},
-	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: -1, is_3d: true, func: function() {
+	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: noone},
+	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, is_3d: true, sndid: noone},
+	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: noone, is_3d: true, func: function() {
 		if (obj_player.sprite_index == spr_player_piledriverland)
 			return true;}
 	},
-	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: -1, is_3d: true, func: function() {
+	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: noone, is_3d: true, func: function() {
 		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart)
 			return true;}, looppoints: [0.64, 1.84]
 	}
 }
 
+visual_size = 1
+secret_exit = false
+secret_cutscene = false
 idletimer = 120
 instakill = false
 taunttimer = 0
 i_frames = 0
+particle_timer = 0
+flamecloud_buffer = 0
 depth = -200

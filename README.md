@@ -6,3 +6,5 @@ This engine requires the lastest version of Gamemaker
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
+## Join the server!
+[Discord Server Link](https://discord.gg/httWKmg4Y5)

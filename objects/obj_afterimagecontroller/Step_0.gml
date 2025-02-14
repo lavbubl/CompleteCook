@@ -1,6 +1,6 @@
-for (var inst = 0; inst < ds_list_size(aftimg_list); inst++) 
+for (var inst = 0; inst < array_length(aftimg_list); inst++) 
 {
-	var inst_id = ds_list_find_value(aftimg_list, inst)
+	var inst_id = aftimg_list[inst]
 	
 	with (inst_id)
 	{
@@ -16,20 +16,20 @@ for (var inst = 0; inst < ds_list_size(aftimg_list); inst++)
 				image_alpha = ceil(sin((lifetime))) * m
 				
 				if (!obj_player.aftimg_timers.mach.do_it)
-					ds_list_delete(other.aftimg_list, inst)
+					array_delete(other.aftimg_list, inst, 1)
 				
 				lifetime -= 1
 				if (lifetime <= 0)
-					ds_list_delete(other.aftimg_list, inst)
+					array_delete(other.aftimg_list, inst, 1)
 				break;
 			case after_images.blur:
 				image_alpha -= 0.15
 				
 				if (image_alpha <= 0)
-					ds_list_delete(other.aftimg_list, inst)
+					array_delete(other.aftimg_list, inst, 1)
 				break;
 		}
 		if (obj_fade.fade)
-			ds_list_delete(other.aftimg_list, inst)
+			array_delete(other.aftimg_list, inst, 1)
 	}
 }

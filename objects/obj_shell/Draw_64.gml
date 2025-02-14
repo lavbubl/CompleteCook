@@ -2,8 +2,7 @@
 // feather ignore all
 if (isOpen) {
 	draw_set_font(consoleFont);
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_top);
+	draw_set_align(fa_left, fa_top);
 	// pre-calculate one "em" of width & height
 	var emWidth = string_width("M");
 	var emHeight = string_height("M");

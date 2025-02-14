@@ -4,7 +4,7 @@ enum after_images
 	blur
 }
 
-aftimg_list = ds_list_create()
+aftimg_list = []
 depth = 10
 make_colour_rgb(255, 0, 0)
 mach_color1 = make_colour_rgb(96, 208, 72)

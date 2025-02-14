@@ -7,4 +7,4 @@ global.mute_all = ini_read_real("options", "mute_all", false)
 ini_close()
 
 window_set_fullscreen(global.fullscreen)
-audio_group_set_gain(audiogroup_default, global.mute_all ? 0 : 1, 0)
+audio_group_set_gain(audiogroup_default, global.mute_all, 0)

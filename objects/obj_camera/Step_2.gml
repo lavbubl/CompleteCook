@@ -1,5 +1,7 @@
 if (obj_fade.fade)
 	exit;
+if (obj_player.secret_cutscene)
+	exit;
 
 campos = {
 	x: obj_player.x - (screen_w / 2),

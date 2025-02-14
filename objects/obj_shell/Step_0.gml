@@ -289,14 +289,14 @@ if (!is_undefined(activeMouseArgType)) {
 		activeMouseArgValue = device_mouse_y_to_gui(0);
 	} else if (activeMouseArgType == mouseArgumentType.instanceId) {
 		var instAtCursor = instance_position(mouse_x, mouse_y, all);
-		if (instAtCursor != noone) {
+		if (instAtCursor != -1) {
 			activeMouseArgValue = instAtCursor;
 		} else {
 			activeMouseArgValue = "";
 		}
 	} else if (activeMouseArgType == mouseArgumentType.objectId) {
 		var instAtCursor = instance_position(mouse_x, mouse_y, all);
-		if (instAtCursor != noone) {
+		if (instAtCursor != -1) {
 			activeMouseArgValue = instAtCursor.object_index;
 		} else {
 			activeMouseArgValue = "";

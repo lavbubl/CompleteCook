@@ -111,4 +111,6 @@ idletimer = 120
 instakill = false
 taunttimer = 0
 i_frames = 0
+particle_timer = 0
+flamecloud_buffer = 0
 depth = -200

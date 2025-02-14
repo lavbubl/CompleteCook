@@ -21,11 +21,13 @@ function do_grab()
 	{
 		if (!key_up.down)
 		{
-			if (movespeed < 6)
-				movespeed = 6
+			movespeed = max(movespeed, 5)
+			if state == states.normal
+				movespeed = 8
 			state = states.grab
 			reset_anim(spr_player_suplexgrab)
 			scr_sound_3d(sfx_suplexdash, x, y)
+			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
 		else
 		{
@@ -55,7 +57,7 @@ function do_taunt()
 		taunttimer = 20
 		state = states.taunt
 		particle_create(x, y, particles.taunt)
-		scr_sound_pitched(sfx_taunt)
+		scr_sound_3d_pitched(sfx_taunt, x, y)
 		instance_create(x, y, obj_parrybox)
 	}
 }

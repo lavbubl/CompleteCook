@@ -73,10 +73,11 @@ function player_normal()
 		else
 		{
 			sprite_index = spr_player_breakdance
-			breakdance_secret.spd = approach(breakdance_secret.spd, 0.5, 0.005)
+			breakdance_secret.spd = approach(breakdance_secret.spd, 0.6, 0.005)
 			image_speed = breakdance_secret.spd
 		}
-		if breakdance_secret.spd > 0.48
+		
+		if breakdance_secret.spd >= 0.5
 		{
 			aftimg_timers.blur.do_it = true
 			if (!instance_exists(obj_beatbox))
@@ -86,7 +87,7 @@ function player_normal()
 	else
 	{
 		breakdance_secret.buffer = 0
-		breakdance_secret.spd = 0.1
+		breakdance_secret.spd = 0.25
 	}
 	
 	if (key_down.down || scr_solid(x, y - 16))

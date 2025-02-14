@@ -18,6 +18,15 @@ function player_swingding()
 		reset_anim(spr_player_swingdingend)
 	}
 	
+	if particle_timer > 0
+		particle_timer--
+	else if floor(image_index) >= image_number - 1
+	{
+		particle_timer = 2
+		scr_sound_3d(sfx_spin, x, y)
+		image_index = 0
+	}
+	
 	aftimg_timers.blur.do_it = true
 	instakill = true
 }

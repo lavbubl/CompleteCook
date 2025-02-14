@@ -1,9 +1,9 @@
+if !visible
+	exit;
+
 draw_set_align(fa_left, fa_bottom)
 
-x = 121 + irandom_range(shake_mag, -shake_mag)
-y = 90 + irandom_range(shake_mag, -shake_mag) //hud_posY
-
-draw_sprite(spr_pizzascore, 0, x, y)
+draw_sprite(spr_pizzascore, image_index, x, y)
 
 var num = global.score
 
@@ -45,5 +45,21 @@ for (var i = 0; i < num; i++)
 	draw_text(floor(xx), floor((y) + text_y + yy), string_char_at(str, i + 1))
 	xx += (w / num)
 }
+
+var rank_ix = 0
+var rank_scale = 1
+
+var r_pos = {
+	x: x + 142,
+	y: y - 22
+}
+
+draw_sprite_ext(spr_ranks_hud, rank_ix, r_pos.x, r_pos.y, rank_scale, rank_scale, 0, c_white, 1)
+
+//draw_sprite_part(spr_ranks_hudfill, rank_ix, 0, top, spr_w, (spr_h - top), (rx - spr_xo), (ry - spr_yo + top))
+
+var hf = spr_ranks_hudfill
+
+draw_sprite_part(spr_ranks_hudfill, rank_ix, 0, 50, sprite_get_width(hf), sprite_get_height(hf) - 50, r_pos.x - sprite_get_xoffset(hf), (r_pos.y - sprite_get_yoffset(hf) + 50))
 
 //draw_text(400, 150, obj_generichandler.combo_score)

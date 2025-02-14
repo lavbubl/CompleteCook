@@ -20,6 +20,7 @@ function player_grab()
 		state = states.mach2
 		reset_anim(spr_player_longjump)
 		scr_sound_3d(sfx_rollgetup, x, y)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
 	if (key_down.down && !key_jump.down && grounded)
@@ -29,6 +30,7 @@ function player_grab()
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
 		scr_sound_3d(sfx_dive, x, y)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
 	if (sprite_index == spr_player_suplexgrab && !grounded)

@@ -1,3 +1,6 @@
+if ds_list_find_index(global.ds_broken_destroyables, id) != -1
+	exit;
+
 instance_create_depth(screen_w / 2, 560, 0, obj_pizzatime)
 
 var p_id = instance_create(x, y, obj_enemycorpse)
@@ -23,3 +26,5 @@ do_enemygibs()
 
 global.combo.count++
 global.combo.timer = 60
+
+ds_list_add(global.ds_broken_destroyables, id)

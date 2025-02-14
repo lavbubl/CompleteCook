@@ -2,33 +2,17 @@ function player_groundpound()
 {
 	if (vsp >= 2)
 	{
-		/*if (vsp > 17)
+		if (vsp > 17)
 		{
-			if punch_afterimage > 0
-				punch_afterimage--
+			aftimg_timers.mach.do_it = true
+			if particle_timer > 0
+				particle_timer--
 			else
 			{
-				punch_afterimage = 5
-				with (create_mach3effect(x, y, sprite_index, image_index, true))
-				{
-					image_xscale = other.xscale
-					playerid = other.id
-					maxmovespeed = 6
-					vertical = true
-					fadeoutstate = states.freefall
-				}
-			}
-			if (superjumpeffect > 0)
-				superjumpeffect--
-			else
-			{
-				createEffect('freefalleffect')
-				superjumpeffect = 15
+				particle_create(x, y, particles.genericpoof, xscale, 1, spr_flamecloud)
+				particle_timer = 15
 			}
 		}
-		  */
-		if (vsp > 17)
-			aftimg_timers.mach.do_it = true
 		vsp += 0.5
 	}
 	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
@@ -100,16 +84,12 @@ function player_groundpound()
 					other.movespeed = 12
 				else
 					other.movespeed = 8
-				/*with (instance_create(other.x, other.y, obj_jumpdust))
-					image_xscale = -sign(other.image_xscale)*/
 			}
+			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
 		else
 		{
-			if sprite_index == spr_player_poundcancel1
-				sprite_index = spr_player_poundcancel2
-			else
-				sprite_index = spr_player_bodyslamland
+			reset_anim(sprite_index == spr_player_poundcancel1 ? spr_player_poundcancel2 : spr_player_bodyslamland)
 			/*else if shotgunAnim == 0
 				sprite_index = spr_bodyslamland
 			else
@@ -118,6 +98,7 @@ function player_groundpound()
 			state = states.bump
 			shake_camera()
 			scr_sound_3d(sfx_groundpound, x, y)
+			particle_create(x, y, particles.genericpoof, xscale, 1, spr_groundpoundeffect)
 			if freefallsmash >= 10
 			{
 				with (par_enemy)
@@ -136,6 +117,7 @@ function player_groundpound()
 			}
 		}
 	}
+	
 	image_speed = 0.35
 	aftimg_timers.blur.do_it = true
 	instakill = true

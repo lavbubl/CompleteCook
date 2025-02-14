@@ -20,7 +20,7 @@ function player_mach2()
 				scr_sound_3d(sfx_break, x, y)
 			}
 		}
-		if (p_move != 0 && p_move != xscale)
+		if (p_move != 0 && p_move != xscale && grounded)
 		{
 			if (movespeed < 8)
 			{
@@ -64,6 +64,7 @@ function player_mach2()
 		jumpstop = false
 		vsp = -11
 		scr_sound_3d(sfx_jump, x, y)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	do_slope_momentum()
 	if (key_down.down)
@@ -77,6 +78,7 @@ function player_mach2()
 			vsp = 10
 			scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 		}
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	if ((!grounded || scr_slope(x, y + 1)) && place_meeting(x + xscale, y, obj_solid))
 	{
@@ -96,39 +98,27 @@ function player_mach2()
 	
 	do_grab()
 	
-	image_speed = movespeed / 20
+	image_speed = abs(movespeed) / 15
 	switch (sprite_index)
 	{
 		case spr_player_mach1:
-			image_speed = 0.5
 			reset_anim_on_end(spr_player_mach2)
-			break
+			break;
 		case spr_player_secondjump:
-			image_speed = 0.4
 			reset_anim_on_end(spr_player_secondjumploop)
-			break
+			break;
 		case spr_player_walljump:
-			image_speed = 0.4
 			reset_anim_on_end(spr_player_walljumpfall)
-			break
+			break;
 		case spr_player_rollgetup:
 			image_speed = 0.4
 			reset_anim_on_end(spr_player_mach2)
-			break
+			break;
 		case spr_player_longjump:
-			image_speed = 0.35
+			image_speed = 0.4
 			if (anim_ended())
 				image_index = 10
-			break
-		/*case spr_player_secondjump:
-			sprite_index = spr_player_secondjumploop
-			break
-		case 'longjump':
-			sprite_index = spr_player_longjumpend'
-			break
-		case 'walljump':
-			sprite_index = spr_player_walljumpfall'
-			break*/
+			break;
 	}
 	do_taunt()
 	

@@ -12,15 +12,17 @@ function player_mach3()
 			flash = 8
 			sprite_index = spr_player_mach4
 		}
-		/*if (superjumpeffecttimer > 0)
-			superjumpeffecttimer--
+		
+		if !particle_sprite_exists(spr_crazyruneffect)
+			particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
+		
+		if (flamecloud_buffer > 0)
+			flamecloud_buffer--
 		else
 		{
-			superjumpeffecttimer = 20
-			createEffect('mach4effect', depth + 1)
-			particleeffect.mirrorX(xscale)
-			createEffect('flamecloud.down
-		}*/
+			flamecloud_buffer = 20
+			particle_create(x, y, particles.genericpoof, 1, 1, spr_flamecloud)
+		}
 	}
 	else if (sprite_index == spr_player_mach4)
 	{
@@ -28,12 +30,16 @@ function player_mach3()
 		sprite_index = spr_player_mach3
 	}
 	
+	if (!particle_sprite_exists(spr_superdashcloud) && grounded)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_superdashcloud)
+	
 	if (key_jump.pressed && coyote_time) 
 	{
 		vsp = -11
 		jumpstop = false
 		reset_anim(spr_player_mach3jump)
 		scr_sound_3d(sfx_jump, x, y)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
 	if (grounded)
@@ -91,6 +97,7 @@ function player_mach3()
 			vsp = 10
 			scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 		}
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
 	do_grab()
@@ -112,25 +119,22 @@ function player_mach3()
 		reset_anim(spr_player_mach3hitwall)
 		vsp = -6
 		hsp = xscale * -6
-		shake_camera()
+		shake_camera(20, 0.8)
 		scr_sound_3d(sfx_groundpound, x, y)
 		scr_sound_3d(sfx_bumpwall, x, y)
 	}
 	image_speed = 0.4
 	switch (sprite_index)
 	{
-		case spr_player_mach3:
-			image_speed = 0.35
-			break
 		case spr_player_mach4:
-			image_speed = movespeed / 30
-			break
+			image_speed = 0.75
+			break;
 		case spr_player_mach3jump:
 		case spr_player_rollgetup:
 		case spr_player_mach3kill:
 		case spr_player_dashpad:
 			reset_anim_on_end(spr_player_mach3)
-			break
+			break;
 	}
 	do_taunt()
 	
@@ -138,5 +142,8 @@ function player_mach3()
 	instakill = true
 	
 	if !obj_particlecontroller.active_particles.machcharge
+	{
 		particle_create(x, y, particles.machcharge, xscale)
+		particle_create(x, y, particles.machcharge, xscale, 1, spr_speedlines)
+	}
 }

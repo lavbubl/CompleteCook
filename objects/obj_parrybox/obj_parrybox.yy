@@ -35,5 +35,5 @@
     "path":"sprites/mask_parry/mask_parry.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

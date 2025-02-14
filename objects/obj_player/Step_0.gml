@@ -97,7 +97,7 @@ switch (state)
 if (state != states.normal)
 {
 	breakdance_secret.buffer = 0
-	breakdance_secret.spd = 0.1
+	breakdance_secret.spd = 0.25
 }
 
 if coyote_time > 0
@@ -105,9 +105,6 @@ if coyote_time > 0
 	
 if flash > 0
 	flash--
-	
-if taunttimer > 0
-	taunttimer--
 	
 if state != states.normal
 	idletimer = 180
@@ -122,8 +119,7 @@ if (state == states.tumble || state == states.crouch)
 	mask_index = mask_player_small
 else
 	mask_index = mask_player
-	
-	
+
 grav = 0.5
 if (state == states.ladder)
 	grav = 0

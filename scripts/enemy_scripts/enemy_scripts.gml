@@ -169,6 +169,7 @@ function do_enemy_generics()
 			if (state == states.grab && other.sprite_index != other.sprs.dead)
 			{
 				other.follow_player = true
+				other.sprite_index = other.sprs.stun
 				reset_anim(spr_player_holdrise)
 				state = states.hold
 				if (abs(hsp) > 10)

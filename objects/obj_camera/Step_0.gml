@@ -12,8 +12,7 @@ if instance_exists(obj_player)
 		target_spd = target.xscale * ((target.movespeed / 4) * 50)
 		appr_spd = 0.35
 	}
-
-	if ((abs(target.hsp) >= 16 || (target.state == states.taunt && abs(target.prev.hsp) >= 16)) && target.state != states.climbwall && target.state != states.superjump)
+	else if ((abs(target.hsp) >= 16 || (target.state == states.taunt && abs(target.prev.hsp) >= 16)) && target.state != states.climbwall && target.state != states.superjump)
 	{
 		target_spd = (target.xscale * ((abs(target.movespeed) / 4) * 50))
 		appr_spd = 2

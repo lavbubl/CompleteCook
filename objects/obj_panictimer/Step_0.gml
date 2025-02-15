@@ -14,9 +14,9 @@ if (global.panic.active && !global.secret)
 		}
 	}
 
-	if global.panic.timer % 12 == 1
+	if (global.panic.timer % 12 == 1 && global.score > 0)
 		decrease_score(5)
-
+	
 	shake_camera(1)
 }
 

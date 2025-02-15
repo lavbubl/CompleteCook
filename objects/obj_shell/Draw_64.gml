@@ -254,8 +254,7 @@ if (isOpen) {
 			autocompleteScrollPosition = 0;
 		}
 		
-		draw_set_color(c_white);
-		draw_set_alpha(1);
+		draw_reset_color();
 		draw_set_font(-1);
 	surface_reset_target();
 	

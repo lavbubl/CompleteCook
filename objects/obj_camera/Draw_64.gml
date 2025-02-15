@@ -8,8 +8,7 @@ draw_set_alpha(0.5)
 draw_set_color(c_black)
 draw_rectangle(0, screen_h - 40, 300, screen_h, false)
 
-draw_set_alpha(1)
-draw_set_color(c_white)
+draw_reset_color()
 
 draw_text(0, screen_h, $"fps : {fps}")
 draw_text(0, screen_h - 20, $"fps_real: {fps_real}")
@@ -21,7 +20,6 @@ draw_set_alpha(0.5)
 draw_set_color(c_black)
 draw_rectangle(screen_w - string_width(ver_str), screen_h - string_height(ver_str), screen_w, screen_h, false)
 
-draw_set_alpha(1)
-draw_set_color(c_white)
+draw_reset_color()
 
 draw_text(screen_w, screen_h, ver_str)

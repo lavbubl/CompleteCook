@@ -1,5 +1,5 @@
 if !surface_exists(bg_surf)
-	bg_surf = surface_create(sprite_width, sprite_height)
+	bg_surf = surface_create(sprite_get_width(door_gate), sprite_get_height(door_gate))
 else
 {
 	surface_set_target(bg_surf)
@@ -10,11 +10,11 @@ else
 		draw_sprite_tiled(door_bg, i, bg_parallax[i].x, sprite_height)
 	
 	gpu_set_blendmode(bm_subtract)
-	draw_sprite(door_gate, 1, sprite_get_xoffset(sprite_index), sprite_get_yoffset(sprite_index)) // subtract the masking from the drawing 
+	draw_sprite(subtract_spr, 1, 0, 0) // subtract the masking from the drawing 
 	gpu_set_blendmode(bm_normal)
 	
 	surface_reset_target()
-	draw_surface(bg_surf, x + (bbox_left - x), y + (bbox_top - y))
+	draw_surface(bg_surf, x - sprite_get_xoffset(door_gate), y - sprite_get_yoffset(door_gate))
 }
 
 draw_sprite(door_gate, 0, x, y)

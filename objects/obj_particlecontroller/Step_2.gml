@@ -17,6 +17,17 @@ for (var p = 0; p < array_length(particle_list); p++)
 				if y > room_height
 					array_delete(other.particle_list, p, 1)
 				break;
+			case particles.hurtstar:
+				var r_shake = random_range(-1, 1)
+				x += (hsp * dir1) + r_shake
+				y += (vsp * dir2) + r_shake
+				hsp = approach(hsp, 0, 0.25)
+				vsp = approach(vsp, 0, 0.25)
+				if lifetime > 0
+					lifetime--
+				else
+					array_delete(other.particle_list, p, 1)
+				break;
 			case particles.taunt:
 				x = target.x
 				y = target.y

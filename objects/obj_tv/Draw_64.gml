@@ -4,7 +4,7 @@ draw_sprite(spr_tv_c_bubble, 0, x + combo.x, y + combo.y + 157)
 var _tx = x + combo.x - 64
 var _ty = y + combo.y + 174
 draw_set_align(fa_left, fa_bottom)
-draw_set_color(c_white)
+draw_reset_color()
 draw_set_font(global.combo.font)
 var _str = string(global.combo.count)
 var num = string_length(_str)

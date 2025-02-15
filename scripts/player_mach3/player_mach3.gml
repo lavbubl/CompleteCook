@@ -58,17 +58,10 @@ function player_mach3()
 			state = states.slide
 			scr_sound_3d(sfx_machslideboost, x, y)
 		}
+		
 		if (movespeed < 20 && p_move == xscale)
-		{
-			if (mach4mode)
-			{
-				movespeed += 0.1
-			}
-			else
-			{
-				movespeed += 0.025
-			}
-		}
+			movespeed += mach4mode ? 0.1 : 0.025
+			
 		if (key_up.down && !dashpad)
 		{
 			state = states.superjump

@@ -8,8 +8,7 @@ draw_sprite(spr_pizzascore, image_index, x, y)
 var num = global.score
 
 draw_set_font(global.scorefont)
-draw_set_alpha(1)
-draw_set_color(c_white)
+draw_reset_color()
 
 var arr = obj_collect_got_visual.collects
 
@@ -47,19 +46,58 @@ for (var i = 0; i < num; i++)
 }
 
 var rank_ix = 0
-var rank_scale = 1
 
 var r_pos = {
 	x: x + 142,
 	y: y - 22
 }
 
-draw_sprite_ext(spr_ranks_hud, rank_ix, r_pos.x, r_pos.y, rank_scale, rank_scale, 0, c_white, 1)
+var ranks = [
+	global.rank_milestones.c,
+	global.rank_milestones.b,
+	global.rank_milestones.a,
+	global.rank_milestones.s
+]
 
-//draw_sprite_part(spr_ranks_hudfill, rank_ix, 0, top, spr_w, (spr_h - top), (rx - spr_xo), (ry - spr_yo + top))
+if (global.score >= global.rank_milestones.s && check_p_rank())
+	rank_ix = 5
+else
+{
+	for (var i = 4; i >= 1; i--) 
+	{
+		if global.score >= ranks[i - 1]
+		{
+			rank_ix = i
+			break;
+		}
+	}
+}
+
+if (prev_rank_ix != rank_ix)
+{
+    if (rank_ix > prev_rank_ix)
+		var snd = $"sfx_rankup{rank_ix}"
+	else
+		snd = $"sfx_rankdown{5 - rank_ix}"
+	scr_sound(asset_get_index(snd))
+    rank_scale = 3
+    prev_rank_ix = rank_ix
+}
+
+draw_sprite_ext(spr_ranks_hud, rank_ix, r_pos.x, r_pos.y, rank_scale, rank_scale, 0, c_white, 1)
+rank_scale = max(rank_scale - 0.2, 1)
 
 var hf = spr_ranks_hudfill
 
-draw_sprite_part(spr_ranks_hudfill, rank_ix, 0, 50, sprite_get_width(hf), sprite_get_height(hf) - 50, r_pos.x - sprite_get_xoffset(hf), (r_pos.y - sprite_get_yoffset(hf) + 50))
+var perc = 0
+if rank_ix >= 4 //if the rank is above an s set the percentage to 100%
+	perc = 1
+else if rank_ix == 0 //or if the rank is above a d set the percentage to the score divided by the next rank milestone, c
+	perc = global.score / global.rank_milestones.c
+else //otherwise --------------------------------------------------------------------------v
+	perc = (global.score - ranks[rank_ix - 1]) / (ranks[rank_ix] - ranks[rank_ix - 1]) //set the percentage to the distance of the score and the previous rank milestone divided by the distance between the current rank milestone and the last
 
-//draw_text(400, 150, obj_generichandler.combo_score)
+var t = sprite_get_height(spr_ranks_hudfill) * perc
+var top = sprite_get_height(spr_ranks_hudfill) - t //too lazy to write something better than the official game
+
+draw_sprite_part(spr_ranks_hudfill, rank_ix, 0, top, sprite_get_width(hf), sprite_get_height(hf) - top, r_pos.x - sprite_get_xoffset(hf), (r_pos.y - sprite_get_yoffset(hf) + top))

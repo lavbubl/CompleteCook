@@ -4,7 +4,7 @@ function make_pause_image()
 	
 	surface_set_target(surface)
 	
-	draw_set_color(c_white)
+	draw_reset_color()
 	draw_rectangle(0, 0, screen_w, screen_h, false)
 	
 	gpu_set_alphatestenable(false)

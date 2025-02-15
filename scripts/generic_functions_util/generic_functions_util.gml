@@ -133,6 +133,12 @@ function set_globals()
 	global.generic_font = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?.1234567890:", true, 0)
 	global.hud_negativefont = font_add_sprite_ext(spr_negativenumber_font, "0123456789$-", true, 0)
 	global.secret = false
+	global.rank_milestones = {
+		c: 20,
+		b: 40,
+		a: 80,
+		s: 160
+	}
 	global.level_data = {
 		treasure: false,
 		level_name: "entrance"
@@ -143,4 +149,26 @@ function bbox_in_camera()
 {
 	return rectangle_in_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, 
 		obj_camera.campos.x, obj_camera.campos.y, obj_camera.campos.x + screen_w, obj_camera.campos.y + screen_h);
+}
+
+function check_p_rank()
+{
+	return global.level_data.treasure;
+}
+
+function set_rank_milestones(_s, _a, _b, _c)
+{	
+	global.rank_milestones = {
+		c: _c,
+		b: _b,
+		a: _a,
+		s: _s
+	}
+}
+
+function draw_reset_color(alpha = true)
+{
+	draw_set_color(c_white)
+	if alpha
+		draw_set_alpha(1)
 }

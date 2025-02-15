@@ -1,5 +1,8 @@
-if (sprite_index == spr_player_enterdoor)
+if (sprite_index == spr_player_enterdoor || sprite_index == spr_player_startgate)
+{
 	reset_anim(spr_player_exitdoor)
+	image_speed = 0.35
+}
 with (obj_spawnpoint)
 {
 	if (other.spawn == spawn)

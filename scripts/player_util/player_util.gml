@@ -151,15 +151,58 @@ function decrease_score(val)
 	global.score = max(global.score - val, 0)
 }
 
-function do_hurt()
+function do_hurt(obj = noone)
 {
+	if obj != noone
+	{
+		var xh = lerp(obj.bbox_left, obj.bbox_right, 0.5)
+		var goto_xscale = 1
+		if x != xh
+			goto_xscale = sign(x - xh)
+		var facing = xscale == -goto_xscale
+		hsp = 8 * goto_xscale
+		sprite_index = facing ? spr_player_hurt : spr_player_jumphurt
+	}
+	else
+		sprite_index = spr_player_hurt
+	
+	flash = 8
 	state = states.hurt
-	hsp = -8 * xscale
 	vsp = -12
 	global.combo.timer -= 30
+	sleep(100)
 	decrease_score(50)
 	i_frames = 100
-	scr_sound_pitched(sfx_hurt)
+	scr_sound_pitched(sfx_hurt, 0.9, 1.10)
+	
+	particle_create(x, y, particles.parry)
+	particle_create(x, y, particles.bang)
+	particle_create(x, y, particles.genericpoof, 1, 1, spr_hurtstars)
+	
+	repeat 5
+		particle_create(x, y, particles.hurtstar)
+		
+	if global.score > 0
+	{
+		repeat 10
+		{
+			var spr = choose(
+				spr_mushroomcollect, 
+				spr_cheesecollect, 
+				spr_tomatocollect, 
+				spr_sausagecollect, 
+				spr_pineapplecollect
+			)
+			
+			with particle_create(x, y, particles.stars, 1, 1, spr)
+			{
+				hsp = random_range(-10, 10)
+				vsp = random_range(-5, 0)
+				image_angle = 0
+				image_speed = 0.35
+			}
+		}
+	}
 	
 	with obj_tv
 		tv_expression(spr_tv_hurt)

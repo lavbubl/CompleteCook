@@ -6,9 +6,8 @@ if (pause)
 	
 	draw_set_alpha(0.5)
 	draw_rectangle(0, 0, screen_w, screen_h, false)
-	draw_set_alpha(1)
-
-	draw_set_color(c_white)
+	draw_reset_color()
+	
 	draw_set_align(fa_center, fa_center)
 	draw_set_font(-1)
 	

@@ -12,8 +12,8 @@
   "name":"obj_pizzaface",
   "overriddenProperties":[],
   "parent":{
-    "name":"Essentials",
-    "path":"folders/Objects/Essentials.yy",
+    "name":"Ememy",
+    "path":"folders/Objects/Ememy.yy",
   },
   "parentObjectId":null,
   "persistent":true,

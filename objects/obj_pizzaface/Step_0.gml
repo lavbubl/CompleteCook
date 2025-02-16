@@ -1,22 +1,17 @@
-/*var playerid = obj_player1;
-if obj_player1.spotlight == 0
-	playerid = obj_player2;
-fmod_event_instance_set_3d_attributes(snd, x, y);
-if (!fmod_event_instance_is_playing(snd))
-	fmod_event_instance_play(snd);
+var playerid = obj_player;
 if (!instance_exists(playerid))
 	exit;
 var _move = true;
 with obj_player
 {
-	if (state == states.taxi || state == states.victory || state == states.keyget || state == states.gottreasure || state == states.door || state == states.spaceshuttle)
+	if (state == states.actor)
 		_move = false;
 }
-if !treasure
+if !instance_exists(obj_treasure)
 {
 	if image_alpha >= 1
 	{
-		if (!instance_exists(obj_fadeout) && !obj_player1.cutscene)
+		if (!obj_fade.fade && obj_player.state != states.actor)
 		{
 			if _move
 			{
@@ -35,10 +30,9 @@ else
 	y = -200;
 }
 if !_move
-	image_alpha = Approach(image_alpha, 0, 0.1);
-if (_move && place_meeting(x, y, playerid) && !playerid.cutscene && playerid.state != states.actor && !instance_exists(obj_fadeout) && !instance_exists(obj_endlevelfade) && image_alpha >= 1)
+	image_alpha = approach(image_alpha, 0, 0.1);
+/*if (_move && place_meeting(x, y, playerid) && !playerid.cutscene && playerid.state != states.actor && !instance_exists(obj_fade) && !instance_exists(obj_endlevelfade) && image_alpha >= 1)
 {
-	fmod_event_instance_stop(snd, true);
 	
 	/*
 	if (instance_exists(obj_toppinwarrior))

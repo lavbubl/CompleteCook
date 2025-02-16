@@ -1,2 +1,2 @@
-/*create_red_afterimage(x, y, sprite_index, image_index - 1, image_xscale);
-alarm[1] = 10;*/
+afterimage_create_color(image_xscale, 255, 50, 100)
+alarm[1] = 10

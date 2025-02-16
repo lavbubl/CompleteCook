@@ -28,6 +28,12 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 				if (image_alpha <= 0)
 					array_delete(other.aftimg_list, inst, 1)
 				break;
+			case after_images.solid_color:
+				image_alpha -= 0.15
+				
+				if (image_alpha <= 0)
+					array_delete(other.aftimg_list, inst, 1)
+				break;
 		}
 		if (obj_fade.fade)
 			array_delete(other.aftimg_list, inst, 1)

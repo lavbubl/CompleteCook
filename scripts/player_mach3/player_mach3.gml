@@ -13,7 +13,7 @@ function player_mach3()
 			sprite_index = spr_player_mach4
 		}
 		
-		if !particle_sprite_exists(spr_crazyruneffect)
+		if !particle_contains_sprite(spr_crazyruneffect)
 			particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
 		
 		if (flamecloud_buffer > 0)
@@ -30,7 +30,7 @@ function player_mach3()
 		sprite_index = spr_player_mach3
 	}
 	
-	if (!particle_sprite_exists(spr_superdashcloud) && grounded)
+	if (!particle_contains_sprite(spr_superdashcloud) && grounded)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_superdashcloud)
 	
 	if (key_jump.pressed && coyote_time) 

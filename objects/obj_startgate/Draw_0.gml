@@ -18,3 +18,7 @@ else
 }
 
 draw_sprite(door_gate, 0, x, y)
+
+var a = distance_to_object(obj_player) / 200
+
+draw_sprite_ext(door_gate, 1, x, y, 1, 1, 0, c_white, a)

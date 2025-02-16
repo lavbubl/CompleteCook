@@ -5,12 +5,10 @@ if state == 0
 	else
 	{
 		state++
-		alarm[0] = 180
+		alarm[0] = 190
 		if music != noone
 			scr_sound(music)
 	}
 }
 else
-{
-	fade_alpha = min(fade_alpha - fade_spd, 0)
-}
+	fade_alpha = max(fade_alpha - fade_spd, 0)

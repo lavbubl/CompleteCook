@@ -34,7 +34,6 @@ with instance_place(x, y - image_yscale, obj_player)
 			movespeed = 0
 			reset_anim(spr_player_upbox)
 			image_speed = 0.35
-			y = other.bbox_bottom + 18
 			scr_sound(sfx_box)
 		}
 	}

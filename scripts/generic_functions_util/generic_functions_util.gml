@@ -122,12 +122,13 @@ function set_globals()
 	global.combo = {
 		count: 0,
 		timer: 0,
-		font: font_add_sprite_ext(spr_tv_c_font, "0123456789", true, 2)
+		font: font_add_sprite_ext(spr_tv_c_font, "0123456789", true, 2),
+		wasted: false,
+		started: false
 	}
 
 	global.ds_dead_enemies = ds_list_create()
-	global.ds_broken_destroyables = ds_list_create()
-	global.ds_secrets = ds_list_create()
+	global.ds_saveroom = ds_list_create()
 	global.doorshut = false
 	global.scorefont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
 	global.generic_font = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?.1234567890:", true, 0)
@@ -153,7 +154,7 @@ function bbox_in_camera()
 
 function check_p_rank()
 {
-	return global.level_data.treasure;
+	return global.level_data.treasure && !global.combo.wasted;
 }
 
 function set_rank_milestones(_s, _a, _b, _c)
@@ -171,4 +172,37 @@ function draw_reset_color(alpha = true)
 	draw_set_color(c_white)
 	if alpha
 		draw_set_alpha(1)
+}
+
+function tile_layer_delete_at(_x, _y)
+{
+	var layers = layer_get_all()
+	for (var i = 0; i < array_length(layers); i++) 
+	{
+		var cur_layer = layers[i]
+	    if (string_starts_with(layer_get_name(cur_layer), "Tiles"))
+		{
+			var map_id = layer_tilemap_get_id(cur_layer)
+			tilemap_set_at_pixel(map_id, 0, _x, _y)
+		}
+	}
+}
+
+function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic = noone, spr_taunt = noone)
+{
+	var f = {
+		sprite_index: noone,
+		image_index: 0,
+		x: _x,
+		y: _y,
+		sprs: {
+			idle: spr_idle,
+			move: spr_move,
+			panic: spr_panic,
+			taunt: spr_taunt
+			},
+		x_offset: 0,
+		lerp_spd: 0
+	}
+	return f;
 }

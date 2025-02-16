@@ -7,9 +7,7 @@ function make_pause_image()
 	draw_reset_color()
 	draw_rectangle(0, 0, screen_w, screen_h, false)
 	
-	gpu_set_alphatestenable(false)
 	draw_surface(application_surface, 0, 0)
-	gpu_set_alphatestenable(true)
 	
 	draw_surface(obj_generichandler.gui_surf, 0, 0)
 	

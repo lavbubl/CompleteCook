@@ -1,7 +1,15 @@
 function break_destroyables()
 {
+	var d_pos = { //destroyable_position
+		x: x + hsp + sign(hsp),
+		y: y + vsp + sign(vsp)
+	}
+	
+	if state == states.grab
+		d_pos.x = x + hsp + xscale
+	
 	var d_list = ds_list_create()
-	instance_place_list(x + hsp + xscale, y + vsp + sign(vsp), obj_destroyable, d_list, false)
+	instance_place_list(d_pos.x, d_pos.y, obj_destroyable, d_list, false)
 	
 	var horizontal_states = [
 		states.mach2,
@@ -15,6 +23,7 @@ function break_destroyables()
 	var vertical_states = [
 		states.groundpound,
 		states.punch,
+		states.superjump,
 		e_states.hit
 	]
 	
@@ -37,10 +46,10 @@ function break_destroyables()
 	{
 		var d_id = ds_list_find_value(d_list, i)
 		
-		if (place_meeting(x + hsp + xscale, y, d_id) && is_h_state)
+		if (place_meeting(d_pos.x, y, d_id) && is_h_state)
 			instance_destroy(d_id)
 			
-		if (place_meeting(x, y + vsp + sign(vsp), d_id) && is_v_state)
+		if (place_meeting(x, d_pos.y, d_id) && is_v_state)
 			instance_destroy(d_id)
 	}
 	

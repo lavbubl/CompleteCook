@@ -1,4 +1,4 @@
-if ds_list_find_index(global.ds_broken_destroyables, id) != -1
+if ds_list_find_index(global.ds_saveroom, id) != -1
 	exit;
 
 instance_create_depth(screen_w / 2, 560, 0, obj_pizzatime)
@@ -26,5 +26,6 @@ do_enemygibs()
 
 global.combo.count++
 global.combo.timer = 60
+global.combo.started = true
 
-ds_list_add(global.ds_broken_destroyables, id)
+ds_list_add(global.ds_saveroom, id)

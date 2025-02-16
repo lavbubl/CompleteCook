@@ -40,6 +40,7 @@ function player_superjump()
 		flash = 8
 		movespeed = 12
 		image_speed = 0.35
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
 	}
 	
 	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !key_up.down && grounded)

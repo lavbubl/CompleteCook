@@ -15,12 +15,14 @@ with instance_place(x, y, obj_player)
 		global.combo.timer = 0
 		global.level_data.treasure = false
 		ds_list_clear(global.ds_dead_enemies)
-		ds_list_clear(global.ds_broken_destroyables)
-		ds_list_clear(global.ds_secrets)
+		ds_list_clear(global.ds_saveroom)
 		do_fade(tower_1, "a", fade_types.door)
 		scr_sound(super_mario_64_teleport_sfx)
 		state = states.actor
 		reset_anim(spr_player_enterdoor)
 		spawn = "a"
+		obj_followerhandler.followers = []
+		global.combo.started = false
+		global.combo.wasted = false
 	}
 }

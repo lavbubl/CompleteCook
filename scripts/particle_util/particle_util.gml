@@ -95,7 +95,7 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 	return p;
 }
 
-function particle_sprite_exists(sprite)
+function particle_contains_sprite(sprite)
 {
 	for (var i = 0; i < array_length(obj_particlecontroller.particle_list); i++) 
 	{
@@ -107,4 +107,9 @@ function particle_sprite_exists(sprite)
 		}
 	}
 	return false;
+}
+
+function create_debris(_x, _y, sprite)
+{
+	return particle_create(_x, _y, particles.genericpoof, 1, 1, sprite)
 }

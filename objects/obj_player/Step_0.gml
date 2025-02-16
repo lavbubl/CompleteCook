@@ -150,7 +150,6 @@ struct_foreach(aftimg_timers, function(_name, _data)
 
 player_sounds()
 
-
 if ladderbuffer > 0
 	ladderbuffer--
 	

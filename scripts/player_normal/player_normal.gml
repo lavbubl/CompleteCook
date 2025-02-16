@@ -90,7 +90,7 @@ function player_normal()
 		breakdance_secret.spd = 0.25
 	}
 	
-	if (key_down.down || scr_solid(x, y - 16))
+	if (key_down.down || scr_solid(x, y - 1))
 	{
 		reset_anim(spr_player_crouchdown)
 		state = states.crouch

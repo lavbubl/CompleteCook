@@ -5,6 +5,7 @@ if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 
 	global.combo.timer = 60
 	global.combo.count++
+	global.combo.started = true
 	
 	particle_create(x, y, particles.bang)
 	repeat (3)

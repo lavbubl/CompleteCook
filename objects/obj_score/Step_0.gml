@@ -5,6 +5,8 @@ visible = true
 
 if string_starts_with(room_get_name(room), "tower")
 	visible = false
+else if	room == rank_room
+	visible = false
 
 x = 121 + irandom_range(shake_mag, -shake_mag)
 y = 90 + irandom_range(shake_mag, -shake_mag)

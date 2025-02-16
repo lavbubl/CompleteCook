@@ -10,6 +10,7 @@ uniform float blue;
 
 void main()
 {
-	float alpha = texture2D( gm_BaseTexture, v_vTexcoord ).a;
-    gl_FragColor = vec4(red, green, blue, alpha);
+	vec4 color = texture2D( gm_BaseTexture, v_vTexcoord );
+	gl_FragColor.rgb = vec3(red, green, blue);
+	gl_FragColor.a = v_vColour.a * color.a;
 }

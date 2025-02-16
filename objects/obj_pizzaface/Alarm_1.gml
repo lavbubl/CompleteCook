@@ -1,2 +1,2 @@
-afterimage_create_color(image_xscale, 255, 50, 100)
+afterimage_create_color(223, 47, 0)
 alarm[1] = 10

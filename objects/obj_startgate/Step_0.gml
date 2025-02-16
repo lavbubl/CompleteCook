@@ -9,7 +9,7 @@ for (var i = 0; i < array_length(bg_parallax); i++)
 		x += spd // increment its x with its speed
 }
 
-if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_up.down)
+if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_up.down && obj_player.grounded)
 {
 	with obj_player
 	{
@@ -40,6 +40,7 @@ if flick
 		card_index: title_data[1],
 		title_index: title_data[2]
 	}
+	
 	with instance_create(0, 0, obj_titlecard)
 	{
 		music = d.music

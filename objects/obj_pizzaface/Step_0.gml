@@ -1,12 +1,16 @@
 var playerid = obj_player;
+
 if (!instance_exists(playerid))
 	exit;
+	
 var _move = true;
+
 with obj_player
 {
 	if (state == states.actor)
 		_move = false;
 }
+
 if !instance_exists(obj_treasure)
 {
 	if image_alpha >= 1
@@ -29,8 +33,10 @@ else
 	x = -200;
 	y = -200;
 }
+
 if !_move
-	image_alpha = approach(image_alpha, 0, 0.1);
+	image_alpha = approach(image_alpha, 0, 0.1)
+
 /*if (_move && place_meeting(x, y, playerid) && !playerid.cutscene && playerid.state != states.actor && !instance_exists(obj_fade) && !instance_exists(obj_endlevelfade) && image_alpha >= 1)
 {
 	

@@ -4,6 +4,8 @@ visible = true
 
 if string_starts_with(room_get_name(room), "tower")
 	visible = false
+else if	room == rank_room
+	visible = false
 
 if !visible
 	state = tv_states.off

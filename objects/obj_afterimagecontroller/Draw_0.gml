@@ -12,9 +12,9 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 				break;*/
 			case after_images.solid_color:
 				shader_set(shd_solidcolor)
-				quick_shader_set_uniform_f(shd_solidcolor, "red", r)
-				quick_shader_set_uniform_f(shd_solidcolor, "green", g)
-				quick_shader_set_uniform_f(shd_solidcolor, "blue", b)
+				quick_shader_set_uniform_f(shd_solidcolor, "red", r / 255)
+				quick_shader_set_uniform_f(shd_solidcolor, "green", g / 255)
+				quick_shader_set_uniform_f(shd_solidcolor, "blue", b / 255)
 				break;
 		}
 		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha)

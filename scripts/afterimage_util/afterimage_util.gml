@@ -29,9 +29,9 @@ function afterimage_create(a_type)
 				image_alpha = 0.8
 				hsp = hsp
 				vsp = vsp
-				r = 1
-				g = 1
-				b = 1
+				r = 255
+				g = 255
+				b = 255
 				break;
 		}
 	}

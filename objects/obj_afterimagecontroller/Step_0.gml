@@ -29,7 +29,7 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 					array_delete(other.aftimg_list, inst, 1)
 				break;
 			case after_images.solid_color:
-				image_alpha -= 0.15
+				image_alpha -= 0.05
 				
 				if (image_alpha <= 0)
 					array_delete(other.aftimg_list, inst, 1)

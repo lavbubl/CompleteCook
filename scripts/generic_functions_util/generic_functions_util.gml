@@ -126,7 +126,9 @@ function set_globals()
 		wasted: false,
 		started: false
 	}
-
+    
+    global.ds_collect = ds_list_create()
+    global.ds_destroyables = ds_list_create()
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_saveroom = ds_list_create()
 	global.doorshut = false

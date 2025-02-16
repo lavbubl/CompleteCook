@@ -1,5 +1,6 @@
 if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 {
+    ds_list_add(global.ds_dead_enemies, id)
 	with (instance_create(x, y, obj_enemycorpse))
 		sprite_index = other.sprs.dead
 
@@ -14,4 +15,3 @@ if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 	shake_camera()
 }
 
-ds_list_add(global.ds_dead_enemies, id)

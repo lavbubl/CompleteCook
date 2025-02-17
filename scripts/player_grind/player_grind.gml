@@ -5,8 +5,9 @@ function player_grind()
 	sprite_index = spr_player_grind
 	image_speed = 0.35
 	
-	if (key_jump.pressed && (place_meeting(x, y + 1, obj_grindrail) || place_meeting(x, y + 1, obj_grindrailslope)))
+	if (input_buffers.jump > 0 && (place_meeting(x, y + 1, obj_grindrail) || place_meeting(x, y + 1, obj_grindrailslope)))
 	{
+		input_buffers.jump = 0
 		vsp = -12
 		jumpstop = false
 		state = states.mach2

@@ -13,8 +13,9 @@ function player_grab()
 		jumpstop = true
 	}
 	
-	if (key_jump.pressed && !key_down.down && coyote_time)
+	if (input_buffers.jump > 0 && !key_down.down && coyote_time)
 	{
+		input_buffers.jump = 0
 		jumpstop = false
 		vsp = -11
 		state = states.mach2

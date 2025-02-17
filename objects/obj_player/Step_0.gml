@@ -16,6 +16,15 @@ instakill = false
 
 prevstate = state
 
+input_buffers.grab = max(input_buffers.grab - 1, 0)
+input_buffers.jump = max(input_buffers.jump - 1, 0)
+
+if key_grab.pressed
+	input_buffers.grab = 15
+	
+if key_jump.pressed
+	input_buffers.jump = 15
+
 break_destroyables()
 
 switch (state)

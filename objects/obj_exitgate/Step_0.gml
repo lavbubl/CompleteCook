@@ -8,7 +8,7 @@ with instance_place(x, y, obj_player)
 		scr_sound_3d(sfx_groundpound, x, y)
 		global.doorshut = true
 	}
-	else if (global.panic.active && key_up.pressed)
+	else if (global.panic.active && key_up.pressed && grounded)
 	{
 		//WIP RESET LEVEL FUNCTION
 		with instance_create(0, 0, obj_rank)

@@ -99,14 +99,15 @@ function player_normal()
 	if !grounded
 	{
 		state = states.jump
-		reset_anim(spr_player_fall)
+		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_weakjump : spr_player_fall)
 	}
 	
-	if (coyote_time && key_jump.pressed)
+	if (coyote_time && input_buffers.jump > 0)
 	{
+		input_buffers.jump = 0
 		vsp = -11
 		state = states.jump
-		reset_anim(spr_player_jump)
+		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_weakjump : spr_player_jump)
 		jumpstop = false
 		scr_sound_3d(sfx_jump, x, y)
 	}

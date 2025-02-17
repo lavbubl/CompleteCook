@@ -28,8 +28,9 @@ function player_hold()
 		}
 	}
 	
-	if (coyote_time && key_jump.pressed)
+	if (coyote_time && input_buffers.jump > 0)
 	{
+		input_buffers.jump = 0
 		vsp = -12
 		jumpstop = false
 		scr_sound_3d(sfx_jump, x, y)
@@ -50,8 +51,9 @@ function player_hold()
 			break;
 	}
 	
-	if (key_attack.pressed)
+	if input_buffers.grab > 0
 	{
+		input_buffers.grab = 0
 		state = states.punchenemy
 		var str = string_concat("spr_player_finishingblow_", string(irandom_range(1, 5)))
 		reset_anim(asset_get_index(str))

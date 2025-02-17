@@ -59,8 +59,9 @@ function player_mach2()
 			vsp /= 10
 		}
 	}
-	if (key_jump.pressed && coyote_time) 
+	if (input_buffers.jump > 0 && coyote_time) 
 	{
+		input_buffers.jump = 0
 		jumpstop = false
 		vsp = -11
 		scr_sound_3d(sfx_jump, x, y)

@@ -49,7 +49,7 @@ for (var i = 0; i < array_length(followers); i++)
 			if sprite_index != sprs.taunt
 			{
 				sprite_index = sprs.taunt
-				particle_create(x, y, particles.genericpoof, 1, 1, spr_tinytaunt)
+				create_effect(x, y, spr_tinytaunt)
 				image_index = irandom(sprite_get_number(sprite_index) - 1)
 			}
 		}

@@ -6,10 +6,10 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 	{
 		switch (effect)
 		{
-			/*case after_images.blur:
-				shader_set(shd_blur)
-				quick_shader_set_uniform_f(shd_blur, "h", abs(hsp) >= abs(vsp))
-				break;*/
+			case after_images.blur:
+				shader_set(shd_pal_swapper)
+				pal_swap_set(pal_peppino, obj_player.pal_select, false)
+				break;
 			case after_images.solid_color:
 				shader_set(shd_solidcolor)
 				quick_shader_set_uniform_f(shd_solidcolor, "red", r / 255)
@@ -21,4 +21,6 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 	}
 	if (shader_current() != -1) // dont know if this works both with a noone and -1 but im gonna be safe
 		shader_reset()
+	if inst_id.effect == after_images.blur
+		pal_swap_reset()
 }

@@ -22,8 +22,9 @@ function player_tumble()
 	if (grounded && sprite_index == spr_player_dive)
 		reset_anim(spr_player_machroll)
 		
-	if (sprite_index == spr_player_dive && key_jump.pressed)
+	if (sprite_index == spr_player_dive && input_buffers.jump > 0)
 	{
+		input_buffers.jump = 0
 		sprite_index = spr_player_poundcancel1
 		state = states.groundpound
 		vsp = -6
@@ -71,8 +72,11 @@ function player_tumble()
 	if (grounded && vsp > 0)
 		jumpstop = false
 		
-	if (key_jump.pressed && state != states.bump && hsp != 0 && sprite_index == spr_player_ball)
+	if (input_buffers.jump > 0 && state != states.bump && hsp != 0 && sprite_index == spr_player_ball)
+	{
 		vsp = -11
+		input_buffers.jump = 0
+	}
 		
 	if (crouchslipbuffer > 0)
 		crouchslipbuffer--

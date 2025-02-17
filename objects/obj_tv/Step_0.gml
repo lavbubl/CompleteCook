@@ -21,9 +21,11 @@ switch (state)
 		break;
 	case tv_states.normal:
 		sprite_index = spr_tv_idle
-		if global.combo.count >= 3
+		if global.combo.count >= 50
+			sprite_index = spr_tv_highcombo
+		else if global.combo.count >= 3
 			sprite_index = spr_tv_combo
-		if global.panic.active
+		else if global.panic.active
 			sprite_index = spr_tv_panic
 		
 		if (p.state == states.mach3)

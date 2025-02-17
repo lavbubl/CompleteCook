@@ -9,7 +9,11 @@ function player_groundpound()
 				particle_timer--
 			else
 			{
-				particle_create(x, y, particles.genericpoof, xscale, 1, spr_flamecloud)
+				if !particle_contains_sprite(spr_piledrivereffect)
+				{
+					with create_effect(x, y, spr_piledrivereffect)
+						depth = -150
+				}
 				particle_timer = 15
 			}
 		}
@@ -64,7 +68,7 @@ function player_groundpound()
 		}
 	}*/
 	//if (grounded && vsp > 0 && (freefallsmash < 10 || !place_meeting(x, y + vsp, obj_metalblock)) && !place_meeting(x, y + 1, obj_destructibles) && !place_meeting(x, y + vsp, obj_destructibles) && !place_meeting(x, y + vsp + 6, obj_destructibles))
-	if (grounded && vsp > 0)
+	if (grounded && vsp >= 0)
 	{
 		if (scr_slope(x, y + 1))
 		{
@@ -98,7 +102,7 @@ function player_groundpound()
 			state = states.bump
 			shake_camera()
 			scr_sound_3d(sfx_groundpound, x, y)
-			particle_create(x, y, particles.genericpoof, xscale, 1, spr_groundpoundeffect)
+			create_effect(x, y + 2, spr_groundpoundeffect)
 			if freefallsmash >= 10
 			{
 				with (par_enemy)

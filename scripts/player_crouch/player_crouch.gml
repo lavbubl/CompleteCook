@@ -24,8 +24,9 @@ function player_crouch()
 		if (sprite_index != spr_player_crouchdown)
 			sprite_index = p_move != 0 ? spr_player_crawl : spr_player_crouch
 	
-		if (coyote_time && key_jump.pressed && !scr_solid(x, y - 16))
+		if (coyote_time && input_buffers.jump > 0 && !scr_solid(x, y - 16))
 		{
+			input_buffers.jump = 0
 			vsp = -12
 			scr_sound_3d(sfx_jump, x, y)
 		}

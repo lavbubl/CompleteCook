@@ -4,10 +4,7 @@ function player_punchenemy()
 	hsp = approach(hsp, 0, 0.4)
 	movespeed = 0
 	
-	var ixcheck = 7
-	
-	if sprite_index == spr_player_finishingblowup
-		ixcheck = 5
+	var ixcheck = 5
 	if sprite_index == spr_player_swingdingend
 		ixcheck = 1
 	

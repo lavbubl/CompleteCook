@@ -17,8 +17,9 @@ function player_ladder()
 		vsp = 0
 	}
 	
-	if (key_jump.pressed)
+	if input_buffers.jump > 0
 	{
+		input_buffers.jump = 0
 		vsp = -12
 		state = states.jump
 		reset_anim(spr_player_jump)

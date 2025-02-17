@@ -17,8 +17,9 @@ function do_groundpound()
 
 function do_grab()
 {
-	if (key_attack.pressed)
+	if input_buffers.grab > 0
 	{
+		input_buffers.grab = 0
 		if (!key_up.down)
 		{
 			movespeed = max(movespeed, 5)
@@ -177,7 +178,7 @@ function do_hurt(obj = noone)
 	
 	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)
-	particle_create(x, y, particles.genericpoof, 1, 1, spr_hurtstars)
+	create_effect(x, y, spr_hurtstars)
 	
 	repeat 5
 		particle_create(x, y, particles.hurtstar)
@@ -194,7 +195,7 @@ function do_hurt(obj = noone)
 				spr_pineapplecollect
 			)
 			
-			with particle_create(x, y, particles.stars, 1, 1, spr)
+			with create_debris(x, y, spr)
 			{
 				hsp = random_range(-10, 10)
 				vsp = random_range(-5, 0)

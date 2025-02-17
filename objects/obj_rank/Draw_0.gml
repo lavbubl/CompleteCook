@@ -10,4 +10,10 @@ if state == 0
 	draw_set_alpha(1)
 }
 else
-	draw_self()
+{
+	shader_set(shd_pal_swapper)
+	pal_swap_set(pal_peppino, obj_player.pal_select, false)
+	draw_self()	
+	pal_swap_reset()
+	shader_reset()
+}

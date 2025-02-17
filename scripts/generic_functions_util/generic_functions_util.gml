@@ -126,7 +126,7 @@ function set_globals()
 		wasted: false,
 		started: false
 	}
-
+	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_saveroom = ds_list_create()
 	global.doorshut = false

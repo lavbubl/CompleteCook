@@ -52,12 +52,12 @@ if follow_player
 				break;
 		}
 		other.state = e_states.grabbed
-		if (key_down.down)
+		if key_down.down
 		{
 			if (grounded && state == states.hold)
 			{
 				state = states.normal
-				with (other)
+				with other
 				{
 					follow_player = false
 					y = other.y
@@ -65,7 +65,7 @@ if follow_player
 					stun_timer = 180
 				}
 			}
-			if (!grounded && state == states.hold || state == states.swingding)
+			if (!grounded && (state == states.hold || state == states.swingding))
 			{
 				sprite_index = spr_player_piledriver
 				movespeed = abs(hsp)
@@ -85,9 +85,7 @@ if follow_player
 			reset_anim(spr_player_piledriverjump)
 		}
 		
-		var ixcheck = 7
-		if sprite_index == spr_player_finishingblowup
-			ixcheck = 5
+		var ixcheck = 5
 		if sprite_index == spr_player_swingdingend
 			ixcheck = 1
 			

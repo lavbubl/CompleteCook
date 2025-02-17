@@ -12,8 +12,9 @@ function player_swingding()
 		movespeed = 0
 	}
 	
-	if (key_attack.pressed || place_meeting(x + xscale, y, obj_solid))
+	if (input_buffers.grab > 0 || place_meeting(x + xscale, y, obj_solid))
 	{
+		input_buffers.grab = 0
 		state = states.punchenemy
 		reset_anim(spr_player_swingdingend)
 	}

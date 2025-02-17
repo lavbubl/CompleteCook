@@ -12,16 +12,16 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c7b1d98f-4919-4f3c-81bf-97e0030a837a","name":"c7b1d98f-4919-4f3c-81bf-97e0030a837a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"17486d46-60c7-4f68-b150-87279bf0d9d0","name":"17486d46-60c7-4f68-b150-87279bf0d9d0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"385e8a67-6013-4363-b471-68d61a43a4f1","name":"385e8a67-6013-4363-b471-68d61a43a4f1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"041c7556-f7ce-4ccb-8f94-9bb8433214d6","name":"041c7556-f7ce-4ccb-8f94-9bb8433214d6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"98ac082a-affd-474d-89fa-99bfa1b7a84b","name":"98ac082a-affd-474d-89fa-99bfa1b7a84b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"ebf3ae98-3a53-4c9d-bd55-59eb19a220ac","name":"ebf3ae98-3a53-4c9d-bd55-59eb19a220ac","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":100,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"6bf1e8af-9ba7-437f-aa9b-ed2a4e9e292f","blendMode":0,"displayName":"default","isLocked":false,"name":"6bf1e8af-9ba7-437f-aa9b-ed2a4e9e292f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"0c097795-1422-47d2-892d-63973e69d581","blendMode":0,"displayName":"default","isLocked":false,"name":"0c097795-1422-47d2-892d-63973e69d581","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_player_holdfall",
   "nineSlice":null,
@@ -71,14 +71,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c7b1d98f-4919-4f3c-81bf-97e0030a837a","path":"sprites/spr_player_holdfall/spr_player_holdfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"5a38e005-3795-4652-9e47-982b14914447","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"041c7556-f7ce-4ccb-8f94-9bb8433214d6","path":"sprites/spr_player_holdfall/spr_player_holdfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"a9d8b55d-5ac5-4adc-b76a-fca9d1745752","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"17486d46-60c7-4f68-b150-87279bf0d9d0","path":"sprites/spr_player_holdfall/spr_player_holdfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6ed53b9e-a4bd-406d-a059-31c3346708c4","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"98ac082a-affd-474d-89fa-99bfa1b7a84b","path":"sprites/spr_player_holdfall/spr_player_holdfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"efd31b1b-75c9-48cd-9b30-5305ec86c7af","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"385e8a67-6013-4363-b471-68d61a43a4f1","path":"sprites/spr_player_holdfall/spr_player_holdfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7cb63748-d526-4d3c-a18e-7f5ba44bb505","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ebf3ae98-3a53-4c9d-bd55-59eb19a220ac","path":"sprites/spr_player_holdfall/spr_player_holdfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"8773ccec-12e8-431e-902e-8925dcc660d9","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -30,8 +30,6 @@ enum states
 
 spawn = "a"
 door_type = fade_types.none
-hallxscale = 1
-hallyscale = 1
 wasclimbingwall = false
 coyote_time = 0
 movespeed = 0
@@ -53,9 +51,9 @@ aftimg_timers = {
 	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false}
 }
 
-ptcl_timers = {
+/*ptcl_timers = {
 	bleh: 0
-}
+} what was this again?*/
 
 dir = 0
 freefallsmash = 0
@@ -113,4 +111,13 @@ taunttimer = 0
 i_frames = 0
 particle_timer = 0
 flamecloud_buffer = 0
-depth = -200
+depth = -100
+
+ini_open("globalsave.ini")
+pal_select = ini_read_real("game", "pal_select", 1)
+ini_close()
+
+input_buffers = {
+	jump: 0,
+	grab: 0
+} //fuck it, ill just do it in the player step

@@ -14,14 +14,20 @@ function player_mach3()
 		}
 		
 		if !particle_contains_sprite(spr_crazyruneffect)
-			particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
+		{
+			with create_effect(x, y, spr_crazyruneffect)
+			{
+				image_xscale = other.xscale
+				depth = -150
+			}
+		}
 		
 		if (flamecloud_buffer > 0)
 			flamecloud_buffer--
 		else
 		{
 			flamecloud_buffer = 20
-			particle_create(x, y, particles.genericpoof, 1, 1, spr_flamecloud)
+			create_effect(x, y, spr_flamecloud)
 		}
 	}
 	else if (sprite_index == spr_player_mach4)
@@ -33,8 +39,9 @@ function player_mach3()
 	if (!particle_contains_sprite(spr_superdashcloud) && grounded)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_superdashcloud)
 	
-	if (key_jump.pressed && coyote_time) 
+	if (input_buffers.jump > 0 && coyote_time) 
 	{
+		input_buffers.jump = 0
 		vsp = -11
 		jumpstop = false
 		reset_anim(spr_player_mach3jump)

@@ -45,7 +45,11 @@ function player_jump()
 			break;
 		case spr_player_stomp:
 			if anim_ended()
-				image_index = 3
+				image_index = image_number - 3
+			break;
+		case spr_player_weakjump:
+			if anim_ended()
+				image_index = image_number - 3
 			break;
 	}
 	do_taunt()

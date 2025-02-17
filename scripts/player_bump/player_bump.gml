@@ -1,7 +1,7 @@
 function player_bump() 
 {
 	image_speed = 0.35
-	if (sprite_index != spr_player_mach3hitwall && sprite_index != spr_player_bump)
+	if (sprite_index == spr_player_wallsplat || sprite_index == spr_player_ceilinghit)
 	{
 		hsp = 0
 		vsp = 0

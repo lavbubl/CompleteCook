@@ -40,7 +40,8 @@ function player_superjump()
 		flash = 8
 		movespeed = 12
 		image_speed = 0.35
-		particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
+		with particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
+			depth = -150
 	}
 	
 	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !key_up.down && grounded)
@@ -48,20 +49,25 @@ function player_superjump()
 		vsp = -12
 		sprite_index = spr_player_superjump
 		scr_sound_3d(sfx_superjumprelease, x, y)
+		create_effect(x, y, spr_superjumpexplosion)
 	}
 	
 	if (sprite_index == spr_player_superjump)
 	{
 		instakill = true
 		image_speed = abs(vsp) / 25
-		/*if (superjumpeffecttimer > 0)
-			superjumpeffecttimer--
+		if (particle_timer > 0)
+			particle_timer--
 		else
 		{
-			superjumpeffecttimer = 20
-			createEffect('superjumpeffect', depth + 1)
-			createEffect('genericdust')
-		}*/
+			particle_timer = 20
+			with create_effect(x, y, spr_piledrivereffect)
+			{
+				image_yscale = -1
+				depth = -150
+			}
+			create_effect(x, y, spr_flamecloud)
+		}
 		movespeed = 0
 		
 		if (place_meeting(x, y - 1, obj_solid))
@@ -74,13 +80,15 @@ function player_superjump()
 		if (sprite_index != spr_player_Sjumpcancelstart)
 			vsp -= 0.6
 		
-		if (key_attack.pressed || key_dash.pressed) && state != states.bump
+		if (input_buffers.grab > 0 || key_dash.pressed) && state != states.bump
 		{
+			input_buffers.grab = 0
 			reset_anim(spr_player_Sjumpcancelstart)
 			scr_sound_3d(sfx_superjumpcancel, x, y)
 			audio_stop_sound(sfx_superjumprelease)
 		}
 		
 		aftimg_timers.blur.do_it = true
+		aftimg_timers.mach.do_it = true
 	}
 }

@@ -24,10 +24,11 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		image_blend: c_white,
 		image_angle: 0,
 		image_alpha: 1,
-		depth: 0,
+		depth: -10,
 		lifetime: -1,
 		type: p_type
 	}
+	
 	with p
 	{
 		switch (p_type)

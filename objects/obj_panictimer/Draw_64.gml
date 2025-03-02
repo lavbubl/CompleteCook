@@ -45,17 +45,20 @@ if (global.panic.timer <= 0 && pizzaface.sprite_index != spr_timer_pizzaface_wak
 }
 
 john.image_index += john.image_speed // didnt work with a with statement, shit code it is
-if john.image_index > 22
+if john.image_index >= 22
 	john.image_index = 0
-	
+
+if pizzaface.sprite_index == spr_timer_pizzaface_sleep
+	pizzaface.image_speed = 0.35
+
 pizzaface.image_index += pizzaface.image_speed
-if pizzaface.image_index + pizzaface.image_speed > sprite_get_number(pizzaface.sprite_index)
+if pizzaface.image_index >= sprite_get_number(pizzaface.sprite_index) - 1
 {
 	if pizzaface.sprite_index == spr_timer_pizzaface_sleep
 		pizzaface.image_index = 0
 	else
 	{
-		pizzaface.image_index = sprite_get_number(pizzaface.sprite_index) - pizzaface.image_speed
+		pizzaface.image_index = sprite_get_number(pizzaface.sprite_index) - 1
 		pizzaface.image_speed = 0
 	}
 }

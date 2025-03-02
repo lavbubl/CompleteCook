@@ -53,6 +53,7 @@ enum fade_types
 	hallway,
 	v_hallway,
 	door,
+	generic,
 	box
 }
 

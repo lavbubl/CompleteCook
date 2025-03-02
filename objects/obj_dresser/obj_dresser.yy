@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite269",
-    "path":"sprites/Sprite269/Sprite269.yy",
+    "name":"spr_dresser",
+    "path":"sprites/spr_dresser/spr_dresser.yy",
   },
   "spriteMaskId":null,
   "visible":true,

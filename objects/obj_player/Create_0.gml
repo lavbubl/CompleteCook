@@ -25,6 +25,7 @@ enum states
 	grind,
 	hurt,
 	parry,
+	backtohub,
 	noclip
 }
 
@@ -111,6 +112,7 @@ taunttimer = 0
 i_frames = 0
 particle_timer = 0
 flamecloud_buffer = 0
+haskey = false
 depth = -100
 
 ini_open("globalsave.ini")

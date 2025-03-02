@@ -98,6 +98,9 @@ switch (state)
 	case states.parry:
 		player_parry()
 		break;
+	case states.backtohub:
+		player_backtohub()
+		break;
 	case states.noclip:
 		player_noclip()
 		break;
@@ -143,7 +146,7 @@ if ((y > room_height + 200 || y < -200) && state != states.actor)
 	sprite_index = spr_player_idle
 }
 	
-if state != states.noclip
+if (state != states.noclip && state != states.backtohub)
 	collide()
 
 struct_foreach(aftimg_timers, function(_name, _data)

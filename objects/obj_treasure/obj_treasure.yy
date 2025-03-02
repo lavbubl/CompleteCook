@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite187",
-    "path":"sprites/Sprite187/Sprite187.yy",
+    "name":"spr_treasure",
+    "path":"sprites/spr_treasure/spr_treasure.yy",
   },
   "spriteMaskId":null,
   "visible":true,

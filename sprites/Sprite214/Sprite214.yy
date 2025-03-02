@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"CompleteCook",
-    "path":"CompleteCook.yyp",
+    "name":"Miscellaneous",
+    "path":"folders/Sprites/Miscellaneous.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

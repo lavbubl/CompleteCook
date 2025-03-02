@@ -174,7 +174,7 @@ function do_hurt(obj = noone)
 	sleep(100)
 	decrease_score(50)
 	i_frames = 100
-	scr_sound_pitched(sfx_hurt, 0.9, 1.10)
+	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
 	
 	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)

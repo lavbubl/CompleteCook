@@ -2,9 +2,7 @@ var p = obj_player
 
 visible = true
 
-if string_starts_with(room_get_name(room), "tower")
-	visible = false
-else if	room == rank_room
+if (string_starts_with(room_get_name(room), "tower") || room == rank_room || room == rm_timesup)
 	visible = false
 
 if !visible
@@ -20,13 +18,25 @@ switch (state)
 			state = tv_states.normal
 		break;
 	case tv_states.normal:
-		sprite_index = spr_tv_idle
-		if global.combo.count >= 50
+		if (sprite_index != spr_tv_idleangry && sprite_index != spr_tv_idlelook)
+			sprite_index = spr_tv_idle
+		else if global.combo.count >= 50
 			sprite_index = spr_tv_highcombo
 		else if global.combo.count >= 3
 			sprite_index = spr_tv_combo
 		else if global.panic.active
 			sprite_index = spr_tv_panic
+		
+		if idletimer > 0
+			idletimer--
+		else
+		{
+			idletimer = 240
+			reset_anim(choose(spr_tv_idleangry, spr_tv_idlelook))
+		}
+			
+		if (anim_ended() && (sprite_index == spr_tv_idleangry || sprite_index == spr_tv_idlelook))
+			sprite_index = spr_tv_idle
 		
 		if (p.state == states.mach3)
 		{

@@ -8,6 +8,7 @@ var c = {
 	y: self.y - obj_camera.campos.y,
 	val: self.val
 }
+
 array_push(obj_collect_got_visual.collects, c)
 
 with instance_create(x, y, obj_collect_number)

@@ -43,6 +43,7 @@ if (_move && place_meeting(x, y, playerid) && playerid.state != states.actor && 
 	{
 		door_type = fade_types.generic
 		hsp = 0
+		vsp = 0
 		movespeed = 0
 		spawn = "a"
 		state = states.actor

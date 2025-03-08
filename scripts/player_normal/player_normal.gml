@@ -125,6 +125,7 @@ function player_normal()
 	switch (sprite_index)
 	{
 		case spr_player_move:
+		case spr_player_weakmove:
 			image_speed = clamp(movespeed / 15, 0.35, 0.6);
 			break;
 		case spr_player_machslideend:

@@ -1,15 +1,19 @@
-if tex_list == []
-	exit;
+var total = 0
 
-var p = (tex_max - array_length(tex_list))
-var t = ((p / tex_max) * 100)
+var p = tex_max - array_length(tex_list)
+var t = (p / tex_max) * 50 // 50% of the loading
 
-draw_healthbar(0, screen_h - 16, screen_w, screen_h, t, c_black, c_white, c_white, 0, 0, 0)
-draw_set_color(c_white)
-draw_set_font(-4)
-draw_set_align(fa_left, fa_bottom)
+total += t
 
-if tex_list != []
-	draw_text(16, 508, string_concat("Loading ", group_arr[currenttexture]))
+for (var i = 0; i < array_length(snd_group_arr); i++) {
+	var cur_group = snd_group_arr[i][0]
+	total += audio_group_load_progress(cur_group) / 4 //25% per audio group, 50% for both audio groups
+}
 
-draw_sprite(spr_title, 0, screen_w / 2, screen_h / 2)
+//comes up to 100%
+
+draw_sprite(spr_loadingscreen, 0, screen_w / 2, screen_h / 2)
+var xx = (screen_w / 2) - sprite_get_xoffset(spr_loadingscreen)
+var yy = (screen_h / 2) - sprite_get_yoffset(spr_loadingscreen)
+var upscale = sprite_get_width(spr_loadingscreen) / 100
+draw_sprite_part(spr_loadingscreen, 1, 0, 0, total * upscale, sprite_get_height(spr_loadingscreen), xx, yy)

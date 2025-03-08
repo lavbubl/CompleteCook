@@ -18,6 +18,12 @@ for (var i = 0; i < array_length(followers); i++)
 {	
 	var follower = followers[i]
 	
+	if !obj_player.hasgerome && follower.sprs.idle == spr_gerome_keyidle
+	{
+		array_delete(followers, i, 1)
+		continue;
+	}
+	
 	var index_cal = (array_length(pos_array) - 1) - ((i + 1) * delay)
 	var pos_in_line = pos_array[max(index_cal, 0)]
 	var prev_pos_in_line = pos_array[max(index_cal - delay, 0)]

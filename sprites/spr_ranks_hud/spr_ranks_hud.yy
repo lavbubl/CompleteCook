@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Sprites/Level Structure.yy",
+    "name":"HUD",
+    "path":"folders/Sprites/HUD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -101,8 +101,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texg_hud",
+    "path":"texturegroups/texg_hud",
   },
   "type":0,
   "VTile":false,

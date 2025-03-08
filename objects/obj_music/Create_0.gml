@@ -2,9 +2,8 @@
 
 levelsongs = 
 [
-	[level_1, mu_sundogfunk, false, mu_secret],
-	[tower_1, mu_preheat, false, mu_secret],
-	[Room6, mu_dropit, true]
+	[level_1, mu_dropit, false, mu_secret],
+	[tower_1, mu_preheat, false, mu_secret]
 ]
 
 pauseIDS = function(pause = true)
@@ -16,7 +15,7 @@ pauseIDS = function(pause = true)
 		"panic_mu",
 		"panic_pinch_mu"
 	];
-		
+	
 	for (var i = 0; i < array_length(pauseSounds); i++)
 	{
 		var variableAttempt = variable_instance_get(id, pauseSounds[i]);

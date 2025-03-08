@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"sfx_break",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
   },
   "bitDepth":1,
   "bitRate":128,

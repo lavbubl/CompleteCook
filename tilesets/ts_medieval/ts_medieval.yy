@@ -8,7 +8,7 @@
     "TileSerialiseData":[],
   },
   "name":"ts_medieval",
-  "out_columns":13,
+  "out_columns":16,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -34,5 +34,5 @@
   "tileWidth":32,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":180,
+  "tile_count":250,
 }

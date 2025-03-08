@@ -133,7 +133,7 @@ function scr_solid(_x, _y)
 				default:
 					do_parent_check = true
 			}
-			if (do_parent_check)
+			if do_parent_check
 			{
 				switch (object_get_parent(object_index))
 				{

@@ -7,8 +7,21 @@ if (array_length(tex_list) > 0)
 			texture_prefetch(b[i])
 	}
 	array_shift(tex_list)
-	if array_length(tex_list) > 1
-		currenttexture++
+	alarm[0] = 1
+}
+else if (currentsndgroup < array_length(snd_group_arr))
+{
+	var cur_group = snd_group_arr[currentsndgroup]
+	if !audio_group_is_loaded(cur_group[0])
+	{
+		if !cur_group[1]
+		{
+			audio_group_load(cur_group[0])
+			cur_group[1] = true
+		}
+	}
+	else
+		currentsndgroup++
 	alarm[0] = 1
 }
 else

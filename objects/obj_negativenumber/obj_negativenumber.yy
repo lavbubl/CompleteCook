@@ -14,7 +14,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"HUD",
-    "path":"folders/Sprites/HUD.yy",
+    "path":"folders/Objects/HUD.yy",
   },
   "parentObjectId":null,
   "persistent":false,

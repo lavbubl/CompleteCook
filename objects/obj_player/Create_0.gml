@@ -113,13 +113,24 @@ i_frames = 0
 particle_timer = 0
 flamecloud_buffer = 0
 haskey = false
+hasgerome = false
 depth = -100
 
 ini_open("globalsave.ini")
 pal_select = ini_read_real("game", "pal_select", 1)
 ini_close()
 
+pattern_spr = pat_pizza
+
+pattern_init()
+
 input_buffers = {
 	jump: 0,
 	grab: 0
 } //fuck it, ill just do it in the player step
+
+return_location = {
+	room: 0,
+	x: 0,
+	y: 0
+}

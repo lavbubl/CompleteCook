@@ -1,3 +1,4 @@
+pattern_init()
 state = 0
 image_speed = 0.35
 sprite_index = spr_techdiff_static

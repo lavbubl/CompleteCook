@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"mu_ranka",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"ag_music",
+    "path":"audiogroups/ag_music",
   },
   "bitDepth":1,
   "bitRate":128,

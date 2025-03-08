@@ -16,7 +16,14 @@ if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_u
 		reset_anim(spr_player_startgate)
 		state = states.actor
 		hsp = 0
+		movespeed = 0
 		image_speed = 0.35
+		spawn = noone
+		return_location = {
+			x: x,
+			y: y,
+			room: room
+		}
 	}
 	
 	if obj_music.mu != noone

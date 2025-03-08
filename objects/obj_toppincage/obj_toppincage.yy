@@ -30,7 +30,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"toppin","filters":[],"listItems":[],"multiselect":false,"name":"toppin","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"toppins.shroom","varType":4,},
+    {"$GMObjectProperty":"v1","%Name":"toppin","filters":[],"listItems":[],"multiselect":false,"name":"toppin","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"toppin_enum.shroom","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

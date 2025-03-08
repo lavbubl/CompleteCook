@@ -69,8 +69,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"HUD",
-    "path":"folders/Sprites/HUD.yy",
+    "name":"Player",
+    "path":"folders/Sprites/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

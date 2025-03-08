@@ -1,6 +1,8 @@
 if !visible
 	exit;
 
+depth = -200
+
 draw_set_align(fa_left, fa_bottom)
 
 draw_sprite(spr_pizzascore, image_index, x, y)

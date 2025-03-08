@@ -1,8 +1,8 @@
-shader_set(shd_pal_swapper)
+depth = -200
+
 pal_swap_set(pal_combo, global.combo.wasted ? 1 : 2, false)
 draw_sprite(spr_tv_c_ghost, combo.ghost.image_index, x + combo.ghost.x, y + combo.ghost.y + 147)
 pal_swap_reset()
-shader_reset()
 
 draw_sprite(spr_tv_c_bubble, 0, x + combo.x, y + combo.y + 157)
 
@@ -23,11 +23,11 @@ for (var i = num; i > 0; i--)
 
 draw_sprite(spr_tv_bg, 0, x, y)
 
-shader_set(shd_pal_swapper)
+pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, image_xscale, image_yscale)
+
 pal_swap_set(pal_peppino, obj_player.pal_select, false)
 draw_self()
 pal_swap_reset()
-shader_reset()
 
 if state == tv_states.transition
 	draw_sprite(spr_tv_trans, t_index, x, y)

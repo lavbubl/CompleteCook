@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"mu_pause",
+  "audioGroupId":{
+    "name":"ag_music",
+    "path":"audiogroups/ag_music",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":322.66666,
+  "name":"mu_pause",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"mu_pause.wav",
+  "type":1,
+  "volume":1.0,
+}

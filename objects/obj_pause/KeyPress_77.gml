@@ -1,7 +1,8 @@
-global.mute_all = !global.mute_all
+/*global.master_volume = !global.master_volume
 
-audio_group_set_gain(audiogroup_default, global.mute_all, 0)
+audio_group_set_gain(ag_music, global.master_volume, 0)
 
 ini_open("globalsave.ini")
-ini_write_real("options", "mute_all", global.mute_all)
+ini_write_real("options", "master_volume", global.master_volume)
 ini_close()
+*/

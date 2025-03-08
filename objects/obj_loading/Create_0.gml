@@ -7,14 +7,17 @@ window_center()
 draw_flush()
 
 tex_list = []
-group_arr = ["Default", "texg_player"]
-currenttexture = 0
+group_arr = ["Default", "texg_player", "texg_hud"]
+snd_group_arr = [[ag_sfx, false], [ag_music, false]]
+currentsndgroup = 0
 
 for (var i = 0; i < array_length(group_arr); i++)
 {
 	var _tex_array = texturegroup_get_textures(group_arr[i])
 	array_push(tex_list, _tex_array)
 }
+
+currenttexture = 0
 
 tex_max = array_length(tex_list)
 alarm[0] = 20

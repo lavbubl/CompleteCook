@@ -5,6 +5,8 @@ enum tv_states {
 	expr
 }
 
+pattern_init()
+
 image_speed = 0.35
 x = screen_w - 115
 y = 80

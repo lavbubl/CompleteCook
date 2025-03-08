@@ -1,5 +1,6 @@
 state = 0
 white_fade_alpha = 0
+brown_alpha = 0
 image_index = image_number - 1
 image_speed = 0
 depth = -8
@@ -13,3 +14,38 @@ rank_data = [
 	{sprite: spr_rankS, song: mu_ranks},
 	{sprite: spr_rankP, song: mu_rankp}
 ]
+
+t_ystart = screen_h + 216
+var x_start = screen_w - 437
+var offset = 89
+
+toppins = []
+
+var i = 0
+
+repeat 5
+{
+	var s = {
+		x: x_start + (offset * i), 
+		y: t_ystart,
+		image_index: i,
+		image_yscale: 1, 
+		image_blend: c_white
+	}
+	
+	array_push(toppins, s)
+	i++
+}
+
+toppin_ix = 0
+
+results = [
+	["HIGHSCORE: ", 0, false],
+	["TIME: ", 0, false],
+	["DAMAGE: ", 0, false],
+	["HIGHEST COMBO: ", 0, false]
+]
+
+result_ix = 0
+
+pattern_init()

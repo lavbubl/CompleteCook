@@ -1,4 +1,9 @@
 function sh_panic (args) {
+	var panic = false
+	
+	if (args[1] == "true" || args[1] == true)
+		panic = true
+	
 	global.panic.active = args[1]
 	global.panic.timer = args[2]
 	global.panic.timer_max = args[2]
@@ -9,8 +14,8 @@ function meta_panic() {
 		description: "Activates pizza time",
 		arguments: ["active", "time"],
 		suggestions: [
-			"true",
-			""
+			["true", "false"],
+			["5000"]
 		],
 		argumentDescriptions: [
 			"activates or deactivates panic timer",
@@ -44,7 +49,7 @@ function meta_room_goto() {
 		arguments: ["room", "door"],
 		suggestions: [
 			function() {
-				return "S"
+				return ["level_1"];
 			},
 			["a", "b", "c", "d", "e", "f", "g"]
 		],
@@ -53,3 +58,42 @@ function meta_room_goto() {
 	}
 }
 
+function sh_togglecollisions (args) {
+	var visibility = false
+	
+	if (args[1] == "true" || args[1] == true)
+		visibility = true
+	
+	global.showcollisions = visibility
+	
+	for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
+	{
+		var _id = ds_list_find_value(global.col_obj_list, i)
+		if instance_exists(_id)
+		{
+			switch (_id.object_index)
+			{
+				case obj_solid:
+				case obj_platform:
+				case obj_slope:
+				case obj_slopeplatform:
+					_id.visible = visibility
+					break;
+			}
+		}
+	}
+	if instance_exists(obj_spawnpoint)
+		obj_spawnpoint.visible = visibility
+}
+
+function meta_togglecollisions() {
+	return {
+		description: "Toggles the visibility of collision objects",
+		arguments: ["visible"],
+		suggestions: [
+			["true", "false"],
+		],
+		hidden: false,
+		deferred: false
+	}
+}

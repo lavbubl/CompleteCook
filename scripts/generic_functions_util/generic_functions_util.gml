@@ -145,6 +145,10 @@ function set_globals()
 		treasure: false,
 		level_name: "entrance"
 	}
+	global.showcollisions = true
+	global.master_volume = 1
+	global.sfx_volume = 1
+	global.music_volume = 1
 }
 
 function bbox_in_camera()
@@ -206,4 +210,22 @@ function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic =
 		lerp_spd: 0
 	}
 	return f;
+}
+
+function reset_level()
+{
+	global.panic.active = false
+	global.combo.timer = 0
+	ds_list_clear(global.ds_dead_enemies)
+	ds_list_clear(global.ds_saveroom)
+	obj_followerhandler.followers = []
+	global.combo.started = false
+	global.combo.wasted = false
+}
+
+function quick_ini_write_real(inistr, section, key, value)
+{
+	ini_open(inistr)
+	ini_write_real(section, key, value)
+	ini_close()
 }

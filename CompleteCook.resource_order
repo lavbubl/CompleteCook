@@ -57,6 +57,7 @@
     {"name":"Timelines","order":5,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"DO NOT RECOMMEND USING 1.6","order":2,"path":"notes/DO NOT RECOMMEND USING 1.6/DO NOT RECOMMEND USING 1.6.yy",},
     {"name":"Main Menu Guide","order":1,"path":"notes/Main Menu Guide/Main Menu Guide.yy",},
     {"name":"obj_3d_sound","order":11,"path":"objects/obj_3d_sound/obj_3d_sound.yy",},
     {"name":"obj_afterimagecontroller","order":1,"path":"objects/obj_afterimagecontroller/obj_afterimagecontroller.yy",},

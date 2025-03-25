@@ -87,6 +87,7 @@
   "name":"CompleteCook",
   "resources":[
     {"id":{"name":"font_console","path":"fonts/font_console/font_console.yy",},},
+    {"id":{"name":"DO NOT RECOMMEND USING 1.6","path":"notes/DO NOT RECOMMEND USING 1.6/DO NOT RECOMMEND USING 1.6.yy",},},
     {"id":{"name":"Guide","path":"notes/Guide/Guide.yy",},},
     {"id":{"name":"Main Menu Guide","path":"notes/Main Menu Guide/Main Menu Guide.yy",},},
     {"id":{"name":"obj_3d_sound","path":"objects/obj_3d_sound/obj_3d_sound.yy",},},

@@ -10,7 +10,7 @@ if grounded
 	coyote_time = 10
 else if vsp < 0
 	coyote_time = 0
-	
+
 #macro p_move (-key_left.down + key_right.down)
 
 instakill = false
@@ -25,6 +25,9 @@ if key_grab.pressed
 	
 if key_jump.pressed
 	input_buffers.jump = 15
+
+if warping
+	exit;
 
 break_destroyables()
 
@@ -122,6 +125,9 @@ if flash > 0
 if state != states.normal
 	idletimer = 180
 	
+if state != states.jump
+	fallingtimer = 0
+	
 if (idletimer > 0 && state == states.normal)
 	idletimer--
 
@@ -161,11 +167,9 @@ struct_foreach(aftimg_timers, function(_name, _data)
 	}
 })
 
-player_sounds()
-
 if ladderbuffer > 0
 	ladderbuffer--
-	
+
 var spd = 0.05
 
 if secret_cutscene

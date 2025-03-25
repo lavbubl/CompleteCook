@@ -34,3 +34,29 @@ subtract_spr = sprite_create_from_surface(s, 0, 0, sprite_get_width(door_gate), 
 surface_free(s)
 
 #endregion
+
+save_data = {
+	score_num: 0,
+	treasure: false,
+	secret_count: 0,
+	rank: 0
+}
+
+save_exists = false
+spanwed_score = false
+
+ini_open($"saves/saveData{global.savefile}.ini")
+
+if ini_section_exists(level_name)
+{
+	show_debug_message("save exists!")
+	save_exists = true
+	save_data = {
+		score_num: ini_read_real(level_name, "score", 0),
+		treasure: ini_read_real(level_name, "treasure", false),
+		secret_count: ini_read_real(level_name, "secret_count", 0),
+		rank: ini_read_real(level_name, "rank", 0)
+	}
+}
+
+ini_close()

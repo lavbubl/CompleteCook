@@ -114,6 +114,7 @@ particle_timer = 0
 flamecloud_buffer = 0
 haskey = false
 hasgerome = false
+fallingtimer = 0
 depth = -100
 
 ini_open("globalsave.ini")
@@ -134,3 +135,6 @@ return_location = {
 	x: 0,
 	y: 0
 }
+
+doorxscale = 1
+warping = false

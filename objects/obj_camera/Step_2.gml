@@ -1,11 +1,11 @@
 if (obj_fade.fade)
 	exit;
-if (obj_player.secret_cutscene)
+if (obj_player.secret_exit)
 	exit;
 
 campos = {
 	x: obj_player.x - (screen_w / 2),
-	y: obj_player.y - (screen_h / 2),
+	y: obj_player.y - (screen_h / 2) - 20,
 }
 
 if obj_player.state == states.backtohub

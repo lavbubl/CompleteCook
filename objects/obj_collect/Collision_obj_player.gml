@@ -16,3 +16,5 @@ with instance_create(x, y, obj_collect_number)
 
 scr_sound_multiple(sfx_collect)
 instance_destroy()
+
+ds_list_add(global.ds_saveroom, id)

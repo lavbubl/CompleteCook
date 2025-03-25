@@ -109,6 +109,7 @@ function player_normal()
 		state = states.jump
 		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_weakjump : spr_player_jump)
 		jumpstop = false
+		create_effect(x, y - 5, spr_highjumpcloud2)
 		scr_sound_3d(sfx_jump, x, y)
 	}
 	

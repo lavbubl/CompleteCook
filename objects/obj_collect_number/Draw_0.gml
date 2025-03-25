@@ -1,5 +1,4 @@
-var str = string(num);
-
-draw_set_font(-1);
-draw_set_align(fa_middle, fa_center)
-draw_text(x, y, str);
+draw_set_font(global.smallnumberfont)
+draw_set_halign(fa_center)
+draw_reset_color(1)
+draw_text(x, y, string(num))

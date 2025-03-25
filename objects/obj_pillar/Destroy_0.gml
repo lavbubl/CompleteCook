@@ -26,6 +26,5 @@ do_enemygibs()
 
 global.combo.count++
 global.combo.timer = 60
-global.combo.started = true
 
 ds_list_add(global.ds_saveroom, id)

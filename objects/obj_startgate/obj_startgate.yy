@@ -6,6 +6,8 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_startgate",
@@ -31,7 +33,7 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"level_1","path":"rooms/level_1/level_1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"level_1","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"t_door","filters":[],"listItems":[],"multiselect":false,"name":"t_door","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"a\"","varType":2,},
-    {"$GMObjectProperty":"v1","%Name":"level_name","filters":[],"listItems":[],"multiselect":false,"name":"level_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"mario\"","varType":2,},
+    {"$GMObjectProperty":"v1","%Name":"level_name","filters":[],"listItems":[],"multiselect":false,"name":"level_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Entrance\"","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"door_gate","filters":[
         "GMSprite",
       ],"listItems":[],"multiselect":false,"name":"door_gate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_defaultgate","path":"sprites/spr_defaultgate/spr_defaultgate.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_defaultgate","varType":5,},

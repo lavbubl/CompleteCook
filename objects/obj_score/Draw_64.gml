@@ -61,13 +61,15 @@ var ranks = [
 	global.rank_milestones.s
 ]
 
-if (global.score >= global.rank_milestones.s && check_p_rank())
+var s = global.score + obj_generichandler.combo_score
+
+if (s >= global.rank_milestones.s && check_p_rank())
 	rank_ix = 5
 else
 {
 	for (var i = 4; i >= 1; i--) 
 	{
-		if global.score >= ranks[i - 1]
+		if s >= ranks[i - 1]
 		{
 			rank_ix = i
 			break;

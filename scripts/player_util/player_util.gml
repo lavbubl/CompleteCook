@@ -37,7 +37,8 @@ function do_grab()
 			state = states.punch
 			reset_anim(spr_player_uppercut)
 			image_speed = 0.35
-			scr_sound_pitched(sfx_uppercut)
+			create_effect(x, y, spr_highjumpcloud2)
+			scr_sound_3d_pitched(sfx_uppercut, x, y)
 		}
 	}
 }
@@ -72,6 +73,9 @@ function player_sounds()
 		var dont_play = false
 		
 		if _id.state != _data.state
+			dont_play = true
+			
+		if warping
 			dont_play = true
 		
 		if variable_struct_exists(_data, "func")

@@ -20,5 +20,11 @@ if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter))
 		pause = false
 		instance_activate_all()
 		audio_resume_all()
+		
+		with obj_music
+		{
+			if (global.secret && secret_mu_to_play != noone)
+				pauseIDS(true);
+		}
 	}
 }

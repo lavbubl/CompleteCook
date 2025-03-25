@@ -43,6 +43,11 @@ function player_mach2()
 			state = states.mach3
 			flash = 8
 		}
+		if !particle_contains_sprite(spr_dashcloud)
+		{
+			with create_effect(x, y, spr_dashcloud)
+				image_xscale = other.xscale
+		}
 	}
 	else
 	{

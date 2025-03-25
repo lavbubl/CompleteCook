@@ -16,3 +16,8 @@ with instance_create(x, y, obj_collect_number)
 
 scr_sound(sfx_collectbig)
 instance_destroy()
+
+ds_list_add(global.ds_saveroom, id)
+
+with obj_tv
+	tv_expression(spr_tv_collect)

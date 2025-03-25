@@ -23,7 +23,7 @@
   ],
   "name":"spr_tv_c_bubble",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"TV",
     "path":"folders/Sprites/HUD/TV.yy",
@@ -76,7 +76,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":119,
-    "yorigin":103,
+    "yorigin":91,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

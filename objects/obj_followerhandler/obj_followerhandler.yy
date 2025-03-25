@@ -11,8 +11,8 @@
   "name":"obj_followerhandler",
   "overriddenProperties":[],
   "parent":{
-    "name":"Essentials",
-    "path":"folders/Objects/Essentials.yy",
+    "name":"Controllers",
+    "path":"folders/Objects/Essentials/Controllers.yy",
   },
   "parentObjectId":null,
   "persistent":true,

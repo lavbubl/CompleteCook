@@ -12,7 +12,7 @@ function player_bump()
 	if anim_ended()
 	{
 		state = states.normal
-		if (sprite_index == spr_player_bodyslamland)
+		if (sprite_index == spr_player_bodyslamland || sprite_index == spr_player_fallfarland)
 			reset_anim(spr_player_facehurt)
 		else if (sprite_index == spr_player_ceilinghit)
 		{

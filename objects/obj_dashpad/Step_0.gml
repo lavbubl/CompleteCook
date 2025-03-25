@@ -1,7 +1,5 @@
 collide()
 
-image_blend = available ? c_white : c_gray
-
 if (place_meeting(x, y, obj_player) && available)
 {
 	with obj_player

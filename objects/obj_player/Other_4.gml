@@ -54,11 +54,10 @@ with obj_spawnpoint
 		state = states.normal
 }
 
-if (secret_exit && !instance_exists(obj_secretportal_exit))
+if (secret_exit && instance_exists(obj_secretportal) && !instance_exists(obj_secretportal_exit))
 {
 	x = obj_secretportal.x
 	y = obj_secretportal.y
-	secret_cutscene = false
 	secret_exit = false
 }
 
@@ -67,7 +66,6 @@ if (state == states.hold || state == states.swingding)
 
 other.xstart = other.x
 other.ystart = other.y
-
 	
 if state = states.backtohub
 	y -= screen_h * 2

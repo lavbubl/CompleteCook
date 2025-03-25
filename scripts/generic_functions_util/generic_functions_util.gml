@@ -100,7 +100,8 @@ function do_hold_player(_exit)
 		vsp = 0
 		state = states.actor
 		secret_exit = _exit
-		secret_cutscene = _exit
+		if _exit
+			secret_cutscene = true
 		sprite_index = _exit ? spr_player_hurt : spr_player_bodyslamfall
 		image_speed = 0.35
 	}
@@ -108,12 +109,12 @@ function do_hold_player(_exit)
 
 function instance_create(_x, _y, obj)
 {
-	return instance_create_depth(x, y, 1, obj);
+	return instance_create_depth(_x, _y, 1, obj); //fun fact, x and y were missing underscores before
 }
 
-function sleep(o)
+function sleep(ms)
 {
-	var t = current_time + o;
+	var t = current_time + ms;
 	while current_time < t
 		do {};
 }
@@ -123,10 +124,11 @@ function set_globals()
 	global.combo = {
 		count: 0,
 		timer: 0,
+		record: 0,
 		font: font_add_sprite_ext(spr_tv_c_font, "0123456789", true, 2),
-		wasted: false,
-		started: false
+		wasted: false
 	}
+	
 	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_saveroom = ds_list_create()
@@ -134,6 +136,7 @@ function set_globals()
 	global.scorefont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
 	global.generic_font = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?.1234567890:", true, 0)
 	global.hud_negativefont = font_add_sprite_ext(spr_negativenumber_font, "0123456789$-", true, 0)
+	global.smallnumberfont = font_add_sprite_ext(spr_smallnumber_font, "1234567890-+", true, 0)
 	global.secret = false
 	global.rank_milestones = {
 		c: 20,
@@ -141,14 +144,18 @@ function set_globals()
 		a: 80,
 		s: 160
 	}
+	
 	global.level_data = {
 		treasure: false,
-		level_name: "entrance"
+		level_name: "Entrance",
+		secret_count: 0
 	}
+	
 	global.showcollisions = true
 	global.master_volume = 1
 	global.sfx_volume = 1
 	global.music_volume = 1
+	global.savefile = "1"
 }
 
 function bbox_in_camera()
@@ -215,12 +222,18 @@ function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic =
 function reset_level()
 {
 	global.panic.active = false
+	global.combo.count = 0
 	global.combo.timer = 0
+	global.score = 0
 	ds_list_clear(global.ds_dead_enemies)
 	ds_list_clear(global.ds_saveroom)
 	obj_followerhandler.followers = []
-	global.combo.started = false
 	global.combo.wasted = false
+	global.level_data = {
+		treasure: false,
+		level_name: "Entrance",
+		secret_count: 0
+	}
 }
 
 function quick_ini_write_real(inistr, section, key, value)

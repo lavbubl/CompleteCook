@@ -1,1 +1,1 @@
-gpu_set_blendequation_sepalpha(bm_normal, bm_eq_max)
+gpu_set_blendequation_sepalpha(bm_eq_add, bm_eq_max)

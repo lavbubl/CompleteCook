@@ -19,6 +19,14 @@ function player_normal()
 		if (floor(movespeed) == 8)
 			movespeed = 6
 		xscale = p_move
+		if particle_timer > 0
+			particle_timer--
+		else
+		{
+			particle_timer = 12
+			scr_sound_3d_pitched(sfx_step, x, y)
+			create_effect(x, y + 43, spr_cloudeffect)
+		}
 	}
 	else
 		movespeed = 0

@@ -1,3 +1,18 @@
+if spawn == "LAP"
+{
+	if instance_exists(obj_lapportalexit)
+	{
+		with obj_lapportalexit
+		{
+			other.x = self.x
+			other.y = self.y
+			visible = true
+			alarm[0] = 20
+		}
+	}
+	exit;
+}
+
 if (sprite_index == spr_player_enterdoor || sprite_index == spr_player_startgate || sprite_index == spr_player_enterkeydoor)
 {
 	reset_anim(spr_player_exitdoor)

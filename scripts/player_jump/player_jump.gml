@@ -36,6 +36,7 @@ function player_jump()
 		{
 			state = states.normal
 			reset_anim(movespeed < 1 ? spr_player_land : spr_player_landmove)
+			scr_sound_3d_pitched(sfx_step, x, y)
 			if key_dash.down
 			{
 				state = states.mach2

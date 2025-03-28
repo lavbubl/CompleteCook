@@ -23,6 +23,9 @@ toppins = []
 
 var i = 0
 
+var t = global.level_data.toppins
+var toppin_list = [t.shroom, t.cheese, t.tomato, t.sausage, t.pineapple]
+
 repeat 5
 {
 	var s = {
@@ -30,7 +33,7 @@ repeat 5
 		y: t_ystart,
 		image_index: i,
 		image_yscale: 1, 
-		image_blend: c_white
+		image_blend: toppin_list[i] ? c_white : c_black
 	}
 	
 	array_push(toppins, s)

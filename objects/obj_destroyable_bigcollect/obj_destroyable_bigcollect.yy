@@ -3,6 +3,7 @@
   "%Name":"obj_destroyable_bigcollect",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_destroyable_bigcollect",
@@ -33,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"FUCK_YOU_",
-    "path":"sprites/FUCK_YOU_/FUCK_YOU_.yy",
+    "name":"spr_destroyable_bigcollect",
+    "path":"sprites/spr_destroyable_bigcollect/spr_destroyable_bigcollect.yy",
   },
   "spriteMaskId":null,
   "visible":true,

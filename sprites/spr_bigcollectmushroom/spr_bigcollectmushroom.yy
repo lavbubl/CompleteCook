@@ -74,7 +74,7 @@
     },
     "name":"spr_bigcollectmushroom",
     "playback":1,
-    "playbackSpeed":1.0,
+    "playbackSpeed":0.35,
     "playbackSpeedType":1,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

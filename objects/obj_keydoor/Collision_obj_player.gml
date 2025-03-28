@@ -10,7 +10,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	{
 		image_index++
 		other.haskey = false
-		scr_sound(sfx_door)
+		scr_sound(sfx_unlock)
 		ds_list_add(global.ds_saveroom, id)
 		instance_create(x, y, obj_lockdebris)
 	}

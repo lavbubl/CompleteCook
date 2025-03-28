@@ -13,6 +13,8 @@ blur_timer = 0
 do_turn = false
 hurtbox_id = -4
 taunted = false
+escape_frozen = false
+do_particles = true
 
 follow_player = false
 pd_frame_offset = [2, 1, 0, -1, -2, -1, 0, 1] //can be truncated to.. some sort of math thing idfk

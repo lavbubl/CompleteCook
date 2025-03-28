@@ -131,6 +131,7 @@ function set_globals()
 	
 	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
+	global.ds_escapesaveroom = ds_list_create()
 	global.ds_saveroom = ds_list_create()
 	global.doorshut = false
 	global.scorefont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
@@ -148,7 +149,14 @@ function set_globals()
 	global.level_data = {
 		treasure: false,
 		level_name: "Entrance",
-		secret_count: 0
+		secret_count: 0,
+		toppins: {
+			shroom: false,
+			cheese: false,
+			tomato: false,
+			sausage: false,
+			pineapple: false
+		}
 	}
 	
 	global.showcollisions = true
@@ -226,13 +234,21 @@ function reset_level()
 	global.combo.timer = 0
 	global.score = 0
 	ds_list_clear(global.ds_dead_enemies)
+	ds_list_clear(global.ds_escapesaveroom)
 	ds_list_clear(global.ds_saveroom)
 	obj_followerhandler.followers = []
 	global.combo.wasted = false
 	global.level_data = {
 		treasure: false,
 		level_name: "Entrance",
-		secret_count: 0
+		secret_count: 0,
+		toppins: {
+			shroom: false,
+			cheese: false,
+			tomato: false,
+			sausage: false,
+			pineapple: false
+		}
 	}
 }
 
@@ -241,4 +257,10 @@ function quick_ini_write_real(inistr, section, key, value)
 	ini_open(inistr)
 	ini_write_real(section, key, value)
 	ini_close()
+}
+
+function gpu_set_blendmode_cc(bm)
+{
+	gpu_set_blendmode(bm)
+	gpu_set_blendequation_sepalpha(bm_eq_add, bm_eq_max)
 }

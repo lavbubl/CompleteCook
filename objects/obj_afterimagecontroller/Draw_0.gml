@@ -20,6 +20,6 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 		}
 		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
 	}
-	if (shader_current() != -1) // dont know if this works both with a noone and -1 but im gonna be safe
+	if shader_current() != -1
 		shader_reset()
 }

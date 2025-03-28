@@ -1,6 +1,6 @@
-if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
+if do_particles
 {
-	with (instance_create(x, y, obj_enemycorpse))
+	with instance_create(x, y, obj_enemycorpse)
 		sprite_index = other.sprs.dead
 
 	global.combo.timer = 60
@@ -11,6 +11,6 @@ if (ds_list_find_index(global.ds_dead_enemies, id) == -1)
 		particle_create(x, y, particles.yellowstar)
 	scr_sound_3d(sfx_killenemy, x, y)
 	shake_camera()
+	
+	ds_list_add(!escape ? global.ds_dead_enemies : global.ds_escapesaveroom, id)
 }
-
-ds_list_add(global.ds_dead_enemies, id)

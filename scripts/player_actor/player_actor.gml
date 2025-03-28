@@ -5,6 +5,14 @@ function player_actor()
 		case spr_player_exitdoor:
 			if anim_ended()
 				state = states.normal
+			if particle_timer > 0
+				particle_timer--
+			else
+			{
+				particle_timer = 14
+				scr_sound_3d_pitched(sfx_step, x, y)
+				create_effect(x, y + 43, spr_cloudeffect)
+			}
 			break;
 		case spr_player_timesup:
 			if anim_ended()

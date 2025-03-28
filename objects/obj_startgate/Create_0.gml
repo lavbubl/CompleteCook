@@ -25,7 +25,7 @@ draw_clear(c_white)
 
 gpu_set_blendmode(bm_subtract)
 draw_sprite(door_gate, 1, sprite_get_xoffset(door_gate), sprite_get_yoffset(door_gate)) // subtract the masking from the drawing 
-gpu_set_blendmode(bm_normal)
+gpu_set_blendmode_cc(bm_normal)
 
 surface_reset_target()
 

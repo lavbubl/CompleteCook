@@ -39,3 +39,5 @@ secret_mu = noone
 secret_mu_to_play = noone
 panic_music_initiated = false
 pinch_init = false
+lap2 = false
+lap2_init = false

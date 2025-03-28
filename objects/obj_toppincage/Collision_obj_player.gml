@@ -4,22 +4,30 @@ instance_destroy()
 with instance_create(x, y, obj_toppincollected)
 {
 	toppin = other.toppin
+	
+	var toppin_global = global.level_data.toppins
+	
 	switch (other.toppin)
 	{
 		case toppin_enum.shroom:
 			sprite_index = spr_shroomtoppin_intro
+			toppin_global.shroom = true
 			break;
 		case toppin_enum.cheese:
 			sprite_index = spr_cheesetoppin_intro
+			toppin_global.cheese = true
 			break;
 		case toppin_enum.tomato:
 			sprite_index = spr_tomatotoppin_intro
+			toppin_global.shroom = true
 			break;
 		case toppin_enum.sausage:
 			sprite_index = spr_sausagetoppin_intro
+			toppin_global.shroom = true
 			break;
 		case toppin_enum.pineapple:
 			sprite_index = spr_pineappletoppin_intro
+			toppin_global.shroom = true
 			break;
 	}
 }

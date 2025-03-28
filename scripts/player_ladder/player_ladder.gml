@@ -17,6 +17,18 @@ function player_ladder()
 		vsp = 0
 	}
 	
+	if sprite_index == spr_player_laddermove
+	{
+		if particle_timer > 0
+			particle_timer--;
+		else
+		{
+			particle_timer = 12;
+			scr_sound_3d_pitched(sfx_step, x, y)
+			create_effect(x, y, spr_cloudeffect)
+		}
+	}
+	
 	if input_buffers.jump > 0
 	{
 		input_buffers.jump = 0

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_lap2ring",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":5.918667,
+  "name":"sfx_lap2ring",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_lap2ring.wav",
+  "type":1,
+  "volume":1.0,
+}

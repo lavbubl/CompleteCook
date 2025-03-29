@@ -10,8 +10,8 @@
   "name":"obj_gatescore",
   "overriddenProperties":[],
   "parent":{
-    "name":"HUD",
-    "path":"folders/Objects/HUD.yy",
+    "name":"Hub",
+    "path":"folders/Objects/Hub.yy",
   },
   "parentObjectId":null,
   "persistent":false,

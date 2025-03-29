@@ -162,7 +162,6 @@ function do_enemy_generics()
 			repeat (4)
 				particle_create(x, y, particles.stars)
 			flash = 8
-			global.combo.timer = 60
 		}
 		with (obj_player)
 		{

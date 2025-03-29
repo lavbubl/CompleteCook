@@ -19,15 +19,15 @@ with instance_create(x, y, obj_toppincollected)
 			break;
 		case toppin_enum.tomato:
 			sprite_index = spr_tomatotoppin_intro
-			toppin_global.shroom = true
+			toppin_global.tomato = true
 			break;
 		case toppin_enum.sausage:
 			sprite_index = spr_sausagetoppin_intro
-			toppin_global.shroom = true
+			toppin_global.sausage = true
 			break;
 		case toppin_enum.pineapple:
 			sprite_index = spr_pineappletoppin_intro
-			toppin_global.shroom = true
+			toppin_global.pineapple = true
 			break;
 	}
 }

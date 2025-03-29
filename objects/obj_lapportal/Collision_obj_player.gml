@@ -12,5 +12,6 @@ scr_sound_3d(sfx_lapportal, x, y, false)
 obj_music.lap2 = true
 
 global.score += 3000
+global.combo.timer = 60
 with instance_create(other.x, other.y, obj_collect_number)
 	num = 3000

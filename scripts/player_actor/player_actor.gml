@@ -11,7 +11,6 @@ function player_actor()
 			{
 				particle_timer = 14
 				scr_sound_3d_pitched(sfx_step, x, y)
-				create_effect(x, y + 43, spr_cloudeffect)
 			}
 			break;
 		case spr_player_timesup:

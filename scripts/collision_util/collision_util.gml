@@ -27,7 +27,6 @@ function collide()
 	
 	var abs_final = abs(vsp_final);
 	
-	
 	var i = 0
 	
 	while i < round(abs_final)
@@ -58,7 +57,7 @@ function collide()
 	abs_final = abs(hsp_final);
 	
 	i = 0
-	var h = 4
+	var h = min(abs_final, 4)
 	
 	while i < round(abs_final)
 	{

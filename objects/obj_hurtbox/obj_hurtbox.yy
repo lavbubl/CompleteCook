@@ -36,5 +36,5 @@
     "path":"sprites/mask_forkhitbox/mask_forkhitbox.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

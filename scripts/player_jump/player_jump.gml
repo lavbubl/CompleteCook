@@ -19,10 +19,6 @@ function player_jump()
 		vsp /= 10
 	}
 	
-	if sprite_index != spr_player_grabbump
-		do_grab()
-	do_groundpound()
-	
 	if vsp >= 0
 	{
 		fallingtimer = min(fallingtimer + 1, 100)
@@ -54,6 +50,11 @@ function player_jump()
 			create_effect(x, y + 2, spr_groundpoundeffect)
 		}
 	}
+	
+	if sprite_index != spr_player_grabbump
+		do_grab()
+	do_groundpound()
+	
 	
 	image_speed = 0.35
 	switch (sprite_index)

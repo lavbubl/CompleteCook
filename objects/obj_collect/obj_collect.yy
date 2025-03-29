@@ -36,6 +36,9 @@
     "name":"spr_sausagecollect",
     "path":"sprites/spr_sausagecollect/spr_sausagecollect.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"mask_collect",
+    "path":"sprites/mask_collect/mask_collect.yy",
+  },
   "visible":true,
 }

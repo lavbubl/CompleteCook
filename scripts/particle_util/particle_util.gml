@@ -87,7 +87,6 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 			sprite_index = _sprite
 	
 		image_number = sprite_get_number(p.sprite_index)
-	
 	}
 	
 	with (obj_particlecontroller)
@@ -102,20 +101,17 @@ function particle_contains_sprite(sprite)
 	{
 	    var p = obj_particlecontroller.particle_list[i]
 		if p.sprite_index == sprite
-		{
 			return true;
-			break;
-		}
 	}
 	return false;
 }
 
 function create_debris(_x, _y, sprite)
 {
-	return particle_create(_x, _y, particles.gib, 1, 1, sprite)
+	return particle_create(_x, _y, particles.gib, 1, 1, sprite);
 }
 
 function create_effect(_x, _y, sprite)
 {
-	return particle_create(_x, _y, particles.genericpoof, 1, 1, sprite)
+	return particle_create(_x, _y, particles.genericpoof, 1, 1, sprite);
 }

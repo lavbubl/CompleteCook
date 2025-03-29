@@ -39,6 +39,9 @@
     "name":"spr_escapecollect",
     "path":"sprites/spr_escapecollect/spr_escapecollect.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"mask_collect",
+    "path":"sprites/mask_collect/mask_collect.yy",
+  },
   "visible":true,
 }

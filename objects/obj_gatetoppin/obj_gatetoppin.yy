@@ -1,23 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bigescapecollect",
+  "%Name":"obj_gatetoppin",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bigescapecollect",
+  "name":"obj_gatetoppin",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collectables",
-    "path":"folders/Objects/Level Structure/Collectables.yy",
+    "name":"Hub",
+    "path":"folders/Objects/Hub.yy",
   },
-  "parentObjectId":{
-    "name":"obj_bigcollect",
-    "path":"objects/obj_bigcollect/obj_bigcollect.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -36,12 +32,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bigescapecollect",
-    "path":"sprites/spr_bigescapecollect/spr_bigescapecollect.yy",
+    "name":"spr_shroomtoppin_idle",
+    "path":"sprites/spr_shroomtoppin_idle/spr_shroomtoppin_idle.yy",
   },
   "spriteMaskId":{
-    "name":"mask_bigcollect",
-    "path":"sprites/mask_bigcollect/mask_bigcollect.yy",
+    "name":"mask_player_small",
+    "path":"sprites/mask_player_small/mask_player_small.yy",
   },
   "visible":true,
 }

@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"mu_lap2",
+  "%Name":"mu_anchovi",
   "audioGroupId":{
     "name":"ag_music",
     "path":"audiogroups/ag_music",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":176.92133,
-  "name":"mu_lap2",
+  "duration":205.556,
+  "name":"mu_anchovi",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mu_lap2.wav",
+  "soundFile":"mu_anchovi.wav",
   "type":1,
-  "volume":0.6,
+  "volume":1.0,
 }

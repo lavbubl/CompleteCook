@@ -139,12 +139,7 @@ function set_globals()
 	global.hud_negativefont = font_add_sprite_ext(spr_negativenumber_font, "0123456789$-", true, 0)
 	global.smallnumberfont = font_add_sprite_ext(spr_smallnumber_font, "1234567890-+", true, 0)
 	global.secret = false
-	global.rank_milestones = {
-		c: 20,
-		b: 40,
-		a: 80,
-		s: 160
-	}
+	set_rank_milestones(1000, 500, 250, 125)
 	
 	global.level_data = {
 		treasure: false,

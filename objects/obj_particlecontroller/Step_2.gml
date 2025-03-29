@@ -3,7 +3,7 @@ var target = obj_player
 for (var p = 0; p < array_length(particle_list); p++)
 {
 	var p_id = particle_list[p]
-	with (p_id)
+	with p_id
 	{
 		image_index += image_speed
 		switch (type)

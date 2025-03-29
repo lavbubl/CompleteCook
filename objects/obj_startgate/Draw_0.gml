@@ -20,5 +20,10 @@ else
 draw_sprite(door_gate, 0, x, y)
 
 var a = distance_to_object(obj_player) / 200
-
 draw_sprite_ext(door_gate, 1, x, y, 1, 1, 0, c_white, a)
+
+if save_exists
+{
+	for (var i = 0; i < save_data.secret_count; i++)
+	    draw_sprite(spr_secretportal_enter, 10, x - 150, bbox_top + (i * 50))
+}

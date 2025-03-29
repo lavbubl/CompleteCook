@@ -50,12 +50,30 @@ with instance_place(x, y, obj_player)
 		ini_open($"saves/saveData{global.savefile}.ini")
 		
 		var lvl_name = global.level_data.level_name
+		var lvl_toppins = global.level_data.toppins
 		
 		if s > ini_read_real(lvl_name, "score", 0)
 			ini_write_real(lvl_name, "score", s)
-		ini_write_real(lvl_name, "treasure", global.level_data.treasure)
-		ini_write_real(lvl_name, "secret_count", global.level_data.secret_count)
-		ini_write_real(lvl_name, "rank", rank_ix)
+		
+		if !ini_read_real(lvl_name, "treasure", 0)
+			ini_write_real(lvl_name, "treasure", global.level_data.treasure)
+		
+		if global.level_data.secret_count > ini_read_real(lvl_name, "secret_count", 0)
+			ini_write_real(lvl_name, "secret_count", global.level_data.secret_count)
+		
+		if rank_ix > ini_read_real(lvl_name, "rank", 0)
+			ini_write_real(lvl_name, "rank", rank_ix)
+		
+		if !ini_read_real(lvl_name, "shroom", 0)
+			ini_write_real(lvl_name, "shroom", lvl_toppins.shroom)
+		if !ini_read_real(lvl_name, "cheese", 0)
+			ini_write_real(lvl_name, "cheese", lvl_toppins.cheese)
+		if !ini_read_real(lvl_name, "tomato", 0)
+			ini_write_real(lvl_name, "tomato", lvl_toppins.tomato)
+		if !ini_read_real(lvl_name, "sausage", 0)
+			ini_write_real(lvl_name, "sausage", lvl_toppins.sausage)
+		if !ini_read_real(lvl_name, "pineapple", 0)
+			ini_write_real(lvl_name, "pineapple", lvl_toppins.pineapple)
 		
 		ini_close()
 	}

@@ -7,7 +7,7 @@ total += t
 
 for (var i = 0; i < array_length(snd_group_arr); i++) {
 	var cur_group = snd_group_arr[i][0]
-	total += audio_group_load_progress(cur_group) / 4 //25% per audio group, 50% for both audio groups
+	total += audio_group_load_progress(cur_group) / (array_length(snd_group_arr) * 2) //25% per audio group, 50% for both audio groups
 }
 
 //comes up to 100%

@@ -3,11 +3,42 @@ if !visible
 
 depth = -200
 
+var num = global.score
+
+var rank_ix = 0
+var ranks = [
+	global.rank_milestones.c,
+	global.rank_milestones.b,
+	global.rank_milestones.a,
+	global.rank_milestones.s
+]
+
+var s = global.score + obj_generichandler.combo_score
+
+if (s >= global.rank_milestones.s && check_p_rank())
+	rank_ix = 5
+else
+{
+	for (var i = 4; i >= 1; i--) 
+	{
+		if s >= ranks[i - 1]
+		{
+			rank_ix = i
+			break;
+		}
+	}
+}
+
 draw_set_align(fa_left, fa_bottom)
 
 draw_sprite(spr_pizzascore, image_index, x, y)
 
-var num = global.score
+var text_offsets = [0, 1, 1, 1, 0, -1, -2, -3, -5, -2, -1, 0]
+
+var text_offset = text_offsets[image_index]
+
+for (var i = 0; i < min(rank_ix, 4); i++)
+	draw_sprite(spr_pizzascore_toppings, i, x, y + text_offset)
 
 draw_set_font(global.scorefont)
 draw_reset_color()
@@ -47,34 +78,9 @@ for (var i = 0; i < num; i++)
 	xx += (w / num)
 }
 
-var rank_ix = 0
-
 var r_pos = {
 	x: x + 142,
 	y: y - 22
-}
-
-var ranks = [
-	global.rank_milestones.c,
-	global.rank_milestones.b,
-	global.rank_milestones.a,
-	global.rank_milestones.s
-]
-
-var s = global.score + obj_generichandler.combo_score
-
-if (s >= global.rank_milestones.s && check_p_rank())
-	rank_ix = 5
-else
-{
-	for (var i = 4; i >= 1; i--) 
-	{
-		if s >= ranks[i - 1]
-		{
-			rank_ix = i
-			break;
-		}
-	}
 }
 
 if (prev_rank_ix != rank_ix)

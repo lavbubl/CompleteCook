@@ -1,5 +1,3 @@
-if (obj_fade.fade)
-	exit;
 if (obj_player.secret_exit)
 	exit;
 
@@ -9,10 +7,7 @@ campos = {
 }
 
 if obj_player.state == states.backtohub
-{
-	campos.x = obj_player.xstart - (screen_w / 2)
-	campos.y = obj_player.ystart - (screen_h / 2)
-}
+	campos.y = obj_player.ystart - (screen_h / 2) - 20
 
 campos.x += cam_charge
 

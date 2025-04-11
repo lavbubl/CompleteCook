@@ -17,7 +17,5 @@ for (var i = 0; i < array_length(group_arr); i++)
 	array_push(tex_list, _tex_array)
 }
 
-currenttexture = 0
-
 tex_max = array_length(tex_list)
 alarm[0] = 20

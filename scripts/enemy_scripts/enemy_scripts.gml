@@ -128,7 +128,7 @@ function do_enemy_generics()
 
 	if (place_meeting(x, y, obj_player))
 	{
-		if (obj_player.instakill && alarm[0] == -1 && !follow_player)
+		if (obj_player.instakill && obj_player.hitstun <= 0 && alarm[0] == -1 && !follow_player)
 		{
 			with (obj_player)
 			{
@@ -141,14 +141,15 @@ function do_enemy_generics()
 				}
 			}
 		
-			sprite_index = sprs.dead
+			sprite_index = sprs.stun
 		
 			do_enemygibs()
 			particle_create(x, y, particles.genericpoof)
 			shake_camera()
 			scr_sound_3d(sfx_punch, x, y)
 		
-			alarm[0] = 1
+			obj_player.hitstun = 5
+			alarm[0] = 5
 		}
 		if ((obj_player.state == states.mach2 || obj_player.state == states.tumble) && stun_timer < 160)
 		{

@@ -76,12 +76,16 @@ if follow_player
 		}
 		if (image_index >= image_number - 1 && sprite_index == spr_player_piledriverland)
 		{
-			other.alarm[0] = 1
 			with (other)
+			{
 				do_enemygibs()
+				alarm[0] = 5
+			}
+			
 			vsp = -12
 			jumpstop = false
 			state = states.jump
+			hitstun = 5
 			reset_anim(spr_player_piledriverjump)
 		}
 		
@@ -94,9 +98,9 @@ if follow_player
 			shake_camera()
 			scr_sound_3d(sfx_punch, x, y)
 			scr_sound_3d(sfx_killingblow, x, y)
+			do_enemygibs()
 			with (other)
 			{
-				do_enemygibs()
 				follow_player = false
 				state = e_states.hit
 				hsp = other.xscale * 20

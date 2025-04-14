@@ -7,9 +7,9 @@
   },
   "bitDepth":1,
   "bitRate":128,
-  "compression":1,
+  "compression":2,
   "conversionMode":0,
-  "duration":0.774667,
+  "duration":0.7746712,
   "name":"sfx_pillarspawn",
   "parent":{
     "name":"Sounds",

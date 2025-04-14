@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":4.893417,
+  "duration":4.893424,
   "name":"sfx_timesup",
   "parent":{
     "name":"Sounds",

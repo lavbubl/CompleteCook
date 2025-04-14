@@ -8,7 +8,7 @@ with instance_place(x, y, obj_player)
 		scr_sound_3d(sfx_groundpound, x, y)
 		global.doorshut = true
 	}
-	else if (global.panic.active && key_up.down && grounded)
+	else if (global.panic.active && key_up.down && grounded && state != states.taunt)
 	{
 		global.panic.active = false
 		state = states.actor

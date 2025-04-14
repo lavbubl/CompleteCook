@@ -1,5 +1,5 @@
 visible = true
-state = e_states.stun
+state = states.stun
 escape_frozen = false
 stun_timer = 100
 particle_create(x, y, particles.genericpoof)

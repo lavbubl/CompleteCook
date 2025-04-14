@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.423083,
+  "duration":0.4230839,
   "name":"sfx_rankup1",
   "parent":{
     "name":"Sounds",

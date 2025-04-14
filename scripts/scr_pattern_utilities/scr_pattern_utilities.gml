@@ -21,29 +21,27 @@ function pattern_draw(spr, ix, _x, _y, pattern_spr, xscale = 1, yscale = 1, rot 
 		pattern_surf = surface_create(sprite_get_width(spr), sprite_get_height(spr))
 		pattern_mask_surf = surface_create(sprite_get_width(spr), sprite_get_height(spr))	
 	}
-	else
-	{
-		surface_resize(pattern_surf, sprite_get_width(spr), sprite_get_height(spr))
-		surface_resize(pattern_mask_surf, sprite_get_width(spr), sprite_get_height(spr))
 	
-		surface_set_target(pattern_mask_surf)
-		draw_clear(c_white)
-		gpu_set_blendmode(bm_subtract)
-		pattern_set_colors(pal_peppatterncolors)
-		draw_sprite(spr, ix, sprite_get_xoffset(spr), sprite_get_yoffset(spr))
-		shader_reset()
-		gpu_set_blendmode_cc(bm_normal)
-		surface_reset_target()
+	surface_resize(pattern_surf, sprite_get_width(spr), sprite_get_height(spr))
+	surface_resize(pattern_mask_surf, sprite_get_width(spr), sprite_get_height(spr))
 	
-		surface_set_target(pattern_surf)
-		draw_sprite_tiled(pattern_spr, 0, 0, 0)
-		gpu_set_blendmode(bm_subtract)
-		draw_surface(pattern_mask_surf, 0, 0)
-		gpu_set_blendmode_cc(bm_normal)
-		surface_reset_target()
+	surface_set_target(pattern_mask_surf)
+	draw_clear(c_white)
+	gpu_set_blendmode(bm_subtract)
+	pattern_set_colors(pal_peppatterncolors)
+	draw_sprite(spr, ix, sprite_get_xoffset(spr), sprite_get_yoffset(spr))
+	shader_reset()
+	gpu_set_blendmode_cc(bm_normal)
+	surface_reset_target()
 	
-		draw_surface_ext(pattern_surf, _x - (sprite_get_xoffset(spr) * xscale), _y - (sprite_get_yoffset(spr) * yscale), xscale, yscale, rot, col, alpha)
-	}
+	surface_set_target(pattern_surf)
+	draw_sprite_tiled(pattern_spr, 0, 0, 0)
+	gpu_set_blendmode(bm_subtract)
+	draw_surface(pattern_mask_surf, 0, 0)
+	gpu_set_blendmode_cc(bm_normal)
+	surface_reset_target()
+	
+	draw_surface_ext(pattern_surf, _x - (sprite_get_xoffset(spr) * xscale), _y - (sprite_get_yoffset(spr) * yscale), xscale, yscale, rot, col, alpha)
 }
 
 function pattern_init()

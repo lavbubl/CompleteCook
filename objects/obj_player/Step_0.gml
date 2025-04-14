@@ -29,8 +29,6 @@ if key_jump.pressed
 if warping
 	exit;
 
-break_destroyables()
-
 if hitstun > 0
 {
 	hitstun--
@@ -161,6 +159,9 @@ if ((y > room_height + 200 || y < -200) && state != states.actor && state != sta
 
 if (state != states.noclip && state != states.backtohub)
 	collide()
+	
+
+break_destroyables()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {
@@ -182,3 +183,21 @@ if secret_cutscene
 	visual_size = max(visual_size - spd, 0)
 else
 	visual_size = min(visual_size + spd, 1)
+
+if supertauntcount >= 10
+{
+	supertauntcount = 10
+	if !supertauntshow
+	{
+		scr_sound(sfx_rankup1)
+		supertauntshow = true
+	}
+	
+	if supertauntbuffer > 0
+		supertauntbuffer--;
+	else if (state == states.normal || state == states.jump || state == states.mach2 || state == states.mach3)
+	{
+		supertauntbuffer = 4;
+		create_effect(x + irandom_range(-25, 25), y + irandom_range(-10, 35), asset_get_index($"spr_supertauntspark{irandom_range(1, 5)}"))
+	}
+}

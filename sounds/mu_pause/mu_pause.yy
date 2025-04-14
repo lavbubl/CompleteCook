@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":322.66666,
+  "duration":56.607346,
   "name":"mu_pause",
   "parent":{
     "name":"Sounds",

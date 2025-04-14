@@ -39,7 +39,7 @@ function collide()
 			i += o_inc
 			continue;
 		}
-		if (scr_solid(x, y + sign(vsp_final)))
+		else if (scr_solid(x, y + sign(vsp_final)))
 		{
 			vsp = 0
 			break;
@@ -57,7 +57,7 @@ function collide()
 	abs_final = abs(hsp_final);
 	
 	i = 0
-	var h = min(abs_final, 4)
+	var h = 4
 	
 	while i < round(abs_final)
 	{

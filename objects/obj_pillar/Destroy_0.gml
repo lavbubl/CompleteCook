@@ -27,4 +27,6 @@ do_enemygibs()
 global.combo.count++
 global.combo.timer = 60
 
+obj_player.supertauntcount++
+
 ds_list_add(global.ds_saveroom, id)

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":3.324,
+  "duration":3.3240137,
   "name":"sfx_unlock",
   "parent":{
     "name":"Sounds",

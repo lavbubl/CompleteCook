@@ -1,11 +1,3 @@
-enum e_states {
-	normal,
-	scared,
-	grabbed,
-	stun,
-	hit
-}
-
 function enemy_normal()
 {
 	var hurtbox_needed = false
@@ -84,9 +76,9 @@ function do_scared()
 {
 	if scared_timer > 0
 		scared_timer--
-	else if (obj_player.state == states.mach3 && distance_to_object(obj_player) < 200 && state != e_states.hit && grounded)
+	else if (obj_player.state == states.mach3 && distance_to_object(obj_player) < 200 && state != states.hit && grounded)
 	{
-		state = e_states.scared
+		state = states.scared
 		hsp = 0
 		vsp = -5
 		movespeed = 0
@@ -123,7 +115,7 @@ function do_enemy_generics()
 	do_scared()
 
 	grav = 0.5
-	if (state == e_states.hit)
+	if (state == states.hit)
 		grav = 0
 
 	if (place_meeting(x, y, obj_player))
@@ -157,7 +149,7 @@ function do_enemy_generics()
 			hsp = obj_player.xscale * 18
 			xscale = -obj_player.xscale
 			warp = 0.4
-			state = e_states.stun
+			state = states.stun
 			stun_timer = 180
 			vsp = -5
 			repeat (4)
@@ -199,7 +191,7 @@ function do_enemy_generics()
 					xscale = -obj_player.xscale
 					hsp = obj_player.xscale * 5
 					vsp = -5
-					state = e_states.stun
+					state = states.stun
 					stun_timer = 180
 					warp = -0.4
 				}
@@ -209,7 +201,7 @@ function do_enemy_generics()
 
 	if blur_timer > 0
 		blur_timer--
-	else if state == e_states.hit
+	else if state == states.hit
 	{
 		afterimage_create(after_images.blur)
 		blur_timer = 2
@@ -233,7 +225,7 @@ function do_enemy_generics()
 	    var _id = ds_list_find_value(en_list, i)
 		if place_meeting(x, y, _id)
 		{
-			if _id.state == e_states.hit
+			if _id.state == states.hit
 				instance_destroy()
 		}
 	}

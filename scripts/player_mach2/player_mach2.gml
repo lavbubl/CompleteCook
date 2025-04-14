@@ -31,7 +31,7 @@ function player_mach2()
 			{
 				reset_anim(spr_player_machslideboost)
 				state = states.slide
-				scr_sound_3d(sfx_machslideboost, x, y)
+				scr_sound_3d_on(myemitter, sfx_machslideboost)
 			}
 		}
 		if (movespeed < 12)

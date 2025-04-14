@@ -1,7 +1,7 @@
 function break_destroyables()
 {
 	var d_pos = { //destroyable_position
-		x: x + hsp + sign(hsp),
+		x: x + hsp + xscale,
 		y: y + vsp + sign(vsp)
 	}
 	
@@ -17,14 +17,14 @@ function break_destroyables()
 		states.grab,
 		states.tumble,
 		states.punch,
-		e_states.hit
+		states.hit
 	]
 	
 	var vertical_states = [
 		states.groundpound,
 		states.punch,
 		states.superjump,
-		e_states.hit
+		states.hit
 	]
 	
 	var is_h_state = false
@@ -36,13 +36,13 @@ function break_destroyables()
 			is_h_state = true
 	}
 	
-	for (var i = 0; i < array_length(vertical_states); i++) 
+	for (i = 0; i < array_length(vertical_states); i++) 
 	{
 	    if (state == vertical_states[i])
 			is_v_state = true
 	}
 	
-	for (var i = 0; i < ds_list_size(d_list); i++) 
+	for (i = 0; i < ds_list_size(d_list); i++) 
 	{
 		var d_id = ds_list_find_value(d_list, i)
 		

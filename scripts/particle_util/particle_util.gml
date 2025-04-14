@@ -8,7 +8,8 @@ enum particles {
 	taunt,
 	machcharge,
 	bang,
-	yellowstar
+	yellowstar,
+	sparks
 }
 
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noone)
@@ -75,11 +76,15 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 			case particles.machcharge:
 				sprite_index = spr_mach3charge
 				image_speed = 0.5
-				obj_particlecontroller.active_particles.machcharge = true
+				statetofollow = states.mach3
 				break;
 			case particles.bang:
 				sprite_index = spr_bangeffect
 				image_speed = 0.5
+				break;
+			case particles.sparks:
+				sprite_index = spr_supertauntcharge
+				image_speed = 1
 				break;
 		}
 	
@@ -114,4 +119,10 @@ function create_debris(_x, _y, sprite)
 function create_effect(_x, _y, sprite)
 {
 	return particle_create(_x, _y, particles.genericpoof, 1, 1, sprite);
+}
+
+function create_followingeffect(sprite, state, _xscale = 1)
+{
+	with particle_create(x, y, particles.machcharge, _xscale, 1, sprite)
+		statetofollow = state
 }

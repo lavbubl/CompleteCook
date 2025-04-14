@@ -16,11 +16,12 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
-function draw_set_align(halign, valign, color = c_white) 
+function draw_set_align(halign, valign, color = noone) 
 {
 	draw_set_halign(halign) 
 	draw_set_valign(valign)
-	draw_set_color(color)
+	if color != noone
+		draw_set_color(color)
 }
 
 function quick_shader_set_uniform_f(shader, uniform_name, val)
@@ -152,7 +153,8 @@ function set_globals()
 			tomato: false,
 			sausage: false,
 			pineapple: false
-		}
+		},
+		tauntcount: 0
 	}
 	
 	global.showcollisions = true
@@ -160,6 +162,37 @@ function set_globals()
 	global.sfx_volume = 1
 	global.music_volume = 1
 	global.savefile = "1"
+	
+	global.keybinds = {}
+	
+	var bind_arr = [
+		["left",		vk_left],
+		["right",		vk_right],
+		["up",			vk_up],
+		["down",		vk_down],
+		["jump",		ord("Z")],
+		["grab",		ord("X")],
+		["dash",		vk_shift],
+		["taunt",		ord("C")],
+		["ui_left",		vk_left],
+		["ui_right",	vk_right],
+		["ui_up",		vk_up],
+		["ui_down",		vk_down],
+		["ui_accept",	vk_enter],
+		["ui_deny",		vk_escape]
+	]
+	
+	ini_open("globalsave.ini")
+	
+	for (var i = 0; i < array_length(bind_arr); i++) 
+	{
+		var bindname = bind_arr[i][0]
+		var defaultbind = bind_arr[i][1]
+		var key = ini_read_real("keybinds", bindname, defaultbind)
+	    struct_set(global.keybinds, bindname, key)
+	}
+	
+	ini_close()
 }
 
 function bbox_in_camera()
@@ -204,7 +237,7 @@ function tile_layer_delete_at(_x, _y)
 	}
 }
 
-function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic = noone, spr_taunt = noone)
+function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic = noone, spr_taunt = noone, spr_intro = noone)
 {
 	var f = {
 		sprite_index: noone,
@@ -215,8 +248,9 @@ function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic =
 			idle: spr_idle,
 			move: spr_move,
 			panic: spr_panic,
-			taunt: spr_taunt
-			},
+			taunt: spr_taunt,
+			intro: spr_intro
+		},
 		x_offset: 0,
 		lerp_spd: 0
 	}
@@ -244,7 +278,8 @@ function reset_level()
 			tomato: false,
 			sausage: false,
 			pineapple: false
-		}
+		},
+		tauntcount: 0
 	}
 }
 

@@ -4,7 +4,13 @@ if instance_exists(obj_shell)
 		exit;
 }
 
-if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter))
+if instance_exists(obj_keyconfig)
+{
+	inputbuffer = 2
+	exit;
+}
+
+if (keyboard_check_pressed(vk_escape))
 {
 	if !pause
 	{
@@ -12,7 +18,9 @@ if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter))
 		pause_image = make_pause_image()
 		instance_deactivate_all(true)
 		audio_pause_all()
-		scr_sound(mu_pause, true)
+		var mu = scr_sound(mu_pause, true)
+		audio_sound_gain(mu, 0, 0)
+		audio_sound_gain(mu, 1, 1000)
 	}
 	else
 	{

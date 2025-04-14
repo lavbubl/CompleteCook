@@ -23,7 +23,8 @@ var sprs = {
 	idle: asset_get_index($"{t_str}_idle"),
 	move: asset_get_index($"{t_str}_move"),
 	panic: asset_get_index($"{t_str}_panic"),
-	taunt: asset_get_index($"{t_str}_taunt")
+	taunt: asset_get_index($"{t_str}_taunt"),
+	intro: asset_get_index($"{t_str}_intro")
 }
 
 with obj_followerhandler

@@ -6,10 +6,10 @@ if (obj_player.state != states.hold &&
 	obj_player.state != states.swingding)
 	follow_player = false
 
-if (!follow_player && state == e_states.grabbed)
+if (!follow_player && state == states.grabbed)
 {
 	stun_timer = 180
-	state = e_states.stun
+	state = states.stun
 }
 
 switch (object_index)
@@ -51,7 +51,7 @@ if follow_player
 				other.y = y - 20
 				break;
 		}
-		other.state = e_states.grabbed
+		other.state = states.grabbed
 		if key_down.down
 		{
 			if (grounded && state == states.hold)
@@ -61,7 +61,7 @@ if follow_player
 				{
 					follow_player = false
 					y = other.y
-					state = e_states.stun
+					state = states.stun
 					stun_timer = 180
 				}
 			}
@@ -99,10 +99,10 @@ if follow_player
 			scr_sound_3d(sfx_punch, x, y)
 			scr_sound_3d(sfx_killingblow, x, y)
 			do_enemygibs()
-			with (other)
+			with other
 			{
 				follow_player = false
-				state = e_states.hit
+				state = states.hit
 				hsp = other.xscale * 20
 				vsp = 0
 				if other.sprite_index == spr_player_finishingblowup
@@ -114,4 +114,13 @@ if follow_player
 			global.combo.timer = 60
 		}
 	}
+}
+
+if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") && bbox_in_camera()
+{
+	x += irandom_range(-1, 1)
+	y += irandom_range(-1, 1)
+	state = states.stun
+	stun_timer = 2
+	sprite_index = sprs.stun
 }

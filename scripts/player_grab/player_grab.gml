@@ -20,7 +20,7 @@ function player_grab()
 		vsp = -11
 		state = states.mach2
 		reset_anim(spr_player_longjump)
-		scr_sound_3d(sfx_rollgetup, x, y)
+		scr_sound_3d_on(myemitter, sfx_rollgetup)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
@@ -68,7 +68,7 @@ function player_grab()
 			break;
 		case spr_player_suplexgrabjump:
 			if anim_ended()
-				image_index = 4
+				image_index = 5
 			if (grounded && !key_dash.down && image_index >= 4)
 				state = states.normal
 			break;

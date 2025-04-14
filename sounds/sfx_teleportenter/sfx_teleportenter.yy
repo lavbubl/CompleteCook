@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":5.097333,
+  "duration":5.097347,
   "name":"sfx_teleportenter",
   "parent":{
     "name":"Sounds",

@@ -6,3 +6,6 @@ global.sound_3d = {
 
 audio_listener_orientation(0, 0, 1, 0, -1, 0)
 emitters = []
+
+with obj_player
+	myemitter = emitter_create_quick(x, y, self)

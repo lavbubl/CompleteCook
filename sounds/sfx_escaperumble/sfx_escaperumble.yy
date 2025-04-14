@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":21.601334,
+  "duration":21.601337,
   "name":"sfx_escaperumble",
   "parent":{
     "name":"Sounds",

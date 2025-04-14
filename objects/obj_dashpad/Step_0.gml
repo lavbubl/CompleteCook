@@ -7,7 +7,7 @@ if (place_meeting(x, y, obj_player) && available)
 		state = states.mach3
 		reset_anim(spr_player_dashpad)
 		var h = bbox_bottom - y
-		x = other.x + 32
+		x = other.x
 		y = other.y - h
 		xscale = sign(other.image_xscale)
 		vsp = 0

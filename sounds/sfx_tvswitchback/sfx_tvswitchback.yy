@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.971562,
+  "duration":1.9715647,
   "name":"sfx_tvswitchback",
   "parent":{
     "name":"Sounds",

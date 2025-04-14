@@ -63,7 +63,7 @@ function player_mach3()
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
-			scr_sound_3d(sfx_machslideboost, x, y)
+			scr_sound_3d_on(myemitter, sfx_machslideboost)
 		}
 		
 		if (movespeed < 20 && p_move == xscale)
@@ -141,9 +141,9 @@ function player_mach3()
 	aftimg_timers.mach.do_it = true
 	instakill = true
 	
-	if !obj_particlecontroller.active_particles.machcharge
+	if !particle_contains_sprite(spr_mach3charge)
 	{
-		particle_create(x, y, particles.machcharge, xscale)
-		particle_create(x, y, particles.machcharge, xscale, 1, spr_speedlines)
+		create_followingeffect(spr_mach3charge, states.mach3, xscale)
+		create_followingeffect(spr_speedlines, states.mach3, xscale)
 	}
 }

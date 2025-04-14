@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":4.524,
+  "duration":4.5240135,
   "name":"sfx_geromecollect",
   "parent":{
     "name":"Sounds",

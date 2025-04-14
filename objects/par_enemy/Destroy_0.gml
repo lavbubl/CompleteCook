@@ -6,6 +6,8 @@ if do_particles
 	global.combo.timer = 60
 	global.combo.count++
 	
+	obj_player.supertauntcount++
+	
 	particle_create(x, y, particles.bang)
 	repeat (3)
 		particle_create(x, y, particles.yellowstar)

@@ -1,6 +1,9 @@
 if !pause
 	exit;
 
+if instance_exists(obj_keyconfig)
+	exit;
+
 get_input()
 
 var movev = -uikey_up.pressed + uikey_down.pressed
@@ -21,3 +24,12 @@ else if (cur_option.o_type == optiontypes.slider)
 	if move != 0
 		cur_option.func(cur_option.val)
 }	
+else if (cur_option.o_type == optiontypes.input)
+{
+	if uikey_accept.pressed && inputbuffer <= 0
+		cur_option.func()
+}	
+
+inputbuffer = max(inputbuffer - 1, 0)
+
+//MAKE SWITCH STATEMENT

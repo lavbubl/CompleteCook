@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":5.918667,
+  "duration":5.918685,
   "name":"sfx_lap2ring",
   "parent":{
     "name":"Sounds",

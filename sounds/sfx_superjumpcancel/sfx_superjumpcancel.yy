@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.037167,
+  "duration":1.0371882,
   "name":"sfx_superjumpcancel",
   "parent":{
     "name":"Sounds",

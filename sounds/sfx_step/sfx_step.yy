@@ -7,9 +7,9 @@
   },
   "bitDepth":1,
   "bitRate":128,
-  "compression":1,
+  "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":0.48,
   "name":"sfx_step",
   "parent":{
     "name":"Sounds",

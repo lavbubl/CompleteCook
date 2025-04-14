@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":2.419812,
+  "duration":2.4198186,
   "name":"sfx_treasurefind",
   "parent":{
     "name":"Sounds",

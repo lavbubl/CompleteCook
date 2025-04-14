@@ -18,6 +18,14 @@ with other
 		instance_destroy(follow_obj)
 		instance_destroy()
 	}
+	else
+		particle_create(x, y, particles.parry)
+	
+	if object_index == obj_pizzardelectricity
+	{
+		image_xscale *= -1
+		hurtplayer = false
+	}
 }
 			
 sleep(50)

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.580062,
+  "duration":0.58006805,
   "name":"sfx_lapportal",
   "parent":{
     "name":"Sounds",

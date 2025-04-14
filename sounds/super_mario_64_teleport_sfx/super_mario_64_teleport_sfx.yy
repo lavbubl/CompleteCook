@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.201633,
+  "duration":1.171474,
   "name":"super_mario_64_teleport_sfx",
   "parent":{
     "name":"Sounds",

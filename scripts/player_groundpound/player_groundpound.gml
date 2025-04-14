@@ -14,6 +14,8 @@ function player_groundpound()
 					with create_effect(x, y, spr_piledrivereffect)
 						depth = -150
 				}
+				if !particle_contains_sprite(spr_groundpoundcharge)
+					create_followingeffect(spr_groundpoundcharge, states.groundpound, xscale)
 				particle_timer = 15
 			}
 		}
@@ -110,7 +112,7 @@ function player_groundpound()
 					//if (shakestun && grounded && view point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
 					if (grounded && vsp >= 0)
 					{
-						state = e_states.stun
+						state = states.stun
 						stun_timer = 60
 						vsp = -11
 						xscale *= -1

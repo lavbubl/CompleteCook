@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.777771,
+  "duration":1.7777778,
   "name":"sfx_toppinhelp",
   "parent":{
     "name":"Sounds",

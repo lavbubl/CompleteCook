@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.942667,
+  "duration":1.9333106,
   "name":"sfx_mach1",
   "parent":{
     "name":"Sounds",

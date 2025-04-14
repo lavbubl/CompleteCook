@@ -48,7 +48,7 @@ function player_superjump()
 	{
 		vsp = -12
 		sprite_index = spr_player_superjump
-		scr_sound_3d(sfx_superjumprelease, x, y)
+		scr_sound_3d_on(myemitter, sfx_superjumprelease)
 		create_effect(x, y, spr_superjumpexplosion)
 	}
 	

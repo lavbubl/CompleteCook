@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.084,
+  "duration":1.0840136,
   "name":"sfx_checkpoint",
   "parent":{
     "name":"Sounds",

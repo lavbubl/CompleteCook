@@ -2,7 +2,7 @@ var p = obj_player
 
 visible = true
 
-if (string_starts_with(room_get_name(room), "tower") || room == rank_room || room == rm_timesup)
+if (string_starts_with(room_get_name(room), "tower") || room == rank_room || room == rm_timesup || room == mainmenu)
 	visible = false
 
 if !visible

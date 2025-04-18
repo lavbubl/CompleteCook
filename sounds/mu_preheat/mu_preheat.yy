@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":179.06938,
+  "duration":0.0,
   "name":"mu_preheat",
   "parent":{
     "name":"Sounds",

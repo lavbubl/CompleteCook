@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":141.25734,
+  "duration":0.0,
   "name":"mu_wwn",
   "parent":{
     "name":"Sounds",

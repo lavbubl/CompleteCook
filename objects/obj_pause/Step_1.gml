@@ -10,6 +10,9 @@ if instance_exists(obj_keyconfig)
 	exit;
 }
 
+if room == mainmenu
+	exit;
+
 if (keyboard_check_pressed(vk_escape))
 {
 	if !pause

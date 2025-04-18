@@ -1,3 +1,6 @@
+if other.inactive
+	exit;
+
 with obj_player
 {
 	state = states.parry

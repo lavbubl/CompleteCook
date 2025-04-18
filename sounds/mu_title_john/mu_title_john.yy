@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":3.144,
+  "duration":3.1440136,
   "name":"mu_title_john",
   "parent":{
     "name":"Sounds",

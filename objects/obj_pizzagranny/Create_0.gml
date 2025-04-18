@@ -11,7 +11,7 @@ wave_timer = 0
 
 bubble = {
 	x: padding,
-	y: padding,
+	y: -screen_h,
 	w: screen_w - (padding * 2),
 	h: text_height + padding
 }

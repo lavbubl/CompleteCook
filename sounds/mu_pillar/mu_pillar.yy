@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":51.48,
+  "duration":-1.0,
   "name":"mu_pillar",
   "parent":{
     "name":"Sounds",

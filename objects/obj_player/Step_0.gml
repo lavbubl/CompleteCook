@@ -160,7 +160,6 @@ if ((y > room_height + 200 || y < -200) && state != states.actor && state != sta
 if (state != states.noclip && state != states.backtohub)
 	collide()
 	
-
 break_destroyables()
 
 struct_foreach(aftimg_timers, function(_name, _data)

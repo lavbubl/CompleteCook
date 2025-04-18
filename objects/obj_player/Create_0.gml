@@ -88,10 +88,7 @@ hasgerome = false
 fallingtimer = 0
 depth = -100
 
-ini_open("globalsave.ini")
-pal_select = ini_read_real("game", "pal_select", 1)
-ini_close()
-
+pal_select = 1
 pattern_spr = pat_pizza
 
 pattern_init()

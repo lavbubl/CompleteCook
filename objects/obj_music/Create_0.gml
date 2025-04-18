@@ -2,7 +2,8 @@
 
 levelsongs = 
 [
-	[level_1, mu_dropit, false, mu_secret],
+	[mainmenu, mu_mainmenu, false, mu_secret],
+	[level_1, mu_sundogfunk, false, mu_secret],
 	[tower_1, mu_preheat, false, mu_secret]
 ]
 

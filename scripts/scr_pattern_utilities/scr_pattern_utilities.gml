@@ -16,6 +16,9 @@ function pattern_set_colors(palette_sprite)
 
 function pattern_draw(spr, ix, _x, _y, pattern_spr, xscale = 1, yscale = 1, rot = 0, col = c_white, alpha = 1)
 {
+	if pattern_spr == noone
+		exit;
+	
 	if !surface_exists(pattern_surf)
 	{
 		pattern_surf = surface_create(sprite_get_width(spr), sprite_get_height(spr))

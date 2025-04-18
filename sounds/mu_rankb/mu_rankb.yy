@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":15.637188,
+  "duration":15.627029,
   "name":"mu_rankb",
   "parent":{
     "name":"Sounds",

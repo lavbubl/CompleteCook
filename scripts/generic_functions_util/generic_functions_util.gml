@@ -268,6 +268,7 @@ function reset_level()
 	ds_list_clear(global.ds_saveroom)
 	obj_followerhandler.followers = []
 	global.combo.wasted = false
+	global.doorshut = false
 	global.level_data = {
 		treasure: false,
 		level_name: "Entrance",

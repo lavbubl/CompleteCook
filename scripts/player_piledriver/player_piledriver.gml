@@ -19,5 +19,11 @@ function player_piledriver()
 		scr_sound_3d(sfx_groundpound, x, y)
 	}
 	
+	if vsp >= 10
+	{
+		if !particle_contains_sprite(spr_groundpoundcharge)
+			create_followingeffect(spr_groundpoundcharge, states.piledriver, xscale)
+	}
+	
 	instakill = true
 }

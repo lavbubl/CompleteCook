@@ -15,6 +15,12 @@ with obj_player
 		grounded = true
 		vsp = 0
 	}
+	else if (state == states.piledriver && vsp >= 10 && place_meeting(x, y + 1 + vsp, other))
+	{
+		kill = true
+		grounded = true
+		vsp = 0
+	}
 		
 	if kill
 		instance_destroy(other)

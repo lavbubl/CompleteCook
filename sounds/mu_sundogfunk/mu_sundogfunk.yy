@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":195.2109,
+  "duration":0.0,
   "name":"mu_sundogfunk",
   "parent":{
     "name":"Sounds",

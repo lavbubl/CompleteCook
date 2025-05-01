@@ -50,21 +50,21 @@ switch obj_player.pal_select
 	case 12: 
 		switch obj_player.pattern_spr
 		{
-			case pat_funny: clothes_selected = 11
-			case pat_itchy: clothes_selected = 12
-			case pat_pizza: clothes_selected = 13
-			case pat_stripes: clothes_selected = 14
-			case pat_goldemanne: clothes_selected = 15
-			case pat_bones: clothes_selected = 16
-			case pat_pp: clothes_selected = 17
-			case pat_war: clothes_selected = 18
-			case pat_john: clothes_selected = 19
-			case pat_candy: clothes_selected = 20
-			case pat_bloodstained: clothes_selected = 21
-			case pat_autumn: clothes_selected = 22
-			case pat_pumpkin: clothes_selected = 23
-			case pat_fur: clothes_selected = 24
-			case pat_eyes: clothes_selected = 25
+			case pat_funny: clothes_selected = 11 break;
+			case pat_itchy: clothes_selected = 12 break;
+			case pat_pizza: clothes_selected = 13 break;
+			case pat_stripes: clothes_selected = 14 break;
+			case pat_goldemanne: clothes_selected = 15 break;
+			case pat_bones: clothes_selected = 16 break;
+			case pat_pp: clothes_selected = 17 break;
+			case pat_war: clothes_selected = 18 break;
+			case pat_john: clothes_selected = 19 break;
+			case pat_candy: clothes_selected = 20 break;
+			case pat_bloodstained: clothes_selected = 21 break;
+			case pat_autumn: clothes_selected = 22 break;
+			case pat_pumpkin: clothes_selected = 23 break;
+			case pat_fur: clothes_selected = 24 break;
+			case pat_eyes: clothes_selected = 25 break;
 		}
 		break;
 }

@@ -8,7 +8,6 @@ function approach(value, target, increment = 0.5)
 	return value + clamp(t, -increment, increment);
 }
 
-
 function wave(from, to, duration, offset, timer = current_time)
 {
 	var _wave = (to - from) * 0.5;
@@ -140,7 +139,9 @@ function set_globals()
 	global.hud_negativefont = font_add_sprite_ext(spr_negativenumber_font, "0123456789$-", true, 0)
 	global.smallnumberfont = font_add_sprite_ext(spr_smallnumber_font, "1234567890-+", true, 0)
 	global.tutorialfont = font_add_sprite_ext(spr_tutorialfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz!¡,.:0123456789'?¿-áäãàâæéèêëíìîïóöõôòúùûüÿŸÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜÇçœß;«»+", true, 2)
+	global.creditsfont = font_add_sprite_ext(spr_creditsfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.,:!¡0123456789?'\"ÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜáäãàâéèêëíìîïóöõôòúùûüÇç_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнльœ«»+ß", true, 2)
 	global.secret = false
+	global.boss_room = false
 	set_rank_milestones(1000, 500, 250, 125)
 	
 	global.level_data = {
@@ -254,7 +255,7 @@ function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic =
 		x_offset: 0,
 		lerp_spd: 0
 	}
-	return f;
+	return f; //make this a constructor [new follower_inst()]
 }
 
 function reset_level()

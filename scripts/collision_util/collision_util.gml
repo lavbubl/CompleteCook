@@ -9,7 +9,7 @@ function collide()
 	old_x2 = x
 	old_y2 = y
 		
-	var h = bbox_bottom - y
+	var bh = bbox_bottom - y
 	with (instance_place(x, y + 1 + other.vsp, obj_movingplatform))
 	{
 		if (other.bbox_bottom - other.vsp <= bbox_top)
@@ -18,7 +18,7 @@ function collide()
 			vsp_plat = vsp
 			other.vsp = 0
 			other.grounded = true
-			other.y = bbox_top - h
+			other.y = bbox_top - bh
 		}
 	}
 	

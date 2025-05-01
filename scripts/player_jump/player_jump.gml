@@ -25,6 +25,8 @@ function player_jump()
 		if fallingtimer >= 50
 			sprite_index = fallingtimer < 100 ? spr_player_fallface : spr_player_fallfar
 	}
+	else
+		fallingtimer = 0
 	
 	if (grounded && vsp >= 0)
 	{
@@ -33,6 +35,7 @@ function player_jump()
 			state = states.normal
 			reset_anim(movespeed < 1 ? spr_player_land : spr_player_landmove)
 			scr_sound_3d_pitched(sfx_step, x, y)
+			create_effect(x, y, spr_landeffect)
 			if key_dash.down
 			{
 				state = states.mach2

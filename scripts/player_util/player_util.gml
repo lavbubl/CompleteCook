@@ -67,7 +67,7 @@ function do_taunt()
 			
 			if (place_meeting(x, y, obj_exitgate) && global.panic.active && global.combo.timer > 0 && global.level_data.tauntcount <= 10)
 			{
-				var t_val = 15
+				var t_val = 25
 				global.score += t_val
 				
 				var c = {
@@ -194,6 +194,9 @@ function decrease_score(val)
 
 function do_hurt(obj = noone)
 {
+	if state == states.defeat || state == states.actor
+		return;
+	
 	if obj != noone
 	{
 		var xh = lerp(obj.bbox_left, obj.bbox_right, 0.5)
@@ -203,6 +206,9 @@ function do_hurt(obj = noone)
 		var facing = xscale == -goto_xscale
 		hsp = 8 * goto_xscale
 		sprite_index = facing ? spr_player_hurt : spr_player_jumphurt
+		
+		if obj.object_index == obj_outlet
+			scr_sound_3d(sfx_electricity, x, y)
 	}
 	else
 		sprite_index = spr_player_hurt
@@ -210,10 +216,8 @@ function do_hurt(obj = noone)
 	flash = 8
 	state = states.hurt
 	vsp = -12
-	global.combo.timer -= 30
-	sleep(100)
-	decrease_score(50)
 	i_frames = 100
+	sleep(100)
 	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
 	
 	particle_create(x, y, particles.parry)
@@ -223,28 +227,38 @@ function do_hurt(obj = noone)
 	repeat 5
 		particle_create(x, y, particles.hurtstar)
 		
-	if global.score > 0
+	if !global.boss_room
 	{
-		repeat 10
+		global.combo.timer -= 30
+		decrease_score(50)
+		if global.score > 0
 		{
-			var spr = choose(
-				spr_mushroomcollect, 
-				spr_cheesecollect, 
-				spr_tomatocollect, 
-				spr_sausagecollect, 
-				spr_pineapplecollect
-			)
-			
-			with create_debris(x, y, spr)
+			repeat 10
 			{
-				hsp = random_range(-10, 10)
-				vsp = random_range(-5, 0)
-				image_angle = 0
-				image_speed = 0.35
+				var spr = choose(
+					spr_mushroomcollect, 
+					spr_cheesecollect, 
+					spr_tomatocollect, 
+					spr_sausagecollect, 
+					spr_pineapplecollect
+				)
+			
+				with create_debris(x, y, spr)
+				{
+					hsp = random_range(-10, 10)
+					vsp = random_range(-5, 0)
+					image_angle = 0
+					image_speed = 0.35
+				}
 			}
 		}
-	}
 	
-	with obj_tv
-		tv_expression(spr_tv_hurt)
+		with obj_tv
+			tv_expression(spr_tv_hurt)
+	}
+	else
+	{
+		if instance_exists(obj_bossstate)
+			obj_bossstate.player.hp--
+	}
 }

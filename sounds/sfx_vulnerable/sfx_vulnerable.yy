@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_vulnerable",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":0.26240364,
+  "name":"sfx_vulnerable",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"sfx_vulnerable.ogg",
+  "type":1,
+  "volume":0.8,
+}

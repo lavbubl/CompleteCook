@@ -112,12 +112,16 @@ switch (state)
 	case states.noclip:
 		player_noclip()
 		break;
+	case states.defeat:
+		player_defeat()
+		break;
 }
 
 if (state != states.normal)
 {
 	breakdance_secret.buffer = 0
 	breakdance_secret.spd = 0.25
+	idletimer = 180
 }
 
 if coyote_time > 0
@@ -125,9 +129,6 @@ if coyote_time > 0
 	
 if flash > 0
 	flash--
-	
-if state != states.normal
-	idletimer = 180
 	
 if state != states.jump
 	fallingtimer = 0
@@ -188,7 +189,7 @@ if supertauntcount >= 10
 	supertauntcount = 10
 	if !supertauntshow
 	{
-		scr_sound(sfx_rankup1)
+		scr_sound(sfx_supertauntnotif)
 		supertauntshow = true
 	}
 	

@@ -51,7 +51,9 @@ function player_climbwall()
 		reset_anim(spr_player_ceilinghit)
 		scr_sound_3d(sfx_groundpound, x, y)
 	}
+	
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
+	
 	if (!key_dash.down && grabclimbbuffer <= 0)
 	{
 		state = states.jump
@@ -69,5 +71,13 @@ function player_climbwall()
 		xscale *= -1
 		jumpstop = false
 		scr_sound_3d(sfx_jump, x, y)
+	}
+	
+	if (particle_timer > 0)
+		particle_timer--
+	else
+	{
+		particle_timer = 8
+		create_effect(x + 12 * xscale, y, spr_cloudeffect)
 	}
 }

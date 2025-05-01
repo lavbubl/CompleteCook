@@ -21,7 +21,7 @@ for (var i = 0; i < array_length(tvs); i++)
 		pattern_init()
 		ini_open($"saves/saveData{filename}.ini")
 		pal_ix = ini_read_real("Clothes", "palette_index", 1)
-		pat_spr = ini_read_real("Clothes", "pattern_sprite", noone)
+		pat_spr = ini_read_real("Clothes", "pattern_sprite", pat_pizza)
 		ini_close()
 	}
 }

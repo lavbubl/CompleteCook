@@ -1,5 +1,9 @@
 hsp = random_range(10, 12) * sign(x - obj_player.x)
 vsp = random_range(-10, -14)
 grav = 0.5
+dopalette = false
+pal_select = 0
+pattern_spr = noone
+pattern_not_init = true
 depth = -10
 alarm[0] = 5

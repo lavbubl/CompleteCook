@@ -9,8 +9,8 @@
   "name":"obj_toppincollected",
   "overriddenProperties":[],
   "parent":{
-    "name":"Essentials",
-    "path":"folders/Objects/Essentials.yy",
+    "name":"Collectables",
+    "path":"folders/Objects/Level Structure/Collectables.yy",
   },
   "parentObjectId":null,
   "persistent":false,

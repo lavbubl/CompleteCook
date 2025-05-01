@@ -7,6 +7,9 @@ if (string_starts_with(room_get_name(room), "tower") || room == rank_room || roo
 
 if !visible
 	state = tv_states.off
+	
+if global.boss_room
+	visible = false
 
 switch (state)
 {

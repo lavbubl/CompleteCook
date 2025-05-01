@@ -73,6 +73,18 @@ else
 					audio_sound_gain(mu, 1, 2000);
 				}
 				
+				if array_length(currentArr) >= 5
+				{
+					var loopStart = currentArr[4]
+					audio_sound_loop_start(mu, loopStart)
+				}
+				
+				if array_length(currentArr) >= 6
+				{
+					var loopEnd = currentArr[5]
+					audio_sound_loop_end(mu, loopEnd)
+				}
+				
 				break;
 			}
 		}

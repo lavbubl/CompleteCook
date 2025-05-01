@@ -1,4 +1,4 @@
-val = 10
+val = 100
 follow = false;
 movespeed = 0;
 depth = 50

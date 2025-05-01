@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":56.607346,
+  "duration":117.34535,
   "name":"mu_pause",
   "parent":{
     "name":"Sounds",
@@ -18,7 +18,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":48000,
   "soundFile":"mu_pause.wav",
   "type":1,
   "volume":1.0,

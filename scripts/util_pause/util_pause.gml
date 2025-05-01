@@ -5,11 +5,11 @@ function make_pause_image()
 	surface_set_target(surface)
 	
 	draw_reset_color()
-	draw_rectangle(0, 0, screen_w, screen_h, false)
+	draw_clear(c_black)
 	
 	draw_surface(application_surface, 0, 0)
 	
-	draw_surface(obj_generichandler.gui_surf, 0, 0)
+	draw_surface(obj_screensizer.gui_surf, 0, 0)
 	
 	surface_reset_target()
 	

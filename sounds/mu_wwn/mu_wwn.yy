@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":64.65161,
   "name":"mu_wwn",
   "parent":{
     "name":"Sounds",
@@ -18,7 +18,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":48000,
   "soundFile":"mu_wwn.wav",
   "type":1,
   "volume":1.0,

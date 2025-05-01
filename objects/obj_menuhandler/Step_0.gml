@@ -39,6 +39,7 @@ for (var i = 0; i < array_length(tvs); i++)
 			{
 				reset_anim(sprs.confirm)
 				scr_sound(sfx_collectbig)
+				scr_sound(choose(sfx_fileselect1, sfx_fileselect2, sfx_fileselect3))
 				audio_stop_sound(mu_mainmenu)
 				global.savefile = filename
 				state = 2

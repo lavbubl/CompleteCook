@@ -1,0 +1,1 @@
+image_angle = wave(-20, 20, 2, 0)

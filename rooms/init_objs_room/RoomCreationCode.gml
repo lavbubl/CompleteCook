@@ -25,6 +25,7 @@ enum states
 	parry,
 	backtohub,
 	noclip,
+	defeat,
 	
 	//enemy states
 	hit,

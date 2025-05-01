@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.857333,
+  "duration":1.8573469,
   "name":"sfx_beatbox",
   "parent":{
     "name":"Sounds",
@@ -18,7 +18,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":48000,
   "soundFile":"sfx_beatbox.ogg",
   "type":1,
   "volume":0.6,

@@ -33,8 +33,7 @@ function player_normal()
 	
 	hsp = movespeed * xscale
 	
-	var idlegestures = 
-	[
+	var idlegestures = [
 		spr_player_idlefrown, 
 		spr_player_idledance, 
 		spr_player_idlehand, 

@@ -20,9 +20,9 @@ function scr_sound_3d(snd, x, y, loop = false)
 	var g = 1
 	
 	var played_snd = audio_play_sound_at(snd, x, y, 0, 
-		global.sound_3d.fall_off_distance,
-		global.sound_3d.max_distance,
-		global.sound_3d.multiplier,
+		global.sound_3d.falloff_ref_dist,
+		global.sound_3d.falloff_max_dist,
+		global.sound_3d.falloff_factor,
 		loop, 1, g
 		)
 	
@@ -34,9 +34,9 @@ function emitter_create_quick(x, y, follow_obj = noone, z = 0)
 	var e = audio_emitter_create()
 	audio_emitter_position(e, x, y, z)
 	audio_emitter_falloff(e,
-		global.sound_3d.fall_off_distance, 
-		global.sound_3d.max_distance, 
-		global.sound_3d.multiplier)
+		global.sound_3d.falloff_ref_dist, 
+		global.sound_3d.falloff_max_dist, 
+		global.sound_3d.falloff_factor)
 	
 	array_push(obj_3d_sound.emitters, [e, follow_obj])
 	
@@ -57,9 +57,9 @@ function scr_sound_3d_pitched(snd, x, y, pitch_start = 0.95, pitch_end = 1.05, l
 	var g = 1
 	
 	var played_snd = audio_play_sound_at(snd, x, y, 0, 
-		global.sound_3d.fall_off_distance,
-		global.sound_3d.max_distance,
-		global.sound_3d.multiplier,
+		global.sound_3d.falloff_ref_dist,
+		global.sound_3d.falloff_max_dist,
+		global.sound_3d.falloff_factor,
 		loop, 1, g, 0, random_range(pitch_start, pitch_end)
 		)
 	

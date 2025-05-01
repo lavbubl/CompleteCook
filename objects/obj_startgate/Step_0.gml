@@ -1,12 +1,12 @@
 get_input()
 
-if !surface_exists(bg_surf)
-	exit;
-	
-for (var i = 0; i < array_length(bg_parallax); i++) 
+if surface_exists(bg_surf)
 {
-	with bg_parallax[i] // with the current layer
-		x += spd // increment its x with its speed
+	for (var i = 0; i < array_length(bg_parallax); i++) 
+	{
+		with bg_parallax[i] // with the current layer
+			x += spd // increment its x with its speed
+	}
 }
 
 if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_up.down && obj_player.grounded)
@@ -31,7 +31,7 @@ if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_u
 }
 
 var flick = false
-with obj_player
+with instance_place(x, y, obj_player)
 {
 	if (sprite_index == spr_player_startgate && !obj_fade.fade && image_speed > 0 && anim_ended())
 	{

@@ -18,7 +18,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":48000,
   "soundFile":"sfx_box.ogg",
   "type":1,
   "volume":0.8,

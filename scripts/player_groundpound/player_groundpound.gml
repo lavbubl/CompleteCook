@@ -107,7 +107,7 @@ function player_groundpound()
 			create_effect(x, y + 2, spr_groundpoundeffect)
 			if freefallsmash >= 10
 			{
-				with (par_enemy)
+				with par_enemy
 				{
 					//if (shakestun && grounded && view point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
 					if (grounded && vsp >= 0)

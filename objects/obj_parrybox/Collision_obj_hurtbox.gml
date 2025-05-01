@@ -16,10 +16,15 @@ with other
 	
 	if (follow_obj != -4)
 	{
-		particle_create(xh, follow_obj.y + 20, particles.genericpoof)
-		particle_create(xh, follow_obj.y + 20, particles.parry)
-		instance_destroy(follow_obj)
-		instance_destroy()
+		if enemy_can_die(follow_obj)
+		{
+			particle_create(xh, follow_obj.y + 20, particles.genericpoof)
+			particle_create(xh, follow_obj.y + 20, particles.parry)
+			
+			instance_destroy(follow_obj)
+			
+			instance_destroy()
+		}
 	}
 	else
 		particle_create(x, y, particles.parry)

@@ -43,7 +43,7 @@ function player_taunt()
 			endtaunt = true
 			with par_enemy
 			{
-				if (bbox_in_camera() && visible)
+				if (bbox_in_camera() && enemy_can_die())
 					instance_destroy()
 			}
 		}

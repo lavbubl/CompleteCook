@@ -28,6 +28,6 @@ var sprs = {
 }
 
 with obj_followerhandler
-	array_push(followers, create_follower(other.x, other.y, sprs.idle, sprs.move, sprs.panic, sprs.taunt))
+	array_push(followers, create_follower(other.x, other.y, sprs.idle, sprs.move, sprs.panic, sprs.taunt, sprs.intro))
 
 instance_destroy()

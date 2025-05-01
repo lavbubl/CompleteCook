@@ -70,7 +70,15 @@ function player_tumble()
 	}
 	
 	if (grounded && vsp > 0)
+	{
 		jumpstop = false
+		
+		if !particle_contains_sprite(spr_dashcloud)
+		{
+			with create_effect(x, y, spr_dashcloud)
+				image_xscale = other.xscale
+		}
+	}
 		
 	if (input_buffers.jump > 0 && state != states.bump && hsp != 0 && sprite_index == spr_player_ball)
 	{

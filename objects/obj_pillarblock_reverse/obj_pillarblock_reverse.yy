@@ -10,8 +10,8 @@
   "name":"obj_pillarblock_reverse",
   "overriddenProperties":[],
   "parent":{
-    "name":"Essentials",
-    "path":"folders/Objects/Essentials.yy",
+    "name":"Escape",
+    "path":"folders/Objects/Level Structure/Escape.yy",
   },
   "parentObjectId":{
     "name":"obj_solid",

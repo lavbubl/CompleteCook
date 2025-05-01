@@ -52,11 +52,16 @@ for (var i = 0; i < array_length(followers); i++)
 		
 		if obj_player.state == states.taunt
 		{
-			if sprite_index != sprs.taunt
+			if sprite_index != sprs.taunt && sprite_index != sprs.intro
 			{
-				sprite_index = sprs.taunt
+				if !string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") //too dumb to think of the best solution
+				{
+					sprite_index = sprs.taunt
+					image_index = irandom(sprite_get_number(sprite_index) - 1)
+				}
+				else
+					reset_anim(sprs.intro)
 				create_effect(x, y, spr_tinytaunt)
-				image_index = irandom(sprite_get_number(sprite_index) - 1)
 			}
 		}
 		else if pos_in_line.x != prev_pos_in_line.x

@@ -1,13 +1,14 @@
 if !surface_exists(bg_surf)
 	bg_surf = surface_create(sprite_get_width(door_gate), sprite_get_height(door_gate))
-else
+
+if surface_exists(bg_surf)
 {
 	surface_set_target(bg_surf)
 	
 	draw_clear_alpha(c_black, 0)
 	
 	for (var i = 0; i < array_length(bg_parallax); i++) //draw each layer
-		draw_sprite_tiled(door_bg, i, bg_parallax[i].x, sprite_height)
+		draw_sprite_tiled(door_bg, i, bg_parallax[i].x, sprite_get_height(door_gate))
 	
 	gpu_set_blendmode(bm_subtract)
 	draw_sprite(subtract_spr, 1, 0, 0) // subtract the masking from the drawing 

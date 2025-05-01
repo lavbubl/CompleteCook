@@ -142,6 +142,8 @@ function cc_draw_key(_x, _y, key)
 	
 	if ix == -1
 	{
+		draw_set_font(global.tutorialfont)
+		draw_set_align(fa_center, fa_middle, c_black)
 		draw_sprite(spr_fontkey, 0, _x, _y)
 		draw_text(_x, _y + 3, key_str)
 	}

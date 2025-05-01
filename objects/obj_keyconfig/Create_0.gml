@@ -14,7 +14,7 @@ binds = [
 	{input: global.keybinds.ui_down,	image_index: 1,		name: "Menu Down",	globalname: "ui_down"},
 	{input: global.keybinds.ui_accept,	image_index: 7,		name: "Accept",		globalname: "ui_accept"},
 	{input: global.keybinds.ui_deny,	image_index: 8,		name: "Deny",		globalname: "ui_deny"}
-]
+] //dont mind these warnings
 
 c_x = 0
 offset = 0

@@ -6,22 +6,21 @@ offset = lerp(offset, selected * h, 0.1)
 draw_clear(c_teal)
 
 draw_set_color(c_black)
-draw_set_font(global.tutorialfont)
+draw_set_font(global.creditsfont)
 
-draw_set_align(fa_left, fa_middle)
+draw_set_align(fa_left, fa_middle, c_white)
 draw_text(padding, padding - h - offset + 24, "Back")
 
 for (var i = 0; i < array_length(binds); i++) 
 {
 	var yy = padding + (i * h) - offset + 24
 	var cur_key = binds[i]
-
-	draw_set_align(fa_left, fa_middle)
+	
+	draw_set_font(global.creditsfont)
+	draw_set_align(fa_left, fa_middle, c_white)
     draw_text(padding, yy, cur_key.name)
 	
 	draw_sprite(spr_controlicons, cur_key.image_index, screen_w - padding - 50, yy)
-	
-	draw_set_align(fa_center, fa_middle)
 	
 	if is_array(cur_key.input)
 	{

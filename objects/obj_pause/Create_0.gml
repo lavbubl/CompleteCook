@@ -1,3 +1,5 @@
+depth = 100
+
 create_image = false
 pause = false
 pause_image = spr_null
@@ -29,7 +31,6 @@ options = [
 		_val /= 100
 		global.master_volume = _val
 		quick_ini_write_real("globalsave.ini", "options", "master_volume", _val)
-		audio_master_gain(_val)
 	}},
 	{o_name: "SFX VOLUME: ", val: global.sfx_volume * 100, o_type: optiontypes.slider, func: function(_val) {
 		_val /= 100
@@ -43,7 +44,7 @@ options = [
 		audio_group_set_gain(ag_music, _val, 0)
 		quick_ini_write_real("globalsave.ini", "options", "music_volume", _val)
 	}},
-	{o_name: "CHANGE KEYBINDS", val: 0, o_type: optiontypes.input, func: function(_val) {
+	{o_name: "CHANGE KEYBINDS", val: "", o_type: optiontypes.input, func: function(_val) {
 		instance_create(0, 0, obj_keyconfig)
 	}}
 ]

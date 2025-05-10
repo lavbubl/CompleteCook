@@ -16,7 +16,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	}
 	else
 	{
-		enterspr = spr_player_enterdoor
+		enterspr = spr_player_lookdoor
 		scr_sound(sfx_door)
 		do_fade(t_room, t_door, fade_types.door)
 	}
@@ -31,5 +31,5 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	}
 }
 
-if (other.sprite_index = spr_player_enterdoor || other.sprite_index = spr_player_enterkeydoor)
+if (other.sprite_index = spr_player_lookdoor || other.sprite_index = spr_player_enterkeydoor)
 	other.x = approach(other.x, x + sprite_width / 2, 2)

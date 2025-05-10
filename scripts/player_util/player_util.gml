@@ -26,7 +26,7 @@ function do_grab()
 			if state == states.normal
 				movespeed = 8
 			state = states.grab
-			reset_anim(spr_player_suplexgrab)
+			reset_anim(spr_player_suplexdash)
 			scr_sound_3d_on(myemitter, sfx_suplexdash)
 			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
@@ -205,7 +205,7 @@ function do_hurt(obj = noone)
 			goto_xscale = sign(x - xh)
 		var facing = xscale == -goto_xscale
 		hsp = 8 * goto_xscale
-		sprite_index = facing ? spr_player_hurt : spr_player_jumphurt
+		sprite_index = facing ? spr_player_hurt : spr_player_hurtbehind
 		
 		if obj.object_index == obj_outlet
 			scr_sound_3d(sfx_electricity, x, y)

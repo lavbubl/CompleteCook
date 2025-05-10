@@ -125,7 +125,7 @@ function do_enemy_generics()
 			with (obj_player)
 			{
 				if (state == states.mach3)
-					reset_anim(spr_player_mach3kill)
+					reset_anim(spr_player_mach3hit)
 				if ((key_jump.down && state != states.groundpound) || state == states.swingding)
 				{
 					vsp = -10
@@ -162,7 +162,7 @@ function do_enemy_generics()
 			{
 				other.follow_player = true
 				other.sprite_index = other.sprs.stun
-				reset_anim(spr_player_holdrise)
+				reset_anim(spr_player_haulingrise)
 				state = states.hold
 				if (abs(hsp) > 10)
 				{

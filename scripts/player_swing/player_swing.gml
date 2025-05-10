@@ -8,7 +8,7 @@ function player_swingding()
 	if abs(hsp) <= 3
 	{
 		state = states.hold
-		sprite_index = spr_player_holdidle
+		sprite_index = spr_player_haulingidle
 		movespeed = 0
 	}
 	

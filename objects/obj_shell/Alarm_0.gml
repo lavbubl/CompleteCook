@@ -15,5 +15,5 @@ for (var i = 0; i < ds_list_size(global.col_obj_list); i++)
 	}
 }
 
-if instance_exists(obj_spawnpoint)
-	obj_spawnpoint.visible = global.showcollisions
+if instance_exists(obj_doorpoint)
+	obj_doorpoint.visible = global.showcollisions

@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player_enterdoor",
-    "path":"sprites/spr_player_enterdoor/spr_player_enterdoor.yy",
+    "name":"spr_player_lookdoor",
+    "path":"sprites/spr_player_lookdoor/spr_player_lookdoor.yy",
   },
   "spriteMaskId":null,
   "visible":true,

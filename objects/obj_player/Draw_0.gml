@@ -1,6 +1,6 @@
 image_blend = c_white
 
-if sprite_index == spr_player_exitdoor
+if sprite_index == spr_player_walkfront
 	image_blend = make_color_hsv(0, 0, (1 - ((image_number - image_index) / image_number)) * 255)
 
 image_alpha = 1

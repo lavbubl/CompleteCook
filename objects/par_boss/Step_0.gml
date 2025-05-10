@@ -20,7 +20,7 @@ if (place_meeting(x, y, obj_player))
 		with (obj_player)
 		{
 			if (state == states.mach3)
-				reset_anim(spr_player_mach3kill)
+				reset_anim(spr_player_mach3hit)
 			if (key_jump.down && state != states.groundpound)
 			{
 				vsp = -10

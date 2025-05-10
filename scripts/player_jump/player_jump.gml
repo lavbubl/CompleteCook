@@ -54,7 +54,7 @@ function player_jump()
 		}
 	}
 	
-	if sprite_index != spr_player_grabbump
+	if sprite_index != spr_player_suplexbump
 		do_grab()
 	do_groundpound()
 	
@@ -63,7 +63,7 @@ function player_jump()
 	switch (sprite_index)
 	{
 		case spr_player_jump:
-		case spr_player_grabcancel:
+		case spr_player_suplexcancel:
 		case spr_player_piledriverjump:
 			reset_anim_on_end(spr_player_fall)
 			break;
@@ -71,7 +71,7 @@ function player_jump()
 			if anim_ended()
 				image_index = image_number - 3
 			break;
-		case spr_player_weakjump:
+		case spr_player_hurtjump:
 			if anim_ended()
 				image_index = image_number - 3
 			break;

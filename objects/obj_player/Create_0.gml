@@ -8,7 +8,7 @@ movespeed = 0
 state = states.normal
 //exitdoor properties
 state = states.actor
-sprite_index = spr_player_exitdoor
+sprite_index = spr_player_walkfront
 image_speed = 0.35
 //the end
 prevstate = states.normal
@@ -55,11 +55,11 @@ loop_sounds = {
 			return true;}
 	},
 	mach3: {state: states.mach3, sound: sfx_mach3, sndid: noone, is_3d: true, func: function() {
-		if ((obj_player.sprite_index == spr_player_mach3kill && obj_player.image_index < 2) || obj_player.sprite_index == spr_player_mach4)
+		if ((obj_player.sprite_index == spr_player_mach3hit && obj_player.image_index < 2) || obj_player.sprite_index == spr_player_crazyrun)
 			return true;}
 	},
 	mach4: {state: states.mach3, sound: sfx_mach4, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_mach4
+		if obj_player.sprite_index != spr_player_crazyrun
 			return true;}
 	},
 	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: noone},

@@ -34,7 +34,7 @@ function player_grab()
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
-	if (sprite_index == spr_player_suplexgrab && !grounded)
+	if (sprite_index == spr_player_suplexdash && !grounded)
 		reset_anim(spr_player_suplexgrabjump)
 	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && key_dash.down)
 	{
@@ -50,7 +50,7 @@ function player_grab()
 	}
 	else if (place_meeting(x + xscale, y, obj_solid) && grounded)
 	{
-		sprite_index = spr_player_grabbump
+		sprite_index = spr_player_suplexbump
 		scr_sound_3d(sfx_splat, x, y)
 		state = states.jump
 		jumpstop = true
@@ -62,19 +62,19 @@ function player_grab()
 	image_speed = 0.35
 	switch (sprite_index)
 	{
-		case spr_player_suplexgrab:
+		case spr_player_suplexdash:
 			if anim_ended()
 				state = states.normal
 			break;
 		case spr_player_suplexgrabjump:
 			if anim_ended()
-				image_index = 5
+				image_index = 4
 			if (grounded && !key_dash.down && image_index >= 4)
 				state = states.normal
 			break;
 	}
 	
-	if (anim_ended() && key_dash.down && sprite_index == spr_player_suplexgrab)
+	if (anim_ended() && key_dash.down && sprite_index == spr_player_suplexdash)
 	{
 		state = states.mach2
 		sprite_index = spr_player_mach2
@@ -84,7 +84,7 @@ function player_grab()
 	{
 		if !grounded
 		{
-			reset_anim(spr_player_grabcancel)
+			reset_anim(spr_player_suplexcancel)
 			state = states.jump
 		}
 		else

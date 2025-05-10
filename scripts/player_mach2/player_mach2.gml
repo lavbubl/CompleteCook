@@ -53,8 +53,8 @@ function player_mach2()
 	{
 		if (sprite_index != spr_player_secondjump && 
 			sprite_index != spr_player_secondjumploop && 
-			sprite_index != spr_player_walljump && 
-			sprite_index != spr_player_walljumpfall && 
+			sprite_index != spr_player_walljumpstart && 
+			sprite_index != spr_player_walljumpend && 
 			sprite_index != spr_player_longjump &&
 			sprite_index != spr_player_mach2jump)
 			reset_anim(spr_player_secondjump)
@@ -113,8 +113,8 @@ function player_mach2()
 		case spr_player_secondjump:
 			reset_anim_on_end(spr_player_secondjumploop)
 			break;
-		case spr_player_walljump:
-			reset_anim_on_end(spr_player_walljumpfall)
+		case spr_player_walljumpstart:
+			reset_anim_on_end(spr_player_walljumpend)
 			break;
 		case spr_player_rollgetup:
 			image_speed = 0.4

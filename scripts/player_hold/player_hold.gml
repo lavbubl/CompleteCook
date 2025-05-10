@@ -12,15 +12,15 @@ function player_hold()
 	
 	if grounded
 	{
-		if (sprite_index == spr_player_holdjump || sprite_index == spr_player_holdfall)
-			reset_anim(spr_player_holdland)
-		if (sprite_index != spr_player_holdland && sprite_index != spr_player_holdrise)
-			sprite_index = p_move != 0 ? spr_player_holdmove : spr_player_holdidle
+		if (sprite_index == spr_player_haulingjump || sprite_index == spr_player_haulingfall)
+			reset_anim(spr_player_haulingland)
+		if (sprite_index != spr_player_haulingland && sprite_index != spr_player_haulingrise)
+			sprite_index = p_move != 0 ? spr_player_haulingmove : spr_player_haulingidle
 	}
 	else
 	{
-		if (sprite_index != spr_player_holdjump && sprite_index != spr_player_holdfall)
-			reset_anim(spr_player_holdjump)
+		if (sprite_index != spr_player_haulingjump && sprite_index != spr_player_haulingfall)
+			reset_anim(spr_player_haulingjump)
 		if (!jumpstop && !key_jump.down && vsp < 0)
 		{
 			jumpstop = true
@@ -42,12 +42,12 @@ function player_hold()
 	image_speed = 0.35
 	switch (sprite_index)
 	{
-		case spr_player_holdland:
-		case spr_player_holdrise:
-			reset_anim_on_end(spr_player_holdidle)
+		case spr_player_haulingland:
+		case spr_player_haulingrise:
+			reset_anim_on_end(spr_player_haulingidle)
 			break;
-		case spr_player_holdjump:
-			reset_anim_on_end(spr_player_holdfall)
+		case spr_player_haulingjump:
+			reset_anim_on_end(spr_player_haulingfall)
 			break;
 	}
 	
@@ -55,9 +55,9 @@ function player_hold()
 	{
 		input_buffers.grab = 0
 		state = states.punchenemy
-		var str = string_concat("spr_player_finishingblow_", string(irandom_range(1, 5)))
+		var str = $"spr_player_finishingblow{string(irandom_range(1, 5))}"
 		reset_anim(asset_get_index(str))
 		if (key_up.down)
-			reset_anim(spr_player_finishingblowup)
+			reset_anim(spr_player_uppercutfinishingblow)
 	}
 }

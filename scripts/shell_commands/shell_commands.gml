@@ -87,8 +87,8 @@ function sh_togglecollisions (args) {
 			}
 		}
 	}
-	if instance_exists(obj_spawnpoint)
-		obj_spawnpoint.visible = visibility
+	if instance_exists(obj_doorpoint)
+		obj_doorpoint.visible = visibility
 }
 
 function meta_togglecollisions() {

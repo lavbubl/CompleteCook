@@ -8,8 +8,8 @@ function player_normal()
 		
 		if global.panic.timer <= 0
 		{
-			default_idle = spr_player_weak
-			default_move = spr_player_weakmove
+			default_idle = spr_player_hurtidle
+			default_move = spr_player_hurtmove
 		}
 	}
 	
@@ -106,7 +106,7 @@ function player_normal()
 	if !grounded
 	{
 		state = states.jump
-		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_weakjump : spr_player_fall)
+		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_hurtjump : spr_player_fall)
 	}
 	
 	if (coyote_time && input_buffers.jump > 0)
@@ -114,7 +114,7 @@ function player_normal()
 		input_buffers.jump = 0
 		vsp = -11
 		state = states.jump
-		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_weakjump : spr_player_jump)
+		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_hurtjump : spr_player_jump)
 		jumpstop = false
 		create_effect(x, y - 5, spr_highjumpcloud2)
 		scr_sound_3d(sfx_jump, x, y)
@@ -133,7 +133,7 @@ function player_normal()
 	switch (sprite_index)
 	{
 		case spr_player_move:
-		case spr_player_weakmove:
+		case spr_player_hurtmove:
 			image_speed = clamp(movespeed / 15, 0.35, 0.6);
 			break;
 		case spr_player_machslideend:

@@ -1,4 +1,4 @@
-panic_mu = scr_sound(mu_swod, true)
+panic_mu = scr_sound(mu_lap2, true)
 audio_sound_loop_start(panic_mu, 22.48)
 audio_sound_loop_end(panic_mu, 171.40)
 

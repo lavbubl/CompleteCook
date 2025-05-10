@@ -8,6 +8,6 @@ campos = {
 	y: 0
 }
 
-version = "Alpha v2.6.1";
+version = "Alpha v2.6.2";
 
 depth = -150

@@ -7,7 +7,7 @@ with obj_player
 	y = return_location.y
 	room_goto(return_location.room)
 	state = states.actor
-	reset_anim(spr_player_exitdoor)
+	reset_anim(spr_player_walkfront)
 }
 
 instance_destroy()

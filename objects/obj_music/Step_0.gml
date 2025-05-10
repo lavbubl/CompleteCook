@@ -65,7 +65,7 @@ if isPanic
 		audio_stop_sound(mu)
 		audio_stop_sound(pillar_mu)
 		mu = noone
-		panic_mu = scr_sound(mu_sugarrush, true)
+		panic_mu = scr_sound(mu_pizzatime, true)
 		audio_sound_loop_start(panic_mu, 47.96)
 		audio_sound_loop_end(panic_mu, 159.94)
 	}
@@ -82,7 +82,7 @@ if isPanic
 		audio_stop_sound(panic_mu)
 		panic_mu = noone
 		
-		panic_pinch_mu = scr_sound(mu_sugarrush)
+		panic_pinch_mu = scr_sound(mu_pizzatime)
 		audio_sound_set_track_position(panic_pinch_mu, 170.63)
 		audio_sound_gain(panic_pinch_mu, 0, 0)
 		audio_sound_gain(panic_pinch_mu, 1, 2000)

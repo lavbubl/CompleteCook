@@ -64,7 +64,7 @@ function player_climbwall()
 	if (input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0
-		reset_anim(spr_player_walljump)
+		reset_anim(spr_player_walljumpstart)
 		movespeed = 10
 		state = states.mach2
 		vsp = -11

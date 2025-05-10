@@ -34,7 +34,7 @@ if follow_player
 				other.x = x
 				other.y = y - 64
 				other.xscale = -xscale
-				if sprite_index == spr_player_holdrise
+				if sprite_index == spr_player_haulingrise
 					other.y += floor(image_number - image_index) * 10
 				break;
 			case states.piledriver:
@@ -105,7 +105,7 @@ if follow_player
 				state = states.hit
 				hsp = other.xscale * 20
 				vsp = 0
-				if other.sprite_index == spr_player_finishingblowup
+				if other.sprite_index == spr_player_uppercutfinishingblow
 				{
 					hsp = 0
 					vsp = -20

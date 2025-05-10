@@ -16,7 +16,7 @@ function player_bump()
 			reset_anim(spr_player_facehurt)
 		else if (sprite_index == spr_player_ceilinghit)
 		{
-			reset_anim(spr_player_superjumpfall)
+			reset_anim(spr_player_machfreefall)
 			state = states.jump
 		}
 		else

@@ -4,7 +4,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 {
 	with (other)
 	{
-		reset_anim(spr_player_enterdoor)
+		reset_anim(spr_player_lookdoor)
 		state = states.actor
 		hsp = 0
 		movespeed = 0
@@ -15,5 +15,5 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	do_fade(t_room, t_door, fade_types.door)
 }
 
-if (other.sprite_index = spr_player_enterdoor)
+if (other.sprite_index = spr_player_lookdoor)
 	other.x = approach(other.x, x + sprite_width / 2, 2)

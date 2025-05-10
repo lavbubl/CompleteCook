@@ -1,6 +1,6 @@
 with instance_place(x, y, obj_player)
 {
-	if (!global.panic.active && anim_ended() && sprite_index == spr_player_exitdoor && !global.panic.active)
+	if (!global.panic.active && anim_ended() && sprite_index == spr_player_walkfront && !global.panic.active)
 	{
 		shake_camera()
 		reset_anim(spr_player_timesup)
@@ -12,7 +12,7 @@ with instance_place(x, y, obj_player)
 	{
 		global.panic.active = false
 		state = states.actor
-		reset_anim(spr_player_enterdoor)
+		reset_anim(spr_player_lookdoor)
 		hsp = 0
 		movespeed = 0
 		

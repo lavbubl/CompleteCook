@@ -2,7 +2,7 @@ function player_actor()
 {
 	switch (sprite_index)
 	{
-		case spr_player_exitdoor:
+		case spr_player_walkfront:
 			if anim_ended()
 				state = states.normal
 			if particle_timer > 0
@@ -22,7 +22,7 @@ function player_actor()
 					image_speed = 0
 			}
 			break;
-		case spr_player_upbox:
+		case spr_player_uppizzabox:
 			vsp = 0
 			break;
 	}

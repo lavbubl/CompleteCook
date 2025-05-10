@@ -93,7 +93,6 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"gameframe.html","CopyToMask":0,"filePath":"datafiles","name":"gameframe.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"gameframe.html","CopyToMask":-1,"filePath":"datafiles","name":"gameframe.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,

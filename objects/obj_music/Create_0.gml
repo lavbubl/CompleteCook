@@ -2,9 +2,9 @@
 
 levelsongs = 
 [
-	[mainmenu, mu_mainmenu, false, mu_secret],
 	[tower_1, mu_hub, false, mu_secret, 12.87, 76.85],
 	[level_1, mu_entryway, false, mu_secret],
+	[entryway_1, mu_entryway, false, mu_secret],
 	[boss_test, mu_pepperman, false,]
 ] //rework this into constructors.
 

@@ -1,7 +1,6 @@
-gui_surf = surface_create(screen_w, screen_h)
+gui_surf = noone
 
 lb_sprs = [bg_letterbox, bg_letterbox2, bg_letterbox3]
-
 
 depth = -999
 
@@ -17,4 +16,7 @@ window_set_fullscreen(f)
 application_surface_draw_enable(false)
 window_enable_borderless_fullscreen(true)
 
-letterbox = false
+gameframe_init()
+gameframe_alpha_timer = 0
+
+display_set_gui_size(960, 540)

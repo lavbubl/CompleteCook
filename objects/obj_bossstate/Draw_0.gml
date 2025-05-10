@@ -8,7 +8,7 @@ if surface_exists(circ_surf) && instance_exists(target_obj)
 	draw_set_color(c_white)
 	draw_circle(target_obj.x, target_obj.y, circ_size, false)
 
-	gpu_set_blendmode_cc(bm_normal)
+	gpu_set_blendmode_normal_fixed()
 
 	surface_reset_target()
 	draw_surface(circ_surf, 0, 0)

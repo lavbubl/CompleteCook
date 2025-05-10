@@ -25,7 +25,7 @@ draw_clear(c_white)
 
 gpu_set_blendmode(bm_subtract)
 draw_sprite(door_gate, 1, sprite_get_xoffset(door_gate), sprite_get_yoffset(door_gate)) // subtract the masking from the drawing 
-gpu_set_blendmode_cc(bm_normal)
+gpu_set_blendmode_ext(bm_src_alpha, bm_dest_alpha)
 
 surface_reset_target()
 
@@ -44,11 +44,10 @@ save_data = {
 save_exists = false
 spanwed_score = false
 
-ini_open($"saves/saveData{global.savefile}.ini")
+ini_open(global.savestring)
 
 if ini_section_exists(level_name)
 {
-	show_debug_message("save exists!")
 	save_exists = true
 	save_data = {
 		score_num: ini_read_real(level_name, "score", 0),

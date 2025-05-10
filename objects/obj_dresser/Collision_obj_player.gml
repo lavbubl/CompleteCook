@@ -25,7 +25,7 @@ if other.key_up.pressed
 		pal_select = palette
 		pattern_spr = pattern
 		
-		ini_open($"saves/saveData{global.savefile}.ini")
+		ini_open(global.savestring)
 		ini_write_real("Clothes", "palette_index", pal_select)
 		ini_write_real("Clothes", "pattern_sprite", pattern_spr)
 		ini_close()

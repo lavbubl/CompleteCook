@@ -12,7 +12,7 @@ if surface_exists(bg_surf)
 	
 	gpu_set_blendmode(bm_subtract)
 	draw_sprite(subtract_spr, 1, 0, 0) // subtract the masking from the drawing 
-	gpu_set_blendmode_cc(bm_normal)
+	gpu_set_blendmode_normal_fixed()
 	
 	surface_reset_target()
 	draw_surface(bg_surf, x - sprite_get_xoffset(door_gate), y - sprite_get_yoffset(door_gate))

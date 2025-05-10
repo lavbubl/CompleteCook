@@ -77,7 +77,7 @@ function player_groundpound()
 			var slopeinst = -4
 			with (instance_place(x, y + 1, obj_slope))
 				slopeinst = id
-			//intentionally overwrites if touching a slope platform
+			
 			with (instance_place(x, y + 1, obj_slopeplatform))
 				slopeinst = id
 			
@@ -110,7 +110,7 @@ function player_groundpound()
 				with par_enemy
 				{
 					//if (shakestun && grounded && view point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
-					if (grounded && vsp >= 0)
+					if (grounded && vsp >= 0 && bbox_in_camera())
 					{
 						state = states.stun
 						stun_timer = 60

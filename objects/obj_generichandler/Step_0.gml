@@ -37,4 +37,6 @@ if global.combo.timer <= 0
 	global.combo.count = 0
 }
 
+global.savestring = $"saves/saveData{global.savefile}.ini"
+
 //move all of this combo stuff to its own object

@@ -76,7 +76,7 @@ if (secret_exit && instance_exists(obj_secretportal) && !instance_exists(obj_sec
 	secret_exit = false
 }
 
-if (state == states.hold || state == states.swingding)
+if (state == states.hold || state == states.swingding || state == states.piledriver)
 	state = states.normal
 
 other.xstart = other.x

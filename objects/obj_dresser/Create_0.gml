@@ -36,14 +36,14 @@ switch obj_player.pal_select
 	case 2: 
 	case 13:
 	case 14: 
-			clothes_selected = 0  break;
-	case 3: clothes_selected = 1 break;
-	case 4: clothes_selected = 2 break;
-	case 5: clothes_selected = 3 break;
-	case 6: clothes_selected = 4 break;
-	case 7: clothes_selected = 5 break;
-	case 8: clothes_selected = 6 break;
-	case 9: clothes_selected = 7 break;
+			 clothes_selected = 0  break;
+	case 3:	 clothes_selected = 1 break;
+	case 4:	 clothes_selected = 2 break;
+	case 5:	 clothes_selected = 3 break;
+	case 6:	 clothes_selected = 4 break;
+	case 7:	 clothes_selected = 5 break;
+	case 8:	 clothes_selected = 6 break;
+	case 9:	 clothes_selected = 7 break;
 	case 10: clothes_selected = 8 break;
 	case 11: clothes_selected = 9 break;
 	case 15: clothes_selected = 10 break;

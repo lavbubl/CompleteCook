@@ -38,6 +38,9 @@
     "name":"spr_pizzagranny_sleep",
     "path":"sprites/spr_pizzagranny_sleep/spr_pizzagranny_sleep.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_pizzagranny_talk",
+    "path":"sprites/spr_pizzagranny_talk/spr_pizzagranny_talk.yy",
+  },
   "visible":true,
 }

@@ -89,7 +89,6 @@ function player_tumble()
 	if (crouchslipbuffer > 0)
 		crouchslipbuffer--
 		
-	//if (!key_down.down && key_dash.down && grounded && state != 1000 && (sprite_index != spr_player_ball && sprite_index != 'tumbleend) && !canuncrouch.isTouching(solids))
 	if (!key_down.down && key_dash.down && grounded && !scr_solid(x, y - 16) && crouchslipbuffer <= 0)
 	{
 		if (movespeed >= 12)

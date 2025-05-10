@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_menustatic",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":6.3759866,
+  "name":"sfx_menustatic",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"sfx_menustatic.wav",
+  "type":1,
+  "volume":1.0,
+}

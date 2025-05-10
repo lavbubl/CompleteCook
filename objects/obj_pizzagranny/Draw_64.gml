@@ -16,7 +16,7 @@ else
 	
 	gpu_set_blendmode(bm_subtract)
 	draw_sprite_stretched(spr_tutorialbubble, 1, 0, 0, bubble.w, bubble.h)
-	gpu_set_blendmode_cc(bm_normal)
+	gpu_set_blendmode_normal_fixed()
 	
 	surface_reset_target()
 	

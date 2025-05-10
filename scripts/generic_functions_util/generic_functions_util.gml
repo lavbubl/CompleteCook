@@ -163,6 +163,7 @@ function set_globals()
 	global.sfx_volume = 1
 	global.music_volume = 1
 	global.savefile = "1"
+	global.savestring = $"saves/saveData{global.savefile}.ini"
 	
 	global.keybinds = {}
 	
@@ -292,8 +293,8 @@ function quick_ini_write_real(inistr, section, key, value)
 	ini_close()
 }
 
-function gpu_set_blendmode_cc(bm)
+function gpu_set_blendmode_normal_fixed()
 {
-	gpu_set_blendmode(bm)
+	gpu_set_blendmode_ext(bm_src_alpha, bm_inv_src_alpha)
 	gpu_set_blendequation_sepalpha(bm_eq_add, bm_eq_max)
 }

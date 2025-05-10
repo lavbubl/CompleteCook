@@ -1,0 +1,777 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<title>gameframe cheat sheet</title>
+<meta name="viewport" content="width=device-width" />
+<meta name="livenode" content="#doc" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:site_name" content="YellowAfterlife" />
+<meta property="og:title" content="gameframe cheat sheet" />
+<script type="text/javascript">
+if (document.location.host == "yal.cc" && location.protocol == "http:") {
+	document.location.protocol = "https:";
+}
+</script>
+<style type="text/css">body, #doc tt, #doc code {
+	font: 15px 'Open Sans', sans-serif;
+	line-height: 1.35;
+}
+body {
+	margin: 0;
+}
+.main {
+	width: 100%;
+	min-height: 100%;
+	min-height: 100vh;
+	background-color: #f5f7f9;
+}
+.page {
+	max-width: 656px;
+	background: #ffffff;
+	margin: 0 auto;
+	padding: 8px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+	min-height: 100%;
+	min-height: 100vh;
+	box-sizing: border-box;
+}
+.page > p:first-child {
+	margin-top: 0;
+}
+#doc, #doc ul, #doc ol {
+	padding-left: 0;
+	margin: 0;
+}
+#doc article > ul, #doc article > ol {
+	padding-left: 20px;
+}
+#doc article ul li {
+	list-style: disc;
+	list-style-image: url('data:image/svg+xml;base256,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="1em" viewBox="0 0 20px 1em"><circle cx="17px" cy="0.675em" r="2px"/></svg>'); 
+}
+
+#doc header {
+	margin: 0;
+	font-weight: 700;
+	font-size: 100%;
+	color: #458;
+	border-left: 2px solid #f3f3f3;/* #f9f9f9*/
+	padding-left: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	cursor: pointer;
+}
+#doc header a {
+	outline: none;
+	text-decoration: none;
+	color: #458;
+}
+#doc header::before {
+	display: inline-block;
+	content: "+";
+	font: 12px monospace;
+	border: 1px solid #458;
+	line-height: 11px;
+	height: 11px;
+	width: 11px;
+	text-align: center;
+	border-radius: 50%;
+	margin-right: 4px;
+	vertical-align: middle;
+	position: relative;
+	top: -1px;
+}
+#doc section.open > header::before {
+	content: "-";
+}
+#doc section.empty > header::before {
+	content: " "; /*"·"*/
+}
+#doc header:hover {
+	border-left-color: #f3f3f3;
+	background: #f3f3f3;
+}
+#doc header .ret-arrow {
+	font-weight: normal;
+	margin: 0 0.1em;
+}
+
+#doc a.broken {
+	color: red;
+}
+#doc p, .intro p {
+	margin: 0;
+}
+#doc p + p, .intro p + p, #doc p.pad, .display-controls {
+	margin-top: 0.5em;
+}
+#doc img {
+	max-width: 100%;
+}
+#doc h3 {
+	margin: 0.25em 0;
+	font-size: 125%;
+	font-weight: normal;
+	border-bottom: 1px solid #ccc;
+}
+
+#doc article, #doc ul {
+	padding-left: 20px;
+	border-left: 2px solid #f3f3f3;
+}
+#doc article {
+	padding-top: 0.25em;
+	padding-bottom: 0.5em;
+}
+#doc tt {
+	font-weight: bold;
+}
+#doc code {
+	display: inline-block;
+	background: #FFFBE4;
+	font-family: Consolas, Ubuntu Mono, Dejavu Sans Mono, Lucida Console, monospace;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+	padding: 0 2px;
+	border: 1px solid #E6E0C4;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	max-width: 100%;
+	word-break: break-word;
+}
+
+#doc table {
+	border-spacing: 0;
+	color: currentColor;
+}
+#doc table, #doc table td, #doc table th {
+	border: 1px solid #f3f3f3;
+}
+#doc table td, #doc table th {
+	padding: 0.1em 0.5em;
+}
+#doc pre {
+	font-family: Consolas, Dejavu Sans Mono, Segoe UI Mono, Ubuntu Mono, Lucida Console, monospace;
+	font-size: 9pt;
+	line-height: 1.25;
+	background: white;
+	padding: 4px 2px 4px 10px;
+	margin: 0;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+#doc pre a {
+	text-decoration: none;
+}
+#doc pre a.uf {
+	background-color: #f7f0ff;
+}
+#doc pre a.kw {
+	background-color: #f0f7ff;
+}
+#doc pre a.sf, #doc pre a.sv {
+	background-color: #fff3f0;
+}
+#doc pre a:hover {
+	text-decoration: underline;
+}
+#doc abbr[title] {
+	text-decoration: underline;
+	-webkit-text-decoration-color: #bbb;
+	text-decoration-color: #bbb;
+	-webkit-text-decoration-style: double;
+	text-decoration-style: double;
+}
+#doc hr {
+	margin: 0.5em 0;
+	margin-right: 1em;
+	border: 0;
+	border-top: 2px dashed #f3f3f3;
+}
+#doc section + hr {
+	margin: 0;
+	height: 1em;
+	border: 1px solid #f3f3f3;
+	border-width: 1px 0 1px 0;
+}
+#doc section {
+	border-top: 1px solid #f3f3f3;
+	margin-top: 0.3em;
+}
+#doc section:first-child {
+	margin-top: 0em;
+}
+#doc section:last-child {
+	border-bottom: 1px solid #f3f3f3;
+}
+#doc section + section, #doc hr + section {
+	border-top: 0;
+	margin-top: 0;
+}
+#doc section + p {
+	border-top: 1px solid #f3f3f3;
+	padding-top: 0.3em;
+}
+/* delay display until load */
+#doc[ready] section:not(.open) > article {
+	display: none;
+}</style>
+<style type="text/css" id="lang_gml">/* GameMakerLanguage */
+pre.gmlmd .md { color: #7A81A9 } /* #define */
+pre.gmlmd .kw { color: #008; font-weight: bold } /* keyword */
+pre.gmlmd .co { color: #080 } /* comment */
+pre.gmlmd .nu { color: #00f } /* number */
+pre.gmlmd .nx { color: #00f } /* hex */
+pre.gmlmd .st { color: #00f } /* string */
+pre.gmlmd .ts { color: #00f } /* template string */
+pre.gmlmd .op { color: #000 } /* operator */
+pre.gmlmd .cb { color: #008; font-weight: bold } /* curly brace */
+pre.gmlmd .sv { color: #800 } /* std func */
+pre.gmlmd .sf { color: #800 } /* std var */
+pre.gmlmd .ri { color: #0078aa } /* assets */
+pre.gmlmd .uf { color: #808 } /* user func */
+pre.gmlmd .uv { color: #000 } /* user var */
+pre.gmlmd .lv { color: #648 } /* local var */
+pre.gmlmd .fd { color: #804 } /* field */
+
+#night:checked + .main pre.gmlmd .op { color: #CCCCCC }
+#night:checked + .main pre.gmlmd .co { color: #5B995B }
+#night:checked + .main pre.gmlmd .kw { color: #FFB871 }
+#night:checked + .main pre.gmlmd .md { color: #FFB871 }
+#night:checked + .main pre.gmlmd .cb { color: #FFB871 }
+#night:checked + .main pre.gmlmd .sf { color: #FFB871 }
+#night:checked + .main pre.gmlmd .uf { color: #FFB871 }
+#night:checked + .main pre.gmlmd .nu { color: #FF8080 }
+#night:checked + .main pre.gmlmd .st { color: #FCF320 }
+#night:checked + .main pre.gmlmd .ts { color: #FF8080 }
+#night:checked + .main pre.gmlmd .sv { color: #FF8080 }
+#night:checked + .main pre.gmlmd .gv { color: #FF80FF }
+#night:checked + .main pre.gmlmd .ri { color: #FF8080 }
+#night:checked + .main pre.gmlmd .lv { color: #FFF899 }
+#night:checked + .main pre.gmlmd .uv { color: #B2B1FF }
+#night:checked + .main pre.gmlmd .fd { color: #B2B1FF }
+
+#night:checked + .main pre.gmlmd a.uf,
+#night:checked + .main pre.gmlmd a.kw,
+#night:checked + .main pre.gmlmd a.sf {
+	background-color: #431;
+}
+#night:checked + .main pre.gmlmd a.sv {
+	background-color: #422;
+}</style>
+<style type="text/css" id="night_css">#night { display: none }
+#night:checked + .main {
+	background-color: #424242;
+}
+#night:checked + .main .page {
+	background-color: #1c1c1c;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	color: white;
+}
+#night:checked + .main a,
+#night:checked + .main a:visited,
+#night:checked + .main #doc header,
+#night:checked + .main label[for="night"] {
+	color: #9DEC76;
+}
+#night:checked + .main #doc header:before,
+#night:checked + .main #doc h3 {
+	border-color: #9DEC76
+}
+#night:checked + .main #doc header,
+#night:checked + .main #doc header:hover,
+#night:checked + .main #doc article,
+#night:checked + .main #doc section,
+#night:checked + .main #doc section + p,
+#night:checked + .main #doc hr,
+#night:checked + .main #doc ul,
+#night:checked + .main #doc table,
+#night:checked + .main #doc table td,
+#night:checked + .main #doc table th
+{
+	border-color: rgba(205,225,255,0.1);
+}
+#night:checked + .main #doc header:hover,
+#night:checked + .main #doc .asset:hover {
+	background: rgba(205,225,255,0.1);
+}
+#night:checked + .main article ul li {
+	list-style-image: url('data:image/svg+xml;base256,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="1em" viewBox="0 0 20px 1em"><circle cx="17px" cy="0.675em" r="2px" fill="white"/></svg>'); 
+}
+#night:checked + .main pre {
+	color: #cccccc;
+	background: #000000;
+	border: 1px solid #3E4757;
+}
+#night:checked + .main #doc code {
+	background-color: #000;
+	border-color: #5b7c9f;
+	color: white;
+}</style>
+<style type="text/css" id="print_css">@media print {
+	.main { background-color: transparent }
+	.display-controls { display: none; }
+	.page { width: 100%; box-shadow: none; }
+	#doc header::before,
+	#doc section.open header::before	{
+		content: "~";
+	}
+	#doc { display: inherit }
+	#doc section:not(.open) > article,
+	#doc[ready] section:not(.open) > article {
+		display: inherit;
+	}
+}</style>
+<noscript><style>#doc header::before {
+	content: "~";
+}
+#doc header:hover {
+	border-left-color: #f3f3f3;
+	background: inherit;
+}
+#doc { display: inherit }
+#doc section:not(.open) > article {
+	display: inherit;
+}</style></noscript>
+</head><body>
+<input type="checkbox" id="night" checked/>
+<div class="main ">
+<script type="text/javascript">(function() {
+	var night = document.getElementById("night");
+	var path = "docmd night mode";
+	var ls = window.localStorage;
+	if (ls) {
+		night.checked = ls.getItem(path) == "true";
+		night.onchange = function(_) {
+			ls.setItem(path, "" + night.checked);
+		};
+	}
+})();</script>
+<main class="page">
+<section class="intro">This is a "cheat sheet" for "gameframe_tools" extension by YellowAfterlife.  <br/>
+The extension can be found on <a href="https://yellowafterlife.itch.io/gamemaker-gameframe">itch.io</a>.</section><section class="display-controls">
+Click on sections to expand/collapse them.<br>Quick display controls:
+<a href="javascript:void(0)" onclick="opt_none(); return false">Categories</a>
+&middot; <a href="javascript:void(0)" onclick="opt_list(); return false">Sections</a>
+&middot; <a href="javascript:void(0)" onclick="opt_all(); return false">Everything</a>
+&middot; <a href="javascript:void(0)"><label for="night">Toggle night mode</label></a><br/>
+</section><section id="doc">
+<!--<doc--><p><p>
+
+
+
+
+
+
+
+<style>
+.main {
+	background-color: #889EC5;
+}
+#night:checked + .main {
+	background-color: #405070;
+}
+</style>
+
+</p><section><header id="Introduction"><a href="#Introduction" title="(permalink)">Introduction</a></header><article><p>
+	Gameframe is an extension gives GameMaker games a custom window border
+	that acts like a native one.
+	</p><p>
+	That includes the minimize/maximize buttons,
+	moving/resizing the window,
+	common (and less common) keyboard and mouse shortcuts,
+	and even the window shadow and rounded borders on Windows 11.
+	</p><p>
+	Having a custom border+caption subsequently allows for a few things: </p><ul>
+		<li> Toggling window border on demand
+		</li><li> Supporting exclusive fullscreen, borderless fullscreen, and windowed modes.<br/>
+		  (which as of writing this most players expect from you)
+		</li><li> Not freezing the application while the user is dragging the window around.<br/>
+		  (essential for competitive online games)
+		</li><li> Customizing the title bar and/or border<br/>
+		  (now that it's game code that's drawing them)
+	</li></ul></article></section><section><header id="Setting-up"><a href="#Setting-up" title="(permalink)">Setting up</a></header><article><ol>
+	<li><p>	Disable the default window border in
+		</p><ul>
+		<li>	GMS1: Global Game Settings - Windows - Graphics
+		</li><li>	GMS2 and GM2022+: Game Options - Windows - Graphics
+		</li></ul><p>
+		("Borderless window" checkbox)
+	</p></li><li><p>	Create a new persistent object for the extension system,
+		or add code to your existing global controller object:
+		</p><p>
+		<b>Create:</b>
+		</p><pre class="gmlmd">
+<a class="sf" href="#gameframe_init">gameframe_init</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+</pre><p>
+		<b>Step:</b>
+		</p><pre class="gmlmd">
+<a class="sf" href="#gameframe_update">gameframe_update</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+</pre><p>
+		<b>Draw GUI:</b>
+		</p><pre class="gmlmd">
+<a class="sf" href="#gameframe_draw">gameframe_draw</a><span class="op">(</span><span class="op">)</span>
+</pre></li></ol></article></section><section><header id="Common-use"><a href="#Common-use" title="(permalink)">Common use</a></header><article><p>
+	Per introduction, Gameframe draws its custom interface on the GUI layer.
+	</p><p>
+	As result, the caption may draw over your game elements.
+	</p><p>
+	To prevent the frame from being "click-through", you have the
+	<a href="#gameframe_mouse_over_frame">gameframe_mouse_over_frame</a> variable that you can check for,
+	but there is also a trick to cut down on work required:
+	you can show the game when it's needed (such as when a pause menu is open)
+	and disable it at other times. Adjusted code could look like this:
+	</p><p>
+	<b>Create:</b>
+	</p><pre class="gmlmd">
+<a class="sf" href="#gameframe_init">gameframe_init</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+</pre><p>
+	<b>Step:</b>
+	</p><pre class="gmlmd">
+<span class="kw">var</span> <span class="lv">_show_frame</span> <span class="op">=</span> <span class="op">(</span><span class="kw">global</span><span class="op">.</span><span class="gv">paused</span>
+    <span class="op">||</span> <span class="uf">instance_exists</span><span class="op">(</span><span class="ri">objMainMenu</span><span class="op">)</span>
+    <span class="co">// ... other checks that justify a state where a frame is desired</span>
+<span class="op">)</span>
+<a class="sv" href="#gameframe_can_input">gameframe_can_input</a> <span class="op">=</span> <span class="lv">_show_frame</span><span class="op">;</span>
+
+<span class="kw">var</span> <span class="lv">_target_alpha</span><span class="op">;</span>
+<span class="kw">if</span> <span class="op">(</span><span class="lv">_show_frame</span><span class="op">)</span> <span class="lv">_target_alpha</span> <span class="op">=</span> <span class="nu">1</span><span class="op">;</span> <span class="kw">else</span> <span class="lv">_target_alpha</span> <span class="op">=</span> <span class="nu">0</span><span class="op">;</span> <span class="co">// or ?:</span>
+<a class="sv" href="#gameframe_alpha">gameframe_alpha</a> <span class="op">=</span> <span class="uf">lerp</span><span class="op">(</span><a class="sv" href="#gameframe_alpha">gameframe_alpha</a><span class="op">,</span> <span class="lv">_target_alpha</span><span class="op">,</span> <span class="nu">0.1</span><span class="op">)</span><span class="op">;</span>
+
+<a class="sf" href="#gameframe_update">gameframe_update</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+</pre><p>
+	<b>Draw:</b>
+	</p><pre class="gmlmd">
+<span class="kw">if</span> <span class="op">(</span><a class="sv" href="#gameframe_alpha">gameframe_alpha</a> <span class="op">&gt;=</span> <span class="nu">1</span><span class="op">/</span><span class="nu">255</span><span class="op">)</span> <a class="sf" href="#gameframe_draw">gameframe_draw</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+</pre><p>
+	This would (instantly) disable frame input as soon as game resumes
+	and quickly fade out the frame, then fade it back when the user pauses
+	or quits to the main menu.
+</p></article></section><section><header id="callbacks"><a href="#callbacks" title="(permalink)">Callbacks</a></header><article><section><header id="gameframe_init"><a href="#gameframe_init" title="(permalink)">gameframe_init()</a></header><article><p>
+	Should be called on Game Start or in Create - before other functions are used.
+		 </p></article></section><section><header id="gameframe_update"><a href="#gameframe_update" title="(permalink)">gameframe_update()</a></header><article><p>
+	Should be called once a frame in Step event.
+		 </p></article></section><section><header id="gameframe_draw"><a href="#gameframe_draw" title="(permalink)">gameframe_draw()</a></header><article><p>
+	Should be called in <b></b>Draw GUI<b></b> event to draw the frame.  <br/>
+	If you don't rely on drawing logic, you may opt out of doing this when alpha is close to 0
+	or you otherwise know that you don't need the frame.
+		 </p></article></section></article></section><section><header id="gameframe_config"><a href="#gameframe_config" title="(permalink)">Configuration</a></header><article><p>
+	 
+	Essentials:
+	</p><section><header id="gameframe_debug"><a href="#gameframe_debug" title="(permalink)">gameframe_debug:bool</a></header><article><p>
+	If enabled, logs semi-important events to output.
+		 </p></article></section><section><header id="gameframe_blend"><a href="#gameframe_blend" title="(permalink)">gameframe_blend:int</a></header><article><p>
+	 Can be set to quickly apply color blending to default elements 
+	</p></article></section><section><header id="gameframe_alpha"><a href="#gameframe_alpha" title="(permalink)">gameframe_alpha:number</a></header><article><p>
+	 Can be set to quickly apply an alpha multiplier to default elements 
+	</p></article></section><section><header id="gameframe_can_input"><a href="#gameframe_can_input" title="(permalink)">gameframe_can_input:bool</a></header><article><p>
+	Can be set to <code>false</code> to disable all input polling.
+	A common use case is to fade out the frame (using <a href="#gameframe_alpha">gameframe_alpha</a>) and disable polling
+	when your game is in "play" state to avoid dealing with window border UI.
+		 </p></article></section><section><header id="gameframe_can_resize"><a href="#gameframe_can_resize" title="(permalink)">gameframe_can_resize:bool</a></header><article><p>
+	 Can be set to <code>false</code> to disable resizing and maximize/restore button 
+	</p></article></section><section><header id="gameframe_resize_padding"><a href="#gameframe_resize_padding" title="(permalink)">gameframe_resize_padding:int</a></header><article><p>
+	 Clicking this close (in pixels) to the window edge initiates the resize operation, if enabled 
+	</p></article></section><section><header id="gameframe_border_width"><a href="#gameframe_border_width" title="(permalink)">gameframe_border_width:int</a></header><article><p>
+	 Effective width of window border (see <a href="#gameframe_spr_border">gameframe_spr_border</a>), used for deciding where to draw the window buttons 
+	</p></article></section><p>
+	Sprites:
+	</p><section><header id="gameframe_spr_border"><a href="#gameframe_spr_border" title="(permalink)">gameframe_spr_border:sprite</a></header><article><p>
+	Outer window border (9-slice, 2 frames - inactive, active)
+		 </p></article></section><section><header id="gameframe_spr_caption"><a href="#gameframe_spr_caption" title="(permalink)">gameframe_spr_caption:sprite</a></header><article><p>
+	 Window caption (9-slice, 2 frames - inactive, active) 
+	</p></article></section><section><header id="gameframe_spr_buttons"><a href="#gameframe_spr_buttons" title="(permalink)">gameframe_spr_buttons:sprite</a></header><article><p>
+	 Window button icons (4 frames - minimize, maximize, restore, close) 
+	</p></article></section><section><header id="gameframe_spr_pixel"><a href="#gameframe_spr_pixel" title="(permalink)">gameframe_spr_pixel:sprite</a></header><article><p>
+	 A white square to be stretched when drawing colored rectangles 
+	</p></article></section><p>
+	Cursor:
+	</p><section><header id="gameframe_default_cursor"><a href="#gameframe_default_cursor" title="(permalink)">gameframe_default_cursor:window_cursor</a></header><article><p>
+	This is the cursor that will be shown for the middle of the window.
+		 </p></article></section><section><header id="gameframe_set_cursor"><a href="#gameframe_set_cursor" title="(permalink)">gameframe_set_cursor:bool</a></header><article><p>
+	 If set to false, the extension will not try changing the cursor at all 
+	</p></article></section><section><header id="gameframe_current_cursor"><a href="#gameframe_current_cursor" title="(permalink)">gameframe_current_cursor:window_cursor</a></header><article><p>
+	If <a href="#gameframe_set_cursor">gameframe_set_cursor</a> is false, you can read this to see what cursor the extension wanted to show
+	and show your own. Check after <a href="#gameframe_update">gameframe_update</a>!
+		 </p></article></section><section><header id="gameframe_dpi_scale"><a href="#gameframe_dpi_scale" title="(permalink)">gameframe_dpi_scale:number</a></header><article><p>
+	If you want to support multiple DPI levels, you can calculate
+	<code>display_get_dpi_x()/96</code>, provide a set of sprites and fonts for the nearest size,
+	and set this variable to the scale of the set you have provided - extension
+	will then scale those to effective size
+	(e.g. if you provided assets for 2x scale, but the system uses 1.5x,
+	frame UI will be drawn at 0.75x scale to compensate)
+	</p><p>
+	<b>NOTE:</b> GMS1.4 does not support DPI scaling, <code>display_get_dpi_x</code> always returns 96.
+		 </p></article></section></article></section><section><header id="gameframe_state"><a href="#gameframe_state" title="(permalink)">State</a></header><article><section><header id="gameframe_has_native_extension"><a href="#gameframe_has_native_extension" title="(permalink)">gameframe_has_native_extension:bool</a></header><article><p>
+	If the user gets rid of the DLL, extension will run in reduced mode.
+		 </p></article></section><section><header id="gameframe_mouse_over_frame"><a href="#gameframe_mouse_over_frame" title="(permalink)">gameframe_mouse_over_frame:bool</a></header><article><p>
+	Can be read to figure out whether the mouse is currently over the border/titlebar -
+	you should not be handling mouse press events when it is
+		 </p></article></section><section class="empty"><header id="gameframe_minimize"><a href="#gameframe_minimize" title="(permalink)">gameframe_minimize()</a></header></section><section><header id="gameframe_is_minimized"><a href="#gameframe_is_minimized" title="(permalink)">gameframe_is_minimized()&#8203;<span class="ret-arrow">&#10140;</span>bool</a></header><article><p>
+	Returns whether the window is currently minimized.
+		 </p></article></section><section><header id="gameframe_maximize"><a href="#gameframe_maximize" title="(permalink)">gameframe_maximize()</a></header><article><p>
+	Maximizes the window (much like pressing the button would)
+		 </p></article></section><section><header id="gameframe_is_maximized"><a href="#gameframe_is_maximized" title="(permalink)">gameframe_is_maximized()&#8203;<span class="ret-arrow">&#10140;</span>bool</a></header><article><p>
+	Returns whether the window is currently maximized.
+		 </p></article></section><section><header id="gameframe_restore"><a href="#gameframe_restore" title="(permalink)">gameframe_restore(?force)</a></header><article><p>
+	Restores the window to non-maximized, non-full-screen state.
+		 </p></article></section><section><header id="gameframe_set_fullscreen"><a href="#gameframe_set_fullscreen" title="(permalink)">gameframe_set_fullscreen(mode)</a></header><article><p>
+	Changes the fullscreen mode </p><ul>
+	<li> <code>0</code> for returning to windowed mode
+	</li><li> <code>1</code> for "exclusive" (DirectX) fullscreen
+	</li><li> <code>2</code> for borderless fullscreen
+	</li></ul></article></section><section><header id="gameframe_get_fullscreen"><a href="#gameframe_get_fullscreen" title="(permalink)">gameframe_get_fullscreen()&#8203;<span class="ret-arrow">&#10140;</span>int</a></header><article><p>
+	 Returns the current fullscreen mode 
+	</p></article></section><section><header id="gameframe_is_fullscreen_window"><a href="#gameframe_is_fullscreen_window" title="(permalink)">gameframe_is_fullscreen_window()&#8203;<span class="ret-arrow">&#10140;</span>bool</a></header><article><p>
+	 Returns whether the window is currently in "fake fullscreen" (mode=2) mode 
+	</p></article></section><section class="empty"><header id="gameframe_get_drag_flags"><a href="#gameframe_get_drag_flags" title="(permalink)">gameframe_get_drag_flags()&#8203;<span class="ret-arrow">&#10140;</span>int</a></header></section></article></section><section><header id="gameframe_caption"><a href="#gameframe_caption" title="(permalink)">Caption &amp; border</a></header><article><section><header id="gameframe_caption_text"><a href="#gameframe_caption_text" title="(permalink)">gameframe_caption_text:string</a></header><article><p>
+	Drawn in caption area by the default <a href="#gameframe_caption_draw_text">gameframe_caption_draw_text</a>.  <br/>
+	Is initially set to value of <code>window_get_caption()</code>.
+		 </p></article></section><section><header id="gameframe_caption_alpha"><a href="#gameframe_caption_alpha" title="(permalink)">gameframe_caption_alpha:number</a></header><article><p>
+	If you want to fade out the caption but keep the window border,
+	you can change this instead of <a href="#gameframe_alpha">gameframe_alpha</a>
+		 </p></article></section><section><header id="gameframe_caption_font"><a href="#gameframe_caption_font" title="(permalink)">gameframe_caption_font:font</a></header><article><p>
+	 If set, is used for drawing the above 
+	</p></article></section><section><header id="gameframe_caption_text_align"><a href="#gameframe_caption_text_align" title="(permalink)">gameframe_caption_text_align:text_align</a></header><article><p>
+	 Text alignment for the caption 
+	</p></article></section><section><header id="gameframe_caption_icon"><a href="#gameframe_caption_icon" title="(permalink)">gameframe_caption_icon:sprite</a></header><article><p>
+	 If set, drawn in caption area by the default <a href="#gameframe_caption_draw_text">gameframe_caption_draw_text</a> implementation 
+	</p></article></section><section><header id="gameframe_caption_margin"><a href="#gameframe_caption_margin" title="(permalink)">gameframe_caption_margin:int</a></header><article><p>
+	 Number of pixels between the edges of the caption and the icon/text 
+	</p></article></section><section><header id="gameframe_caption_icon_margin"><a href="#gameframe_caption_icon_margin" title="(permalink)">gameframe_caption_icon_margin:int</a></header><article><p>
+	 Number of pixels between the icon and the text 
+	</p></article></section><section><header id="gameframe_caption_height_normal"><a href="#gameframe_caption_height_normal" title="(permalink)">gameframe_caption_height_normal:number</a></header><article><p>
+	Titlebar area height, in pixels.  <br/>
+	If set to a negative value, is measured in a multiplier of <a href="#gameframe_spr_caption">gameframe_spr_caption</a>'s height
+	(default -1 being 1x the height).
+		 </p></article></section><section><header id="gameframe_caption_height_maximized"><a href="#gameframe_caption_height_maximized" title="(permalink)">gameframe_caption_height_maximized:number</a></header><article><p>
+	Titlebar area height while maximized, same rules as above.
+	(default -2/3 being 2/3x of the sprite's height).
+		 </p></article></section><section><header id="gameframe_caption_get_height"><a href="#gameframe_caption_get_height" title="(permalink)">gameframe_caption_get_height()&#8203;<span class="ret-arrow">&#10140;</span>int</a></header><article><p>
+	 Returns current height (depending on whether the window is maximized) 
+	</p></article></section><section><header id="gameframe_caption_get_overlap"><a href="#gameframe_caption_get_overlap" title="(permalink)">gameframe_caption_get_overlap()&#8203;<span class="ret-arrow">&#10140;</span>number</a></header><article><p>
+	Returns the amount of vertical overlap between the window caption and the game's
+	<code>application_surface</code>, <i>in surface pixels</i> and assuming proportional scaling mode.
+	</p><p>
+	This can be used to adjust non-GUI-layer game elements to not overlap te window caption.
+	</p><p>
+	If the window is currently in one of the fullscreen modes, returns 0.
+		 </p></article></section><p>
+	Drawing callbacks:
+	</p><section><header id="gameframe_caption_draw_border"><a href="#gameframe_caption_draw_border" title="(permalink)">gameframe_caption_draw_border:function(x, y, width, height)</a></header><article><p>
+	Is called to draw the outer window border.  <br/>
+	Takes (x, y, width, height).  <br/>
+	By default, this will draw <a href="#gameframe_spr_border">gameframe_spr_border</a>.
+		 </p></article></section><section><header id="gameframe_caption_draw_background"><a href="#gameframe_caption_draw_background" title="(permalink)">gameframe_caption_draw_background:function(x, y, width, height, buttonsX)</a></header><article><p>
+	Is called to draw the window caption background.  <br/>
+	By default, this will draw <a href="#gameframe_spr_caption">gameframe_spr_caption</a>
+		 </p></article></section><section><header id="gameframe_caption_draw_text"><a href="#gameframe_caption_draw_text" title="(permalink)">gameframe_caption_draw_text:function(x, y, width, height)</a></header><article><p>
+	Is called to draw the window caption text.  <br/>
+	By default, this will draw <a href="#gameframe_caption_icon">gameframe_caption_icon</a> and <a href="#gameframe_caption_text">gameframe_caption_text</a> using <a href="#gameframe_caption_font">gameframe_caption_font</a> (if set).
+		 </p></article></section></article></section><section><header id="gameframe_button_ctl"><a href="#gameframe_button_ctl" title="(permalink)">Button controller</a></header><article><p>
+	The following functions relate to window buttons (minimize/maximize/restore/custom) in general.
+	 </p><section><header id="gameframe_button_array"><a href="#gameframe_button_array" title="(permalink)">gameframe_button_array:array</a></header><article><p>
+	 An array of buttons! You can add your own to it 
+	</p></article></section><section><header id="gameframe_button_fade_time"><a href="#gameframe_button_fade_time" title="(permalink)">gameframe_button_fade_time:number</a></header><article><p>
+	Controls how fast (in seconds) buttons fade in/out on hover.  <br/>
+	The default value (0.2) matches Win10 behaviour.
+		 </p></article></section><section><header id="gameframe_button_get_combined_width"><a href="#gameframe_button_get_combined_width" title="(permalink)">gameframe_button_get_combined_width()&#8203;<span class="ret-arrow">&#10140;</span>int</a></header><article><p>
+	Returns combined width of all buttons (including margins)
+		 </p></article></section><section><header id="gameframe_button_get_combined_offset"><a href="#gameframe_button_get_combined_offset" title="(permalink)">gameframe_button_get_combined_offset(windowWidth)&#8203;<span class="ret-arrow">&#10140;</span>int</a></header><article><p>
+	Returns where the window buttons should be, given the specified window width
+	(window width - border width - combined width)
+		 </p></article></section><section><header id="gameframe_button_reset"><a href="#gameframe_button_reset" title="(permalink)">gameframe_button_reset()</a></header><article><p>
+	Un-presses and un-hovers every button.  <br/>
+	Used on occasions like minimizing the window.
+		 </p></article></section></article></section><section><header id="gameframe_button_api"><a href="#gameframe_button_api" title="(permalink)">Buttons</a></header><article><p>
+	The following functions allow you to manipulate the existing buttons
+	(minimize/maximize/close) or create your own.
+	 </p><section><header id="game_frame_button_create"><a href="#game_frame_button_create" title="(permalink)">game_frame_button_create(name, icon, subimg, onClick)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+			Creates a new button.<br/>
+			Don't forget to add it to <a href="#gameframe_button_array">gameframe_button_array</a> afterwards!
+			</p><p>
+			The <a href="#game_frame_button_get_name">name</a> can be anything and is only useful to you.<br/>
+			<a href="#game_frame_button_get_icon">icon</a> is a sprite displayed in the middle of the button.<br/>
+			<a href="#game_frame_button_get_subimg">subimg</a> is the subimage to use from that sprite.<br/>
+			<a href="#game_frame_button_get_click">onClick</a> is the click handler for the button.
+		</p></article></section><section><header id="game_frame_button_set_name"><a href="#game_frame_button_set_name" title="(permalink)">game_frame_button_set_name(game_frame_button, value)</a></header><article><p>
+	 Button names exist purely for telling them apart. 
+	</p></article></section><section class="empty"><header id="game_frame_button_get_name"><a href="#game_frame_button_get_name" title="(permalink)">game_frame_button_get_name(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>string</a></header></section><section><header id="game_frame_button_set_custom"><a href="#game_frame_button_set_custom" title="(permalink)">game_frame_button_set_custom(game_frame_button, value)</a></header><article><p>
+	 Stores arbitrary user-defined values and can be used to attach additional metadata/state to the button. 
+	</p></article></section><section class="empty"><header id="game_frame_button_get_custom"><a href="#game_frame_button_get_custom" title="(permalink)">game_frame_button_get_custom(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><p>
+	Icon:
+	</p><section><header id="game_frame_button_set_icon"><a href="#game_frame_button_set_icon" title="(permalink)">game_frame_button_set_icon(game_frame_button, value)</a></header><article><p>
+	A sprite to be used for the button's icon
+	(drawn by the default <a href="#game_frame_button_get_draw_icon">game_frame_button_get_draw_icon</a> and used for measurement)
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_icon"><a href="#game_frame_button_get_icon" title="(permalink)">game_frame_button_get_icon(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>sprite</a></header></section><section><header id="game_frame_button_set_subimg"><a href="#game_frame_button_set_subimg" title="(permalink)">game_frame_button_set_subimg(game_frame_button, value)</a></header><article><p>
+	 Subimage of above sprite to use 
+	</p></article></section><section class="empty"><header id="game_frame_button_get_subimg"><a href="#game_frame_button_get_subimg" title="(permalink)">game_frame_button_get_subimg(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>int</a></header></section><p>
+	Margins:
+	</p><section><header id="game_frame_button_set_margin_left"><a href="#game_frame_button_set_margin_left" title="(permalink)">game_frame_button_set_margin_left(game_frame_button, value)</a></header><article><p>
+	Empty space to add to the left of the button
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_margin_left"><a href="#game_frame_button_get_margin_left" title="(permalink)">game_frame_button_get_margin_left(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>int</a></header></section><section><header id="game_frame_button_set_margin_right"><a href="#game_frame_button_set_margin_right" title="(permalink)">game_frame_button_set_margin_right(game_frame_button, value)</a></header><article><p>
+	 Empty space to add to the right of the button 
+	</p></article></section><section class="empty"><header id="game_frame_button_get_margin_right"><a href="#game_frame_button_get_margin_right" title="(permalink)">game_frame_button_get_margin_right(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>int</a></header></section><p>
+	State:
+	</p><section><header id="game_frame_button_set_hover"><a href="#game_frame_button_set_hover" title="(permalink)">game_frame_button_set_hover(game_frame_button, value)</a></header><article><p>
+	Indicates whether the mouse is over the button.
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_hover"><a href="#game_frame_button_get_hover" title="(permalink)">game_frame_button_get_hover(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>bool</a></header></section><section><header id="game_frame_button_set_pressed"><a href="#game_frame_button_set_pressed" title="(permalink)">game_frame_button_set_pressed(game_frame_button, value)</a></header><article><p>
+	Indicates whether the button is currently being held down.  <br/>
+	(note that the mouse may no longer be over the button while doing so)
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_pressed"><a href="#game_frame_button_get_pressed" title="(permalink)">game_frame_button_get_pressed(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>bool</a></header></section><section><header id="game_frame_button_set_enabled"><a href="#game_frame_button_set_enabled" title="(permalink)">game_frame_button_set_enabled(game_frame_button, value)</a></header><article><p>
+	Indicates whether the button is active.  <br/>
+	(setting this to <code>false</code> disables interactions with it).
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_enabled"><a href="#game_frame_button_get_enabled" title="(permalink)">game_frame_button_get_enabled(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>bool</a></header></section><section><header id="game_frame_button_set_fade"><a href="#game_frame_button_set_fade" title="(permalink)">game_frame_button_set_fade(game_frame_button, value)</a></header><article><p>
+	 A helper variable for fade effect, usually modified by <a href="#game_frame_button_get_draw_underlay">game_frame_button_get_draw_underlay</a>. 
+	</p></article></section><section class="empty"><header id="game_frame_button_get_fade"><a href="#game_frame_button_get_fade" title="(permalink)">game_frame_button_get_fade(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span>number</a></header></section><p>
+	Handlers:
+	</p><section><header id="game_frame_button_set_click"><a href="#game_frame_button_set_click" title="(permalink)">game_frame_button_set_click(game_frame_button, value)</a></header><article><p>
+	Executed when the button is clicked.  <br/>
+	Receives a button reference as the first argument.
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_click"><a href="#game_frame_button_get_click" title="(permalink)">game_frame_button_get_click(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section><header id="game_frame_button_set_get_width"><a href="#game_frame_button_set_get_width" title="(permalink)">game_frame_button_set_get_width(game_frame_button, value)</a></header><article><p>
+	A function/script that takes a button and should return the button's width in pixels.  <br/>
+	By default, returns the button sprite's width.
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_get_width"><a href="#game_frame_button_get_get_width" title="(permalink)">game_frame_button_get_get_width(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section><header id="game_frame_button_set_update"><a href="#game_frame_button_set_update" title="(permalink)">game_frame_button_set_update(game_frame_button, value)</a></header><article><p>
+	Ran during update loop. Takes a button.  <br/>
+	Can be used for things like calling icon/subimg/enabled to reflect button's state.  <br/>
+	The default maximize/restore button uses this to change state.
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_update"><a href="#game_frame_button_get_update" title="(permalink)">game_frame_button_get_update(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section><header id="game_frame_button_set_draw_underlay"><a href="#game_frame_button_set_draw_underlay" title="(permalink)">game_frame_button_set_draw_underlay(game_frame_button, value)</a></header><article><p>
+	Should draw a button's underlay at specified location.  <br/>
+	Takes (button, x, y, width, height).  <br/>
+	By default, draws a rectangle and does fade in/out based on button state.  <br/>
+	Note that the default "close" button has its own handler for a red highlight!
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_draw_underlay"><a href="#game_frame_button_get_draw_underlay" title="(permalink)">game_frame_button_get_draw_underlay(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section><header id="game_frame_button_set_draw_icon"><a href="#game_frame_button_set_draw_icon" title="(permalink)">game_frame_button_set_draw_icon(game_frame_button, value)</a></header><article><p>
+	Should draw the button icon at the specified location.  <br/>
+	Takes (button, x, y, width, height).  <br/>
+	By default, this draws the button's sprite amid the area.
+		 </p></article></section><section class="empty"><header id="game_frame_button_get_draw_icon"><a href="#game_frame_button_get_draw_icon" title="(permalink)">game_frame_button_get_draw_icon(game_frame_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section></article></section><section><header id="lim"><a href="#lim" title="(permalink)">Limitations</a></header><article><section><header id="lim-rtl"><a href="#lim-rtl" title="(permalink)">RTL support</a></header><article><p>
+		The extension does not currently mirror the UI order on Hebrew and Arabic systems,
+		like Windows itself does.
+	</p></article></section><section><header id="Purpose-specific-operations"><a href="#Purpose-specific-operations" title="(permalink)">Purpose-specific operations</a></header><article><p>
+		Windows works in mysterious ways and certain operations
+		(like moving the window to the side of the screen to snap it)
+		only work for windows with specific configuration.
+		</p><p>
+		However, messing with the game window's configuration
+		in GameMaker is rather dangerous and easily results in soft-locking the game,
+		so I don't.
+	</p></article></section></article></section><section><header id="FAQ"><a href="#FAQ" title="(permalink)">FAQ</a></header><article><section><header id="mac-linux"><a href="#mac-linux" title="(permalink)">Mac &amp; Linux</a></header><article><p>
+		The extension uses Windows-specific tricks for some operations
+		(such as resizing) so functionality on non-Windows is rather limited
+		... but also, Mac and Linux do not have the same problems as Windows
+		does - the fullscreen Just Works, for example - no need to have two
+		fullscreen modes.
+	</p></article></section></article></section></p><!--doc>-->
+</section></main></div>
+<script type="text/javascript">(function() {
+	var doc, headers;
+	//
+	var path = "gameframe cheat sheet";
+	var state = null;
+	if (window.localStorage && JSON.parse) {
+		state = window.localStorage.getItem(path);
+		state = state ? JSON.parse(state) : { };
+		if (state == null) state = { };
+	}
+	var isLocal = (location.host.indexOf("localhost") == 0);
+	//
+	function h3bind(h3) {
+		var node = h3.parentNode;
+		var snip = node.children[1];
+		var id = h3.id || h3.textContent;
+		h3.snip = snip;
+		h3.doc_set = function(z) {
+			if (z) node.classList.add("open"); else node.classList.remove("open");
+			if (state) {
+				state[id] = z;
+				window.localStorage.setItem(path, JSON.stringify(state));
+			}
+		}
+		h3.doc_hide = function() {
+			this.doc_set(false);
+		}
+		h3.doc_show = function() {
+			this.doc_set(true);
+		}
+		h3.onclick = function(_) {
+			var seen = !node.classList.contains("open");
+			h3.doc_set(seen);
+			return false;
+		};
+	}
+	function getHashFunc(id) {
+		var node = document.getElementById(id);
+		if (node == null) return null;
+		return function(e) {
+			while (node && node != doc) {
+				if (node.classList.contains("item")) {
+					node.classList.add("open");
+				}
+				node = node.parentElement;
+			}
+		};
+	}
+	// Display helpers:
+	window.opt_none = function() {
+		for (var li = 0; li < headers.length; li++) headers[li].doc_hide();
+	};
+	window.opt_list = function() {
+		for (var li = 0; li < headers.length; li++) {
+			var h3 = headers[li];
+			if (h3.parentNode.parentNode != doc) {
+				h3.doc_hide();
+			} else h3.doc_show();
+		}
+	};
+	window.opt_all = function() {
+		for (var li = 0; li < headers.length; li++) headers[li].doc_show();
+	};
+	window.live_post = function() {
+		doc = document.getElementById("doc");
+		headers = doc.getElementsByTagName("header");
+		//
+		for (var i = 0; i < headers.length; i++) h3bind(headers[i]);
+		// Clicks in document expand the related section:
+		var anchors = doc.getElementsByTagName("a");
+		for (var i = 0; i < anchors.length; i++) {
+			var anchor = anchors[i];
+			if (anchor.classList.contains("header")) continue;
+			var href = anchor.getAttribute("href");
+			if (href[0] == "#") {
+				var fn = getHashFunc(href.substr(1));
+				if (!fn) {
+					anchor.classList.add("broken");
+					anchor.title = "(section missing)";
+				} else anchor.addEventListener("click", fn);
+			}
+		}
+		//
+		for (var li = 0; li < headers.length; li++) {
+			var h3 = headers[li];
+			var val = state ? state[h3.id || h3.textContent] : null;
+			if (val == null) val = isLocal || h3.parentNode.parentNode == doc;
+			if (val) h3.doc_show(); else h3.doc_hide();
+		}
+	};
+	window.live_post();
+	//
+	(function() {
+		var hash = document.location.hash;
+		if (hash) {
+			var _hash = hash.substr(1);
+			getHashFunc(_hash)();
+			setTimeout(function() {
+				document.location.hash = hash + " ";
+				setTimeout(function() {
+					document.location.hash = hash;
+				}, 100);
+			}, 100);
+		}
+	})();
+	//
+	doc.setAttribute("ready", "");
+	})();</script>
+</body></html>

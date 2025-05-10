@@ -1,6 +1,6 @@
 depth = 20
 
-ini_open($"saves/saveData{global.savefile}.ini")
+ini_open(global.savestring)
 
 treasure = ini_read_real(level_name, "treasure", false)
 

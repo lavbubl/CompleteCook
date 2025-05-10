@@ -47,7 +47,7 @@ with instance_place(x, y, obj_player)
 			}
 		}
 		
-		ini_open($"saves/saveData{global.savefile}.ini")
+		ini_open(global.savestring)
 		
 		var lvl_name = global.level_data.level_name
 		var lvl_toppins = global.level_data.toppins

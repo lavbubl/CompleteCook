@@ -1,3 +1,6 @@
+if menu_dark
+	exit;
+
 var do_switch = false
 if cur_anim_num != cur_selected
 	do_switch = true

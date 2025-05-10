@@ -10,7 +10,7 @@ function player_backtohub()
             if y >= ystart
             {
                 scr_sound(sfx_groundpound)
-                //create_particle(x, y, (12 << 0)) land effect
+                create_effect(x, y, spr_landeffect)
                 y = ystart
                 sprite_index = spr_player_rockethitwall
                 vsp = -14

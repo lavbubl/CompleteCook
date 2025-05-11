@@ -15,7 +15,7 @@ function player_climbwall()
 	
 	sprite_index = wallspeed > 4 ? spr_player_climbwall : spr_player_clingwall
 	image_speed = 0.5
-	if (!place_meeting(x + xscale, y, obj_solid))
+	if !scr_hitwall(x + xscale, y)
 	{
 		vsp = 0
 		if (wallspeed < 6)

@@ -86,7 +86,7 @@ function player_mach2()
 		}
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
-	if ((!grounded || scr_slope(x, y + 1)) && place_meeting(x + xscale, y, obj_solid))
+	if ((!grounded || scr_slope(x, y + 1)) && scr_hitwall(x + xscale, y))
 	{
 		wallspeed = movespeed
 		if (movespeed < 1)
@@ -95,7 +95,7 @@ function player_mach2()
 			movespeed = wallspeed
 		state = states.climbwall
 	}
-	else if (grounded && place_meeting(x + xscale, y, obj_solid))
+	else if (grounded && scr_hitwall(x + xscale, y))
 	{
 		state = states.bump
 		reset_anim(spr_player_wallsplat)

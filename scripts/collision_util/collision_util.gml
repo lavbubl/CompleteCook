@@ -1,6 +1,5 @@
 function collide()
 {
-	grounded = false
 	
 	var hsp_plat = 0
 	var vsp_plat = 0
@@ -71,7 +70,8 @@ function collide()
 			i += o_inc
 			continue;
 		}
-		else if (place_meeting(x + sign(hsp_final), y, obj_solid) || scr_slope(x + sign(hsp_final), y - (h - 1)))
+		else if place_meeting(x + sign(hsp_final), y, obj_solid) || 
+				(scr_solid(x + sign(hsp_final), y + 1) && scr_solid(x + sign(hsp_final), y - h)) 
 		{
 			hsp = 0
 			break;
@@ -88,7 +88,12 @@ function collide()
 				while scr_solid(x, y)
 					y--;
 			}
-			if (scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1))
+			else if !scr_solid(x, y + h)
+			{
+				while scr_solid(x, y - 1)
+					y++;
+			}
+			if scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1)
 			{
 				while !scr_solid(x, y + 1)
 					y++
@@ -100,7 +105,7 @@ function collide()
 	if (vsp < 20)
 		vsp += grav
 	
-	grounded |= scr_solid(x, y + 1)
+	grounded = scr_solid(x, y + 1)
 }
 
 function init_collide()
@@ -124,9 +129,9 @@ function scr_solid(_x, _y)
 		if (master.state == states.ladder)
 			climbingladder = true
 	}
-	for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
+	for (var i = 0; i < instance_number(par_collision); i++) 
 	{
-		var _id = ds_list_find_value(global.col_obj_list, i)
+		var _id = instance_find(par_collision, i)
 		with (instance_place(_x, _y, _id))
 		{
 			switch (object_index)
@@ -173,20 +178,31 @@ function scr_solid(_x, _y)
 function collide_slope(master, _x, _y)
 {
 	var side = 0
-	var height = master.bbox_bottom - master.y
+	var height = 0
 	var slope_y = 0
 	var slope = (bbox_bottom - bbox_top) / (bbox_right - bbox_left)
-	if (image_xscale > 0)
+	
+	if image_xscale >= 0
 	{
-		side = _x + (master.bbox_right - master.x)
+		side = _x + master.bbox_right - master.x
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
 	}
 	else
 	{
-		side = _x + (master.bbox_left - master.x)
+		side = _x + master.bbox_left - master.x
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
-	return _y + height > slope_y;
+	
+	if image_yscale >= 0
+	{
+		height = master.bbox_bottom - master.y
+		return _y + height > slope_y;
+	}
+	else
+	{
+		height = master.y - master.bbox_top
+		return _y - height < bbox_top + (bbox_bottom - slope_y);
+	}
 }
 
 function collide_slopeplatform(master, _x, _y)
@@ -197,7 +213,8 @@ function collide_slopeplatform(master, _x, _y)
 	var slope = (bbox_bottom - bbox_top) / (bbox_right - bbox_left)
 	var check_1 = false
 	var check_2 = false
-	if (image_xscale > 0)
+	
+	if (image_xscale >= 0)
 	{
 		side = _x + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
@@ -208,9 +225,11 @@ function collide_slopeplatform(master, _x, _y)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	
-	check_1 = _y + height > max(slope_y, bbox_top)
+	var clamped_y = clamp(_y + height, bbox_top, bbox_bottom)
 	
-	if (image_xscale > 0)
+	check_1 = clamped_y > clamp(slope_y, bbox_top, bbox_bottom)
+	
+	if (image_xscale >= 0)
 	{
 		side = master.old_x2 + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
@@ -221,7 +240,12 @@ function collide_slopeplatform(master, _x, _y)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	
-	check_2 = master.old_y2 + height <= max(slope_y, bbox_top) + 1
+	if master.grounded
+		clamped_y = clamp(master.old_y2 + height, bbox_top, bbox_bottom)
+	else
+		clamped_y = master.old_y2 + height
+	
+	check_2 = clamped_y <= clamp(slope_y, bbox_top, bbox_bottom) + 1
 	
 	return check_1 && check_2
 }
@@ -267,4 +291,24 @@ function do_slope_momentum(spd_up = 20)
 	}
 	if (go_down)
 		movespeed = approach(movespeed, spd_up, 0.1)
+}
+
+function behind_slope(_x, _y)
+{
+	var master = id
+	
+	for (var i = 0; i < instance_number(par_collision); i++) 
+	{
+		var _id = instance_find(par_collision, i)
+		with (instance_place(_x, _y, _id))
+		{
+			if object_index == obj_slope
+			{
+				if image_xscale >= 0 
+					return master.bbox_left >= bbox_right;
+				else
+					return master.bbox_right <= bbox_left;
+			}
+		}
+	}
 }

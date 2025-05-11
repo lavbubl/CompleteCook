@@ -37,7 +37,7 @@ function player_slide()
 		case spr_player_machslidestart:
 			if anim_ended()
 				image_speed = 0;
-			if (place_meeting(x + xscale, y, obj_solid))
+			if scr_hitwall(x + xscale, y)
 			{
 				reset_anim(spr_player_wallsplat)
 				scr_sound_3d(sfx_splat, x, y)

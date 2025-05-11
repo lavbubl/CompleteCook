@@ -20,7 +20,7 @@ function player_superjump()
 	if ((key_up.down || !grounded) && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
 	{
 		var absMove = abs(p_move);
-		movespeed = (!scr_solid(x + xscale, y) || place_meeting(x + xscale, y, obj_slope)) ? absMove * 2 : 0;
+		movespeed = !place_meeting(x + xscale, y, obj_solid) ? absMove * 2 : 0;
 
 		if absMove
 		{
@@ -44,7 +44,7 @@ function player_superjump()
 			depth = -150
 	}
 	
-	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !key_up.down && grounded)
+	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !key_up.down && grounded && !scr_solid(x, y - 1))
 	{
 		vsp = -12
 		sprite_index = spr_player_superjump
@@ -70,7 +70,7 @@ function player_superjump()
 		}
 		movespeed = 0
 		
-		if (place_meeting(x, y - 1, obj_solid))
+		if (scr_solid(x, y - 1))
 		{
 			shake_camera()
 			reset_anim(spr_player_ceilinghit)

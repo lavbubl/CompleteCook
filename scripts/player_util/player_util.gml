@@ -252,7 +252,7 @@ function do_hurt(obj = noone)
 				}
 			}
 		}
-	
+		
 		with obj_tv
 			tv_expression(spr_tv_hurt)
 	}
@@ -261,4 +261,9 @@ function do_hurt(obj = noone)
 		if instance_exists(obj_bossstate)
 			obj_bossstate.player.hp--
 	}
+}
+
+function scr_hitwall(_x, _y)
+{
+	return place_meeting(_x, _y, obj_solid) || behind_slope(_x, _y)
 }

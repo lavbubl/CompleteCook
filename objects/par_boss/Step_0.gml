@@ -35,6 +35,7 @@ if (place_meeting(x, y, obj_player))
 		scr_sound_3d(sfx_punch, x, y)
 		
 		obj_player.hitstun = 5
+		obj_player.prev_ix = obj_player.image_index
 		obj_bossstate.opponent.hp--
 		vulnerable = false
 		state = states.hit

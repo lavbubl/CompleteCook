@@ -72,7 +72,7 @@ function player_groundpound()
 	//if (grounded && vsp > 0 && (freefallsmash < 10 || !place_meeting(x, y + vsp, obj_metalblock)) && !place_meeting(x, y + 1, obj_destructibles) && !place_meeting(x, y + vsp, obj_destructibles) && !place_meeting(x, y + vsp + 6, obj_destructibles))
 	if (grounded && vsp >= 0)
 	{
-		if (scr_slope(x, y + 1))
+		if scr_slope(x, y + 1)
 		{
 			var slopeinst = -4
 			with (instance_place(x, y + 1, obj_slope))

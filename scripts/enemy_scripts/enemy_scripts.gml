@@ -141,6 +141,7 @@ function do_enemy_generics()
 			scr_sound_3d(sfx_punch, x, y)
 		
 			obj_player.hitstun = 5
+			obj_player.prev_ix = obj_player.image_index
 			alarm[0] = 5
 		}
 		if ((obj_player.state == states.mach2 || obj_player.state == states.tumble) && stun_timer < 160)

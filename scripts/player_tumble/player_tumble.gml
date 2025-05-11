@@ -49,7 +49,7 @@ function player_tumble()
 	if (sprite_index == spr_player_machroll && !grounded)
 		sprite_index = spr_player_mach2jump
 		
-	if (state != states.groundpound && place_meeting(x + xscale, y, obj_solid))
+	if (state != states.groundpound && scr_hitwall(x + xscale, y))
 	{
 		hsp = 0
 		movespeed = 0

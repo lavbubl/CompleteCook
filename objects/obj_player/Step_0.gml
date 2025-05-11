@@ -32,6 +32,7 @@ if warping
 if hitstun > 0
 {
 	hitstun--
+	image_index = prev_ix
 	exit;
 }
 
@@ -139,7 +140,8 @@ if (idletimer > 0 && state == states.normal)
 if (i_frames > 0 && state != states.hurt)
 	i_frames--
 
-if (state == states.tumble || state == states.crouch)
+var sjumpprep = (state == states.superjump && sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancelstart)
+if (state == states.tumble || state == states.crouch || sjumpprep)
 	mask_index = mask_player_small
 else
 	mask_index = mask_player

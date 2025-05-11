@@ -86,6 +86,7 @@ if follow_player
 			jumpstop = false
 			state = states.jump
 			hitstun = 5
+			prev_ix = image_index
 			reset_anim(spr_player_piledriverjump)
 		}
 		

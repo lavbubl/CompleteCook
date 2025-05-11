@@ -23,7 +23,7 @@ function player_jump()
 	{
 		fallingtimer = min(fallingtimer + 1, 100)
 		if fallingtimer >= 50
-			sprite_index = fallingtimer < 100 ? spr_player_fallface : spr_player_fallfar
+			sprite_index = fallingtimer < 100 ? spr_player_fallface : spr_player_freefall
 	}
 	else
 		fallingtimer = 0
@@ -45,7 +45,7 @@ function player_jump()
 		}
 		else
 		{
-			reset_anim(sprite_index == spr_player_fallface ? spr_player_bodyslamland : spr_player_fallfarland)
+			reset_anim(sprite_index == spr_player_fallface ? spr_player_bodyslamland : spr_player_freefallland)
 			image_index = 0
 			state = states.bump
 			shake_camera()

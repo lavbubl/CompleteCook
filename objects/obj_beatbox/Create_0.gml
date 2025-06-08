@@ -1,5 +1,5 @@
 particle_create(x, y, particles.genericpoof)
-init_collide()
+collide_init()
 vsp = -11
 
 scr_sound_3d(sfx_breakdance, x, y)

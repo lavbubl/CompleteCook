@@ -9,7 +9,7 @@ if surface_exists(bg_surf)
 	}
 }
 
-if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_up.down && obj_player.grounded)
+if (place_meeting(x, y, obj_player) && scr_can_enter_door(other.state) && key_up.down && obj_player.grounded)
 {
 	with obj_player
 	{
@@ -56,4 +56,6 @@ if flick
 		t_room = other.t_room
 		t_door = other.t_door
 	}
+	
+	global.level_data.level_name = self.level_name
 }

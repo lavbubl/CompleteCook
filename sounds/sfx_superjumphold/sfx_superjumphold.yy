@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.838367,
+  "duration":1.83839,
   "name":"sfx_superjumphold",
   "parent":{
     "name":"Sounds",

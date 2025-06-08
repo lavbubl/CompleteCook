@@ -1,4 +1,4 @@
-init_collide()
+collide_init()
 
 xscale = 1
 yscale = 1

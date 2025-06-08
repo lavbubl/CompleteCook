@@ -21,15 +21,18 @@ switch (state)
 			state = tv_states.normal
 		break;
 	case tv_states.normal:
-		if (sprite_index != spr_tv_idleangry && sprite_index != spr_tv_idlelook)
-			sprite_index = spr_tv_idle
-		
-		if global.panic.active
+		if p.has_shotgun
+			sprite_index = spr_tv_shotgun
+		else if global.panic.active
 			sprite_index = spr_tv_panic
 		else if global.combo.count >= 50
 			sprite_index = spr_tv_highcombo
 		else if global.combo.count >= 3
 			sprite_index = spr_tv_combo
+		else if sprite_index != spr_tv_idleangry && sprite_index != spr_tv_idlelook
+			sprite_index = spr_tv_idle
+		
+		tv_do_transfos(p.state)
 		
 		if idletimer > 0
 			idletimer--
@@ -38,8 +41,8 @@ switch (state)
 			idletimer = 240
 			reset_anim(choose(spr_tv_idleangry, spr_tv_idlelook))
 		}
-			
-		if (anim_ended() && (sprite_index == spr_tv_idleangry || sprite_index == spr_tv_idlelook))
+		
+		if anim_ended() && (sprite_index == spr_tv_idleangry || sprite_index == spr_tv_idlelook)
 			sprite_index = spr_tv_idle
 		
 		if p.state == states.mach3
@@ -126,8 +129,7 @@ switch (combo.state)
 combo.x = wave(-10, 10, 2, 20)
 combo.ghost.x = lerp(combo.ghost.x, combo.x - 75 + ((global.combo.timer / 60) * 150), 0.5)
 combo.ghost.y = combo.y
-combo.ghost.image_index += 0.35
-combo.ghost.image_index = wrap(sprite_get_number(spr_tv_c_ghost), combo.ghost.image_index)
+combo.ghost.image_index = wrap(sprite_get_number(spr_tv_c_ghost), combo.ghost.image_index + 0.35)
 
 if global.combo.timer <= 0
 	combo.state = -1

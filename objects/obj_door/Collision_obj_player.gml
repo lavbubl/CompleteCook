@@ -1,8 +1,8 @@
 get_input()
 
-if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && key_up.down && other.state != states.actor)
+if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && key_up.down && scr_can_enter_door(other.state))
 {
-	with (other)
+	with other
 	{
 		reset_anim(spr_player_lookdoor)
 		state = states.actor
@@ -15,5 +15,5 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	do_fade(t_room, t_door, fade_types.door)
 }
 
-if (other.sprite_index = spr_player_lookdoor)
-	other.x = approach(other.x, x + sprite_width / 2, 2)
+//if (other.sprite_index = spr_player_lookdoor)
+//	other.x = approach(other.x, x + sprite_width / 2, 2)

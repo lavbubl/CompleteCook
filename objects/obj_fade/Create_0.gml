@@ -3,5 +3,5 @@ pos = {
 	x: obj_player.x,
 	y: obj_player.y
 }
-target_room = level_1
+target_room = test_1
 depth = 0

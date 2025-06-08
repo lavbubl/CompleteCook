@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":2.160417,
+  "duration":2.160431,
   "name":"sfx_tvswitch",
   "parent":{
     "name":"Sounds",

@@ -17,6 +17,5 @@ application_surface_draw_enable(false)
 window_enable_borderless_fullscreen(true)
 
 gameframe_init()
-gameframe_alpha_timer = 0
 
 display_set_gui_size(960, 540)

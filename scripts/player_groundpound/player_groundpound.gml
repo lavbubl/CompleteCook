@@ -23,6 +23,8 @@ function player_groundpound()
 	}
 	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
 		sprite_index = spr_player_bodyslamfall
+	else if (anim_ended() && sprite_index == spr_player_shotgun_shootdown)
+		image_index = image_number - 3
 	/*
 	if (floor(image_index) == image_number - 1 && sprite_index == spr_shotgunjump1)
 		sprite_index = spr_shotgunjump3*/
@@ -81,27 +83,29 @@ function player_groundpound()
 			with (instance_place(x, y + 1, obj_slopeplatform))
 				slopeinst = id
 			
-			with slopeinst 
-			{
-				other.xscale = -sign(image_xscale)
-				other.state = states.tumble
-				other.sprite_index = spr_player_crouchslip
-				if other.freefallsmash > 20
-					other.movespeed = 12
-				else
-					other.movespeed = 8
-			}
+			xscale = -sign(slopeinst.image_xscale)
+			
+			state = states.tumble
+			sprite_index = spr_player_crouchslip
+			if freefallsmash > 20
+				movespeed = 12
+			else
+				movespeed = 8
 			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
 		else
 		{
-			reset_anim(sprite_index == spr_player_poundcancel1 ? spr_player_poundcancel2 : spr_player_bodyslamland)
-			/*else if shotgunAnim == 0
-				sprite_index = spr_bodyslamland
-			else
-				sprite_index = spr_shotgunjump2*/
+			var landanim = spr_player_bodyslamland
+			if sprite_index == spr_player_poundcancel1
+				landanim = spr_player_poundcancel2
+			else if has_shotgun
+				landanim = spr_player_shotgun_shootdownland
+			reset_anim(landanim)
 			image_index = 0
 			state = states.bump
+			hsp = 0
+			movespeed = 0
+			didgroundpound = true
 			shake_camera()
 			scr_sound_3d(sfx_groundpound, x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)

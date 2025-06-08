@@ -25,5 +25,9 @@ function player_actor()
 		case spr_player_uppizzabox:
 			vsp = 0
 			break;
+		case spr_player_shotgun_pickup: //generic animation end
+			if anim_ended()
+				state = states.normal
+			break;
 	}
 }

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_shotgunshot",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":2.121338,
+  "name":"sfx_shotgunshot",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"sfx_shotgunshot.ogg",
+  "type":1,
+  "volume":1.0,
+}

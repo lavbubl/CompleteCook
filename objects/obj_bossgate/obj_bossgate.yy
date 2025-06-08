@@ -6,6 +6,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_bossgate",
@@ -41,10 +42,10 @@
     {"$GMObjectProperty":"v1","%Name":"scroll_spd","filters":[],"listItems":[],"multiselect":false,"name":"scroll_spd","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"boss_portrait","filters":[
         "GMSprite",
-      ],"listItems":[],"multiselect":false,"name":"boss_portrait","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"boss_portrait","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_bossportrait_pepperman","path":"sprites/spr_bossportrait_pepperman/spr_bossportrait_pepperman.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_bossportrait_pepperman","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"boss_title","filters":[
         "GMSprite",
-      ],"listItems":[],"multiselect":false,"name":"boss_title","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"boss_title","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_bosstitle_pepperman","path":"sprites/spr_bosstitle_pepperman/spr_bosstitle_pepperman.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_bosstitle_pepperman","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

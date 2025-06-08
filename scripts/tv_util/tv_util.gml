@@ -19,3 +19,21 @@ function tv_expression(spr)
 	state = tv_states.transition
 	t_index = 0
 }
+
+function tv_do_transfos(_state)
+{
+	var _tv_spr = spr_tv_idle
+	switch _state
+	{
+		default:
+			return;
+			break;
+		case states.fireass:
+			_tv_spr = spr_tv_fireass
+			break;
+		case states.ball:
+			_tv_spr = spr_tv_ball
+			break;
+	}
+	sprite_index = _tv_spr
+}

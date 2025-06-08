@@ -1,4 +1,4 @@
-collide()
+collide_simple()
 
 if (place_meeting(x, y, obj_player) && available)
 {

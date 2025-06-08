@@ -11,8 +11,8 @@
   "name":"obj_secretportal_exit",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc",
-    "path":"folders/Objects/Level Structure/Misc.yy",
+    "name":"Warps",
+    "path":"folders/Objects/Level Structure/Warps.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -113,7 +113,9 @@ function particle_contains_sprite(sprite)
 
 function create_debris(_x, _y, sprite)
 {
-	return particle_create(_x, _y, particles.gib, 1, 1, sprite);
+	var p = particle_create(_x, _y, particles.gib, 1, 1, sprite)
+	p.image_index = irandom_range(0, sprite_get_number(sprite) - 1)
+	return p;
 }
 
 function create_effect(_x, _y, sprite)

@@ -35,7 +35,7 @@ switch (state)
 						break;
 					}
 				}
-			}//can be made redundant and removed as obj_exitgate calculates the rank
+			} //can be made redundant and removed as obj_exitgate calculates the rank
 			scr_sound(rank_data[rank_ix].song)
 		}
 		break;

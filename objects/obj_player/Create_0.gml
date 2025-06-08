@@ -1,4 +1,4 @@
-init_collide()
+collide_init()
 
 spawn = "a"
 door_type = fade_types.none
@@ -32,6 +32,7 @@ freefallsmash = 0
 crouchslipbuffer = 0
 grabclimbbuffer = 0
 ladderbuffer = 0
+has_shotgun = false
 
 prev = {
 	state: self.state,
@@ -62,7 +63,7 @@ loop_sounds = {
 		if obj_player.sprite_index != spr_player_crazyrun
 			return true;}
 	},
-	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: noone},
+	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: noone, true},
 	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, is_3d: true, sndid: noone},
 	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: noone, is_3d: true, func: function() {
 		if (obj_player.sprite_index == spr_player_piledriverland)
@@ -71,6 +72,10 @@ loop_sounds = {
 	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: noone, is_3d: true, func: function() {
 		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart)
 			return true;}, looppoints: [0.64, 1.84]
+	},
+	ball: {state: states.ball, sound: sfx_ballroll, sndid: noone, is_3d: true, func: function() {
+		if obj_player.sprite_index == spr_player_ballend
+			return true;}
 	}
 }
 
@@ -86,6 +91,7 @@ flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
+didgroundpound = false
 depth = -100
 
 pal_select = 1

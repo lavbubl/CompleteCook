@@ -2,6 +2,14 @@ function player_normal()
 {
 	var default_idle = spr_player_idle
 	var default_move = spr_player_move
+	var default_jump = spr_player_jump
+	
+	if has_shotgun
+	{
+		default_idle = spr_player_shotgun_idle
+		default_move = spr_player_shotgun_move
+		default_jump = spr_player_shotgun_jump
+	}
 	if global.panic.active
 	{
 		default_idle = spr_player_panic
@@ -10,18 +18,23 @@ function player_normal()
 		{
 			default_idle = spr_player_hurtidle
 			default_move = spr_player_hurtmove
+			default_jump = spr_player_hurtjump
 		}
 	}
-	
-	if (p_move != 0 && !place_meeting(x + p_move, y, obj_solid))
+	if p_move != 0
 	{
-		movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
-		if (floor(movespeed) == 8)
-			movespeed = 6
 		xscale = p_move
+		if !place_meeting(x + p_move, y, obj_solid)
+		{
+			movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
+			if (floor(movespeed) == 8)
+				movespeed = 6
+		}
+		else
+			movespeed = 0
 		if particle_timer > 0
 			particle_timer--
-		else
+		else if sprite_index != spr_player_breakdance
 		{
 			particle_timer = 12
 			scr_sound_3d_pitched(sfx_step, x, y)
@@ -49,24 +62,27 @@ function player_normal()
 	{
 		if p_move != 0
 		{
-			if (sprite_index != spr_player_landmove)
+			if (sprite_index != spr_player_landmove && sprite_index != spr_player_shotgun_land)
 				sprite_index = default_move
 		}
 		else
 		{
-			if (idletimer <= 0 && idletimer != -4)
+			if !has_shotgun
 			{
-				reset_anim(idlegestures[irandom(5)])
-				idletimer = -4
+				if (idletimer <= 0 && idletimer != -4)
+				{
+					reset_anim(idlegestures[irandom(5)])
+					idletimer = -4
+				}
+			
+				if (anim_ended() && idletimer == -4)
+				{
+					reset_anim(default_idle)
+					idletimer = 180
+				}
 			}
 			
-			if (anim_ended() && idletimer == -4)
-			{
-				reset_anim(default_idle)
-				idletimer = 180
-			}
-			
-			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt && idletimer > 0)
+			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt && sprite_index != spr_player_shotgun_land && idletimer > 0)
 				sprite_index = default_idle
 		}
 	}
@@ -97,16 +113,16 @@ function player_normal()
 		breakdance_secret.spd = 0.25
 	}
 	
-	if (key_down.down || scr_solid(x, y - 1))
+	if (key_down.down || !scr_can_uncrouch())
 	{
-		reset_anim(spr_player_crouchdown)
+		reset_anim(!has_shotgun ? spr_player_crouchdown : spr_player_shotgun_crouchstart)
 		state = states.crouch
 	}
 	
 	if !grounded
 	{
 		state = states.jump
-		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_hurtjump : spr_player_fall)
+		reset_anim(default_jump)
 	}
 	
 	if (coyote_time && input_buffers.jump > 0)
@@ -114,13 +130,13 @@ function player_normal()
 		input_buffers.jump = 0
 		vsp = -11
 		state = states.jump
-		reset_anim(global.panic.active && global.panic.timer <= 0 ? spr_player_hurtjump : spr_player_jump)
+		reset_anim(default_jump)
 		jumpstop = false
 		create_effect(x, y - 5, spr_highjumpcloud2)
 		scr_sound_3d(sfx_jump, x, y)
 	}
 	
-	do_grab() //intentional game design
+	do_grab() //note: intentional game design
 	
 	if (key_dash.down && !place_meeting(x + xscale, y, obj_solid))
 	{
@@ -138,18 +154,17 @@ function player_normal()
 			break;
 		case spr_player_machslideend:
 		case spr_player_land:
-			reset_anim_on_end(spr_player_idle)
+		case spr_player_shotgun_land:
+			reset_anim_on_end(default_idle)
 			break;
 		case spr_player_landmove:
 			image_speed = clamp(movespeed / 15, 0.35, 0.6);
-			reset_anim_on_end(spr_player_move);
+			reset_anim_on_end(default_move);
 			break;
 		case spr_player_facehurt:
-			reset_anim_on_end(spr_player_idle)
+			reset_anim_on_end(default_idle)
 			break;
 	}
-	
-	
 	
 	do_taunt()
 }

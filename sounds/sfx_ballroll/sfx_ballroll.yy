@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_ballroll",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":2.4133108,
+  "name":"sfx_ballroll",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"sfx_ballroll.wav",
+  "type":1,
+  "volume":1.0,
+}

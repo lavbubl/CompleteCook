@@ -5,13 +5,24 @@ function anim_ended()
 
 function do_groundpound()
 {
-	if (key_down.pressed)
+	if key_down.pressed
 	{
 		dir = p_move
 		state = states.groundpound
-		sprite_index = spr_player_bodyslamstart
-		image_index = 0
-		vsp = -6
+		if !has_shotgun
+		{
+			reset_anim(spr_player_bodyslamstart)
+			vsp = -6
+		}
+		else
+		{
+			scr_sound_3d(sfx_killingblow, x, y)
+			scr_sound_3d(sfx_shotgunshot, x, y)
+			reset_anim(spr_player_shotgun_shootdown)
+			vsp = -11
+			with instance_create(x, y, obj_shotgunblast)
+                sprite_index = spr_shotgunblast_down
+		}
 	}
 }
 
@@ -20,7 +31,20 @@ function do_grab()
 	if input_buffers.grab > 0
 	{
 		input_buffers.grab = 0
-		if (!key_up.down)
+		if has_shotgun
+		{
+			scr_sound_3d(sfx_killenemy, x, y)
+			scr_sound_3d(sfx_shotgunshot, x, y)
+			with create_effect(x, y, spr_guneffect)
+			    image_xscale = other.xscale
+			state = states.shotgunshoot
+			if grounded
+			    movespeed = 0
+			reset_anim(spr_player_shotgun_shoot)
+			with instance_create(x + xscale * 46, (y + 6), obj_shotgunblast)
+				image_xscale = other.xscale
+		}
+		else if (!key_up.down)
 		{
 			movespeed = max(movespeed, 5)
 			if state == states.normal
@@ -258,12 +282,38 @@ function do_hurt(obj = noone)
 	}
 	else
 	{
-		if instance_exists(obj_bossstate)
-			obj_bossstate.player.hp--
+		if instance_exists(obj_bosscontroller)
+		{
+			with obj_bosscontroller.player
+			{
+				with instance_create(hphudpos.x, hphudpos.y, obj_hudhpdebris)
+				{
+					pattern_init()
+					image_index = other.hpix
+					dopalette = true
+				}
+				hp--
+			}
+		}
 	}
 }
 
 function scr_hitwall(_x, _y)
 {
 	return place_meeting(_x, _y, obj_solid) || behind_slope(_x, _y)
+}
+
+function scr_can_enter_door(_state)
+{
+	return _state != states.taunt && 
+		   _state != states.tumble && 
+		   _state != states.ball && 
+		   _state != states.fireass && 
+		   _state != states.actor && 
+		   _state != states.bump;
+}
+
+function scr_can_uncrouch()
+{
+	return !scr_solid(x, y - 16);
 }

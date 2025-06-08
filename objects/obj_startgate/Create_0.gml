@@ -49,11 +49,9 @@ ini_open(global.savestring)
 if ini_section_exists(level_name)
 {
 	save_exists = true
-	save_data = {
-		score_num: ini_read_real(level_name, "score", 0),
-		secret_count: ini_read_real(level_name, "secret_count", 0),
-		rank: ini_read_real(level_name, "rank", 0)
-	}
+	score_num = ini_read_real(level_name, "score", 0)
+	secret_count = ini_read_real(level_name, "secret_count", 0)
+	rank = ini_read_real(level_name, "rank", 0)
 	
 	var toppin_arr = [
 		{t_name: "shroom", idle: spr_shroomtoppin_idle, move: spr_shroomtoppin_move, taunt: spr_shroomtoppin_taunt},

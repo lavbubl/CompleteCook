@@ -1,2 +1,2 @@
-init_collide()
+collide_init()
 available = true

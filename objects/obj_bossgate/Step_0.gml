@@ -1,6 +1,6 @@
 get_input()
 
-if (place_meeting(x, y, obj_player) && obj_player.state != states.actor && key_up.down && obj_player.grounded)
+if (place_meeting(x, y, obj_player) && scr_can_enter_door(other.state) && key_up.down && obj_player.grounded)
 {
 	with obj_player
 	{
@@ -33,5 +33,17 @@ with instance_place(x, y, obj_player)
 
 if flick
 {
-	do_fade(t_room, t_door, fade_types.generic)
+	if global.level_data.boss_name != boss_name
+	{
+		with instance_create(x, y, obj_vsscreen)
+		{
+			boss.sprite_index = other.boss_portrait
+			boss.title_sprite = other.boss_title
+			t_room = other.t_room
+			t_door = other.t_door
+		}
+		global.level_data.boss_name = boss_name
+	}
+	else
+		do_fade(t_room, t_door, fade_types.generic)
 }

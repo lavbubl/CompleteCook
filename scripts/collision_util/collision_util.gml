@@ -1,6 +1,5 @@
 function collide()
 {
-	
 	var hsp_plat = 0
 	var vsp_plat = 0
 	var o_inc = 8 //optimization increment
@@ -108,7 +107,7 @@ function collide()
 	grounded = scr_solid(x, y + 1)
 }
 
-function init_collide()
+function collide_init()
 {
 	hsp = 0
 	vsp = 0
@@ -140,7 +139,9 @@ function scr_solid(_x, _y)
 					collided = true
 					continue;
 				case obj_platform:
-					if (master.bbox_bottom <= bbox_top + 1 && (master.y - master.old_y2) >= 0 && !climbingladder)
+					if image_yscale >= 0 && master.bbox_bottom <= bbox_top + 1 && (master.y - master.old_y2) >= 0 && !climbingladder
+						collided = true
+					else if image_yscale < 0 && master.bbox_top >= bbox_bottom - 1 && (master.y - master.old_y2) >= 0 && !climbingladder
 						collided = true
 					continue;
 				case obj_slope:
@@ -159,14 +160,14 @@ function scr_solid(_x, _y)
 				switch (object_get_parent(object_index))
 				{
 					case obj_solid:
+					case obj_destroyable:
+					case obj_ratblock:
+					case obj_rattumbleblock:
 						collided = true
 						continue;
 					case obj_slope:
 						if (collide_slope(master, _x, _y))
 							collided = true
-						continue;
-					case obj_destroyable:
-						collided = true
 						continue;
 				}
 			}
@@ -257,7 +258,7 @@ function scr_slope(_x, _y)
 	for (var i = 0; i < ds_list_size(s_list); i++) {
 	    with (ds_list_find_value(s_list, i))
 		{
-			if (collide_slope(other, _x, _y))
+			if collide_slope(other, _x, _y)
 				return true;
 		}
 	}
@@ -266,7 +267,7 @@ function scr_slope(_x, _y)
 	for (var i = 0; i < ds_list_size(s_list); i++) {
 	    with (ds_list_find_value(s_list, i))
 		{
-			if (collide_slopeplatform(other, _x, _y))
+			if collide_slopeplatform(other, _x, _y)
 				return true;
 		}
 	}
@@ -275,22 +276,23 @@ function scr_slope(_x, _y)
 	return false;
 }
 
-function do_slope_momentum(spd_up = 20)
+function do_slope_momentum(spd_up = 20) //note: touch this code up
 {
 	var go_down = false
+	
 	with (instance_place(x, y + 1, obj_slope))
 	{
 		if (collide_slope(other, other.x, other.y + 1) && other.xscale != sign(image_xscale))
 			go_down = true
 	}
 	
-	with (instance_place(x, y, obj_slopeplatform))
+	with (instance_place(x, y + 1, obj_slopeplatform))
 	{
 		if (collide_slopeplatform(other, other.x, other.y + 1) && other.xscale != sign(image_xscale))
 			go_down = true
 	}
 	if (go_down)
-		movespeed = approach(movespeed, spd_up, 0.1)
+		movespeed = approach(movespeed, spd_up, 0.1) 
 }
 
 function behind_slope(_x, _y)
@@ -311,4 +313,77 @@ function behind_slope(_x, _y)
 			}
 		}
 	}
+}
+
+function collide_simple() //no grounded, no optimization, no 
+{
+	var hsp_plat = 0
+	var vsp_plat = 0
+	
+	old_x2 = x
+	old_y2 = y
+	
+	/*
+	var bh = bbox_bottom - y
+	with (instance_place(x, y + 1 + other.vsp, obj_movingplatform))
+	{
+		if (other.bbox_bottom - other.vsp <= bbox_top)
+		{
+			hsp_plat = hsp
+			vsp_plat = vsp
+			other.vsp = 0
+			other.grounded = true
+			other.y = bbox_top - bh
+		}
+	} ill get back to these another day*/
+	
+	var hsp_final = hsp + hsp_plat
+	var vsp_final = vsp + vsp_plat
+	
+	repeat round(abs(vsp_final))
+	{
+		if scr_solid(x, y + sign(vsp_final))
+		{
+			vsp = 0
+			break
+		}
+		else
+			y += sign(vsp_final)
+	}
+	
+	var h = 4
+	
+	repeat round(abs(hsp_final))
+	{
+		if place_meeting(x + sign(hsp_final), y, obj_solid)
+		{
+			hsp = 0
+			break;
+		}
+		else
+		{
+			x += sign(hsp_final)
+			
+			if !scr_solid(x, y - h)
+			{
+				while scr_solid(x, y)
+					y--;
+			}
+			else if !scr_solid(x, y + h)
+			{
+				while scr_solid(x, y - 1)
+					y++;
+			}
+			if scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1)
+			{
+				while !scr_solid(x, y + 1)
+					y++
+			}
+		}
+	}
+	
+	if (vsp < 20)
+		vsp += grav
+	
+	grounded = scr_solid(x, y + 1)
 }

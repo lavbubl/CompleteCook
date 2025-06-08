@@ -29,7 +29,7 @@ function quick_shader_set_uniform_f(shader, uniform_name, val)
 	shader_set_uniform_f(f, val)
 }
 
-function shake_camera(_mag = 5, _mag_decel = 0.25)
+function shake_camera(_mag = 5, _mag_decel = 0.15)
 {
 	obj_camera.mag = _mag
 	obj_camera.mag_decel = _mag_decel
@@ -155,7 +155,8 @@ function set_globals()
 			sausage: false,
 			pineapple: false
 		},
-		tauntcount: 0
+		tauntcount: 0,
+		boss_name: "dummy"
 	}
 	
 	global.showcollisions = true
@@ -269,6 +270,11 @@ function reset_level()
 	ds_list_clear(global.ds_escapesaveroom)
 	ds_list_clear(global.ds_saveroom)
 	obj_followerhandler.followers = []
+	with obj_player
+	{
+		has_shotgun = false
+		hasgerome = false
+	}
 	global.combo.wasted = false
 	global.doorshut = false
 	global.level_data = {
@@ -282,7 +288,8 @@ function reset_level()
 			sausage: false,
 			pineapple: false
 		},
-		tauntcount: 0
+		tauntcount: 0,
+		boss_name: "dummy"
 	}
 }
 

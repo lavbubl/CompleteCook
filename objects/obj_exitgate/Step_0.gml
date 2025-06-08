@@ -8,7 +8,7 @@ with instance_place(x, y, obj_player)
 		scr_sound_3d(sfx_groundpound, x, y)
 		global.doorshut = true
 	}
-	else if (global.panic.active && key_up.down && grounded && state != states.taunt)
+	else if (global.panic.active && key_up.down && grounded && scr_can_enter_door(state))
 	{
 		global.panic.active = false
 		state = states.actor
@@ -21,6 +21,9 @@ with instance_place(x, y, obj_player)
 		with instance_create(0, 0, obj_rank)
 		{
 			rank_score = s
+			results[0][1] = s
+			results[1][1] = "DUMMY"
+			results[2][1] = "DUMMY"
 			results[3][1] = global.combo.record
 		}
 		

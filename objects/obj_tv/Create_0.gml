@@ -18,6 +18,7 @@ expr_sprite = spr_tv_mach3
 state_togo = tv_states.expr
 state = tv_states.off
 idletimer = 240
+t_index = 0
 
 combo = {
 	state: 0,

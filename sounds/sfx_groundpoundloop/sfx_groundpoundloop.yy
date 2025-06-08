@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":9.982896,
+  "duration":9.982903,
   "name":"sfx_groundpoundloop",
   "parent":{
     "name":"Sounds",

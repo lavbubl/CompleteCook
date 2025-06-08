@@ -26,11 +26,18 @@ enum states
 	backtohub,
 	noclip,
 	defeat,
+	punchstun,
+	fireass,
+	shotgunshoot,
+	ball,
 	
 	//enemy states
 	hit,
 	stun,
 	grabbed,
 	scared,
-	shoot
+	shoot,
+	
+	//boss states
+	pm_attack
 }

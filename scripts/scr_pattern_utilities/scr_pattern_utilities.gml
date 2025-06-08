@@ -14,39 +14,52 @@ function pattern_set_colors(palette_sprite)
 	shader_set_uniform_f(texel_h, texture_get_texel_height(pal_tex))
 }
 
-function pattern_draw(spr, ix, _x, _y, pattern_spr, xscale = 1, yscale = 1, rot = 0, col = c_white, alpha = 1)
+function pattern_draw(_spr, _ix, _x, _y, _pattern_spr, _xscale = 1, _yscale = 1, _rot = 0, _col = c_white, _alpha = 1)
 {
-	if pattern_spr == noone
+	if _pattern_spr == noone
 		exit;
-	
-	if !surface_exists(pattern_surf)
+		
+	if !surface_exists(pattern_mask_surf)
+		pattern_mask_surf = surface_create(sprite_get_width(_spr), sprite_get_height(_spr))	
+		
+	if surface_exists(pattern_mask_surf)
 	{
-		pattern_surf = surface_create(sprite_get_width(spr), sprite_get_height(spr))
-		pattern_mask_surf = surface_create(sprite_get_width(spr), sprite_get_height(spr))	
-	}
-	
-	if surface_exists(pattern_surf)
-	{
-		surface_resize(pattern_surf, sprite_get_width(spr), sprite_get_height(spr))
-		surface_resize(pattern_mask_surf, sprite_get_width(spr), sprite_get_height(spr))
+		surface_resize(pattern_mask_surf, sprite_get_width(_spr), sprite_get_height(_spr))
 		
 		surface_set_target(pattern_mask_surf)
-		draw_clear(c_white)
-		gpu_set_blendmode(bm_subtract)
+		
 		pattern_set_colors(pal_peppatterncolors)
-		draw_sprite(spr, ix, sprite_get_xoffset(spr), sprite_get_yoffset(spr))
+		draw_sprite(_spr, _ix, sprite_get_xoffset(_spr), sprite_get_yoffset(_spr))
 		shader_reset()
-		gpu_set_blendmode_ext(bm_src_alpha, bm_dest_alpha)
 		surface_reset_target()
 		
-		surface_set_target(pattern_surf)
-		draw_sprite_tiled(pattern_spr, 0, 0, 0)
-		gpu_set_blendmode(bm_subtract)
-		draw_surface(pattern_mask_surf, 0, 0)
-		gpu_set_blendmode_normal_fixed()
-		surface_reset_target()
-		
-		draw_surface_ext(pattern_surf, _x - (sprite_get_xoffset(spr) * xscale), _y - (sprite_get_yoffset(spr) * yscale), xscale, yscale, rot, col, alpha)
+		//original variables
+		var _prev_ate = gpu_get_alphatestenable()
+		var _prev_atr = gpu_get_alphatestref()
+		var _prev_cwe = gpu_get_colorwriteenable()
+	
+		//Stencil setup
+		draw_clear_stencil(0)
+		gpu_set_stencil_enable(true)
+		gpu_set_stencil_func(cmpfunc_greaterequal)
+		gpu_set_stencil_pass(stencilop_replace)
+		gpu_set_stencil_ref(4)
+	
+		//Draw mask
+		gpu_set_colorwriteenable(false, false, false, false)
+		gpu_set_alphatestenable(true)
+		gpu_set_alphatestref(1)
+		draw_surface_ext(pattern_mask_surf, _x - (sprite_get_xoffset(_spr) * _xscale), _y - (sprite_get_yoffset(_spr) * _yscale), _xscale, _yscale, _rot, _col, _alpha)
+		gpu_set_colorwriteenable(_prev_cwe)
+		gpu_set_alphatestenable(_prev_ate)
+		gpu_set_alphatestref(_prev_atr)
+	
+		//Draw tiled pattern
+		gpu_set_stencil_pass(stencilop_keep)
+		gpu_set_stencil_func(cmpfunc_lessequal)
+		gpu_set_stencil_ref(2)
+		draw_sprite_tiled_ext(_pattern_spr, 0, _x, _y, _xscale, _yscale, _col, _alpha)
+		gpu_set_stencil_enable(false) 
 	}
 }
 

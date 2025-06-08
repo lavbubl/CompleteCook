@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.396,
+  "duration":1.3959864,
   "name":"sfx_killenemy",
   "parent":{
     "name":"Sounds",
@@ -21,5 +21,5 @@
   "sampleRate":48000,
   "soundFile":"sfx_killenemy.ogg",
   "type":1,
-  "volume":1.0,
+  "volume":0.8,
 }

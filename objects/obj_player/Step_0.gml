@@ -116,6 +116,18 @@ switch (state)
 	case states.defeat:
 		player_defeat()
 		break;
+	case states.punchstun:
+		player_punchstun()
+		break;
+	case states.fireass:
+		player_fireass()
+		break;
+	case states.shotgunshoot:
+		player_shotgunshoot()
+		break;
+	case states.ball:
+		player_ball()
+		break;
 }
 
 if (state != states.normal)
@@ -141,7 +153,7 @@ if (i_frames > 0 && state != states.hurt)
 	i_frames--
 
 var sjumpprep = (state == states.superjump && sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancelstart)
-if (state == states.tumble || state == states.crouch || sjumpprep)
+if (state == states.tumble || state == states.ball || state == states.crouch || sjumpprep)
 	mask_index = mask_player_small
 else
 	mask_index = mask_player
@@ -159,6 +171,13 @@ if ((y > room_height + 200 || y < -200) && state != states.actor && state != sta
 	vsp = 0
 	sprite_index = spr_player_idle
 }
+
+if state == states.fireass //||
+// state == states.??? just leaving this here for future
+	instance_destroy(instance_place(x + hsp, y + vsp, obj_ratblock))
+
+if state == states.ball
+	instance_destroy(instance_place(x + hsp, y + vsp, obj_rattumbleblock))
 
 if (state != states.noclip && state != states.backtohub)
 	collide()

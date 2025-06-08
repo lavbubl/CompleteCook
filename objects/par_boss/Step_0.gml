@@ -1,67 +1,44 @@
+if hitstun > 0
+{
+	hitstun--
+	exit;
+}
+
 switch state
 {
+	case states.normal:
+		boss_normal()
+		if alarm[1] == -1
+			alarm[1] = 100
+		break;
 	case states.stun:
 		boss_stun()
+		if anim_ended() && sprite_index == spr_pepperman_shoulderhurt
+			image_index = 3
 		break;
 	case states.hit:
 		boss_hit()
-}
-
-do_scared()
-
-grav = 0.5
-if (state == states.hit)
-	grav = 0
-
-if (place_meeting(x, y, obj_player))
-{
-	if ((obj_player.instakill || obj_player.state == states.grab) && vulnerable)
-	{
-		with (obj_player)
+		break;
+	case states.pm_attack:
+		hsp += xscale * 0.5
+		if scr_solid(x + xscale, y)
 		{
-			if (state == states.mach3)
-				reset_anim(spr_player_mach3hit)
-			if (key_jump.down && state != states.groundpound)
-			{
-				vsp = -10
-				jumpstop = false
-			}
+			shake_camera()
+			scr_sound_3d(sfx_groundpound, x, y)
+			audio_stop_sound(sfx_peppermanrun)
+			particle_create(x, y, particles.bang)
+			hurtplayer = false
+			stun_timer = 120
+			hsp = -5 * xscale
+			vsp = -5
+			vulnerable = true
+			state = states.stun
+			sprite_index = spr_pepperman_shoulderhurt
 		}
-		
-		sprite_index = sprs.stun
-	
-		do_enemygibs()
-		shake_camera()
-		scr_sound_3d(sfx_punch, x, y)
-		
-		obj_player.hitstun = 5
-		obj_player.prev_ix = obj_player.image_index
-		obj_bossstate.opponent.hp--
-		vulnerable = false
-		state = states.hit
-		
-		var spd = 10
-		
-		hsp = x - obj_player.x >= 0 ? spd : -spd
-		xscale = x - obj_player.x >= 0 ? -1 : 1
-		
-		if obj_player.state == states.grab
-			alarm[0] = 5
-	}
-	if ((obj_player.state == states.mach2 || obj_player.state == states.tumble) && stun_timer < 160 && vulnerable)
-	{
-		sleep(50)
-		hsp = obj_player.xscale * 18
-		xscale = -obj_player.xscale
-		warp = 0.4
-		state = states.stun
-		stun_timer = 180
-		vsp = -5
-		repeat (4)
-			particle_create(x, y, particles.stars)
-		flash = 8
-	}
+		break;
 }
+
+do_vulnerability()
 
 if blur_timer > 0
 	blur_timer--
@@ -102,3 +79,17 @@ else if !vulnerable && audio_is_playing(sfx_vulnerable)
 ds_list_destroy(en_list)
 break_destroyables()
 collide()
+
+if hanged
+{
+	x = mouse_x
+	y = mouse_y
+}
+
+if afterimage_timer <= 0 && hurtplayer
+{
+	afterimage_timer = 6
+	afterimage_create_color(223, 47, 0)
+}
+else
+	afterimage_timer--

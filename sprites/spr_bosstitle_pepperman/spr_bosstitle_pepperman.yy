@@ -23,7 +23,7 @@
   ],
   "name":"spr_bosstitle_pepperman",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Pepperman",
     "path":"folders/Sprites/Boss/Pepperman.yy",
@@ -78,7 +78,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":170,
-    "yorigin":81,
+    "yorigin":-150,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

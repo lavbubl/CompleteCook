@@ -55,8 +55,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Sprites/Level Structure.yy",
+    "name":"Warps",
+    "path":"folders/Sprites/Level Structure/Warps.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

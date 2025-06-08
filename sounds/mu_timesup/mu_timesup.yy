@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":5.1266665,
   "name":"mu_timesup",
   "parent":{
     "name":"Sounds",

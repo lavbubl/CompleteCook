@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.406667,
+  "duration":1.4066666,
   "name":"sfx_machslideboost",
   "parent":{
     "name":"Sounds",

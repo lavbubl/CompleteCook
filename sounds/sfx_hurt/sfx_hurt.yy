@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":1.0493197,
   "name":"sfx_hurt",
   "parent":{
     "name":"Sounds",

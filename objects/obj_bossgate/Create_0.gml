@@ -30,11 +30,14 @@ save_data = {
 
 save_exists = false
 
-/*ini_open(global.savestring)
+ini_open(global.savestring)
 
 if ini_section_exists(boss_name)
 {
-	
+	save_exists = true
+	hats = ini_read_real(boss_name, "hats", 0)
+	extrahats = ini_read_real(boss_name, "extrahats", 0)
+	rank = ini_read_real(boss_name, "rank", 0)
 }
 
-ini_close()*/
+ini_close()

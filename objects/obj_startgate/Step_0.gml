@@ -9,7 +9,7 @@ if surface_exists(bg_surf)
 	}
 }
 
-if (place_meeting(x, y, obj_player) && scr_can_enter_door(other.state) && key_up.down && obj_player.grounded)
+if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && key_up.down && obj_player.grounded)
 {
 	with obj_player
 	{

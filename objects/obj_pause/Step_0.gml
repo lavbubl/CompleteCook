@@ -25,7 +25,7 @@ if ((ui_input.left.pressed || ui_input.right.pressed || ui_input.accept.pressed)
 }
 else if (cur_option.o_type == optiontypes.slider)
 {
-	var move = -ui_input.left.check + ui_input.right.down
+	var move = -ui_input.left.check + ui_input.right.check
 	cur_option.val = clamp(cur_option.val + move, 0, 100)
 	if move != 0
 		cur_option.func(cur_option.val)

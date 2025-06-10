@@ -6,7 +6,7 @@ function player_mach2()
 	{
 		if (sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup)
 			sprite_index = spr_player_mach2
-		if (!key_dash.down)
+		if (!input.dash.check)
 		{
 			if (movespeed < 8)
 			{
@@ -58,7 +58,7 @@ function player_mach2()
 			sprite_index != spr_player_longjump &&
 			sprite_index != spr_player_mach2jump)
 			reset_anim(spr_player_secondjump)
-		if (!jumpstop && !key_jump.down && vsp < 0)
+		if (!jumpstop && !input.jump.check && vsp < 0)
 		{
 			jumpstop = true
 			vsp /= 10
@@ -73,7 +73,7 @@ function player_mach2()
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	do_slope_momentum()
-	if (key_down.down)
+	if (input.down.check)
 	{
 		state = states.tumble
 		if (grounded)

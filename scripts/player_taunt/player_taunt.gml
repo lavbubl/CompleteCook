@@ -7,7 +7,7 @@ function player_taunt()
 	
 	if !string_starts_with(sprite_get_name(sprite_index), "spr_player_supertaunt")
 	{
-		if key_up.down && supertauntshow
+		if input.up.check && supertauntshow
 		{
 			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
 			scr_sound_3d(sfx_supertaunt, x, y)

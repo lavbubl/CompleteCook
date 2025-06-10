@@ -52,7 +52,7 @@ if follow_player
 				break;
 		}
 		other.state = states.grabbed
-		if key_down.down
+		if input.down.check
 		{
 			if (grounded && state == states.hold)
 			{

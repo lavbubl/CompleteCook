@@ -1,7 +1,9 @@
-get_input()
+// update input
+key_up.update([global.keybinds.up]);
+key_down.update([global.keybinds.down]);
 
-var up = key_up.down
-var down = key_down.down
+var up = key_up.check
+var down = key_down.check
 
 var livemax = 15
 

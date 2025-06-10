@@ -1,6 +1,22 @@
-if !obj_shell.isOpen
-	get_input()
+// update all of the inputs
+// TODO: helper function?
+if (!obj_shell.isOpen)
+{
+	input.left.update([global.keybinds.left]);
+	input.right.update([global.keybinds.right]);
+	input.up.update([global.keybinds.up]);
+	input.down.update([global.keybinds.down]);
+	input.jump.update([global.keybinds.jump]);
+	input.grab.update([global.keybinds.grab]);
+	input.dash.update([global.keybinds.dash]);
+	input.taunt.update([global.keybinds.taunt]);
+}
 
+
+/*
+if (!obj_shell.isOpen)
+	get_input()
+*/
 struct_foreach(aftimg_timers, function(_name, _data)
 {
 	_data.do_it = false
@@ -11,8 +27,6 @@ if grounded
 else if vsp < 0
 	coyote_time = 0
 
-#macro p_move (-key_left.down + key_right.down)
-
 instakill = false
 
 prevstate = state
@@ -20,10 +34,10 @@ prevstate = state
 input_buffers.grab = max(input_buffers.grab - 1, 0)
 input_buffers.jump = max(input_buffers.jump - 1, 0)
 
-if key_grab.pressed
+if input.grab.pressed
 	input_buffers.grab = 15
 	
-if key_jump.pressed
+if input.jump.pressed
 	input_buffers.jump = 15
 
 if warping

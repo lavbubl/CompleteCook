@@ -126,7 +126,7 @@ function do_enemy_generics()
 			{
 				if (state == states.mach3)
 					reset_anim(spr_player_mach3hit)
-				if ((key_jump.down && state != states.groundpound) || state == states.swingding)
+				if ((input.jump.check && state != states.groundpound) || state == states.swingding)
 				{
 					vsp = -10
 					jumpstop = false
@@ -172,7 +172,7 @@ function do_enemy_generics()
 					if !grounded
 						vsp = -5
 				}
-				if (key_up.down)
+				if (input.up.check)
 				{
 					state = states.piledriver
 					sprite_index = spr_player_piledriver
@@ -183,7 +183,7 @@ function do_enemy_generics()
 			{
 				if (state == states.jump)
 					reset_anim(spr_player_stomp)
-				vsp = key_jump.down ? -15 : -10
+				vsp = input.jump.check ? -15 : -10
 				jumpstop = true
 				
 				scr_sound_3d(sfx_stompenemy, x, y)

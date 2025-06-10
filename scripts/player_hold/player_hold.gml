@@ -21,7 +21,7 @@ function player_hold()
 	{
 		if (sprite_index != spr_player_haulingjump && sprite_index != spr_player_haulingfall)
 			reset_anim(spr_player_haulingjump)
-		if (!jumpstop && !key_jump.down && vsp < 0)
+		if (!jumpstop && !input.jump.check && vsp < 0)
 		{
 			jumpstop = true
 			vsp /= 10
@@ -57,7 +57,7 @@ function player_hold()
 		state = states.punchenemy
 		var str = $"spr_player_finishingblow{string(irandom_range(1, 5))}"
 		reset_anim(asset_get_index(str))
-		if (key_up.down)
+		if (input.up.check)
 			reset_anim(spr_player_uppercutfinishingblow)
 	}
 }

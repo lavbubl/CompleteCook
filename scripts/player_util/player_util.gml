@@ -5,7 +5,7 @@ function anim_ended()
 
 function do_groundpound()
 {
-	if key_down.pressed
+	if input.down.pressed
 	{
 		dir = p_move
 		state = states.groundpound
@@ -44,7 +44,7 @@ function do_grab()
 			with instance_create(x + xscale * 46, (y + 6), obj_shotgunblast)
 				image_xscale = other.xscale
 		}
-		else if (!key_up.down)
+		else if (!input.up.check)
 		{
 			movespeed = max(movespeed, 5)
 			if state == states.normal
@@ -69,7 +69,7 @@ function do_grab()
 
 function do_taunt()
 {
-	if key_taunt.pressed
+	if input.taunt.pressed
 	{
 		prev = {
 			state: self.state,
@@ -81,7 +81,7 @@ function do_taunt()
 		particle_create(x, y, particles.taunt)
 		state = states.taunt
 		
-		if !(key_up.down && supertauntshow)
+		if !(input.up.check && supertauntshow)
 		{
 			sprite_index = spr_player_taunt
 			image_index = random_range(0, image_number)

@@ -1,3 +1,12 @@
+// declare input
+ui_input =
+{
+	up: new Input([global.keybinds.ui_up]),
+	down: new Input([global.keybinds.ui_down]),
+	accept: new Input([global.keybinds.ui_accept]),
+	deny: new Input([global.keybinds.ui_deny])
+};
+
 depth = -200
 binds = [ 
 	{input: global.keybinds.left,		image_index: 3,		name: "Left",		globalname: "left"},

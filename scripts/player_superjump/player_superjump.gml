@@ -17,7 +17,7 @@ function player_superjump()
 		  xscale = p_move
 	}
 	
-	if ((key_up.down || !grounded) && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
+	if ((input.up.check || !grounded) && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
 	{
 		var absMove = abs(p_move);
 		movespeed = !place_meeting(x + xscale, y, obj_solid) ? absMove * 2 : 0;
@@ -44,7 +44,7 @@ function player_superjump()
 			depth = -150
 	}
 	
-	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !key_up.down && grounded && !scr_solid(x, y - 1))
+	if (sprite_index != spr_player_superjump && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !input.up.check && grounded && !scr_solid(x, y - 1))
 	{
 		vsp = -12
 		sprite_index = spr_player_superjump
@@ -81,7 +81,7 @@ function player_superjump()
 		if (sprite_index != spr_player_Sjumpcancelstart)
 			vsp -= 0.6
 		
-		if (input_buffers.grab > 0 || key_dash.pressed) && state != states.bump
+		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump
 		{
 			input_buffers.grab = 0
 			reset_anim(spr_player_Sjumpcancelstart)

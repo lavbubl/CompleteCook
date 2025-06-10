@@ -1,3 +1,11 @@
+// declare input
+input =
+{
+	left: new Input([global.keybinds.ui_left]),
+	right: new Input([global.keybinds.ui_right]),
+	accept: new Input([global.keybinds.ui_accept])
+};
+
 tvs =  [new ini_menu_tv_inst(103, 0, 
 			spr_menutv1_off,
 			spr_menutv1_whitenoise,

@@ -1,3 +1,14 @@
+// declare input
+ui_input =
+{
+	left: new Input([global.keybinds.ui_left]),
+	right: new Input([global.keybinds.ui_right]),
+	up: new Input([global.keybinds.ui_up]),
+	down: new Input([global.keybinds.ui_down]),
+	accept: new Input([global.keybinds.ui_accept]),
+	deny: new Input([global.keybinds.ui_deny])
+};
+
 depth = 100
 
 create_image = false

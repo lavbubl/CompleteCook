@@ -1,14 +1,18 @@
-get_input()
+// update input
+ui_input.up.update([global.keybinds.ui_up]);
+ui_input.down.update([global.keybinds.ui_down]);
+ui_input.accept.update([global.keybinds.ui_accept]);
+ui_input.deny.update([global.keybinds.ui_deny]);
 
 if !binding
-	selected = clamp(selected + (-uikey_up.pressed + uikey_down.pressed), -1, array_length(binds) - 1)
+	selected = clamp(selected + (-ui_input.up.pressed + ui_input.down.pressed), -1, array_length(binds) - 1)
 
 if selected == -1
 {
-	if uikey_accept.pressed
+	if ui_input.accept.pressed
 		instance_destroy()
 
-	if uikey_deny.pressed
+	if ui_input.deny.pressed
 		instance_destroy()
 	exit;
 }
@@ -30,8 +34,8 @@ if binding
 }
 else
 {
-	if uikey_accept.pressed
+	if ui_input.accept.pressed
 		binding = true
-	if uikey_deny.pressed
+	if ui_input.deny.pressed
 		instance_destroy()
 }

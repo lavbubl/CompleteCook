@@ -22,7 +22,7 @@ function player_jump()
 	if place_meeting(x + hsp, y, obj_solid)
 		movespeed = 0
 	
-	if (!jumpstop && !key_jump.down && vsp < 0)
+	if (!jumpstop && !input.jump.check && vsp < 0)
 	{
 		jumpstop = true
 		vsp /= 10
@@ -45,7 +45,7 @@ function player_jump()
 			reset_anim(movespeed < 1 ? default_land : default_landmove)
 			scr_sound_3d_pitched(sfx_step, x, y)
 			create_effect(x, y, spr_landeffect)
-			if key_dash.down
+			if input.dash.check
 			{
 				state = states.mach2
 				movespeed = max(movespeed, 6);

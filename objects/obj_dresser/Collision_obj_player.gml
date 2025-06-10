@@ -1,4 +1,4 @@
-if other.key_up.pressed
+if other.input.up.pressed
 {
 	clothes_selected++
 	if clothes_selected == array_length(clothes_arr)

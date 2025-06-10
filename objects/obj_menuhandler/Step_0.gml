@@ -1,4 +1,8 @@
-get_input()
+// update input
+input.left.update([global.keybinds.ui_left]);
+input.right.update([global.keybinds.ui_right]);
+input.accept.update([global.keybinds.ui_accept]);
+
 
 if menu_dark
 {
@@ -15,7 +19,7 @@ if menu_dark
 }
 
 if state == 0
-	cur_selected = clamp(cur_selected + (-key_left.pressed + key_right.pressed), 1, array_length(tvs))
+	cur_selected = clamp(cur_selected + (-input.left.pressed + input.right.pressed), 1, array_length(tvs))
 
 obj_menupeppino.cur_selected = self.cur_selected
 
@@ -52,7 +56,7 @@ for (var i = 0; i < array_length(tvs); i++)
 					}
 					break;
 			}
-			if other.uikey_accept.pressed && other.state == 0
+			if other.input.accept.pressed && other.state == 0
 			{
 				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)

@@ -1,6 +1,6 @@
 function player_ladder()
 {
-	var move_v = (-key_up.down + key_down.down)
+	var move_v = (-input.up.check + input.down.check)
 	
 	vsp = move_v * 6
 	

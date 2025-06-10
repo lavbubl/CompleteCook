@@ -45,6 +45,6 @@ function player_crouch()
 		}
 	}
 	
-	if !key_down.down && !scr_solid(x, y - 16) && grounded && vsp >= 0
+	if !input.down.check && !scr_solid(x, y - 16) && grounded && vsp >= 0
 		state = states.normal
 }

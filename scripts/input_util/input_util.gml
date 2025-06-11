@@ -3,10 +3,10 @@
 	Quick usage tutorial:
 	
 	in the create event, construct the Input object like this:
-	key_up = new Input([global.keybinds.up]);
+	key_up = new Input(global.keybinds.up);
 	
 	if you want it to update with global.keybinds, run:
-	key_up.update([global.keybinds.up]);
+	key_up.update(global.keybinds.up);
 	
 	the array can store multiple input keys, controller support is not implemented as of now.
 	
@@ -35,6 +35,10 @@ function Input(_keyname_array, _input_type = INPUT_TYPE.KEYBOARD, _device = 0) c
 	{
 		var _inputarr = [];
 		// process _keyname_array into ASCII values.
+		
+		if !is_array(_keyname_array) //if not an array, make it a single one
+			_keyname_array = [_keyname_array];
+		
 		for (var i = 0; i < array_length(_keyname_array); i++)
 		{
 		    var _keyname = _keyname_array[i];
@@ -48,6 +52,7 @@ function Input(_keyname_array, _input_type = INPUT_TYPE.KEYBOARD, _device = 0) c
 			input = _inputarr;
 			
 		// since this uses an update method, we can actually just private all of the check methods and run them here.
+		
 		check = __check();
 		pressed = __pressed();
 		released = __released();

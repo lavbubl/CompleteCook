@@ -1,4 +1,4 @@
-enter_door.update([global.keybinds.up]);
+enter_door.update(global.keybinds.up);
 
 if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && enter_door.check && obj_player.grounded)
 {

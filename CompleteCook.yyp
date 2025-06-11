@@ -318,6 +318,7 @@
     {"id":{"name":"scr_pattern_utilities","path":"scripts/scr_pattern_utilities/scr_pattern_utilities.yy",},},
     {"id":{"name":"scr_retro_pal_swapper_utilities","path":"scripts/scr_retro_pal_swapper_utilities/scr_retro_pal_swapper_utilities.yy",},},
     {"id":{"name":"scr_retro_pal_swapper","path":"scripts/scr_retro_pal_swapper/scr_retro_pal_swapper.yy",},},
+    {"id":{"name":"scr_savesystem","path":"scripts/scr_savesystem/scr_savesystem.yy",},},
     {"id":{"name":"shell_commands","path":"scripts/shell_commands/shell_commands.yy",},},
     {"id":{"name":"sound_util","path":"scripts/sound_util/sound_util.yy",},},
     {"id":{"name":"tv_util","path":"scripts/tv_util/tv_util.yy",},},

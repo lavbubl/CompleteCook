@@ -5,12 +5,12 @@ if instance_exists(obj_keyconfig)
 	exit;
 
 // update input
-ui_input.left.update([global.keybinds.ui_left]);
-ui_input.right.update([global.keybinds.ui_right]);
-ui_input.up.update([global.keybinds.ui_up]);
-ui_input.down.update([global.keybinds.ui_down]);
-ui_input.accept.update([global.keybinds.ui_accept]);
-ui_input.deny.update([global.keybinds.ui_deny]);
+ui_input.left.update(global.keybinds.ui_left);
+ui_input.right.update(global.keybinds.ui_right);
+ui_input.up.update(global.keybinds.ui_up);
+ui_input.down.update(global.keybinds.ui_down);
+ui_input.accept.update(global.keybinds.ui_accept);
+ui_input.deny.update(global.keybinds.ui_deny);
 
 var movev = -ui_input.up.pressed + ui_input.down.pressed
 

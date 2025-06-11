@@ -1,6 +1,6 @@
 // update input
-key_up.update([global.keybinds.up]);
-key_down.update([global.keybinds.down]);
+key_up.update(global.keybinds.up);
+key_down.update(global.keybinds.down);
 
 var up = key_up.check
 var down = key_down.check

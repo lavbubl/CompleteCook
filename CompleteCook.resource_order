@@ -262,6 +262,7 @@
     {"name":"player_util","order":6,"path":"scripts/player_util/player_util.yy",},
     {"name":"scr_pattern_utilities","order":4,"path":"scripts/scr_pattern_utilities/scr_pattern_utilities.yy",},
     {"name":"scr_retro_pal_swapper_utilities","order":1,"path":"scripts/scr_retro_pal_swapper_utilities/scr_retro_pal_swapper_utilities.yy",},
+    {"name":"scr_savesystem","order":16,"path":"scripts/scr_savesystem/scr_savesystem.yy",},
     {"name":"shell_commands","order":11,"path":"scripts/shell_commands/shell_commands.yy",},
     {"name":"sound_util","order":10,"path":"scripts/sound_util/sound_util.yy",},
     {"name":"tv_util","order":9,"path":"scripts/tv_util/tv_util.yy",},

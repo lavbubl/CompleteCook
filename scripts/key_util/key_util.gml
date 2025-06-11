@@ -115,9 +115,13 @@ function scr_keytostring(keycode)
 function cc_draw_key(_x, _y, key)
 {
 	var ix = -1
+	
+	if is_string(key) //check if its just "#"
+		key = ord(key)
+	
 	var key_str = scr_keytostring(key)
 	
-	var specialkeys = [
+	var specialkeys = [ //make sure these comply with scr_keytostring's naming conventions
 		"UNDEFINED",
 		"Shift",
 		"Control",

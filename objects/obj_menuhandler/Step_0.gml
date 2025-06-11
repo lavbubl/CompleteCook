@@ -1,7 +1,7 @@
 // update input
-input.left.update([global.keybinds.ui_left]);
-input.right.update([global.keybinds.ui_right]);
-input.accept.update([global.keybinds.ui_accept]);
+input.left.update(global.keybinds.ui_left);
+input.right.update(global.keybinds.ui_right);
+input.accept.update(global.keybinds.ui_accept);
 
 
 if menu_dark

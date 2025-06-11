@@ -1,4 +1,4 @@
-enter_door = new Input([global.keybinds.up]);
+enter_door = new Input(global.keybinds.up);
 
 
 bg_surf = -1

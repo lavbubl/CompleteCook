@@ -1,4 +1,4 @@
-enter_door.update([global.keybinds.up]);
+enter_door.update(global.keybinds.up);
 
 if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && enter_door.check && scr_can_enter_door(other.state))
 {

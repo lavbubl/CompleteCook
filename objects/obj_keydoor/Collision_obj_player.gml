@@ -1,4 +1,4 @@
-enter_door.update([global.keybinds.up]);
+enter_door.update(global.keybinds.up);
 
 var canenter = (ds_list_find_index(global.ds_saveroom, id) != -1 || other.haskey) && scr_can_enter_door(other.state)
 

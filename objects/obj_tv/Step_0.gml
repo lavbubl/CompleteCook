@@ -127,7 +127,7 @@ switch (combo.state)
 }
 
 combo.x = wave(-10, 10, 2, 20)
-combo.ghost.x = lerp(combo.ghost.x, combo.x - 75 + ((global.combo.timer / 60) * 150), 0.5)
+combo.ghost.x = lerp(combo.ghost.x, combo.x - 56 + ((global.combo.timer / 60) * 115), 0.5)
 combo.ghost.y = combo.y
 combo.ghost.image_index = wrap(sprite_get_number(spr_tv_c_ghost), combo.ghost.image_index + 0.35)
 

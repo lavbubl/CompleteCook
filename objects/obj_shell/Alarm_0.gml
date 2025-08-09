@@ -1,17 +1,18 @@
-for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
+for (var i = 0; i < instance_number(par_collision); i++) 
 {
-	var _id = ds_list_find_value(global.col_obj_list, i)
-	if instance_exists(_id)
+	var _id = instance_find(par_collision, i)
+	switch (_id.object_index)
 	{
-		switch (_id.object_index)
-		{
-			case obj_solid:
-			case obj_platform:
-			case obj_slope:
-			case obj_slopeplatform:
-				_id.visible = global.showcollisions
-				break;
-		}
+		case obj_solid:
+		case obj_destroyable_secret:
+		case obj_destroyable_big_secret:
+		case obj_metalblock_secret:
+		case obj_platform:
+		case obj_sideplatform:
+		case obj_slope:
+		case obj_slopeplatform:
+			_id.visible = global.showcollisions
+			break;
 	}
 }
 

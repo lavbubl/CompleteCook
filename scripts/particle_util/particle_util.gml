@@ -125,6 +125,7 @@ function create_effect(_x, _y, sprite)
 
 function create_followingeffect(sprite, state, _xscale = 1)
 {
-	with particle_create(x, y, particles.machcharge, _xscale, 1, sprite)
-		statetofollow = state
+	var p = particle_create(x, y, particles.machcharge, _xscale, 1, sprite)
+	p.statetofollow = state
+	return p;
 }

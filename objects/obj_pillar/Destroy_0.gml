@@ -15,8 +15,8 @@ var f_id = instance_create(0, 0, obj_pillarflash)
 f_id.pillar_id = p_id
 
 global.panic.active = true
-global.panic.timer = 5000
-global.panic.timer_max = 5000
+global.panic.timer = panic_time			//variable set in variable defenitions 
+global.panic.timer_max = panic_time		//instead of a switch statement. sorry!
 global.doorshut = false
 
 scr_sound(sfx_killenemy)

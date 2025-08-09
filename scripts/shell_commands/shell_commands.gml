@@ -71,20 +71,21 @@ function sh_togglecollisions (args) {
 	
 	global.showcollisions = visibility
 	
-	for (var i = 0; i < ds_list_size(global.col_obj_list); i++) 
+	for (var i = 0; i < instance_number(par_collision); i++) 
 	{
-		var _id = ds_list_find_value(global.col_obj_list, i)
-		if instance_exists(_id)
+		var _id = instance_find(par_collision, i)
+		switch (_id.object_index)
 		{
-			switch (_id.object_index)
-			{
-				case obj_solid:
-				case obj_platform:
-				case obj_slope:
-				case obj_slopeplatform:
-					_id.visible = visibility
-					break;
-			}
+			case obj_solid:
+			case obj_destroyable_secret:
+			case obj_destroyable_big_secret:
+			case obj_metalblock_secret:
+			case obj_platform:
+			case obj_sideplatform:
+			case obj_slope:
+			case obj_slopeplatform:
+				_id.visible = visibility
+				break;
 		}
 	}
 	if instance_exists(obj_doorpoint)
@@ -118,6 +119,24 @@ function meta_set_combo() {
 		suggestions: [
 			["10", "0"],
 			["60"]
+		],
+		hidden: false,
+		deferred: false
+	}
+}
+
+function sh_set_game_speed (args) {
+	var type = args[2] == "microseconds" ? gamespeed_microseconds : gamespeed_fps
+	game_set_speed(floor(real(args[1])), type);
+}
+
+function meta_set_game_speed() {
+	return {
+		description: "Set the games framerate, or microseconds per game frame",
+		arguments: ["frames/microseconds", "type"],
+		suggestions: [
+			["60", "16666"],
+			["fps", "microseconds"]
 		],
 		hidden: false,
 		deferred: false

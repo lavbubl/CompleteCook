@@ -50,5 +50,12 @@ function player_slide()
 			}
 			break
 	}
+	
+	if grounded && !particle_contains_sprite(spr_dashcloud)
+	{
+		with create_effect(x, y, spr_dashcloud)
+			image_xscale = other.xscale
+	}
+	
 	instakill = sprite_index == spr_player_machslideboost3;
 }

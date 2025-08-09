@@ -114,6 +114,9 @@ function scr_keytostring(keycode)
 
 function cc_draw_key(_x, _y, key)
 {
+	if key == vk_nokey
+		return;
+	
 	var ix = -1
 	
 	if is_string(key) //check if its just "#"

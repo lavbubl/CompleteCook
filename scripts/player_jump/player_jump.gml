@@ -1,12 +1,31 @@
 function player_jump()
 {
+	var default_jump = spr_player_jump
+	var default_fall = spr_player_fall
 	var default_land = spr_player_land
 	var default_landmove = spr_player_landmove
 	
 	if has_shotgun
 	{
+		default_jump = spr_player_shotgun_jump
+		default_fall = spr_player_shotgun_fall
 		default_land = spr_player_shotgun_land
 		default_landmove = spr_player_shotgun_land
+	}
+	
+	if sprite_index == spr_player_jump
+		sprite_index = default_jump
+	else if sprite_index == spr_player_fall
+		sprite_index = default_fall
+	
+	if (coyote_time && input_buffers.jump > 0)
+	{
+		input_buffers.jump = 0
+		vsp = -11
+		reset_anim(default_jump)
+		jumpstop = false
+		create_effect(x, y - 5, spr_highjumpcloud2)
+		scr_sound_3d(sfx_jump, x, y)
 	}
 	
 	if (p_move != 0)
@@ -63,10 +82,14 @@ function player_jump()
 		}
 	}
 	
+	if has_shotgun //do before if you have the shotgun
+		do_groundpound()
+	
 	if sprite_index != spr_player_suplexbump
 		do_grab()
 	
-	do_groundpound()
+	if !has_shotgun //do after if you dont have the shotgun
+		do_groundpound()
 	
 	image_speed = 0.35
 	switch (sprite_index)
@@ -88,5 +111,6 @@ function player_jump()
 				image_index = image_number - 3
 			break;
 	}
+	
 	do_taunt()
 }

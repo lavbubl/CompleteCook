@@ -85,7 +85,6 @@ if follow_player
 			vsp = -12
 			jumpstop = false
 			state = states.jump
-			hitstun = 5
 			prev_ix = image_index
 			reset_anim(spr_player_piledriverjump)
 		}
@@ -119,9 +118,8 @@ if follow_player
 
 if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") && bbox_in_camera()
 {
-	x += irandom_range(-1, 1)
-	y += irandom_range(-1, 1)
 	state = states.stun
 	stun_timer = 2
 	sprite_index = sprs.stun
+	alarm[0] = 999
 }

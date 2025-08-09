@@ -19,3 +19,19 @@ function make_pause_image()
 	
 	return s;
 }
+
+function do_unpause()
+{
+	pause = false
+	optionselected = 0
+	if audio_is_playing(mu_pause)
+		audio_stop_sound(mu_pause)
+	instance_activate_all()
+	audio_resume_all()
+	with obj_music
+	{
+		if (global.secret && secret_mu_to_play != noone)
+			pauseIDS(true);
+	}
+	obj_player.pausestopframe = true
+}

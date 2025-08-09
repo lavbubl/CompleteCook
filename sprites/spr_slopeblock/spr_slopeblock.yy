@@ -1,7 +1,7 @@
 {
   "$GMSprite":"",
   "%Name":"spr_slopeblock",
-  "bboxMode":0,
+  "bboxMode":1,
   "bbox_bottom":31,
   "bbox_left":0,
   "bbox_right":31,

@@ -140,8 +140,11 @@ function set_globals()
 	global.smallnumberfont = font_add_sprite_ext(spr_smallnumber_font, "1234567890-+", true, 0)
 	global.tutorialfont = font_add_sprite_ext(spr_tutorialfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz!¡,.:0123456789'?¿-áäãàâæéèêëíìîïóöõôòúùûüÿŸÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜÇçœß;«»+", true, 2)
 	global.creditsfont = font_add_sprite_ext(spr_creditsfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.,:!¡0123456789?'\"ÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜáäãàâéèêëíìîïóöõôòúùûüÇç_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнльœ«»+ß", true, 2)
+	global.bignumber_font = font_add_sprite_ext(spr_bignumber_font, "0123456789/:", true, 0)
 	global.secret = false
 	global.boss_room = false
+	global.start_room = noone
+	global.in_level = false
 	set_rank_milestones(1000, 500, 250, 125)
 	
 	global.level_data = {
@@ -168,20 +171,22 @@ function set_globals()
 	global.keybinds_filename = "keybinds.ccsav" //complete cook save :)
 	
 	global.keybinds = { //create keybind struct
-		left:		vk_left,
-		right:		vk_right,
-		up:			vk_up,
-		down:		vk_down,
-		dash:		vk_shift,
-		jump:		"Z",
-		grab:		"X",
-		taunt:		"C",
-		ui_left:	vk_left,
-		ui_right:	vk_right,
-		ui_up:		vk_up,
-		ui_down:	vk_down,
-		ui_accept:	[vk_enter, vk_space, "Z"],
-		ui_deny:	[vk_escape, vk_backspace, "X"]
+		left:			vk_left,
+		right:			vk_right,
+		up:				vk_up,
+		down:			vk_down,
+		dash:			vk_shift,
+		jump:			"Z",
+		grab:			"X",
+		taunt:			"C",
+		superjump:		vk_nokey,
+		groundpound:	vk_nokey,
+		ui_left:		vk_left,
+		ui_right:		vk_right,
+		ui_up:			vk_up,
+		ui_down:		vk_down,
+		ui_accept:		[vk_enter, vk_space, "Z"],
+		ui_deny:		[vk_escape, vk_backspace, "X"]
 	}
 	
 	if !file_exists(global.keybinds_filename)
@@ -197,15 +202,14 @@ function set_globals()
 		try
 		{
 			var loadedBuf = buffer_load(global.keybinds_filename) //have the saved external buffer loaded
-		
+			
 			global.keybinds = read_struct_from_buffer(loadedBuf) //parse the saved buffer as a struct, set the global keybinds to whats saved
 		
 			buffer_delete(loadedBuf) //prevent memory leak
 		}
 		catch(_exception)
 		{
-			if GM_runtime_type
-			show_message("ERROR!\n\nKeybind data is corrupted, input set to defaults.\n\n")
+			show_message("ERROR!\n\nKeybind data is corrupted, input set to defaults.")
 		    show_debug_message(_exception.longMessage);
 		    show_debug_message(_exception.script);
 		    show_debug_message(_exception.stacktrace);
@@ -289,6 +293,8 @@ function reset_level()
 	{
 		has_shotgun = false
 		hasgerome = false
+		supertauntcount = 0
+		supertauntshow = false
 	}
 	global.combo.wasted = false
 	global.doorshut = false
@@ -317,6 +323,6 @@ function quick_ini_write_real(inistr, section, key, value)
 
 function gpu_set_blendmode_normal_fixed()
 {
-	gpu_set_blendmode_ext(bm_src_alpha, bm_inv_src_alpha)
+	gpu_set_blendmode_ext_sepalpha(bm_src_alpha, bm_inv_src_alpha, bm_src_alpha, bm_dest_alpha)
 	gpu_set_blendequation_sepalpha(bm_eq_add, bm_eq_max)
 }

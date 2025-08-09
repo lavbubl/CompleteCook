@@ -6,16 +6,20 @@ function collide()
 	
 	old_x2 = x
 	old_y2 = y
-		
+	
+	var ground_check = false
+	
 	var bh = bbox_bottom - y
-	with (instance_place(x, y + 1 + other.vsp, obj_movingplatform))
+	var plat_id = noone
+	with collision_rectangle(bbox_left, bbox_top + min(0, vsp), bbox_right, bbox_bottom + max(0, vsp) + 4, obj_movingplatform, false, true)
 	{
+		plat_id = id
 		if (other.bbox_bottom - other.vsp <= bbox_top)
 		{
 			hsp_plat = hsp
 			vsp_plat = vsp
+			ground_check = true
 			other.vsp = 0
-			other.grounded = true
 			other.y = bbox_top - bh
 		}
 	}
@@ -37,7 +41,7 @@ function collide()
 			i += o_inc
 			continue;
 		}
-		else if (scr_solid(x, y + sign(vsp_final)))
+		else if scr_solid(x, y + sign(vsp_final))
 		{
 			vsp = 0
 			break;
@@ -69,8 +73,7 @@ function collide()
 			i += o_inc
 			continue;
 		}
-		else if place_meeting(x + sign(hsp_final), y, obj_solid) || 
-				(scr_solid(x + sign(hsp_final), y + 1) && scr_solid(x + sign(hsp_final), y - h)) 
+		else if scr_solid(x + sign(hsp_final), y + 1) && scr_solid(x + sign(hsp_final), y - h)
 		{
 			hsp = 0
 			break;
@@ -94,7 +97,7 @@ function collide()
 			}
 			if scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1)
 			{
-				while !scr_solid(x, y + 1)
+				while !scr_solid(x, y + 1) && !(plat_id != noone && bbox_bottom >= plat_id.bbox_top && old_y2 + bh < plat_id.bbox_top)
 					y++
 			}
 		}
@@ -104,7 +107,7 @@ function collide()
 	if (vsp < 20)
 		vsp += grav
 	
-	grounded = scr_solid(x, y + 1)
+	grounded = scr_solid(x, y + 1) || ground_check
 }
 
 function collide_init()
@@ -131,7 +134,7 @@ function scr_solid(_x, _y)
 	for (var i = 0; i < instance_number(par_collision); i++) 
 	{
 		var _id = instance_find(par_collision, i)
-		with (instance_place(_x, _y, _id))
+		with instance_place(_x, _y, _id)
 		{
 			switch (object_index)
 			{
@@ -139,9 +142,15 @@ function scr_solid(_x, _y)
 					collided = true
 					continue;
 				case obj_platform:
-					if image_yscale >= 0 && master.bbox_bottom <= bbox_top + 1 && (master.y - master.old_y2) >= 0 && !climbingladder
+					if image_yscale >= 0 && master.bbox_bottom <= bbox_top && !climbingladder
 						collided = true
-					else if image_yscale < 0 && master.bbox_top >= bbox_bottom - 1 && (master.y - master.old_y2) >= 0 && !climbingladder
+					else if image_yscale <= 0 && master.bbox_top >= bbox_bottom && !climbingladder
+						collided = true
+					continue;
+				case obj_sideplatform:
+					if image_xscale >= 0 && master.bbox_left >= bbox_right
+						collided = true
+					else if image_xscale <= 0 && master.bbox_right <= bbox_left
 						collided = true
 					continue;
 				case obj_slope:
@@ -161,6 +170,7 @@ function scr_solid(_x, _y)
 				{
 					case obj_solid:
 					case obj_destroyable:
+					case obj_metalblock:
 					case obj_ratblock:
 					case obj_rattumbleblock:
 						collided = true
@@ -209,13 +219,14 @@ function collide_slope(master, _x, _y)
 function collide_slopeplatform(master, _x, _y)
 {
 	var side = 0
-	var height = master.bbox_bottom - master.y
+	var height = 0
+	var clamped_y = 0
 	var slope_y = 0
 	var slope = (bbox_bottom - bbox_top) / (bbox_right - bbox_left)
 	var check_1 = false
 	var check_2 = false
 	
-	if (image_xscale >= 0)
+	if image_xscale >= 0
 	{
 		side = _x + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
@@ -226,11 +237,21 @@ function collide_slopeplatform(master, _x, _y)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	
-	var clamped_y = clamp(_y + height, bbox_top, bbox_bottom)
+	if image_yscale >= 0
+	{
+		height = master.bbox_bottom - master.y
+		clamped_y = clamp(_y + height, bbox_top, bbox_bottom)
+		check_1 = clamped_y > clamp(slope_y, bbox_top, bbox_bottom)
+	}
+	else
+	{
+		height = master.y - master.bbox_top
+		clamped_y = clamp(_y - height, bbox_top, bbox_bottom)
+		check_1 = clamped_y < clamp(bbox_top + (bbox_bottom - slope_y), bbox_top, bbox_bottom)
+	}
 	
-	check_1 = clamped_y > clamp(slope_y, bbox_top, bbox_bottom)
 	
-	if (image_xscale >= 0)
+	if image_xscale >= 0
 	{
 		side = master.old_x2 + (master.bbox_right - master.x)
 		slope_y = bbox_bottom - ((side - bbox_left) * slope)
@@ -241,12 +262,24 @@ function collide_slopeplatform(master, _x, _y)
 		slope_y = bbox_bottom + ((side - bbox_right) * slope);
 	}
 	
-	if master.grounded
-		clamped_y = clamp(master.old_y2 + height, bbox_top, bbox_bottom)
-	else
-		clamped_y = master.old_y2 + height
+	if image_yscale >= 0
+	{
+		if master.grounded
+			clamped_y = clamp(master.old_y2 + height, bbox_top, bbox_bottom)
+		else
+			clamped_y = master.old_y2 + height
 	
-	check_2 = clamped_y <= clamp(slope_y, bbox_top, bbox_bottom) + 1
+		check_2 = clamped_y <= clamp(slope_y + 1, bbox_top, bbox_bottom)
+	}
+	else
+	{
+		if master.grounded
+			clamped_y = clamp(master.old_y2 - height, bbox_top, bbox_bottom)
+		else
+			clamped_y = master.old_y2 - height
+	
+		check_2 = clamped_y >= clamp(bbox_top + (bbox_bottom - (slope_y - 1)), bbox_top, bbox_bottom)
+	}
 	
 	return check_1 && check_2
 }
@@ -295,7 +328,7 @@ function do_slope_momentum(spd_up = 20) //note: touch this code up
 		movespeed = approach(movespeed, spd_up, 0.1) 
 }
 
-function behind_slope(_x, _y)
+function behind_collision(_x, _y, obj_type)
 {
 	var master = id
 	
@@ -304,7 +337,7 @@ function behind_slope(_x, _y)
 		var _id = instance_find(par_collision, i)
 		with (instance_place(_x, _y, _id))
 		{
-			if object_index == obj_slope
+			if object_index == obj_type
 			{
 				if image_xscale >= 0 
 					return master.bbox_left >= bbox_right;

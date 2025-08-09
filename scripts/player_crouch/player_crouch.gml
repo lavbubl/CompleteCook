@@ -24,7 +24,7 @@ function player_crouch()
 			reset_anim(crouchfallspr)
 		
 		if anim_ended()
-			image_index = crouchfallspr == spr_player_crouch ? image_number - 8 : image_number - 1
+			image_index = crouchfallspr == spr_player_crouchfall ? image_number - 7 : image_number - 1
 	}
 	else
 	{
@@ -45,6 +45,6 @@ function player_crouch()
 		}
 	}
 	
-	if !input.down.check && !scr_solid(x, y - 16) && grounded && vsp >= 0
+	if !input.down.check && scr_can_uncrouch() && grounded && vsp >= 0
 		state = states.normal
 }

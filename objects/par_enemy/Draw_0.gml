@@ -3,6 +3,13 @@ depth = -50
 var _x = x
 var _y = y
 
+if alarm[0] >= 0
+{
+	var range = 5
+	_x += irandom_range(-range, range)
+	_y += irandom_range(-range, range)
+}
+
 if (obj_player.state = states.piledriver && follow_player)
 {
 	_y += 48

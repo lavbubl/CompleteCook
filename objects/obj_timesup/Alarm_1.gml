@@ -12,3 +12,4 @@ with obj_player
 }
 
 instance_create(0, 0, obj_fadevisual)
+global.in_level = false

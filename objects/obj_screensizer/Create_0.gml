@@ -1,4 +1,5 @@
 gui_surf = noone
+surface_resize(application_surface, screen_w, screen_h)
 
 lb_sprs = [bg_letterbox, bg_letterbox2, bg_letterbox3]
 
@@ -10,9 +11,15 @@ var f = ini_read_real("options", "fullscreen", false)
 
 lb_pos = ini_read_real("options", "letterbox_index", 0)
 
+var res = [[480, 270], [960, 540], [1920, 1080]]
+var chosen_res = ini_read_real("options", "res_number", 1)
+
 ini_close()
 
+window_set_size(real(res[chosen_res][0]), real(res[chosen_res][1]))
+window_center()
 window_set_fullscreen(f)
+
 application_surface_draw_enable(false)
 window_enable_borderless_fullscreen(true)
 

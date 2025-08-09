@@ -1,42 +1,59 @@
-if instance_exists(obj_shell)
+if room == mainmenu
+	exit;
+else if instance_exists(obj_shell)
 {
 	if obj_shell.isOpen
 		exit;
 }
 
-if instance_exists(obj_keyconfig)
+if instance_exists(obj_options)
 {
 	inputbuffer = 2
 	exit;
 }
-
-if room == mainmenu
+else if inputbuffer > 0
+{
+	inputbuffer--
 	exit;
+}
 
-if (keyboard_check_pressed(vk_escape))
+// update input
+//ui_input.left.update(global.keybinds.ui_left);
+//ui_input.right.update(global.keybinds.ui_right);
+ui_input.up.update(global.keybinds.ui_up);
+ui_input.down.update(global.keybinds.ui_down);
+ui_input.accept.update(global.keybinds.ui_accept);
+ui_input.deny.update(global.keybinds.ui_deny);
+
+#region pause and unpausing
+
+if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accept.pressed) || ui_input.deny.pressed) && pause)
 {
 	if !pause
 	{
 		pause = true
 		pause_image = make_pause_image()
 		instance_deactivate_all(true)
+		instance_activate_object(obj_pause_angel)
 		instance_activate_object(obj_screensizer)
 		audio_pause_all()
 		var mu = scr_sound(mu_pause, true)
 		audio_sound_gain(mu, 0, 0)
 		audio_sound_gain(mu, 1, 1000)
-	}
-	else
-	{
-		audio_stop_sound(mu_pause)
-		pause = false
-		instance_activate_all()
-		audio_resume_all()
-		
-		with obj_music
+		cursor.x = -60
+		cursor.y = -300
+		options = []
+		for (var i = 0; i < array_length(baseoptions); i++) 
 		{
-			if (global.secret && secret_mu_to_play != noone)
-				pauseIDS(true);
+			var cur_option = baseoptions[i]
+			if (!global.in_level && cur_option.o_type == optiontypes.hub) 
+			|| (global.in_level && cur_option.o_type == optiontypes.level)
+			|| cur_option.o_type == optiontypes.both
+				array_push(options, cur_option)
 		}
 	}
+	else
+		do_unpause()
 }
+
+#endregion

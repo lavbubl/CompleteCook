@@ -1,6 +1,6 @@
 if !audio_is_playing(v_peppinoscream)
 {
-	scr_sound(v_peppinoscream)
+	scr_sound_pitched(v_peppinoscream)
 	scr_sound(sfx_fireass)
 }
 scr_sound(sfx_genericfire)

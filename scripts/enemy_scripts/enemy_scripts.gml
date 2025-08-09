@@ -118,9 +118,9 @@ function do_enemy_generics()
 	if (state == states.hit)
 		grav = 0
 
-	if (place_meeting(x, y, obj_player))
+	if (place_meeting(x - obj_player.hsp, y - obj_player.vsp, obj_player))
 	{
-		if (obj_player.instakill && obj_player.hitstun <= 0 && alarm[0] == -1 && !follow_player)
+		if (obj_player.instakill && obj_player.hitstun < 0 && alarm[0] == -1 && !follow_player)
 		{
 			with (obj_player)
 			{
@@ -165,7 +165,7 @@ function do_enemy_generics()
 				other.sprite_index = other.sprs.stun
 				reset_anim(spr_player_haulingrise)
 				state = states.hold
-				if (abs(hsp) > 10)
+				if (abs(hsp) > 10 && other.alarm[0] == -1)
 				{
 					state = states.swingding
 					sprite_index = spr_player_swingding

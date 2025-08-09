@@ -1,9 +1,6 @@
 #macro screen_w 960
 #macro screen_h 540
 
-window_set_size(screen_w, screen_h)
-surface_resize(application_surface, screen_w, screen_h)
-window_center()
 draw_flush()
 
 tex_list = []

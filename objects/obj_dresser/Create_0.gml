@@ -1,3 +1,11 @@
+make_clothes_inst = function(_name, _desc, _pal_ix, _pattern = noone) constructor
+{
+	name = _name
+	description = _desc
+	pal_ix = _pal_ix
+	pattern = _pattern
+}
+
 clothes_arr = [	
 	new make_clothes_inst("Classic Cook",		"The one and only.",											1),
 	new make_clothes_inst("Unfunny Cook",		"Ha.",															3),	
@@ -72,10 +80,4 @@ switch obj_player.pal_select
 
 alph = 0
 
-function make_clothes_inst(_name, _desc, _pal_ix, _pattern = noone) constructor
-{
-	name = _name
-	description = _desc
-	pal_ix = _pal_ix
-	pattern = _pattern
-}
+

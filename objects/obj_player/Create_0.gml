@@ -11,7 +11,9 @@ input =
 	jump: new Input(global.keybinds.jump),
 	grab: new Input(global.keybinds.grab),
 	dash: new Input(global.keybinds.dash),
-	taunt: new Input(global.keybinds.taunt)
+	taunt: new Input(global.keybinds.taunt),
+	superjump: new Input(global.keybinds.superjump),
+	groundpound: new Input(global.keybinds.groundpound)
 }
 
 collide_init()
@@ -86,7 +88,7 @@ loop_sounds = {
 			return true;}
 	},
 	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: noone, is_3d: true, func: function() {
-		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart)
+		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart || obj_player.sprite_index == spr_player_presentboxspring)
 			return true;}, looppoints: [0.64, 1.84]
 	},
 	ball: {state: states.ball, sound: sfx_ballroll, sndid: noone, is_3d: true, func: function() {
@@ -107,7 +109,6 @@ flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
-didgroundpound = false
 depth = -100
 
 pal_select = 1
@@ -129,7 +130,9 @@ return_location = {
 doorxscale = 1
 warping = false
 hitstun = 0
+prev_ix = 0
 supertauntcount = 0
 supertauntshow = false
 supertauntbuffer = 0
 myemitter = noone
+pausestopframe = false

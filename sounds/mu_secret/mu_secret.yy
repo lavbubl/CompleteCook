@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":71.502655,
   "name":"mu_secret",
   "parent":{
     "name":"Sounds",
@@ -21,5 +21,5 @@
   "sampleRate":48000,
   "soundFile":"mu_secret.wav",
   "type":1,
-  "volume":0.8,
+  "volume":1.0,
 }

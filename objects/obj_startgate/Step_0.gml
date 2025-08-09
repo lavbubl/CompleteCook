@@ -58,5 +58,6 @@ if flick
 		t_door = other.t_door
 	}
 	
+	global.start_room = t_room
 	global.level_data.level_name = self.level_name
 }

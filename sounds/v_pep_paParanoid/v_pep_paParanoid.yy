@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"v_pep_paParanoid",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":1.497347,
+  "name":"v_pep_paParanoid",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"v_pep_paParanoid.wav",
+  "type":1,
+  "volume":1.0,
+}

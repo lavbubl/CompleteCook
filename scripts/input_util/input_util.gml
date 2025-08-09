@@ -69,6 +69,8 @@ function Input(_keyname_array, _input_type = INPUT_TYPE.KEYBOARD, _device = 0) c
 			{
 				for (var i = 0; i < array_length(input); i++)
 		        {
+					if input[i] == vk_nokey //making sure a blank key is invalid
+						continue;
 		            if (keyboard_check(input[i]))
 		                return true;
 		        }
@@ -99,6 +101,8 @@ function Input(_keyname_array, _input_type = INPUT_TYPE.KEYBOARD, _device = 0) c
 			{
 				for (var i = 0; i < array_length(input); i++)
 		        {
+					if input[i] == vk_nokey
+						continue;
 		            if (keyboard_check_pressed(input[i]))
 		                return true;
 		        }
@@ -128,6 +132,8 @@ function Input(_keyname_array, _input_type = INPUT_TYPE.KEYBOARD, _device = 0) c
 			{
 				for (var i = 0; i < array_length(input); i++)
 		        {
+					if input[i] == vk_nokey
+						continue;
 		            if (keyboard_check_released(input[i]))
 		                return true;
 		        }

@@ -10,4 +10,5 @@ with obj_player
 	reset_anim(spr_player_walkfront)
 }
 
+global.in_level = false
 instance_destroy()

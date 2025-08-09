@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.798667,
+  "duration":0.79868484,
   "name":"sfx_rollgetup",
   "parent":{
     "name":"Sounds",

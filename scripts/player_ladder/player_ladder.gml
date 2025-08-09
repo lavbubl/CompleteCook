@@ -15,6 +15,16 @@ function player_ladder()
 	{
 		state = states.normal
 		vsp = 0
+		if sprite_index != spr_player_ladderdown //so the player doesnt clip down when at the bottom of a ladder
+		{
+			repeat 6 //using repeat to essentially do a capped while statement
+			{
+				if !scr_solid(x, y + 1)
+					y++
+				else
+					break;
+			}
+		}
 	}
 	
 	if sprite_index == spr_player_laddermove

@@ -36,7 +36,7 @@ for (var i = 0; i < array_length(followers); i++)
 			lerp_spd = min(lerp_spd + 0.005, 0.5)
 		
 		var distance = 32
-		var condition = obj_player.hsp == 0 && obj_player.grounded
+		var condition = obj_player.hsp == 0
 		x_offset = approach(x_offset, condition ? -obj_player.xscale * ((i + 1) * distance) : 0, 4)
 		
 		if lerp_spd < 0.5
@@ -61,7 +61,9 @@ for (var i = 0; i < array_length(followers); i++)
 				}
 				else
 					reset_anim(sprs.intro)
-				create_effect(x, y, spr_tinytaunt)
+				var te = create_effect(x, y, spr_tinytaunt)
+				if sprs.taunt == spr_gerome_taunt
+					te.sprite_index = spr_taunteffect //changes the sprite but not its image_number to match. instead spr_taunteffect frame count adjusted to match spr_tinytaunt's. LOL!
 			}
 		}
 		else if pos_in_line.x != prev_pos_in_line.x

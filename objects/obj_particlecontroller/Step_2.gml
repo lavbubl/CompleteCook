@@ -48,7 +48,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 					x += 10 * target.xscale
 				y = target.y
 				image_xscale = target.xscale
-				if target.state != statetofollow
+				if target.state != statetofollow || target.sprite_index == spr_player_piledriverland
 					array_delete(other.particle_list, p, 1)
 				break;
 			default:

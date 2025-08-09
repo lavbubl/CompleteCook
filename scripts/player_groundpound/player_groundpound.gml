@@ -31,10 +31,7 @@ function player_groundpound()
 	
 	if (!grounded)
 	{
-		//if (sprite_index != 'rockethitwall')
-			hsp = p_move * movespeed
-		/*else
-			hsp = 0*/
+		hsp = sprite_index != spr_player_rockethitwall ? p_move * movespeed : 0
 		if (p_move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
 			movespeed -= 0.05
 		//if (movespeed == 0)
@@ -56,7 +53,7 @@ function player_groundpound()
 			hsp = 0
 			movespeed = 0
 		}
-		if (p_move != 0 && sprite_index != spr_player_poundcancel1)
+		if (p_move != 0 && sprite_index != spr_player_poundcancel1 && sprite_index != spr_player_rockethitwall)
 			xscale = p_move
 	}
 	if (vsp > 0)
@@ -104,8 +101,8 @@ function player_groundpound()
 			image_index = 0
 			state = states.bump
 			hsp = 0
+			vsp = 0
 			movespeed = 0
-			didgroundpound = true
 			shake_camera()
 			scr_sound_3d(sfx_groundpound, x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)

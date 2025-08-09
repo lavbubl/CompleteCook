@@ -3,12 +3,14 @@ function player_normal()
 	var default_idle = spr_player_idle
 	var default_move = spr_player_move
 	var default_jump = spr_player_jump
+	var default_fall = spr_player_fall
 	
 	if has_shotgun
 	{
 		default_idle = spr_player_shotgun_idle
 		default_move = spr_player_shotgun_move
 		default_jump = spr_player_shotgun_jump
+		default_fall = spr_player_shotgun_fall
 	}
 	if global.panic.active
 	{
@@ -19,6 +21,7 @@ function player_normal()
 			default_idle = spr_player_hurtidle
 			default_move = spr_player_hurtmove
 			default_jump = spr_player_hurtjump
+			default_fall = spr_player_hurtjump
 		}
 	}
 	if p_move != 0
@@ -73,8 +76,10 @@ function player_normal()
 				{
 					reset_anim(idlegestures[irandom(5)])
 					idletimer = -4
+					if irandom(100) >= 50
+						scr_sound_pitched(choose(v_pep_bah, v_pep_alright, v_pep_alright_high, v_pep_paranoid, v_pep_paParanoid), 0.5, 1.5)
 				}
-			
+				
 				if (anim_ended() && idletimer == -4)
 				{
 					reset_anim(default_idle)
@@ -122,7 +127,7 @@ function player_normal()
 	if !grounded
 	{
 		state = states.jump
-		reset_anim(default_jump)
+		reset_anim(default_fall)
 	}
 	
 	if (coyote_time && input_buffers.jump > 0)
@@ -138,7 +143,7 @@ function player_normal()
 	
 	do_grab() //note: intentional game design
 	
-	if (input.dash.check && !place_meeting(x + xscale, y, obj_solid))
+	if input.dash.check && !scr_hitwall(x + xscale, y)
 	{
 		state = states.mach2
 		if (movespeed < 6)

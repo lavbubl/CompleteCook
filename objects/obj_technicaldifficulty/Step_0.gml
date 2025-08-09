@@ -11,3 +11,12 @@ if (state != 1)
 	if (state == 2 && round(image_index) == 0)
 		instance_destroy()
 }
+
+if (state < 2)
+{
+	with obj_player
+	{
+		hsp = 0
+		vsp = 0
+	}
+}

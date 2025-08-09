@@ -3,7 +3,6 @@
   "%Name":"obj_metalblock_secret",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
@@ -14,8 +13,8 @@
     "path":"folders/Objects/Level Structure/Destroyables.yy",
   },
   "parentObjectId":{
-    "name":"obj_solid",
-    "path":"objects/obj_solid/obj_solid.yy",
+    "name":"obj_metalblock",
+    "path":"objects/obj_metalblock/obj_metalblock.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -39,5 +38,5 @@
     "path":"sprites/spr_metalblock_secret/spr_metalblock_secret.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

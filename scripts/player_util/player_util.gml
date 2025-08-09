@@ -5,8 +5,9 @@ function anim_ended()
 
 function do_groundpound()
 {
-	if input.down.pressed
+	if input.down.pressed || input.groundpound.pressed
 	{
+		freefallsmash = -14
 		dir = p_move
 		state = states.groundpound
 		if !has_shotgun
@@ -242,7 +243,10 @@ function do_hurt(obj = noone)
 	vsp = -12
 	i_frames = 100
 	sleep(100)
+	
 	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
+	if irandom(100) >= 50
+		scr_sound_pitched(choose(v_pep_hurt, v_pep_hurt2), 0.7, 1.3)
 	
 	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)
@@ -300,7 +304,7 @@ function do_hurt(obj = noone)
 
 function scr_hitwall(_x, _y)
 {
-	return place_meeting(_x, _y, obj_solid) || behind_slope(_x, _y)
+	return place_meeting(_x, _y, obj_solid) || behind_collision(_x, _y, obj_slope) || behind_collision(_x, _y, obj_sideplatform)
 }
 
 function scr_can_enter_door(_state)

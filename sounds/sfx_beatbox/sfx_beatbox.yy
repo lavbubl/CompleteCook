@@ -12,8 +12,8 @@
   "duration":1.8573469,
   "name":"sfx_beatbox",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -12,8 +12,8 @@
   "duration":0.7640136,
   "name":"sfx_breakblock2",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

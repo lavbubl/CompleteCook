@@ -12,8 +12,8 @@
   "duration":1.0840136,
   "name":"sfx_checkpoint",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

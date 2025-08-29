@@ -12,8 +12,8 @@
   "duration":1.9213378,
   "name":"sfx_secretexit",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

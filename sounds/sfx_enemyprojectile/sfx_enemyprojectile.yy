@@ -12,8 +12,8 @@
   "duration":0.21199547,
   "name":"sfx_enemyprojectile",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

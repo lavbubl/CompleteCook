@@ -12,8 +12,8 @@
   "duration":1.6142857,
   "name":"sfx_superjumprelease",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -4,7 +4,7 @@ levelsongs =
 [
 	[tower_1, mu_hub, false, mu_secret, 12.87, 76.85],
 	[test_1, mu_sundogfunk, false, mu_secret],
-	[entryway_1, mu_entryway, false, mu_secret],
+	//[entryway_1, mu_entryway, false, mu_secret], like,why?
 	[boss_test, mu_pepperman, false,]
 ] //rework this into constructors.
 

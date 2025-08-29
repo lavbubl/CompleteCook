@@ -14,6 +14,12 @@ var yy = sh
 
 for (var i = 0; i < array_length(options); i++) 
 {
+	var color = c_gray
+	if (optionselected == i)
+		color = c_white
+	
+	draw_set_color(color)
+	
 	var option = options[i]
 	
 	option.optionstr = $"{option.o_name}{option.val}"
@@ -26,8 +32,11 @@ for (var i = 0; i < array_length(options); i++)
 	yy += s
 }
 
+draw_set_color(c_white)
+
 option = options[optionselected]
 
 sw -= (string_width(option.optionstr) / 2)
 
-draw_sprite(spr_cursor, 0, sw, sh + (optionselected * s))
+//draw_sprite(spr_cursor, 0, sw, sh + (optionselected * s))
+//why...??

@@ -12,8 +12,8 @@
   "duration":4.5240135,
   "name":"sfx_geromecollect",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

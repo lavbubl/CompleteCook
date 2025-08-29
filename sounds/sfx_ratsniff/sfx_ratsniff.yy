@@ -12,8 +12,8 @@
   "duration":7.6759863,
   "name":"sfx_ratsniff",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

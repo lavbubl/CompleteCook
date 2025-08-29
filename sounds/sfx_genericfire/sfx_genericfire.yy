@@ -12,8 +12,8 @@
   "duration":1.0706803,
   "name":"sfx_genericfire",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

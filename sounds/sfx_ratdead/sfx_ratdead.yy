@@ -12,8 +12,8 @@
   "duration":0.8333333,
   "name":"sfx_ratdead",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -12,8 +12,8 @@
   "duration":5.918685,
   "name":"sfx_lap2ring",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

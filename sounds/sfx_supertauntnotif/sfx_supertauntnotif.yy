@@ -12,8 +12,8 @@
   "duration":1.4520181,
   "name":"sfx_supertauntnotif",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -12,8 +12,8 @@
   "duration":1.3959864,
   "name":"sfx_killenemy",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

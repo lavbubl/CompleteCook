@@ -12,8 +12,8 @@
   "duration":1.1613379,
   "name":"v_pep_hurt2",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Voice",
+    "path":"folders/Sounds/Voice.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -12,8 +12,8 @@
   "duration":1.4066666,
   "name":"sfx_machslideboost",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

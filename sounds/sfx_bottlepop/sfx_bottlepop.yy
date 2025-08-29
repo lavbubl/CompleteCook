@@ -12,8 +12,8 @@
   "duration":1.3986849,
   "name":"sfx_bottlepop",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

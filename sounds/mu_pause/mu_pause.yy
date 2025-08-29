@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":33.307575,
   "name":"mu_pause",
   "parent":{
     "name":"Music",

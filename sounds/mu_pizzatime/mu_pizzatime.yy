@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":20.249252,
   "name":"mu_pizzatime",
   "parent":{
     "name":"Music",

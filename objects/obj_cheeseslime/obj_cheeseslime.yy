@@ -1,9 +1,7 @@
 {
   "$GMObject":"",
   "%Name":"obj_cheeseslime",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "eventList":[],
   "managed":true,
   "name":"obj_cheeseslime",
   "overriddenProperties":[],
@@ -33,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player_move",
-    "path":"sprites/spr_player_move/spr_player_move.yy",
+    "name":"spr_slime_move",
+    "path":"sprites/spr_slime_move/spr_slime_move.yy",
   },
   "spriteMaskId":{
     "name":"mask_player",

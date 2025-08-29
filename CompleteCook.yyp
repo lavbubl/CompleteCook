@@ -137,7 +137,6 @@
     {"id":{"name":"obj_collect","path":"objects/obj_collect/obj_collect.yy",},},
     {"id":{"name":"obj_comboend","path":"objects/obj_comboend/obj_comboend.yy",},},
     {"id":{"name":"obj_combotitle","path":"objects/obj_combotitle/obj_combotitle.yy",},},
-    {"id":{"name":"obj_cool3deffect","path":"objects/obj_cool3deffect/obj_cool3deffect.yy",},},
     {"id":{"name":"obj_dashpad","path":"objects/obj_dashpad/obj_dashpad.yy",},},
     {"id":{"name":"obj_destroyable_big_secret","path":"objects/obj_destroyable_big_secret/obj_destroyable_big_secret.yy",},},
     {"id":{"name":"obj_destroyable_big","path":"objects/obj_destroyable_big/obj_destroyable_big.yy",},},

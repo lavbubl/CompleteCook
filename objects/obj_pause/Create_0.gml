@@ -47,6 +47,7 @@ optiontypes = { //enum thats actually a struct
 }
 
 ini_open("globalsave.ini")
+global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
 global.fullscreen = ini_read_real("options", "fullscreen", false)
 global.master_volume = ini_read_real("options", "master_volume", false)
 global.sfx_volume = ini_read_real("options", "sfx_volume", 1)

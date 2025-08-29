@@ -21,5 +21,5 @@
   "sampleRate":48000,
   "soundFile":"sfx_rankdown4.wav",
   "type":1,
-  "volume":0.6,
+  "volume":0.2,
 }

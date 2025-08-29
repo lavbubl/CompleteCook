@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":35.368343,
   "name":"mu_secret",
   "parent":{
     "name":"Music",

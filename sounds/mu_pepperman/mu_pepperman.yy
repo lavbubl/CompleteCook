@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":32.31202,
   "name":"mu_pepperman",
   "parent":{
     "name":"Music",

@@ -6,12 +6,14 @@ draw_set_align(fa_left, fa_bottom)
 
 draw_set_alpha(0.5)
 draw_set_color(c_black)
-draw_rectangle(0, screen_h - 40, 300, screen_h, false)
+draw_rectangle(0, screen_h - 80, 300, screen_h, false)
 
 draw_reset_color()
 
-draw_text(0, screen_h, $"fps : {fps}")
+draw_text(0, screen_h, $"fps: {fps}")
 draw_text(0, screen_h - 20, $"fps_real: {fps_real}")
+draw_text(0, screen_h - 40, "F1: Reset position")
+draw_text(0, screen_h - 60, "Shift + 9: Restart game")
 
 var ver_str = $"Complete Cook {version}" 
 

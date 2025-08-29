@@ -42,4 +42,4 @@ option = options[optionselected]
 sw -= (string_width(option.optionstr) / 2)
 
 //draw_sprite(spr_cursor, 0, sw, sh + (optionselected * s))
-//why...??
+//this shit looks so ass dont even try again to put this in please why didnt you just do a basic GRAY WHEN DESELECTED vro

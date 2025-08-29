@@ -82,6 +82,7 @@
   "ResourceOrderSettings":[
     {"name":"gameframe_native","order":2,"path":"extensions/gameframe_native/gameframe_native.yy",},
     {"name":"fnt_caption","order":3,"path":"fonts/fnt_caption/fnt_caption.yy",},
+    {"name":"Location of binds & Commands","order":2,"path":"notes/Location of binds & Commands/Location of binds & Commands.yy",},
     {"name":"Main Menu Guide","order":1,"path":"notes/Main Menu Guide/Main Menu Guide.yy",},
     {"name":"obj_plug is obj_outlet","order":10,"path":"notes/obj_plug is obj_outlet/obj_plug is obj_outlet.yy",},
     {"name":"og pep sticker image","order":35,"path":"notes/og pep sticker image/og pep sticker image.yy",},

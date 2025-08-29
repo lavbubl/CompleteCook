@@ -648,7 +648,6 @@
     {"name":"spr_player_hurtidle","order":99,"path":"sprites/spr_player_hurtidle/spr_player_hurtidle.yy",},
     {"name":"spr_player_hurtjump","order":106,"path":"sprites/spr_player_hurtjump/spr_player_hurtjump.yy",},
     {"name":"spr_player_hurtmove","order":97,"path":"sprites/spr_player_hurtmove/spr_player_hurtmove.yy",},
-    {"name":"spr_player_idlebig","order":117,"path":"sprites/spr_player_idlebig/spr_player_idlebig.yy",},
     {"name":"spr_player_idlebite","order":91,"path":"sprites/spr_player_idlebite/spr_player_idlebite.yy",},
     {"name":"spr_player_idlecareless","order":93,"path":"sprites/spr_player_idlecareless/spr_player_idlecareless.yy",},
     {"name":"spr_player_idledance","order":95,"path":"sprites/spr_player_idledance/spr_player_idledance.yy",},

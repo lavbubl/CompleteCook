@@ -734,7 +734,6 @@
     {"id":{"name":"spr_player_hurtjump","path":"sprites/spr_player_hurtjump/spr_player_hurtjump.yy",},},
     {"id":{"name":"spr_player_hurtmove","path":"sprites/spr_player_hurtmove/spr_player_hurtmove.yy",},},
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},},
-    {"id":{"name":"spr_player_idlebig","path":"sprites/spr_player_idlebig/spr_player_idlebig.yy",},},
     {"id":{"name":"spr_player_idlebite","path":"sprites/spr_player_idlebite/spr_player_idlebite.yy",},},
     {"id":{"name":"spr_player_idlecareless","path":"sprites/spr_player_idlecareless/spr_player_idlecareless.yy",},},
     {"id":{"name":"spr_player_idledance","path":"sprites/spr_player_idledance/spr_player_idledance.yy",},},

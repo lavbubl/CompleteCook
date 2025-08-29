@@ -75,7 +75,6 @@
     {"name":"Ranks","order":105,"path":"folders/Sprites/Player/Ranks.yy",},
     {"name":"Shotgun","order":136,"path":"folders/Sprites/Player/Shotgun.yy",},
     {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
-    {"name":"Medieval","order":2,"path":"folders/Tile Sets/Medieval.yy",},
     {"name":"Secret","order":1,"path":"folders/Tile Sets/Secret.yy",},
     {"name":"Tower","order":3,"path":"folders/Tile Sets/Tower.yy",},
     {"name":"Timelines","order":5,"path":"folders/Timelines.yy",},
@@ -88,7 +87,6 @@
     {"name":"og pep sticker image","order":35,"path":"notes/og pep sticker image/og pep sticker image.yy",},
     {"name":"obj_3d_sound","order":10,"path":"objects/obj_3d_sound/obj_3d_sound.yy",},
     {"name":"obj_afterimagecontroller","order":1,"path":"objects/obj_afterimagecontroller/obj_afterimagecontroller.yy",},
-    {"name":"obj_alphatest","order":11,"path":"objects/obj_alphatest/obj_alphatest.yy",},
     {"name":"obj_balltransfo","order":5,"path":"objects/obj_balltransfo/obj_balltransfo.yy",},
     {"name":"obj_bigcollect","order":4,"path":"objects/obj_bigcollect/obj_bigcollect.yy",},
     {"name":"obj_bigescapecollect","order":7,"path":"objects/obj_bigescapecollect/obj_bigescapecollect.yy",},
@@ -883,7 +881,6 @@
     {"name":"Sprite73","order":4,"path":"sprites/Sprite73/Sprite73.yy",},
     {"name":"Sprite92","order":4,"path":"sprites/Sprite92/Sprite92.yy",},
     {"name":"tilespr_secret","order":1,"path":"sprites/tilespr_secret/tilespr_secret.yy",},
-    {"name":"ts_medieval","order":1,"path":"tilesets/ts_medieval/ts_medieval.yy",},
     {"name":"ts_tower","order":1,"path":"tilesets/ts_tower/ts_tower.yy",},
   ],
 }

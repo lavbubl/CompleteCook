@@ -101,7 +101,7 @@
           7,-12,18,-6,7,-4,18,-18,7,8,161,162,163,164,165,166,167,168,-28,7,1,23,-6,-2147483648,2,21,7,-80,18,
           8,171,172,173,174,175,176,177,178,-27,18,2,7,23,-6,-2147483648,2,21,7,-115,18,2,7,23,-6,-2147483648,
           2,21,7,-115,18,2,7,23,-6,-2147483648,2,21,7,-98,18,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"ts_medieval","path":"tilesets/ts_medieval/ts_medieval.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":null,"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v2","%Name":"inst_639CCAD7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_639CCAD7","objectId":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":28.0,"scaleY":13.0,"x":-288.0,"y":928.0,},
         {"$GMRInstance":"v2","%Name":"inst_5F165881","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5F165881","objectId":{"name":"obj_hallway","path":"objects/obj_hallway/obj_hallway.yy",},"properties":[

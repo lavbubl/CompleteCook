@@ -197,7 +197,7 @@
           -2,39,-4,-2147483648,-4,39,-4,-2147483648,-2,39,-4,-2147483648,-4,39,-4,-2147483648,-7,39,-3,-2147483648,
           -2,39,-429,-2147483648,-2,39,-4,-2147483648,-4,39,-4,-2147483648,-2,39,-4,-2147483648,-4,39,-4,-2147483648,
           -7,39,-3,-2147483648,-2,39,-7355,-2147483648,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"ts_medieval","path":"tilesets/ts_medieval/ts_medieval.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":null,"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v2","%Name":"inst_53638C5B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_53638C5B","objectId":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":19.0,"scaleY":5.0,"x":512.0,"y":896.0,},
         {"$GMRInstance":"v2","%Name":"inst_22F8A09C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_22F8A09C","objectId":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":4.0,"scaleY":5.0,"x":928.0,"y":736.0,},

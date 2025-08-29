@@ -27,7 +27,7 @@ obj_menupeppino.cur_selected = self.cur_selected
 optionsalpha = approach(optionsalpha, 1, 0.1)
 
 if (keyboard_check_pressed(vk_escape) && abletoinput) {
-	instance_create(0, 0, obj_pause)
+	instance_create(0, 0, obj_options)
 }
 
 for (var i = 0; i < array_length(tvs); i++) 

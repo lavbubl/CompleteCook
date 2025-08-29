@@ -32,5 +32,5 @@ if menu_dark
 var options_x = 819;
 var options_y = 84;
 draw_set_alpha(optionsalpha)
-draw_sprite(spr_leave, 0, 0, 0);
 draw_sprite(spr_menupause, 0, options_x, options_y);
+cc_draw_key(options_x - 88, options_y - 37, 27)

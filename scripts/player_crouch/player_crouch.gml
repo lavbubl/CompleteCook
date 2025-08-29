@@ -40,7 +40,7 @@ function player_crouch()
 		if (coyote_time && input_buffers.jump > 0 && scr_can_uncrouch())
 		{
 			input_buffers.jump = 0
-			vsp = -12
+			vsp = -8 //-8 not -12
 			scr_sound_3d(sfx_jump, x, y)
 		}
 	}

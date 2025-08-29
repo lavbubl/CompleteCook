@@ -16,8 +16,12 @@ for (var i = 0; i < array_length(binds); i++)
 	var yy = padding + (i * h) - offset + 24
 	var cur_key = binds[i]
 	
+	var color = c_gray
+	if (selected == i)
+		color = c_white
+	
 	draw_set_font(global.creditsfont)
-	draw_set_align(fa_left, fa_middle, c_white)
+	draw_set_align(fa_left, fa_middle, color)
     draw_text(padding, yy, cur_key.name)
 	
 	draw_sprite(spr_controlicons, cur_key.image_index, screen_w - padding - 50, yy)
@@ -33,11 +37,9 @@ for (var i = 0; i < array_length(binds); i++)
 	}
 	else
 		cc_draw_key(screen_w - padding - 100, yy, cur_key.input)
+		
+	draw_set_color(c_white)
 }
-
-var realx = string_width(binds[max(selected, 0)].name) + 10
-c_x = lerp(c_x, realx, 0.1)
-draw_sprite_ext(spr_cursor, 0, c_x, padding + 20, -1, 1, 0, c_white, 1)
 
 if binding
 {

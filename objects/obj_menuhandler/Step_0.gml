@@ -23,6 +23,8 @@ if state == 0
 
 obj_menupeppino.cur_selected = self.cur_selected
 
+optionsalpha = approach(optionsalpha, 1, 0.1)
+
 for (var i = 0; i < array_length(tvs); i++) 
 {
 	var cur_tv = tvs[i]
@@ -41,18 +43,23 @@ for (var i = 0; i < array_length(tvs); i++)
 				case 0:
 					state++
 					buffer = 25
+					image_index = 0
 					sprite_index = sprs.whitenoise
 					audio_sound_gain(other.static_snd, 1, 0)
 					scr_sound(sfx_step)
 					break;
 				case 1:
-					if buffer > 0	
-						buffer--
-					else if save_exists
-					{
-						state++
-						reset_anim(sprs.selected)
-						audio_sound_gain(other.static_snd, 0, 0)
+					var _image_number = sprite_get_number(sprite_index)
+					if (save_exists) {
+						if (floor(image_index) == _image_number - 1) {
+							state++
+							reset_anim(sprs.selected)
+							audio_sound_gain(other.static_snd, 0, 0)
+						}
+					}
+					else {
+						if (floor(image_index) == _image_number - 1)
+							image_index = 2
 					}
 					break;
 			}

@@ -13,9 +13,7 @@ for (var i = 0; i < array_length(tvs); i++)
 		shader_reset()
 															 //image_speed
 		image_index = wrap(sprite_get_number(sprite_index), image_index + 0.35)
-		draw_set_font(global.tutorialfont)
-		draw_set_align(fa_center, fa_top, c_white)
-		draw_text(x + (sprite_get_width(sprite_index) / 2), y + sprite_get_height(sprite_index), $"filename: {filename}")
+
 	}
 }
 
@@ -31,3 +29,7 @@ if menu_dark
 		draw_sprite(bg_mainmenu_dark, 0, 0, 0)
 }
 
+var options_x = 819;
+var options_y = 84;
+draw_set_alpha(optionsalpha)
+draw_sprite(spr_menupause, 0, options_x, options_y);

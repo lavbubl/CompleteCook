@@ -5,7 +5,7 @@ This engine requires the lastest version of Gamemaker
 
 # Debloat info
 
-This fork of CompleteCook is made to remove un-necessary features (for example the entirety of Crunchy Construction), it may add stuff, it may remove stuff.
+This fork of CompleteCook is made to remove unnecessary features (for example the entirety of Crunchy Construction), it may add stuff, it may remove stuff.
 W.I.P.
 
 ## License

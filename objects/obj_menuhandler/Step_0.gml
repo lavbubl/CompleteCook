@@ -3,6 +3,7 @@ input.left.update(global.keybinds.ui_left);
 input.right.update(global.keybinds.ui_right);
 input.accept.update(global.keybinds.ui_accept);
 
+var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_keyconfig)
 
 if menu_dark
 {
@@ -18,12 +19,16 @@ if menu_dark
 	exit;
 }
 
-if state == 0
+if state == 0 && abletoinput
 	cur_selected = clamp(cur_selected + (-input.left.pressed + input.right.pressed), 1, array_length(tvs))
 
 obj_menupeppino.cur_selected = self.cur_selected
 
 optionsalpha = approach(optionsalpha, 1, 0.1)
+
+if (keyboard_check_pressed(vk_escape) && abletoinput) {
+	instance_create(0, 0, obj_pause)
+}
 
 for (var i = 0; i < array_length(tvs); i++) 
 {
@@ -63,7 +68,7 @@ for (var i = 0; i < array_length(tvs); i++)
 					}
 					break;
 			}
-			if other.input.accept.pressed && other.state == 0
+			if other.input.accept.pressed && other.state == 0 && abletoinput
 			{
 				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)

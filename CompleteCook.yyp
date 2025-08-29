@@ -602,6 +602,7 @@
     {"id":{"name":"spr_lap2","path":"sprites/spr_lap2/spr_lap2.yy",},},
     {"id":{"name":"spr_lap2warning","path":"sprites/spr_lap2warning/spr_lap2warning.yy",},},
     {"id":{"name":"spr_lapflag","path":"sprites/spr_lapflag/spr_lapflag.yy",},},
+    {"id":{"name":"spr_leave","path":"sprites/spr_leave/spr_leave.yy",},},
     {"id":{"name":"spr_loadingscreen","path":"sprites/spr_loadingscreen/spr_loadingscreen.yy",},},
     {"id":{"name":"spr_lockdebris","path":"sprites/spr_lockdebris/spr_lockdebris.yy",},},
     {"id":{"name":"spr_mach3charge","path":"sprites/spr_mach3charge/spr_mach3charge.yy",},},

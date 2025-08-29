@@ -1,2 +1,2 @@
 collects = []
-maxspeed = 14
+maxspeed = 25

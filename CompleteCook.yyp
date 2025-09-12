@@ -221,7 +221,6 @@
     {"id":{"name":"obj_screensizer","path":"objects/obj_screensizer/obj_screensizer.yy",},},
     {"id":{"name":"obj_secretportal_exit","path":"objects/obj_secretportal_exit/obj_secretportal_exit.yy",},},
     {"id":{"name":"obj_secretportal","path":"objects/obj_secretportal/obj_secretportal.yy",},},
-    {"id":{"name":"obj_secrettile","path":"objects/obj_secrettile/obj_secrettile.yy",},},
     {"id":{"name":"obj_shakeanddie","path":"objects/obj_shakeanddie/obj_shakeanddie.yy",},},
     {"id":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},},
     {"id":{"name":"obj_shotgun_targetblock","path":"objects/obj_shotgun_targetblock/obj_shotgun_targetblock.yy",},},

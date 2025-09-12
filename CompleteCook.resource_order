@@ -176,6 +176,7 @@
     {"name":"obj_screensizer","order":4,"path":"objects/obj_screensizer/obj_screensizer.yy",},
     {"name":"obj_secretportal_exit","order":14,"path":"objects/obj_secretportal_exit/obj_secretportal_exit.yy",},
     {"name":"obj_secretportal","order":13,"path":"objects/obj_secretportal/obj_secretportal.yy",},
+    {"name":"obj_secrettile","order":11,"path":"objects/obj_secrettile/obj_secrettile.yy",},
     {"name":"obj_shakeanddie","order":6,"path":"objects/obj_shakeanddie/obj_shakeanddie.yy",},
     {"name":"obj_shell","order":9,"path":"objects/obj_shell/obj_shell.yy",},
     {"name":"obj_shotgun_targetblock","order":14,"path":"objects/obj_shotgun_targetblock/obj_shotgun_targetblock.yy",},

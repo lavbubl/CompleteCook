@@ -80,9 +80,8 @@ function player_mach2()
 			reset_anim(spr_player_machroll)
 		else
 		{
-			sprite_index = spr_player_dive
+			sprite_index = spr_player_mach2jump
 			vsp = 10
-			scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 		}
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}

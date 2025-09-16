@@ -150,8 +150,6 @@ if hitstun < 0
 }
 else if hitstun >= 0
 {
-	hsp = 0
-	vsp = 0
 	hitstun--
 	image_index = prev_ix
 }
@@ -205,9 +203,24 @@ if state == states.fireass //||
 if state == states.ball
 	instance_destroy(instance_place(x + hsp, y + vsp, obj_rattumbleblock))
 
+var prevhsp = hsp
+var prevvsp = vsp
+
+if hitstun >= 0
+{
+	hsp = 0
+	vsp = 0
+}
+
 if (state != states.noclip && state != states.backtohub)
 	collide()
 	
+if hitstun >= 0
+{
+	hsp = prevhsp
+	vsp = prevvsp
+}
+
 break_destroyables()
 
 struct_foreach(aftimg_timers, function(_name, _data)

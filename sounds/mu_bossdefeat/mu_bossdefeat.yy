@@ -12,8 +12,8 @@
   "duration":9.182653,
   "name":"mu_bossdefeat",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Music",
+    "path":"folders/Sounds/Music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

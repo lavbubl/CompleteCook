@@ -11,7 +11,6 @@ ui_input =
 
 depth = -2000
 
-create_image = false
 optionselected = 0
 inputbuffer = 0
 
@@ -23,10 +22,11 @@ optiontypes = {
 }
 
 ini_open("globalsave.ini")
+global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
 global.fullscreen = ini_read_real("options", "fullscreen", false)
 global.master_volume = ini_read_real("options", "master_volume", false)
 global.sfx_volume = ini_read_real("options", "sfx_volume", 1)
-global.music_volume = ini_read_real("options", "music_volume", 1) //these being global are kinda unneccesary...
+global.music_volume = ini_read_real("options", "music_volume", 1) //these being global are kinda unneccesary... //ok so WHY did you make them global then???
 global.chosen_res = ini_read_real("options", "res_number", 1)
 ini_close()
 
@@ -60,6 +60,10 @@ options = [
 		global.music_volume = _val
 		audio_group_set_gain(ag_music, _val, 0)
 		quick_ini_write_real("globalsave.ini", "options", "music_volume", _val)
+	}},
+	{o_name: "UNFOCUSED MUTE: ", val: global.unfocus_mute, o_type: optiontypes.onoff, func: function(_val) {
+		global.unfocus_mute = _val
+		quick_ini_write_real("globalsave.ini", "options", "unfocus_mute", _val)
 	}},
 	{o_name: "CHANGE KEYBINDS", val: "", o_type: optiontypes.input, func: function(_val) {
 		instance_create(0, 0, obj_keyconfig)

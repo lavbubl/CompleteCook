@@ -12,8 +12,8 @@
   "duration":2.121338,
   "name":"sfx_shotgunshot",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

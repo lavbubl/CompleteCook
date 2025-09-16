@@ -12,8 +12,8 @@
   "duration":1.1053514,
   "name":"v_pep_bah",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Voice",
+    "path":"folders/Sounds/Voice.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

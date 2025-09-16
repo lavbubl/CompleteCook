@@ -9,11 +9,11 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":0.461542,
+  "duration":0.46154195,
   "name":"sfx_rankup2",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
@@ -21,5 +21,5 @@
   "sampleRate":48000,
   "soundFile":"sfx_rankup2.wav",
   "type":1,
-  "volume":0.6,
+  "volume":0.2,
 }

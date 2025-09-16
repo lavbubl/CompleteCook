@@ -12,8 +12,8 @@
   "duration":0.43394557,
   "name":"sfx_clothesswitch",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

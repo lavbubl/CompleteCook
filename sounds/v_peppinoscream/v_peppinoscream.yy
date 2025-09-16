@@ -12,8 +12,8 @@
   "duration":3.2946713,
   "name":"v_peppinoscream",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Voice",
+    "path":"folders/Sounds/Voice.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

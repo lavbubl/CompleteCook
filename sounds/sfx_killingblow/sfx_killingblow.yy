@@ -12,8 +12,8 @@
   "duration":0.5906803,
   "name":"sfx_killingblow",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

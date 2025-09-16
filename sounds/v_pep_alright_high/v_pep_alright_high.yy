@@ -12,8 +12,8 @@
   "duration":0.9586848,
   "name":"v_pep_alright_high",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Voice",
+    "path":"folders/Sounds/Voice.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

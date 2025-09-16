@@ -12,8 +12,8 @@
   "duration":0.26240364,
   "name":"sfx_vulnerable",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

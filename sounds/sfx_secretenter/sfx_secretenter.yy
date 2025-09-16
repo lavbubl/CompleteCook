@@ -12,8 +12,8 @@
   "duration":1.7959864,
   "name":"sfx_secretenter",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -12,8 +12,8 @@
   "duration":0.46154195,
   "name":"sfx_rankdown2",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
@@ -21,5 +21,5 @@
   "sampleRate":48000,
   "soundFile":"sfx_rankdown2.wav",
   "type":1,
-  "volume":0.6,
+  "volume":0.2,
 }

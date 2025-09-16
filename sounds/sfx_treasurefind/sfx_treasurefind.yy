@@ -12,8 +12,8 @@
   "duration":2.4198186,
   "name":"sfx_treasurefind",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

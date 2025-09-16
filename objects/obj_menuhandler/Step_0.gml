@@ -3,6 +3,7 @@ input.left.update(global.keybinds.ui_left);
 input.right.update(global.keybinds.ui_right);
 input.accept.update(global.keybinds.ui_accept);
 
+var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_keyconfig)
 
 if menu_dark
 {
@@ -18,10 +19,16 @@ if menu_dark
 	exit;
 }
 
-if state == 0
+if state == 0 && abletoinput
 	cur_selected = clamp(cur_selected + (-input.left.pressed + input.right.pressed), 1, array_length(tvs))
 
 obj_menupeppino.cur_selected = self.cur_selected
+
+optionsalpha = approach(optionsalpha, 1, 0.1)
+
+if (keyboard_check_pressed(vk_escape) && abletoinput) {
+	instance_create(0, 0, obj_options)
+}
 
 for (var i = 0; i < array_length(tvs); i++) 
 {
@@ -41,22 +48,27 @@ for (var i = 0; i < array_length(tvs); i++)
 				case 0:
 					state++
 					buffer = 25
+					image_index = 0
 					sprite_index = sprs.whitenoise
 					audio_sound_gain(other.static_snd, 1, 0)
 					scr_sound(sfx_step)
 					break;
 				case 1:
-					if buffer > 0	
-						buffer--
-					else if save_exists
-					{
-						state++
-						reset_anim(sprs.selected)
-						audio_sound_gain(other.static_snd, 0, 0)
+					var _image_number = sprite_get_number(sprite_index)
+					if (save_exists) {
+						if (floor(image_index) == _image_number - 1) {
+							state++
+							reset_anim(sprs.selected)
+							audio_sound_gain(other.static_snd, 0, 0)
+						}
+					}
+					else {
+						if (floor(image_index) == _image_number - 1)
+							image_index = 2
 					}
 					break;
 			}
-			if other.input.accept.pressed && other.state == 0
+			if other.input.accept.pressed && other.state == 0 && abletoinput
 			{
 				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)

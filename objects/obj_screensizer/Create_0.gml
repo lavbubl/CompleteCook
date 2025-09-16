@@ -1,3 +1,7 @@
+ini_open("globalsave.ini")
+global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
+ini_close()
+
 gui_surf = noone
 surface_resize(application_surface, screen_w, screen_h)
 

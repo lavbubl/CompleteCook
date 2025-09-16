@@ -34,11 +34,4 @@ c_x = 0
 offset = 0
 selected = 0
 binding = false
-
-if instance_exists(obj_pause)
-{
-	audio_pause_sound(mu_pause)
-	scr_sound(mu_options, true)
-}
-
 //have to hardcode this so there's an order

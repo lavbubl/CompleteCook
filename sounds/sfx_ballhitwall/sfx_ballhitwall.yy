@@ -12,8 +12,8 @@
   "duration":0.98,
   "name":"sfx_ballhitwall",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

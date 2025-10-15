@@ -16,8 +16,8 @@ campos.y = clamp(campos.y, 0, room_height - screen_h)
 
 if mag > 0
 {
-	campos.x += random_range(mag, -mag)
-	campos.y += random_range(mag, -mag)
+	campos.x += irandom_range(-mag, mag)
+	campos.y += irandom_range(-mag, mag)
 }
 
 camera_set_view_pos(view_camera[0], campos.x, campos.y)

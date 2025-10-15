@@ -22,7 +22,13 @@ global.doorshut = false
 scr_sound(sfx_killenemy)
 scr_sound(sfx_pillarimpact)
 scr_sound(sfx_escaperumble)
-do_enemygibs()
+particle_create(x, y, particles.bang)
+repeat (3)
+{
+	particle_create(x, y, particles.gib)
+	particle_create(x, y, particles.stars)
+}
+
 
 global.combo.count++
 global.combo.timer = 60

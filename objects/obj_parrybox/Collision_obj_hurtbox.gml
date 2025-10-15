@@ -1,14 +1,6 @@
 if other.inactive
 	exit;
 
-with obj_player
-{
-	state = states.parry
-	var ix = irandom_range(1, 3)
-	reset_anim(asset_get_index($"spr_player_parry{ix}"))
-	movespeed = -5
-}
-
 with other
 {
 	var xh = lerp(bbox_left, bbox_right, 0.5)
@@ -18,16 +10,19 @@ with other
 	{
 		if enemy_can_die(follow_obj)
 		{
-			particle_create(xh, follow_obj.y + 20, particles.genericpoof)
-			particle_create(xh, follow_obj.y + 20, particles.parry)
-			
-			instance_destroy(follow_obj)
+			with follow_obj
+			{
+				sprite_index = sprs.stun
+				do_enemygibs()
+				shake_camera(3, 3 / room_speed)
+				scr_sound_3d(sfx_punch, x, y)
+				
+				alarm[0] = 5
+			}
 			
 			instance_destroy()
 		}
 	}
-	else
-		particle_create(x, y, particles.parry)
 	
 	if object_index == obj_pizzardelectricity
 	{
@@ -35,7 +30,5 @@ with other
 		hurtplayer = false
 	}
 }
-			
-sleep(50)
-scr_sound_pitched(sfx_parry)
-instance_destroy()
+
+event_user(0)

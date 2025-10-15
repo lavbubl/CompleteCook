@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":1.2016326,
+  "duration":0.0,
   "name":"sfx_box",
   "parent":{
     "name":"SFX",

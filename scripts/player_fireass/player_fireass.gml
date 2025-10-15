@@ -7,6 +7,8 @@ function player_fireass()
 		image_xscale *= -1
 	if sprite_index == spr_player_fireass
 	{
+		if anim_ended() && sprite_index == spr_player_fireass
+			create_effect(x, y + 25, spr_shotgunimpact)
 		if particle_timer > 0
 			particle_timer--
 		else
@@ -26,7 +28,7 @@ function player_fireass()
 		}
 		else
 			movespeed = approach(movespeed, 0, 0.1)
-		if grounded && vsp > 0 && !place_meeting(x, y + 1, obj_ratblock)
+		if grounded && vsp >= 0 && !place_meeting(x, y + 1, obj_ratblock)
 		{
 			movespeed = 6
 			reset_anim(spr_player_fireassground)

@@ -7,6 +7,8 @@ with obj_player
 	var ix = irandom_range(1, 3)
 	reset_anim(asset_get_index($"spr_player_parry{ix}"))
 	movespeed = -5
+	flash = 10
+	particle_create(x, y, particles.parry)
 }
 
 with other
@@ -16,6 +18,5 @@ with other
 	
 	particle_create(x, y, particles.parry)
 }
-			
-sleep(50)
-scr_sound_pitched(sfx_parry)
+
+event_user(0)

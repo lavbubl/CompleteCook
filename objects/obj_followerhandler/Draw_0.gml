@@ -1,4 +1,4 @@
-for (var i = 0; i < array_length(followers); i++) 
+for (var i = array_length(followers) - 1; i >= 0; i--) //go reverse for depth
 {
 	var follower = followers[i]
 	var vs = obj_player.visual_size

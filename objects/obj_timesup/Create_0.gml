@@ -10,3 +10,4 @@ alarm[2] = alarm[1] - 45
 global.panic.active = false
 global.combo.timer = 0
 global.combo.count = 0
+collide_init()

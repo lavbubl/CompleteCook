@@ -5,6 +5,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 	var p_id = particle_list[p]
 	with p_id
 	{
+		image_number = sprite_get_number(sprite_index)
 		image_index += image_speed
 		switch (type)
 		{
@@ -13,7 +14,8 @@ for (var p = 0; p < array_length(particle_list); p++)
 			case particles.yellowstar:
 				x += hsp
 				y += vsp
-				vsp += 0.5
+				if vsp < 20
+					vsp += 0.5
 				if y > room_height
 					array_delete(other.particle_list, p, 1)
 				break;

@@ -1,28 +1,9 @@
 function collide()
 {
-	var hsp_plat = 0
-	var vsp_plat = 0
 	var o_inc = 8 //optimization increment
 	
 	old_x2 = x
 	old_y2 = y
-	
-	var ground_check = false
-	
-	var bh = bbox_bottom - y
-	var plat_id = noone
-	with collision_rectangle(bbox_left, bbox_top + min(0, vsp), bbox_right, bbox_bottom + max(0, vsp) + 4, obj_movingplatform, false, true)
-	{
-		plat_id = id
-		if (other.bbox_bottom - other.vsp <= bbox_top)
-		{
-			hsp_plat = hsp
-			vsp_plat = vsp
-			ground_check = true
-			other.vsp = 0
-			other.y = bbox_top - bh
-		}
-	}
 	
 	var hsp_final = hsp + hsp_plat
 	var vsp_final = vsp + vsp_plat
@@ -97,7 +78,7 @@ function collide()
 			}
 			if scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1)
 			{
-				while !scr_solid(x, y + 1) && !(plat_id != noone && bbox_bottom >= plat_id.bbox_top && old_y2 + bh < plat_id.bbox_top)
+				while !scr_solid(x, y + 1)
 					y++
 			}
 		}
@@ -107,13 +88,37 @@ function collide()
 	if (vsp < 20)
 		vsp += grav
 	
-	grounded = scr_solid(x, y + 1) || ground_check
+	grounded = scr_solid(x, y + 1)
+	
+	hsp_plat = 0
+	vsp_plat = 0
+	
+	var plat_id = instance_place(x, y + 1, obj_movingplatform)
+	if plat_id != -4
+	{
+		if plat_id.vsp < 0 && bbox_bottom <= plat_id.bbox_top - plat_id.vsp
+		{
+			while place_meeting(x, y, plat_id) && !place_meeting(x, y - 1, obj_solid)
+				y--
+			vsp = 0
+			grounded |= true
+			hsp_plat = round(plat_id.hsp)
+			vsp_plat = round(plat_id.vsp)
+		}
+		else if bbox_bottom <= plat_id.bbox_top
+		{
+			hsp_plat = round(plat_id.hsp)
+			vsp_plat = round(plat_id.vsp)
+		}
+	}
 }
 
 function collide_init()
 {
 	hsp = 0
 	vsp = 0
+	hsp_plat = 0
+	vsp_plat = 0
 	grav = 0.5
 	grounded = false
 	old_x2 = x
@@ -134,6 +139,7 @@ function scr_solid(_x, _y)
 	for (var i = 0; i < instance_number(par_collision); i++) 
 	{
 		var _id = instance_find(par_collision, i)
+		
 		with instance_place(_x, _y, _id)
 		{
 			switch (object_index)
@@ -142,6 +148,7 @@ function scr_solid(_x, _y)
 					collided = true
 					continue;
 				case obj_platform:
+				case obj_movingplatform:
 					if image_yscale >= 0 && master.bbox_bottom <= bbox_top && !climbingladder
 						collided = true
 					else if image_yscale <= 0 && master.bbox_top >= bbox_bottom && !climbingladder
@@ -349,26 +356,9 @@ function behind_collision(_x, _y, obj_type)
 }
 
 function collide_simple() //no grounded, no optimization, no 
-{
-	var hsp_plat = 0
-	var vsp_plat = 0
-	
+{	
 	old_x2 = x
 	old_y2 = y
-	
-	/*
-	var bh = bbox_bottom - y
-	with (instance_place(x, y + 1 + other.vsp, obj_movingplatform))
-	{
-		if (other.bbox_bottom - other.vsp <= bbox_top)
-		{
-			hsp_plat = hsp
-			vsp_plat = vsp
-			other.vsp = 0
-			other.grounded = true
-			other.y = bbox_top - bh
-		}
-	} ill get back to these another day*/
 	
 	var hsp_final = hsp + hsp_plat
 	var vsp_final = vsp + vsp_plat
@@ -419,4 +409,26 @@ function collide_simple() //no grounded, no optimization, no
 		vsp += grav
 	
 	grounded = scr_solid(x, y + 1)
+	
+	hsp_plat = 0
+	vsp_plat = 0
+	
+	var plat_id = instance_place(x, y + 1, obj_movingplatform)
+	if plat_id != -4
+	{
+		if plat_id.vsp < 0 && bbox_bottom <= plat_id.bbox_top - plat_id.vsp
+		{
+			while place_meeting(x, y, plat_id) && !place_meeting(x, y - 1, obj_solid)
+				y--
+			vsp = 0
+			grounded |= true
+			hsp_plat = plat_id.hsp
+			vsp_plat = plat_id.vsp
+		}
+		else if bbox_bottom <= plat_id.bbox_top
+		{
+			hsp_plat = plat_id.hsp
+			vsp_plat = plat_id.vsp
+		}
+	}
 }

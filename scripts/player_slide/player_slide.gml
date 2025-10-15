@@ -36,7 +36,7 @@ function player_slide()
 			break
 		case spr_player_machslidestart:
 			if anim_ended()
-				image_speed = 0;
+				image_index = image_number - 4
 			if scr_hitwall(x + xscale, y)
 			{
 				reset_anim(spr_player_wallsplat)

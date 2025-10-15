@@ -100,6 +100,7 @@ rank_scale = max(rank_scale - 0.2, 1)
 var hf = spr_ranks_hudfill
 
 var perc = 0
+
 if rank_ix >= 4 //if the rank is above an s set the percentage to 100%
 	perc = 1
 else if rank_ix == 0 //or if the rank is above a d set the percentage to the score divided by the next rank milestone, c

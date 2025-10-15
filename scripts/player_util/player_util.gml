@@ -221,6 +221,8 @@ function do_hurt(obj = noone)
 {
 	if state == states.defeat || state == states.actor
 		return;
+		
+	sleep(100)
 	
 	if obj != noone
 	{
@@ -232,7 +234,7 @@ function do_hurt(obj = noone)
 		hsp = 8 * goto_xscale
 		sprite_index = facing ? spr_player_hurt : spr_player_hurtbehind
 		
-		if obj.object_index == obj_outlet
+		if (obj.object_index == obj_outlet || obj.object_index == obj_pizzardelectricity)
 			scr_sound_3d(sfx_electricity, x, y)
 	}
 	else
@@ -242,7 +244,6 @@ function do_hurt(obj = noone)
 	state = states.hurt
 	vsp = -12
 	i_frames = 100
-	sleep(100)
 	
 	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
 	if irandom(100) >= 50
@@ -319,5 +320,9 @@ function scr_can_enter_door(_state)
 
 function scr_can_uncrouch()
 {
-	return !scr_solid(x, y - 16);
+	var prevmask = mask_index
+	mask_index = mask_player_small
+	var r = !scr_solid(x, y - 16)
+	mask_index = prevmask
+	return r;
 }

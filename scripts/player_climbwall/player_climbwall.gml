@@ -58,8 +58,10 @@ function player_climbwall()
 	{
 		state = states.jump
 		sprite_index = spr_player_fall
-		movespeed = -5
+		movespeed = -6
 		jumpstop = false
+		momentum = true
+		dir = xscale
 	}
 	if (input_buffers.jump > 0)
 	{

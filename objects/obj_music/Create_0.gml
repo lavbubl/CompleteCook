@@ -1,12 +1,19 @@
-//args room, sound asset, continous, secret music
+RoomMusic = function(_room, _song, _iscontinuous, _secretmusic = mu_secret, _loopstart = noone, _loopend = noone) constructor
+{
+	room_number = _room
+	song = _song
+	secretmusic = _secretmusic
+	iscontinuous = _iscontinuous
+	loopstart = _loopstart
+	loopend = _loopend
+}
 
 levelsongs = 
 [
-	[tower_1, mu_hub, false, mu_secret, 12.87, 76.85],
-	[test_1, mu_sundogfunk, false, mu_secret],
-	//[entryway_1, mu_entryway, false, mu_secret], like,why?
-	[boss_test, mu_pepperman, false,]
-] //rework this into constructors.
+	new RoomMusic(tower_1, mu_hub, false, mu_secret, 12.87, 76.85),
+	new RoomMusic(test_1, mu_sundogfunk, false, mu_secret),
+	new RoomMusic(boss_test, mu_pepperman, false)
+]
 
 pauseIDS = function(pause = true)
 {

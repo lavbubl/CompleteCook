@@ -126,6 +126,7 @@ function player_normal()
 	
 	if !grounded
 	{
+		dir = xscale
 		state = states.jump
 		reset_anim(default_fall)
 	}

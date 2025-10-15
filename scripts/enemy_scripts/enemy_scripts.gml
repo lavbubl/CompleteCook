@@ -95,7 +95,11 @@ function do_enemygibs()
 	repeat (3)
 	{
 		particle_create(x, y, particles.gib)
-		particle_create(x, y, particles.stars)
+		with particle_create(x, y, particles.stars)
+		{
+			hsp = random_range(-5, 5)
+			vsp = random_range(-10, 10);
+		}
 	}
 }
 
@@ -132,17 +136,16 @@ function do_enemy_generics()
 					jumpstop = false
 				}
 			}
-		
+			
 			sprite_index = sprs.stun
 		
-			do_enemygibs()
-			particle_create(x, y, particles.genericpoof)
 			shake_camera()
 			scr_sound_3d(sfx_punch, x, y)
+			create_effect(x, y, spr_kungfueffect).depth = -100
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index
-			alarm[0] = 5
+			alarm[0] = 3
 		}
 		if ((obj_player.state == states.mach2 || obj_player.state == states.tumble) && stun_timer < 160)
 		{

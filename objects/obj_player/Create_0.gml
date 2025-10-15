@@ -46,6 +46,7 @@ aftimg_timers = {
 } what was this again?*/
 
 dir = 0
+momentum = false
 freefallsmash = 0
 crouchslipbuffer = 0
 grabclimbbuffer = 0
@@ -136,3 +137,11 @@ supertauntshow = false
 supertauntbuffer = 0
 myemitter = noone
 pausestopframe = false
+
+uparrow = {
+	yoffset: -50,
+	visible: false,
+	sprite_index: spr_uparrow,
+	image_speed: 0.35,
+	image_index: 0
+}

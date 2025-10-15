@@ -52,9 +52,10 @@ for (var i = 0; i < array_length(followers); i++)
 		
 		if obj_player.state == states.taunt
 		{
-			if sprite_index != sprs.taunt && sprite_index != sprs.intro
+			var issupertaunt = string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt")
+			if (sprite_index != sprs.taunt && sprite_index != sprs.intro) || (issupertaunt && obj_player.image_index <= obj_player.image_speed)
 			{
-				if !string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") //too dumb to think of the best solution
+				if !issupertaunt
 				{
 					sprite_index = sprs.taunt
 					image_index = irandom(sprite_get_number(sprite_index) - 1)

@@ -18,7 +18,7 @@ function player_crouch()
 	hsp = p_move * 4
 	image_speed = 0.4
 	
-	if !(grounded && vsp > 0)
+	if !grounded
 	{
 		if sprite_index != crouchfallspr
 			reset_anim(crouchfallspr)

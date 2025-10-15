@@ -31,3 +31,10 @@ if flash > 0
 	draw_sprite_ext(sprite_index, image_index, xx, yy, xscale * visual_size, image_yscale * visual_size, image_angle, image_blend, image_alpha)
 	shader_reset()
 }
+
+with uparrow
+{
+	if visible
+		draw_sprite(sprite_index, image_index, other.x, other.y + yoffset)
+	image_index += image_speed
+}

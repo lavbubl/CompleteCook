@@ -8,11 +8,13 @@ if do_particles
 	
 	obj_player.supertauntcount++
 	
+	
 	particle_create(x, y, particles.bang)
-	repeat (3)
+	particle_create(x, y, particles.genericpoof)
+	repeat 3
 		particle_create(x, y, particles.yellowstar)
 	scr_sound_3d(sfx_killenemy, x, y)
-	shake_camera()
+	shake_camera(3, 3 / room_speed)
 	
 	ds_list_add(!escape ? global.ds_dead_enemies : global.ds_escapesaveroom, id)
 }

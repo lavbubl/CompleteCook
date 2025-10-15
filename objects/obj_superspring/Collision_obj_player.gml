@@ -7,6 +7,7 @@ with other
 		x = other.x
 		scr_sound_3d(sfx_superspring, x, y)
 		var follow_state = states.superjump
+		hsp = 0
 		if other.image_yscale >= 0
 		{
 			var h = bbox_bottom - y

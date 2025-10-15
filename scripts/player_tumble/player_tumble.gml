@@ -18,7 +18,6 @@ function player_tumble() //ball is in its own state, player_ball()
 		state = states.groundpound
 		vsp = -6
 		dir = xscale
-		scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
 	}
 	
 	if movespeed <= 2
@@ -56,7 +55,7 @@ function player_tumble() //ball is in its own state, player_ball()
 	if (crouchslipbuffer > 0)
 		crouchslipbuffer--
 		
-	if (!input.down.check && grounded && vsp > 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
+	if (!input.down.check && grounded && vsp >= 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
 	{
 		if input.dash.check
 		{

@@ -95,10 +95,9 @@ if follow_player
 			
 		if (state = states.punchenemy && floor(image_index) == ixcheck)
 		{
-			shake_camera()
+			shake_camera(3, 3 / room_speed)
 			scr_sound_3d(sfx_punch, x, y)
 			scr_sound_3d(sfx_killingblow, x, y)
-			do_enemygibs()
 			with other
 			{
 				follow_player = false
@@ -110,6 +109,7 @@ if follow_player
 					hsp = 0
 					vsp = -20
 				}
+				do_enemygibs()
 			}
 			global.combo.timer = 60
 		}

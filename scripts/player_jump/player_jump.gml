@@ -28,15 +28,28 @@ function player_jump()
 		scr_sound_3d(sfx_jump, x, y)
 	}
 	
+	hsp = movespeed * xscale
+	
+	if p_move == -xscale || movespeed >= 0
+		momentum = false
+	
 	if (p_move != 0)
 	{
 		movespeed = approach(movespeed, 6, 0.5)
 		xscale = p_move
+		if dir != xscale
+		{
+			movespeed = 0
+			dir = xscale
+		}
 	}
-	else if (p_move == 0 || xscale != p_move)
+	else if momentum
+		movespeed = approach(movespeed, 0, 0.5)
+	else if (p_move == 0)
 		movespeed = 0
-	
-	hsp = movespeed * xscale
+		
+	if movespeed >= 0
+		momentum = false
 	
 	if place_meeting(x + hsp, y, obj_solid)
 		movespeed = 0

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"follower_taunt",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"follower_taunt",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

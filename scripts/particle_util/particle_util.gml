@@ -92,6 +92,7 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 			sprite_index = _sprite
 	
 		image_number = sprite_get_number(p.sprite_index)
+		image_index = -image_speed
 	}
 	
 	with (obj_particlecontroller)

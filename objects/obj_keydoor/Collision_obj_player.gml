@@ -30,6 +30,3 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 		image_speed = 0.35
 	}
 }
-
-if (other.sprite_index = spr_player_lookdoor || other.sprite_index = spr_player_enterkeydoor)
-	other.x = approach(other.x, x + sprite_width / 2, 2)

@@ -28,8 +28,11 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 		hsp = 0
 		movespeed = 0
 		image_speed = 0.35
+		
+		if other.t_room = treasure_room
+		{
+			prev_g_room = room
+			prev_g_door = other.t_door
+		}
 	}
 }
-
-if (other.sprite_index = spr_player_lookdoor || other.sprite_index = spr_player_enterkeydoor)
-	other.x = approach(other.x, x + sprite_width / 2, 2)

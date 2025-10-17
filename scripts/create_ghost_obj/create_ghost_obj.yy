@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"create_ghost_obj",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"create_ghost_obj",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

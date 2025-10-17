@@ -32,8 +32,6 @@ else
 			var soundId = noone
 			if mu != noone
 				soundId = audio_sound_get_asset(mu);
-				
-			secret_mu_to_play = currentSong.secretmusic
 	
 			if (soundId != currentSong.song && room == currentSong.room_number)
 			{
@@ -55,6 +53,7 @@ else
 				}
 				
 				mu = scr_sound(currentSong.song, true);
+				
 				audio_sound_gain(mu, prevLength ? 0 : 1, 0); // make it quiet so it can fade in
 				if prevLength
 				{
@@ -68,6 +67,8 @@ else
 				
 				if currentSong.loopend != noone
 					audio_sound_loop_end(mu, currentSong.loopend)
+				
+				secret_mu_to_play = currentSong.secretmusic
 				
 				break;
 			}

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"mu_entrance_secret",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":71.489365,
+  "name":"mu_entrance_secret",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Sounds/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"mu_entrance_secret.wav",
+  "type":1,
+  "volume":1.0,
+}

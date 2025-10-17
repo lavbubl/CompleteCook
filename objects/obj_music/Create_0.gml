@@ -2,8 +2,8 @@ RoomMusic = function(_room, _song, _iscontinuous, _secretmusic = mu_secret, _loo
 {
 	room_number = _room
 	song = _song
-	secretmusic = _secretmusic
 	iscontinuous = _iscontinuous
+	secretmusic = _secretmusic
 	loopstart = _loopstart
 	loopend = _loopend
 }
@@ -11,6 +11,7 @@ RoomMusic = function(_room, _song, _iscontinuous, _secretmusic = mu_secret, _loo
 levelsongs = 
 [
 	new RoomMusic(tower_1, mu_hub, false, mu_secret, 12.87, 76.85),
+	new RoomMusic(entrance_1, mu_entrance, false, mu_entrance_secret, 51.18, 212.58),
 	new RoomMusic(test_1, mu_sundogfunk, false, mu_secret),
 	new RoomMusic(boss_test, mu_pepperman, false)
 ]

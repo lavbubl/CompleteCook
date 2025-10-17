@@ -68,6 +68,8 @@ function enemy_stun()
 function enemy_hit()
 {
 	sprite_index = sprs.dead
+	with instance_place(x + hsp, y + vsp, obj_destroyable)
+		instance_destroy()
 	if (place_meeting(x + hsp, y + vsp, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
 		instance_destroy()
 }
@@ -145,7 +147,7 @@ function do_enemy_generics()
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index
-			alarm[0] = 3
+			alarm[0] = 2
 		}
 		if ((obj_player.state == states.mach2 || obj_player.state == states.tumble) && stun_timer < 160)
 		{

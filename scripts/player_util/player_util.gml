@@ -321,8 +321,8 @@ function scr_can_enter_door(_state)
 function scr_can_uncrouch()
 {
 	var prevmask = mask_index
-	mask_index = mask_player_small
-	var r = !scr_solid(x, y - 16)
+	mask_index = mask_player
+	var r = !scr_solid(x, y - 1)
 	mask_index = prevmask
 	return r;
 }

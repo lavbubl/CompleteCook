@@ -118,9 +118,20 @@ function player_mach3()
 		reset_anim(spr_player_mach3hitwall)
 		vsp = -6
 		hsp = xscale * -6
-		shake_camera(20, 0.8)
+		shake_camera(20, 40 / room_speed)
 		scr_sound_3d(sfx_groundpound, x, y)
 		scr_sound_3d(sfx_bumpwall, x, y)
+		
+		with par_enemy
+		{
+			if (grounded && vsp >= 0 && bbox_in_camera())
+			{
+				state = states.stun
+				stun_timer = 200
+				vsp = -5
+				hsp = 0
+			}
+		}
 	}
 	image_speed = 0.4
 	switch (sprite_index)

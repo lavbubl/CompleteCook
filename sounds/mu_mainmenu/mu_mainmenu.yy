@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":36.392925,
+  "duration":118.40871,
   "name":"mu_mainmenu",
   "parent":{
     "name":"Music",

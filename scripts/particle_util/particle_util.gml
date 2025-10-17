@@ -121,7 +121,9 @@ function create_debris(_x, _y, sprite)
 
 function create_effect(_x, _y, sprite)
 {
-	return particle_create(_x, _y, particles.genericpoof, 1, 1, sprite);
+	var p = particle_create(_x, _y, particles.genericpoof, 1, 1, sprite)
+	p.image_number = sprite_get_number(sprite)
+	return p;
 }
 
 function create_followingeffect(sprite, state, _xscale = 1)

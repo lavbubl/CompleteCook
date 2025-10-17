@@ -2,7 +2,10 @@ function player_bump()
 {
 	image_speed = 0.35
 	if sprite_index == spr_player_wallsplat || 
-	   sprite_index == spr_player_ceilinghit
+	   sprite_index == spr_player_ceilinghit || 
+	   sprite_index == spr_player_bodyslamland ||
+	   sprite_index == spr_player_poundcancel2 ||
+	   sprite_index == spr_player_shotgun_shootdownland
 	{
 		hsp = 0
 		vsp = 0

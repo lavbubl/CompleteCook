@@ -35,7 +35,7 @@ function player_taunt()
 	{
 		supertauntcount = 0
 		supertauntshow = false
-		shake_camera(10, room_speed / 60)
+		shake_camera(4, 5 / room_speed)
 		image_speed = 0.4
 		
 		if anim_ended()

@@ -19,6 +19,13 @@ if (sprite_index == spr_player_lookdoor || sprite_index == spr_player_entergate 
 	image_speed = 0.35
 }
 
+if room == treasure_room
+{
+	x = obj_returndoor.x + 48
+	y = obj_returndoor.y + 50
+	exit;
+}
+
 with obj_doorpoint
 {
 	if other.spawn == spawn

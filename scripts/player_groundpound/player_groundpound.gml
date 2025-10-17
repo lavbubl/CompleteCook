@@ -101,16 +101,14 @@ function player_groundpound()
 			image_index = 0
 			state = states.bump
 			hsp = 0
-			vsp = 0
 			movespeed = 0
-			shake_camera()
+			shake_camera(5, 15 / room_speed)
 			scr_sound_3d(sfx_groundpound, x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)
 			if freefallsmash >= 10
 			{
 				with par_enemy
 				{
-					//if (shakestun && grounded && view point_in_camera(x, y, view_camera[0]) && grounded && vsp > 0 && !invincible && groundpound)
 					if (grounded && vsp >= 0 && bbox_in_camera())
 					{
 						state = states.stun
@@ -120,7 +118,7 @@ function player_groundpound()
 						hsp = 0
 					}
 				}
-				shake_camera(10, 0.5)
+				shake_camera(10, 30 / room_speed)
 			}
 		}
 	}

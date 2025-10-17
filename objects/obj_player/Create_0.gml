@@ -138,6 +138,9 @@ supertauntbuffer = 0
 myemitter = noone
 pausestopframe = false
 
+prev_g_room = 0
+prev_g_door = "a"
+
 uparrow = {
 	yoffset: -50,
 	visible: false,

@@ -1,4 +1,0 @@
-function follower_taunt()
-{
-
-}

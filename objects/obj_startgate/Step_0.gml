@@ -60,4 +60,8 @@ if flick
 	
 	global.start_room = t_room
 	global.level_data.level_name = self.level_name
+	
+	obj_score.prev_rank_ix = 0
+	
+	set_rank_milestones(rank_scores[0], rank_scores[1], rank_scores[2], rank_scores[3])
 }

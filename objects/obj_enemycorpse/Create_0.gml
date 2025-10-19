@@ -5,5 +5,6 @@ dopalette = false
 pal_select = 0
 pattern_spr = noone
 pattern_not_init = true
+image_xscale = obj_player.x > x ? 1 : -1
 depth = -10
 alarm[0] = 5

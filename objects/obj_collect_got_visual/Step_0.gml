@@ -1,3 +1,5 @@
+visible = hud_get_visible()
+
 for (var i = 0; i < array_length(collects); i++) {
 	var c_id = collects[i]
 	var dir = point_direction(c_id.x, c_id.y, obj_score.x, obj_score.y)

@@ -16,7 +16,7 @@ with instance_place(x, y, obj_player)
 		hsp = 0
 		movespeed = 0
 		
-		var s = round(global.score + obj_generichandler.combo_score)
+		var s = round(global.score + obj_levelcontroller.combo_score)
 		
 		with instance_create(0, 0, obj_rank)
 		{

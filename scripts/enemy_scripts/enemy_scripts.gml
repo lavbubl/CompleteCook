@@ -71,7 +71,10 @@ function enemy_hit()
 	with instance_place(x + hsp, y + vsp, obj_destroyable)
 		instance_destroy()
 	if (place_meeting(x + hsp, y + vsp, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
+	{
+		y -= 20
 		instance_destroy()
+	}
 }
 
 function do_scared()
@@ -126,7 +129,7 @@ function do_enemy_generics()
 
 	if (place_meeting(x - obj_player.hsp, y - obj_player.vsp, obj_player))
 	{
-		if (obj_player.instakill && obj_player.hitstun < 0 && alarm[0] == -1 && !follow_player)
+		if (obj_player.instakill && alarm[0] == -1 && !follow_player)
 		{
 			with (obj_player)
 			{
@@ -140,7 +143,7 @@ function do_enemy_generics()
 			}
 			
 			sprite_index = sprs.stun
-		
+			
 			shake_camera()
 			scr_sound_3d(sfx_punch, x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
@@ -209,7 +212,8 @@ function do_enemy_generics()
 		blur_timer--
 	else if state == states.hit
 	{
-		afterimage_create(after_images.blur)
+		with afterimage_create(after_images.blur)
+			y -= 20
 		blur_timer = 2
 	}
 

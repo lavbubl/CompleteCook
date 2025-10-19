@@ -9,7 +9,8 @@ if array_length(pos_array) > (array_length(followers) * delay) + 1
 var s = {
 	x: obj_player.x,
 	y: obj_player.y,
-	state: obj_player.state
+	state: obj_player.state,
+	xscale: obj_player.xscale
 }
 
 array_push(pos_array, s)
@@ -37,7 +38,7 @@ for (var i = 0; i < array_length(followers); i++)
 		
 		var distance = 32
 		var condition = obj_player.hsp == 0
-		x_offset = approach(x_offset, condition ? -obj_player.xscale * ((i + 1) * distance) : 0, 4)
+		x_offset = approach(x_offset, condition ? -pos_in_line.xscale * ((i + 1) * distance) : 0, 4)
 		
 		if lerp_spd < 0.5
 		{

@@ -13,7 +13,7 @@ var ranks = [
 	global.rank_milestones.s
 ]
 
-var s = global.score + obj_generichandler.combo_score
+var s = global.score + obj_levelcontroller.combo_score
 
 if (s >= global.rank_milestones.s && check_p_rank())
 	rank_ix = 5

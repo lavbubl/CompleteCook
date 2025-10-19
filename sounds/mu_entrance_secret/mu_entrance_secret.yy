@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"mu_entrance_secret",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"ag_music",
+    "path":"audiogroups/ag_music",
   },
   "bitDepth":1,
   "bitRate":128,

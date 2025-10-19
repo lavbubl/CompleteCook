@@ -1,9 +1,6 @@
 var p = obj_player
 
-visible = true
-
-if (string_starts_with(room_get_name(room), "tower") || room == rank_room || room == rm_timesup || room == mainmenu)
-	visible = false
+visible = hud_get_visible()
 
 if !visible
 	state = tv_states.off

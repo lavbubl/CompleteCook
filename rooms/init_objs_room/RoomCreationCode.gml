@@ -39,5 +39,9 @@ enum states
 	shoot,
 	
 	//boss states
-	pm_attack
+	pm_attack,
+	
+	//extras
+	throwing,
+	transition
 }

@@ -6,11 +6,3 @@ t_door = ""
 card_index = 0
 title_index = 0
 music = noone
-pep_sticker_timer = 40
-pep_sticker = {
-	sprite_index: spr_pepsticker,
-	x:	676,
-	y:	340,
-	size: 1,
-	actual_size: 0.4
-}

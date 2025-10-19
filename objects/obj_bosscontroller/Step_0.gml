@@ -1,3 +1,5 @@
+visible = hud_get_visible(false)
+
 if circ_goaway && surface_exists(circ_surf)
 {
 	var spd = 10

@@ -44,11 +44,11 @@ if follow_player
 				break;
 			case states.punchenemy:
 				other.x = x + xscale * 48
-				other.y = y - 20
+				other.y = y
 				break;
 			case states.swingding:
 				other.x = x
-				other.y = y - 20
+				other.y = y
 				break;
 		}
 		other.state = states.grabbed

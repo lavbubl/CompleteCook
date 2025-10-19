@@ -30,7 +30,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"test_1","path":"rooms/test_1/test_1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"test_1","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"entrance_1","path":"rooms/entrance_1/entrance_1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"entrance_1","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"t_door","filters":[],"listItems":[],"multiselect":false,"name":"t_door","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"a\"","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"level_name","filters":[],"listItems":[],"multiselect":false,"name":"level_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Entrance\"","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"door_gate","filters":[
@@ -43,6 +43,7 @@
     {"$GMObjectProperty":"v1","%Name":"title_data","filters":[
         "GMSound",
       ],"listItems":[],"multiselect":false,"name":"title_data","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[mu_title_john, 0, 0]","varType":4,},
+    {"$GMObjectProperty":"v1","%Name":"rank_scores","filters":[],"listItems":[],"multiselect":false,"name":"rank_scores","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[16000, 8000, 4000, 2000]","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

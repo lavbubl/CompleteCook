@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_priest_pray",
   "bboxMode":0,
   "bbox_bottom":95,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"a77446fc-fca6-4f31-b41b-faa66a5cc1d2","name":"a77446fc-fca6-4f31-b41b-faa66a5cc1d2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ec033d8b-63fa-4e08-8c17-3523ac7366b2","name":"ec033d8b-63fa-4e08-8c17-3523ac7366b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"eef8936c-ad12-4ef2-bc3c-c5dadef274ed","name":"eef8936c-ad12-4ef2-bc3c-c5dadef274ed","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5538b58e-9e72-4a99-a82f-41cbbb5f7dda","name":"5538b58e-9e72-4a99-a82f-41cbbb5f7dda","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"93e9eef8-8f0b-4451-8f61-59c7370b7560","name":"93e9eef8-8f0b-4451-8f61-59c7370b7560","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"c9e12204-80b4-4965-97fc-77154ab42c39","name":"c9e12204-80b4-4965-97fc-77154ab42c39","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d035157b-3a30-47f1-92b1-b72d408988f5","name":"d035157b-3a30-47f1-92b1-b72d408988f5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a2be5da2-53b8-4ebf-8835-1d4a4bc384da","name":"a2be5da2-53b8-4ebf-8835-1d4a4bc384da","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a77446fc-fca6-4f31-b41b-faa66a5cc1d2","name":"a77446fc-fca6-4f31-b41b-faa66a5cc1d2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ec033d8b-63fa-4e08-8c17-3523ac7366b2","name":"ec033d8b-63fa-4e08-8c17-3523ac7366b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"eef8936c-ad12-4ef2-bc3c-c5dadef274ed","name":"eef8936c-ad12-4ef2-bc3c-c5dadef274ed","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5538b58e-9e72-4a99-a82f-41cbbb5f7dda","name":"5538b58e-9e72-4a99-a82f-41cbbb5f7dda","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"93e9eef8-8f0b-4451-8f61-59c7370b7560","name":"93e9eef8-8f0b-4451-8f61-59c7370b7560","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c9e12204-80b4-4965-97fc-77154ab42c39","name":"c9e12204-80b4-4965-97fc-77154ab42c39","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d035157b-3a30-47f1-92b1-b72d408988f5","name":"d035157b-3a30-47f1-92b1-b72d408988f5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a2be5da2-53b8-4ebf-8835-1d4a4bc384da","name":"a2be5da2-53b8-4ebf-8835-1d4a4bc384da","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,30 +77,14 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a77446fc-fca6-4f31-b41b-faa66a5cc1d2","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"adcb1329-e1ca-4c8c-ab26-5992b87c9348","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ec033d8b-63fa-4e08-8c17-3523ac7366b2","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"37924feb-09f0-4e43-b09e-48135ed592b2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"eef8936c-ad12-4ef2-bc3c-c5dadef274ed","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d1523940-5487-4726-b8af-a1a189ad7ad1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5538b58e-9e72-4a99-a82f-41cbbb5f7dda","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d5512189-7c7b-483a-8caa-9c007fe47583","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"93e9eef8-8f0b-4451-8f61-59c7370b7560","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"82f8a840-b980-4d52-b032-f9cb8b320034","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c9e12204-80b4-4965-97fc-77154ab42c39","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"cd219153-61c2-4f0e-919d-4e617196f3c8","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d035157b-3a30-47f1-92b1-b72d408988f5","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"07b9242c-42fb-4ad6-ac99-5ce7aa8b419b","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a2be5da2-53b8-4ebf-8835-1d4a4bc384da","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8656aadb-e9a9-4b49-a186-170b41e882e7","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a77446fc-fca6-4f31-b41b-faa66a5cc1d2","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"adcb1329-e1ca-4c8c-ab26-5992b87c9348","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ec033d8b-63fa-4e08-8c17-3523ac7366b2","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"37924feb-09f0-4e43-b09e-48135ed592b2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"eef8936c-ad12-4ef2-bc3c-c5dadef274ed","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d1523940-5487-4726-b8af-a1a189ad7ad1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5538b58e-9e72-4a99-a82f-41cbbb5f7dda","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d5512189-7c7b-483a-8caa-9c007fe47583","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"93e9eef8-8f0b-4451-8f61-59c7370b7560","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"82f8a840-b980-4d52-b032-f9cb8b320034","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c9e12204-80b4-4965-97fc-77154ab42c39","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"cd219153-61c2-4f0e-919d-4e617196f3c8","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d035157b-3a30-47f1-92b1-b72d408988f5","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"07b9242c-42fb-4ad6-ac99-5ce7aa8b419b","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a2be5da2-53b8-4ebf-8835-1d4a4bc384da","path":"sprites/spr_priest_pray/spr_priest_pray.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"8656aadb-e9a9-4b49-a186-170b41e882e7","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

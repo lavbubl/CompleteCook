@@ -31,7 +31,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"test_1","path":"rooms/test_1/test_1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"test_1","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"test_1","path":"rooms/test_1/test_1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"test_1","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

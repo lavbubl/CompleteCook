@@ -30,20 +30,20 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"boss_test","path":"rooms/boss_test/boss_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"boss_test","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"t_door","filters":[],"listItems":[],"multiselect":false,"name":"t_door","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"a\"","varType":2,},
-    {"$GMObjectProperty":"v1","%Name":"boss_name","filters":[],"listItems":[],"multiselect":false,"name":"boss_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"pepperman\"","varType":2,},
-    {"$GMObjectProperty":"v1","%Name":"door_gate","filters":[
+    {"$GMObjectProperty":"v2","%Name":"t_room","filters":[],"listItems":[],"multiselect":false,"name":"t_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"boss_test","path":"rooms/boss_test/boss_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"boss_test","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"t_door","filters":[],"listItems":[],"multiselect":false,"name":"t_door","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"a\"","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"boss_name","filters":[],"listItems":[],"multiselect":false,"name":"boss_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"pepperman\"","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"door_gate","filters":[
         "GMSprite",
       ],"listItems":[],"multiselect":false,"name":"door_gate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_bossgate_default","path":"sprites/spr_bossgate_default/spr_bossgate_default.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_bossgate_default","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"door_bg","filters":[
+    {"$GMObjectProperty":"v2","%Name":"door_bg","filters":[
         "GMSprite",
       ],"listItems":[],"multiselect":false,"name":"door_bg","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_bossgate_default_bg","path":"sprites/spr_bossgate_default_bg/spr_bossgate_default_bg.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_bossgate_default_bg","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"scroll_spd","filters":[],"listItems":[],"multiselect":false,"name":"scroll_spd","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
-    {"$GMObjectProperty":"v1","%Name":"boss_portrait","filters":[
+    {"$GMObjectProperty":"v2","%Name":"scroll_spd","filters":[],"listItems":[],"multiselect":false,"name":"scroll_spd","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"boss_portrait","filters":[
         "GMSprite",
       ],"listItems":[],"multiselect":false,"name":"boss_portrait","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_bossportrait_pepperman","path":"sprites/spr_bossportrait_pepperman/spr_bossportrait_pepperman.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_bossportrait_pepperman","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"boss_title","filters":[
+    {"$GMObjectProperty":"v2","%Name":"boss_title","filters":[
         "GMSprite",
       ],"listItems":[],"multiselect":false,"name":"boss_title","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_bosstitle_pepperman","path":"sprites/spr_bosstitle_pepperman/spr_bosstitle_pepperman.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_bosstitle_pepperman","varType":5,},
   ],

@@ -1,5 +1,5 @@
 {
-  "$GMNotes":"",
+  "$GMNotes":"v1",
   "%Name":"obj_plug is obj_outlet",
   "name":"obj_plug is obj_outlet",
   "parent":{

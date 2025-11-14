@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_shotgunpickup_grabeffect",
   "bboxMode":0,
   "bbox_bottom":88,
@@ -12,11 +12,11 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"dd166a98-2443-40b8-9697-9e95c8fc911c","name":"dd166a98-2443-40b8-9697-9e95c8fc911c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"1fe160bd-ffea-4f51-9aa9-ad0295916ca2","name":"1fe160bd-ffea-4f51-9aa9-ad0295916ca2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"7bfe9f8b-c263-4e0b-98fb-21fef7193ea7","name":"7bfe9f8b-c263-4e0b-98fb-21fef7193ea7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5d5e938b-243c-487c-b728-98430097a26e","name":"5d5e938b-243c-487c-b728-98430097a26e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"136d622e-d589-4e71-885a-1a2528328e52","name":"136d622e-d589-4e71-885a-1a2528328e52","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dd166a98-2443-40b8-9697-9e95c8fc911c","name":"dd166a98-2443-40b8-9697-9e95c8fc911c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1fe160bd-ffea-4f51-9aa9-ad0295916ca2","name":"1fe160bd-ffea-4f51-9aa9-ad0295916ca2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7bfe9f8b-c263-4e0b-98fb-21fef7193ea7","name":"7bfe9f8b-c263-4e0b-98fb-21fef7193ea7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5d5e938b-243c-487c-b728-98430097a26e","name":"5d5e938b-243c-487c-b728-98430097a26e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"136d622e-d589-4e71-885a-1a2528328e52","name":"136d622e-d589-4e71-885a-1a2528328e52","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -74,21 +74,11 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd166a98-2443-40b8-9697-9e95c8fc911c","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b8107db7-f7ce-48b4-b9e6-2f3322fb980f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1fe160bd-ffea-4f51-9aa9-ad0295916ca2","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"72955a82-22cd-4d73-a9cb-3a1b4ebd8993","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7bfe9f8b-c263-4e0b-98fb-21fef7193ea7","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1eefd643-b5db-40ff-8362-e38d3117b743","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5d5e938b-243c-487c-b728-98430097a26e","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"127e7e97-0d67-4cfe-b899-ee9fb4b15fd4","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"136d622e-d589-4e71-885a-1a2528328e52","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b80a1121-fbab-4bb9-adc0-8256b297263c","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd166a98-2443-40b8-9697-9e95c8fc911c","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b8107db7-f7ce-48b4-b9e6-2f3322fb980f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"1fe160bd-ffea-4f51-9aa9-ad0295916ca2","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"72955a82-22cd-4d73-a9cb-3a1b4ebd8993","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"7bfe9f8b-c263-4e0b-98fb-21fef7193ea7","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1eefd643-b5db-40ff-8362-e38d3117b743","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5d5e938b-243c-487c-b728-98430097a26e","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"127e7e97-0d67-4cfe-b899-ee9fb4b15fd4","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"136d622e-d589-4e71-885a-1a2528328e52","path":"sprites/spr_shotgunpickup_grabeffect/spr_shotgunpickup_grabeffect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b80a1121-fbab-4bb9-adc0-8256b297263c","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

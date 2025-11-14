@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_player_shotgun_shootdownland",
   "bboxMode":0,
   "bbox_bottom":95,
@@ -12,11 +12,11 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8548a338-94aa-4880-ab7a-a66e5b330f57","name":"8548a338-94aa-4880-ab7a-a66e5b330f57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ebf0d4b8-3ae9-4276-aa1c-87e564537ba8","name":"ebf0d4b8-3ae9-4276-aa1c-87e564537ba8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"731c1501-09d4-4187-b047-9ab8b648409f","name":"731c1501-09d4-4187-b047-9ab8b648409f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ae053da5-c3a4-4c11-a9de-1a6a263bee89","name":"ae053da5-c3a4-4c11-a9de-1a6a263bee89","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"62d0c05c-f5d3-4505-8a95-cc2f4491fdb8","name":"62d0c05c-f5d3-4505-8a95-cc2f4491fdb8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8548a338-94aa-4880-ab7a-a66e5b330f57","name":"8548a338-94aa-4880-ab7a-a66e5b330f57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ebf0d4b8-3ae9-4276-aa1c-87e564537ba8","name":"ebf0d4b8-3ae9-4276-aa1c-87e564537ba8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"731c1501-09d4-4187-b047-9ab8b648409f","name":"731c1501-09d4-4187-b047-9ab8b648409f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ae053da5-c3a4-4c11-a9de-1a6a263bee89","name":"ae053da5-c3a4-4c11-a9de-1a6a263bee89","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"62d0c05c-f5d3-4505-8a95-cc2f4491fdb8","name":"62d0c05c-f5d3-4505-8a95-cc2f4491fdb8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -74,21 +74,11 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8548a338-94aa-4880-ab7a-a66e5b330f57","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"07764933-3ca7-4409-bdce-38d7392e6965","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ebf0d4b8-3ae9-4276-aa1c-87e564537ba8","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7644adbf-d76d-4c18-9ef5-cc044ee52b7e","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"731c1501-09d4-4187-b047-9ab8b648409f","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"fc5f3e0a-4ad1-4042-9fcb-6fe595be07d6","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ae053da5-c3a4-4c11-a9de-1a6a263bee89","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e96c5643-8102-4dee-b309-28f0e29e1c61","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"62d0c05c-f5d3-4505-8a95-cc2f4491fdb8","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"74cde2be-755f-4178-8d3f-ac54bd64fe97","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8548a338-94aa-4880-ab7a-a66e5b330f57","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"07764933-3ca7-4409-bdce-38d7392e6965","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ebf0d4b8-3ae9-4276-aa1c-87e564537ba8","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7644adbf-d76d-4c18-9ef5-cc044ee52b7e","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"731c1501-09d4-4187-b047-9ab8b648409f","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"fc5f3e0a-4ad1-4042-9fcb-6fe595be07d6","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ae053da5-c3a4-4c11-a9de-1a6a263bee89","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e96c5643-8102-4dee-b309-28f0e29e1c61","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"62d0c05c-f5d3-4505-8a95-cc2f4491fdb8","path":"sprites/spr_player_shotgun_shootdownland/spr_player_shotgun_shootdownland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"74cde2be-755f-4178-8d3f-ac54bd64fe97","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

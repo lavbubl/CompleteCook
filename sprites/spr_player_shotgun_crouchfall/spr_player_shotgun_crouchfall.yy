@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_player_shotgun_crouchfall",
   "bboxMode":0,
   "bbox_bottom":95,
@@ -12,17 +12,17 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"128837ed-6194-4897-aceb-9a586677c4eb","name":"128837ed-6194-4897-aceb-9a586677c4eb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f80fa3a1-835d-4ce3-86e4-78fb1e3fadd2","name":"f80fa3a1-835d-4ce3-86e4-78fb1e3fadd2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"8ffb3c48-b316-40d3-8ebf-32958b80e433","name":"8ffb3c48-b316-40d3-8ebf-32958b80e433","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"28fbe0f4-1ed6-490a-beb6-80b81e96dd55","name":"28fbe0f4-1ed6-490a-beb6-80b81e96dd55","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"37fa0668-256a-4c90-b578-3c18bf095f6b","name":"37fa0668-256a-4c90-b578-3c18bf095f6b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f6ffe3c4-35a1-42b3-90ca-657fbcf60528","name":"f6ffe3c4-35a1-42b3-90ca-657fbcf60528","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6c6e424c-2a32-4327-954c-4482012836a8","name":"6c6e424c-2a32-4327-954c-4482012836a8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"62d4f84c-f0fe-4f5d-b10b-eb58422c13e6","name":"62d4f84c-f0fe-4f5d-b10b-eb58422c13e6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"2136bc74-46d0-4313-8881-63b5498c2260","name":"2136bc74-46d0-4313-8881-63b5498c2260","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"3f5701c6-bbd8-4dc8-8b20-83b34fecf83d","name":"3f5701c6-bbd8-4dc8-8b20-83b34fecf83d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"4b64d1d0-6af0-4545-ac0a-11363384152a","name":"4b64d1d0-6af0-4545-ac0a-11363384152a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"128837ed-6194-4897-aceb-9a586677c4eb","name":"128837ed-6194-4897-aceb-9a586677c4eb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f80fa3a1-835d-4ce3-86e4-78fb1e3fadd2","name":"f80fa3a1-835d-4ce3-86e4-78fb1e3fadd2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8ffb3c48-b316-40d3-8ebf-32958b80e433","name":"8ffb3c48-b316-40d3-8ebf-32958b80e433","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"28fbe0f4-1ed6-490a-beb6-80b81e96dd55","name":"28fbe0f4-1ed6-490a-beb6-80b81e96dd55","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"37fa0668-256a-4c90-b578-3c18bf095f6b","name":"37fa0668-256a-4c90-b578-3c18bf095f6b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f6ffe3c4-35a1-42b3-90ca-657fbcf60528","name":"f6ffe3c4-35a1-42b3-90ca-657fbcf60528","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6c6e424c-2a32-4327-954c-4482012836a8","name":"6c6e424c-2a32-4327-954c-4482012836a8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"62d4f84c-f0fe-4f5d-b10b-eb58422c13e6","name":"62d4f84c-f0fe-4f5d-b10b-eb58422c13e6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2136bc74-46d0-4313-8881-63b5498c2260","name":"2136bc74-46d0-4313-8881-63b5498c2260","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"3f5701c6-bbd8-4dc8-8b20-83b34fecf83d","name":"3f5701c6-bbd8-4dc8-8b20-83b34fecf83d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4b64d1d0-6af0-4545-ac0a-11363384152a","name":"4b64d1d0-6af0-4545-ac0a-11363384152a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -80,39 +80,17 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"128837ed-6194-4897-aceb-9a586677c4eb","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3ae574b6-71de-41b5-8408-aa46ff79d80f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f80fa3a1-835d-4ce3-86e4-78fb1e3fadd2","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"5317c1e1-f6c2-4978-8921-45a7998c4197","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8ffb3c48-b316-40d3-8ebf-32958b80e433","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"20d4ae76-bb42-4dd4-9fa7-13d192451163","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"28fbe0f4-1ed6-490a-beb6-80b81e96dd55","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"43968ec5-e88f-4daa-b64d-8823dafe2203","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"37fa0668-256a-4c90-b578-3c18bf095f6b","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"df68c7ae-4dcb-4b28-b138-e50fe4ddc065","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f6ffe3c4-35a1-42b3-90ca-657fbcf60528","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"673a99a5-bb5e-40a3-b5eb-8bfaf4d6aafd","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c6e424c-2a32-4327-954c-4482012836a8","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b14df87e-22d0-498c-beb5-16ee1c6a1c72","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"62d4f84c-f0fe-4f5d-b10b-eb58422c13e6","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1b577f7d-7ae2-4c1b-821d-1d2ba5adbfdb","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2136bc74-46d0-4313-8881-63b5498c2260","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f264c1d0-6ba0-4a44-b83c-363caae63368","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3f5701c6-bbd8-4dc8-8b20-83b34fecf83d","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"69add0e0-739d-4159-b4dc-6c6c77816f48","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4b64d1d0-6af0-4545-ac0a-11363384152a","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7fdf55b6-3013-4921-b62b-3d16a7b160b9","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"128837ed-6194-4897-aceb-9a586677c4eb","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3ae574b6-71de-41b5-8408-aa46ff79d80f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f80fa3a1-835d-4ce3-86e4-78fb1e3fadd2","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"5317c1e1-f6c2-4978-8921-45a7998c4197","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8ffb3c48-b316-40d3-8ebf-32958b80e433","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"20d4ae76-bb42-4dd4-9fa7-13d192451163","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"28fbe0f4-1ed6-490a-beb6-80b81e96dd55","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"43968ec5-e88f-4daa-b64d-8823dafe2203","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"37fa0668-256a-4c90-b578-3c18bf095f6b","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"df68c7ae-4dcb-4b28-b138-e50fe4ddc065","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f6ffe3c4-35a1-42b3-90ca-657fbcf60528","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"673a99a5-bb5e-40a3-b5eb-8bfaf4d6aafd","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c6e424c-2a32-4327-954c-4482012836a8","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b14df87e-22d0-498c-beb5-16ee1c6a1c72","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"62d4f84c-f0fe-4f5d-b10b-eb58422c13e6","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1b577f7d-7ae2-4c1b-821d-1d2ba5adbfdb","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2136bc74-46d0-4313-8881-63b5498c2260","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f264c1d0-6ba0-4a44-b83c-363caae63368","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"3f5701c6-bbd8-4dc8-8b20-83b34fecf83d","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"69add0e0-739d-4159-b4dc-6c6c77816f48","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"4b64d1d0-6af0-4545-ac0a-11363384152a","path":"sprites/spr_player_shotgun_crouchfall/spr_player_shotgun_crouchfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7fdf55b6-3013-4921-b62b-3d16a7b160b9","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

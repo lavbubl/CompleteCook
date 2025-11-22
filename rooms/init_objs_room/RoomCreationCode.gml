@@ -37,6 +37,7 @@ enum states
 	grabbed,
 	scared,
 	shoot,
+	kick,
 	
 	//boss states
 	pm_attack,

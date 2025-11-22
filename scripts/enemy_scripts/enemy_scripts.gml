@@ -191,7 +191,7 @@ function do_enemy_generics()
 			{
 				if (state == states.jump)
 					reset_anim(spr_player_stomp)
-				vsp = input.jump.check ? -15 : -10
+				vsp = input.jump.check ? -14 : -9
 				jumpstop = true
 				
 				scr_sound_3d(sfx_stompenemy, x, y)

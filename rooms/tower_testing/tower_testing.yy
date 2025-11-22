@@ -172,6 +172,7 @@
     {"name":"inst_3414C44A","path":"rooms/tower_testing/tower_testing.yy",},
     {"name":"inst_5EA848BB","path":"rooms/tower_testing/tower_testing.yy",},
     {"name":"inst_303DD2A3","path":"rooms/tower_testing/tower_testing.yy",},
+    {"name":"inst_320C35CF","path":"rooms/tower_testing/tower_testing.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -405,6 +406,7 @@
         {"$GMRInstance":"v4","%Name":"inst_303DD2A3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_303DD2A3","objectId":{"name":"obj_movingplatform","path":"objects/obj_movingplatform/obj_movingplatform.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_movingplatform","path":"objects/obj_movingplatform/obj_movingplatform.yy",},"propertyId":{"name":"spd","path":"objects/obj_movingplatform/obj_movingplatform.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"20",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":11.496,"scaleY":1.0,"x":9696.0,"y":256.0,},
+        {"$GMRInstance":"v4","%Name":"inst_320C35CF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_320C35CF","objectId":{"name":"obj_pepgoblin","path":"objects/obj_pepgoblin/obj_pepgoblin.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":544.0,"y":1152.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Backgrounds_H1","animationFPS":0.35,"animationSpeedType":1,"colour":4287171897,"depth":900,"effectEnabled":true,"effectType":"none","gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Backgrounds_H1","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"bg_dragonlair","path":"sprites/bg_dragonlair/bg_dragonlair.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":true,"visible":false,"vspeed":0.0,"vtiled":true,"x":0,"y":0,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4279762982,"depth":1000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},

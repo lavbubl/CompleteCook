@@ -83,3 +83,16 @@ if ini_section_exists(level_name)
 }
 
 ini_close()
+
+if secret_eyes {
+	for(var i = 1; i < 3; i++) {
+		var b = i < save_data.secret_count
+		
+		with instance_create(x, y, obj_gatesecreteye) {
+			timer = current_time + (600000 * i * 2)
+			time_x += i - 1
+			time_y += (i - 1) * 2
+			sprite_index = b ? spr_gatesecreteyeopen : spr_gatesecreteyeclosed
+		}
+	}
+}

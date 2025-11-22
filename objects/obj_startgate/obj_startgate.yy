@@ -44,6 +44,7 @@
         "GMSound",
       ],"listItems":[],"multiselect":false,"name":"title_data","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[mu_title_john, 0, 0]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"rank_scores","filters":[],"listItems":[],"multiselect":false,"name":"rank_scores","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[16000, 8000, 4000, 2000]","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"secret_eyes","filters":[],"listItems":[],"multiselect":false,"name":"secret_eyes","rangeEnabled":true,"rangeMax":3.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"True","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

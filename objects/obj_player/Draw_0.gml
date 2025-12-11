@@ -10,7 +10,7 @@ if hitstun > 0
 	yy += irandom_range(-range, range)
 }
 
-if sprite_index == spr_player_walkfront
+if sprite_index == spr_playerP_walkfront
 	image_blend = make_color_hsv(0, 0, (1 - ((image_number - image_index) / image_number)) * 255)
 
 image_alpha = 1

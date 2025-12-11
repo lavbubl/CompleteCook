@@ -23,6 +23,8 @@ if (cooldown <= 0 && distance_to_object(obj_player) <= 300 && state == states.no
 	state = states.kick
 	cooldown = 3
 	reset_anim(spr_pepgoblin_kick)
+	with instance_create(x, y, obj_pepgoblin_kickbox)
+		baddieID = other.id
 }
 else
 	cooldown--
@@ -36,6 +38,7 @@ if state == states.kick
 	{
 		reset_anim(sprs.move)
 		state = states.normal
+		instance_destroy(obj_pepgoblin_kickbox)
 	}
 }
 

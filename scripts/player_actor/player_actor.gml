@@ -2,7 +2,7 @@ function player_actor()
 {
 	switch (sprite_index)
 	{
-		case spr_player_walkfront:
+		case spr_playerP_walkfront:
 			if anim_ended()
 				state = states.normal
 			if particle_timer > 0
@@ -13,7 +13,7 @@ function player_actor()
 				scr_sound_3d_pitched(sfx_step, x, y)
 			}
 			break;
-		case spr_player_timesup:
+		case spr_playerP_timesup:
 			if anim_ended()
 			{
 				if room != rm_timesup
@@ -22,10 +22,10 @@ function player_actor()
 					image_speed = 0
 			}
 			break;
-		case spr_player_uppizzabox:
+		case spr_playerP_uppizzabox:
 			vsp = 0
 			break;
-		case spr_player_shotgun_pickup: //generic animation end
+		case spr_playerP_shotgun_pickup: //generic animation end
 			if anim_ended()
 				state = states.normal
 			break;

@@ -5,7 +5,7 @@ function player_punchenemy()
 	movespeed = 0
 	
 	var ixcheck = 5
-	if sprite_index == spr_player_swingdingend
+	if sprite_index == spr_playerP_swingdingend
 		ixcheck = 1
 	
 	if (floor(image_index) == ixcheck)
@@ -14,7 +14,7 @@ function player_punchenemy()
 		vsp = -6
 	}
 	
-	if (floor(image_index) < 4 && sprite_index != spr_player_swingdingend)
+	if (floor(image_index) < 4 && sprite_index != spr_playerP_swingdingend)
 		hsp = approach(hsp, 0, 1)
 	else
 		hsp = approach(hsp, -xscale * 4, 0.5)

@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.21199547,
+  "duration":0.212,
   "exportDir":"",
   "name":"sfx_enemyprojectile",
   "parent":{

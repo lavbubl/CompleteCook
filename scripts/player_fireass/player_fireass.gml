@@ -5,9 +5,9 @@ function player_fireass()
 	instakill = true
 	if scr_hitwall(x + hsp, y)
 		image_xscale *= -1
-	if sprite_index == spr_player_fireass
+	if sprite_index == spr_playerP_fireass
 	{
-		if anim_ended() && sprite_index == spr_player_fireass
+		if anim_ended() && sprite_index == spr_playerP_fireass
 			create_effect(x, y + 25, spr_shotgunimpact)
 		if particle_timer > 0
 			particle_timer--
@@ -31,10 +31,10 @@ function player_fireass()
 		if grounded && vsp >= 0 && !place_meeting(x, y + 1, obj_ratblock)
 		{
 			movespeed = 6
-			reset_anim(spr_player_fireassground)
+			reset_anim(spr_playerP_fireassground)
 		}
 	}
-	else if sprite_index == spr_player_fireassground
+	else if sprite_index == spr_playerP_fireassground
 	{
 		hsp = xscale * movespeed
 		movespeed = approach(movespeed, 0, 0.25)

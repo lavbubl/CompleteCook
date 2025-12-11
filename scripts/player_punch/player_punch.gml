@@ -11,7 +11,7 @@ function player_punch()
 	else if grounded
 	{
 		state = states.normal
-		reset_anim(p_move == 0 ? spr_player_land : spr_player_landmove)
+		reset_anim(p_move == 0 ? spr_playerP_land : spr_playerP_landmove)
 		movespeed = abs(hsp)
 		if p_move != 0
 			xscale = p_move	

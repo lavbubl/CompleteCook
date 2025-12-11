@@ -40,7 +40,7 @@ switch (state)
 		}
 		break;
 	case 1:
-		obj_player.sprite_index = spr_player_idle
+		obj_player.sprite_index = spr_playerP_idle
 		var tx = screen_w / 2
 		var ty = screen_h / 2
 		var dir = point_direction(x, y, tx, ty)

@@ -19,7 +19,7 @@ function player_grab()
 		jumpstop = false
 		vsp = -11
 		state = states.mach2
-		reset_anim(spr_player_longjump)
+		reset_anim(spr_playerP_longjump)
 		scr_sound_3d_on(myemitter, sfx_rollgetup)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
@@ -29,17 +29,17 @@ function player_grab()
 		movespeed = 12
 		crouchslipbuffer = 25
 		state = states.tumble
-		sprite_index = spr_player_crouchslip
+		sprite_index = spr_playerP_crouchslip
 		scr_sound_3d(sfx_dive, x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
-	if (sprite_index == spr_player_suplexdash && !grounded)
-		reset_anim(spr_player_suplexgrabjump)
-	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && input.dash.check)
+	if (sprite_index == spr_playerP_suplexdash && !grounded)
+		reset_anim(spr_playerP_suplexgrabjump)
+	if (grounded && sprite_index == spr_playerP_suplexgrabjump && image_index >= 4 && input.dash.check)
 	{
 		state = states.mach2
-		sprite_index = spr_player_mach2
+		sprite_index = spr_playerP_mach2
 	}
 	
 	if (scr_hitwall(x + xscale, y) && !grounded)
@@ -50,7 +50,7 @@ function player_grab()
 	}
 	else if (scr_hitwall(x + xscale, y) && grounded)
 	{
-		sprite_index = spr_player_suplexbump
+		sprite_index = spr_playerP_suplexbump
 		scr_sound_3d(sfx_splat, x, y)
 		state = states.jump
 		jumpstop = true
@@ -62,11 +62,11 @@ function player_grab()
 	image_speed = 0.35
 	switch (sprite_index)
 	{
-		case spr_player_suplexdash:
+		case spr_playerP_suplexdash:
 			if anim_ended()
 				state = states.normal
 			break;
-		case spr_player_suplexgrabjump:
+		case spr_playerP_suplexgrabjump:
 			if anim_ended()
 				image_index = 4
 			if (grounded && !input.dash.check && image_index >= 4)
@@ -74,17 +74,17 @@ function player_grab()
 			break;
 	}
 	
-	if (anim_ended() && input.dash.check && sprite_index == spr_player_suplexdash)
+	if (anim_ended() && input.dash.check && sprite_index == spr_playerP_suplexdash)
 	{
 		state = states.mach2
-		sprite_index = spr_player_mach2
+		sprite_index = spr_playerP_mach2
 	}
 	
 	if (p_move != 0 && p_move != xscale)
 	{
 		if !grounded
 		{
-			reset_anim(spr_player_suplexcancel)
+			reset_anim(spr_playerP_suplexcancel)
 			state = states.jump
 		}
 		else

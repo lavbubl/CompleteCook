@@ -26,7 +26,7 @@ movespeed = 0
 state = states.normal
 //exitdoor properties
 state = states.actor
-sprite_index = spr_player_walkfront
+sprite_index = spr_playerP_walkfront
 image_speed = 0.35
 //the end
 prevstate = states.normal
@@ -35,6 +35,8 @@ jumpstop = false
 mach4mode = false
 wallspeed = 0
 flash = 0
+character = char.peppino
+spr = get_charactersprites()
 
 aftimg_timers = {
 	mach: {timer: 0, effect: after_images.mach, resetpoint: 5, do_it: false},
@@ -67,33 +69,33 @@ breakdance_secret = {
 
 loop_sounds = {
 	mach1: {state: states.mach2, sound: sfx_mach1, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_mach1
+		if obj_player.sprite_index != spr_playerP_mach1
 			return true;}
 	},
 	mach2: {state: states.mach2, sound: sfx_mach2, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_mach2
+		if obj_player.sprite_index != spr_playerP_mach2
 			return true;}
 	},
 	mach3: {state: states.mach3, sound: sfx_mach3, sndid: noone, is_3d: true, func: function() {
-		if ((obj_player.sprite_index == spr_player_mach3hit && obj_player.image_index < 2) || obj_player.sprite_index == spr_player_crazyrun)
+		if ((obj_player.sprite_index == spr_playerP_mach3hit && obj_player.image_index < 2) || obj_player.sprite_index == spr_playerP_crazyrun)
 			return true;}
 	},
 	mach4: {state: states.mach3, sound: sfx_mach4, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_crazyrun
+		if obj_player.sprite_index != spr_playerP_crazyrun
 			return true;}
 	},
 	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: noone, true},
 	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, is_3d: true, sndid: noone},
 	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: noone, is_3d: true, func: function() {
-		if (obj_player.sprite_index == spr_player_piledriverland)
+		if (obj_player.sprite_index == spr_playerP_piledriverland)
 			return true;}
 	},
 	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: noone, is_3d: true, func: function() {
-		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart || obj_player.sprite_index == spr_player_presentboxspring)
+		if (obj_player.sprite_index == spr_playerP_superjump || obj_player.sprite_index == spr_playerP_Sjumpcancelstart || obj_player.sprite_index == spr_playerP_presentboxspring)
 			return true;}, looppoints: [0.64, 1.84]
 	},
 	ball: {state: states.ball, sound: sfx_ballroll, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index == spr_player_ballend
+		if obj_player.sprite_index == spr_playerP_ballend
 			return true;}
 	}
 }

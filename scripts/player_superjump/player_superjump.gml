@@ -3,13 +3,13 @@ function player_superjump()
 	hsp = xscale * movespeed
 	image_speed = 0.35
 	
-	if (sprite_index == spr_player_superjumpprep || sprite_index == spr_player_superjumpflash)
+	if (sprite_index == spr_playerP_superjumpprep || sprite_index == spr_playerP_superjumpflash)
 		movespeed = approach(movespeed, 0, 1)
 		
-	if (sprite_index == spr_player_superjumpprep)
-		reset_anim_on_end(spr_player_superjumpflash)
+	if (sprite_index == spr_playerP_superjumpprep)
+		reset_anim_on_end(spr_playerP_superjumpflash)
 		
-	if (sprite_index == spr_player_Sjumpcancelstart)
+	if (sprite_index == spr_playerP_Sjumpcancelstart)
 	{
 		image_speed = 0.5
 		vsp = 0
@@ -19,7 +19,7 @@ function player_superjump()
 	
 	var superjumpholding = input.up.check || input.superjump.check || !grounded
 	
-	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
+	if (superjumpholding && (sprite_index == spr_playerP_superjumpflash || sprite_index == spr_playerP_superjumpmove))
 	{
 		var absMove = abs(p_move);
 		movespeed = !place_meeting(x + xscale, y, obj_solid) ? absMove * 2 : 0;
@@ -27,16 +27,16 @@ function player_superjump()
 		if absMove
 		{
 			xscale = p_move
-			sprite_index = spr_player_superjumpmove
+			sprite_index = spr_playerP_superjumpmove
 		}
 		else
-			sprite_index = spr_player_superjumpflash
+			sprite_index = spr_playerP_superjumpflash
 	}
 	
-	if (anim_ended() && sprite_index == spr_player_Sjumpcancelstart)
+	if (anim_ended() && sprite_index == spr_playerP_Sjumpcancelstart)
 	{
 		state = states.mach3
-		sprite_index = spr_player_Sjumpcancel
+		sprite_index = spr_playerP_Sjumpcancel
 		jumpstop = true
 		vsp = -4
 		flash = 8
@@ -46,15 +46,15 @@ function player_superjump()
 			depth = -150
 	}
 	
-	if (sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !superjumpholding && !scr_solid(x, y - 1))
+	if (sprite_index != spr_playerP_superjump && sprite_index != spr_playerP_presentboxspring && sprite_index != spr_playerP_Sjumpcancel && sprite_index != spr_playerP_Sjumpcancelstart && sprite_index != spr_playerP_superjumpprep && !superjumpholding && !scr_solid(x, y - 1))
 	{
 		vsp = -12
-		sprite_index = spr_player_superjump
+		sprite_index = spr_playerP_superjump
 		scr_sound_3d_on(myemitter, sfx_superjumprelease)
 		create_effect(x, y, spr_superjumpexplosion)
 	}
 	
-	if (sprite_index == spr_player_superjump || sprite_index == spr_player_presentboxspring)
+	if (sprite_index == spr_playerP_superjump || sprite_index == spr_playerP_presentboxspring)
 	{
 		instakill = true
 		image_speed = abs(vsp) / 25
@@ -75,18 +75,18 @@ function player_superjump()
 		if (scr_solid(x, y - 1))
 		{
 			shake_camera()
-			reset_anim(spr_player_ceilinghit)
+			reset_anim(spr_playerP_ceilinghit)
 			state = states.bump
 			scr_sound_3d(sfx_groundpound, x, y)
 		}
 		
-		if (sprite_index != spr_player_Sjumpcancelstart)
+		if (sprite_index != spr_playerP_Sjumpcancelstart)
 			vsp -= 0.6
 		
-		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump && sprite_index != spr_player_presentboxspring
+		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump && sprite_index != spr_playerP_presentboxspring
 		{
 			input_buffers.grab = 0
-			reset_anim(spr_player_Sjumpcancelstart)
+			reset_anim(spr_playerP_Sjumpcancelstart)
 			scr_sound_3d(sfx_superjumpcancel, x, y)
 			audio_stop_sound(sfx_superjumprelease)
 		}

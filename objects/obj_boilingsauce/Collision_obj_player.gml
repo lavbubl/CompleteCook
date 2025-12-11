@@ -8,7 +8,7 @@ scr_sound(sfx_genericfire)
 with other
 {
 	movespeed = hsp
-	reset_anim(spr_player_fireass)
+	reset_anim(spr_playerP_fireass)
 	state = states.fireass
 	vsp = -20
 }

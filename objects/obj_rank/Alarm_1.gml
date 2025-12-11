@@ -7,7 +7,7 @@ with obj_player
 	spawn = noone
 	state = states.actor
 	room_goto(return_location.room)
-	reset_anim(spr_player_walkfront)
+	reset_anim(spr_playerP_walkfront)
 }
 
 global.in_level = false

@@ -1,9 +1,9 @@
 with instance_place(x, y, obj_player)
 {
-	if (!global.panic.active && anim_ended() && sprite_index == spr_player_walkfront && !global.panic.active)
+	if (!global.panic.active && anim_ended() && sprite_index == spr_playerP_walkfront && !global.panic.active)
 	{
 		shake_camera()
-		reset_anim(spr_player_timesup)
+		reset_anim(spr_playerP_timesup)
 		other.image_index = 1
 		scr_sound_3d(sfx_groundpound, x, y)
 		global.doorshut = true
@@ -12,7 +12,7 @@ with instance_place(x, y, obj_player)
 	{
 		global.panic.active = false
 		state = states.actor
-		reset_anim(spr_player_lookdoor)
+		reset_anim(spr_playerP_lookdoor)
 		hsp = 0
 		movespeed = 0
 		

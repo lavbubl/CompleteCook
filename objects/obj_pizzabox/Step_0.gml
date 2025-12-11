@@ -21,7 +21,7 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 			hsp = 0
 			vsp = 0
 			movespeed = 0
-			reset_anim(spr_player_downpizzabox)
+			reset_anim(spr_playerP_downpizzabox)
 			image_speed = 0.35
 			scr_sound(sfx_box)
 		}
@@ -34,13 +34,13 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 			hsp = 0
 			vsp = 0
 			movespeed = 0
-			reset_anim(spr_player_uppizzabox)
+			reset_anim(spr_playerP_uppizzabox)
 			image_speed = 0.35
 			scr_sound(sfx_box)
 		}
 	}
 	
-	if (sprite_index == spr_player_uppizzabox || sprite_index == spr_player_downpizzabox)
+	if (sprite_index == spr_playerP_uppizzabox || sprite_index == spr_playerP_downpizzabox)
 	{
 		hsp = 0
 		x = other.x + 32
@@ -53,4 +53,4 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 	}
 }
 
-depth = (obj_player.sprite_index == spr_player_uppizzabox || obj_player.sprite_index == spr_player_downpizzabox) ? -1000 : 50
+depth = (obj_player.sprite_index == spr_playerP_uppizzabox || obj_player.sprite_index == spr_playerP_downpizzabox) ? -1000 : 50

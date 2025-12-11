@@ -13,7 +13,7 @@ function player_climbwall()
 			movespeed += 0.4
 	}
 	
-	sprite_index = wallspeed > 4 ? spr_player_climbwall : spr_player_clingwall
+	sprite_index = wallspeed > 4 ? spr_playerP_climbwall : spr_playerP_clingwall
 	image_speed = 0.5
 	if !scr_hitwall(x + xscale, y)
 	{
@@ -29,7 +29,7 @@ function player_climbwall()
 		{
 			flash = 8
 			state = states.mach3
-			sprite_index = spr_player_mach3
+			sprite_index = spr_playerP_mach3
 			movespeed = wallspeed
 		}
 		
@@ -48,7 +48,7 @@ function player_climbwall()
 	else if scr_solid(x, y - 1)
 	{
 		state = states.bump
-		reset_anim(spr_player_ceilinghit)
+		reset_anim(spr_playerP_ceilinghit)
 		scr_sound_3d(sfx_groundpound, x, y)
 	}
 	
@@ -57,7 +57,7 @@ function player_climbwall()
 	if (!input.dash.check && grabclimbbuffer <= 0)
 	{
 		state = states.jump
-		sprite_index = spr_player_fall
+		sprite_index = spr_playerP_fall
 		movespeed = -6
 		jumpstop = false
 		momentum = true
@@ -66,7 +66,7 @@ function player_climbwall()
 	if (input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0
-		reset_anim(spr_player_walljumpstart)
+		reset_anim(spr_playerP_walljumpstart)
 		movespeed = 10
 		state = states.mach2
 		vsp = -11

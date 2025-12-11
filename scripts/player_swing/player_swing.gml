@@ -8,7 +8,7 @@ function player_swingding()
 	if abs(hsp) <= 3
 	{
 		state = states.hold
-		sprite_index = spr_player_haulingidle
+		sprite_index = spr_playerP_haulingidle
 		movespeed = 0
 	}
 	
@@ -16,7 +16,7 @@ function player_swingding()
 	{
 		input_buffers.grab = 0
 		state = states.punchenemy
-		reset_anim(spr_player_swingdingend)
+		reset_anim(spr_playerP_swingdingend)
 	}
 	
 	if particle_timer > 0

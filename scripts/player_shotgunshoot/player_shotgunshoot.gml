@@ -20,7 +20,7 @@ function player_shotgunshoot()
 		else
 		{
 			state = states.jump
-			reset_anim(spr_player_shotgun_fall)
+			reset_anim(spr_playerP_shotgun_fall)
 		}
 		if p_move == -xscale
 		{

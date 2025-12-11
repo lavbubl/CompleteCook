@@ -2,7 +2,7 @@ function player_backtohub()
 {
     hsp = 0
     movespeed = 0
-	if (sprite_index == spr_player_slipbanana1)
+	if (sprite_index == spr_playerP_slipbanana1)
     {
         if (y < ystart)
         {
@@ -12,7 +12,7 @@ function player_backtohub()
                 scr_sound(sfx_groundpound)
                 create_effect(x, y, spr_landeffect)
                 y = ystart
-                sprite_index = spr_player_rockethitwall
+                sprite_index = spr_playerP_rockethitwall
                 vsp = -14
                 particle_create(x, y + 39, particles.bang)
                 image_index = 0
@@ -20,7 +20,7 @@ function player_backtohub()
             }
         }
     }
-    else if (sprite_index == spr_player_rockethitwall)
+    else if (sprite_index == spr_playerP_rockethitwall)
     {
         y += vsp
         if vsp < 20
@@ -28,13 +28,13 @@ function player_backtohub()
         if (y >= ystart && vsp > 0)
         {
             y = ystart
-            sprite_index = spr_player_slipbanana2
+            sprite_index = spr_playerP_slipbanana2
             image_index = 0
             vsp = 0
             particle_timer = 25
         }
     }
-    else if (sprite_index == spr_player_slipbanana2 && anim_ended())
+    else if (sprite_index == spr_playerP_slipbanana2 && anim_ended())
     {
         image_index = image_number - 1
 		image_speed = 0

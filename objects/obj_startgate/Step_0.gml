@@ -14,7 +14,7 @@ if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && k
 {
 	with obj_player
 	{
-		reset_anim(spr_player_entergate)
+		reset_anim(spr_playerP_entergate)
 		state = states.actor
 		hsp = 0
 		movespeed = 0
@@ -34,7 +34,7 @@ if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && k
 var flick = false
 with instance_place(x, y, obj_player)
 {
-	if (sprite_index == spr_player_entergate && !obj_fade.fade && image_speed > 0 && anim_ended())
+	if (sprite_index == spr_playerP_entergate && !obj_fade.fade && image_speed > 0 && anim_ended())
 	{
 		flick = true
 		image_speed = 0

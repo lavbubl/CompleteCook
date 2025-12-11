@@ -46,11 +46,11 @@ for (var p = 0; p < array_length(particle_list); p++)
 				break;
 			case particles.machcharge:
 				x = target.x
-				if target.sprite_index = spr_player_Sjumpcancel
+				if target.sprite_index = spr_playerP_Sjumpcancel
 					x += 10 * target.xscale
 				y = target.y
 				image_xscale = target.xscale
-				if target.state != statetofollow || target.sprite_index == spr_player_piledriverland
+				if target.state != statetofollow || target.sprite_index == spr_playerP_piledriverland
 					array_delete(other.particle_list, p, 1)
 				break;
 			default:

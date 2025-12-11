@@ -4,7 +4,7 @@ if other.state == states.grab || other.state == states.punch
 	scr_sound_3d(sfx_shotgunload, x, y)
 	with other
 	{
-		reset_anim(spr_player_shotgun_pickup)
+		reset_anim(spr_playerP_shotgun_pickup)
 		image_speed = 0.35
 		state = states.actor
 		has_shotgun = true

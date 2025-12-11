@@ -68,7 +68,7 @@ baseoptions = [
 		room_goto(mainmenu)
 		with obj_player
 		{
-			reset_anim(spr_player_entergate)
+			reset_anim(spr_playerP_entergate)
 			spawn = "a"
 			state = states.actor
 			door_type = fade_types.door
@@ -88,7 +88,7 @@ baseoptions = [
 			room_goto(global.start_room)
 			with obj_player
 			{
-				reset_anim(spr_player_entergate)
+				reset_anim(spr_playerP_entergate)
 				spawn = "a"
 				state = states.actor
 				door_type = fade_types.door
@@ -112,7 +112,7 @@ baseoptions = [
 			spawn = noone
 			state = states.backtohub
 			vsp = 0
-			sprite_index = spr_player_slipbanana1
+			sprite_index = spr_playerP_slipbanana1
 			x = return_location.x
 			y = return_location.y
 			room_goto(return_location.room)

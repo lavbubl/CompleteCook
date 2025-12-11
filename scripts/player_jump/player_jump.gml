@@ -1,21 +1,21 @@
 function player_jump()
 {
-	var default_jump = spr_player_jump
-	var default_fall = spr_player_fall
-	var default_land = spr_player_land
-	var default_landmove = spr_player_landmove
+	var default_jump = spr_playerP_jump
+	var default_fall = spr_playerP_fall
+	var default_land = spr_playerP_land
+	var default_landmove = spr_playerP_landmove
 	
 	if has_shotgun
 	{
-		default_jump = spr_player_shotgun_jump
-		default_fall = spr_player_shotgun_fall
-		default_land = spr_player_shotgun_land
-		default_landmove = spr_player_shotgun_land
+		default_jump = spr_playerP_shotgun_jump
+		default_fall = spr_playerP_shotgun_fall
+		default_land = spr_playerP_shotgun_land
+		default_landmove = spr_playerP_shotgun_land
 	}
 	
-	if sprite_index == spr_player_jump
+	if sprite_index == spr_playerP_jump
 		sprite_index = default_jump
-	else if sprite_index == spr_player_fall
+	else if sprite_index == spr_playerP_fall
 		sprite_index = default_fall
 	
 	if (coyote_time && input_buffers.jump > 0)
@@ -64,7 +64,7 @@ function player_jump()
 	{
 		fallingtimer = min(fallingtimer + 1, 100)
 		if fallingtimer >= 50
-			sprite_index = fallingtimer < 100 ? spr_player_fallface : spr_player_freefall
+			sprite_index = fallingtimer < 100 ? spr_playerP_fallface : spr_playerP_freefall
 	}
 	else
 		fallingtimer = 0
@@ -81,12 +81,12 @@ function player_jump()
 			{
 				state = states.mach2
 				movespeed = max(movespeed, 6);
-				reset_anim(spr_player_mach1)
+				reset_anim(spr_playerP_mach1)
 			}
 		}
 		else
 		{
-			reset_anim(sprite_index == spr_player_fallface ? spr_player_bodyslamland : spr_player_freefallland)
+			reset_anim(sprite_index == spr_playerP_fallface ? spr_playerP_bodyslamland : spr_playerP_freefallland)
 			image_index = 0
 			state = states.bump
 			shake_camera()
@@ -98,7 +98,7 @@ function player_jump()
 	if has_shotgun //do before if you have the shotgun
 		do_groundpound()
 	
-	if sprite_index != spr_player_suplexbump
+	if sprite_index != spr_playerP_suplexbump
 		do_grab()
 	
 	if !has_shotgun //do after if you dont have the shotgun
@@ -107,19 +107,19 @@ function player_jump()
 	image_speed = 0.35
 	switch (sprite_index)
 	{
-		case spr_player_jump:
-		case spr_player_suplexcancel:
-		case spr_player_piledriverjump:
-			reset_anim_on_end(spr_player_fall)
+		case spr_playerP_jump:
+		case spr_playerP_suplexcancel:
+		case spr_playerP_piledriverjump:
+			reset_anim_on_end(spr_playerP_fall)
 			break;
-		case spr_player_shotgun_jump:
-			reset_anim_on_end(spr_player_shotgun_fall)
+		case spr_playerP_shotgun_jump:
+			reset_anim_on_end(spr_playerP_shotgun_fall)
 			break;
-		case spr_player_stomp:
+		case spr_playerP_stomp:
 			if anim_ended()
 				image_index = image_number - 3
 			break;
-		case spr_player_hurtjump:
+		case spr_playerP_hurtjump:
 			if anim_ended()
 				image_index = image_number - 3
 			break;

@@ -4,7 +4,7 @@ var canenter = (ds_list_find_index(global.ds_saveroom, id) != -1 || other.haskey
 
 if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && enter_door.check && canenter)
 {
-	var enterspr = spr_player_enterkeydoor
+	var enterspr = spr_playerP_enterkeydoor
 	
 	if other.haskey
 	{
@@ -16,7 +16,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	}
 	else
 	{
-		enterspr = spr_player_lookdoor
+		enterspr = spr_playerP_lookdoor
 		scr_sound(sfx_door)
 		do_fade(t_room, t_door, fade_types.door)
 	}

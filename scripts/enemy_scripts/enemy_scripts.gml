@@ -134,7 +134,7 @@ function do_enemy_generics()
 			with (obj_player)
 			{
 				if (state == states.mach3)
-					reset_anim(spr_player_mach3hit)
+					reset_anim(spr_playerP_mach3hit)
 				if ((input.jump.check && state != states.groundpound) || state == states.swingding)
 				{
 					vsp = -10
@@ -171,26 +171,26 @@ function do_enemy_generics()
 			{
 				other.follow_player = true
 				other.sprite_index = other.sprs.stun
-				reset_anim(spr_player_haulingrise)
+				reset_anim(spr_playerP_haulingrise)
 				state = states.hold
 				if (abs(hsp) > 10 && other.alarm[0] == -1)
 				{
 					state = states.swingding
-					sprite_index = spr_player_swingding
+					sprite_index = spr_playerP_swingding
 					if !grounded
 						vsp = -5
 				}
 				if (input.up.check)
 				{
 					state = states.piledriver
-					sprite_index = spr_player_piledriver
+					sprite_index = spr_playerP_piledriver
 					vsp = -18
 				}
 			}
 			if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold))
 			{
 				if (state == states.jump)
-					reset_anim(spr_player_stomp)
+					reset_anim(spr_playerP_stomp)
 				vsp = input.jump.check ? -14 : -9
 				jumpstop = true
 				

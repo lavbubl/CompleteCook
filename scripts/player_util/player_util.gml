@@ -12,14 +12,14 @@ function do_groundpound()
 		state = states.groundpound
 		if !has_shotgun
 		{
-			reset_anim(spr_player_bodyslamstart)
+			reset_anim(spr_playerP_bodyslamstart)
 			vsp = -6
 		}
 		else
 		{
 			scr_sound_3d(sfx_killingblow, x, y)
 			scr_sound_3d(sfx_shotgunshot, x, y)
-			reset_anim(spr_player_shotgun_shootdown)
+			reset_anim(spr_playerP_shotgun_shootdown)
 			vsp = -11
 			with instance_create(x, y, obj_shotgunblast)
                 sprite_index = spr_shotgunblast_down
@@ -41,7 +41,7 @@ function do_grab()
 			state = states.shotgunshoot
 			if grounded
 			    movespeed = 0
-			reset_anim(spr_player_shotgun_shoot)
+			reset_anim(spr_playerP_shotgun_shoot)
 			with instance_create(x + xscale * 46, (y + 6), obj_shotgunblast)
 				image_xscale = other.xscale
 		}
@@ -51,7 +51,7 @@ function do_grab()
 			if state == states.normal
 				movespeed = 8
 			state = states.grab
-			reset_anim(spr_player_suplexdash)
+			reset_anim(spr_playerP_suplexdash)
 			scr_sound_3d_on(myemitter, sfx_suplexdash)
 			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
@@ -60,7 +60,7 @@ function do_grab()
 			vsp = grounded ? -14 : -10
 			hsp = abs(hsp) * xscale
 			state = states.punch
-			reset_anim(spr_player_uppercut)
+			reset_anim(spr_playerP_uppercut)
 			image_speed = 0.35
 			create_effect(x, y, spr_highjumpcloud2)
 			scr_sound_3d_pitched(sfx_uppercut, x, y)
@@ -84,7 +84,7 @@ function do_taunt()
 		
 		if !(input.up.check && supertauntshow)
 		{
-			sprite_index = spr_player_taunt
+			sprite_index = spr_playerP_taunt
 			image_index = random_range(0, image_number)
 			taunttimer = 20
 			scr_sound_3d_pitched(sfx_taunt, x, y, 0.94, 1.06)
@@ -232,13 +232,13 @@ function do_hurt(obj = noone)
 			goto_xscale = sign(x - xh)
 		var facing = xscale == -goto_xscale
 		hsp = 8 * goto_xscale
-		sprite_index = facing ? spr_player_hurt : spr_player_hurtbehind
+		sprite_index = facing ? spr_playerP_hurt : spr_playerP_hurtbehind
 		
 		if (obj.object_index == obj_outlet || obj.object_index == obj_pizzardelectricity)
 			scr_sound_3d(sfx_electricity, x, y)
 	}
 	else
-		sprite_index = spr_player_hurt
+		sprite_index = spr_playerP_hurt
 	
 	flash = 8
 	state = states.hurt

@@ -2,7 +2,7 @@ function player_ball()
 {
 	hsp = xscale * movespeed
 	
-	if sprite_index != spr_player_ballend
+	if sprite_index != spr_playerP_ballend
 	{
 		image_speed = 0.35
 		
@@ -41,7 +41,7 @@ function player_ball()
 		
 		if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_rattumbleblock)
 		{
-			reset_anim(spr_player_ballend) //bellend.,. heh
+			reset_anim(spr_playerP_ballend) //bellend.,. heh
 			scr_sound_3d(sfx_ballhitwall, x, y)
 			image_speed = 0
 			movespeed = -2

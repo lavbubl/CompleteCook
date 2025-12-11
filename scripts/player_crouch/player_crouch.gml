@@ -1,16 +1,16 @@
 function player_crouch()
 {
-	var crouchspr = spr_player_crouch
-	var crouchdownspr = spr_player_crouchdown
-	var crouchfallspr = spr_player_crouchfall
-	var crouchmovespr = spr_player_crawl
+	var crouchspr = spr_playerP_crouch
+	var crouchdownspr = spr_playerP_crouchdown
+	var crouchfallspr = spr_playerP_crouchfall
+	var crouchmovespr = spr_playerP_crawl
 	
 	if has_shotgun
 	{
-		crouchspr = spr_player_shotgun_crouch
-		crouchdownspr = spr_player_shotgun_crouchstart
-		crouchfallspr = spr_player_shotgun_crouchfall
-		crouchmovespr = spr_player_shotgun_crouchmove
+		crouchspr = spr_playerP_shotgun_crouch
+		crouchdownspr = spr_playerP_shotgun_crouchstart
+		crouchfallspr = spr_playerP_shotgun_crouchfall
+		crouchmovespr = spr_playerP_shotgun_crouchmove
 	} //FUUUUUUUUUUUUUUUUCK
 	
 	if p_move != 0
@@ -24,7 +24,7 @@ function player_crouch()
 			reset_anim(crouchfallspr)
 		
 		if anim_ended()
-			image_index = crouchfallspr == spr_player_crouchfall ? image_number - 7 : image_number - 1
+			image_index = crouchfallspr == spr_playerP_crouchfall ? image_number - 7 : image_number - 1
 	}
 	else
 	{

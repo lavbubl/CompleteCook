@@ -1,6 +1,6 @@
 with other
 {
-	if sprite_index != spr_player_presentboxspring && !(sprite_index == spr_player_rockethitwall && state == states.groundpound)
+	if sprite_index != spr_playerP_presentboxspring && !(sprite_index == spr_playerP_rockethitwall && state == states.groundpound)
 	{
 		with other
 			reset_anim(spr_spring)
@@ -13,7 +13,7 @@ with other
 			var h = bbox_bottom - y
 			y = other.y - h
 			state = states.superjump
-			sprite_index = spr_player_presentboxspring
+			sprite_index = spr_playerP_presentboxspring
 			vsp = -10
 		}
 		else
@@ -23,7 +23,7 @@ with other
 			state = states.groundpound
 			freefallsmash = -14
 			vsp = 10
-			sprite_index = spr_player_rockethitwall
+			sprite_index = spr_playerP_rockethitwall
 			repeat 5
 				instance_create(other.x, other.y + 40, obj_bubbles)
 			scr_sound_3d(sfx_bottlepop, x, y)

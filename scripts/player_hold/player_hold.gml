@@ -12,15 +12,15 @@ function player_hold()
 	
 	if grounded
 	{
-		if (sprite_index == spr_player_haulingjump || sprite_index == spr_player_haulingfall)
-			reset_anim(spr_player_haulingland)
-		if (sprite_index != spr_player_haulingland && sprite_index != spr_player_haulingrise)
-			sprite_index = p_move != 0 ? spr_player_haulingmove : spr_player_haulingidle
+		if (sprite_index == spr_playerP_haulingjump || sprite_index == spr_playerP_haulingfall)
+			reset_anim(spr_playerP_haulingland)
+		if (sprite_index != spr_playerP_haulingland && sprite_index != spr_playerP_haulingrise)
+			sprite_index = p_move != 0 ? spr_playerP_haulingmove : spr_playerP_haulingidle
 	}
 	else
 	{
-		if (sprite_index != spr_player_haulingjump && sprite_index != spr_player_haulingfall)
-			reset_anim(spr_player_haulingjump)
+		if (sprite_index != spr_playerP_haulingjump && sprite_index != spr_playerP_haulingfall)
+			reset_anim(spr_playerP_haulingjump)
 		if (!jumpstop && !input.jump.check && vsp < 0)
 		{
 			jumpstop = true
@@ -42,12 +42,12 @@ function player_hold()
 	image_speed = 0.35
 	switch (sprite_index)
 	{
-		case spr_player_haulingland:
-		case spr_player_haulingrise:
-			reset_anim_on_end(spr_player_haulingidle)
+		case spr_playerP_haulingland:
+		case spr_playerP_haulingrise:
+			reset_anim_on_end(spr_playerP_haulingidle)
 			break;
-		case spr_player_haulingjump:
-			reset_anim_on_end(spr_player_haulingfall)
+		case spr_playerP_haulingjump:
+			reset_anim_on_end(spr_playerP_haulingfall)
 			break;
 	}
 	
@@ -58,6 +58,6 @@ function player_hold()
 		var str = $"spr_player_finishingblow{string(irandom_range(1, 5))}"
 		reset_anim(asset_get_index(str))
 		if (input.up.check)
-			reset_anim(spr_player_uppercutfinishingblow)
+			reset_anim(spr_playerP_uppercutfinishingblow)
 	}
 }

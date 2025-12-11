@@ -43,7 +43,7 @@ function break_destroyables()
 			is_v_state = true
 	}
 	
-	if state == states.superjump && sprite_index != spr_player_superjump //SHITTY HACK BUT IDC IM ANGRY
+	if state == states.superjump && sprite_index != spr_playerP_superjump //SHITTY HACK BUT IDC IM ANGRY
 		exit;
 	
 	for (i = 0; i < ds_list_size(d_list); i++) 

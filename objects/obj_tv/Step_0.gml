@@ -63,7 +63,7 @@ switch (state)
 		switch (sprite_index)
 		{
 			case spr_tv_mach3:
-				if (p.state != states.mach3 && p.state != states.climbwall && p.sprite_index != spr_player_machslideboost3)
+				if (p.state != states.mach3 && p.state != states.climbwall && p.sprite_index != spr_playerP_machslideboost3)
 					tv_expression(spr_tv_idle)
 				if (abs(obj_player.hsp) >= 16 && p.state == states.mach3)
 					tv_expression(spr_tv_mach4)

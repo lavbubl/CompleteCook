@@ -1,27 +1,27 @@
 function player_normal()
 {
-	var default_idle = spr_player_idle
-	var default_move = spr_player_move
-	var default_jump = spr_player_jump
-	var default_fall = spr_player_fall
+	var default_idle = spr.idle
+	var default_move = spr.move
+	var default_jump = spr.jump
+	var default_fall = spr.fall
 	
 	if has_shotgun
 	{
-		default_idle = spr_player_shotgun_idle
-		default_move = spr_player_shotgun_move
-		default_jump = spr_player_shotgun_jump
-		default_fall = spr_player_shotgun_fall
+		default_idle = spr_playerP_shotgun_idle
+		default_move = spr_playerP_shotgun_move
+		default_jump = spr_playerP_shotgun_jump
+		default_fall = spr_playerP_shotgun_fall
 	}
 	if global.panic.active
 	{
-		default_idle = spr_player_panic
+		default_idle = spr_playerP_panic
 		
 		if global.panic.timer <= 0
 		{
-			default_idle = spr_player_hurtidle
-			default_move = spr_player_hurtmove
-			default_jump = spr_player_hurtjump
-			default_fall = spr_player_hurtjump
+			default_idle = spr_playerP_hurtidle
+			default_move = spr_playerP_hurtmove
+			default_jump = spr_playerP_hurtjump
+			default_fall = spr_playerP_hurtjump
 		}
 	}
 	if p_move != 0
@@ -37,7 +37,7 @@ function player_normal()
 			movespeed = 0
 		if particle_timer > 0
 			particle_timer--
-		else if sprite_index != spr_player_breakdance
+		else if sprite_index != spr_playerP_breakdance
 		{
 			particle_timer = 12
 			scr_sound_3d_pitched(sfx_step, x, y)
@@ -50,12 +50,12 @@ function player_normal()
 	hsp = movespeed * xscale
 	
 	var idlegestures = [
-		spr_player_idlefrown, 
-		spr_player_idledance, 
-		spr_player_idlehand, 
-		spr_player_idlecareless, 
-		spr_player_idlewhat,
-		spr_player_idlebite
+		spr_playerP_idlefrown, 
+		spr_playerP_idledance, 
+		spr_playerP_idlehand, 
+		spr_playerP_idlecareless, 
+		spr_playerP_idlewhat,
+		spr_playerP_idlebite
 	]
 	
 	if p_move != 0
@@ -65,7 +65,7 @@ function player_normal()
 	{
 		if p_move != 0
 		{
-			if (sprite_index != spr_player_landmove && sprite_index != spr_player_shotgun_land)
+			if (sprite_index != spr_playerP_landmove && sprite_index != spr_playerP_shotgun_land)
 				sprite_index = default_move
 		}
 		else
@@ -87,7 +87,7 @@ function player_normal()
 				}
 			}
 			
-			if (sprite_index != spr_player_machslideend && sprite_index != spr_player_land && sprite_index != spr_player_bodyslamland && sprite_index != spr_player_facehurt && sprite_index != spr_player_shotgun_land && idletimer > 0)
+			if (sprite_index != spr_playerP_machslideend && sprite_index != spr_playerP_land && sprite_index != spr_playerP_bodyslamland && sprite_index != spr_playerP_facehurt && sprite_index != spr_playerP_shotgun_land && idletimer > 0)
 				sprite_index = default_idle
 		}
 	}
@@ -100,7 +100,7 @@ function player_normal()
 			breakdance_secret.buffer++
 		else
 		{
-			sprite_index = spr_player_breakdance
+			sprite_index = spr_playerP_breakdance
 			breakdance_secret.spd = approach(breakdance_secret.spd, 0.6, 0.005)
 			image_speed = breakdance_secret.spd
 		}
@@ -120,7 +120,7 @@ function player_normal()
 	
 	if (input.down.check || !scr_can_uncrouch())
 	{
-		reset_anim(!has_shotgun ? spr_player_crouchdown : spr_player_shotgun_crouchstart)
+		reset_anim(!has_shotgun ? spr_playerP_crouchdown : spr_playerP_shotgun_crouchstart)
 		state = states.crouch
 	}
 	
@@ -149,25 +149,25 @@ function player_normal()
 		state = states.mach2
 		if (movespeed < 6)
 			movespeed = 6
-		reset_anim(spr_player_mach1)
+		reset_anim(spr_playerP_mach1)
 	}
 	
 	switch (sprite_index)
 	{
-		case spr_player_move:
-		case spr_player_hurtmove:
+		case spr_playerP_move:
+		case spr_playerP_hurtmove:
 			image_speed = clamp(movespeed / 15, 0.35, 0.6);
 			break;
-		case spr_player_machslideend:
-		case spr_player_land:
-		case spr_player_shotgun_land:
+		case spr_playerP_machslideend:
+		case spr_playerP_land:
+		case spr_playerP_shotgun_land:
 			reset_anim_on_end(default_idle)
 			break;
-		case spr_player_landmove:
+		case spr_playerP_landmove:
 			image_speed = clamp(movespeed / 15, 0.35, 0.6);
 			reset_anim_on_end(default_move);
 			break;
-		case spr_player_facehurt:
+		case spr_playerP_facehurt:
 			reset_anim_on_end(default_idle)
 			break;
 	}

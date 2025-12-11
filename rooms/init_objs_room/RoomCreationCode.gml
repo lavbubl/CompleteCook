@@ -46,3 +46,8 @@ enum states
 	throwing,
 	transition
 }
+
+enum char { // Add characters here
+	peppino,
+	noise
+}

@@ -21,9 +21,9 @@ function player_groundpound()
 		}
 		vsp += 0.5
 	}
-	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
-		sprite_index = spr_player_bodyslamfall
-	else if (anim_ended() && sprite_index == spr_player_shotgun_shootdown)
+	if (anim_ended() && sprite_index == spr_playerP_bodyslamstart)
+		sprite_index = spr_playerP_bodyslamfall
+	else if (anim_ended() && sprite_index == spr_playerP_shotgun_shootdown)
 		image_index = image_number - 3
 	/*
 	if (floor(image_index) == image_number - 1 && sprite_index == spr_shotgunjump1)
@@ -31,7 +31,7 @@ function player_groundpound()
 	
 	if (!grounded)
 	{
-		hsp = sprite_index != spr_player_rockethitwall ? p_move * movespeed : 0
+		hsp = sprite_index != spr_playerP_rockethitwall ? p_move * movespeed : 0
 		if (p_move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
 			movespeed -= 0.05
 		//if (movespeed == 0)
@@ -53,7 +53,7 @@ function player_groundpound()
 			hsp = 0
 			movespeed = 0
 		}
-		if (p_move != 0 && sprite_index != spr_player_poundcancel1 && sprite_index != spr_player_rockethitwall)
+		if (p_move != 0 && sprite_index != spr_playerP_poundcancel1 && sprite_index != spr_playerP_rockethitwall)
 			xscale = p_move
 	}
 	if (vsp > 0)
@@ -83,7 +83,7 @@ function player_groundpound()
 			xscale = -sign(slopeinst.image_xscale)
 			
 			state = states.tumble
-			sprite_index = spr_player_crouchslip
+			sprite_index = spr_playerP_crouchslip
 			if freefallsmash > 20
 				movespeed = 12
 			else
@@ -92,11 +92,11 @@ function player_groundpound()
 		}
 		else
 		{
-			var landanim = spr_player_bodyslamland
-			if sprite_index == spr_player_poundcancel1
-				landanim = spr_player_poundcancel2
+			var landanim = spr_playerP_bodyslamland
+			if sprite_index == spr_playerP_poundcancel1
+				landanim = spr_playerP_poundcancel2
 			else if has_shotgun
-				landanim = spr_player_shotgun_shootdownland
+				landanim = spr_playerP_shotgun_shootdownland
 			reset_anim(landanim)
 			image_index = 0
 			state = states.bump

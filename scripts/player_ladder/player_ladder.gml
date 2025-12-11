@@ -5,9 +5,9 @@ function player_ladder()
 	vsp = move_v * 6
 	
 	if (move_v != 0)
-		sprite_index = vsp <= 0 ? spr_player_laddermove : spr_player_ladderdown
+		sprite_index = vsp <= 0 ? spr_playerP_laddermove : spr_playerP_ladderdown
 	else
-		sprite_index = spr_player_ladder
+		sprite_index = spr_playerP_ladder
 		
 	image_speed = 0.35
 	
@@ -15,7 +15,7 @@ function player_ladder()
 	{
 		state = states.normal
 		vsp = 0
-		if sprite_index != spr_player_ladderdown //so the player doesnt clip down when at the bottom of a ladder
+		if sprite_index != spr_playerP_ladderdown //so the player doesnt clip down when at the bottom of a ladder
 		{
 			repeat 6 //using repeat to essentially do a capped while statement
 			{
@@ -27,7 +27,7 @@ function player_ladder()
 		}
 	}
 	
-	if sprite_index == spr_player_laddermove
+	if sprite_index == spr_playerP_laddermove
 	{
 		if particle_timer > 0
 			particle_timer--;
@@ -44,7 +44,7 @@ function player_ladder()
 		input_buffers.jump = 0
 		vsp = -12
 		state = states.jump
-		reset_anim(spr_player_jump)
+		reset_anim(spr_playerP_jump)
 		jumpstop = false
 		ladderbuffer = 20
 	}

@@ -13,9 +13,9 @@ if spawn == "LAP"
 	exit;
 }
 
-if (sprite_index == spr_player_lookdoor || sprite_index == spr_player_entergate || sprite_index == spr_player_enterkeydoor)
+if (sprite_index == spr_playerP_lookdoor || sprite_index == spr_playerP_entergate || sprite_index == spr_playerP_enterkeydoor)
 {
-	reset_anim(spr_player_walkfront)
+	reset_anim(spr_playerP_walkfront)
 	image_speed = 0.35
 }
 

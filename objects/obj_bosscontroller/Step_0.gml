@@ -24,7 +24,7 @@ if player.hp <= 0
 			state = states.defeat
 			vsp = -14
 			grounded = false
-			reset_anim(spr_player_defeat)
+			reset_anim(spr_playerP_defeat)
 			image_speed = 0.35
 		}
 	}
@@ -45,7 +45,7 @@ if opponent.hp <= 0 && instance_exists(target_obj)
 		hsp = 0
 		vsp = 0
 		state = states.actor
-		reset_anim(spr_player_bossdefeated)
+		reset_anim(spr_playerP_bossdefeated)
 	}
 	
 	alarm[1] = 600

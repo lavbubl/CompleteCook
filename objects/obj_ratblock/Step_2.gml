@@ -6,7 +6,7 @@ with obj_player
 				   state == states.tumble
 	if place_meeting(x + xscale, y, other) && can_bump
 	{
-		sprite_index = spr_player_bump
+		sprite_index = spr_playerP_bump
 		state = states.bump
 		hsp = 5 * -xscale
 		vsp = -5

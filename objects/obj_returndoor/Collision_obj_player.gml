@@ -6,7 +6,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 		scr_sound(sfx_door)
 	with other
 	{
-		reset_anim(spr_player_lookdoor)
+		reset_anim(spr_playerP_lookdoor)
 		state = states.actor
 		hsp = 0
 		movespeed = 0

@@ -65,7 +65,7 @@ function do_vulnerability()
 			with (obj_player)
 			{
 				if (state == states.mach3)
-					reset_anim(spr_player_mach3hit)
+					reset_anim(spr_playerP_mach3hit)
 				if (input.jump.check && state != states.groundpound)
 				{
 					vsp = -10
@@ -94,7 +94,7 @@ function do_vulnerability()
 				with obj_player
 				{
 					hitstun = 5
-					reset_anim(choose(spr_player_kungfu1, spr_player_kungfu2, spr_player_kungfu3, spr_player_lungehit))
+					reset_anim(choose(spr_playerP_kungfu1, spr_playerP_kungfu2, spr_playerP_kungfu3, spr_playerP_lungehit))
 					image_speed = 0.35
 					prev_ix = image_index
 					state = states.punchstun

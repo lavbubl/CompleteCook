@@ -176,7 +176,7 @@ if (idletimer > 0 && state == states.normal)
 if (i_frames > 0 && state != states.hurt)
 	i_frames--
 
-var sjumpprep = (state == states.superjump && sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancelstart)
+var sjumpprep = (state == states.superjump && sprite_index != spr_playerP_superjump && sprite_index != spr_playerP_presentboxspring && sprite_index != spr_playerP_Sjumpcancelstart)
 if (state == states.tumble || state == states.ball || state == states.crouch || sjumpprep)
 	mask_index = mask_player_small
 else

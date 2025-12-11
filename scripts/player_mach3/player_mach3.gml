@@ -3,14 +3,14 @@ function player_mach3()
 	hsp = xscale * movespeed
 	mach4mode = movespeed > 16
 	
-	var dashpad = sprite_index == spr_player_dashpad
+	var dashpad = sprite_index == spr_playerP_dashpad
 	
 	if (mach4mode)
 	{
-		if (sprite_index != spr_player_crazyrun)
+		if (sprite_index != spr_playerP_crazyrun)
 		{
 			flash = 8
-			sprite_index = spr_player_crazyrun
+			sprite_index = spr_playerP_crazyrun
 		}
 		
 		if !particle_contains_sprite(spr_crazyruneffect)
@@ -30,10 +30,10 @@ function player_mach3()
 			create_effect(x, y, spr_flamecloud)
 		}
 	}
-	else if (sprite_index == spr_player_crazyrun)
+	else if (sprite_index == spr_playerP_crazyrun)
 	{
 		flash = 8
-		sprite_index = spr_player_mach3
+		sprite_index = spr_playerP_mach3
 	}
 	
 	if (!particle_contains_sprite(spr_superdashcloud) && grounded)
@@ -44,24 +44,24 @@ function player_mach3()
 		input_buffers.jump = 0
 		vsp = -11
 		jumpstop = false
-		reset_anim(spr_player_mach3jump)
+		reset_anim(spr_playerP_mach3jump)
 		scr_sound_3d(sfx_jump, x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
 	if (grounded)
 	{
-		if (sprite_index == spr_player_Sjumpcancel)
-			sprite_index = spr_player_mach3
+		if (sprite_index == spr_playerP_Sjumpcancel)
+			sprite_index = spr_playerP_mach3
 		if (!input.dash.check && !dashpad)
 		{
-			reset_anim(spr_player_machslidestart)
+			reset_anim(spr_playerP_machslidestart)
 			state = states.slide
 			scr_sound_3d(sfx_break, x, y)
 		}
 		if (p_move != 0 && p_move != xscale && !dashpad)
 		{
-			reset_anim(spr_player_machslideboost3)
+			reset_anim(spr_playerP_machslideboost3)
 			state = states.slide
 			scr_sound_3d_on(myemitter, sfx_machslideboost)
 		}
@@ -72,7 +72,7 @@ function player_mach3()
 		if ((input.up.check || input.superjump.check) && !dashpad)
 		{
 			state = states.superjump
-			reset_anim(spr_player_superjumpprep)
+			reset_anim(spr_playerP_superjumpprep)
 		}
 	}
 	else
@@ -90,10 +90,10 @@ function player_mach3()
 	{
 		state = states.tumble
 		if (grounded)
-			reset_anim(spr_player_machroll)
+			reset_anim(spr_playerP_machroll)
 		else
 		{
-			sprite_index = spr_player_mach2jump
+			sprite_index = spr_playerP_mach2jump
 			vsp = 10
 		}
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
@@ -115,7 +115,7 @@ function player_mach3()
 	else if (grounded && scr_hitwall(x + xscale, y))
 	{
 		state = states.bump
-		reset_anim(spr_player_mach3hitwall)
+		reset_anim(spr_playerP_mach3hitwall)
 		vsp = -6
 		hsp = xscale * -6
 		shake_camera(20, 40 / room_speed)
@@ -136,14 +136,14 @@ function player_mach3()
 	image_speed = 0.4
 	switch (sprite_index)
 	{
-		case spr_player_crazyrun:
+		case spr_playerP_crazyrun:
 			image_speed = 0.75
 			break;
-		case spr_player_mach3jump:
-		case spr_player_rollgetup:
-		case spr_player_mach3hit:
-		case spr_player_dashpad:
-			reset_anim_on_end(spr_player_mach3)
+		case spr_playerP_mach3jump:
+		case spr_playerP_rollgetup:
+		case spr_playerP_mach3hit:
+		case spr_playerP_dashpad:
+			reset_anim_on_end(spr_playerP_mach3)
 			break;
 	}
 	do_taunt()

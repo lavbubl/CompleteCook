@@ -81,15 +81,20 @@ function do_scared()
 {
 	if scared_timer > 0
 		scared_timer--
-	else if (obj_player.state == states.mach3 && distance_to_object(obj_player) < 200 && state != states.hit && grounded)
+	else if (obj_player.state == states.mach3 || obj_player.sprite_index == spr_player_swingding) && abs(x - obj_player.x) < 400 && abs(y - obj_player.y) < 110 && state != states.hit && collision_line(x, y, obj_player.x, obj_player.y, obj_solid, false, true) == noone
 	{
 		state = states.scared
 		hsp = 0
-		vsp = -5
+		if grounded
+			vsp = -3
+		else 
+			vsp = max(vsp, 0)
 		movespeed = 0
-		sprite_index = sprs.scared
 		xscale = obj_player.x > x ? 1 : -1
-		scared_timer = 180
+		scared_timer = 100
+		sprite_index = sprs.scared
+		if irandom(100) <= 5
+			scr_sound_3d_pitched(choose(sfx_rarescream1, sfx_rarescream2), x, y)
 	}
 }
 
@@ -127,7 +132,7 @@ function do_enemy_generics()
 	if (state == states.hit)
 		grav = 0
 
-	if (place_meeting(x - obj_player.hsp, y - obj_player.vsp, obj_player))
+	if (place_meeting(x + obj_player.hsp, y + obj_player.vsp, obj_player))
 	{
 		if (obj_player.instakill && alarm[0] == -1 && !follow_player)
 		{
@@ -167,7 +172,7 @@ function do_enemy_generics()
 		}
 		with (obj_player)
 		{
-			if (state == states.grab && other.sprite_index != other.sprs.dead)
+			if (state == states.grab && other.state != states.hit)
 			{
 				other.follow_player = true
 				other.sprite_index = other.sprs.stun
@@ -176,22 +181,23 @@ function do_enemy_generics()
 				if (abs(hsp) > 10 && other.alarm[0] == -1)
 				{
 					state = states.swingding
-					sprite_index = spr_player_swingding
+					reset_anim(spr_player_swingding)
 					if !grounded
 						vsp = -5
 				}
 				if (input.up.check)
 				{
 					state = states.piledriver
+					dir = xscale
+					vsp = -14
 					sprite_index = spr_player_piledriver
-					vsp = -18
 				}
 			}
-			if (collision_line(bbox_left - 16, y + 20, bbox_right + 16, y + 20, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold))
+			if (collision_line(bbox_left - 16, bbox_bottom, bbox_right + 16, bbox_bottom, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold))
 			{
 				if (state == states.jump)
 					reset_anim(spr_player_stomp)
-				vsp = input.jump.check ? -15 : -10
+				vsp = input.jump.check ? -14 : -9
 				jumpstop = true
 				
 				scr_sound_3d(sfx_stompenemy, x, y)
@@ -233,10 +239,10 @@ function do_enemy_generics()
 
 	for (var i = 0; i < ds_list_size(en_list); i++) {
 	    var _id = ds_list_find_value(en_list, i)
-		if place_meeting(x, y, _id)
+		if place_meeting(x, y, _id) && _id.state == states.hit
 		{
-			if _id.state == states.hit
-				instance_destroy()
+			instance_destroy()
+			scr_sound_3d(sfx_punch, x, y)
 		}
 	}
 	

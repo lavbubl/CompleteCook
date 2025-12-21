@@ -183,10 +183,10 @@ else
 	mask_index = mask_player
 
 grav = 0.5
-if (state == states.ladder)
+if state == states.ladder
 	grav = 0
 	
-if ((y > room_height + 200 || y < -200) && state != states.actor && state != states.backtohub)
+if (y > room_height + 300 || y < -800) && state != states.actor && state != states.backtohub
 {
 	shake_camera()
 	instance_create(0, 0, obj_technicaldifficulty)

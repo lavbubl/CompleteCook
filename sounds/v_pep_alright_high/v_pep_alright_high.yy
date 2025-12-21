@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"v_pep_alright_high",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":1,
   "compression":2,
+  "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.9586848,
+  "duration":0.9586667,
+  "exportDir":"",
   "name":"v_pep_alright_high",
   "parent":{
     "name":"Voice",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"v_pep_alright_high.wav",
-  "type":1,
   "volume":1.0,
 }

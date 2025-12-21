@@ -1,7 +1,6 @@
 function player_punchenemy()
 {
 	image_speed = 0.4
-	hsp = approach(hsp, 0, 0.4)
 	movespeed = 0
 	
 	var ixcheck = 5
@@ -10,7 +9,6 @@ function player_punchenemy()
 	
 	if (floor(image_index) == ixcheck)
 	{
-		hsp = xscale * -4
 		vsp = -6
 	}
 	
@@ -21,8 +19,12 @@ function player_punchenemy()
 	
 	if anim_ended()
 	{
-		state = states.normal
-		movespeed = abs(hsp)
+		sprite_index = spr_player_fall
+		state = states.jump
+		movespeed = -abs(hsp)
+		jumpstop = true
+		momentum = true
+		dir = xscale
 	}
 		
 	aftimg_timers.mach.do_it = true

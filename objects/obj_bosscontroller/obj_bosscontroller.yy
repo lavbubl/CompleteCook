@@ -33,12 +33,12 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"boss_hp","filters":[],"listItems":[],"multiselect":false,"name":"boss_hp","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"boss_hp_spr","filters":[
+    {"$GMObjectProperty":"v2","%Name":"boss_hp","filters":[],"listItems":[],"multiselect":false,"name":"boss_hp","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"boss_hp_spr","filters":[
         "GMSprite",
       ],"listItems":[],"multiselect":false,"name":"boss_hp_spr","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"boss_hp_rows","filters":[],"listItems":[],"multiselect":false,"name":"boss_hp_rows","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"target_obj","filters":[
+    {"$GMObjectProperty":"v2","%Name":"boss_hp_rows","filters":[],"listItems":[],"multiselect":false,"name":"boss_hp_rows","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"target_obj","filters":[
         "GMObject",
       ],"listItems":[],"multiselect":false,"name":"target_obj","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"par_boss","path":"objects/par_boss/par_boss.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"par_boss","varType":5,},
   ],

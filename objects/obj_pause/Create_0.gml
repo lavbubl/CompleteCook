@@ -75,6 +75,7 @@ baseoptions = [
 			hsp = 0
 			vsp = 0
 		}
+		reset_level()
 	}),
 	new create_pause_option("RESTART LEVEL",	optiontypes.level,	2, function() {
 		do_unpause()

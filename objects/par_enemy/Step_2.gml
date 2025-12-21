@@ -70,23 +70,18 @@ if follow_player
 				sprite_index = spr_player_piledriver
 				movespeed = abs(hsp)
 				state = states.piledriver
-				vsp = -8
+				vsp = -6
+				dir = xscale
 				other.yscale = -1
 			}
 		}
-		if (image_index >= image_number - 1 && sprite_index == spr_player_piledriverland)
+		if (image_index >= image_number - 2 && sprite_index == spr_player_piledriverland)
 		{
 			with (other)
 			{
 				do_enemygibs()
-				alarm[0] = 5
+				alarm[0] = 1
 			}
-			
-			vsp = -12
-			jumpstop = false
-			state = states.jump
-			prev_ix = image_index
-			reset_anim(spr_player_piledriverjump)
 		}
 		
 		var ixcheck = 5

@@ -65,37 +65,27 @@ breakdance_secret = {
 	spd: 0.1
 }
 
+make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _is_3d = true) constructor
+{
+	state = _state
+	sound = _sound
+	sndid = noone
+	func = _func
+	looppoints = _looppoints
+	is_3d = _is_3d
+}
+
 loop_sounds = {
-	mach1: {state: states.mach2, sound: sfx_mach1, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_mach1
-			return true;}
-	},
-	mach2: {state: states.mach2, sound: sfx_mach2, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_mach2
-			return true;}
-	},
-	mach3: {state: states.mach3, sound: sfx_mach3, sndid: noone, is_3d: true, func: function() {
-		if ((obj_player.sprite_index == spr_player_mach3hit && obj_player.image_index < 2) || obj_player.sprite_index == spr_player_crazyrun)
-			return true;}
-	},
-	mach4: {state: states.mach3, sound: sfx_mach4, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index != spr_player_crazyrun
-			return true;}
-	},
-	climbwall: {state: states.climbwall, sound: sfx_mach2, is_3d: true, sndid: noone, true},
-	groundpound: {state: states.groundpound, sound: sfx_groundpoundloop, is_3d: true, sndid: noone},
-	piledriver: {state: states.piledriver, sound: sfx_groundpoundloop, sndid: noone, is_3d: true, func: function() {
-		if (obj_player.sprite_index == spr_player_piledriverland)
-			return true;}
-	},
-	superjumphold: {state: states.superjump, sound: sfx_superjumphold, sndid: noone, is_3d: true, func: function() {
-		if (obj_player.sprite_index == spr_player_superjump || obj_player.sprite_index == spr_player_Sjumpcancelstart || obj_player.sprite_index == spr_player_presentboxspring)
-			return true;}, looppoints: [0.64, 1.84]
-	},
-	ball: {state: states.ball, sound: sfx_ballroll, sndid: noone, is_3d: true, func: function() {
-		if obj_player.sprite_index == spr_player_ballend
-			return true;}
-	}
+	mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == spr_player_mach1;}),
+	mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == spr_player_mach2;}),
+	mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return !(obj_player.sprite_index == spr_player_mach3hit && obj_player.image_index < 2) && obj_player.sprite_index != spr_player_crazyrun}),
+	mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == spr_player_crazyrun}),
+	climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
+	groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
+	piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != spr_player_piledriverland}),
+	superjumphold: new make_loop_sound(states.superjump, sfx_superjumphold, function() { return obj_player.sprite_index != spr_player_superjump && obj_player.sprite_index != spr_player_Sjumpcancelstart && obj_player.sprite_index != spr_player_presentboxspring}, 
+		[0.64, 1.84]),
+	ball: new make_loop_sound(states.ball, sfx_ballroll, function() { return obj_player.sprite_index != spr_player_ballend}),
 }
 
 visual_size = 1

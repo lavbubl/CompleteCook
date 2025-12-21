@@ -298,6 +298,7 @@ function reset_level()
 	}
 	global.combo.wasted = false
 	global.doorshut = false
+	global.secret = false
 	global.level_data = {
 		treasure: false,
 		level_name: "Entrance",

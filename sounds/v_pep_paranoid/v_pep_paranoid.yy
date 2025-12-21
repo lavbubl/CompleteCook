@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"v_pep_paranoid",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":1,
   "compression":2,
+  "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.2120181,
+  "duration":1.212,
+  "exportDir":"",
   "name":"v_pep_paranoid",
   "parent":{
     "name":"Voice",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"v_pep_paranoid.wav",
-  "type":1,
   "volume":1.0,
 }

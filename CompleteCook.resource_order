@@ -380,6 +380,8 @@
     {"name":"sfx_rankup3","order":61,"path":"sounds/sfx_rankup3/sfx_rankup3.yy",},
     {"name":"sfx_rankup4","order":62,"path":"sounds/sfx_rankup4/sfx_rankup4.yy",},
     {"name":"sfx_rankup5","order":64,"path":"sounds/sfx_rankup5/sfx_rankup5.yy",},
+    {"name":"sfx_rarescream1","order":100,"path":"sounds/sfx_rarescream1/sfx_rarescream1.yy",},
+    {"name":"sfx_rarescream2","order":99,"path":"sounds/sfx_rarescream2/sfx_rarescream2.yy",},
     {"name":"sfx_ratdead","order":66,"path":"sounds/sfx_ratdead/sfx_ratdead.yy",},
     {"name":"sfx_ratsniff","order":92,"path":"sounds/sfx_ratsniff/sfx_ratsniff.yy",},
     {"name":"sfx_rollgetup","order":65,"path":"sounds/sfx_rollgetup/sfx_rollgetup.yy",},

@@ -74,9 +74,9 @@ function player_superjump()
 		
 		if (scr_solid(x, y - 1))
 		{
-			shake_camera()
-			reset_anim(spr_player_ceilinghit)
 			state = states.bump
+			shake_camera(10, 30 / room_speed)
+			reset_anim(spr_player_ceilinghit)
 			scr_sound_3d(sfx_groundpound, x, y)
 		}
 		

@@ -17,6 +17,7 @@ function player_swingding()
 		input_buffers.grab = 0
 		state = states.punchenemy
 		reset_anim(spr_player_swingdingend)
+		hsp = 0
 	}
 	
 	if particle_timer > 0

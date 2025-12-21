@@ -28,8 +28,9 @@ global.master_volume = ini_read_real("options", "master_volume", false)
 global.sfx_volume = ini_read_real("options", "sfx_volume", 1)
 global.music_volume = ini_read_real("options", "music_volume", 1) //these being global are kinda unneccesary... //ok so WHY did you make them global then???
 global.chosen_res = ini_read_real("options", "res_number", 1)
+global.vsync = ini_read_real("options", "vsync", 1)
 ini_close()
-
+//use constructors jesus christ
 options = [
 	{o_name: "FULLSCREEN: ", val: global.fullscreen, o_type: optiontypes.onoff, func: function(_val) {
 		global.fullscreen = _val
@@ -43,6 +44,11 @@ options = [
 		window_set_size(real(str_arr[0]), real(str_arr[1]))
 		window_center()
 		quick_ini_write_real("globalsave.ini", "options", "res_number", _val)
+	}},
+	{o_name: "VSYNC: ", val: global.vsync, o_type: optiontypes.onoff, func: function(_val) {
+		global.vsync = _val
+		display_reset(0, _val);
+		quick_ini_write_real("globalsave.ini", "options", "vsync", _val)
 	}},
 	{o_name: "MASTER VOLUME: ", val: global.master_volume * 100, o_type: optiontypes.slider, func: function(_val) {
 		_val /= 100

@@ -139,38 +139,27 @@ function player_sounds()
 	{
 		var _id = obj_player
 		
-		var dont_play = false
+		var do_play = true
 		
-		if _id.state != _data.state
-			dont_play = true
+		if _data.func != noone
+			do_play = _data.func()
+		
+		if (_id.state != _data.state) || warping
+			do_play = false
 			
-		if warping
-			dont_play = true
-		
-		if variable_struct_exists(_data, "func")
+		if _data.is_3d
 		{
-			if _data.func()
-				dont_play = true
-		}
-		
-		var confirmed_3d = false
-		
-		if (variable_struct_exists(_data, "is_3d"))
-			confirmed_3d = _data.is_3d
-		
-		if confirmed_3d
-		{
-			if (_data.sndid == noone && !dont_play && _id.myemitter != noone)
+			if (_data.sndid == noone && do_play && _id.myemitter != noone)
 			{
 				_data.sndid = scr_sound_3d_on(_id.myemitter, _data.sound, true)
 				
-				if struct_exists(_data, "looppoints")
+				if _data.looppoints != noone
 				{
 					audio_sound_loop_start(_data.sndid, _data.looppoints[0])
 					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
 				}
 			}
-			else if (_data.sndid != noone && dont_play)
+			else if (_data.sndid != noone && !do_play)
 			{
 				audio_stop_sound(_data.sndid)
 				_data.sndid = noone
@@ -178,7 +167,7 @@ function player_sounds()
 		}
 		else
 		{
-			if (_id.state == _data.state && !dont_play && _data.sndid == noone)
+			if (_id.state == _data.state && do_play && _data.sndid == noone)
 			{
 				_data.sndid = scr_sound(_data.sound, true)
 				if struct_exists(_data, "looppoints")
@@ -187,7 +176,7 @@ function player_sounds()
 					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
 				}
 			}
-			else if (_data.sndid != noone && dont_play)
+			else if (_data.sndid != noone && !do_play)
 			{
 				audio_stop_sound(_data.sndid)
 				_data.sndid = noone

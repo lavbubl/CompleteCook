@@ -89,13 +89,15 @@ function player_mach3()
 	if (input.down.check)
 	{
 		state = states.tumble
-		if (grounded)
+		
+		if grounded
 			reset_anim(spr_player_machroll)
 		else
 		{
 			sprite_index = spr_player_mach2jump
 			vsp = 10
 		}
+		
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	

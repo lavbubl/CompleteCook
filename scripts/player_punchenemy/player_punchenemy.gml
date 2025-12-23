@@ -7,11 +7,6 @@ function player_punchenemy()
 	if sprite_index == spr_player_swingdingend
 		ixcheck = 1
 	
-	if (floor(image_index) == ixcheck)
-	{
-		vsp = -6
-	}
-	
 	if (floor(image_index) < 4 && sprite_index != spr_player_swingdingend)
 		hsp = approach(hsp, 0, 1)
 	else
@@ -26,6 +21,6 @@ function player_punchenemy()
 		momentum = true
 		dir = xscale
 	}
-		
+	
 	aftimg_timers.mach.do_it = true
 }

@@ -78,8 +78,8 @@ make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _
 loop_sounds = {
 	mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == spr_player_mach1;}),
 	mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == spr_player_mach2;}),
-	mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return !(obj_player.sprite_index == spr_player_mach3hit && obj_player.image_index < 2) && obj_player.sprite_index != spr_player_crazyrun}),
-	mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == spr_player_crazyrun}),
+	mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return obj_player.sprite_index != spr_player_crazyrun;}),
+	mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == spr_player_crazyrun;}),
 	climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
 	groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
 	piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != spr_player_piledriverland}),

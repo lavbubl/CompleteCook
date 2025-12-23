@@ -34,6 +34,14 @@ if (obj_player.state = states.swingding && follow_player)
 	}
 }
 
+if state == states.stun && stun_timer >= 100
+{
+	draw_sprite(spr_enemybird, bird_ix, x, y - 40)
+	bird_ix = wrap(sprite_get_number(spr_enemybird), bird_ix + 0.35)
+}
+else
+	bird_ix = 0
+
 draw_sprite_ext(sprite_index, image_index, _x, _y, xscale - (warp * xscale), yscale + warp, image_angle, image_blend, image_alpha)
 
 if (flash)

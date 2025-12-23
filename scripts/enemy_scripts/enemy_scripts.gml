@@ -130,20 +130,21 @@ function do_enemy_generics()
 	do_scared()
 
 	grav = 0.5
-	if (state == states.hit)
+	if state == states.hit
 		grav = 0
 
-	if (place_meeting(x, y, obj_player) || place_meeting(x - obj_player.hsp, y - obj_player.vsp, obj_player))
+	if place_meeting(x, y, obj_player)
 	{
-		if (obj_player.instakill && alarm[0] == -1 && !follow_player && obj_player.hitstun <= 0)
+		if obj_player.instakill && alarm[0] == -1 && !follow_player && obj_player.hitstun <= 0
 		{
-			with (obj_player)
+			with obj_player
 			{
-				if (state == states.mach3)
+				if state == states.mach3
 					reset_anim(spr_player_mach3hit)
-				if ((input.jump.check && state != states.groundpound) || state == states.swingding)
+				if !grounded && input.jump.check && state != states.groundpound
 				{
-					vsp = -10
+					input_buffers.jump = 0
+					vsp = -11
 					jumpstop = false
 				}
 			}
@@ -158,28 +159,31 @@ function do_enemy_generics()
 			obj_player.prev_ix = obj_player.image_index
 			alarm[0] = 2
 		}
-		if ((obj_player.state == states.mach2 || obj_player.state == states.tumble) && stun_timer < 160)
+		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{
-			sleep(50)
-			hsp = obj_player.xscale * 18
+			hsp = obj_player.xscale * 12
+			vsp = (other.y - 180 - y) / 60 //base game ???
 			xscale = -obj_player.xscale
-			warp = 0.4
+			warp = 0.3
 			state = states.stun
 			stun_timer = 180
-			vsp = -5
+			obj_player.hitstun = 1
+			obj_player.prev_ix = obj_player.image_index
+			particle_create(x, y, particles.bang)
+			create_effect(x, y, spr_cloudeffect)
 			repeat 4
 				particle_create(x, y, particles.stars)
-			flash = 8
+			scr_sound_3d_pitched(sfx_bumpenemy, x, y)
 		}
-		with (obj_player)
+		with obj_player
 		{
-			if (state == states.grab && other.state != states.hit && other.alarm[0] == -1) //alarm == -1 means not hitstunned
+			if state == states.grab && other.state != states.hit && other.alarm[0] == -1 //alarm == -1 means not hitstunned
 			{
 				other.follow_player = true
 				other.sprite_index = other.sprs.stun
 				reset_anim(spr_player_haulingrise)
 				state = states.hold
-				if (abs(hsp) > 10 && other.alarm[0] == -1)
+				if abs(hsp) > 10 && other.alarm[0] == -1
 				{
 					state = states.swingding
 					reset_anim(spr_player_swingding)
@@ -196,9 +200,9 @@ function do_enemy_generics()
 					sprite_index = spr_player_piledriver
 				}
 			}
-			if (collision_line(bbox_left - 16, bbox_bottom, bbox_right + 16, bbox_bottom, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold))
+			if collision_line(bbox_left - 16, bbox_bottom, bbox_right + 16, bbox_bottom, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold)
 			{
-				if (state == states.jump)
+				if state == states.jump
 					reset_anim(spr_player_stomp)
 				vsp = input.jump.check ? -14 : -9
 				jumpstop = true
@@ -210,7 +214,7 @@ function do_enemy_generics()
 					hsp = obj_player.xscale * 5
 					vsp = -5
 					state = states.stun
-					stun_timer = 180
+					stun_timer = 100
 					warp = -0.4
 				}
 			}
@@ -236,20 +240,7 @@ function do_enemy_generics()
 
 	if flash > 0
 		flash--
-
-	var en_list = ds_list_create()
-	instance_place_list(x, y, par_enemy, en_list, false)
-
-	for (var i = 0; i < ds_list_size(en_list); i++) {
-	    var _id = ds_list_find_value(en_list, i)
-		if place_meeting(x, y, _id) && _id.state == states.hit
-		{
-			instance_destroy()
-			scr_sound_3d(sfx_punch, x, y)
-		}
-	}
 	
-	ds_list_destroy(en_list)
 	break_destroyables()
 }
 

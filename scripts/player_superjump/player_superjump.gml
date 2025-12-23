@@ -48,7 +48,7 @@ function player_superjump()
 	
 	if (sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !superjumpholding && !scr_solid(x, y - 1))
 	{
-		vsp = -12
+		vsp = -11 //its -12, but -11 makes it *feel* more like the original
 		sprite_index = spr_player_superjump
 		scr_sound_3d_on(myemitter, sfx_superjumprelease)
 		create_effect(x, y, spr_superjumpexplosion)

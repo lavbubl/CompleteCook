@@ -91,5 +91,9 @@ function player_grab()
 			state = states.normal
 		movespeed = 0
 	}
+	
+	if state == states.normal
+		dir = p_move
+	
 	aftimg_timers.blur.do_it = true
 }

@@ -144,7 +144,7 @@ function player_sounds()
 		if _data.func != noone
 			do_play = _data.func()
 		
-		if (_id.state != _data.state) || warping
+		if (_id.state != _data.state) || warping || hitstun > 0
 			do_play = false
 			
 		if _data.is_3d

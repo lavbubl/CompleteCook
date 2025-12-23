@@ -8,7 +8,7 @@ with obj_player
 	reset_anim(asset_get_index($"spr_player_parry{ix}"))
 	movespeed = -5
 	flash = 10
-	particle_create(x, y, particles.parry)
+	particle_create(x, y, particles.parry).depth = -100
 }
 
 with other

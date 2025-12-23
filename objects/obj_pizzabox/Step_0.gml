@@ -21,8 +21,8 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 			hsp = 0
 			vsp = 0
 			movespeed = 0
-			reset_anim(spr_player_downpizzabox)
 			image_speed = 0.35
+			reset_anim(spr_player_downpizzabox)
 			scr_sound(sfx_box)
 		}
 		else if ((up || state == states.superjump || state == states.climbwall) && place_meeting(x, y - 10, other) && other.image_yscale == -1)
@@ -34,8 +34,9 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 			hsp = 0
 			vsp = 0
 			movespeed = 0
-			reset_anim(spr_player_uppizzabox)
+			y = other.bbox_bottom - 1
 			image_speed = 0.35
+			reset_anim(spr_player_uppizzabox)
 			scr_sound(sfx_box)
 		}
 	}

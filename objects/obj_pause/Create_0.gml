@@ -83,7 +83,6 @@ baseoptions = [
 			audio_stop_sound(obj_music.mu)
 		if obj_music.secret_mu != noone
 			audio_stop_sound(obj_music.secret_mu)
-		reset_level()
 		if global.start_room != noone
 		{
 			room_goto(global.start_room)
@@ -99,6 +98,7 @@ baseoptions = [
 		}
 		else
 			show_debug_message("start room was unset")
+		reset_level()
 	}),
 	new create_pause_option("CHEF TASKS",		optiontypes.level,	8),
 	new create_pause_option("EXIT LEVEL",		optiontypes.level,	3, function() {
@@ -107,7 +107,6 @@ baseoptions = [
 			audio_stop_sound(obj_music.mu)
 		if obj_music.secret_mu != noone
 			audio_stop_sound(obj_music.secret_mu)
-		reset_level()
 		with obj_player
 		{
 			spawn = noone
@@ -122,6 +121,7 @@ baseoptions = [
 		global.in_level = false
 		
 		instance_create(0, 0, obj_fadevisual)
+		reset_level()
 	})
 ]
 

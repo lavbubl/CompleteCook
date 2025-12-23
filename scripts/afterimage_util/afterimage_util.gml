@@ -21,7 +21,6 @@ function afterimage_create(a_type)
 				lifetime = 10
 				break;
 			case after_images.blur:
-				pattern_init()
 				image_alpha = 0.8
 				hsp = hsp
 				vsp = vsp

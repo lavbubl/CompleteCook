@@ -1,4 +1,3 @@
-pattern_init()
 scr_sound(sfx_tvswitch)
 scr_sound_3d(sfx_groundpound, obj_player.x, obj_player.y)
 image_speed = 0.35

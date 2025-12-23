@@ -5,9 +5,6 @@ function break_destroyables()
 		y: y + vsp + sign(vsp)
 	}
 	
-	if state == states.grab
-		d_pos.x = x + hsp + xscale
-	
 	var d_list = ds_list_create()
 	instance_place_list(d_pos.x, d_pos.y, obj_destroyable, d_list, false)
 	
@@ -17,15 +14,16 @@ function break_destroyables()
 		states.grab,
 		states.tumble,
 		states.punch,
-		states.hit
+		states.hit,
+		states.swingding
 	]
 	
 	var vertical_states = [
 		states.groundpound,
 		states.punch,
-		states.superjump,
 		states.climbwall,
-		states.hit
+		states.hit,
+		states.piledriver
 	]
 	
 	var is_h_state = false
@@ -43,8 +41,8 @@ function break_destroyables()
 			is_v_state = true
 	}
 	
-	if state == states.superjump && sprite_index != spr_player_superjump //SHITTY HACK BUT IDC IM ANGRY
-		exit;
+	if state == states.superjump && sprite_index == spr_player_superjump
+		is_v_state = true
 	
 	for (i = 0; i < ds_list_size(d_list); i++) 
 	{

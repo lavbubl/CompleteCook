@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.0493197,
+  "duration":1.0493333,
   "exportDir":"",
   "name":"sfx_hurt",
   "parent":{

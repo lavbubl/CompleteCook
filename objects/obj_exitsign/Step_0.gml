@@ -5,7 +5,7 @@ switch state
 {
 	case states.actor:
 		visible = false
-		y = camera_get_view_y(view_camera[0]) - 100
+		y = min(camera_get_view_y(view_camera[0]) - 100, ystart - (screen_h / 2))
 		
 		if (abs(x - obj_player.x) <= screen_w / 2 && global.panic.active)
 		{

@@ -5,6 +5,19 @@ function player_mach3()
 	
 	var dashpad = sprite_index == spr_player_dashpad
 	
+	if (!particle_contains_sprite(spr_superdashcloud) && grounded)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_superdashcloud)
+	
+	if (input_buffers.jump > 0 && coyote_time) 
+	{
+		input_buffers.jump = 0
+		vsp = -11
+		jumpstop = false
+		reset_anim(spr_player_mach3jump)
+		scr_sound_3d(sfx_jump, x, y)
+		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
+	}
+	
 	if (mach4mode)
 	{
 		if (sprite_index != spr_player_crazyrun)
@@ -36,19 +49,6 @@ function player_mach3()
 		sprite_index = spr_player_mach3
 	}
 	
-	if (!particle_contains_sprite(spr_superdashcloud) && grounded)
-		particle_create(x, y, particles.genericpoof, xscale, 1, spr_superdashcloud)
-	
-	if (input_buffers.jump > 0 && coyote_time) 
-	{
-		input_buffers.jump = 0
-		vsp = -11
-		jumpstop = false
-		reset_anim(spr_player_mach3jump)
-		scr_sound_3d(sfx_jump, x, y)
-		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
-	}
-	
 	if (grounded)
 	{
 		if (sprite_index == spr_player_Sjumpcancel)
@@ -69,7 +69,7 @@ function player_mach3()
 		if (movespeed < 20 && p_move == xscale)
 			movespeed += mach4mode ? 0.1 : 0.025
 			
-		if ((input.up.check || input.superjump.check) && !dashpad)
+		if (input.up.check || input.superjump.check) && !dashpad && vsp >= 0
 		{
 			state = states.superjump
 			reset_anim(spr_player_superjumpprep)
@@ -121,6 +121,7 @@ function player_mach3()
 		shake_camera(20, 40 / room_speed)
 		scr_sound_3d(sfx_groundpound, x, y)
 		scr_sound_3d(sfx_bumpwall, x, y)
+		create_effect(x, y, spr_bumpeffect)
 		
 		with par_enemy
 		{
@@ -133,6 +134,7 @@ function player_mach3()
 			}
 		}
 	}
+	
 	image_speed = 0.4
 	switch (sprite_index)
 	{
@@ -146,6 +148,7 @@ function player_mach3()
 			reset_anim_on_end(spr_player_mach3)
 			break;
 	}
+	
 	do_taunt()
 	
 	aftimg_timers.mach.do_it = true

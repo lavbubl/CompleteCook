@@ -1,5 +1,3 @@
-mag -= mag_decel
-
 var target = obj_player
 
 if instance_exists(obj_player)

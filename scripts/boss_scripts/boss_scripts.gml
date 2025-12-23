@@ -36,7 +36,7 @@ function boss_hit()
 	if (scr_solid(x + 1, y) || scr_solid(x - 1, y) || (grounded && vsp > 0))
 	{
 		particle_create(x, y, particles.bang)
-		repeat (3)
+		repeat 3
 			particle_create(x, y, particles.yellowstar)
 		shake_camera()
 		scr_sound_3d(sfx_killenemy, x, y)
@@ -126,7 +126,7 @@ function do_vulnerability()
 			state = states.stun
 			stun_timer = 120
 			vsp = -5
-			repeat (4)
+			repeat 4
 				particle_create(x, y, particles.stars)
 			flash = 8
 		}

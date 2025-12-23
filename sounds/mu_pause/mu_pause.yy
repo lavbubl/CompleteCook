@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":33.307575,
+  "duration":117.34534,
   "exportDir":"",
   "name":"mu_pause",
   "parent":{

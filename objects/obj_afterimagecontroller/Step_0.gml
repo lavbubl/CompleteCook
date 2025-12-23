@@ -25,11 +25,8 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 			case after_images.blur:
 				image_alpha -= 0.15
 				
-				if (image_alpha <= 0)
-				{
-					pattern_cleanup()
+				if image_alpha <= 0
 					array_delete(other.aftimg_list, inst, 1)
-				}
 				break;
 			case after_images.solid_color:
 				image_alpha -= 0.05

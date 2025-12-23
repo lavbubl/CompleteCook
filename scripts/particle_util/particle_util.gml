@@ -72,6 +72,7 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 				break;
 			case particles.taunt:
 				sprite_index = spr_taunteffect
+				image_speed = 0.35
 				break;
 			case particles.machcharge:
 				sprite_index = spr_mach3charge

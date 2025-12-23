@@ -43,12 +43,28 @@ if follow_player
 				other.yscale = -1
 				break;
 			case states.punchenemy:
-				other.x = x + xscale * 48
+				var _dist = 60
+				other.x = x
 				other.y = y
+				with other //dont go into solids
+				{
+					if !scr_solid(x + (_dist * other.xscale), y)
+						x += _dist * other.xscale
+					else
+					{
+						repeat _dist 
+						{
+							if !scr_solid(x + other.xscale, y)
+								x += other.xscale
+							else
+								break;
+						}
+					}
+				}
 				break;
 			case states.swingding:
 				other.x = x
-				other.y = y
+				other.y = y - 20
 				break;
 		}
 		other.state = states.grabbed
@@ -115,6 +131,7 @@ if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supe
 {
 	state = states.stun
 	stun_timer = 2
+	vsp = 0
 	sprite_index = sprs.stun
 	alarm[0] = 999
 }

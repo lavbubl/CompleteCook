@@ -81,7 +81,7 @@ function player_superjump()
 		}
 		
 		if (sprite_index != spr_player_Sjumpcancelstart)
-			vsp -= 0.6
+			vsp -= grav + 0.1
 		
 		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump && sprite_index != spr_player_presentboxspring
 		{

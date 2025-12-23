@@ -105,8 +105,6 @@ depth = -100
 pal_select = 1
 pattern_spr = pat_pizza
 
-pattern_init()
-
 input_buffers = {
 	jump: 0,
 	grab: 0

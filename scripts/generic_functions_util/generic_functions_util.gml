@@ -138,6 +138,7 @@ function set_globals()
 	global.generic_font = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?.1234567890:", true, 0)
 	global.hud_negativefont = font_add_sprite_ext(spr_negativenumber_font, "0123456789$-", true, 0)
 	global.smallnumberfont = font_add_sprite_ext(spr_smallnumber_font, "1234567890-+", true, 0)
+	global.smallerfont = font_add_sprite_ext(spr_smaller_font, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¡.:?¿1234567890ÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜÇ+", true, 0);
 	global.tutorialfont = font_add_sprite_ext(spr_tutorialfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz!¡,.:0123456789'?¿-áäãàâæéèêëíìîïóöõôòúùûüÿŸÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜÇçœß;«»+", true, 2)
 	global.creditsfont = font_add_sprite_ext(spr_creditsfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.,:!¡0123456789?'\"ÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜáäãàâéèêëíìîïóöõôòúùûüÇç_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнльœ«»+ß", true, 2)
 	global.bignumber_font = font_add_sprite_ext(spr_bignumber_font, "0123456789/:", true, 0)
@@ -158,6 +159,7 @@ function set_globals()
 			sausage: false,
 			pineapple: false
 		},
+		lap2: false,
 		tauntcount: 0,
 		boss_name: "dummy"
 	}
@@ -225,7 +227,7 @@ function bbox_in_camera()
 
 function check_p_rank()
 {
-	return global.level_data.treasure && !global.combo.wasted;
+	return global.level_data.treasure && !global.combo.wasted && global.level_data.lap2 && global.level_data.secret_count >= 3;
 }
 
 function set_rank_milestones(_s, _a, _b, _c)
@@ -289,6 +291,7 @@ function reset_level()
 	ds_list_clear(global.ds_escapesaveroom)
 	ds_list_clear(global.ds_saveroom)
 	obj_followerhandler.followers = []
+	obj_levelcontroller.killed_enemy = false
 	with obj_player
 	{
 		has_shotgun = false
@@ -310,6 +313,7 @@ function reset_level()
 			sausage: false,
 			pineapple: false
 		},
+		lap2: false,
 		tauntcount: 0,
 		boss_name: "dummy"
 	}

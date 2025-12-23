@@ -79,7 +79,7 @@ function do_taunt()
 			sprite_index: self.sprite_index
 		}
 		
-		particle_create(x, y, particles.taunt)
+		particle_create(x, y, particles.taunt).image_xscale = xscale
 		state = states.taunt
 		
 		if !(input.up.check && supertauntshow)
@@ -282,7 +282,6 @@ function do_hurt(obj = noone)
 			{
 				with instance_create(hphudpos.x, hphudpos.y, obj_hudhpdebris)
 				{
-					pattern_init()
 					image_index = other.hpix
 					dopalette = true
 				}

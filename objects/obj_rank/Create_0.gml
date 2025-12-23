@@ -50,5 +50,3 @@ results = [
 ]
 
 result_ix = 0
-
-pattern_init()

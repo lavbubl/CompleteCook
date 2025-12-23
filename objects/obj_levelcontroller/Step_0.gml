@@ -17,7 +17,7 @@ if (global.combo.count != prev_combo_count)
 	}
 }
 
-combo_score = ((global.combo.count ^ 2) * 0.25) + (10 * global.combo.count)
+combo_score = round(((global.combo.count ^ 2) * 0.25) + (10 * global.combo.count))
 
 if global.combo.timer <= 0
 {

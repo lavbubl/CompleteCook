@@ -15,7 +15,7 @@ draw_text(0, screen_h - 20, $"fps_real: {floor(fps_real)}")
 draw_text(0, screen_h - 40, "F1: Reset position")
 draw_text(0, screen_h - 60, "Shift + 9: Restart game")
 
-var ver_str = $"Complete Cook {version}" 
+var ver_str = "Complete Cook" 
 
 draw_set_halign(fa_right)
 draw_set_alpha(0.5)

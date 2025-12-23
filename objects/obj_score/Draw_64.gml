@@ -29,7 +29,7 @@ else
 	}
 }
 
-draw_set_align(fa_left, fa_bottom)
+draw_set_align(fa_left, fa_top)
 
 draw_sprite(spr_pizzascore, image_index, x, y)
 
@@ -52,7 +52,7 @@ for (var i = 0; i < array_length(arr); i++)
 }
 
 var str = string(num)
-var num = string_length(str)
+var len = string_length(str)
 var w = string_width(str)
 var xx = x - (w / 2)
 
@@ -69,13 +69,13 @@ draw_set_alpha(alpha)*/
 
 var text_y = 0;
 
-for (var i = 0; i < num; i++)
+for (var i = 0; i < len; i++)
 {
 	var yy = (((i + 1) % 2) == 0) ? -5 : 0
 	//var c = color_array[i]
 	//pal_swap_set(spr_font_palette, c, false)
-	draw_text(floor(xx), floor((y) + text_y + yy), string_char_at(str, i + 1))
-	xx += (w / num)
+	draw_text(floor(xx), floor((y - 56) + text_y + yy), string_char_at(str, i + 1))
+	xx += (w / len)
 }
 
 var r_pos = {

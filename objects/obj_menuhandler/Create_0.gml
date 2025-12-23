@@ -26,7 +26,6 @@ for (var i = 0; i < array_length(tvs); i++)
 {
 	with tvs[i]
 	{
-		pattern_init()
 		var ini_str = $"saves/saveData{filename}.ini"
 		if file_exists(ini_str)
 		{

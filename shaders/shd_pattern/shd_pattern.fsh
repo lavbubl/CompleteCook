@@ -34,5 +34,8 @@ void main()
 {
 	vec4 col = texture2D( gm_BaseTexture, v_vTexcoord);
 	col = colcheck(col);
-	gl_FragColor = v_vColour * col;
+	gl_FragColor = col;
+	
+	if (gl_FragColor.a < Tolerance)
+		discard;
 }

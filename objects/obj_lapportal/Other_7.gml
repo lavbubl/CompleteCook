@@ -6,4 +6,5 @@ if (sprite_index == spr_pizzaportalend && !obj_fade.fade)
 	ds_list_add(global.ds_saveroom, id)
 	ds_list_clear(global.ds_escapesaveroom)
 	obj_music.lap2 = true
+	global.level_data.lap2 = true
 }

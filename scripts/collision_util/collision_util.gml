@@ -28,12 +28,7 @@ function collide()
 			break;
 		}
 		else
-		{
-			if abs_final
-				y += sign(vsp_final)
-			else
-				y += vsp_final;
-		}
+			y += sign(vsp_final)
 		i++
 	}
 		
@@ -56,15 +51,16 @@ function collide()
 		}
 		else if scr_solid(x + sign(hsp_final), y + 1) && scr_solid(x + sign(hsp_final), y - h)
 		{
-			hsp = 0
+			var _do_stop = true
+			if variable_instance_exists(self, "state") && state == states.hit
+				_do_stop = false
+			if _do_stop
+				hsp = 0
 			break;
 		}
 		else
 		{
-			if abs_final
-				x += sign(hsp_final)
-			else
-				x += hsp_final;
+			x += sign(hsp_final)
 			
 			if !scr_solid(x, y - h)
 			{
@@ -96,9 +92,9 @@ function collide()
 	var plat_id = instance_place(x, y + 1, obj_movingplatform)
 	if plat_id != -4
 	{
-		if plat_id.vsp < 0 && bbox_bottom <= plat_id.bbox_top - plat_id.vsp
+		if plat_id.vsp < 0 && bbox_bottom <= plat_id.bbox_bottom
 		{
-			while place_meeting(x, y, plat_id) && !place_meeting(x, y - 1, obj_solid)
+			while place_meeting(x, y, plat_id) && !scr_solid(x, y - 1) //threshold handled in sprite collision mask
 				y--
 			vsp = 0
 			grounded |= true

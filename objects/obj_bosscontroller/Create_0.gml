@@ -38,7 +38,4 @@ player_alpha = 1
 
 extrahats = 0
 
-if obj_player.pal_select == 12
-	pattern_init()
-
 global.boss_room = true

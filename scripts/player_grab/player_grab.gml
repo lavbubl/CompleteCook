@@ -3,9 +3,7 @@ function player_grab()
 	hsp = xscale * movespeed
 	
 	if (movespeed < 10)
-	{
 		movespeed += 0.5
-	}
 	
 	if (!input.jump.check && !jumpstop && vsp < 0.5)
 	{
@@ -36,6 +34,7 @@ function player_grab()
 	
 	if (sprite_index == spr_player_suplexdash && !grounded)
 		reset_anim(spr_player_suplexgrabjump)
+	
 	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && input.dash.check)
 	{
 		state = states.mach2
@@ -51,12 +50,13 @@ function player_grab()
 	else if (scr_hitwall(x + xscale, y) && grounded)
 	{
 		sprite_index = spr_player_suplexbump
-		scr_sound_3d(sfx_splat, x, y)
 		state = states.jump
 		jumpstop = true
 		hsp = 0
 		movespeed = 0
 		vsp = -5
+		scr_sound_3d(sfx_splat, x, y)
+		create_effect(x + (16 * xscale), y, spr_bumpeffect)
 	}
 	
 	image_speed = 0.35
@@ -74,13 +74,13 @@ function player_grab()
 			break;
 	}
 	
-	if (anim_ended() && input.dash.check && sprite_index == spr_player_suplexdash)
+	if anim_ended() && input.dash.check && sprite_index == spr_player_suplexdash
 	{
 		state = states.mach2
 		sprite_index = spr_player_mach2
 	}
 	
-	if (p_move != 0 && p_move != xscale)
+	if p_move != 0 && p_move != xscale
 	{
 		if !grounded
 		{

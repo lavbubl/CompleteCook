@@ -12,6 +12,17 @@ function player_normal()
 		default_jump = spr_player_shotgun_jump
 		default_fall = spr_player_shotgun_fall
 	}
+	else if global.combo.count >= 50
+	{
+		default_idle = spr_player_rageidle
+		default_move = spr_player_ragemove
+	}
+	else if global.combo.count >= 25
+	{
+		default_idle = spr_player_madidle
+		default_move = spr_player_madmove
+	}
+	
 	if global.panic.active
 	{
 		default_idle = spr_player_panic
@@ -24,8 +35,14 @@ function player_normal()
 			default_fall = spr_player_hurtjump
 		}
 	}
+	
 	if p_move != 0
 	{
+		if dir != xscale
+		{
+			movespeed = 0
+			dir = xscale
+		}
 		xscale = p_move
 		if !place_meeting(x + p_move, y, obj_solid)
 		{
@@ -152,23 +169,26 @@ function player_normal()
 		reset_anim(spr_player_mach1)
 	}
 	
+	if global.combo.count >= 25 && !particle_contains_sprite(spr_angrycloud)
+		create_followingeffect(spr_angrycloud, states.normal).image_speed = 0.35
+	
 	switch (sprite_index)
 	{
 		case spr_player_move:
 		case spr_player_hurtmove:
-			image_speed = clamp(movespeed / 15, 0.35, 0.6);
+		case spr_player_madmove:
+		case spr_player_ragemove:
+			if movespeed > 6
+	            image_speed = 0.6;
 			break;
 		case spr_player_machslideend:
 		case spr_player_land:
 		case spr_player_shotgun_land:
+		case spr_player_facehurt:
 			reset_anim_on_end(default_idle)
 			break;
 		case spr_player_landmove:
-			image_speed = clamp(movespeed / 15, 0.35, 0.6);
 			reset_anim_on_end(default_move);
-			break;
-		case spr_player_facehurt:
-			reset_anim_on_end(default_idle)
 			break;
 	}
 	

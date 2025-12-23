@@ -1,6 +1,17 @@
 if (ds_list_find_index(global.ds_saveroom, id) == -1)
 {
-	particle_create(x, y, particles.bang)
+	repeat 2
+    {
+        with create_debris(x + random_range(0, sprite_width), y + random_range(0, sprite_height), particlespr)
+        {
+            hsp = random_range(-5, 5);
+            vsp = random_range(-10, 10);
+        }
+    }
+    
+    if (particlespr == spr_destroyable_debris)
+        create_effect(x + random_range(0, sprite_width), y + random_range(0, sprite_height), spr_destroyable_smoke)
+	
 	sleep(5)
     scr_sound_3d(choose(sfx_breakblock1, sfx_breakblock2), x, y)
 	tile_layer_delete_at(x, y)

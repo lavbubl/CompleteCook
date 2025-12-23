@@ -8,6 +8,7 @@ if do_particles
 	
 	obj_player.supertauntcount++
 	
+	obj_levelcontroller.killed_enemy = true
 	
 	particle_create(x, y, particles.bang)
 	particle_create(x, y, particles.genericpoof)

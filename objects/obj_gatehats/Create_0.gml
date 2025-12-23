@@ -15,4 +15,3 @@ extrahats = 0;
 state = 0;
 grav = 0.5;
 image_speed = 0.35;
-pattern_init()

@@ -8,6 +8,6 @@ campos = {
 	y: 0
 }
 
-version = "DEBLOATED";
+//version = "DEBLOATED";
 
 depth = -150

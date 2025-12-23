@@ -18,51 +18,35 @@ function pattern_draw(_spr, _ix, _x, _y, _pattern_spr, _xscale = 1, _yscale = 1,
 {
 	if _pattern_spr == noone
 		exit;
-		
-	if !surface_exists(pattern_mask_surf)
-		pattern_mask_surf = surface_create(sprite_get_width(_spr), sprite_get_height(_spr))	
-		
-	if surface_exists(pattern_mask_surf)
-	{
-		surface_resize(pattern_mask_surf, sprite_get_width(_spr), sprite_get_height(_spr))
-		
-		surface_set_target(pattern_mask_surf)
-		
-		pattern_set_colors(pal_peppatterncolors)
-		draw_sprite(_spr, _ix, sprite_get_xoffset(_spr), sprite_get_yoffset(_spr))
-		shader_reset()
-		surface_reset_target()
-		
-		//original variables
-		var _prev_ate = gpu_get_alphatestenable()
-		var _prev_atr = gpu_get_alphatestref()
-		var _prev_cwe = gpu_get_colorwriteenable()
 	
-		//Stencil setup
-		draw_clear_stencil(0)
-		gpu_set_stencil_enable(true)
-		gpu_set_stencil_func(cmpfunc_greaterequal)
-		gpu_set_stencil_pass(stencilop_replace)
-		gpu_set_stencil_ref(4)
+	//original variables
+	var _prev_cwe = gpu_get_colorwriteenable()
 	
-		//Draw mask
-		gpu_set_colorwriteenable(false, false, false, false)
-		gpu_set_alphatestenable(true)
-		gpu_set_alphatestref(1)
-		draw_surface_ext(pattern_mask_surf, _x - (sprite_get_xoffset(_spr) * _xscale), _y - (sprite_get_yoffset(_spr) * _yscale), _xscale, _yscale, _rot, _col, _alpha)
-		gpu_set_colorwriteenable(_prev_cwe)
-		gpu_set_alphatestenable(_prev_ate)
-		gpu_set_alphatestref(_prev_atr)
+	//Stencil setup
+	draw_clear_stencil(0)
+	gpu_set_stencil_enable(true)
+	gpu_set_stencil_func(cmpfunc_greater)
+	gpu_set_stencil_pass(stencilop_replace)
+	gpu_set_stencil_ref(1)
 	
-		//Draw tiled pattern
-		gpu_set_stencil_pass(stencilop_keep)
-		gpu_set_stencil_func(cmpfunc_lessequal)
-		gpu_set_stencil_ref(2)
-		draw_sprite_tiled_ext(_pattern_spr, 0, _x, _y, _xscale, _yscale, _col, _alpha)
-		gpu_set_stencil_enable(false) 
-	}
+	//Draw mask
+	gpu_set_colorwriteenable(false, false, false, false)
+	
+	pattern_set_colors(pal_peppatterncolors)
+	draw_sprite_ext(_spr, _ix, _x, _y, _xscale, _yscale, _rot, _col, _alpha)
+	shader_reset()
+	
+	gpu_set_colorwriteenable(_prev_cwe)
+	
+	////Draw tiled pattern
+	gpu_set_stencil_ref(0)
+	gpu_set_stencil_func(cmpfunc_notequal)
+	gpu_set_stencil_pass(stencilop_keep)
+	draw_sprite_tiled_ext(_pattern_spr, 0, _x, _y, _xscale, _yscale, _col, _alpha)
+	gpu_set_stencil_enable(false) 
 }
 
+/*oh my sweet summer child...
 function pattern_init()
 {
 	pattern_surf = noone

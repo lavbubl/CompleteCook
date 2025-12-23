@@ -68,7 +68,8 @@ function enemy_stun()
 function enemy_hit()
 {
 	sprite_index = sprs.dead
-	with instance_place(x + hsp, y + vsp, obj_destroyable)
+	
+	with instance_place(x + hsp + xscale, y + vsp - 1, obj_destroyable)
 		instance_destroy()
 	if (place_meeting(x + hsp, y + vsp, obj_solid) && !place_meeting(x + hsp, y + vsp, obj_destroyable))
 	{
@@ -102,7 +103,7 @@ function do_enemygibs()
 {
 	particle_create(x, y, particles.bang)
 	particle_create(x, y, particles.parry)
-	repeat (3)
+	repeat 3
 	{
 		particle_create(x, y, particles.gib)
 		with particle_create(x, y, particles.stars)
@@ -132,9 +133,9 @@ function do_enemy_generics()
 	if (state == states.hit)
 		grav = 0
 
-	if (place_meeting(x + obj_player.hsp, y + obj_player.vsp, obj_player))
+	if (place_meeting(x, y, obj_player) || place_meeting(x - obj_player.hsp, y - obj_player.vsp, obj_player))
 	{
-		if (obj_player.instakill && alarm[0] == -1 && !follow_player)
+		if (obj_player.instakill && alarm[0] == -1 && !follow_player && obj_player.hitstun <= 0)
 		{
 			with (obj_player)
 			{
@@ -166,13 +167,13 @@ function do_enemy_generics()
 			state = states.stun
 			stun_timer = 180
 			vsp = -5
-			repeat (4)
+			repeat 4
 				particle_create(x, y, particles.stars)
 			flash = 8
 		}
 		with (obj_player)
 		{
-			if (state == states.grab && other.state != states.hit)
+			if (state == states.grab && other.state != states.hit && other.alarm[0] == -1) //alarm == -1 means not hitstunned
 			{
 				other.follow_player = true
 				other.sprite_index = other.sprs.stun
@@ -182,9 +183,11 @@ function do_enemy_generics()
 				{
 					state = states.swingding
 					reset_anim(spr_player_swingding)
-					if !grounded
-						vsp = -5
 				}
+				
+				if !grounded
+					vsp = -6
+				
 				if (input.up.check)
 				{
 					state = states.piledriver

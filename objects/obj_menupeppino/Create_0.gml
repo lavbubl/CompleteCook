@@ -1,4 +1,3 @@
-pattern_init()
 depth = 0
 image_speed = 0.35
 cur_selected = 1

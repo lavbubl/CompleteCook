@@ -1,7 +1,7 @@
 // feather disable all
 // feather ignore all
 
-depth = -500
+depth = -2000
 
 isOpen = false;
 isAutocompleteOpen = false;

@@ -11,6 +11,7 @@ for (var i = 0; i < instance_number(par_collision); i++)
 		case obj_sideplatform:
 		case obj_slope:
 		case obj_slopeplatform:
+		case obj_ladder:
 			_id.visible = global.showcollisions
 			break;
 	}

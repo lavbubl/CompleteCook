@@ -84,6 +84,7 @@ function sh_togglecollisions (args) {
 			case obj_sideplatform:
 			case obj_slope:
 			case obj_slopeplatform:
+			case obj_ladder:
 				_id.visible = visibility
 				break;
 		}

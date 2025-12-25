@@ -63,7 +63,8 @@ for (var i = 0; i < array_length(followers); i++)
 				}
 				else
 					reset_anim(sprs.intro)
-				var te = create_effect(x, y, spr_tinytaunt).image_speed = 0.5
+				var te = create_effect(x, y, spr_tinytaunt)
+				te.image_speed = 0.5
 				if sprs.taunt == spr_gerome_taunt
 					te.sprite_index = spr_taunteffect //changes the sprite but not its image_number to match. instead spr_taunteffect frame count adjusted to match spr_tinytaunt's. LOL!
 			}

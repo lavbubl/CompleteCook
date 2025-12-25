@@ -1,7 +1,12 @@
 {
   "$GMTileSet":"v1",
   "%Name":"ts_secret",
-  "autoTileSets":[],
+  "autoTileSets":[
+    {"$GMAutoTileSet":"","%Name":"autotile","closed_edge":false,"name":"autotile","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[16,94,92,13,74,31,0,11,72,0,35,15,53,51,55,0,],},
+    {"$GMAutoTileSet":"","%Name":"autotile_inside","closed_edge":true,"name":"autotile_inside","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[33,105,101,103,65,85,0,22,61,0,81,24,63,42,44,16,],},
+    {"$GMAutoTileSet":"","%Name":"autotile_bg","closed_edge":false,"name":"autotile_bg","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[26,148,146,112,128,130,0,110,126,0,134,114,152,150,154,0,],},
+    {"$GMAutoTileSet":"","%Name":"autotile_bg_inside","closed_edge":false,"name":"autotile_bg_inside","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[132,159,155,122,119,131,0,121,115,0,133,123,142,141,143,26,],},
+  ],
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,
@@ -26,8 +31,12 @@
     "name":"Default",
     "path":"texturegroups/Default",
   },
-  "tileAnimationFrames":[],
-  "tileAnimationSpeed":15.0,
+  "tileAnimationFrames":[
+    {"$GMTileAnimation":"","%Name":"Platform","frames":[17,18,28,27,],"name":"Platform","resourceType":"GMTileAnimation","resourceVersion":"2.0",},
+    {"$GMTileAnimation":"","%Name":"Platform2","frames":[18,28,27,17,],"name":"Platform2","resourceType":"GMTileAnimation","resourceVersion":"2.0",},
+    {"$GMTileAnimation":"","%Name":"Cloud","frames":[37,47,57,47,],"name":"Cloud","resourceType":"GMTileAnimation","resourceVersion":"2.0",},
+  ],
+  "tileAnimationSpeed":12.0,
   "tileHeight":32,
   "tilehsep":0,
   "tilevsep":0,

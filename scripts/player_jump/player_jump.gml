@@ -108,8 +108,11 @@ function player_jump()
 	switch (sprite_index)
 	{
 		case spr_player_jump:
-		case spr_player_suplexcancel:
 		case spr_player_piledriverjump:
+			reset_anim_on_end(spr_player_fall)
+			break;
+		case spr_player_suplexcancel:
+			image_speed = 0.4
 			reset_anim_on_end(spr_player_fall)
 			break;
 		case spr_player_shotgun_jump:

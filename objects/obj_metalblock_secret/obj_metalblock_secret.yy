@@ -29,7 +29,10 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"particlespr","filters":[],"listItems":[],"multiselect":false,"name":"particlespr","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_eyedebris","path":"sprites/spr_eyedebris/spr_eyedebris.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_eyedebris","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"makecracks","filters":[],"listItems":[],"multiselect":false,"name":"makecracks","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"true","varType":3,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

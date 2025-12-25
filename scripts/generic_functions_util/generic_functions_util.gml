@@ -247,13 +247,13 @@ function draw_reset_color(alpha = true)
 		draw_set_alpha(1)
 }
 
-function tile_layer_delete_at(_x, _y)
+function tile_layer_delete_at(_x, _y, kill_bg = false)
 {
 	var layers = layer_get_all()
 	for (var i = 0; i < array_length(layers); i++) 
 	{
 		var cur_layer = layers[i]
-	    if (string_starts_with(layer_get_name(cur_layer), "Tiles"))
+	    if string_starts_with(layer_get_name(cur_layer), "Tiles") && (!string_starts_with(layer_get_name(cur_layer), "Tiles_BG") || kill_bg)
 		{
 			var map_id = layer_tilemap_get_id(cur_layer)
 			tilemap_set_at_pixel(map_id, 0, _x, _y)

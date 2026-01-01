@@ -39,7 +39,7 @@ function player_slide()
 				image_index = image_number - 4
 			if scr_hitwall(x + xscale, y)
 			{
-				reset_anim(spr_playePr_wallsplat)
+				reset_anim(spr_playerP_wallsplat)
 				scr_sound_3d(sfx_splat, x, y)
 				state = states.bump
 			}

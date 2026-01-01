@@ -116,7 +116,7 @@ function do_taunt()
 		{
 			taunttimer = 20
 			scr_sound_3d(sfx_supertaunt, x, y)
-			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
+			reset_anim(asset_get_index($"spr_playerP_supertaunt{irandom_range(1, 4)}"))
 			var spds = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
 			var i = 0
 			var spd = 20

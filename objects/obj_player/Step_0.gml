@@ -146,6 +146,9 @@ if hitstun < 0
 		case states.ball:
 			player_ball()
 			break;
+		case states.wallbounce:
+			player_wallbounce()
+			break;
 	}
 }
 else if hitstun >= 0
@@ -193,7 +196,7 @@ if ((y > room_height + 300 || y < -800) && state != states.actor && state != sta
 	state = states.actor
 	hsp = 0
 	vsp = 0
-	sprite_index = spr_player_idle
+	sprite_index = spr_playerP_idle
 }
 
 if state == states.fireass //||

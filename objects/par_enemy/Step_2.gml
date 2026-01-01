@@ -34,7 +34,7 @@ if follow_player
 				other.x = x
 				other.y = y - 64
 				other.xscale = -xscale
-				if sprite_index == spr_player_haulingrise
+				if sprite_index == spr_playerP_haulingrise
 					other.y += floor(image_number - image_index) * 10
 				break;
 			case states.piledriver:
@@ -67,14 +67,14 @@ if follow_player
 			}
 			if (!grounded && (state == states.hold || state == states.swingding))
 			{
-				sprite_index = spr_player_piledriver
+				sprite_index = spr_playerP_piledriver
 				movespeed = abs(hsp)
 				state = states.piledriver
 				vsp = -8
 				other.yscale = -1
 			}
 		}
-		if (image_index >= image_number - 1 && sprite_index == spr_player_piledriverland)
+		if (image_index >= image_number - 1 && sprite_index == spr_playerP_piledriverland)
 		{
 			with (other)
 			{
@@ -86,11 +86,11 @@ if follow_player
 			jumpstop = false
 			state = states.jump
 			prev_ix = image_index
-			reset_anim(spr_player_piledriverjump)
+			reset_anim(spr_playerP_piledriverjump)
 		}
 		
 		var ixcheck = 5
-		if sprite_index == spr_player_swingdingend
+		if sprite_index == spr_playerP_swingdingend
 			ixcheck = 1
 			
 		if (state = states.punchenemy && floor(image_index) == ixcheck)
@@ -104,7 +104,7 @@ if follow_player
 				state = states.hit
 				hsp = other.xscale * 20
 				vsp = 0
-				if other.sprite_index == spr_player_uppercutfinishingblow
+				if other.sprite_index == spr_playerP_uppercutfinishingblow
 				{
 					hsp = 0
 					vsp = -20
@@ -116,7 +116,7 @@ if follow_player
 	}
 }
 
-if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") && bbox_in_camera()
+if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_playerP_supertaunt") && bbox_in_camera()
 {
 	state = states.stun
 	stun_timer = 2

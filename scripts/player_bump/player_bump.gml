@@ -1,7 +1,7 @@
 function player_bump() 
 {
 	image_speed = 0.35
-	if sprite_index == spr_playePr_wallsplat || 
+	if sprite_index == spr_playerP_wallsplat || 
 	   sprite_index == spr_playerP_ceilinghit || 
 	   sprite_index == spr_playerP_bodyslamland ||
 	   sprite_index == spr_playerP_poundcancel2 ||

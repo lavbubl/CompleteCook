@@ -24,5 +24,11 @@ function get_charactersprites(_char = character) {
 		move: get_charactersprite(spr_playerP_move, _char),
 		jump: get_charactersprite(spr_playerP_jump, _char),
 		fall: get_charactersprite(spr_playerP_fall, _char),
+		
+		// Character specific sprites
+		wallbounce: get_charactersprite(spr_playerN_wallbounce, _char),
+		divebomb: get_charactersprite(spr_playerN_divebomb, _char),
+		divebombfall: get_charactersprite(spr_playerN_divebombfall, _char),
+		divebombland: get_charactersprite(spr_playerN_divebombland, _char),
 	}
 }

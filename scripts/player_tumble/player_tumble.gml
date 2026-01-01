@@ -37,7 +37,7 @@ function player_tumble() //ball is in its own state, player_ball()
 		hsp = 0
 		movespeed = 0
 		state = states.bump
-		reset_anim(spr_playePr_wallsplat)
+		reset_anim(spr_playerP_wallsplat)
 		scr_sound_3d(sfx_splat, x, y)
 	}
 	

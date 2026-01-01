@@ -63,7 +63,14 @@ function player_climbwall()
 		momentum = true
 		dir = xscale
 	}
-	if (input_buffers.jump > 0)
+	if character == char.noise
+	{
+		sprite_index = spr.wallbounce
+		image_index = 0
+		vsp = -17
+		state = states.wallbounce
+	}
+	if (input_buffers.jump > 0 && character != char.noise)
 	{
 		input_buffers.jump = 0
 		reset_anim(spr_playerP_walljumpstart)

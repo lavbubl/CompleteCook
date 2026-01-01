@@ -97,7 +97,7 @@ function player_mach2()
 	else if (grounded && scr_hitwall(x + xscale, y))
 	{
 		state = states.bump
-		reset_anim(spr_playePr_wallsplat)
+		reset_anim(spr_playerP_wallsplat)
 		scr_sound_3d(sfx_splat, x, y)
 	}
 	

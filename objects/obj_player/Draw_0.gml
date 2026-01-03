@@ -3,6 +3,9 @@ image_blend = c_white
 var xx = x
 var yy = y
 
+if visual_size == 0
+	exit;
+
 if hitstun > 0
 {
 	var range = 5

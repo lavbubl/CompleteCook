@@ -45,6 +45,7 @@ function pattern_draw(_spr, _ix, _x, _y, _pattern_spr, _xscale = 1, _yscale = 1,
 	draw_sprite_tiled_ext(_pattern_spr, 0, _x, _y, _xscale, _yscale, _col, _alpha)
 	gpu_set_stencil_enable(false) 
 }
+//when size is 0 the output will spit out an error regarding drawing the tiled pattern, so disable drawing when invisible
 
 /*oh my sweet summer child...
 function pattern_init()

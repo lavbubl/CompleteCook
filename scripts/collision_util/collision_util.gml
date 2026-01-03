@@ -92,14 +92,17 @@ function collide()
 	var plat_id = instance_place(x, y + 1, obj_movingplatform)
 	if plat_id != -4
 	{
-		if plat_id.vsp < 0 && bbox_bottom <= plat_id.bbox_bottom
+		if plat_id.vsp < 0
 		{
-			while place_meeting(x, y, plat_id) && !scr_solid(x, y - 1) //threshold handled in sprite collision mask
-				y--
-			vsp = 0
-			grounded |= true
-			hsp_plat = round(plat_id.hsp)
-			vsp_plat = round(plat_id.vsp)
+			if vsp >= plat_id.vsp && bbox_bottom <= plat_id.bbox_bottom
+			{
+				while place_meeting(x, y, plat_id) && !scr_solid(x, y - 1) //threshold handled in sprite collision mask
+					y--
+				vsp = 0
+				grounded |= true
+				hsp_plat = round(plat_id.hsp)
+				vsp_plat = round(plat_id.vsp)
+			}
 		}
 		else if bbox_bottom <= plat_id.bbox_top
 		{

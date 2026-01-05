@@ -10,7 +10,7 @@ W.I.P.
 
 # Other info
 
-I was bored ok
+I was bored
 
 ## License
 

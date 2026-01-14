@@ -130,16 +130,15 @@ function scr_solid(_x, _y)
 	var master = id
 	var do_parent_check = false
 	var climbingladder = false
-	if variable_instance_exists(master, "state")
+	
+	if master.object_index == obj_player && master.state == states.ladder
+		climbingladder = true
+	
+	var _list =  ds_list_create()
+	var _num = instance_place_list(_x, _y, par_collision, _list, false)
+	for (var i = 0; i < _num; i++)
 	{
-		if (master.state == states.ladder)
-			climbingladder = true
-	}
-	for (var i = 0; i < instance_number(par_collision); i++) 
-	{
-		var _id = instance_find(par_collision, i)
-		
-		with instance_place(_x, _y, _id)
+		with _list[| i]
 		{
 			switch (object_index)
 			{
@@ -189,6 +188,7 @@ function scr_solid(_x, _y)
 			}
 		}
 	}
+	ds_list_destroy(_list)
 	return collided;
 }
 

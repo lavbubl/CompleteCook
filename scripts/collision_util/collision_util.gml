@@ -131,7 +131,7 @@ function scr_solid(_x, _y)
 	var do_parent_check = false
 	var climbingladder = false
 	
-	if master.object_index == obj_player && master.state == states.ladder
+	if variable_instance_get(master, "state") == states.ladder
 		climbingladder = true
 	
 	var _list =  ds_list_create()

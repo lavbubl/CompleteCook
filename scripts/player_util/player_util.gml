@@ -1,6 +1,6 @@
-function anim_ended()
+function anim_ended(_img_index = image_index, _img_number = image_number)
 {
-	return image_index >= image_number - 1;
+	return _img_index >= _img_number - 1;
 }
 
 function do_groundpound()

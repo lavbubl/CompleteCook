@@ -18,12 +18,48 @@ input =
 
 collide_init()
 
+#region Player States
+
+player_states = [];
+
+player_states[states.taunt] = player_taunt;
+player_states[states.normal] = player_normal;
+player_states[states.jump] = player_jump;
+player_states[states.mach2] = player_mach2;
+player_states[states.mach3] = player_mach3;
+player_states[states.tumble] = player_tumble;
+player_states[states.slide] = player_slide;
+player_states[states.climbwall] = player_climbwall;
+player_states[states.bump] = player_bump;
+player_states[states.groundpound] = player_groundpound;
+player_states[states.grab] = player_grab;
+player_states[states.superjump] = player_superjump;
+player_states[states.crouch] = player_crouch;
+player_states[states.actor] = player_actor;
+player_states[states.ladder] = player_ladder;
+player_states[states.punch] = player_punch;
+player_states[states.hold] = player_hold;
+player_states[states.punchenemy] = player_punchenemy;
+player_states[states.piledriver] = player_piledriver;
+player_states[states.swingding] = player_swingding;
+player_states[states.grind] = player_grind;
+player_states[states.hurt] = player_hurt;
+player_states[states.parry] = player_parry;
+player_states[states.backtohub] = player_backtohub;
+player_states[states.noclip] = player_noclip;
+player_states[states.defeat] = player_defeat;
+player_states[states.punchstun] = player_punchstun;
+player_states[states.fireass] = player_fireass;
+player_states[states.shotgunshoot] = player_shotgunshoot;
+player_states[states.ball] = player_ball;
+
+#endregion
+
 spawn = "a"
 door_type = fade_types.none
 wasclimbingwall = false
 coyote_time = 0
 movespeed = 0
-state = states.normal
 //exitdoor properties
 state = states.actor
 sprite_index = spr_player_walkfront

@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.3746712,
+  "duration":1.3746667,
   "exportDir":"",
   "name":"sfx_electricity",
   "parent":{

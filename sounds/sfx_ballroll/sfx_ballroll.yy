@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.4133108,
+  "duration":2.4133334,
   "exportDir":"",
   "name":"sfx_ballroll",
   "parent":{

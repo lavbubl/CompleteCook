@@ -1,0 +1,43 @@
+{
+  "$GMObject":"",
+  "%Name":"obj_tiledestroyextension",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_tiledestroyextension",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"Destroyables",
+    "path":"folders/Objects/Level Structure/Destroyables.yy",
+  },
+  "parentObjectId":{
+    "name":"par_collision",
+    "path":"objects/par_collision/par_collision.yy",
+  },
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"makecracks","filters":[],"listItems":[],"multiselect":false,"name":"makecracks","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"true","varType":3,},
+  ],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"Sprite566",
+    "path":"sprites/Sprite566/Sprite566.yy",
+  },
+  "spriteMaskId":null,
+  "visible":false,
+}

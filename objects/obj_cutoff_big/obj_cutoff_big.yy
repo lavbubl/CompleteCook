@@ -1,10 +1,7 @@
 {
   "$GMObject":"",
   "%Name":"obj_cutoff_big",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "eventList":[],
   "managed":true,
   "name":"obj_cutoff_big",
   "overriddenProperties":[],
@@ -12,7 +9,10 @@
     "name":"Destroyables",
     "path":"folders/Objects/Level Structure/Destroyables.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_cutoff",
+    "path":"objects/obj_cutoff/obj_cutoff.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

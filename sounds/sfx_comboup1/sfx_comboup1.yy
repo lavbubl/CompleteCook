@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.3959863,
+  "duration":3.396,
   "exportDir":"",
   "name":"sfx_comboup1",
   "parent":{

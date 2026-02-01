@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":7.295986,
+  "duration":7.296,
   "exportDir":"",
   "name":"sfx_pizzafacemove",
   "parent":{

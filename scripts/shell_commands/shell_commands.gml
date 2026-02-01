@@ -80,6 +80,7 @@ function sh_togglecollisions (args) {
 			case obj_destroyable_secret:
 			case obj_destroyable_big_secret:
 			case obj_metalblock_secret:
+			case obj_tiledestroyextension:
 			case obj_platform:
 			case obj_sideplatform:
 			case obj_slope:

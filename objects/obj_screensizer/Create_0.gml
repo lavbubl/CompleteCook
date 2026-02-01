@@ -1,5 +1,6 @@
 ini_open("globalsave.ini")
 global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
+global.turnoffhud = ini_read_real("options", "turnoffhud", false)
 ini_close()
 
 gui_surf = noone

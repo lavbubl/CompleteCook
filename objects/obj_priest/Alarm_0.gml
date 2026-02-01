@@ -1,1 +1,1 @@
-reset_anim(spr_priest_idle_trans)
+sprite_index = spr_priest

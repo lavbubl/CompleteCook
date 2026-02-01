@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.4230839,
+  "duration":0.42308334,
   "exportDir":"",
   "name":"sfx_rankup1",
   "parent":{

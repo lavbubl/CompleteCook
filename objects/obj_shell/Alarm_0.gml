@@ -1,1 +1,1 @@
-sh_togglecollisions(["", true])
+sh_togglecollisions(["", global.showcollisions])

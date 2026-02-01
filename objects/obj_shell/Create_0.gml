@@ -491,3 +491,6 @@ function _remap(value, min_input, max_input, min_output, max_output) {
 	var _t = (value - min_input) / (max_input - min_input);
 	return lerp(min_output, max_output, _t);
 }
+
+if !IS_DEBUG
+	instance_destroy()

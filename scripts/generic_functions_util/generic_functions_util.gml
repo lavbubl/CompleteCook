@@ -164,7 +164,7 @@ function set_globals()
 		boss_name: "dummy"
 	}
 	
-	global.showcollisions = true
+	global.showcollisions = IS_DEBUG
 	global.master_volume = 1
 	global.sfx_volume = 1
 	global.music_volume = 1
@@ -302,9 +302,10 @@ function reset_level()
 	global.combo.wasted = false
 	global.doorshut = false
 	global.secret = false
+	var _ln = global.level_data.level_name //dont reset the name
 	global.level_data = {
 		treasure: false,
-		level_name: "Entrance",
+		level_name: _ln,
 		secret_count: 0,
 		toppins: {
 			shroom: false,

@@ -6,7 +6,6 @@ for (var p = 0; p < array_length(particle_list); p++)
 	with p_id
 	{
 		image_number = sprite_get_number(sprite_index)
-		image_index += image_speed
 		switch (type)
 		{
 			case particles.gib:
@@ -50,7 +49,13 @@ for (var p = 0; p < array_length(particle_list); p++)
 					x += 10 * target.xscale
 				y = target.y
 				image_xscale = target.xscale
-				if target.state != statetofollow || target.sprite_index == spr_player_piledriverland || (target.state == states.normal && global.combo.count < 25)
+				if target.state != statetofollow || (target.state == states.normal && global.combo.count < 25)
+					array_delete(other.particle_list, p, 1)
+				break;
+			case particles.text:
+				y += vsp
+				image_alpha -= 0.01
+				if image_alpha <= 0
 					array_delete(other.particle_list, p, 1)
 				break;
 			default:

@@ -4,5 +4,6 @@ function hud_get_visible(hideforboss = true)
 		   !(global.boss_room && hideforboss) &&
 		   room != rank_room &&
 		   room != rm_timesup &&
-		   room != mainmenu;
+		   room != mainmenu &&
+		   !global.turnoffhud;
 }

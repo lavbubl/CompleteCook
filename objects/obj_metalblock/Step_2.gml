@@ -1,9 +1,9 @@
 with obj_player
 {
 	var kill = false
-	if (state == states.mach3 && place_meeting(x + hsp + xscale, y, other))
+	if (state == states.mach3 || state == states.slip) && place_meeting(x + hsp + xscale, y, other)
 		kill = true
-	else if (state == states.groundpound && freefallsmash >= 10 && place_meeting(x, y + vsp + 1, other))
+	else if (state == states.groundpound || state == states.slip) && freefallsmash >= 10 && place_meeting(x, y + vsp + 1, other)
 	{
 		kill = true
 		grounded = true

@@ -1,0 +1,1 @@
+reset_anim(spr_priest_idle_trans)

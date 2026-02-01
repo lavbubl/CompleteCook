@@ -16,8 +16,9 @@ taunted = false
 escape_frozen = false
 do_particles = true
 bird_ix = 0
-
+add_combo = true
 follow_player = false
+
 pd_frame_offset = [2, 1, 0, -1, -2, -1, 0, 1] //can be truncated to.. some sort of math thing idfk
 
 state_struct = {

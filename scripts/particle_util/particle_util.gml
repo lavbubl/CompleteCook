@@ -9,7 +9,8 @@ enum particles {
 	machcharge,
 	bang,
 	yellowstar,
-	sparks
+	sparks,
+	text
 }
 
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noone)
@@ -87,13 +88,18 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 				sprite_index = spr_supertauntcharge
 				image_speed = 1
 				break;
+			case particles.text: //the default is the beatbox's notes
+				vsp = -1
+				sprite_index = spr_notes
+				image_speed = 0
+				image_index = irandom(sprite_get_number(spr_notes))
+				break;
 		}
 	
 		if _sprite != noone
 			sprite_index = _sprite
 	
 		image_number = sprite_get_number(p.sprite_index)
-		image_index = -image_speed
 	}
 	
 	with (obj_particlecontroller)

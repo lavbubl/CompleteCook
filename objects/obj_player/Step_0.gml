@@ -3,7 +3,7 @@
 
 if !pausestopframe
 {
-	if (!obj_shell.isOpen)
+	if !IS_DEBUG || !obj_shell.isOpen
 	{
 		input.left.update(global.keybinds.left);
 		input.right.update(global.keybinds.right);
@@ -46,6 +46,7 @@ else if vsp < 0
 	coyote_time = 0
 
 instakill = false
+intransfo = false
 
 prevstate = state
 
@@ -146,6 +147,9 @@ if hitstun < 0
 		case states.ball:
 			player_ball()
 			break;
+		case states.slip:
+			player_slip()
+			break;
 	}
 }
 else if hitstun >= 0
@@ -196,12 +200,17 @@ if (y > room_height + 300 || y < -800) && state != states.actor && state != stat
 	sprite_index = spr_player_idle
 }
 
-if state == states.fireass //||
-// state == states.??? just leaving this here for future
+if intransfo || state == states.fireass
 	instance_destroy(instance_place(x + hsp, y + vsp, obj_ratblock))
 
 if state == states.ball
 	instance_destroy(instance_place(x + hsp, y + vsp, obj_rattumbleblock))
+
+if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the transfo youre changed to.
+{
+	scr_sound_3d(intransfo ? sfx_transfo : sfx_outtransfo, x, y)
+	prev_transfo = intransfo
+}
 
 var prevhsp = hsp
 var prevvsp = vsp

@@ -17,7 +17,7 @@ function afterimage_create(a_type)
 		switch (a_type)
 		{
 			case after_images.mach:
-				image_blend = choose(obj_afterimagecontroller.mach_color1, obj_afterimagecontroller.mach_color2)
+				image_blend = choose(#60d0ff, #f80000)
 				lifetime = 10
 				break;
 			case after_images.blur:

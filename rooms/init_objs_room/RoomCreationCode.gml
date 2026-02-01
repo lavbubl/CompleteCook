@@ -30,6 +30,7 @@ enum states
 	fireass,
 	shotgunshoot,
 	ball,
+	slip,
 	
 	//enemy states
 	hit,

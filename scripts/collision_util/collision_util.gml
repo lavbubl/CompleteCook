@@ -69,7 +69,7 @@ function collide()
 			}
 			else if !scr_solid(x, y + h)
 			{
-				while scr_solid(x, y - 1)
+				while scr_solid(x, y)
 					y++;
 			}
 			if scr_solid(x, y + h + 1) && scr_solid(x - sign(hsp_final), y + 1)

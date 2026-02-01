@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_rarescream2",
+  "%Name":"v_rarescream1",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
@@ -10,17 +10,17 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.5186666,
+  "duration":1.7026666,
   "exportDir":"",
-  "name":"sfx_rarescream2",
+  "name":"v_rarescream1",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Sounds/SFX.yy",
+    "name":"Voice",
+    "path":"folders/Sounds/Voice.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"sfx_rarescream2.wav",
+  "soundFile":"v_rarescream1.wav",
   "volume":1.0,
 }

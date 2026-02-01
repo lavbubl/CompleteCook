@@ -10,7 +10,8 @@ for (var i = 0; i < array_length(l); i++)
 {
 	var bg_id = l[i]
 	
-	switch (layer_get_name(bg_id))
+	var _lay_name = layer_get_name(bg_id)
+	switch (_lay_name)
 	{
 		case "Backgrounds_1":
 			layer_x(bg_id, offsets[i].x + (camera_pos.x * 0.25))
@@ -42,10 +43,35 @@ for (var i = 0; i < array_length(l); i++)
             layer_x(bg_id, camera_pos.x * 0.11)
             layer_y(bg_id, camera_pos.y)
             break;
-        case "Backgrounds_sky1":
-            layer_x(bg_id, camera_pos.x)
-            layer_y(bg_id, camera_pos.y)
+        case "Backgrounds_sky":
+        case "Backgrounds_still":
+            layer_x(bg_id, camera_pos.x + (bg_scroll.x * layer_get_hspeed(bg_id)))
+            layer_y(bg_id, camera_pos.y + (bg_scroll.y * layer_get_vspeed(bg_id)))
             break;
+        case "Backgrounds_stillfit":
+			var _spr = layer_background_get_sprite(layer_background_get_id(bg_id))
+			var _dist_x = camera_pos.x / (room_width - screen_w)
+			var _dist_y = camera_pos.y / (room_height - screen_h)
+			layer_x(bg_id, camera_pos.x - (_dist_x * max(sprite_get_width(_spr) - screen_w, 0)))
+			layer_y(bg_id, camera_pos.y - (_dist_y * max(sprite_get_height(_spr) - screen_h, 0)))
+            break;
+		case "Backgrounds_stillH":
+			var _spr = layer_background_get_sprite(layer_background_get_id(bg_id))
+			var _dist = camera_pos.y / (room_height - screen_h)
+			layer_x(bg_id, camera_pos.x)
+			layer_y(bg_id, camera_pos.y - (_dist * max(sprite_get_height(_spr) - screen_h, 0)))
+			break;
+		case "Backgrounds_stillH1":
+		case "Backgrounds_stillH2":
+		case "Backgrounds_stillH3":
+		case "Backgrounds_stillH4":
+			var _spr = layer_background_get_sprite(layer_background_get_id(bg_id))
+			var _dist = camera_pos.y / (room_height - screen_h)
+			var _factor = stillHfactors[$ _lay_name]
+			layer_x(bg_id, camera_pos.x * _factor)
+			layer_y(bg_id, camera_pos.y - (_dist * max(sprite_get_height(_spr) - screen_h, 0) * (1 - _factor)))
+			break;
+		case "Backgrounds_scroll":
 		case "Backgrounds_scroll1":
 			layer_x(bg_id, (camera_pos.x * 0.3) + (bg_scroll.x * layer_get_hspeed(bg_id)))
 			layer_y(bg_id, (camera_pos.y * 0.3) + (bg_scroll.y * layer_get_vspeed(bg_id)))

@@ -95,7 +95,7 @@ function do_scared()
 		scared_timer = 100
 		sprite_index = sprs.scared
 		if irandom(100) <= 5
-			scr_sound_3d_pitched(choose(sfx_rarescream1, sfx_rarescream2), x, y)
+			scr_sound_3d_pitched(choose(v_rarescream1, v_rarescream2), x, y)
 	}
 }
 

@@ -31,7 +31,7 @@ function player_tumble() //ball is in its own state, player_ball()
 	
 	if (sprite_index == spr_player_machroll && !grounded)
 		sprite_index = spr_player_mach2jump
-		
+	
 	if (state != states.groundpound && scr_hitwall(x + xscale, y))
 	{
 		hsp = 0
@@ -52,7 +52,7 @@ function player_tumble() //ball is in its own state, player_ball()
 		}
 	}
 		
-	if (crouchslipbuffer > 0)
+	if crouchslipbuffer > 0
 		crouchslipbuffer--
 		
 	if (!input.down.check && grounded && vsp >= 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
@@ -78,18 +78,13 @@ function player_tumble() //ball is in its own state, player_ball()
 		}
 	}
 	
-	if (sprite_index == spr_player_dive && vsp < 10)
+	if sprite_index == spr_player_dive && vsp < 10
 		vsp = 10
 		
-	if (sprite_index == spr_player_machroll)
-		image_speed = movespeed / 20
+	image_speed = movespeed / 20
 		
-	if (sprite_index == spr_player_backslide)
-	{
-		image_speed = movespeed / 20
-		if (anim_ended())
-			image_index = 2
-	}
+	if sprite_index == spr_player_backslide && anim_ended()
+		image_index = 2
 	
 	aftimg_timers.blur.do_it = true
 }

@@ -56,4 +56,6 @@ function player_ball()
 		image_speed = 0.35
 		state = states.bump
 	}
+	
+	intransfo = true
 }

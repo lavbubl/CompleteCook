@@ -52,6 +52,8 @@ crouchslipbuffer = 0
 grabclimbbuffer = 0
 ladderbuffer = 0
 has_shotgun = false
+intransfo = false
+prev_transfo = false
 
 prev = {
 	state: self.state,
@@ -100,6 +102,7 @@ flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
+
 depth = -100
 
 pal_select = 1

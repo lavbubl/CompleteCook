@@ -8,7 +8,7 @@ if (obj_player.state == states.taunt && state != 1)
     state = 1
     create_effect(x, y, spr_tinytaunt)
     sprite_index = sprs.taunt
-    image_index = random(sprite_get_number(sprs.taunt) - 1)
+    image_index = random(sprite_get_number(sprs.taunt))
 }
 
 switch state

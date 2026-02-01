@@ -29,6 +29,7 @@ global.sfx_volume = ini_read_real("options", "sfx_volume", 1)
 global.music_volume = ini_read_real("options", "music_volume", 1) //these being global are kinda unneccesary... //ok so WHY did you make them global then???
 global.chosen_res = ini_read_real("options", "res_number", 1)
 global.vsync = ini_read_real("options", "vsync", 1)
+global.turnoffhud = ini_read_real("options", "turnoffhud", false)
 ini_close()
 //use constructors jesus christ
 options = [
@@ -70,6 +71,10 @@ options = [
 	{o_name: "UNFOCUSED MUTE: ", val: global.unfocus_mute, o_type: optiontypes.onoff, func: function(_val) {
 		global.unfocus_mute = _val
 		quick_ini_write_real("globalsave.ini", "options", "unfocus_mute", _val)
+	}},
+	{o_name: "HIDE HUD: ", val: global.turnoffhud, o_type: optiontypes.onoff, func: function(_val) {
+		global.turnoffhud = _val
+		quick_ini_write_real("globalsave.ini", "options", "turnoffhud", _val)
 	}},
 	{o_name: "CHANGE KEYBINDS", val: "", o_type: optiontypes.input, func: function(_val) {
 		instance_create(0, 0, obj_keyconfig)

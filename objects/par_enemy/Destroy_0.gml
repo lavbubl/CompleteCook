@@ -2,13 +2,14 @@ if do_particles
 {
 	with instance_create(x, y, obj_enemycorpse)
 		sprite_index = other.sprs.dead
-
+	
 	global.combo.timer = 60
-	global.combo.count++
-	
-	obj_player.supertauntcount++
-	
-	obj_levelcontroller.killed_enemy = true
+	if add_combo
+	{
+		global.combo.count++
+		obj_player.supertauntcount++
+		obj_levelcontroller.killed_enemy = true
+	}
 	
 	particle_create(x, y, particles.bang)
 	particle_create(x, y, particles.genericpoof)

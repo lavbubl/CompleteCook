@@ -144,3 +144,22 @@ function meta_set_game_speed() {
 		deferred: false
 	}
 }
+
+function sh_test_h_rank (args) {
+	global.score += 100000
+	global.level_data.treasure = true
+	global.level_data.secret_count += 3
+	global.combo.wasted = false
+	global.combo.count = max(global.combo.count, 100)
+	global.combo.timer = 60
+	global.level_data.lap2 = true
+	sh_panic(["", "true", 5000])
+}
+
+function meta_test_h_rank() {
+	return {
+		description: "Sets automatic requirements for H Rank",
+		hidden: false,
+		deferred: false
+	}
+}

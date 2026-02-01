@@ -208,7 +208,7 @@ function decrease_score(val)
 
 function do_hurt(obj = noone)
 {
-	if state == states.defeat || state == states.actor
+	if state == states.defeat || state == states.actor || state == states.slip
 		return;
 		
 	sleep(100)

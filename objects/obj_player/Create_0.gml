@@ -128,6 +128,7 @@ supertauntshow = false
 supertauntbuffer = 0
 myemitter = noone
 pausestopframe = false
+winding = 0
 
 prev_g_room = 0
 prev_g_door = "a"

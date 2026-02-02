@@ -41,3 +41,5 @@ with uparrow
 		draw_sprite(sprite_index, image_index, other.x, other.y + yoffset)
 	image_index += image_speed
 }
+
+draw_text(x, y - 20, winding)

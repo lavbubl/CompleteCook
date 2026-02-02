@@ -165,6 +165,13 @@ if (state != states.normal)
 	idletimer = 180
 }
 
+var _windincrease = array_contains([states.mach2, states.mach3, states.climbwall], state)
+
+if state == states.normal
+	_windincrease = -1
+
+winding = clamp(winding + _windincrease, 0, 2000)
+
 if coyote_time > 0
 	coyote_time--
 	

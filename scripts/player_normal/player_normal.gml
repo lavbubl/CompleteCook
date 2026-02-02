@@ -23,6 +23,9 @@ function player_normal()
 		default_move = spr_player_madmove
 	}
 	
+	if winding >= 1800
+		default_idle = spr_player_winding
+	
 	if global.panic.active
 	{
 		default_idle = spr_player_panic

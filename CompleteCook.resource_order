@@ -826,6 +826,7 @@
     {"name":"spr_player_walljumpend","order":11,"path":"sprites/spr_player_walljumpend/spr_player_walljumpend.yy",},
     {"name":"spr_player_walljumpstart","order":10,"path":"sprites/spr_player_walljumpstart/spr_player_walljumpstart.yy",},
     {"name":"spr_player_wallsplat","order":28,"path":"sprites/spr_player_wallsplat/spr_player_wallsplat.yy",},
+    {"name":"spr_player_winding","order":143,"path":"sprites/spr_player_winding/spr_player_winding.yy",},
     {"name":"spr_presentbottle_idle","order":6,"path":"sprites/spr_presentbottle_idle/spr_presentbottle_idle.yy",},
     {"name":"spr_presentbottle_spring","order":8,"path":"sprites/spr_presentbottle_spring/spr_presentbottle_spring.yy",},
     {"name":"spr_presentbox_idle","order":5,"path":"sprites/spr_presentbox_idle/spr_presentbox_idle.yy",},

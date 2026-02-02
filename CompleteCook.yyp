@@ -916,6 +916,7 @@
     {"id":{"name":"spr_player_walljumpend","path":"sprites/spr_player_walljumpend/spr_player_walljumpend.yy",},},
     {"id":{"name":"spr_player_walljumpstart","path":"sprites/spr_player_walljumpstart/spr_player_walljumpstart.yy",},},
     {"id":{"name":"spr_player_wallsplat","path":"sprites/spr_player_wallsplat/spr_player_wallsplat.yy",},},
+    {"id":{"name":"spr_player_winding","path":"sprites/spr_player_winding/spr_player_winding.yy",},},
     {"id":{"name":"spr_presentbottle_idle","path":"sprites/spr_presentbottle_idle/spr_presentbottle_idle.yy",},},
     {"id":{"name":"spr_presentbottle_spring","path":"sprites/spr_presentbottle_spring/spr_presentbottle_spring.yy",},},
     {"id":{"name":"spr_presentbox_idle","path":"sprites/spr_presentbox_idle/spr_presentbox_idle.yy",},},

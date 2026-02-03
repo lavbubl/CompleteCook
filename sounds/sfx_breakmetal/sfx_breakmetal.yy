@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":4.968753,
+  "duration":0.0,
   "exportDir":"",
   "name":"sfx_breakmetal",
   "parent":{

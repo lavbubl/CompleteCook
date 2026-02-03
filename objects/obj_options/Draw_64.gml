@@ -1,45 +1,83 @@
 draw_reset_color()
-var FUCKER_VARIABLEFUCKING_DIE = current_time * 0.04
-draw_sprite_tiled(spr_optionbg, 0, FUCKER_VARIABLEFUCKING_DIE, FUCKER_VARIABLEFUCKING_DIE)
+draw_sprite_tiled(spr_optionbg, bg_ix, bg_inc, bg_inc)
 
-draw_set_align(fa_center, fa_center)
+if bg_alpha > 0
+{
+	draw_sprite_tiled_ext(spr_optionbg, prev_bg_ix, bg_inc, bg_inc, 1, 1, c_white, bg_alpha)
+	bg_alpha = approach(bg_alpha, 0, bg_spd)
+}
+
+bg_inc--
+
+if bg_inc <= -400
+	bg_inc = 0 - (-400 + bg_inc)
+
+if instance_exists(obj_keyconfig)
+	exit;
+
+var _centered = list_ix == 0 || list_ix == 64
+
+draw_set_align(_centered ? fa_center : fa_left, fa_top)
 draw_set_font(global.generic_font)
 
-var s = string_height("M")
+cur_list = list_arr[list_ix]
 
-var sw = screen_w / 2
-var sh = (screen_h / 2) - ((s * array_length(options)) / 2)
+var s = string_height("M") + 16
+
+var sw = 150
+if _centered
+	sw = screen_w / 2
+var sh = (screen_h / 2) - ((s * array_length(cur_list)) / 2)
 
 var yy = sh
 
-for (var i = 0; i < array_length(options); i++) 
+for (var i = 0; i < array_length(cur_list); i++) 
 {
-	var color = c_gray
-	if (optionselected == i)
-		color = c_white
+	draw_set_color(optionselected == i ? c_white : c_gray)
 	
-	draw_set_color(color)
+	var option = cur_list[i]
+
+	if !_centered
+	{
+		draw_set_align(_centered ? fa_center : fa_left, fa_top)
+		draw_text(sw, yy, option.o_name)
+		draw_set_halign(fa_right)
+	}
 	
-	var option = options[i]
+	var _val_str = ""
 	
-	option.optionstr = $"{option.o_name}{option.val}"
+	switch option.o_type
+	{
+		case types.onoff:
+			_val_str = option.val == true ? "ON" : "OFF"
+			break;
+		case types.slider:
+			var _w = 200
+			var _x2 = screen_w - 150 - _w
+			var _x3 = lerp(_x2, _x2 + 200, option.val / 100)
+			draw_sprite(spr_slider, 0, _x2, yy);
+			draw_sprite(list_ix == 1 ? spr_slidericon : spr_slidericon2, moving && optionselected == i, _x3, yy);
+			break;
+		case types.multichoice:
+			_val_str = option.val[1][option.val[0]]
+			break;
+	}
 	
-	if option.o_type == optiontypes.multichoice
-		option.optionstr = $"{option.o_name}{option.choices[option.val]}"
-		
-	if option.o_type == optiontypes.onoff
-		option.optionstr = $"{option.o_name}{option.val == true ? "ON" : "OFF"}"
-		
-	draw_text(sw, yy, option.optionstr)
+	if list_ix == 0
+	{
+		option.iconalpha = approach(option.iconalpha, optionselected == i, 0.2)
+		if option.iconalpha > 0
+			draw_sprite_ext(spr_pause_icons, option.icon_ix, sw + (string_width(option.o_name) / 2) + 50 + irandom_range(-1, 1), yy + irandom_range(-1, 1), 1, 1, 0, c_white, option.iconalpha)
+	}
+	
+	if _centered
+		draw_text(sw, yy, option.o_name + _val_str)
+	else
+		draw_text(screen_w - sw, yy, _val_str)
 	
 	yy += s
 }
 
 draw_set_color(c_white)
 
-option = options[optionselected]
-
-sw -= (string_width(option.optionstr) / 2)
-
-//draw_sprite(spr_cursor, 0, sw, sh + (optionselected * s))
-//this shit looks so ass dont even try again to put this in please why didnt you just do a basic GRAY WHEN DESELECTED vro
+option = cur_list[optionselected]

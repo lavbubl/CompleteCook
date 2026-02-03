@@ -120,7 +120,7 @@ function do_vulnerability()
 		{
 			sleep(50)
 			sprite_index = sprs.stun
-			hsp = obj_player.xscale * 18
+			hsp = obj_player.xscale * 25
 			xscale = -obj_player.xscale
 			warp = 0.4
 			state = states.stun

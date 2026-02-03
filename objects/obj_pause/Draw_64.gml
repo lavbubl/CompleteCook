@@ -33,7 +33,7 @@ if pause_alpha > 0
 	}
 	
 	draw_set_font(global.generic_font)
-	draw_set_align(fa_center, fa_middle)
+	draw_set_align(fa_center, fa_top)
 	
 	var s = 40
 	

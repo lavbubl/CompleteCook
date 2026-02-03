@@ -129,6 +129,19 @@ function set_globals()
 		wasted: false
 	}
 	
+	ini_open("globalsave.ini")
+	global.fullscreen = ini_read_real("options", "fullscreen", false)
+	global.master_volume = ini_read_real("options", "master_volume", 1)
+	global.sfx_volume = ini_read_real("options", "sfx_volume", 1)
+	global.music_volume = ini_read_real("options", "music_volume", 1)
+	global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
+	global.vsync = ini_read_real("options", "vsync", true)
+	global.showhud = ini_read_real("options", "showhud", true)
+	ini_close()
+	
+	audio_group_set_gain(ag_music, global.music_volume)
+	audio_group_set_gain(ag_sfx, global.sfx_volume)
+	
 	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_escapesaveroom = ds_list_create()
@@ -165,9 +178,6 @@ function set_globals()
 	}
 	
 	global.showcollisions = IS_DEBUG
-	global.master_volume = 1
-	global.sfx_volume = 1
-	global.music_volume = 1
 	global.savefile = "1"
 	global.savestring = $"saves/saveData{global.savefile}.ini"
 	global.keybinds_filename = "keybinds.ccsav" //complete cook save :)

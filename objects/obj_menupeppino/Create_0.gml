@@ -5,3 +5,4 @@ cur_anim_num = 1
 p_ix = 0
 p_spr = noone
 menu_dark = true
+painless = false

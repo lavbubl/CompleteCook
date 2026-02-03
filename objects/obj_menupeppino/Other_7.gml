@@ -1,4 +1,4 @@
-if menu_dark
+if menu_dark || alarm[0] != -1
 	exit;
 
 var do_switch = false

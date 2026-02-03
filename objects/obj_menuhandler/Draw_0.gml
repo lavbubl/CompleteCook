@@ -21,7 +21,7 @@ if menu_dark
 {
 	var v = 1
 	if dark_state == 1
-		v = round(wave(0, 1, 0.25, 0))
+		v = round(wave(0, 1, 0.2, 0))
 	else if dark_state == 2
 		v = 0
 	

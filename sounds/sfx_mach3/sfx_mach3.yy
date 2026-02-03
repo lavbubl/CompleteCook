@@ -8,7 +8,7 @@
   "bitDepth":1,
   "channelFormat":1,
   "compression":2,
-  "compressionQuality":4,
+  "compressionQuality":8,
   "conversionMode":0,
   "duration":1.7146713,
   "exportDir":"",

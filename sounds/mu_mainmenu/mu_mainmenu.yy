@@ -8,9 +8,9 @@
   "bitDepth":1,
   "channelFormat":1,
   "compression":2,
-  "compressionQuality":4,
+  "compressionQuality":8,
   "conversionMode":0,
-  "duration":118.40871,
+  "duration":134.47333,
   "exportDir":"",
   "name":"mu_mainmenu",
   "parent":{

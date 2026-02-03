@@ -161,7 +161,7 @@ function do_enemy_generics()
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{
-			hsp = obj_player.xscale * 12
+			hsp = obj_player.xscale * 25
 			vsp = (other.y - 180 - y) / 60 //base game ???
 			xscale = -obj_player.xscale
 			warp = 0.3

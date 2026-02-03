@@ -1,11 +1,3 @@
-ini_open("globalsave.ini")
-global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
-global.fullscreen = ini_read_real("options", "fullscreen", false)
-global.master_volume = ini_read_real("options", "master_volume", false)
-global.sfx_volume = ini_read_real("options", "sfx_volume", 1)
-global.music_volume = ini_read_real("options", "music_volume", 1) //these being global are kinda unneccesary...
-ini_close()
-
 create_pause_option = function(_name = "", _type = optiontypes.both, _icon_index = 0, _func = undefined) constructor
 {
 	o_name = _name

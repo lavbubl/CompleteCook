@@ -3,7 +3,7 @@ input.left.update(global.keybinds.ui_left);
 input.right.update(global.keybinds.ui_right);
 input.accept.update(global.keybinds.ui_accept);
 
-var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_keyconfig)
+var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_keyconfig) && state == 0
 
 if menu_dark
 {
@@ -77,6 +77,25 @@ for (var i = 0; i < array_length(tvs); i++)
 				audio_stop_sound(mu_mainmenu)
 				global.savefile = filename
 				state = 2
+				
+				with obj_menupeppino
+				{
+					switch cur_selected
+					{
+						case 1:
+							sprite_index = spr_titlepep_left
+							break;
+						case 2:
+							sprite_index = spr_titlepep_middle
+							break;
+						case 3:
+							sprite_index = spr_titlepep_right
+							break;
+					}
+					cur_anim_num = cur_selected
+					alarm[0] = -1
+					painless = true
+				}
 				
 				with other
 				{

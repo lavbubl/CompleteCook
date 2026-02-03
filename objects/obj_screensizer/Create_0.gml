@@ -1,8 +1,3 @@
-ini_open("globalsave.ini")
-global.unfocus_mute = ini_read_real("options", "unfocus_mute", true)
-global.turnoffhud = ini_read_real("options", "turnoffhud", false)
-ini_close()
-
 gui_surf = noone
 surface_resize(application_surface, screen_w, screen_h)
 
@@ -16,16 +11,21 @@ var f = ini_read_real("options", "fullscreen", false)
 
 lb_pos = ini_read_real("options", "letterbox_index", 0)
 
-var res = [[480, 270], [960, 540], [1920, 1080]]
-var chosen_res = ini_read_real("options", "res_number", 1)
+global.res_strings = ["480X270", "960X540", "1024X576", "1280X720", "1600X900", "1920X1080"]
+global.chosen_res = ini_read_real("options", "chosen_res", 1)
+
 var vsync = ini_read_real("options", "vsync", 1)
 
 ini_close()
 
-window_set_size(real(res[chosen_res][0]), real(res[chosen_res][1]))
+var _split = string_split(global.res_strings[global.chosen_res], "X")
+
+window_set_size(real(_split[0]), real(_split[1]))
 window_center()
+
 window_set_fullscreen(f)
-display_reset(0, vsync);
+
+display_reset(0, vsync)
 
 application_surface_draw_enable(false)
 window_enable_borderless_fullscreen(true)

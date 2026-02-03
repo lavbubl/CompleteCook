@@ -4,3 +4,5 @@ if (p_ix == 12 && p_spr != noone)
 pal_swap_set(pal_peppino, p_ix, false)
 draw_self()
 shader_reset()
+
+draw_set_colour(c_red)

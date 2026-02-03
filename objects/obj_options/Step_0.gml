@@ -18,44 +18,99 @@ ui_input.down.update(global.keybinds.ui_down);
 ui_input.accept.update(global.keybinds.ui_accept);
 ui_input.deny.update(global.keybinds.ui_deny);
 
+var _back_arr = [-1, 0] //array of indexes to get based on list index
+_back_arr[64] = 0
+back_ix = _back_arr[list_ix] //get matching back index
+
 if ui_input.deny.pressed
 {
-	instance_destroy()
-	exit;
+	if back_ix <= -1
+	{
+		instance_destroy()
+		exit;
+	}
+	else
+	{
+		list_ix = back_ix
+		if list_ix == 0
+		{
+			prev_bg_ix = bg_ix
+			bg_ix = 0
+			bg_alpha = 1
+			bg_spd = 0.1
+		}
+	}
 }
+
+cur_list = list_arr[list_ix]
+
+moving = false
 
 var moveh = -ui_input.left.pressed + ui_input.right.pressed
 var movev = -ui_input.up.pressed + ui_input.down.pressed
 
-optionselected = clamp(optionselected + movev, 0, array_length(options) - 1)
+optionselected = clamp(optionselected + movev, 0, array_length(cur_list) - 1)
 
-var cur_option = options[optionselected]
+var cur_option = cur_list[optionselected]
 
-if ((ui_input.left.pressed || ui_input.right.pressed || ui_input.accept.pressed) && cur_option.o_type == optiontypes.onoff)
+switch cur_option.o_type
 {
-	cur_option.val = !cur_option.val
-	cur_option.func(cur_option.val)
+	case types.onoff:
+		if ui_input.left.pressed || ui_input.right.pressed || ui_input.accept.pressed
+		{
+			cur_option.val = !cur_option.val
+			cur_option.func(cur_option.val)
+		}
+		break;
+	case types.slider:
+		var move = -ui_input.left.check + ui_input.right.check
+		cur_option.val = clamp(cur_option.val + move, 0, 100)
+		if move != 0
+		{
+			moving = true
+			cur_option.func(cur_option.val)
+			if list_ix == 1 //on the audio menu
+			{
+				if snd_frogscream == noone
+				{
+					snd_frogscream = scr_sound(v_option_frog, true)
+					audio_sound_loop_start(snd_frogscream, 0.43)
+					audio_sound_loop_end(snd_frogscream, 0.65)
+				}
+				else
+					audio_sound_gain(snd_frogscream, optionselected == 3 ? global.sfx_volume : global.music_volume)
+			}
+		}
+		else if snd_frogscream != noone
+		{
+			audio_stop_sound(v_option_frog)
+			snd_frogscream = noone
+		}
+		break;
+	case types.func:
+		if ui_input.accept.pressed
+			cur_option.func(cur_option.val)
+		break;
+	case types.multichoice:
+		var prev_val = cur_option.val[0]
+		if ui_input.accept.pressed
+			cur_option.val[0] += 1
+		cur_option.val[0] = wrap(array_length(cur_option.val[1]), cur_option.val[0] + moveh)
+		if prev_val != cur_option.val[0]
+			cur_option.func(cur_option.val)
+		break;
+	case types.change:
+		if ui_input.accept.pressed
+		{
+			if list_ix == 0 || list_ix == 64 || cur_option.val == 0
+			{
+				prev_bg_ix = bg_ix
+				bg_ix = list_ix == 0 ? optionselected + 1 : 0
+				bg_alpha = 1
+				bg_spd = 0.05
+			}
+			list_ix = cur_option.val
+			optionselected = 0
+		}
+		break;
 }
-else if (cur_option.o_type == optiontypes.slider)
-{
-	var move = -ui_input.left.check + ui_input.right.check
-	cur_option.val = clamp(cur_option.val + move, 0, 100)
-	if move != 0
-		cur_option.func(cur_option.val)
-}
-else if (cur_option.o_type == optiontypes.input)
-{
-	if ui_input.accept.pressed
-		cur_option.func()
-}	
-else if (cur_option.o_type == optiontypes.multichoice)
-{
-	var prev_val = cur_option.val
-	if ui_input.accept.pressed
-		cur_option.val += 1
-	cur_option.val = wrap(array_length(cur_option.choices), cur_option.val + moveh)
-	if prev_val != cur_option.val
-		cur_option.func(cur_option.val, cur_option.choices[cur_option.val])
-}	
-
-

@@ -133,8 +133,8 @@ screen_assets = [
 	new create_pause_screen_asset(spr_pause_vines, screen_w / 2, -117, screen_w / 2, 0), //vines
 ]
 
-audio_master_gain(global.master_volume)
-audio_group_set_gain(ag_sfx, global.sfx_volume, 0)
-audio_group_set_gain(ag_music, global.music_volume, 0)
+audio_master_gain(global.option_master_volume)
+audio_group_set_gain(ag_sfx, global.option_sfx_volume, 0)
+audio_group_set_gain(ag_music, global.option_music_volume, 0)
 
 angel_timer = 240

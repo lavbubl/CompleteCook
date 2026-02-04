@@ -1,3 +1,5 @@
+visible = hud_get_visible()
+
 xstart = screen_w / 2
 ystart = screen_h - 76
 

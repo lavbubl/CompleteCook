@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_vulnerable",
+  "%Name":"sfx_grabcancel",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
@@ -10,9 +10,9 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.26239583,
+  "duration":1.3133334,
   "exportDir":"",
-  "name":"sfx_vulnerable",
+  "name":"sfx_grabcancel",
   "parent":{
     "name":"SFX",
     "path":"folders/Sounds/SFX.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"sfx_vulnerable.ogg",
-  "volume":0.8,
+  "soundFile":"sfx_grabcancel.ogg",
+  "volume":0.5,
 }

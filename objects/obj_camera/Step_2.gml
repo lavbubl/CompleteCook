@@ -17,7 +17,7 @@ campos.y = clamp(campos.y, 0, room_height - screen_h)
 if global.panic.active && !global.secret
 	mag = 1
 
-if mag > 0
+if mag > 0 && global.option_screenshake
 {
 	campos.x += irandom_range(-mag, mag)
 	campos.y += irandom_range(-mag, mag)

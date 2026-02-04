@@ -13,7 +13,7 @@ if timer <= 1 || ui_deny.pressed || (ui_accept.pressed && !confirm)
 {
 	if change
 	{
-		global.windowmode = prev_mode
+		global.option_windowmode = prev_mode
 		event_user(0)
 	}
 	scr_sound(sfx_ui_back)

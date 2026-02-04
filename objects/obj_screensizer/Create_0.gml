@@ -16,22 +16,22 @@ ini_open("globalsave.ini")
 
 lb_pos = ini_read_real("options", "letterbox_index", 0)
 
-global.windowmode = ini_read_real("options", "windowmode", windowmode.windowed)
-global.res_strings = ["480X270", "960X540", "1024X576", "1280X720", "1600X900", "1920X1080"]
-global.chosen_res = ini_read_real("options", "chosen_res", 1)
-global.texturefilter = ini_read_real("options", "texturefilter", 1)
+global.option_windowmode = ini_read_real("options", "windowmode", windowmode.windowed)
+global.option_res_strings = ["480X270", "960X540", "1024X576", "1280X720", "1600X900", "1920X1080"]
+global.option_chosen_res = ini_read_real("options", "chosen_res", 1)
+global.option_texturefilter = ini_read_real("options", "texturefilter", 1)
 
 display_reset(0, ini_read_real("options", "vsync", 1))
 
 ini_close()
 
-var _split = string_split(global.res_strings[global.chosen_res], "X")
+var _split = string_split(global.option_res_strings[global.option_chosen_res], "X")
 
 window_set_size(real(_split[0]), real(_split[1]))
 
-if global.windowmode == windowmode.fullscreen
-	gameframe_set_fullscreen(global.windowmode == windowmode.fullscreen)
-else if global.windowmode == windowmode.borderless
+if global.option_windowmode == windowmode.fullscreen
+	gameframe_set_fullscreen(global.option_windowmode == windowmode.fullscreen)
+else if global.option_windowmode == windowmode.borderless
 	gameframe_set_fullscreen(2)
 
 window_center()

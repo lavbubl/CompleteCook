@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.79868484,
+  "duration":0.79866666,
   "exportDir":"",
   "name":"sfx_rollgetup",
   "parent":{

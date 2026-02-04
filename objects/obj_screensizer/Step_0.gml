@@ -1,4 +1,4 @@
-audio_master_gain(window_has_focus() || !global.unfocus_mute ? global.master_volume : 0)
+audio_master_gain(window_has_focus() || !global.option_unfocus_mute ? global.option_master_volume : 0)
 
 gameframe_update()
 

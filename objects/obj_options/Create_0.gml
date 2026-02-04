@@ -47,9 +47,9 @@ func_windowmode = function(_mode)
 {
 	with instance_create(0, 0, obj_windowmodeconfirm)
 	{
-		prev_mode = global.windowmode
-		change = _mode != global.windowmode
-		global.windowmode = _mode
+		prev_mode = global.option_windowmode
+		change = _mode != global.option_windowmode
+		global.option_windowmode = _mode
 		if change
 			event_user(0)
 	}
@@ -72,69 +72,91 @@ list_arr = [
 	],
 	[ //1 audio
 		new add_option_back(),
-		new add_option("MASTER", types.slider, global.master_volume * 100,	
+		new add_option("MASTER", types.slider, global.option_master_volume * 100,	
 			function(_val) {
 				_val /= 100
-				global.master_volume = _val
+				global.option_master_volume = _val
 				quick_ini_write_real("globalsave.ini", "options", "master_volume", _val)
 			}),
-		new add_option("MUSIC", types.slider, global.music_volume * 100,	
+		new add_option("MUSIC", types.slider, global.option_music_volume * 100,	
 			function(_val) {
 				_val /= 100
-				global.music_volume = _val
+				global.option_music_volume = _val
 				audio_group_set_gain(ag_music, _val, 0)
 				quick_ini_write_real("globalsave.ini", "options", "music_volume", _val)
 			}),
-		new add_option("SFX", types.slider, global.sfx_volume * 100,
+		new add_option("SFX", types.slider, global.option_sfx_volume * 100,
 			function(_val) {
 				_val /= 100
-				global.sfx_volume = _val
+				global.option_sfx_volume = _val
 				audio_group_set_gain(ag_sfx, _val, 0)
 				quick_ini_write_real("globalsave.ini", "options", "sfx_volume", _val)
 			}),
-		new add_option("UNFOCUSED MUTE", types.onoff, global.unfocus_mute, 
+		new add_option("UNFOCUSED MUTE", types.onoff, global.option_unfocus_mute, 
 			function(_val) {
-				global.unfocus_mute = _val
+				global.option_unfocus_mute = _val
 				quick_ini_write_real("globalsave.ini", "options", "unfocus_mute", _val)
 			})
 	],
 	[ //2 video
 		new add_option_back(),
 		new add_option("WINDOW MODE", types.change, 5),
-		new add_option("RESOLUTION", types.multichoice, [global.chosen_res, global.res_strings],	
+		new add_option("RESOLUTION", types.multichoice, [global.option_chosen_res, global.option_res_strings],	
 			function(_val) {
-				global.chosen_res = _val[0]
-				var _split = string_split(_val[1][global.chosen_res], "X")
+				global.option_chosen_res = _val[0]
+				var _split = string_split(_val[1][global.option_chosen_res], "X")
 				
 				window_set_size(real(_split[0]), real(_split[1]))
 				window_center()
-				quick_ini_write_real("globalsave.ini", "options", "chosen_res", global.chosen_res)
+				quick_ini_write_real("globalsave.ini", "options", "chosen_res", global.option_chosen_res)
 			}),
-		new add_option("VSYNC", types.onoff, global.vsync,
+		new add_option("VSYNC", types.onoff, global.option_vsync,
 			function(_val) {
-				global.vsync = _val
+				global.option_vsync = _val
 				display_reset(0, _val)
 				quick_ini_write_real("globalsave.ini", "options", "vsync", _val)
 			}),
-		new add_option("TEXTURE FILTERING", types.onoff, global.texturefilter,
+		new add_option("TEXTURE FILTERING", types.onoff, global.option_texturefilter,
 			function(_val) {
-				global.texturefilter = _val
+				global.option_texturefilter = _val
 				quick_ini_write_real("globalsave.ini", "options", "texturefilter", _val)
 			}),
-		new add_option("SHOW HUD", types.onoff, global.showhud,
+		new add_option("SHOW HUD", types.onoff, global.option_showhud,
 			function(_val) {
-				global.showhud = _val
+				global.option_showhud = _val
 				quick_ini_write_real("globalsave.ini", "options", "showhud", _val)
 			})
 	],
 	[ //3 game
 		new add_option_back(),
-		new add_option("LANGUAGE",			types.change, 64),
-		new add_option("RUMBLE",			types.change, 64),
-		new add_option("SCREEN SHAKE",		types.change, 64),
-		new add_option("TIMER",				types.change, 64),
-		new add_option("TIMER TYPE",		types.change, 64),
-		new add_option("SPEEDRUN TIMER",	types.change, 64),
+		new add_option("THIS IS A HEAVY WIP,", types.change, 0),
+		new add_option("NEARLY NONE OF THESE DO ANYTHING", types.change, 0),
+		//new add_option("LANGUAGE",			types.change, 64), theres no way in hell a fangame will have this. but ill leave this placeholder for keepssake incase it does
+		new add_option("RUMBLE", types.onoff, global.option_rumble,
+			function(_val) {
+				global.option_rumble = _val
+				quick_ini_write_real("globalsave.ini", "options", "rumble", _val)
+			}),
+		new add_option("SCREEN SHAKE", types.onoff, global.option_screenshake,
+			function(_val) {
+				global.option_screenshake = _val
+				quick_ini_write_real("globalsave.ini", "options", "screenshake", _val)
+			}),
+		new add_option("TIMER",	types.onoff, global.option_timer,
+			function(_val) {
+				global.option_timer = _val
+				quick_ini_write_real("globalsave.ini", "options", "timer", _val)
+			}),
+		new add_option("TIMER TYPE", types.multichoice, [global.option_timertype, ["PER LEVEL", "PER SAVE", "BOTH"]],	
+			function(_val) {
+				global.option_timertype = _val[0]
+				quick_ini_write_real("globalsave.ini", "options", "timertype", global.option_timertype)
+			}),
+		new add_option("SPEEDRUN TIMER", types.onoff, global.option_timerspeedrun,
+			function(_val) {
+				global.option_timerspeedrun = _val
+				quick_ini_write_real("globalsave.ini", "options", "timerspeedrun", _val)
+			})
 	],
 	[ //4 keyboard
 		new add_option_back(),

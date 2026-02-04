@@ -88,7 +88,7 @@ switch cur_option.o_type
 					audio_sound_loop_end(snd_frogscream, 0.62)
 				}
 				else
-					audio_sound_gain(snd_frogscream, optionselected == 3 ? global.sfx_volume : global.music_volume)	
+					audio_sound_gain(snd_frogscream, optionselected == 3 ? global.option_sfx_volume : global.option_music_volume)	
 			}
 		}
 		else if snd_frogscream != noone

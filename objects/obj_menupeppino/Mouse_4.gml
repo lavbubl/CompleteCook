@@ -1,4 +1,4 @@
-if painless || instance_exists(obj_options)
+if painless || instance_exists(obj_options) || menu_dark
 	exit;
 
 vspeed = -2

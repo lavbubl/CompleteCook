@@ -47,7 +47,7 @@ if pause_alpha > 0
 		var selected = optionselected == i
 		var option = options[i]
 		var str = $"{option.o_name}"
-		var yy = sh + ((s + pad) * i)
+		var yy = sh + ((s + pad) * i) - pad / 2
 		option.iconalpha = approach(option.iconalpha, selected ? 1 : 0, 0.2)
 		draw_set_color(selected ? c_white : c_grey)
 		draw_text(sw, yy, str)//placeholder spritre

@@ -35,6 +35,26 @@ add_option = function(_name, _type, _val, _func = noone) constructor
 	func = _func
 }
 
+add_option_back = function(_target_list = 0) constructor //back button for sublists
+{
+	o_name = "BACK"
+	o_type = 4
+	val = _target_list
+	func = noone
+}
+
+func_windowmode = function(_mode)
+{
+	with instance_create(0, 0, obj_windowmodeconfirm)
+	{
+		prev_mode = global.windowmode
+		change = _mode != global.windowmode
+		global.windowmode = _mode
+		if change
+			event_user(0)
+	}
+}
+
 //for change type, you have the val as an array [target index, index to go back to]
 //-1 takes you back to the pause menu
 list_arr = [
@@ -42,7 +62,7 @@ list_arr = [
 		new add_option("AUDIO",		types.change,	1),
 		new add_option("VIDEO",		types.change,	2),
 		new add_option("GAME",		types.change,	3),
-		new add_option("CONTROL",	types.change,	4),
+		new add_option("CONTROLS",	types.change,	4),
 		/*new add_option("RESET ALL CONFIG",	types.func, undefined,	
 			function(_val) {
 				if file_exists("globalsave.ini")
@@ -51,6 +71,7 @@ list_arr = [
 			})*/
 	],
 	[ //1 audio
+		new add_option_back(),
 		new add_option("MASTER", types.slider, global.master_volume * 100,	
 			function(_val) {
 				_val /= 100
@@ -78,22 +99,8 @@ list_arr = [
 			})
 	],
 	[ //2 video
-		new add_option("FULLSCREEN", types.onoff, global.fullscreen, //originally theres 2 more in WINDOW MODE, but for now itll be simple
-			function(_val) {
-				global.fullscreen = _val
-				
-				window_set_fullscreen(_val)
-				
-				if !_val
-				{
-					var _split = string_split(global.res_strings[global.chosen_res], "X")
-				
-					window_set_size(real(_split[0]), real(_split[1]))
-					window_center()
-				}
-				
-				quick_ini_write_real("globalsave.ini", "options", "fullscreen", _val)
-			}),
+		new add_option_back(),
+		new add_option("WINDOW MODE", types.change, 5),
 		new add_option("RESOLUTION", types.multichoice, [global.chosen_res, global.res_strings],	
 			function(_val) {
 				global.chosen_res = _val[0]
@@ -109,7 +116,11 @@ list_arr = [
 				display_reset(0, _val)
 				quick_ini_write_real("globalsave.ini", "options", "vsync", _val)
 			}),
-		new add_option("TEXTURE FILTERING", types.change, 64),
+		new add_option("TEXTURE FILTERING", types.onoff, global.texturefilter,
+			function(_val) {
+				global.texturefilter = _val
+				quick_ini_write_real("globalsave.ini", "options", "texturefilter", _val)
+			}),
 		new add_option("SHOW HUD", types.onoff, global.showhud,
 			function(_val) {
 				global.showhud = _val
@@ -117,6 +128,7 @@ list_arr = [
 			})
 	],
 	[ //3 game
+		new add_option_back(),
 		new add_option("LANGUAGE",			types.change, 64),
 		new add_option("RUMBLE",			types.change, 64),
 		new add_option("SCREEN SHAKE",		types.change, 64),
@@ -125,19 +137,21 @@ list_arr = [
 		new add_option("SPEEDRUN TIMER",	types.change, 64),
 	],
 	[ //4 keyboard
+		new add_option_back(),
 		new add_option("KEYBOARD", types.func, undefined,
 			function(_val) {
 				instance_create(x, y, obj_keyconfig)
 			}),
 		new add_option("CONTROLLER",		types.change, 64),
 		new add_option("RESET CONFIG",		types.change, 64)
+	],
+	[ //5 video mode, val is in order of this list
+		new add_option_back(2),
+		new add_option("WINDOWED",		types.func,	0,	func_windowmode),
+		new add_option("FULLSCREEN",	types.func,	1,	func_windowmode),
+		new add_option("BORDERLESS",	types.func,	2,	func_windowmode)
 	]
 ]
-
-array_foreach(list_arr, function(_element, _index) {
-	if _index != 0
-		array_insert(_element, 0, new add_option("BACK", types.change, 0)) //if things dont seem right, it may be a miscount from this. try adding 1 when checking optionselected
-})
 
 array_foreach(list_arr[0], function(_element, _index) { //giving the main 4 their icons
 	_element.iconalpha = 0
@@ -150,3 +164,6 @@ back_ix = -1
 cur_list = list_arr[list_ix]
 
 snd_frogscream = noone
+
+scr_sound(choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3))
+//i could reduce the amount of new functions made here actually,,,, maybe tdp was right to have seperate functions for each type

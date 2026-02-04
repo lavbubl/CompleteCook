@@ -83,8 +83,6 @@ function gameframe_update() {
 			case 3: case 12: __cursor = cr_size_nwse; break;
 			case 6: case 9: __cursor = cr_size_nesw; break;
 		}
-		if gameframe_alpha_timer <= 0
-			__cursor = cr_none
 		gameframe_set_window_cursor(__cursor);
 	}
 	gameframe_button_update(__buttons_x, __borderWidth, __titleHeight, _mx, _my);

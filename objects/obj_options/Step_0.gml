@@ -1,6 +1,6 @@
-if instance_exists(obj_keyconfig)
+if instance_exists(obj_keyconfig) || instance_exists(obj_windowmodeconfirm)
 {
-	inputbuffer = 3
+	inputbuffer = 2
 	exit;
 }
 
@@ -18,12 +18,13 @@ ui_input.down.update(global.keybinds.ui_down);
 ui_input.accept.update(global.keybinds.ui_accept);
 ui_input.deny.update(global.keybinds.ui_deny);
 
-var _back_arr = [-1, 0] //array of indexes to get based on list index
+var _back_arr = [-1, 0, 0, 0, 0, 2] //array of indexes to get based on list index
 _back_arr[64] = 0
 back_ix = _back_arr[list_ix] //get matching back index
 
 if ui_input.deny.pressed
 {
+	scr_sound(sfx_ui_back)
 	if back_ix <= -1
 	{
 		instance_destroy()
@@ -31,6 +32,7 @@ if ui_input.deny.pressed
 	}
 	else
 	{
+		optionselected = 0
 		list_ix = back_ix
 		if list_ix == 0
 		{
@@ -42,6 +44,8 @@ if ui_input.deny.pressed
 	}
 }
 
+var snd_select = choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3)
+
 cur_list = list_arr[list_ix]
 
 moving = false
@@ -49,7 +53,12 @@ moving = false
 var moveh = -ui_input.left.pressed + ui_input.right.pressed
 var movev = -ui_input.up.pressed + ui_input.down.pressed
 
+var _prevos = optionselected
+
 optionselected = clamp(optionselected + movev, 0, array_length(cur_list) - 1)
+
+if _prevos != optionselected
+	scr_sound(sfx_step)
 
 var cur_option = cur_list[optionselected]
 
@@ -60,6 +69,7 @@ switch cur_option.o_type
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
+			scr_sound(snd_select)
 		}
 		break;
 	case types.slider:
@@ -74,11 +84,11 @@ switch cur_option.o_type
 				if snd_frogscream == noone
 				{
 					snd_frogscream = scr_sound(v_option_frog, true)
-					audio_sound_loop_start(snd_frogscream, 0.43)
-					audio_sound_loop_end(snd_frogscream, 0.65)
+					audio_sound_loop_start(snd_frogscream, 0.40)
+					audio_sound_loop_end(snd_frogscream, 0.62)
 				}
 				else
-					audio_sound_gain(snd_frogscream, optionselected == 3 ? global.sfx_volume : global.music_volume)
+					audio_sound_gain(snd_frogscream, optionselected == 3 ? global.sfx_volume : global.music_volume)	
 			}
 		}
 		else if snd_frogscream != noone
@@ -89,12 +99,21 @@ switch cur_option.o_type
 		break;
 	case types.func:
 		if ui_input.accept.pressed
+		{
 			cur_option.func(cur_option.val)
+			scr_sound(snd_select)
+		}
 		break;
 	case types.multichoice:
 		var prev_val = cur_option.val[0]
 		if ui_input.accept.pressed
+		{
 			cur_option.val[0] += 1
+			scr_sound(snd_select)
+		}
+		if moveh != 0
+			scr_sound(sfx_step)
+		
 		cur_option.val[0] = wrap(array_length(cur_option.val[1]), cur_option.val[0] + moveh)
 		if prev_val != cur_option.val[0]
 			cur_option.func(cur_option.val)
@@ -105,12 +124,28 @@ switch cur_option.o_type
 			if list_ix == 0 || list_ix == 64 || cur_option.val == 0
 			{
 				prev_bg_ix = bg_ix
-				bg_ix = list_ix == 0 ? optionselected + 1 : 0
+				bg_ix = 0
 				bg_alpha = 1
 				bg_spd = 0.05
+				
 			}
+			if list_ix == 0
+			{
+				bg_ix = optionselected + 1
+				array_foreach(cur_list, function(_element, _index) { //resetting their alpha
+					_element.iconalpha = 0
+				})
+			}
+			
 			list_ix = cur_option.val
 			optionselected = 0
+			scr_sound(snd_select)
 		}
 		break;
+}
+
+if movev != 0 && snd_frogscream != noone
+{
+	audio_stop_sound(v_option_frog)
+	snd_frogscream = noone
 }

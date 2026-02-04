@@ -12,7 +12,7 @@ bg_inc--
 if bg_inc <= -400
 	bg_inc = 0 - (-400 + bg_inc)
 
-if instance_exists(obj_keyconfig)
+if instance_exists(obj_keyconfig) || instance_exists(obj_windowmodeconfirm)
 	exit;
 
 var _centered = list_ix == 0 || list_ix == 64
@@ -22,12 +22,12 @@ draw_set_font(global.generic_font)
 
 cur_list = list_arr[list_ix]
 
-var s = string_height("M") + 16
+var s = string_height("M") + (list_ix == 0 ? 16 : 10)
 
 var sw = 150
 if _centered
 	sw = screen_w / 2
-var sh = (screen_h / 2) - ((s * array_length(cur_list)) / 2)
+var sh = (screen_h / 2) - ((s * array_length(cur_list)) / 2) + 16
 
 var yy = sh
 

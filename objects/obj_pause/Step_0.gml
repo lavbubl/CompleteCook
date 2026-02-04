@@ -16,9 +16,6 @@ else if inputbuffer > 0
 	inputbuffer--
 	exit;
 }
-
-if instance_exists(obj_keyconfig)
-	exit;
 	
 ui_input.up.update(global.keybinds.ui_up);
 ui_input.down.update(global.keybinds.ui_down);
@@ -27,7 +24,14 @@ ui_input.deny.update(global.keybinds.ui_deny);
 
 var movev = -ui_input.up.pressed + ui_input.down.pressed
 
-optionselected = clamp(optionselected + movev, 0, array_length(options) - 1)
+if movev != 0
+{
+	var _p = 0.26
+	scr_sound(sfx_step)
+	scr_sound_pitched(sfx_ui_pausemove, 1 - _p, 1 + _p)
+}
+
+optionselected = wrap(array_length(options), optionselected + movev)
 
 var cur_option = options[optionselected]
 

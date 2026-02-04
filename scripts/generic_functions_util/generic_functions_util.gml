@@ -130,7 +130,6 @@ function set_globals()
 	}
 	
 	ini_open("globalsave.ini")
-	global.fullscreen = ini_read_real("options", "fullscreen", false)
 	global.master_volume = ini_read_real("options", "master_volume", 1)
 	global.sfx_volume = ini_read_real("options", "sfx_volume", 1)
 	global.music_volume = ini_read_real("options", "music_volume", 1)
@@ -250,11 +249,10 @@ function set_rank_milestones(_s, _a, _b, _c)
 	}
 }
 
-function draw_reset_color(alpha = true)
+function draw_reset_color(_alpha = 1)
 {
 	draw_set_color(c_white)
-	if alpha
-		draw_set_alpha(1)
+	draw_set_alpha(_alpha)
 }
 
 function tile_layer_delete_at(_x, _y, kill_bg = false)

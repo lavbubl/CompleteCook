@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_breakmetal",
+  "%Name":"sfx_ui_back",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
   },
   "bitDepth":1,
   "channelFormat":1,
-  "compression":2,
+  "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":4.968771,
+  "duration":1.0573334,
   "exportDir":"",
-  "name":"sfx_breakmetal",
+  "name":"sfx_ui_back",
   "parent":{
     "name":"SFX",
     "path":"folders/Sounds/SFX.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"sfx_breakmetal.ogg",
-  "volume":0.6,
+  "soundFile":"sfx_ui_back.wav",
+  "volume":1.0,
 }

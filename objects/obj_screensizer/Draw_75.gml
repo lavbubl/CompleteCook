@@ -12,11 +12,20 @@ draw_rectangle(-1, -1, screen_w, screen_h, false)
 var screen_x = 0
 var screen_y = 0
 
-draw_surface(application_surface, screen_x, screen_y) //here for no reason now, but maybe someone wants to use shaders
+if global.texturefilter && 
+	!(
+		(window_get_width() == 960 && window_get_height() == 540) || //default res
+		(window_get_width() == 1920 && window_get_height() == 1080) //res x2
+	)
+	gpu_set_texfilter(global.texturefilter)
 
-shader_set(shd_gui_brighten)
+draw_surface(application_surface, screen_x, screen_y)
+
+shader_set(shd_gui_brighten) //solves an alpha issue
 draw_surface(gui_surf, screen_x, screen_y)
 shader_reset()
+
+gpu_set_texfilter(false)
 
 gpu_set_blendmode_normal_fixed()
 

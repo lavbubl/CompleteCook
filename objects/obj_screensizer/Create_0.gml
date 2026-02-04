@@ -21,7 +21,7 @@ global.res_strings = ["480X270", "960X540", "1024X576", "1280X720", "1600X900", 
 global.chosen_res = ini_read_real("options", "chosen_res", 1)
 global.texturefilter = ini_read_real("options", "texturefilter", 1)
 
-display_reset(2, ini_read_real("options", "vsync", 1))
+display_reset(0, ini_read_real("options", "vsync", 1))
 
 ini_close()
 

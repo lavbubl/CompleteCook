@@ -146,7 +146,7 @@ function meta_set_game_speed() {
 	}
 }
 
-function sh_test_h_rank (args) {
+function sh_test_p_rank (args) {
 	global.score += 100000
 	global.level_data.treasure = true
 	global.level_data.secret_count += 3
@@ -157,9 +157,9 @@ function sh_test_h_rank (args) {
 	sh_panic(["", "true", 5000])
 }
 
-function meta_test_h_rank() {
+function meta_test_p_rank() {
 	return {
-		description: "Sets automatic requirements for H Rank",
+		description: "Sets automatic requirements for P Rank",
 		hidden: false,
 		deferred: false
 	}

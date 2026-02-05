@@ -1,6 +1,3 @@
-if !visible
-	exit;
-
 depth = -200
 
 var num = global.score

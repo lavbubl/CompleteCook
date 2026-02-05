@@ -117,6 +117,10 @@ function cc_draw_key(_x, _y, key)
 	if key == vk_nokey
 		return;
 	
+	var _prevfont = draw_get_font()
+	var _prevalign = {h: draw_get_halign(), v: draw_get_valign()}
+	var _prevcolor = draw_get_color()
+	
 	var ix = -1
 	
 	if is_string(key) //check if its just "#"
@@ -142,17 +146,43 @@ function cc_draw_key(_x, _y, key)
 	{
 		if key_str == specialkeys[i]
 		{
-		   ix = i 
+		   ix = i
 		   break;
 		}
+	}
+	
+	switch _prevalign.h
+	{
+		case fa_center:
+		case fa_middle:
+			_x -= sprite_get_width(spr_fontkey) / 2
+			break;
+		case fa_right:
+			_x -= sprite_get_width(spr_fontkey)
+			break;
+	}
+	
+	switch _prevalign.v
+	{
+		case fa_center:
+		case fa_middle:
+			_y -= sprite_get_height(spr_fontkey) / 2
+			break;
+		case fa_bottom:
+			_y -= sprite_get_height(spr_fontkey)
+			break;
 	}
 	
 	if ix == -1
 	{
 		draw_set_font(global.tutorialfont)
-		draw_set_align(fa_center, fa_middle, c_black)
+		draw_set_align(fa_center, fa_middle)
+		draw_set_color(c_black)
 		draw_sprite(spr_fontkey, 0, _x, _y)
-		draw_text(_x, _y + 3, key_str)
+		draw_text(_x + 16, _y + 19, key_str)
+		draw_set_font(_prevfont)
+		draw_set_align(_prevalign.h, _prevalign.v)
+		draw_set_color(_prevcolor)
 	}
 	else if key_str == " "
 		draw_sprite(spr_fontkey, 0, _x, _y)

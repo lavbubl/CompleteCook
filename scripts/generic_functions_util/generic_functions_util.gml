@@ -15,12 +15,10 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
-function draw_set_align(halign, valign, color = undefined) 
+function draw_set_align(halign, valign) 
 {
 	draw_set_halign(halign) 
 	draw_set_valign(valign)
-	if color != undefined
-		draw_set_color(color)
 }
 
 function quick_shader_set_uniform_f(shader, uniform_name, val)

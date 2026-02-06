@@ -302,6 +302,7 @@ function reset_level()
 	ds_list_clear(global.ds_dead_enemies)
 	ds_list_clear(global.ds_escapesaveroom)
 	ds_list_clear(global.ds_saveroom)
+	quick_ini_write_real(global.savestring, "General", "file_timer", obj_timer.file_timer)
 	obj_followerhandler.followers = []
 	obj_levelcontroller.killed_enemy = false
 	with obj_player

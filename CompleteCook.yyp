@@ -251,6 +251,7 @@
     {"id":{"name":"obj_teleporter","path":"objects/obj_teleporter/obj_teleporter.yy",},},
     {"id":{"name":"obj_teleporterexit","path":"objects/obj_teleporterexit/obj_teleporterexit.yy",},},
     {"id":{"name":"obj_tiledestroyextension","path":"objects/obj_tiledestroyextension/obj_tiledestroyextension.yy",},},
+    {"id":{"name":"obj_timer","path":"objects/obj_timer/obj_timer.yy",},},
     {"id":{"name":"obj_timesup","path":"objects/obj_timesup/obj_timesup.yy",},},
     {"id":{"name":"obj_titlecard","path":"objects/obj_titlecard/obj_titlecard.yy",},},
     {"id":{"name":"obj_toppincage","path":"objects/obj_toppincage/obj_toppincage.yy",},},

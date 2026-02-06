@@ -1,5 +1,6 @@
 room_goto(tower_1)
 reset_level()
+
 with obj_player
 {
 	x = return_location.x
@@ -10,5 +11,6 @@ with obj_player
 	reset_anim(spr_player_walkfront)
 }
 
+global.doorshut = true
 global.in_level = false
 instance_destroy()

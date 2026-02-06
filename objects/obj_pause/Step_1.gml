@@ -37,6 +37,8 @@ if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accep
 		instance_activate_object(obj_pause_angel)
 		instance_activate_object(obj_screensizer)
 		instance_activate_object(obj_shakytext)
+		if global.option_timerspeedrun
+			instance_activate_object(obj_timer)
 		audio_pause_all()
 		var mu = scr_sound(mu_pause, true)
 		audio_sound_gain(mu, 0, 0)

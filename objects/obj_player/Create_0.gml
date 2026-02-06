@@ -24,12 +24,8 @@ wasclimbingwall = false
 coyote_time = 0
 movespeed = 0
 state = states.normal
-//exitdoor properties
-state = states.actor
-sprite_index = spr_player_walkfront
 image_speed = 0.35
-//the end
-prevstate = states.normal
+prevstate = state
 xscale = 1
 jumpstop = false
 mach4mode = false

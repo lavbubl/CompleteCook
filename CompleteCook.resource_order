@@ -203,6 +203,7 @@
     {"name":"obj_teleporter","order":9,"path":"objects/obj_teleporter/obj_teleporter.yy",},
     {"name":"obj_teleporterexit","order":10,"path":"objects/obj_teleporterexit/obj_teleporterexit.yy",},
     {"name":"obj_tiledestroyextension","order":17,"path":"objects/obj_tiledestroyextension/obj_tiledestroyextension.yy",},
+    {"name":"obj_timer","order":18,"path":"objects/obj_timer/obj_timer.yy",},
     {"name":"obj_timesup","order":6,"path":"objects/obj_timesup/obj_timesup.yy",},
     {"name":"obj_titlecard","order":6,"path":"objects/obj_titlecard/obj_titlecard.yy",},
     {"name":"obj_toppincage","order":8,"path":"objects/obj_toppincage/obj_toppincage.yy",},

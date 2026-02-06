@@ -89,7 +89,7 @@
   ],
   "name":"spr_smaller_font",
   "nineSlice":null,
-  "origin":0,
+  "origin":9,
   "parent":{
     "name":"HUD",
     "path":"folders/Sprites/HUD.yy",
@@ -340,7 +340,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":0,
+    "yorigin":8,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

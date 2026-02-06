@@ -157,7 +157,7 @@ ds_list_destroy(en_list)
 
 if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") && bbox_in_camera() && enemy_can_die()
 {
-	if state != states.stun
+	if alarm[0] == -1
 		do_enemygibs()
 	state = states.stun
 	stun_timer = 2

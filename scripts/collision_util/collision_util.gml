@@ -315,23 +315,24 @@ function scr_slope(_x, _y)
 	return false;
 }
 
-function do_slope_momentum(spd_up = 20) //note: touch this code up
+function do_slope_momentum(_accel = 0.1, _max_spd = 20)
 {
 	var go_down = false
 	
-	with (instance_place(x, y + 1, obj_slope))
+	with instance_place(x, y + 1, obj_slope)
 	{
-		if (collide_slope(other, other.x, other.y + 1) && other.xscale != sign(image_xscale))
+		if collide_slope(other, other.x, other.y + 1) && other.xscale != sign(image_xscale)
 			go_down = true
 	}
 	
-	with (instance_place(x, y + 1, obj_slopeplatform))
+	with instance_place(x, y + 1, obj_slopeplatform)
 	{
-		if (collide_slopeplatform(other, other.x, other.y + 1) && other.xscale != sign(image_xscale))
+		if collide_slopeplatform(other, other.x, other.y + 1) && other.xscale != sign(image_xscale)
 			go_down = true
 	}
-	if (go_down)
-		movespeed = approach(movespeed, spd_up, 0.1) 
+	
+	if go_down
+		movespeed = approach(movespeed, _max_spd, _accel)
 }
 
 function behind_collision(_x, _y, obj_type)

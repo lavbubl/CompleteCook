@@ -129,8 +129,7 @@ list_arr = [
 	],
 	[ //3 game
 		new add_option_back(),
-		new add_option("THIS IS A HEAVY WIP,", types.change, 0),
-		new add_option("NEARLY NONE OF THESE DO ANYTHING", types.change, 0),
+		//wip section because controller and timer
 		//new add_option("LANGUAGE",			types.change, 64), theres no way in hell a fangame will have this. but ill leave this placeholder for keepssake incase it does
 		new add_option("RUMBLE", types.onoff, global.option_rumble,
 			function(_val) {

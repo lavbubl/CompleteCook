@@ -114,20 +114,20 @@ function player_mach3()
 			state = states.climbwall
 		}
 	}
-	else if (grounded && scr_hitwall(x + xscale, y))
+	else if grounded && scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_metalblock)
 	{
 		state = states.bump
-		reset_anim(spr_player_mach3hitwall)
 		vsp = -6
 		hsp = xscale * -6
 		shake_camera(20, 40 / room_speed)
+		reset_anim(spr_player_mach3hitwall)
 		scr_sound_3d(sfx_groundpound, x, y)
 		scr_sound_3d(sfx_bumpwall, x, y)
 		create_effect(x, y, spr_bumpeffect)
 		
 		with par_enemy
 		{
-			if (grounded && vsp >= 0 && bbox_in_camera())
+			if grounded && vsp >= 0 && bbox_in_camera()
 			{
 				state = states.stun
 				stun_timer = 200

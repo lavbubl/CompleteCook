@@ -225,8 +225,7 @@ function do_enemy_generics()
 		blur_timer--
 	else if state == states.hit
 	{
-		with afterimage_create(after_images.blur)
-			y -= 20
+		afterimage_create(after_images.blur)
 		blur_timer = 2
 	}
 

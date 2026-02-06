@@ -1,3 +1,3 @@
 fade = 2
-depth = -500
+depth = -1000
 pillar_id = -4

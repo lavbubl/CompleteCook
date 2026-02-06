@@ -1,14 +1,18 @@
-draw_set_font(font)
-draw_set_align(fa_center, fa_middle)
+var _dir = draw_get_halign() == fa_right ? -1 : 1
 
 var _mode = 0
 var _len = string_length(str)
+var _len_removed = _len
 var _w = string_width(str)
 var _x = x
 var _y = y
+if draw_get_valign()
 var _offset = {}
 
-for (var i = 1; i <= _len;)
+draw_set_font(font)
+draw_set_align(fa_center, fa_middle)
+
+for (i = 1; i <= _len;)
 {
 	_offset = { x: 0, y: 0 }
 	switch _mode

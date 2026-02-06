@@ -32,15 +32,15 @@ for (var i = 0; i < array_length(followers); i++)
 	with follower
 	{
 		if (obj_player.state == states.taunt || pos_in_line.state == states.taunt)
-			lerp_spd = i * -0.005
+			lerp_spd = 0
 		else
-			lerp_spd = min(lerp_spd + 0.005, 0.5)
+			lerp_spd = min(lerp_spd + 0.01, 1)
 		
-		var distance = 32
+		var distance = 25
 		
-		x_offset = approach(x_offset, -pos_in_line.xscale * ((i + 1) * distance), 4)
+		x_offset = approach(x_offset, -pos_in_line.xscale * ((i + 1) * distance), distance * 0.2)
 		
-		if lerp_spd < 0.5
+		if lerp_spd < 1
 		{
 			x = lerp(x, pos_in_line.x + x_offset, max(lerp_spd, 0))
 			y = lerp(y, pos_in_line.y, max(lerp_spd, 0))

@@ -1,4 +1,4 @@
-snd = scr_sound_3d(sfx_toppinhelp, x, y, true)
+snd = noone
 
 depth = -1
 image_speed = 0.35
@@ -10,3 +10,5 @@ enum toppin_enum {
 	sausage,
 	pineapple
 }
+
+help_ix = 0

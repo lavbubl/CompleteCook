@@ -72,7 +72,9 @@ function player_mach2()
 		scr_sound_3d(sfx_jump, x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
+	
 	do_slope_momentum()
+	
 	if (input.down.check)
 	{
 		state = states.tumble

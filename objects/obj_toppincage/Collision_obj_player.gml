@@ -1,8 +1,6 @@
 scr_sound(sfx_collecttoppin)
 instance_destroy()
 
-create_effect(x, y - 14, spr_taunteffect)
-
 with instance_create(x, y - 14, obj_toppincollected)
 {
 	toppin = other.toppin

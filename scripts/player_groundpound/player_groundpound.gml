@@ -1,8 +1,8 @@
 function player_groundpound()
 {
-	if (vsp >= 2)
+	if vsp >= 2
 	{
-		if (vsp > 17)
+		if vsp > 17
 		{
 			aftimg_timers.mach.do_it = true
 			if particle_timer > 0
@@ -21,6 +21,10 @@ function player_groundpound()
 		}
 		vsp += 0.5
 	}
+	
+	if !particle_contains_sprite(spr_cloudeffect)
+		create_effect(x, y, spr_cloudeffect)
+	
 	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
 		sprite_index = spr_player_bodyslamfall
 	else if (anim_ended() && sprite_index == spr_player_shotgun_shootdown)

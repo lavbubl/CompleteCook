@@ -3,9 +3,6 @@ depth = -50
 var _x = x
 var _y = y
 
-if state == states.hit || (obj_player.state == states.punchenemy && follow_player)
-	_y -= 20
-
 if alarm[0] >= 0
 {
 	var range = 5

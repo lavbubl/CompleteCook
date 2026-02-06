@@ -1,2 +1,2 @@
-audio_stop_sound(snd)
-	
+if audio_exists(snd)
+	audio_stop_sound(snd)

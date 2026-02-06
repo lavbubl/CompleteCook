@@ -43,19 +43,32 @@ if follow_player
 				other.yscale = -1
 				break;
 			case states.punchenemy:
-				var _dist = 60
+				var _dist_x = 60
+				var _dist_y = 20
 				other.x = x
 				other.y = y
 				with other //dont go into solids
 				{
-					if !scr_solid(x + (_dist * other.xscale), y)
-						x += _dist * other.xscale
+					if !scr_solid(x + (_dist_x * other.xscale), y)
+						x += _dist_x * other.xscale
 					else
 					{
-						repeat _dist 
+						repeat _dist_x 
 						{
 							if !scr_solid(x + other.xscale, y)
 								x += other.xscale
+							else
+								break;
+						}
+					}
+					if !scr_solid(x, y - _dist_y)
+						y -= _dist_y
+					else
+					{
+						repeat _dist_y
+						{
+							if !scr_solid(x, y - 1)
+								y--
 							else
 								break;
 						}
@@ -144,6 +157,8 @@ ds_list_destroy(en_list)
 
 if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") && bbox_in_camera() && enemy_can_die()
 {
+	if state != states.stun
+		do_enemygibs()
 	state = states.stun
 	stun_timer = 2
 	sprite_index = sprs.stun

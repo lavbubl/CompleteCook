@@ -1,5 +1,3 @@
-audio_listener_position(obj_camera.campos.x + (screen_w / 2), obj_camera.campos.y + (screen_h / 2), 0)
-
 for (var i = 0; i < array_length(emitters); i++) {
 	var e_id = emitters[i]
 	

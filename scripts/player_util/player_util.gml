@@ -210,7 +210,7 @@ function do_hurt(obj = noone)
 {
 	if state == states.defeat || state == states.actor || state == states.slip
 		return;
-		
+	
 	sleep(100)
 	
 	if obj != noone
@@ -242,6 +242,8 @@ function do_hurt(obj = noone)
 	particle_create(x, y, particles.bang)
 	create_effect(x, y, spr_hurtstars)
 	
+	global.hurtcounter++
+	
 	repeat 5
 		particle_create(x, y, particles.hurtstar)
 		
@@ -271,8 +273,18 @@ function do_hurt(obj = noone)
 			}
 		}
 		
-		with obj_tv
-			tv_expression(spr_tv_hurt)
+		if global.hurtcounter % 10 == 0
+		{
+			var _name = "Peppino"
+			with obj_tv
+				tv_expression(asset_get_index($"spr_tv_bighurt{irandom_range(1, 10)}"))
+			obj_shakytext.str = $"\{s}You've hurt {_name} {global.hurtcounter} Times..."
+		}
+		else
+		{
+			with obj_tv
+				tv_expression(spr_tv_hurt)
+		}
 	}
 	else
 	{

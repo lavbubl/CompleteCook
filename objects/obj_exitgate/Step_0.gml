@@ -23,7 +23,7 @@ with instance_place(x, y, obj_player)
 			rank_score = s
 			results[0][1] = s
 			results[1][1] = "DUMMY"
-			results[2][1] = "DUMMY"
+			results[2][1] = global.hurtcounter
 			results[3][1] = global.combo.record
 		}
 		

@@ -6,6 +6,16 @@ function tv_expression(spr)
 			state_togo = tv_states.normal
 			break;
 		case spr_tv_hurt:
+		case spr_tv_bighurt1:
+		case spr_tv_bighurt2:
+		case spr_tv_bighurt3:
+		case spr_tv_bighurt4:
+		case spr_tv_bighurt5:
+		case spr_tv_bighurt6:
+		case spr_tv_bighurt7:
+		case spr_tv_bighurt8:
+		case spr_tv_bighurt9:
+		case spr_tv_bighurt10:
 		case spr_tv_collect:
 			state_togo = tv_states.expr
 			alarm[0] = 120

@@ -46,8 +46,14 @@ function break_destroyables()
 			is_v_state = true
 	}
 	
+	if sprite_index == spr_player_machslidestart || sprite_index == spr_player_machslideend
+		is_h_state = true
+	
 	if state == states.superjump && sprite_index == spr_player_superjump
 		is_v_state = true
+	
+	if state == states.punch && vsp >= 0
+		is_v_state = false
 	
 	for (i = 0; i < ds_list_size(d_list); i++) 
 	{

@@ -79,22 +79,6 @@ switch cur_option.o_type
 		{
 			moving = true
 			cur_option.func(cur_option.val)
-			if list_ix == 1 //on the audio menu
-			{
-				if snd_frogscream == noone
-				{
-					snd_frogscream = scr_sound(v_option_frog, true)
-					audio_sound_loop_start(snd_frogscream, 0.40)
-					audio_sound_loop_end(snd_frogscream, 0.62)
-				}
-				else if optionselected != 1
-					audio_sound_gain(snd_frogscream, optionselected == 3 ? global.option_sfx_volume : global.option_music_volume)	
-			}
-		}
-		else if snd_frogscream != noone
-		{
-			audio_stop_sound(v_option_frog)
-			snd_frogscream = noone
 		}
 		break;
 	case types.func:
@@ -144,7 +128,18 @@ switch cur_option.o_type
 		break;
 }
 
-if movev != 0 && snd_frogscream != noone
+if list_ix == 1 && movev == 0 && optionselected >= 1 && optionselected <= 3 && moving
+{
+	if snd_frogscream == noone
+	{
+		snd_frogscream = scr_sound(v_option_frog, true)
+		audio_sound_loop_start(snd_frogscream, 0.40)
+		audio_sound_loop_end(snd_frogscream, 0.62)
+	}
+	if optionselected != 1
+		audio_sound_gain(snd_frogscream, optionselected == 3 ? global.option_sfx_volume : global.option_music_volume)
+}
+else
 {
 	audio_stop_sound(v_option_frog)
 	snd_frogscream = noone

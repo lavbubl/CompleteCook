@@ -2,13 +2,18 @@ function player_ladder()
 {
 	var move_v = (-input.up.check + input.down.check)
 	
-	vsp = move_v * 6
 	
-	if (move_v != 0)
+	if move_v != 0
+	{
+		vsp = move_v == -1 ? -6 : 10
 		sprite_index = vsp <= 0 ? spr_player_laddermove : spr_player_ladderdown
+	}
 	else
+	{
+		vsp = 0
 		sprite_index = spr_player_ladder
-		
+	}
+	
 	image_speed = 0.35
 	
 	if (!place_meeting(x, y + 1, obj_ladder) || place_meeting(x, y + sign(vsp), obj_solid))

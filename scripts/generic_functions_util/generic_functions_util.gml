@@ -158,6 +158,7 @@ function set_globals()
 	global.creditsfont = font_add_sprite_ext(spr_creditsfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.,:!¡0123456789?'\"ÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜáäãàâéèêëíìîïóöõôòúùûüÇç_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнльœ«»+ß", true, 2)
 	global.bignumber_font = font_add_sprite_ext(spr_bignumber_font, "0123456789/:", true, 0)
 	global.secret = false
+	global.hurtcounter = 0
 	global.boss_room = false
 	global.start_room = noone
 	global.in_level = false
@@ -313,6 +314,7 @@ function reset_level()
 	global.combo.wasted = false
 	global.doorshut = false
 	global.secret = false
+	global.hurtcounter = 0
 	var _ln = global.level_data.level_name //dont reset the name
 	global.level_data = {
 		treasure: false,

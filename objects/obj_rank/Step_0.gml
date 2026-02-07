@@ -8,6 +8,7 @@ switch (state)
 			room_goto(rank_room)
 			
 			obj_player.spawn = "a"
+			obj_player.visible = false
 			x = obj_player.x - obj_camera.campos.x
 			y = obj_player.y - obj_camera.campos.y
 			

@@ -29,8 +29,13 @@ if menu_dark
 		draw_sprite(bg_mainmenu_dark, 0, 0, 0)
 }
 
-var options_x = 819;
-var options_y = 84;
 draw_set_alpha(optionsalpha)
-draw_sprite(spr_menupause, 0, options_x, options_y);
-cc_draw_key(options_x - 88, options_y - 37, 27)
+draw_set_align(fa_center, fa_middle)
+
+draw_sprite(spr_menuquit, 0, 0, 0);
+cc_draw_key_arr(63, 115, global.keybinds.grab)
+
+draw_sprite(spr_menupause, 0, 819, 84);
+cc_draw_key_arr(745, 65, special_keybind_deny)
+
+draw_reset_color(1)

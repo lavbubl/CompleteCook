@@ -14,7 +14,6 @@ with instance_place(x, y, obj_player)
 		hsp = 0
 		movespeed = 0
 		state = states.actor
-		visible = false
 		reset_anim(spr_player_lookdoor)
 		
 		var s = round(global.score + obj_levelcontroller.combo_score)

@@ -1,4 +1,4 @@
-visible = global.option_timer
+visible = global.option_timer && global.option_showhud
 
 var s = 0.016666666666666666;
 

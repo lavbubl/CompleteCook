@@ -6,6 +6,9 @@ function player_noclip()
 	x += p_move * 5 * s
 	y += v_move * 5 * s
 	
+	sprite_index = spr_player_idle
+	image_speed = 1
+	
 	if input.jump.pressed
 		state = states.normal
 }

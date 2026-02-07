@@ -1,9 +1,11 @@
 // update input
 input.left.update(global.keybinds.ui_left);
 input.right.update(global.keybinds.ui_right);
+input.grab.update(global.keybinds.grab);
 input.accept.update(global.keybinds.ui_accept);
+input.deny.update(special_keybind_deny);
 
-var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_keyconfig) && state == 0
+var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_quitgame) && state == 0
 
 if menu_dark
 {
@@ -26,10 +28,17 @@ obj_menupeppino.cur_selected = self.cur_selected
 
 optionsalpha = approach(optionsalpha, 1, 0.1)
 
-if (keyboard_check_pressed(vk_escape) && abletoinput) {
-	instance_create(0, 0, obj_options)
+if abletoinput
+{
+	obj_menupeppino.painless = false
+	if input.deny.pressed
+		instance_create(0, 0, obj_options)
+	else if input.grab.pressed
+		instance_create(0, 0, obj_quitgame)
 }
-
+else
+	obj_menupeppino.painless = true
+	
 for (var i = 0; i < array_length(tvs); i++) 
 {
 	var cur_tv = tvs[i]
@@ -94,7 +103,6 @@ for (var i = 0; i < array_length(tvs); i++)
 					}
 					cur_anim_num = cur_selected
 					alarm[0] = -1
-					painless = true
 				}
 				
 				with other

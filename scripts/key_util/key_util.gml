@@ -189,3 +189,19 @@ function cc_draw_key(_x, _y, key)
 	else
 		draw_sprite(spr_fontkey_special, ix, _x, _y)
 }
+
+function cc_draw_key_arr(_x, _y, _key) //draw a key without needing a check in every draw event
+{
+	if is_array(_key)
+	{
+		var _w = sprite_get_width(spr_fontkey)
+		_x -= ((array_length(_key) - 1) * _w) / 2
+		for (var i = 0; i < array_length(_key); i++)
+		{
+		    cc_draw_key(_x, _y, _key[i])
+			_x += _w
+		}
+	}
+	else
+		cc_draw_key(_x, _y, _key)
+}

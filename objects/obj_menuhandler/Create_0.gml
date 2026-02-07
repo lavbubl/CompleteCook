@@ -1,9 +1,21 @@
 // declare input
+special_keybind_deny = global.keybinds.ui_deny //special conflicting input removal
+
+if is_array(special_keybind_deny)
+{
+	var _d_ix = array_get_index(special_keybind_deny, "X")
+
+	if _d_ix != -1
+		array_delete(special_keybind_deny, _d_ix, 1)
+}
+
 input =
 {
 	left: new Input(global.keybinds.ui_left),
 	right: new Input(global.keybinds.ui_right),
-	accept: new Input(global.keybinds.ui_accept)
+	grab: new Input(global.keybinds.grab),
+	accept: new Input(global.keybinds.ui_accept),
+	deny: new Input(special_keybind_deny)
 };
 
 tvs =  [new ini_menu_tv_inst(103, 0, 

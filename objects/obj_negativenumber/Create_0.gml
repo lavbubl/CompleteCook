@@ -1,3 +1,4 @@
+visible = hud_get_visible()
 vspeed = -0.5
 image_alpha = 1.5
 image_speed = 0.25

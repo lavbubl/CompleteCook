@@ -17,11 +17,6 @@ if !pausestopframe
 		input.groundpound.update(global.keybinds.groundpound);
 	}
 	
-	/*
-	if (!obj_shell.isOpen)
-		get_input()
-	*/
-	
 	input_buffers.grab = max(input_buffers.grab - 1, 0)
 	input_buffers.jump = max(input_buffers.jump - 1, 0)
 
@@ -54,104 +49,7 @@ if warping
 	exit;
 
 if hitstun < 0
-{
-	switch (state)
-	{
-		case states.taunt:
-			player_taunt()
-			break;
-		case states.normal:
-			player_normal()
-			break;
-		case states.jump:
-			player_jump()
-			break;
-		case states.mach2:
-			player_mach2()
-			break;
-		case states.mach3:
-			player_mach3()
-			break;
-		case states.tumble:
-			player_tumble()
-			break;
-		case states.slide:
-			player_slide()
-			break;
-		case states.climbwall:
-			player_climbwall()
-			break;
-		case states.bump:
-			player_bump()
-			break;
-		case states.groundpound:
-			player_groundpound()
-			break;
-		case states.grab:
-			player_grab()
-			break;
-		case states.superjump:
-			player_superjump()
-			break;
-		case states.crouch:
-			player_crouch()
-			break;
-		case states.actor:
-			player_actor()
-			break;
-		case states.ladder:
-			player_ladder()
-			break;
-		case states.punch:
-			player_punch()
-			break;
-		case states.hold:
-			player_hold()
-			break;
-		case states.punchenemy:
-			player_punchenemy()
-			break;
-		case states.piledriver:
-			player_piledriver()
-			break;
-		case states.swingding:
-			player_swingding()
-			break;
-		case states.grind:
-			player_grind()
-			break;
-		case states.hurt:
-			player_hurt()
-			break;
-		case states.parry:
-			player_parry()
-			break;
-		case states.backtohub:
-			player_backtohub()
-			break;
-		case states.noclip:
-			player_noclip()
-			break;
-		case states.defeat:
-			player_defeat()
-			break;
-		case states.punchstun:
-			player_punchstun()
-			break;
-		case states.fireass:
-			player_fireass()
-			break;
-		case states.shotgunshoot:
-			player_shotgunshoot()
-			break;
-		case states.ball:
-			player_ball()
-			break;
-		case states.slip:
-			player_slip()
-			break;
-	}
-}
+    player_states[state](); // execute state code
 else if hitstun >= 0
 {
 	hitstun--

@@ -44,3 +44,9 @@ if !saved_death
     scr_sound(sfx_breakmetal)
     ds_list_add(global.ds_saveroom, id)
 }
+
+with obj_cutoff
+{
+	if place_meeting(x, y, other)
+		visible = true
+}

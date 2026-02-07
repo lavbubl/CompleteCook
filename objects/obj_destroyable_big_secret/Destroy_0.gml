@@ -41,3 +41,9 @@ for (var xx = bbox_left; xx < bbox_right; xx += tile_size)
 		}
 	}
 }
+
+with obj_cutoff
+{
+	if place_meeting(x, y, other)
+		visible = true
+}

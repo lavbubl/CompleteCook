@@ -31,7 +31,7 @@ ui_input =
 	deny: new Input(global.keybinds.ui_deny)
 };
 
-depth = -1000
+depth = 0
 
 create_image = false
 pause = false
@@ -110,10 +110,11 @@ baseoptions = [
 			room_goto(return_location.room)
 		}
 		
-		global.in_level = false
-		
 		instance_create(0, 0, obj_fadevisual)
 		reset_level()
+		
+		global.in_level = false
+		global.doorshut = true
 	})
 ]
 

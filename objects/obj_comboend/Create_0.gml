@@ -11,4 +11,5 @@ x = 832
 y = 197
 ystart = y
 depth = -300
+visible = hud_get_visible()
 scr_sound(sfx_comboend)

@@ -9,7 +9,7 @@ ui_input =
 	deny: new Input(global.keybinds.ui_deny)
 };
 
-depth = -2000
+depth = -100
 
 optionselected = 0
 inputbuffer = 0
@@ -153,6 +153,10 @@ list_arr = [
 			}),
 		new add_option("SPEEDRUN TIMER", types.onoff, global.option_timerspeedrun,
 			function(_val) {
+				if _val
+					instance_activate_object(obj_timer)
+				else
+					instance_deactivate_object(obj_timer)
 				global.option_timerspeedrun = _val
 				quick_ini_write_real("globalsave.ini", "options", "timerspeedrun", _val)
 			})

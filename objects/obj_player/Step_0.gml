@@ -182,5 +182,5 @@ uparrow.visible = state != states.actor &&
 	(place_meeting(x, y, obj_startgate) ||
 	(place_meeting(x, y, obj_exitgate) && global.panic.active) ||
 	place_meeting(x, y, obj_door))))
-	
+
 player_sounds()

@@ -305,6 +305,7 @@ function reset_level()
 	quick_ini_write_real(global.savestring, "General", "file_timer", obj_timer.file_timer)
 	obj_followerhandler.followers = []
 	obj_levelcontroller.killed_enemy = false
+	obj_timer.level_timer = 0
 	with obj_player
 	{
 		has_shotgun = false
@@ -345,4 +346,14 @@ function gpu_set_blendmode_normal_fixed()
 {
 	gpu_set_blendmode_ext_sepalpha(bm_src_alpha, bm_inv_src_alpha, bm_src_alpha, bm_dest_alpha)
 	gpu_set_blendequation_sepalpha(bm_eq_add, bm_eq_max)
+}
+
+function do_tip(_string, _alarm = 220)
+{
+	with obj_shakytext
+	{
+		str = _string
+		show = true
+		alarm[0] = _alarm
+	}
 }

@@ -28,3 +28,9 @@ if makecracks
 	instance_create(bbox_right, bbox_bottom, obj_cutoff).image_angle = 90
 	instance_create(bbox_left, bbox_bottom, obj_cutoff)
 }
+
+with obj_cutoff
+{
+	if place_meeting(x, y, other)
+		visible = true
+}

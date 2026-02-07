@@ -3,6 +3,12 @@ var _blockarr = [obj_destroyable_secret, obj_destroyable_big_secret, obj_metalbl
 if !place_meeting(x - 1, y - 1, _blockarr) && !place_meeting(x + 1, y + 1, _blockarr)
 {
 	instance_destroy()
+	
+	with obj_cutoff
+	{
+		if place_meeting(x, y, other)
+			visible = true
+	}
 	tile_layer_delete_at(bbox_left, bbox_top)
 	
 	if makecracks

@@ -1,5 +1,3 @@
-visible = hud_get_visible()
-
 if (timer > 0)
     timer--
 else

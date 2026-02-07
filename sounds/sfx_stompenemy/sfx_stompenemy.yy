@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.215805,
+  "duration":0.21466666,
   "exportDir":"",
   "name":"sfx_stompenemy",
   "parent":{

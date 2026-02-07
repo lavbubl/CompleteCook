@@ -132,7 +132,11 @@ function do_enemy_generics()
 	grav = 0.5
 	if state == states.hit
 		grav = 0
-
+	
+	var _prev_mask = mask_index
+	
+	mask_index = sprite_index //recreate how obj_baddiecollisionbox worked, by just replacing the mask itself and later reverting it
+	
 	if place_meeting(x, y, obj_player)
 	{
 		if obj_player.instakill && alarm[0] == -1 && !follow_player && obj_player.hitstun <= 0
@@ -200,13 +204,14 @@ function do_enemy_generics()
 					sprite_index = spr_player_piledriver
 				}
 			}
-			if collision_line(bbox_left - 16, bbox_bottom, bbox_right + 16, bbox_bottom, other, false, true) && vsp > 2 && (state == states.jump || state == states.hold)
+			else if vsp > 2 && (state == states.jump || state == states.hold)
 			{
 				if state == states.jump
 					reset_anim(spr_player_stomp)
 				vsp = input.jump.check ? -14 : -9
 				jumpstop = true
 				
+				create_effect(x, bbox_bottom, spr_stompeffect)
 				scr_sound_3d(sfx_stompenemy, x, y)
 				with (other)
 				{
@@ -220,6 +225,8 @@ function do_enemy_generics()
 			}
 		}
 	}
+	
+	mask_index = _prev_mask
 
 	if blur_timer > 0
 		blur_timer--

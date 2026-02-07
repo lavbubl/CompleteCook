@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":-1.0,
+  "duration":178.09706,
   "exportDir":"",
   "name":"mu_lap2",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"mu_lap2.wav",
-  "volume":0.6,
+  "soundFile":"mu_lap2.mp3",
+  "volume":1.0,
 }

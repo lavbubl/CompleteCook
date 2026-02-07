@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":8,
   "conversionMode":0,
-  "duration":134.47333,
+  "duration":134.51787,
   "exportDir":"",
   "name":"mu_mainmenu",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":48000,
-  "soundFile":"mu_mainmenu.wav",
+  "sampleRate":44100,
+  "soundFile":"mu_mainmenu.mp3",
   "volume":1.0,
 }

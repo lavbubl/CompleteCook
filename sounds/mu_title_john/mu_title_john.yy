@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.1440136,
+  "duration":3.144,
   "exportDir":"",
   "name":"mu_title_john",
   "parent":{

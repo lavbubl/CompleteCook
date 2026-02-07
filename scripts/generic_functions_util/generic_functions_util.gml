@@ -15,6 +15,29 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
+function string_convert_seconds_to_timer(_num, _hours = false, _hundreth = false)
+{
+	var _ms = string(floor((_num % 1) * (_hundreth ? 100 : 10)))
+	var _s = string(floor(_num % 60))
+	var _m = string(floor((_num / 60) % 60))
+	var _h = string(floor(_num / 3600))
+	
+	//for all positions in the timer, make it follow a 0 when its below 10
+	if _hundreth && string_length(_ms) <= 1
+		_ms = "0" + _ms
+	if string_length(_s) <= 1
+		_s = "0" + _s
+	if string_length(_m) <= 1
+		_m = "0" + _m
+	if string_length(_h) <= 1
+		_h = "0" + _h
+	
+	var _str = _m + ":" + _s + "." + _ms
+	if _hours
+		_str = _h + ":" + _str
+	return _str; //00:00:00.0 h:m:s:ms
+}
+
 function draw_set_align(halign, valign) 
 {
 	draw_set_halign(halign) 
@@ -308,6 +331,8 @@ function reset_level()
 	obj_timer.level_timer = 0
 	with obj_player
 	{
+		visible = true
+		visual_size = 1
 		has_shotgun = false
 		hasgerome = false
 		supertauntcount = 0

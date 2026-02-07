@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":-1.0,
+  "duration":51.48,
   "exportDir":"",
   "name":"mu_pillar",
   "parent":{

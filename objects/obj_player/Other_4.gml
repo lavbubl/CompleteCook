@@ -35,10 +35,10 @@ with obj_doorpoint
 		switch (other.door_type)
 		{
 			case fade_types.hallway:
-				other.x += other.doorxscale * 64
+				other.x += other.doorxscale * 100
 				break;
 			case fade_types.v_hallway:
-				other.y += other.dooryscale * 128
+				other.y += other.dooryscale == -1 ? -78 : 32
 				if other.wasclimbingwall
 				{
 					other.wasclimbingwall = false

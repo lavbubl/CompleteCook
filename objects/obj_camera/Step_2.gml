@@ -1,6 +1,3 @@
-if obj_player.secret_exit || obj_player.sprite_index == spr_pizzaportalend
-	exit;
-
 campos = {
 	x: obj_player.x - (screen_w / 2),
 	y: obj_player.y - (screen_h / 2) - 50,
@@ -25,4 +22,5 @@ if mag > 0 && global.option_screenshake
 
 mag = max(mag - mag_decel, 0)
 
-camera_set_view_pos(view_camera[0], campos.x, campos.y)
+if !obj_player.secret_exit && obj_player.sprite_index != spr_pizzaportalend
+	camera_set_view_pos(view_camera[0], campos.x, campos.y)

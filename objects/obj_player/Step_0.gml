@@ -151,12 +151,7 @@ struct_foreach(aftimg_timers, function(_name, _data)
 if ladderbuffer > 0
 	ladderbuffer--
 
-var spd = 0.05
-
-if secret_cutscene
-	visual_size = max(visual_size - spd, 0)
-else
-	visual_size = min(visual_size + spd, 1)
+visual_size = approach(visual_size, secret_cutscene ? 0 : 1, 0.05)
 
 if supertauntcount >= 10
 {

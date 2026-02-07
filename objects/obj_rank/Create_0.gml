@@ -32,7 +32,7 @@ repeat 5
 		x: x_start + (offset * i), 
 		y: t_ystart,
 		image_index: i,
-		image_yscale: 1, 
+		image_yscale: 1,
 		image_blend: toppin_list[i] ? c_white : c_black
 	}
 	

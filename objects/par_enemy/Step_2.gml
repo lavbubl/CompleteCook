@@ -125,6 +125,7 @@ if follow_player
 			scr_sound_3d(sfx_killingblow, x, y)
 			with other
 			{
+				mask_index = mask_player_small
 				follow_player = false
 				state = states.hit
 				hsp = other.xscale * 25

@@ -16,7 +16,7 @@ var s = {
 array_push(pos_array, s)
 
 for (var i = 0; i < array_length(followers); i++) 
-{	
+{
 	var follower = followers[i]
 	
 	if !obj_player.hasgerome && follower.sprs.idle == spr_gerome_keyidle

@@ -6,8 +6,8 @@ var _w = string_width("A")
 x = screen_w
 y = screen_h - 8
 
-var _ltstr = string_convert_seconds_to_timer(level_timer, global.option_timerspeedrun)
-var _ftstr = string_convert_seconds_to_timer(file_timer, global.option_timerspeedrun)
+var _ltstr = string_convert_seconds_to_timer(level_timer, true, global.option_timerspeedrun)
+var _ftstr = string_convert_seconds_to_timer(file_timer, true, global.option_timerspeedrun)
 
 switch global.option_timertype
 {

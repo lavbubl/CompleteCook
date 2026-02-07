@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":20.249252,
+  "duration":238.31163,
   "exportDir":"",
   "name":"mu_pizzatime",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"mu_pizzatime.wav",
+  "soundFile":"mu_pizzatime.mp3",
   "volume":1.0,
 }

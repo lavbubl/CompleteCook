@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":126.37202,
+  "duration":128.0888,
   "exportDir":"",
   "name":"mu_pepperman",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"mu_pepperman.wav",
-  "volume":0.8,
+  "soundFile":"mu_pepperman.mp3",
+  "volume":1.0,
 }

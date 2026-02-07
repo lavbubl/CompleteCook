@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":71.502655,
+  "duration":71.46331,
   "exportDir":"",
   "name":"mu_secret",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"mu_secret.wav",
+  "soundFile":"mu_secret.mp3",
   "volume":1.0,
 }

@@ -16,26 +16,6 @@ switch (state)
 			alarm[0] = 220
 			alarm[2] = 630
 			
-			var ranks = [
-				global.rank_milestones.c,
-				global.rank_milestones.b,
-				global.rank_milestones.a,
-				global.rank_milestones.s
-			]
-			
-			if (rank_score >= global.rank_milestones.s && check_p_rank())
-				rank_ix = 5
-			else
-			{
-				for (var i = 4; i >= 1; i--) 
-				{
-					if global.score >= ranks[i - 1]
-					{
-						rank_ix = i
-						break;
-					}
-				}
-			} //can be made redundant and removed as obj_exitgate calculates the rank
 			scr_sound(rank_data[rank_ix].song)
 		}
 		break;

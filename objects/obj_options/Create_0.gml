@@ -190,5 +190,4 @@ cur_list = list_arr[list_ix]
 
 snd_frogscream = noone
 
-scr_sound(choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3))
 //i could reduce the amount of new functions made here actually,,,, maybe tdp was right to have seperate functions for each type

@@ -11,23 +11,15 @@ with instance_place(x, y, obj_player)
 	else if (global.panic.active && input.up.check && grounded && scr_can_enter_door(state))
 	{
 		global.panic.active = false
-		state = states.actor
-		reset_anim(spr_player_lookdoor)
 		hsp = 0
 		movespeed = 0
+		state = states.actor
+		visible = false
+		reset_anim(spr_player_lookdoor)
 		
 		var s = round(global.score + obj_levelcontroller.combo_score)
 		
-		with instance_create(0, 0, obj_rank)
-		{
-			rank_score = s
-			results[0][1] = s
-			results[1][1] = "DUMMY"
-			results[2][1] = global.hurtcounter
-			results[3][1] = global.combo.record
-		}
-		
-		var rank_ix = 0
+		var _rank_ix = 0
 		
 		var ranks = [
 			global.rank_milestones.c,
@@ -37,17 +29,27 @@ with instance_place(x, y, obj_player)
 		]
 
 		if (s >= global.rank_milestones.s && check_p_rank())
-			rank_ix = 5
+			_rank_ix = 5
 		else
 		{
 			for (var i = 4; i >= 1; i--) 
 			{
 				if s >= ranks[i - 1]
 				{
-					rank_ix = i
+					_rank_ix = i
 					break;
 				}
 			}
+		}
+		
+		with instance_create(0, 0, obj_rank)
+		{
+			rank_ix = _rank_ix
+			rank_score = s
+			results[0][1] = s
+			results[1][1] = string_convert_seconds_to_timer(obj_timer.level_timer, false, true)
+			results[2][1] = global.hurtcounter
+			results[3][1] = global.combo.record
 		}
 		
 		ini_open(global.savestring)
@@ -64,8 +66,8 @@ with instance_place(x, y, obj_player)
 		if global.level_data.secret_count > ini_read_real(lvl_name, "secret_count", 0)
 			ini_write_real(lvl_name, "secret_count", global.level_data.secret_count)
 		
-		if rank_ix > ini_read_real(lvl_name, "rank", 0)
-			ini_write_real(lvl_name, "rank", rank_ix)
+		if _rank_ix > ini_read_real(lvl_name, "rank", 0)
+			ini_write_real(lvl_name, "rank", _rank_ix)
 		
 		if !ini_read_real(lvl_name, "shroom", 0)
 			ini_write_real(lvl_name, "shroom", lvl_toppins.shroom)

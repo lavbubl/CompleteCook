@@ -42,7 +42,8 @@ static_snd = scr_sound(sfx_menustatic, true)
 audio_sound_gain(static_snd, 0, 0)
 
 mu = scr_sound(mu_mainmenu, true)
-audio_sound_loop_end(mu, 4.76)
+audio_sound_loop_start(mu, 0.1)
+audio_sound_loop_end(mu, 4.9)
 
 cur_selected = 1
 state = 0

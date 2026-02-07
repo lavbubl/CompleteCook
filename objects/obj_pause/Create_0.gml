@@ -50,6 +50,7 @@ baseoptions = [
 	new create_pause_option("RESUME",			optiontypes.both,	0), //blank func field, when this is selected its actually resumed in the [EVENT]
 	new create_pause_option("OPTIONS",			optiontypes.both,	1, function() {
 		instance_create(0, 0, obj_options)
+		scr_sound(choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3))
 	}),
 	new create_pause_option("MAIN MENU",		optiontypes.hub,	3, function() {
 		do_unpause()

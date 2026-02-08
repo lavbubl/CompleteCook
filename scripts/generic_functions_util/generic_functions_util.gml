@@ -15,6 +15,11 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
+function string_contains(_substr, _str)
+{
+	return string_count(_substr, _str) > 0
+}
+
 function string_convert_seconds_to_timer(_num, _hours = false, _thousandth = false)
 {
 	var _ms = string(floor((_num % 1) * (_thousandth ? 1000 : 10)))

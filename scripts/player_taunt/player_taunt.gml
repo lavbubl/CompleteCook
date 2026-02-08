@@ -5,11 +5,11 @@ function player_taunt()
 	
 	var endtaunt = false
 	
-	if !string_starts_with(sprite_get_name(sprite_index), "spr_player_supertaunt")
+	if string_count(sprite_get_name(sprite_index), "supertaunt") == 0
 	{
 		if input.up.check && supertauntshow
 		{
-			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
+			reset_anim(variable_instance_get(self, $"spr_player_supertaunt{irandom_range(1, 4)}"))
 			scr_sound_3d(sfx_supertaunt, x, y)
 			var spds = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
 			var i = 0

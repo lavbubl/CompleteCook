@@ -45,7 +45,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 				break;
 			case particles.machcharge:
 				x = target.x
-				if target.sprite_index = spr_player_Sjumpcancel
+				if target.sprite_index = obj_player.spr_player_Sjumpcancel
 					x += 10 * target.xscale
 				y = target.y
 				image_xscale = target.xscale

@@ -53,7 +53,7 @@ for (var i = 0; i < array_length(followers); i++)
 		
 		if obj_player.state == states.taunt
 		{
-			var issupertaunt = string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt")
+			var issupertaunt = string_count(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") != 0
 			if (sprite_index != sprs.taunt && sprite_index != sprs.intro) || (issupertaunt && obj_player.image_index <= obj_player.image_speed)
 			{
 				if !issupertaunt

@@ -1,4 +1,4 @@
-if other.sprite_index == spr_player_dead
+if other.sprite_index == other.spr_player_dead
 	exit;
 
 with other

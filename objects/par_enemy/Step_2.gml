@@ -26,9 +26,9 @@ if follow_player
 {
 	hsp = 0
 	vsp = 0
-	with (obj_player)
+	with obj_player
 	{
-		switch (state)
+		switch state
 		{
 			case states.hold:
 				other.x = x
@@ -106,7 +106,7 @@ if follow_player
 		}
 		if (image_index >= image_number - 2 && sprite_index == spr_player_piledriverland)
 		{
-			with (other)
+			with other
 			{
 				do_enemygibs()
 				alarm[0] = 1
@@ -130,7 +130,7 @@ if follow_player
 				state = states.hit
 				hsp = other.xscale * 25
 				vsp = 0
-				if other.sprite_index == spr_player_uppercutfinishingblow
+				if other.sprite_index == other.spr_player_uppercutfinishingblow
 				{
 					hsp = 0
 					vsp = -25

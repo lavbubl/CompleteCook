@@ -175,7 +175,7 @@ function do_enemy_generics()
 			shake_camera()
 			scr_sound_3d(sfx_punch, x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
-			particle_create(x, y, particles.parry).depth = -100
+			particle_create(x, y, particles.parry)
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index

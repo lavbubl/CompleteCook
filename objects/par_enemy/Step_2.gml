@@ -136,6 +136,7 @@ if follow_player
 					vsp = -25
 				}
 				do_enemygibs()
+				particle_create(x, y, particles.parry)
 			}
 			global.combo.timer = 60
 		}

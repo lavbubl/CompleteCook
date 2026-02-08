@@ -52,6 +52,7 @@ player_states[states.punchstun] = player_punchstun;
 player_states[states.fireass] = player_fireass;
 player_states[states.shotgunshoot] = player_shotgunshoot;
 player_states[states.ball] = player_ball;
+player_states[states.slip] = player_slip;
 
 #endregion
 

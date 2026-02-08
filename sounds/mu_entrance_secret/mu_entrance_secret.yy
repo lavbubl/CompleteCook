@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":71.48937,
+  "duration":81.67965,
   "exportDir":"",
   "name":"mu_entrance_secret",
   "parent":{

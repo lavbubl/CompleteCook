@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"TV",
-    "path":"folders/Sprites/HUD/TV.yy",
+    "name":"Peppino",
+    "path":"folders/Sprites/HUD/TV/Peppino.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

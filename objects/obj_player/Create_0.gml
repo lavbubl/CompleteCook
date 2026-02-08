@@ -1,7 +1,7 @@
 // player related macros
 #macro p_move (-input.left.check + input.right.check)
 
-enum character 
+enum characters
 {
 	peppino,
 	noise
@@ -63,6 +63,8 @@ player_states[states.slip] = player_slip;
 #endregion
 
 sprite_player_reset("N")
+
+character = characters.noise
 
 spawn = "a"
 door_type = fade_types.none

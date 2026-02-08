@@ -45,11 +45,13 @@ function player_tumble() //ball is in its own state, player_ball()
 	{
 		jumpstop = false
 		
-		if !particle_contains_sprite(spr_dashcloud)
+		if particle_timer <= 0
 		{
-			with create_effect(x, y, spr_dashcloud)
-				image_xscale = other.xscale
+			create_effect(x, y, spr_dashcloud).image_xscale = xscale
+			particle_timer = 10
 		}
+		else
+			particle_timer--
 	}
 		
 	if crouchslipbuffer > 0

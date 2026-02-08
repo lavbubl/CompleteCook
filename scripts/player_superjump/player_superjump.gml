@@ -58,7 +58,7 @@ function player_superjump()
 	{
 		instakill = true
 		image_speed = abs(vsp) / 25
-		if (particle_timer > 0)
+		if particle_timer > 0
 			particle_timer--
 		else
 		{

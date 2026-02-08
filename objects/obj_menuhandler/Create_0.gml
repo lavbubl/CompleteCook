@@ -3,11 +3,13 @@ special_keybind_deny = global.keybinds.ui_deny //special conflicting input remov
 
 if is_array(special_keybind_deny)
 {
-	var _d_ix = array_get_index(special_keybind_deny, "X")
+	var _d_ix = array_get_index(special_keybind_deny, ord("X"))
 
 	if _d_ix != -1
 		array_delete(special_keybind_deny, _d_ix, 1)
 }
+
+show_debug_message(special_keybind_deny)
 
 input =
 {

@@ -15,15 +15,17 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
-function string_convert_seconds_to_timer(_num, _hours = false, _hundreth = false)
+function string_convert_seconds_to_timer(_num, _hours = false, _thousandth = false)
 {
-	var _ms = string(floor((_num % 1) * (_hundreth ? 100 : 10)))
+	var _ms = string(floor((_num % 1) * (_thousandth ? 1000 : 10)))
 	var _s = string(floor(_num % 60))
 	var _m = string(floor((_num / 60) % 60))
 	var _h = string(floor(_num / 3600))
 	
 	//for all positions in the timer, make it follow a 0 when its below 10
-	if _hundreth && string_length(_ms) <= 1
+	if _thousandth && string_length(_ms) <= 1
+		_ms = "0" + _ms
+	if _thousandth && string_length(_ms) <= 2
 		_ms = "0" + _ms
 	if string_length(_s) <= 1
 		_s = "0" + _s

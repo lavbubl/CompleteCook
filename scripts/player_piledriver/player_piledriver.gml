@@ -39,8 +39,13 @@ function player_piledriver()
 		reset_anim(spr_player_piledriverjump)
 	}
 	
-	if !particle_contains_sprite(spr_cloudeffect)
+	if particle_timer2 <= 0
+	{
 		create_effect(x, y, spr_cloudeffect)
+		particle_timer2 = 10
+	}
+	else
+		particle_timer2--
 	
 	if vsp >= 2
 	{

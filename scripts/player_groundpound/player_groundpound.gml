@@ -22,8 +22,13 @@ function player_groundpound()
 		vsp += 0.5
 	}
 	
-	if !particle_contains_sprite(spr_cloudeffect)
+	if particle_timer2 > 0
+		particle_timer2--
+	else
+	{
 		create_effect(x, y, spr_cloudeffect)
+		particle_timer2 = 10
+	}
 	
 	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
 		sprite_index = spr_player_bodyslamfall

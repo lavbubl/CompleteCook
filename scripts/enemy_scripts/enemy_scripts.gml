@@ -19,6 +19,14 @@ function enemy_normal()
 			if do_turn
 				reset_anim(sprs.turn)
 		}
+		
+		if anim_ended() && particle_timer <= 0
+		{
+			create_effect(x, bbox_bottom, spr_cloudeffect)
+			particle_timer = 4
+		}
+		
+		particle_timer = max(particle_timer - 1, 0)
 	}
 	else
 		hsp = 0
@@ -53,7 +61,15 @@ function enemy_grabbed()
 function enemy_stun()
 {
 	if grounded
+	{
 		hsp = approach(hsp, 0, 0.25)
+		
+		if abs(hsp) > 0 && particle_timer == 0
+		{
+			create_effect(x - (32 * xscale), y, spr_dashcloud).image_xscale = -xscale
+			particle_timer = 10
+		}
+	}
 	sprite_index = sprs.stun
 	image_speed = 0.35
 	if (stun_timer <= 0 && grounded)
@@ -63,6 +79,8 @@ function enemy_stun()
 	}
 	else
 		stun_timer--
+	
+	particle_timer = max(particle_timer - 1, 0)
 }
 
 function enemy_hit()
@@ -101,8 +119,7 @@ function do_scared()
 
 function do_enemygibs()
 {
-	particle_create(x, y, particles.bang)
-	particle_create(x, y, particles.parry)
+	particle_create(x, y, particles.bang).depth = -100
 	repeat 3
 	{
 		particle_create(x, y, particles.gib)
@@ -158,6 +175,7 @@ function do_enemy_generics()
 			shake_camera()
 			scr_sound_3d(sfx_punch, x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
+			particle_create(x, y, particles.parry).depth = -100
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index

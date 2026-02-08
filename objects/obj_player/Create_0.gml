@@ -131,12 +131,13 @@ instakill = false
 taunttimer = 0
 i_frames = 0
 particle_timer = 0
+particle_timer2 = 0
 flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
 
-depth = -100
+depth = -75
 
 pal_select = 1
 pattern_spr = pat_pizza

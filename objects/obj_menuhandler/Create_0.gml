@@ -1,5 +1,5 @@
 // declare input
-special_keybind_deny = global.keybinds.ui_deny //special conflicting input removal
+special_keybind_deny = variable_clone(global.keybinds.ui_deny) //special conflicting input removal
 
 if is_array(special_keybind_deny)
 {

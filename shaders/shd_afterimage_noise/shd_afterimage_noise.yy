@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_afterimage_noise",
+  "name":"shd_afterimage_noise",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

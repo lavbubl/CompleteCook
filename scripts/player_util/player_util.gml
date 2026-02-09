@@ -205,12 +205,12 @@ function player_sounds()
 				if sprite_index == spr_playerN_crazyrun
 					_machlooppoints = { s: 16.53, e: 26.59}
 				else if state == states.mach3
-					_machlooppoints = { s: 9.107, e: 13.965}
+					_machlooppoints = { s: 9.037, e: 13.895}
 				
 				if audio_sound_get_track_position(machNsnd) < _machlooppoints.s - 1
 					audio_sound_set_track_position(machNsnd, _machlooppoints.s)
-				audio_sound_loop_start(machNsnd, _machlooppoints.s)
 				audio_sound_loop_end(machNsnd, _machlooppoints.e)
+				audio_sound_loop_start(machNsnd, _machlooppoints.s)
 				
 				if grounded
 				{
@@ -569,6 +569,8 @@ function asset_player_reset(_letter)
 	spr_player_walljumpstart = asset_player_get("walljumpstart", _letter)
 	spr_player_wallsplat = asset_player_get("wallsplat", _letter)
 	spr_player_winding = asset_player_get("winding", _letter)
+	pal_spr = asset_get_index("pal_player" + _letter)
+	pattern_colors = asset_get_index("pal_playerpattenrcolors" + _letter)
 	
 	sfx_superjumphold = asset_player_get("superjumphold", _letter, "sfx_")
 	sfx_machslideboost = asset_player_get("machslideboost", _letter, "sfx_")

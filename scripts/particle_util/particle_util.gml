@@ -10,7 +10,8 @@ enum particles {
 	bang,
 	yellowstar,
 	sparks,
-	text
+	text,
+	noisebump
 }
 
 function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noone)
@@ -27,6 +28,8 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		image_angle: 0,
 		image_alpha: 1,
 		depth: -10,
+		hsp: 0,
+		vsp: 0,
 		lifetime: -1,
 		type: p_type
 	}
@@ -94,6 +97,11 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 				sprite_index = spr_notes
 				image_speed = 0
 				image_index = irandom(sprite_get_number(spr_notes))
+				break;
+			case particles.noisebump:
+				sprite_index = spr_noisebump
+				image_speed = 0.5
+				depth = -100
 				break;
 		}
 	

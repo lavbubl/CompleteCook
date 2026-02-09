@@ -1,6 +1,6 @@
-if pal_select == 12
-	pattern_draw(sprite_index, image_index, x, y, pattern_spr, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
+if pal_select == 12 || obj_player.pal_select >= 20
+	pattern_draw(sprite_index, image_index, x, y, pattern_spr, obj_player.pattern_colors, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
 
-pal_swap_set(pal_peppino, pal_select, false)
+pal_swap_set(obj_player.pal_spr, pal_select, false)
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
 pal_swap_reset()

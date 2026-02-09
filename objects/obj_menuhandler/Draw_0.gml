@@ -5,9 +5,9 @@ for (var i = 0; i < array_length(tvs); i++)
 	with cur_tv
 	{
 		if pal_ix == 12
-			pattern_draw(sprite_index, image_index, x, y, pat_spr)
+			pattern_draw(sprite_index, image_index, x, y, pat_spr, obj_player.pattern_colors)
 			
-		pal_swap_set(pal_peppino, pal_ix, false)
+		pal_swap_set(obj_player.pal_spr, pal_ix, false)
 		if sprite_index != noone
 			draw_sprite(sprite_index, image_index, x, y)
 		shader_reset()

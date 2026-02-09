@@ -33,6 +33,9 @@ function afterimage_create(a_type)
 				g = 255
 				b = 255
 				break;
+			case after_images.noise:
+				image_alpha = 0.8
+				break;
 		}
 	}
 	with (obj_afterimagecontroller)

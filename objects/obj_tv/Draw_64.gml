@@ -25,10 +25,10 @@ for (var i = num; i > 0; i--)
 
 draw_sprite(spr_tv_bg, 0, x, y)
 
-if obj_player.pal_select == 12
-	pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, image_xscale, image_yscale)
+if obj_player.pal_select == 12 || obj_player.pal_select >= 20
+	pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, obj_player.pattern_colors, image_xscale, image_yscale)
 
-pal_swap_set(pal_peppino, obj_player.pal_select, false)
+pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
 draw_self()
 pal_swap_reset()
 

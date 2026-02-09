@@ -76,6 +76,8 @@ make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _
 }
 
 charletter = "N"
+pal_select = 1
+pattern_spr = pat_pizza
 asset_player_reset(charletter)
 
 character = characters.noise
@@ -97,7 +99,8 @@ flash = 0
 
 aftimg_timers = {
 	mach: {timer: 0, effect: after_images.mach, resetpoint: 5, do_it: false},
-	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false}
+	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false},
+	noise: {timer: 0, effect: after_images.noise, resetpoint: 5, do_it: false}
 }
 
 /*ptcl_timers = {
@@ -144,9 +147,6 @@ hasgerome = false
 fallingtimer = 0
 
 depth = -75
-
-pal_select = 1
-pattern_spr = pat_pizza
 
 input_buffers = {
 	jump: 0,

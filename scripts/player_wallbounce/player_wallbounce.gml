@@ -24,6 +24,12 @@ function player_wallbounce()
 	{
 		flash = 8
 		scr_sound_3d(sfx_N_machland, x, y)
+		particle_create(x, y, particles.noisebump)
+		with create_effect(x, y, spr_crazyruneffect)
+		{
+			image_xscale = other.xscale
+			depth = -150
+		}
 		if input.dash.check
 		{
 			if p_move != 0
@@ -36,9 +42,14 @@ function player_wallbounce()
 			state = states.normal
 	}
 	
+	if !particle_contains_sprite(spr_drilleffect)
+		create_followingeffect(spr_drilleffect, states.wallbounce, xscale).depth = -100
+	
 	image_speed = 0.5
 	
 	do_crusher()
 	
 	do_taunt()
+	
+	aftimg_timers.noise.do_it = true
 }

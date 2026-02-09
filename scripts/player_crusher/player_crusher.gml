@@ -33,6 +33,17 @@ function player_crusher()
 			}
 		}
 		
+		var _dir = -1
+		repeat 2
+		{
+			with create_effect(x, y, spr_landeffectbig)
+			{
+				image_xscale = _dir * -1
+				hsp = _dir * 5
+			}
+			_dir *= -1
+		}
+		
 		shake_camera(10, 30 / room_speed)
 		scr_sound_3d(sfx_groundpound, x, y)
 		reset_anim(spr_playerN_crusherland)
@@ -42,6 +53,8 @@ function player_crusher()
 		image_index = 6
 	
 	do_taunt()
+	
+	aftimg_timers.blur.do_it = true
 	
 	instakill = true
 }

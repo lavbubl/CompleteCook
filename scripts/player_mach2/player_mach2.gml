@@ -34,14 +34,16 @@ function player_mach2()
 				scr_sound_3d_on(myemitter, sfx_machslideboost)
 			}
 		}
-		if (movespeed < 12)
+		if movespeed < 12
 			movespeed += 0.1
 		else
 		{
-			if (sprite_index != spr_player_rollgetup)
-				sprite_index = spr_player_mach3
 			state = states.mach3
 			flash = 8
+			if sprite_index != spr_player_rollgetup
+				sprite_index = spr_player_mach3
+			if sprite_index == spr_playerN_spincancel
+				scr_sound_3d(sfx_N_machland, x, y)
 		}
 		if particle_timer <= 0
 		{
@@ -115,8 +117,9 @@ function player_mach2()
 			movespeed = 0
 			vsp = -17 + wallbouncedampen
 			wallbouncedampen += 2.55
-			sprite_index = spr_playerN_wallbounce
 			state = states.wallbounce
+			sprite_index = spr_playerN_wallbounce
+			particle_create(x, y, particles.noisebump)
 		}
 	}
 	else if (grounded && scr_hitwall(x + xscale, y))
@@ -146,8 +149,12 @@ function player_mach2()
 			break;
 		case spr_player_longjump:
 			image_speed = 0.4
-			if (anim_ended())
+			if anim_ended()
+			{
 				image_index = 10
+				if character == characters.noise
+					image_index++
+			}
 			break;
 		case spr_playerN_spincancel:
 			if anim_ended()

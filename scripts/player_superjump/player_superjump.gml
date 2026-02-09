@@ -79,7 +79,7 @@ function player_superjump()
 		
 		if character == characters.peppino
 			movespeed = 0
-		else if character == characters.noise
+		else if character == characters.noise && sprite_index != spr_player_presentboxspring
 			hsp = p_move * 3
 		
 		if (scr_solid(x, y - 1))

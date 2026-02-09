@@ -24,4 +24,4 @@ if instance_exists(obj_player)
 	cam_charge = approach(cam_charge, target_spd, appr_spd)
 }
 
-cam_y_offset = approach(cam_y_offset, 0, 1)
+cam_y_offset = approach(cam_y_offset, 0, 2)

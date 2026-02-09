@@ -54,8 +54,9 @@ function player_grab()
 			movespeed = 0
 			vsp = -17 + wallbouncedampen
 			wallbouncedampen += 2.55
-			sprite_index = spr_playerN_wallbounce
 			state = states.wallbounce
+			sprite_index = spr_playerN_wallbounce
+			particle_create(x, y, particles.noisebump)
 		}
 	}
 	else if (scr_hitwall(x + xscale, y) && grounded)

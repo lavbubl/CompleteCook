@@ -119,8 +119,9 @@ function player_mach3()
 			movespeed = 0
 			vsp = -17 + wallbouncedampen
 			wallbouncedampen += 2.55
-			sprite_index = spr_playerN_wallbounce
 			state = states.wallbounce
+			sprite_index = spr_playerN_wallbounce
+			particle_create(x, y, particles.noisebump)
 		}
 	}
 	else if grounded && scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_metalblock)

@@ -20,6 +20,7 @@ function player_divebomb()
 			vsp = -7
 			state = states.wallbounce
 			sprite_index = spr_playerN_wallbounce
+			particle_create(x, y, particles.noisebump)
 		}
 		else if vsp >= 0 && scr_hitwall(_x, y)
 		{
@@ -48,9 +49,26 @@ function player_divebomb()
 	
 	image_speed = (abs(movespeed) / 40) + 0.4
 	
+	if particle_timer > 0
+		particle_timer--
+	else
+	{
+		particle_timer = 5
+		if grounded
+		{
+			repeat 2
+				create_debris(x, bbox_bottom, spr_drilldebris)
+		}
+		//create_noise_afterimage(x, y, sprite_index, image_index, xscale);
+	}
+	
+	if !particle_contains_sprite(spr_drilleffect)
+		create_followingeffect(spr_drilleffect, states.divebomb, xscale).depth = -100
+	
 	do_crusher()
 	
 	do_taunt()
 	
+	aftimg_timers.noise.do_it = true
 	instakill = true
 }

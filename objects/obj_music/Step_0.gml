@@ -82,7 +82,7 @@ if isPanic
 		audio_stop_sound(panic_mu)
 		panic_mu = noone
 		
-		panic_pinch_mu = scr_sound(mu_pizzatime)
+		panic_pinch_mu = scr_sound(asset_player_get("pizzatime", obj_player.charletter, "mu_"))
 		audio_sound_set_track_position(panic_pinch_mu, 170.63)
 		audio_sound_gain(panic_pinch_mu, 0, 0)
 		audio_sound_gain(panic_pinch_mu, 1, 2000)

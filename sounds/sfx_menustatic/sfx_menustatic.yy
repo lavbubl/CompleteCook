@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":6.3759866,
+  "duration":6.376,
   "exportDir":"",
   "name":"sfx_menustatic",
   "parent":{

@@ -11,30 +11,7 @@ function player_divebomb()
 	if input_buffers.grab > 0
 	{
 		input_buffers.grab = 0
-		if !input.up.check
-		{
-			if grounded
-			{
-				if p_move != 0
-					xscale = p_move
-				state = states.tumble
-				movespeed = max(abs(movespeed), 12)
-				sprite_index = spr_player_machroll
-			}
-			else
-			{
-				if p_move != 0
-					xscale = p_move
-				input_buffers.grab = 0
-				state = states.mach2
-				movespeed = 12
-				jumpstop = true
-				vsp = min(vsp, -5)
-				reset_anim(spr_playerN_spincancel)
-			}
-		}
-		else
-			do_grab() //uppercut
+		do_spin_cancel()
 	}
 	else if grounded
 	{
@@ -70,6 +47,8 @@ function player_divebomb()
 		sprite_index = spr_playerN_divebomb
 	
 	image_speed = (abs(movespeed) / 40) + 0.4
+	
+	do_crusher()
 	
 	do_taunt()
 	

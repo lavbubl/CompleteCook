@@ -57,7 +57,14 @@ function do_grab()
 		}
 		else
 		{
-			vsp = grounded ? -14 : -10
+			if character == characters.peppino
+				vsp = grounded ? -14 : -10
+			else if character == characters.noise
+			{
+				vsp = -21
+				repeat 4
+					create_effect(x + irandom_range(-40, 40), y + irandom_range(-40, 40), spr_shineeffect)
+			}
 			hsp = abs(hsp) * xscale
 			state = states.punch
 			reset_anim(spr_player_uppercut)
@@ -184,7 +191,61 @@ function player_sounds()
 		}
 	})
 	
-	if (state != states.grab)
+	if character == characters.noise
+	{
+		if state != states.superjump
+			audio_stop_sound(sfx_N_superjumphold)
+		if state == states.mach2 || state == states.mach3
+		{
+			if machNsnd == noone
+				machNsnd = scr_sound_3d_on(myemitter, sfx_machN, true)
+			else
+			{ //this is awful and overengineered. 
+				var _machlooppoints = { s: 0, e: 9.03}
+				if sprite_index == spr_playerN_crazyrun
+					_machlooppoints = { s: 16.53, e: 26.59}
+				else if state == states.mach3
+					_machlooppoints = { s: 9.107, e: 13.965}
+				
+				if audio_sound_get_track_position(machNsnd) < _machlooppoints.s - 1
+					audio_sound_set_track_position(machNsnd, _machlooppoints.s)
+				audio_sound_loop_start(machNsnd, _machlooppoints.s)
+				audio_sound_loop_end(machNsnd, _machlooppoints.e)
+				
+				if grounded
+				{
+					if state == states.mach2
+					{
+						audio_stop_sound(sfx_N_mach3floor)
+						if !audio_is_playing(sfx_N_mach2floor)
+							scr_sound_3d_on(myemitter, sfx_N_mach2floor, true)
+					}
+					if state == states.mach3
+					{
+						audio_stop_sound(sfx_N_mach2floor)
+						if !audio_is_playing(sfx_N_mach3floor)
+							scr_sound_3d_on(myemitter, sfx_N_mach3floor, true)
+					}
+				}
+				if audio_is_playing(sfx_N_mach2floor)
+					audio_sound_gain(sfx_N_mach2floor, grounded)
+				if audio_is_playing(sfx_N_mach3floor)
+					audio_sound_gain(sfx_N_mach3floor, grounded)
+			}
+		}
+		else 
+		{
+			if machNsnd != noone
+			{
+				audio_stop_sound(machNsnd)
+				machNsnd = noone
+			}
+			audio_stop_sound(sfx_N_mach2floor)
+			audio_stop_sound(sfx_N_mach3floor)
+		}
+	}
+	
+	if state != states.grab
 		audio_stop_sound(sfx_suplexdash)
 		
 }
@@ -354,14 +415,11 @@ function asset_player_get(_action, _letter, _prefix = "spr_player")
 	else
 	{
 		_asset = asset_get_index(_prefix + "P_" + _action) //peppino is the default
-		if _asset != -1 //if its STILL invalid return a blank sprite
-			return _asset;
-		else
-			return spr_null;
+		return _asset; //will be -1 if invalid
 	}
 }
 
-function sprite_player_reset(_letter)
+function asset_player_reset(_letter)
 {
 	spr_player_idle = asset_player_get("idle", _letter)
 	spr_player_idle1 = asset_player_get("idle1", _letter)
@@ -511,4 +569,25 @@ function sprite_player_reset(_letter)
 	spr_player_walljumpstart = asset_player_get("walljumpstart", _letter)
 	spr_player_wallsplat = asset_player_get("wallsplat", _letter)
 	spr_player_winding = asset_player_get("winding", _letter)
+	
+	sfx_superjumphold = asset_player_get("superjumphold", _letter, "sfx_")
+	sfx_machslideboost = asset_player_get("machslideboost", _letter, "sfx_")
+	sfx_break = asset_player_get("break", _letter, "sfx_")
+	
+	loop_sounds = {
+		mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == obj_player.spr_player_mach1 && obj_player.character == characters.peppino;}),
+		mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == obj_player.spr_player_mach2 && obj_player.character == characters.peppino;}),
+		mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return obj_player.sprite_index != obj_player.spr_player_crazyrun && obj_player.character == characters.peppino;}),
+		mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == obj_player.spr_player_crazyrun && obj_player.character == characters.peppino;}),
+		climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
+		groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
+		piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != obj_player.spr_player_piledriverland}),
+		superjumphold: new make_loop_sound(states.superjump, sfx_superjumphold, function() { return obj_player.sprite_index != obj_player.spr_player_superjump && obj_player.sprite_index != obj_player.spr_player_Sjumpcancelstart && obj_player.sprite_index != obj_player.spr_player_presentboxspring}, 
+			[0.64, 1.84]),
+		ball: new make_loop_sound(states.ball, sfx_ballroll, function() { return obj_player.sprite_index != obj_player.spr_player_ballend}),
+		spincancel: new make_loop_sound(states.mach2, sfx_N_airspin, function() { return obj_player.sprite_index == spr_playerN_spincancel;}),
+		wallbounce: new make_loop_sound(states.wallbounce, sfx_N_wallbounce),
+		tornadofast: new make_loop_sound(states.divebomb, sfx_N_tornadofast, function() { return obj_player.sprite_index == spr_playerN_divebombfall}),
+		tornadoslow: new make_loop_sound(states.divebomb, sfx_N_tornadoslow, function() { return obj_player.sprite_index != spr_playerN_divebombfall}),
+	}
 }

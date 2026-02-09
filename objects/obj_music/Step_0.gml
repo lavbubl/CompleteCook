@@ -65,7 +65,7 @@ if isPanic
 		audio_stop_sound(mu)
 		audio_stop_sound(pillar_mu)
 		mu = noone
-		panic_mu = scr_sound(mu_pizzatime, true)
+		panic_mu = scr_sound(asset_player_get("pizzatime", obj_player.charletter, "mu_"), true)
 		audio_sound_loop_start(panic_mu, 47.96)
 		audio_sound_loop_end(panic_mu, 159.94)
 	}
@@ -114,7 +114,7 @@ if isPanic
 			panic_pinch_mu = noone
 		}
 		
-		panic_mu = scr_sound(mu_lap2, true)
+		panic_mu = scr_sound(asset_player_get("lap2", obj_player.charletter, "mu_"), true)
 		audio_sound_loop_start(panic_mu, 22.48)
 		audio_sound_loop_end(panic_mu, 171.40)
 

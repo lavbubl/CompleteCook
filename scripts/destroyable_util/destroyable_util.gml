@@ -30,7 +30,8 @@ function break_destroyables()
 		states.hit,
 		states.piledriver,
 		states.slip,
-		states.divebomb
+		states.divebomb,
+		states.crusher
 	]
 	
 	var is_h_state = false

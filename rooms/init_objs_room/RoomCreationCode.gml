@@ -33,6 +33,7 @@ enum states
 	slip,
 	divebomb,
 	wallbounce,
+	crusher,
 	
 	//enemy states
 	hit,

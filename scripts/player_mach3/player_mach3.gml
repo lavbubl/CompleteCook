@@ -160,6 +160,9 @@ function player_mach3()
 			break;
 	}
 	
+	if character == characters.noise
+		do_crusher()
+	
 	do_taunt()
 	
 	aftimg_timers.mach.do_it = true

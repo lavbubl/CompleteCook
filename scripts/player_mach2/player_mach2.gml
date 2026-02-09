@@ -67,6 +67,15 @@ function player_mach2()
 			vsp /= 10
 		}
 	}
+	
+	if character == characters.noise && grounded && ((input.up.check && input_buffers.jump > 0) || input.superjump.pressed) && vsp >= 0
+	{
+		input_buffers.jump = 0
+		state = states.superjump
+		reset_anim(spr_player_superjumpprep)
+		exit;
+	}
+	
 	if (input_buffers.jump > 0 && coyote_time) 
 	{
 		input_buffers.jump = 0
@@ -145,6 +154,10 @@ function player_mach2()
 				image_index = 10
 			break;
 	}
+	
+	if character == characters.noise
+		do_crusher()
+	
 	do_taunt()
 	
 	aftimg_timers.mach.do_it = true

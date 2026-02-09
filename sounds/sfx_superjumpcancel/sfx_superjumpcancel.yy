@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.0371882,
+  "duration":1.0371667,
   "exportDir":"",
   "name":"sfx_superjumpcancel",
   "parent":{

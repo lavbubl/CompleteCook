@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.757551,
+  "duration":0.7575625,
   "exportDir":"",
   "name":"sfx_breakdance",
   "parent":{

@@ -169,16 +169,16 @@ function meta_test_p_rank() {
 function sh_switchchar (args) {
 	with obj_player
 	{
-		var _c = "P"
+		charletter = "P"
 		if character == characters.peppino
 		{
 			character = characters.noise
-			_c = "N"
+			charletter = "N"
 		}
-		if character == characters.noise
+		else if character == characters.noise
 			character = characters.peppino
 		
-		sprite_player_reset(_c)
+		asset_player_reset(charletter)
 	}
 }
 

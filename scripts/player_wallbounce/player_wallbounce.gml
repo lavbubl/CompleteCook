@@ -11,29 +11,19 @@ function player_wallbounce()
 		if input_buffers.grab > 0
 		{
 			input_buffers.grab = 0
-			if !input.up.check
-			{
-				if p_move != 0
-					xscale = p_move
-				input_buffers.grab = 0
-				state = states.mach2
-				movespeed = 12
-				jumpstop = true
-				vsp = min(vsp, -5)
-				reset_anim(spr_playerN_spincancel)
-			}
-			else
-				do_grab() //uppercut
+			do_spin_cancel()
 		}
 		else if input.down.check
 		{
 			state = states.divebomb
 			vsp = 20
+			sprite_index = spr_playerN_divebombfall
 		}
 	}
 	else if vsp >= 0
 	{
 		flash = 8
+		scr_sound_3d(sfx_N_machland, x, y)
 		if input.dash.check
 		{
 			if p_move != 0
@@ -47,6 +37,8 @@ function player_wallbounce()
 	}
 	
 	image_speed = 0.5
+	
+	do_crusher()
 	
 	do_taunt()
 }

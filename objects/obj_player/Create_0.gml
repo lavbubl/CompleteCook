@@ -61,10 +61,22 @@ player_states[states.ball] = player_ball;
 player_states[states.slip] = player_slip;
 player_states[states.divebomb] = player_divebomb;
 player_states[states.wallbounce] = player_wallbounce;
+player_states[states.crusher] = player_crusher;
 
 #endregion
 
-sprite_player_reset("N")
+make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _is_3d = true) constructor
+{
+	state = _state
+	sound = _sound
+	sndid = noone
+	func = _func
+	looppoints = _looppoints
+	is_3d = _is_3d
+}
+
+charletter = "N"
+asset_player_reset(charletter)
 
 character = characters.noise
 
@@ -114,28 +126,8 @@ breakdance_secret = {
 	spd: 0.1
 }
 
-make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _is_3d = true) constructor
-{
-	state = _state
-	sound = _sound
-	sndid = noone
-	func = _func
-	looppoints = _looppoints
-	is_3d = _is_3d
-}
-
-loop_sounds = {
-	mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == obj_player.spr_player_mach1;}),
-	mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == obj_player.spr_player_mach2;}),
-	mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return obj_player.sprite_index != obj_player.spr_player_crazyrun;}),
-	mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == obj_player.spr_player_crazyrun;}),
-	climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
-	groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
-	piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != obj_player.spr_player_piledriverland}),
-	superjumphold: new make_loop_sound(states.superjump, sfx_superjumphold, function() { return obj_player.sprite_index != obj_player.spr_player_superjump && obj_player.sprite_index != obj_player.spr_player_Sjumpcancelstart && obj_player.sprite_index != obj_player.spr_player_presentboxspring}, 
-		[0.64, 1.84]),
-	ball: new make_loop_sound(states.ball, sfx_ballroll, function() { return obj_player.sprite_index != obj_player.spr_player_ballend}),
-}
+machNsnd = noone
+machNgroundsnd = noone
 
 visual_size = 1
 secret_exit = false

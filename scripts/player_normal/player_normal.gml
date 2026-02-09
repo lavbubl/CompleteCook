@@ -151,6 +151,13 @@ function player_normal()
 		reset_anim(default_fall)
 	}
 	
+	if character == characters.noise && ((input.up.check && input_buffers.jump > 0) || input.superjump.pressed) && vsp >= 0
+	{
+		input_buffers.jump = 0
+		state = states.superjump
+		reset_anim(spr_player_superjumpprep)
+	}
+	
 	if (coyote_time && input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0

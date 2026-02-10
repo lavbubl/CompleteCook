@@ -763,6 +763,7 @@
     {"name":"spr_playerN_finishingblow4","order":91,"path":"sprites/spr_playerN_finishingblow4/spr_playerN_finishingblow4.yy",},
     {"name":"spr_playerN_finishingblow5","order":89,"path":"sprites/spr_playerN_finishingblow5/spr_playerN_finishingblow5.yy",},
     {"name":"spr_playerN_freefall","order":62,"path":"sprites/spr_playerN_freefall/spr_playerN_freefall.yy",},
+    {"name":"spr_playerN_gottreasure","order":117,"path":"sprites/spr_playerN_gottreasure/spr_playerN_gottreasure.yy",},
     {"name":"spr_playerN_haulingfall","order":101,"path":"sprites/spr_playerN_haulingfall/spr_playerN_haulingfall.yy",},
     {"name":"spr_playerN_haulingidle","order":54,"path":"sprites/spr_playerN_haulingidle/spr_playerN_haulingidle.yy",},
     {"name":"spr_playerN_haulingjump","order":40,"path":"sprites/spr_playerN_haulingjump/spr_playerN_haulingjump.yy",},

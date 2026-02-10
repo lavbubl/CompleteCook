@@ -854,6 +854,7 @@
     {"id":{"name":"spr_playerN_finishingblow4","path":"sprites/spr_playerN_finishingblow4/spr_playerN_finishingblow4.yy",},},
     {"id":{"name":"spr_playerN_finishingblow5","path":"sprites/spr_playerN_finishingblow5/spr_playerN_finishingblow5.yy",},},
     {"id":{"name":"spr_playerN_freefall","path":"sprites/spr_playerN_freefall/spr_playerN_freefall.yy",},},
+    {"id":{"name":"spr_playerN_gottreasure","path":"sprites/spr_playerN_gottreasure/spr_playerN_gottreasure.yy",},},
     {"id":{"name":"spr_playerN_haulingfall","path":"sprites/spr_playerN_haulingfall/spr_playerN_haulingfall.yy",},},
     {"id":{"name":"spr_playerN_haulingidle","path":"sprites/spr_playerN_haulingidle/spr_playerN_haulingidle.yy",},},
     {"id":{"name":"spr_playerN_haulingjump","path":"sprites/spr_playerN_haulingjump/spr_playerN_haulingjump.yy",},},

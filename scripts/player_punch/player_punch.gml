@@ -8,12 +8,15 @@ function player_punch()
 	{
 		aftimg_timers.mach.do_it = true
 		instakill = true
-		if particle_timer > 0
-			particle_timer--
-		else
+		if character == characters.noise
 		{
-			particle_timer = 5
-			create_effect(x, y, spr_shineeffect)
+			if particle_timer > 0
+				particle_timer--
+			else
+			{
+				particle_timer = 5
+				create_effect(x, y, spr_shineeffect)
+			}
 		}
 	}
 	else if grounded

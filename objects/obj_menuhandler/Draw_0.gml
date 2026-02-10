@@ -38,4 +38,7 @@ cc_draw_key_arr(63, 115, global.keybinds.grab)
 draw_sprite(spr_menupause, 0, 819, 84);
 cc_draw_key_arr(745, 65, special_keybind_deny)
 
+draw_sprite(obj_player.character == characters.noise ? spr_noiseicon : spr_pepicon, char_ix, 0, screen_h + char_offset)
+char_ix = wrap(3, char_ix + 0.15)
+
 draw_reset_color(1)

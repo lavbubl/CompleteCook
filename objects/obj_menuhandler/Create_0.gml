@@ -15,6 +15,8 @@ input =
 {
 	left: new Input(global.keybinds.ui_left),
 	right: new Input(global.keybinds.ui_right),
+	up: new Input(global.keybinds.ui_up),
+	down: new Input(global.keybinds.ui_down),
 	grab: new Input(global.keybinds.grab),
 	accept: new Input(global.keybinds.ui_accept),
 	deny: new Input(special_keybind_deny)
@@ -64,6 +66,8 @@ state = 0
 menu_dark = true
 dark_state = 0
 optionsalpha = 0
+char_ix = 0
+char_offset = 0
 	
 function ini_menu_tv_inst(_x, _y, _sproff, _sprnoise, _sprselect, _sprconfirm, _filename) constructor
 {

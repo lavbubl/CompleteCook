@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_box",
+  "%Name":"sfx_box_1",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
@@ -10,9 +10,9 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.2016459,
+  "duration":0.7,
   "exportDir":"",
-  "name":"sfx_box",
+  "name":"sfx_box_1",
   "parent":{
     "name":"SFX",
     "path":"folders/Sounds/SFX.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"sfx_box.ogg",
-  "volume":0.8,
+  "soundFile":"sfx_box_1.wav",
+  "volume":1.0,
 }

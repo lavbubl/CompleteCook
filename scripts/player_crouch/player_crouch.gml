@@ -24,7 +24,11 @@ function player_crouch()
 			reset_anim(crouchfallspr)
 		
 		if anim_ended()
+		{
 			image_index = crouchfallspr == spr_player_crouchfall ? image_number - 7 : image_number - 1
+			if sprite_index == spr_playerN_crouchfall
+				image_index = 4
+		}
 	}
 	else
 	{
@@ -40,7 +44,7 @@ function player_crouch()
 		if (coyote_time && input_buffers.jump > 0 && scr_can_uncrouch())
 		{
 			input_buffers.jump = 0
-			vsp = -8 //-8 not -12
+			vsp = -8
 			scr_sound_3d(sfx_jump, x, y)
 		}
 	}

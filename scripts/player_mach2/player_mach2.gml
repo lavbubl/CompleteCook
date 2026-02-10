@@ -4,7 +4,9 @@ function player_mach2()
 	
 	if (grounded && vsp >= 0)
 	{
-		if (sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup)
+		if sprite_index == spr_playerN_spincancel
+			scr_sound_3d(sfx_N_machland, x, y)
+		if sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup
 			sprite_index = spr_player_mach2
 		if (!input.dash.check)
 		{
@@ -42,8 +44,6 @@ function player_mach2()
 			flash = 8
 			if sprite_index != spr_player_rollgetup
 				sprite_index = spr_player_mach3
-			if sprite_index == spr_playerN_spincancel
-				scr_sound_3d(sfx_N_machland, x, y)
 		}
 		if particle_timer <= 0
 		{

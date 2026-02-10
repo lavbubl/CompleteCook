@@ -96,7 +96,7 @@ function player_tumble() //ball is in its own state, player_ball()
 		
 	image_speed = movespeed / 20
 		
-	if sprite_index == spr_player_backslide && anim_ended()
+	if sprite_index == spr_playerP_backslide && anim_ended()
 		image_index = 2
 	
 	aftimg_timers.blur.do_it = true

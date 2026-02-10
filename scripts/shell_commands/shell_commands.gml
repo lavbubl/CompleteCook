@@ -179,12 +179,18 @@ function sh_switchchar (args) {
 			character = characters.peppino
 		
 		asset_player_reset(charletter)
+		with obj_tv
+		{
+			asset_tv_reset(other.charletter)
+			state = states.normal
+			sprite_index = spr_tv_idle
+		}
 	}
 }
 
 function meta_switchchar() {
 	return {
-		description: "Sets automatic requirements for P Rank",
+		description: "Switch from Peppino to Noise and vice versa.",
 		hidden: false,
 		deferred: false
 	}

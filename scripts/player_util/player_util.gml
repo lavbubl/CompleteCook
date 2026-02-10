@@ -576,6 +576,12 @@ function asset_player_reset(_letter)
 	sfx_machslideboost = asset_player_get("machslideboost", _letter, "sfx_")
 	sfx_break = asset_player_get("break", _letter, "sfx_")
 	
+	if character == characters.noise
+	{
+		spr_player_hurtjump = spr_playerN_jump
+		spr_player_machfreefall = spr_playerN_fall
+	}
+	
 	loop_sounds = {
 		mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == obj_player.spr_player_mach1 && obj_player.character == characters.peppino;}),
 		mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == obj_player.spr_player_mach2 && obj_player.character == characters.peppino;}),

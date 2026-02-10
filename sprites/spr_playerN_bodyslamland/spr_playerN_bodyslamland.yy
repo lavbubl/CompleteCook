@@ -16,8 +16,6 @@
     {"$GMSpriteFrame":"v1","%Name":"ddd5f881-7dbb-40f8-b635-8ffa5f560d57","name":"ddd5f881-7dbb-40f8-b635-8ffa5f560d57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"00515171-2dc5-42e0-b0a4-5796c0037112","name":"00515171-2dc5-42e0-b0a4-5796c0037112","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"9dd35fca-62aa-45f1-9dd4-81c283967091","name":"9dd35fca-62aa-45f1-9dd4-81c283967091","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"939a442f-b9a6-4b98-8ead-b92a2175344d","name":"939a442f-b9a6-4b98-8ead-b92a2175344d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"3ea7e997-be23-461b-b026-861de5bd1135","name":"3ea7e997-be23-461b-b026-861de5bd1135","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -54,7 +52,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":6.0,
+    "length":4.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -85,12 +83,6 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9dd35fca-62aa-45f1-9dd4-81c283967091","path":"sprites/spr_playerN_bodyslamland/spr_playerN_bodyslamland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"ae8c72d2-8ace-4108-84df-82e1807d5fe9","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"939a442f-b9a6-4b98-8ead-b92a2175344d","path":"sprites/spr_playerN_bodyslamland/spr_playerN_bodyslamland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"defd08ec-a19c-4049-8e4f-77bb63047d40","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3ea7e997-be23-461b-b026-861de5bd1135","path":"sprites/spr_playerN_bodyslamland/spr_playerN_bodyslamland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"439db937-5ebf-45b5-9c11-2734d0c1476e","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

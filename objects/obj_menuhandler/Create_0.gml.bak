@@ -9,6 +9,7 @@ if is_array(special_keybind_deny)
 		array_delete(special_keybind_deny, _d_ix, 1)
 }
 
+
 input =
 {
 	left: new Input(global.keybinds.ui_left),

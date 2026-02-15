@@ -104,7 +104,7 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 				depth = -100
 				break;
 		}
-		
+	
 		if _sprite != noone
 			sprite_index = _sprite
 	

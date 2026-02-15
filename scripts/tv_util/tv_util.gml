@@ -72,4 +72,7 @@ function asset_tv_reset(_letter)
 	spr_tv_bighurt8 = asset_player_get("bighurt8", _letter, "spr_tv")
 	spr_tv_bighurt9 = asset_player_get("bighurt9", _letter, "spr_tv")
 	spr_tv_bighurt10 = asset_player_get("bighurt10", _letter, "spr_tv")
+	spr_tv_ball = asset_player_get("ball", _letter, "spr_tv")
+	spr_tv_fireass = asset_player_get("fireass", _letter, "spr_tv")
+	spr_tv_shotgun = asset_player_get("shotgun", _letter, "spr_tv")
 }

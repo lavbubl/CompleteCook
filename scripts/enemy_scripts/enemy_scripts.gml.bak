@@ -143,9 +143,9 @@ function do_enemy_generics()
 				func_todo()
 		}
 	})
-	
+
 	do_scared()
-	
+
 	grav = 0.5
 	if state == states.hit
 		grav = 0

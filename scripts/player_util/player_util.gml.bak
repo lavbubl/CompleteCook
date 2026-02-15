@@ -22,7 +22,7 @@ function do_groundpound()
 			reset_anim(spr_player_shotgun_shootdown)
 			vsp = -11
 			with instance_create(x, y, obj_shotgunblast)
-        		sprite_index = spr_shotgunblast_down
+        sprite_index = spr_shotgunblast_down
 		}
 	}
 }

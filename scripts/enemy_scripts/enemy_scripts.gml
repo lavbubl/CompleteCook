@@ -42,6 +42,52 @@ function enemy_normal()
 	}
 }
 
+function enemy_chase()
+{
+	var hurtbox_needed = false
+	
+	if (object_index == obj_minijohn) //REPLACE WITH SWITCH STATEMENT
+		hurtbox_needed = true
+		
+	var targetplayer = obj_player
+	
+	image_speed = 0.35
+	
+	if (x != targetplayer.x && (!(xscale == (-(sign(x - targetplayer.x))))))
+	{
+		movespeed = 4
+		xscale = (-(sign(x - targetplayer.x)))
+		momentum = (-xscale) * (movespeed + 4)
+	}
+	
+	hsp = xscale * movespeed + momentum
+	
+	if (momentum > 0)
+		momentum -= 0.1
+	if (momentum <= 0)
+		momentum += 0.1
+	
+	if grounded
+	{
+		particle_timer = max(particle_timer - 1, 0);
+	}
+	
+	if (particle_timer == 0)
+	{
+		create_effect(x, y + 43, spr_cloudeffect)
+		particle_timer = 20;
+	}
+		
+	if (do_turn && sprite_index == sprs.turn)
+	{
+		if anim_ended()
+		{
+			reset_anim(sprs.move)
+			create_hurtbox()
+		}
+	}
+}
+
 function enemy_scared()
 {
 	if (scared_timer <= 0 && grounded)
@@ -98,6 +144,8 @@ function enemy_hit()
 
 function do_scared()
 {
+	if object_index == obj_minijohn
+		exit;
 	if scared_timer > 0
 		scared_timer--
 	else if (obj_player.state == states.mach3 || obj_player.sprite_index == spr_player_swingding) && abs(x - obj_player.x) < 400 && abs(y - obj_player.y) < 110 && state != states.hit && collision_line(x, y, obj_player.x, obj_player.y, obj_solid, false, true) == noone
@@ -144,6 +192,7 @@ function do_enemy_generics()
 		}
 	})
 
+	
 	do_scared()
 
 	grav = 0.5
@@ -274,6 +323,10 @@ function create_hurtbox()
 	{
 		other.hurtbox_id = id
 		follow_obj = other.id
+		if follow_obj == obj_minijohn {
+			sprite_index = mask_bighitbox;
+			mask_index = mask_bighitbox;
+		}
 	}
 }
 

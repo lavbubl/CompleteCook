@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.0146712,
+  "duration":1.0146667,
   "exportDir":"",
   "name":"sfx_escapecollect",
   "parent":{

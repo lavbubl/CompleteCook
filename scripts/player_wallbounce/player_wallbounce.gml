@@ -51,5 +51,8 @@ function player_wallbounce()
 	
 	do_taunt()
 	
+	if state != states.wallbounce
+		audio_stop_sound(sfx_N_wallkick)
+	
 	aftimg_timers.noise.do_it = true
 }

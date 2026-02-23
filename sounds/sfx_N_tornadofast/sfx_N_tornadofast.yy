@@ -6,7 +6,7 @@
     "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
-  "channelFormat":0,
+  "channelFormat":1,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_N_tornadofast.wav",
-  "volume":1.0,
+  "volume":0.8,
 }

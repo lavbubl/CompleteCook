@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":27.698334,
+  "duration":6.0173335,
   "exportDir":"",
   "name":"sfx_N_mach2floor",
   "parent":{

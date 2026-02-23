@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":8.921338,
+  "duration":8.921333,
   "exportDir":"",
   "name":"sfx_pillarimpact",
   "parent":{

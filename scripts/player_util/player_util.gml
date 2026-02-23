@@ -340,7 +340,7 @@ function do_hurt(obj = noone)
 			if character == characters.noise
 				_name = "The Noise"
 			with obj_tv
-				tv_expression(asset_get_index($"spr_tv{charletter}_bighurt{irandom_range(1, 10)}"))
+				tv_expression(asset_get_index($"spr_tv{other.charletter}_bighurt{irandom_range(1, 10)}"))
 			do_tip($"\{s}You've hurt {_name} {global.hurtcounter} Times...")
 		}
 		else
@@ -577,6 +577,7 @@ function asset_player_reset(_letter)
 	sfx_superjumphold = asset_player_get("superjumphold", _letter, "sfx_")
 	sfx_machslideboost = asset_player_get("machslideboost", _letter, "sfx_")
 	sfx_break = asset_player_get("break", _letter, "sfx_")
+	sfx_jump = asset_player_get("jump", _letter, "sfx_")
 	
 	if character == characters.noise
 	{

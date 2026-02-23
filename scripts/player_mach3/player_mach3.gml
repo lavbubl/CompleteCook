@@ -121,6 +121,7 @@ function player_mach3()
 			wallbouncedampen += 2.55
 			state = states.wallbounce
 			sprite_index = spr_playerN_wallbounce
+			scr_sound_3d(sfx_N_wallkick, x, y)
 			particle_create(x, y, particles.noisebump)
 		}
 	}

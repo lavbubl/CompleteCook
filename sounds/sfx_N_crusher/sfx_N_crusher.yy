@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_N_crusher.wav",
-  "volume":1.0,
+  "volume":0.7,
 }

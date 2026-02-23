@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_N_break",
+  "%Name":"sfx_N_wallkick",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.52863944,
+  "duration":0.5372789,
   "exportDir":"",
-  "name":"sfx_N_break",
+  "name":"sfx_N_wallkick",
   "parent":{
     "name":"SFX",
     "path":"folders/Sounds/SFX.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_N_break.wav",
-  "volume":0.7,
+  "soundFile":"sfx_N_wallkick.wav",
+  "volume":1.0,
 }

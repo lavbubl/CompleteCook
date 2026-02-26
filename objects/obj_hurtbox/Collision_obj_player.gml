@@ -1,11 +1,10 @@
-var xh = lerp(bbox_left, bbox_right, 0.5)
+if !instance_exists(follow_obj)
+	exit;
+	
+inactive = follow_obj.state == states.stun || follow_obj.state == states.scared || follow_obj.escape_frozen
 
 with other
 {
-	if i_frames <= 0
-	{
-		xscale = x - xh < 0 ? 1 : -1
-		sprite_index = xh >= 0 ? spr_player_hurt : spr_player_piledriverjump
-		do_hurt()
-	}
+	if (i_frames <= 0 && state != states.parry && state != states.taunt && !other.inactive)
+		do_hurt(other)
 }

@@ -3,6 +3,13 @@ depth = -50
 var _x = x
 var _y = y
 
+if alarm[0] >= 0
+{
+	var range = 5
+	_x += irandom_range(-range, range)
+	_y += irandom_range(-range, range)
+}
+
 if (obj_player.state = states.piledriver && follow_player)
 {
 	_y += 48
@@ -23,6 +30,14 @@ if (obj_player.state = states.swingding && follow_player)
 			depth = -210
 	}
 }
+
+if state == states.stun && stun_timer >= 100
+{
+	draw_sprite(spr_enemybird, bird_ix, x, y - 40)
+	bird_ix = wrap(sprite_get_number(spr_enemybird), bird_ix + 0.35)
+}
+else
+	bird_ix = 0
 
 draw_sprite_ext(sprite_index, image_index, _x, _y, xscale - (warp * xscale), yscale + warp, image_angle, image_blend, image_alpha)
 

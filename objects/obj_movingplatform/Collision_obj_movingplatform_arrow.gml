@@ -1,2 +1,2 @@
-realhsp = sin(degtorad(other.image_angle + 90)) * spd
-realvsp = cos(degtorad(other.image_angle + 90)) * spd
+realhsp = dsin(other.image_angle + 90) * spd
+realvsp = dcos(other.image_angle + 90) * spd

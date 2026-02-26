@@ -35,5 +35,5 @@
     "path":"sprites/spr_mp_arrow/spr_mp_arrow.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

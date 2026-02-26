@@ -1,6 +1,6 @@
 So theres some changes and general pointers i need to give so you can understand this engine:
 
-- first things obj_door[letter] has been replaced with obj_spawnpoint and you must change
+- first things obj_door[letter] has been replaced with obj_doorpoint and you must change
 a variable definition called spawn, although stuff like obj_door and obj_hallway basically work the 
 same, just targetRoom is a variable definition called t_room.
 

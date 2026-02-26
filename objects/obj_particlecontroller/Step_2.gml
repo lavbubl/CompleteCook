@@ -1,9 +1,11 @@
-for (var p = 0; p < ds_list_size(particle_list); p++)
+var target = obj_player
+
+for (var p = 0; p < array_length(particle_list); p++)
 {
-	var p_id = ds_list_find_value(particle_list, p)
-	with (p_id)
+	var p_id = particle_list[p]
+	with p_id
 	{
-		image_index += image_speed
+		image_number = sprite_get_number(sprite_index)
 		switch (type)
 		{
 			case particles.gib:
@@ -11,31 +13,54 @@ for (var p = 0; p < ds_list_size(particle_list); p++)
 			case particles.yellowstar:
 				x += hsp
 				y += vsp
-				vsp += 0.5
+				if vsp < 20
+					vsp += 0.5
 				if y > room_height
-					ds_list_delete(other.particle_list, p)
+					array_delete(other.particle_list, p, 1)
+				break;
+			case particles.hurtstar:
+				var r_shake = random_range(-1, 1)
+				x += (hsp * dir1) + r_shake
+				y += (vsp * dir2) + r_shake
+				hsp = approach(hsp, 0, 0.25)
+				vsp = approach(vsp, 0, 0.25)
+				if lifetime > 0
+					lifetime--
+				else
+					array_delete(other.particle_list, p, 1)
 				break;
 			case particles.taunt:
-				x = obj_player.x
-				y = obj_player.y
+				x = target.x
+				y = target.y
 				if anim_ended()
 					image_speed = 0
-				if (obj_player.taunttimer < 1 || obj_player.state != states.taunt)
-					ds_list_delete(other.particle_list, p)
+				if (target.taunttimer < 1 || target.state != states.taunt)
+					array_delete(other.particle_list, p, 1)
+				break;
+			case particles.sparks:
+				x += hsp
+				y += vsp
+				if (x < 0 || x >= room_width || y < 0 || y >= room_height)
+					array_delete(other.particle_list, p, 1)
 				break;
 			case particles.machcharge:
-				x = obj_player.x
-				y = obj_player.y
-				image_xscale = obj_player.xscale
-				if (obj_player.state != states.mach3)
-				{
-					other.active_particles.machcharge = false
-					ds_list_delete(other.particle_list, p)
-				}
+				x = target.x
+				if target.sprite_index = spr_player_Sjumpcancel
+					x += 10 * target.xscale
+				y = target.y
+				image_xscale = target.xscale
+				if target.state != statetofollow || (target.state == states.normal && global.combo.count < 25)
+					array_delete(other.particle_list, p, 1)
+				break;
+			case particles.text:
+				y += vsp
+				image_alpha -= 0.01
+				if image_alpha <= 0
+					array_delete(other.particle_list, p, 1)
 				break;
 			default:
 				if anim_ended()
-					ds_list_delete(other.particle_list, p)
+					array_delete(other.particle_list, p, 1)
 				break;
 		}
 	}

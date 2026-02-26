@@ -1,0 +1,38 @@
+if ds_list_find_index(global.ds_saveroom, id) != -1
+	exit;
+
+instance_create_depth(screen_w / 2, 560, 0, obj_pizzatime)
+
+var p_id = instance_create(x, y, obj_enemycorpse)
+
+with p_id
+{
+	sprite_index = spr_pillar_dead
+	image_xscale = other.image_xscale
+}
+
+var f_id = instance_create(0, 0, obj_pillarflash)
+f_id.pillar_id = p_id
+
+global.panic.active = true
+global.panic.timer = panic_time			//variable set in variable defenitions 
+global.panic.timer_max = panic_time		//instead of a switch statement. sorry!
+global.doorshut = false
+
+scr_sound(sfx_killenemy)
+scr_sound(sfx_pillarimpact)
+scr_sound(sfx_escaperumble)
+particle_create(x, y, particles.bang)
+repeat (3)
+{
+	particle_create(x, y, particles.gib)
+	particle_create(x, y, particles.stars)
+}
+
+
+global.combo.count++
+global.combo.timer = 60
+
+obj_player.supertauntcount++
+
+ds_list_add(global.ds_saveroom, id)

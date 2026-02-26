@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"v_rarescream1",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":2,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.7026666,
+  "exportDir":"",
+  "name":"v_rarescream1",
+  "parent":{
+    "name":"Voice",
+    "path":"folders/Sounds/Voice.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"v_rarescream1.wav",
+  "volume":1.0,
+}

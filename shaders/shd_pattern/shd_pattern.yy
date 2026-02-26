@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_pattern",
+  "name":"shd_pattern",
+  "parent":{
+    "name":"PalSwapper",
+    "path":"folders/PalSwapper.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

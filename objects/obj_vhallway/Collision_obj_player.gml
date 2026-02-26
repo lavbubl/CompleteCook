@@ -1,3 +1,5 @@
+if !obj_fade.fade 
+	scr_sound(sfx_door)
 do_fade(t_room, t_door, fade_types.v_hallway)
 with (other)
 {

@@ -1,4 +1,5 @@
-particle_list = ds_list_create()
+particle_list = []
 active_particles = {
 	machcharge: false
 }
+postdraw_list = []

@@ -1,10 +1,16 @@
 depth = 0
-for (var p = 0; p < ds_list_size(particle_list); p++) 
+obj_particlecontroller_close.postdraw_list = []
+for (var p = 0; p < array_length(particle_list); p++) 
 {
-	var p_id = ds_list_find_value(particle_list, p)
-	with (p_id)
+	var p_id = particle_list[p]
+	if p_id.depth <= -100
 	{
-		other.depth = depth
+		array_push(obj_particlecontroller_close.postdraw_list, p_id)
+		continue;
+	}
+	with p_id
+	{
 		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
+		image_index += image_speed
 	}
 }

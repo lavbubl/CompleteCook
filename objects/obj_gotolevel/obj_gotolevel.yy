@@ -10,8 +10,8 @@
   "name":"obj_gotolevel",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc",
-    "path":"folders/Objects/Misc.yy",
+    "name":"Miscellaneous",
+    "path":"folders/Objects/Miscellaneous.yy",
   },
   "parentObjectId":null,
   "persistent":false,

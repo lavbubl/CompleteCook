@@ -12,20 +12,43 @@ function afterimage_create(a_type)
 		image_alpha: self.image_alpha,
 		effect: a_type
 	}
-	switch (a_type)
+	with inst
 	{
-		case after_images.mach:
-			inst.image_blend = choose(obj_afterimagecontroller.mach_color1, obj_afterimagecontroller.mach_color2)
-			inst.lifetime = 10
-			break;
-		case after_images.blur:
-			inst.image_alpha = 0.8
-			inst.hsp = hsp
-			inst.vsp = vsp
-			break;
+		switch (a_type)
+		{
+			case after_images.mach:
+				image_blend = choose(#60d048, #f80000)
+				lifetime = 10
+				break;
+			case after_images.blur:
+				image_alpha = 0.8
+				hsp = hsp
+				vsp = vsp
+				break;
+			case after_images.solid_color:
+				image_alpha = 0.8
+				hsp = hsp
+				vsp = vsp
+				r = 255
+				g = 255
+				b = 255
+				break;
+		}
 	}
 	with (obj_afterimagecontroller)
-		ds_list_add(aftimg_list, inst)
+		array_push(aftimg_list, inst)
+		
+	return inst;
+}
+
+function afterimage_create_color(_r, _g, _b)
+{
+	with afterimage_create(after_images.solid_color)
+	{
+		r = _r
+		g = _g
+		b = _b
+	}
 }
 
 function do_afterimage(timer, reset_point, effect, spd = 1)

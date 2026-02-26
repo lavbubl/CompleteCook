@@ -1,0 +1,1 @@
+gpu_set_blendmode_normal_fixed()

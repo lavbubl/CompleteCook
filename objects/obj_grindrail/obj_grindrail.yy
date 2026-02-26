@@ -8,8 +8,8 @@
   "name":"obj_grindrail",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc",
-    "path":"folders/Objects/Level Structure/Misc.yy",
+    "name":"Gimmicks",
+    "path":"folders/Objects/Level Structure/Gimmicks.yy",
   },
   "parentObjectId":null,
   "persistent":false,

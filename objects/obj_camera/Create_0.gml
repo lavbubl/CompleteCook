@@ -1,8 +1,13 @@
 mag = 0
 mag_decel = 0.5
-//camera charge
-target_spd = 0
-appr_spd = 0
 cam_charge = 0
+info_visible = false
 
-depth = -999
+campos = {
+	x: 0,
+	y: 0
+}
+
+//version = "DEBLOATED";
+
+depth = -10000

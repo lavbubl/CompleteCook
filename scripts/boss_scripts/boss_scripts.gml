@@ -39,7 +39,7 @@ function boss_hit()
 		repeat 3
 			particle_create(x, y, particles.yellowstar)
 		shake_camera()
-		scr_sound_3d(sfx_killenemy, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
 		grav = 0.5
 		xscale *= -1
 		with obj_bosscontroller.opponent
@@ -77,7 +77,7 @@ function do_vulnerability()
 	
 			do_enemygibs()
 			create_effect(x, y, spr_bosshiteffect)
-			scr_sound_3d(sfx_punch, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index

@@ -121,7 +121,7 @@ if follow_player
 		{
 			vsp = -6
 			shake_camera(3, 3 / room_speed)
-			scr_sound_3d(sfx_punch, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 			scr_sound_3d(sfx_killingblow, x, y)
 			with other
 			{
@@ -151,7 +151,7 @@ for (var i = 0; i < ds_list_size(en_list); i++) {
 	if place_meeting(x, y, _id) && _id.state == states.hit && enemy_can_die()
 	{
 		instance_destroy()
-		scr_sound_3d(sfx_punch, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 	}
 }
 

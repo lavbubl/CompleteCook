@@ -1,13 +1,13 @@
 function scr_sound(snd, loop = false)
 {
-	var played_snd = audio_play_sound(snd, 1, loop)
+	var played_snd = audio_play_sound(snd, 1, loop, 0)
 	
 	return played_snd;
 }
 
 function scr_sound_pitched(snd, pitch_start = 0.95, pitch_end = 1.05)
 {
-	var g = 1
+	var g = 0
 	var played_snd = audio_play_sound(snd, 1, 0, g)
 	audio_sound_pitch(played_snd, random_range(pitch_start, pitch_end))
 	
@@ -16,7 +16,7 @@ function scr_sound_pitched(snd, pitch_start = 0.95, pitch_end = 1.05)
 
 function scr_sound_3d(snd, x, y, loop = false)
 {
-	var g = 1
+	var g = 0
 	
 	var played_snd = audio_play_sound_at(snd, x, y, 0, 
 		global.sound_3d.falloff_ref_dist,
@@ -44,7 +44,7 @@ function emitter_create_quick(x, y, follow_obj = noone, z = 0)
 
 function scr_sound_3d_on(emitter, snd, loop = false)
 {
-	var g = 1
+	var g = 0
 	
 	var played_snd = audio_play_sound_on(emitter, snd, loop, 1, g)
 	
@@ -53,7 +53,7 @@ function scr_sound_3d_on(emitter, snd, loop = false)
 
 function scr_sound_3d_pitched(snd, x, y, pitch_start = 0.95, pitch_end = 1.05, loop = false)
 {
-	var g = 1
+	var g = 0
 	
 	var played_snd = audio_play_sound_at(snd, x, y, 0, 
 		global.sound_3d.falloff_ref_dist,

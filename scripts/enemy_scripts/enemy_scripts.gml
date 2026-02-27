@@ -173,13 +173,13 @@ function do_enemy_generics()
 			sprite_index = sprs.stun
 			
 			shake_camera()
-			scr_sound_3d(sfx_punch, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
 			particle_create(x, y, particles.parry)
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index
-			alarm[0] = 2
+			alarm[0] = 3
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{

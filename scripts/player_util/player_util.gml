@@ -34,7 +34,7 @@ function do_grab()
 		input_buffers.grab = 0
 		if has_shotgun
 		{
-			scr_sound_3d(sfx_killenemy, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
 			scr_sound_3d(sfx_shotgunshot, x, y)
 			with create_effect(x, y, spr_guneffect)
 			    image_xscale = other.xscale
@@ -63,7 +63,7 @@ function do_grab()
 			reset_anim(spr_player_uppercut)
 			image_speed = 0.35
 			create_effect(x, y, spr_highjumpcloud2)
-			scr_sound_3d_pitched(sfx_uppercut, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/uppercut", x, y)
 		}
 	}
 }

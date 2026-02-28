@@ -552,6 +552,7 @@
     {"id":{"name":"bg","path":"sprites/bg/bg.yy",},},
     {"id":{"name":"bg2","path":"sprites/bg2/bg2.yy",},},
     {"id":{"name":"fg_tower","path":"sprites/fg_tower/fg_tower.yy",},},
+    {"id":{"name":"FMODLOL","path":"sprites/FMODLOL/FMODLOL.yy",},},
     {"id":{"name":"mask_bigcollect","path":"sprites/mask_bigcollect/mask_bigcollect.yy",},},
     {"id":{"name":"mask_collect","path":"sprites/mask_collect/mask_collect.yy",},},
     {"id":{"name":"mask_forkhitbox","path":"sprites/mask_forkhitbox/mask_forkhitbox.yy",},},

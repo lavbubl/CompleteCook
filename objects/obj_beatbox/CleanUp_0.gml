@@ -1,2 +1,2 @@
 particle_create(x, y, particles.genericpoof)
-audio_stop_sound(sfx_beatbox)
+fmod_studio_event_instance_stop(event_desc)

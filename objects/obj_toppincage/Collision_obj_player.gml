@@ -1,4 +1,4 @@
-scr_sound(sfx_collecttoppin)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collecttoppin", x, y)
 instance_destroy()
 
 with instance_create(x, y - 14, obj_toppincollected)

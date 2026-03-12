@@ -103,7 +103,7 @@ function do_vulnerability()
 					other.x = x
 					other.y = y
 				}
-				scr_sound_3d(sfx_killingblow, x, y)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", x, y)
 				hitstun = 5
 				vsp = 0
 				grav = 0

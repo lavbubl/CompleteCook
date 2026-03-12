@@ -26,9 +26,8 @@ var movev = -ui_input.up.pressed + ui_input.down.pressed
 
 if movev != 0
 {
-	var _p = 0.26
 	scr_sound(sfx_step)
-	scr_sound_pitched(sfx_ui_pausemove, 1 - _p, 1 + _p)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_pausemove")
 }
 
 optionselected = wrap(array_length(options), optionselected + movev)

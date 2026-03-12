@@ -7,8 +7,7 @@ other.sprite_index = spr_pizzaportalend
 other.visible = false
 other.state = states.actor
 
-scr_sound_3d(sfx_secretenter, x, y, false)
-scr_sound_3d(sfx_lapportal, x, y, false)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/lapport", x, y)
 
 global.score += 3000
 global.combo.timer = 60

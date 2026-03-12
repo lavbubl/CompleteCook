@@ -16,7 +16,8 @@ if timer <= 1 || ui_deny.pressed || (ui_accept.pressed && !confirm)
 		global.option_windowmode = prev_mode
 		event_user(0)
 	}
-	scr_sound(sfx_ui_back)
+	
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 	instance_destroy()
 }
 else if ui_accept.pressed

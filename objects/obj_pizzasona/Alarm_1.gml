@@ -1,7 +1,7 @@
 var _val = 10
 
 global.score += _val
-scr_sound_multiple(sfx_collect);
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collect", x, y);
 var c = {
 	sprite_index: asset_get_index($"spr_{choose("mushroom", "cheese", "pineapple", "sausage", "tomato")}collect"),
 	image_index: self.image_index,

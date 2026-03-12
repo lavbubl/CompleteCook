@@ -75,9 +75,9 @@ if isPanic
 		pinch_init = true
 		
 		var prevpos = audio_sound_get_track_position(panic_mu)
-		prevmu = scr_sound(audio_sound_get_asset(panic_mu), true)
+		/*prevmu = scr_sound(audio_sound_get_asset(panic_mu), true)
 		audio_sound_set_track_position(prevmu, prevpos)
-		audio_sound_gain(prevmu, 0, 2000)
+		audio_sound_gain(prevmu, 0, 2000)*/
 		
 		audio_stop_sound(panic_mu)
 		panic_mu = noone

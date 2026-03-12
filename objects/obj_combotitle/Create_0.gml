@@ -7,4 +7,4 @@ visible = hud_get_visible()
 x = 832
 y = 290
 very = false
-scr_sound(choose(sfx_comboup1, sfx_comboup2, sfx_comboup4))
+fmod_studio_event_instance_oneshot("event:/sfx/misc/combotitle")

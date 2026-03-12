@@ -18,7 +18,7 @@ if (place_meeting(x, y, obj_player) && available)
 			movespeed += 0.5
 	}
 	
-	scr_sound(sfx_dashpad)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/dashpad", x, y)
 	available = false
 	alarm[0] = 30
 }

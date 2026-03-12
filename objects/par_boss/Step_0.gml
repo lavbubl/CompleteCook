@@ -24,7 +24,7 @@ switch state
 		if scr_solid(x + xscale, y)
 		{
 			shake_camera()
-			scr_sound_3d(sfx_groundpound, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 			audio_stop_sound(sfx_peppermanrun)
 			particle_create(x, y, particles.bang)
 			hurtplayer = false

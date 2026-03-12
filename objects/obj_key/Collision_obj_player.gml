@@ -12,7 +12,7 @@ with other
 		other.visible = false
 		image_speed = 0.35
 		reset_anim(spr_player_keyget)
-		scr_sound(sfx_collecttoppin)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collecttoppin", x, y)
 	}
 	
 	if anim_ended()

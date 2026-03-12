@@ -112,7 +112,7 @@ function player_groundpound()
 			hsp = 0
 			movespeed = 0
 			shake_camera(5, 15 / room_speed)
-			scr_sound_3d(sfx_groundpound, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)
 			if freefallsmash >= 10
 			{

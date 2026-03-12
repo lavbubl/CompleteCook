@@ -17,7 +17,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	else
 	{
 		enterspr = spr_player_lookdoor
-		scr_sound(sfx_door)
+		fmod_studio_event_instance_oneshot("event:/sfx/misc/transition")
 		do_fade(t_room, t_door, fade_types.door)
 	}
 	

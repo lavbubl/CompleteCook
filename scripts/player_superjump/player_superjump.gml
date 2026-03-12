@@ -77,7 +77,7 @@ function player_superjump()
 			state = states.bump
 			shake_camera(10, 30 / room_speed)
 			reset_anim(spr_player_ceilinghit)
-			scr_sound_3d(sfx_groundpound, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 		}
 		
 		if (sprite_index != spr_player_Sjumpcancelstart)

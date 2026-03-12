@@ -24,7 +24,7 @@ back_ix = _back_arr[list_ix] //get matching back index
 
 if ui_input.deny.pressed
 {
-	scr_sound(sfx_ui_back)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 	if back_ix <= -1
 	{
 		instance_destroy()
@@ -43,8 +43,6 @@ if ui_input.deny.pressed
 		}
 	}
 }
-
-var snd_select = choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3)
 
 cur_list = list_arr[list_ix]
 
@@ -69,7 +67,7 @@ switch cur_option.o_type
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		break;
 	case types.slider:
@@ -85,7 +83,7 @@ switch cur_option.o_type
 		if ui_input.accept.pressed
 		{
 			cur_option.func(cur_option.val)
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		break;
 	case types.multichoice:
@@ -93,7 +91,7 @@ switch cur_option.o_type
 		if ui_input.accept.pressed
 		{
 			cur_option.val[0] += 1
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		if moveh != 0
 			scr_sound(sfx_step)
@@ -123,7 +121,7 @@ switch cur_option.o_type
 			
 			list_ix = cur_option.val
 			optionselected = 0
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		break;
 }

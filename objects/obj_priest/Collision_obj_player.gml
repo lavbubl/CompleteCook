@@ -35,13 +35,13 @@ if other.intransfo
 			array_push(obj_collect_got_visual.collects, c)
 		}
 		
-		scr_sound_multiple(sfx_collect)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collect", x, y)
 		instance_create(x, y, obj_collect_number).num = _val
 		
 		ds_list_add(global.ds_saveroom, id)
 	}
 	
 	instance_create(obj_camera.campos.x, obj_camera.campos.y - 100, obj_priest_angel)
-	scr_sound_3d(sfx_pray, x, y)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/pray", x, y)
 	reset_anim(spr_priest_pray)
 }

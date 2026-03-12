@@ -90,7 +90,7 @@ function player_jump()
 			image_index = 0
 			state = states.bump
 			shake_camera()
-			scr_sound_3d(sfx_groundpound, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)
 		}
 	}

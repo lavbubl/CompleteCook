@@ -1,1 +1,1 @@
-audio_emitter_free(emitter)
+fmod_studio_event_instance_stop(event_desc)

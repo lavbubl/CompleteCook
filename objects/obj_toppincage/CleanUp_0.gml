@@ -1,2 +1,1 @@
-if audio_exists(snd)
-	audio_stop_sound(snd)
+fmod_studio_event_instance_stop(event_desc)

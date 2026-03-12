@@ -195,7 +195,7 @@ function do_enemy_generics()
 			create_effect(x, y, spr_cloudeffect)
 			repeat 4
 				particle_create(x, y, particles.stars)
-			scr_sound_3d_pitched(sfx_bumpenemy, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/enemybump", x, y)
 		}
 		with obj_player
 		{
@@ -230,7 +230,7 @@ function do_enemy_generics()
 				jumpstop = true
 				
 				create_effect(x, bbox_bottom, spr_stompeffect)
-				scr_sound_3d(sfx_stompenemy, x, y)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/stomp", x, y)
 				with (other)
 				{
 					xscale = -obj_player.xscale

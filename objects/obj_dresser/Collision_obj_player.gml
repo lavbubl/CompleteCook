@@ -9,7 +9,7 @@ if other.input.up.pressed
 	
 	with obj_player
 	{
-		scr_sound_3d_pitched(sfx_clothesswitch, x, y, 0.9, 1.1)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/clothesswitch", x, y)
 		
 		with instance_create(x, y, obj_enemycorpse)
 		{

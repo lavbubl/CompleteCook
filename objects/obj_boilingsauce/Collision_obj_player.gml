@@ -3,7 +3,7 @@ if !audio_is_playing(v_peppinoscream)
 	scr_sound_pitched(v_peppinoscream)
 	scr_sound(sfx_fireass)
 }
-scr_sound(sfx_genericfire)
+fmod_studio_event_instance_oneshot("event:/sfx/misc/genericfire", x, y)
 	
 with other
 {

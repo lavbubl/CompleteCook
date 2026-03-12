@@ -17,7 +17,7 @@ function do_groundpound()
 		}
 		else
 		{
-			scr_sound_3d(sfx_killingblow, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", x, y)
 			scr_sound_3d(sfx_shotgunshot, x, y)
 			reset_anim(spr_player_shotgun_shootdown)
 			vsp = -11
@@ -106,7 +106,7 @@ function do_taunt()
 				global.level_data.tauntcount++
 				
 				array_push(obj_collect_got_visual.collects, c)
-				scr_sound_multiple(sfx_collect)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collect", x, y)
 				
 				with instance_create(x, y, obj_collect_number)
 					num = t_val
@@ -224,7 +224,7 @@ function do_hurt(obj = noone)
 		sprite_index = facing ? spr_player_hurt : spr_player_hurtbehind
 		
 		if (obj.object_index == obj_outlet || obj.object_index == obj_pizzardelectricity)
-			scr_sound_3d(sfx_electricity, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/electricity", x, y)
 	}
 	else
 		sprite_index = spr_player_hurt

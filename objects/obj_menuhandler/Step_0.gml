@@ -11,7 +11,7 @@ if menu_dark
 {
 	if keyboard_check_pressed(vk_anykey) && dark_state == 0
 	{
-		scr_sound(sfx_menulight)
+		fmod_studio_event_instance_oneshot("event:/sfx/misc/menulight")
 		audio_sound_loop_end(mu, audio_sound_length(mu_mainmenu))
 		alarm[1] = 80
 		alarm[2] = 50
@@ -81,8 +81,7 @@ for (var i = 0; i < array_length(tvs); i++)
 			{
 				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)
-				scr_sound(sfx_collectbig)
-				scr_sound(choose(sfx_fileselect1, sfx_fileselect2, sfx_fileselect3))
+				fmod_studio_event_instance_oneshot("event:/sfx/misc/fileselect", x, y)
 				audio_stop_sound(mu_mainmenu)
 				global.savefile = filename
 				state = 2
@@ -92,7 +91,7 @@ for (var i = 0; i < array_length(tvs); i++)
 					switch cur_selected
 					{
 						case 1:
-							sprite_index = spr_titlepep_left
+							sprite_icombondex = spr_titlepep_left
 							break;
 						case 2:
 							sprite_index = spr_titlepep_middle

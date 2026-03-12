@@ -50,7 +50,7 @@ function player_climbwall()
 	{
 		state = states.bump
 		reset_anim(spr_player_ceilinghit)
-		scr_sound_3d(sfx_groundpound, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 	}
 	
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)

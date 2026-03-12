@@ -5,7 +5,7 @@ with instance_place(x, y, obj_player)
 		shake_camera()
 		reset_anim(spr_player_timesup)
 		other.image_index = 1
-		scr_sound_3d(sfx_groundpound, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 		global.doorshut = true
 	}
 	else if (global.panic.active && input.up.check && grounded && scr_can_enter_door(state))

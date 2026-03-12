@@ -1,4 +1,4 @@
-audio_master_gain(window_has_focus() || !global.option_unfocus_mute ? global.option_master_volume : 0)
+fmod_studio_bus_set_volume(obj_fmodhandler.master_bus, window_has_focus() || !global.option_unfocus_mute ? global.option_master_volume : 0)
 
 gameframe_update()
 

@@ -32,9 +32,10 @@ if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accep
 		instance_activate_object(obj_pause_angel)
 		instance_activate_object(obj_screensizer)
 		instance_activate_object(obj_shakytext)
+		instance_activate_object(obj_fmodhandler) //god this sucks. why isnt it an array of objs to activate
 		if global.option_timerspeedrun
 			instance_activate_object(obj_timer)
-		audio_pause_all()
+		fmod_studio_bus_set_paused(master_bus, true)
 		var mu = scr_sound(mu_pause, true)
 		audio_sound_gain(mu, 0, 0)
 		audio_sound_gain(mu, 1, 1000)

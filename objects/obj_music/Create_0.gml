@@ -1,3 +1,5 @@
+fmod_studio_event_instance_oneshot("event:/music/pizzatime")
+
 RoomMusic = function(_room, _song, _iscontinuous, _secretmusic = mu_secret, _loopstart = noone, _loopend = noone) constructor
 {
 	room_number = _room

@@ -31,7 +31,7 @@ if (USE_FMOD_STUDIO)
 		FMOD Studio will create an initialize an underlying core system to work with.
 	*/
 	fmod_main_system = fmod_studio_system_get_core_system();
-	fmod_3d_attributes = fmod_studio_system_get_listener_attributes(0);
+	fmod_3d_attributes = fmod_studio_system_get_listener_attributes(0);  
 }
 // If we want to use FMOD Core only
 else
@@ -48,3 +48,5 @@ else
 	fmod_system_init(_max_channels, _flags_core)
 	show_debug_message("fmod_system_init: " + string(fmod_last_result()))
 }
+
+alarm[0] = 1

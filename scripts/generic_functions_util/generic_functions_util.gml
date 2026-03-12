@@ -166,9 +166,6 @@ function set_globals()
 	global.option_timerspeedrun = ini_read_real("options", "timerspeedrun", true)
 	ini_close()
 	
-	audio_group_set_gain(ag_music, global.option_music_volume)
-	audio_group_set_gain(ag_sfx, global.option_sfx_volume)
-	
 	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_escapesaveroom = ds_list_create()

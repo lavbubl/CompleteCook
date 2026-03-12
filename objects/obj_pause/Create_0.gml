@@ -39,6 +39,7 @@ pause_alpha = 0
 pause_image = spr_null
 optionselected = 0
 inputbuffer = 0
+master_bus = fmod_studio_system_get_bus("bus:/SFX")
 
 optiontypes = { //enum thats actually a struct
 	hub: 0, //options only in the hub menu (like MAIN MENU)
@@ -134,9 +135,5 @@ screen_assets = [
 	new create_pause_screen_asset(spr_pause_border, screen_w + 160, screen_h + 188, screen_w, screen_h, -1), //right border
 	new create_pause_screen_asset(spr_pause_vines, screen_w / 2, -117, screen_w / 2, 0), //vines
 ]
-
-audio_master_gain(global.option_master_volume)
-audio_group_set_gain(ag_sfx, global.option_sfx_volume, 0)
-audio_group_set_gain(ag_music, global.option_music_volume, 0)
 
 angel_timer = 240

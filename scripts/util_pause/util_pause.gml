@@ -27,7 +27,7 @@ function do_unpause()
 	if audio_is_playing(mu_pause)
 		audio_stop_sound(mu_pause)
 	instance_activate_all()
-	audio_resume_all()
+	fmod_studio_bus_set_paused(master_bus, false)
 	with obj_music
 	{
 		if (global.secret && secret_mu_to_play != noone)

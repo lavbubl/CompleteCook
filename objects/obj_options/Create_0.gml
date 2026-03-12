@@ -82,14 +82,14 @@ list_arr = [
 			function(_val) {
 				_val /= 100
 				global.option_music_volume = _val
-				audio_group_set_gain(ag_music, _val, 0)
+				fmod_studio_bus_set_volume(obj_fmodhandler.music_group, _val)
 				quick_ini_write_real("globalsave.ini", "options", "music_volume", _val)
 			}),
 		new add_option("SFX", types.slider, global.option_sfx_volume * 100,
 			function(_val) {
 				_val /= 100
 				global.option_sfx_volume = _val
-				audio_group_set_gain(ag_sfx, _val, 0)
+				fmod_studio_bus_set_volume(obj_fmodhandler.sfx_group, _val)
 				quick_ini_write_real("globalsave.ini", "options", "sfx_volume", _val)
 			}),
 		new add_option("UNFOCUSED MUTE", types.onoff, global.option_unfocus_mute, 

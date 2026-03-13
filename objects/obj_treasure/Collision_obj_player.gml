@@ -5,7 +5,7 @@ if !collected
 		state = states.actor
 		hsp = 0
 		vsp = 0
-		scr_sound(sfx_treasurefind)
+		fmod_studio_event_instance_oneshot_3d("event:/music/treasurefound", x, y)
 		other.x = x
 		other.y = y
 	}

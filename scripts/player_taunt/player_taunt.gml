@@ -10,7 +10,7 @@ function player_taunt()
 		if input.up.check && supertauntshow
 		{
 			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
-			scr_sound_3d(sfx_supertaunt, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/supertaunt", x, y)
 			var spds = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
 			var i = 0
 			var spd = 20

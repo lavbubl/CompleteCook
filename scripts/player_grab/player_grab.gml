@@ -18,7 +18,7 @@ function player_grab()
 		vsp = -11
 		state = states.mach2
 		reset_anim(spr_player_longjump)
-		scr_sound_3d_on(myemitter, sfx_rollgetup)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/rollgetup", x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
@@ -28,7 +28,7 @@ function player_grab()
 		crouchslipbuffer = 25
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
-		scr_sound_3d(sfx_dive, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	

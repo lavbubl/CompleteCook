@@ -75,7 +75,7 @@ function player_jump()
 		{
 			state = states.normal
 			reset_anim(movespeed < 1 ? default_land : default_landmove)
-			scr_sound_3d_pitched(sfx_step, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 			create_effect(x, y, spr_landeffect)
 			if input.dash.check
 			{

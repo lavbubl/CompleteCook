@@ -111,18 +111,20 @@ make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _
 	is_3d = _is_3d
 }
 
+my_3d_attributes = new Fmod3DAttributes()
+my_3d_attributes.forward.z = 1
+my_3d_attributes.up.y = 1
+
 loop_sounds = {
-	mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == spr_player_mach1;}),
-	mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == spr_player_mach2;}),
-	mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return obj_player.sprite_index != spr_player_crazyrun;}),
-	mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == spr_player_crazyrun;}),
-	climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
-	groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
-	piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != spr_player_piledriverland}),
-	superjumphold: new make_loop_sound(states.superjump, sfx_superjumphold, function() { return obj_player.sprite_index != spr_player_superjump && obj_player.sprite_index != spr_player_Sjumpcancelstart && obj_player.sprite_index != spr_player_presentboxspring}, 
+	groundpound: new make_loop_sound(states.groundpound, "event:/sfx/player/groundpound"),
+	piledriver: new make_loop_sound(states.piledriver, "event:/sfx/player/groundpound", function() { return obj_player.sprite_index != spr_player_piledriverland}),
+	superjumphold: new make_loop_sound(states.superjump, "event:/sfx/player/superjumphold", function() { return obj_player.sprite_index != spr_player_superjump && obj_player.sprite_index != spr_player_Sjumpcancelstart && obj_player.sprite_index != spr_player_presentboxspring}, 
 		[0.64, 1.84]),
-	ball: new make_loop_sound(states.ball, sfx_ballroll, function() { return obj_player.sprite_index != spr_player_ballend}),
+	ball: new make_loop_sound(states.ball, "event:/sfx/player/ball", function() { return obj_player.sprite_index != spr_player_ballend}),
 }
+
+var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //string path
+mach_snd = fmod_studio_event_description_create_instance(_mach_event_ref)
 
 visual_size = 1
 secret_exit = false

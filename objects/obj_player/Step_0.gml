@@ -158,7 +158,7 @@ if supertauntcount >= 10
 	supertauntcount = 10
 	if !supertauntshow
 	{
-		scr_sound(sfx_supertauntnotif)
+		fmod_studio_event_instance_oneshot("event:/sfx/player/supertauntnotif")
 		supertauntshow = true
 	}
 	

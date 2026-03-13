@@ -113,7 +113,7 @@ function do_scared()
 		scared_timer = 100
 		sprite_index = sprs.scared
 		if irandom(100) <= 5
-			scr_sound_3d_pitched(choose(v_rarescream1, v_rarescream2), x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/enemyrarescream", x, y)
 	}
 }
 
@@ -179,7 +179,7 @@ function do_enemy_generics()
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index
-			alarm[0] = 3
+			alarm[0] = 2
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{

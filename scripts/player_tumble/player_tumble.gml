@@ -6,7 +6,7 @@ function player_tumble() //ball is in its own state, player_ball()
 	{
 		vsp = 10
 		sprite_index = spr_player_dive
-		scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
 	}
 	else if grounded && sprite_index == spr_player_dive
 		reset_anim(spr_player_machroll)
@@ -66,7 +66,7 @@ function player_tumble() //ball is in its own state, player_ball()
 			else
 				state = states.mach2
 			reset_anim(spr_player_rollgetup)
-			scr_sound_3d_on(myemitter, sfx_rollgetup)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/rollgetup", x, y)
 		}
 		else
 		{

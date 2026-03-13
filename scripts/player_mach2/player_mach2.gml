@@ -17,7 +17,7 @@ function player_mach2()
 			{
 				reset_anim(spr_player_machslidestart)
 				state = states.slide
-				scr_sound_3d(sfx_break, x, y)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/break", x, y)
 			}
 		}
 		if (p_move != 0 && p_move != xscale && grounded)

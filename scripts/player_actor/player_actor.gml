@@ -10,7 +10,7 @@ function player_actor()
 			else
 			{
 				particle_timer = 14
-				scr_sound_3d_pitched(sfx_step, x, y)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 			}
 			break;
 		case spr_player_timesup:

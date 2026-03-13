@@ -9,5 +9,5 @@ with obj_player
 	particle_create(x, y, particles.parry)
 }
 
-scr_sound_pitched(sfx_parry)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/player/parry", x, y)
 instance_destroy()

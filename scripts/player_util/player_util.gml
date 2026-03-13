@@ -87,7 +87,7 @@ function do_taunt()
 			sprite_index = spr_player_taunt
 			image_index = random_range(0, image_number)
 			taunttimer = 20
-			scr_sound_3d_pitched(sfx_taunt, x, y, 0.94, 1.06)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/taunt", x, y)
 			instance_create(x, y, obj_parrybox)
 			
 			if (place_meeting(x, y, obj_exitgate) && global.panic.active && global.combo.timer > 0 && global.level_data.tauntcount <= 10)
@@ -115,7 +115,7 @@ function do_taunt()
 		else
 		{
 			taunttimer = 20
-			scr_sound_3d(sfx_supertaunt, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/supertaunt", x, y)
 			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
 			var spds = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
 			var i = 0
@@ -135,6 +135,9 @@ function do_taunt()
 
 function player_sounds()
 {	
+	my_3d_attributes.position.x = x
+	my_3d_attributes.position.y = y
+	
 	struct_foreach(loop_sounds, function(_name, _data)
 	{
 		var _id = obj_player
@@ -147,46 +150,55 @@ function player_sounds()
 		if (_id.state != _data.state) || _id.warping || hitstun > 0
 			do_play = false
 			
-		if _data.is_3d
-		{
-			if (_data.sndid == noone && do_play && _id.myemitter != noone)
-			{
-				_data.sndid = scr_sound_3d_on(_id.myemitter, _data.sound, true)
-				
-				if _data.looppoints != noone
-				{
-					audio_sound_loop_start(_data.sndid, _data.looppoints[0])
-					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
-				}
-			}
-			else if (_data.sndid != noone && !do_play)
-			{
-				audio_stop_sound(_data.sndid)
-				_data.sndid = noone
-			}
+		if do_play && _data.sndid == noone
+		{	
+			
+			var _event_ref = fmod_studio_system_get_event(_data.sound) //string path
+			_data.sndid = fmod_studio_event_description_create_instance(_event_ref)
+			fmod_studio_event_instance_start(_data.sndid)
+			fmod_studio_event_instance_release(_data.sndid)
+			show_debug_message(fmod_studio_event_instance_get_3d_attributes(_data.sndid))
 		}
-		else
+		
+		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_is_valid(_data.sndid)
+			fmod_studio_event_instance_set_3d_attributes(_data.sndid, _id.my_3d_attributes)
+		
+		if (_data.sndid != noone && !do_play)
 		{
-			if (_id.state == _data.state && do_play && _data.sndid == noone)
-			{
-				_data.sndid = scr_sound(_data.sound, true)
-				if struct_exists(_data, "looppoints")
-				{
-					audio_sound_loop_start(_data.sndid, _data.looppoints[0])
-					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
-				}
-			}
-			else if (_data.sndid != noone && !do_play)
-			{
-				audio_stop_sound(_data.sndid)
-				_data.sndid = noone
-			}
+			fmod_studio_event_instance_stop(_data.sndid, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+			_data.sndid = noone
 		}
+		
 	})
 	
 	if (state != states.grab)
 		audio_stop_sound(sfx_suplexdash)
+	
+	#region mach
+	
+	var _mach_states_arr = [states.mach2, states.mach3, states.climbwall]
+	
+	if array_contains(_mach_states_arr, state) && !(state == states.mach2 && (!grounded || sprite_index == spr_player_rollgetup)) && hitstun < 0
+	{
+		if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING && fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STARTING
+			fmod_studio_event_instance_start(mach_snd)
 		
+		var _mach_ix = 1
+		
+		if sprite_index == spr_player_crazyrun
+			_mach_ix = 3
+		else if state == states.mach3
+			_mach_ix = 2
+		else if sprite_index == spr_player_mach1
+			_mach_ix = 0
+		
+		fmod_studio_event_instance_set_parameter_by_name(mach_snd, "mach", _mach_ix)
+		fmod_studio_event_instance_set_3d_attributes(mach_snd, my_3d_attributes)
+	}
+	else if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STOPPED
+		fmod_studio_event_instance_stop(mach_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+	
+	#endregion
 }
 
 function decrease_score(val)
@@ -234,9 +246,9 @@ function do_hurt(obj = noone)
 	vsp = -12
 	i_frames = 100
 	
-	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/player/hurt", x, y)
 	if irandom(100) >= 50
-		scr_sound_pitched(choose(v_pep_hurt, v_pep_hurt2), 0.7, 1.3)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/player/hurt", x, y)
 	
 	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)

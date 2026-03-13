@@ -1,3 +1,6 @@
+fmod_studio_bus_set_volume(pause_bus_music, global.option_music_volume)
+fmod_studio_bus_set_volume(pause_bus_sfx, global.option_sfx_volume)
+
 if !pause || room == mainmenu
 	exit;
 else if instance_exists(obj_shell)

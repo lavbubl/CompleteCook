@@ -126,6 +126,20 @@ loop_sounds = {
 var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //string path
 mach_snd = fmod_studio_event_description_create_instance(_mach_event_ref)
 
+var _machslideboost_event_ref = fmod_studio_system_get_event("event:/sfx/player/machslideboost")
+machslideboost_snd = fmod_studio_event_description_create_instance(_machslideboost_event_ref)
+
+var _grab_event_ref = fmod_studio_system_get_event("event:/sfx/player/suplexdash")
+grab_snd = fmod_studio_event_description_create_instance(_grab_event_ref)
+
+var _getup_event_ref = fmod_studio_system_get_event("event:/sfx/player/rollgetup")
+getup_snd = fmod_studio_event_description_create_instance(_getup_event_ref)
+
+var _sjumprelease_event_ref = fmod_studio_system_get_event("event:/sfx/player/superjumprelease")
+sjumprelease_snd = fmod_studio_event_description_create_instance(_sjumprelease_event_ref)
+
+followingsnds = [mach_snd, machslideboost_snd, grab_snd, getup_snd, sjumprelease_snd] //what am i doing
+
 visual_size = 1
 secret_exit = false
 secret_cutscene = false

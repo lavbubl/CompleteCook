@@ -66,7 +66,7 @@ function player_tumble() //ball is in its own state, player_ball()
 			else
 				state = states.mach2
 			reset_anim(spr_player_rollgetup)
-			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/rollgetup", x, y)
+			fmod_studio_event_instance_start(getup_snd)
 		}
 		else
 		{

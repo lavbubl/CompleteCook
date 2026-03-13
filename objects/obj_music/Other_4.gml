@@ -1,13 +1,15 @@
 var isPanic = global.panic.active;
 	
 if (global.secret && secret_mu_to_play != noone)
-{	
-	secret_mu = scr_sound(secret_mu_to_play, true)
+{
+	var _secret_event_ref = fmod_studio_system_get_event(secret_mu_to_play)
+	secret_mu = fmod_studio_event_description_create_instance(_secret_event_ref)
+	fmod_studio_event_instance_start(secret_mu)
 	
 	if !isPanic && mu != noone
 	{
-		var t_pos = wrap(audio_sound_length(secret_mu_to_play), audio_sound_get_track_position(mu))
-		audio_sound_set_track_position(secret_mu, t_pos)
+		var t_pos = wrap(fmod_studio_event_description_get_length(_secret_event_ref), fmod_studio_event_instance_get_timeline_position(mu))
+		fmod_studio_event_instance_set_timeline_position(secret_mu, t_pos)
 	}
 	
 	pauseIDS(true);
@@ -16,11 +18,11 @@ else
 {
 	if secret_mu != noone
 	{
-		audio_stop_sound(secret_mu);
+		fmod_studio_event_instance_release(secret_mu)
+		fmod_studio_event_instance_stop(secret_mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 		secret_mu = noone;
 		
-		//emulate the slight pause fmod does in pizza tower
-		alarm[1] = 15
+		pauseIDS(false);
 	}
 	
 	if !isPanic
@@ -29,44 +31,19 @@ else
 		{
 			var currentSong = levelsongs[i]; 
 			
-			var soundId = noone
-			if mu != noone
-				soundId = audio_sound_get_asset(mu);
-	
-			if (soundId != currentSong.song && room == currentSong.room_number)
+			if prev_mu_path != currentSong.song && room == currentSong.room_number
 			{
-				var prevLength = 0;
-				var prevPos = noone;
 				if mu != noone
 				{
-					if currentSong.iscontinuous
-					{
-						prevPos = audio_sound_get_track_position(mu);
-						prevLength = audio_sound_length(soundId);
-						
-						// emulate fading the old song out and fading the new song in
-						prevmu = scr_sound(soundId, true);
-						audio_sound_set_track_position(prevmu, prevPos);
-						audio_sound_gain(prevmu, 0, 2000);
-					}
-					audio_stop_sound(mu);
+					fmod_studio_event_instance_release(mu)
+					fmod_studio_event_instance_stop(mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT);
 				}
 				
-				mu = scr_sound(currentSong.song, true);
+				var _event_ref = fmod_studio_system_get_event(currentSong.song)
+				mu = fmod_studio_event_description_create_instance(_event_ref)
+				fmod_studio_event_instance_start(mu)
 				
-				audio_sound_gain(mu, prevLength ? 0 : 1, 0); // make it quiet so it can fade in
-				if prevLength
-				{
-					audio_sound_set_track_position(mu, wrap(prevLength, prevPos));
-					// emulate fading the old song out and fading the new song in
-					audio_sound_gain(mu, 1, 2000);
-				}
-				
-				if currentSong.loopstart != noone
-					audio_sound_loop_start(mu, currentSong.loopstart)
-				
-				if currentSong.loopend != noone
-					audio_sound_loop_end(mu, currentSong.loopend)
+				prev_mu_path = currentSong.song
 				
 				secret_mu_to_play = currentSong.secretmusic
 				
@@ -76,9 +53,9 @@ else
 
 		if instance_exists(obj_pillar)
 		{
-			pillar_mu = scr_sound(mu_pillar, true)
-			audio_sound_gain(pillar_mu, 0, 0)
+			var _pillar_event_ref = fmod_studio_system_get_event("event:/music/pillar")
+			pillar_mu = fmod_studio_event_description_create_instance(_pillar_event_ref)
+			fmod_studio_event_instance_start(pillar_mu)
 		}
 	}
 }
-//now the definitions are kinda fucky but now it works with constructors

@@ -25,7 +25,7 @@ function player_jump()
 		reset_anim(default_jump)
 		jumpstop = false
 		create_effect(x, y - 5, spr_highjumpcloud2)
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 	
 	hsp = movespeed * xscale

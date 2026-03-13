@@ -73,7 +73,7 @@ function player_climbwall()
 		vsp = -11
 		xscale *= -1
 		jumpstop = false
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 	
 	if (particle_timer > 0)

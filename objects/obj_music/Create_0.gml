@@ -29,9 +29,9 @@ pauseIDS = function(pause = true)
 		if variableAttempt != noone
 		{
 			if pause
-				audio_pause_sound(variableAttempt);
+				fmod_studio_event_instance_set_paused(variableAttempt, true);
 			else
-				audio_resume_sound(variableAttempt);		
+				fmod_studio_event_instance_set_paused(variableAttempt, false);		
 		}
 	}
 }
@@ -47,3 +47,4 @@ panic_music_initiated = false
 pinch_init = false
 lap2 = false
 lap2_init = false
+prev_mu_path = ""

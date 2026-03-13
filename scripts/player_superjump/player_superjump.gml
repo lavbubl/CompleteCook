@@ -50,7 +50,7 @@ function player_superjump()
 	{
 		vsp = -11 //its -12, but -11 makes it *feel* more like the original
 		sprite_index = spr_player_superjump
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/superjumprelease", x, y)
+		fmod_studio_event_instance_start(sjumprelease_snd)
 		create_effect(x, y, spr_superjumpexplosion)
 	}
 	
@@ -87,8 +87,8 @@ function player_superjump()
 		{
 			input_buffers.grab = 0
 			reset_anim(spr_player_Sjumpcancelstart)
+			fmod_studio_event_instance_stop(sjumprelease_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/superjumpcancel", x, y)
-			audio_stop_sound(sfx_superjumprelease)
 		}
 		
 		aftimg_timers.blur.do_it = true

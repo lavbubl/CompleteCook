@@ -35,10 +35,11 @@ if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accep
 		instance_activate_object(obj_fmodhandler) //god this sucks. why isnt it an array of objs to activate
 		if global.option_timerspeedrun
 			instance_activate_object(obj_timer)
-		fmod_studio_bus_set_paused(master_bus, true)
-		var mu = scr_sound(mu_pause, true)
-		audio_sound_gain(mu, 0, 0)
-		audio_sound_gain(mu, 1, 1000)
+		for (var i = 0; i < array_length(buses); i++)
+		{
+			fmod_studio_bus_set_paused(buses[i], true)
+		}
+		fmod_studio_event_instance_start(pause_music)
 		cursor.x = -60
 		cursor.y = -300
 		options = []

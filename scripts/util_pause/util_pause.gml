@@ -24,10 +24,12 @@ function do_unpause()
 {
 	pause = false
 	optionselected = 0
-	if audio_is_playing(mu_pause)
-		audio_stop_sound(mu_pause)
+	fmod_studio_event_instance_stop(pause_music, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 	instance_activate_all()
-	fmod_studio_bus_set_paused(master_bus, false)
+	for (var i = 0; i < array_length(buses); i++)
+	{
+		fmod_studio_bus_set_paused(buses[i], false)
+	}
 	with obj_music
 	{
 		if (global.secret && secret_mu_to_play != noone)

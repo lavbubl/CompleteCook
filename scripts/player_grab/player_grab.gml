@@ -18,7 +18,7 @@ function player_grab()
 		vsp = -11
 		state = states.mach2
 		reset_anim(spr_player_longjump)
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/rollgetup", x, y)
+		fmod_studio_event_instance_start(getup_snd)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	

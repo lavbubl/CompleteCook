@@ -52,7 +52,7 @@ function do_grab()
 				movespeed = 8
 			state = states.grab
 			reset_anim(spr_player_suplexdash)
-			scr_sound_3d_on(myemitter, sfx_suplexdash)
+			fmod_studio_event_instance_start(grab_snd)
 			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
 		else
@@ -149,7 +149,7 @@ function player_sounds()
 		
 		if (_id.state != _data.state) || _id.warping || hitstun > 0
 			do_play = false
-			
+		
 		if do_play && _data.sndid == noone
 		{	
 			
@@ -157,7 +157,6 @@ function player_sounds()
 			_data.sndid = fmod_studio_event_description_create_instance(_event_ref)
 			fmod_studio_event_instance_start(_data.sndid)
 			fmod_studio_event_instance_release(_data.sndid)
-			show_debug_message(fmod_studio_event_instance_get_3d_attributes(_data.sndid))
 		}
 		
 		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_is_valid(_data.sndid)
@@ -171,8 +170,8 @@ function player_sounds()
 		
 	})
 	
-	if (state != states.grab)
-		audio_stop_sound(sfx_suplexdash)
+	if state != states.grab
+		fmod_studio_event_instance_stop(grab_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 	
 	#region mach
 	
@@ -199,6 +198,14 @@ function player_sounds()
 		fmod_studio_event_instance_stop(mach_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 	
 	#endregion
+	
+	var _arr_len = array_length(followingsnds)
+	
+	for (var i = 0; i < _arr_len; i++)
+	{
+	    var _cur_snd = followingsnds[i]
+		fmod_studio_event_instance_set_3d_attributes(_cur_snd, my_3d_attributes)
+	}
 }
 
 function decrease_score(val)

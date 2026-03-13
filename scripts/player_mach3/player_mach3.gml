@@ -14,7 +14,7 @@ function player_mach3()
 		vsp = -11
 		jumpstop = false
 		reset_anim(spr_player_mach3jump)
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
@@ -63,7 +63,7 @@ function player_mach3()
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
-			scr_sound_3d_on(myemitter, sfx_machslideboost)
+			fmod_studio_event_instance_start(machslideboost_snd)
 		}
 		
 		if (movespeed < 20 && p_move == xscale)

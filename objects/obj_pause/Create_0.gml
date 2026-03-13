@@ -39,7 +39,12 @@ pause_alpha = 0
 pause_image = spr_null
 optionselected = 0
 inputbuffer = 0
-master_bus = fmod_studio_system_get_bus("bus:/SFX")
+buses = [obj_fmodhandler.music_group, obj_fmodhandler.sfx_group]
+pause_bus_music = fmod_studio_system_get_bus("bus:/Pause/Music")
+pause_bus_sfx = fmod_studio_system_get_bus("bus:/Pause/SFX")
+
+var _event_ref = fmod_studio_system_get_event("event:/music/pause")
+pause_music = fmod_studio_event_description_create_instance(_event_ref)
 
 optiontypes = { //enum thats actually a struct
 	hub: 0, //options only in the hub menu (like MAIN MENU)

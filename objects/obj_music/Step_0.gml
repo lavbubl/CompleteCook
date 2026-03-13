@@ -35,7 +35,7 @@ if !isPanic
 	if panic_mu != noone
 	{
 		fmod_studio_event_instance_release(panic_mu)
-		fmod_studio_event_instance_stop(panic_mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT);
+		fmod_studio_event_instance_stop(panic_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 		panic_mu = noone;
 	}
 	
@@ -57,7 +57,7 @@ if isPanic
 		mu = noone
 		var _panic_event_ref = fmod_studio_system_get_event("event:/music/pizzatime")
 		panic_mu = fmod_studio_event_description_create_instance(_panic_event_ref)
-		fmod_studio_event_instance_start(event_desc)
+		fmod_studio_event_instance_start(panic_mu)
 	}
 	
 	if global.panic.timer < pinch_point && !pinch_init && !lap2
@@ -68,8 +68,6 @@ if isPanic
 	
 	if (lap2 && !lap2_init)
 	{
-		var prevpos = 0
-		
 		if panic_mu != noone
 		{
 			fmod_studio_event_instance_release(panic_mu)
@@ -77,12 +75,9 @@ if isPanic
 			panic_mu = noone
 		}
 		
-		panic_mu = scr_sound(mu_lap2, true)
-		audio_sound_loop_start(panic_mu, 22.48)
-		audio_sound_loop_end(panic_mu, 171.40)
-
-		audio_sound_gain(panic_mu, 0, 0)
-		audio_sound_gain(panic_mu, 1, 1500)
+		var _panic_event_ref = fmod_studio_system_get_event("event:/music/lap2")
+		panic_mu = fmod_studio_event_description_create_instance(_panic_event_ref)
+		fmod_studio_event_instance_start(panic_mu)
 		
 		lap2_init = true
 	}

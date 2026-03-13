@@ -8,7 +8,7 @@ function player_swingding()
 	if floor(image_index) == 0 && particle_timer == 0
 	{
 		particle_timer = 5
-		scr_sound_3d(sfx_spin, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/spin", x, y)
 	}
 	else
 		particle_timer = max(particle_timer - 1, 0)

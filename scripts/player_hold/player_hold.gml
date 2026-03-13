@@ -33,7 +33,7 @@ function player_hold()
 		input_buffers.jump = 0
 		vsp = -12
 		jumpstop = false
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 		
 	if p_move != 0

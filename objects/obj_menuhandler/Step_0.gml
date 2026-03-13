@@ -12,10 +12,9 @@ if menu_dark
 	if keyboard_check_pressed(vk_anykey) && dark_state == 0
 	{
 		fmod_studio_event_instance_oneshot("event:/sfx/misc/menulight")
-		audio_sound_loop_end(mu, audio_sound_length(mu_mainmenu))
 		alarm[1] = 80
 		alarm[2] = 50
-		alarm[3] = 20 //forced to do to recreate fmod event
+		fmod_studio_event_instance_set_parameter_by_name(mu, "lightson", true)
 		dark_state = 1
 	}
 	exit;
@@ -59,19 +58,22 @@ for (var i = 0; i < array_length(tvs); i++)
 					buffer = 25
 					image_index = 0
 					sprite_index = sprs.whitenoise
-					audio_sound_gain(other.static_snd, 1, 0)
+					fmod_studio_event_instance_set_volume(other.static_snd, 1)
 					scr_sound(sfx_step)
 					break;
 				case 1:
 					var _image_number = sprite_get_number(sprite_index)
-					if (save_exists) {
-						if (floor(image_index) == _image_number - 1) {
+					if save_exists
+					{
+						if (floor(image_index) == _image_number - 1) 
+						{
 							state++
 							reset_anim(sprs.selected)
-							audio_sound_gain(other.static_snd, 0, 0)
+							fmod_studio_event_instance_set_volume(other.static_snd, 0)
 						}
 					}
-					else {
+					else
+					{
 						if (floor(image_index) == _image_number - 1)
 							image_index = 2
 					}
@@ -79,10 +81,10 @@ for (var i = 0; i < array_length(tvs); i++)
 			}
 			if other.input.accept.pressed && other.state == 0 && abletoinput
 			{
-				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)
-				fmod_studio_event_instance_oneshot("event:/sfx/misc/fileselect", x, y)
-				audio_stop_sound(mu_mainmenu)
+				fmod_studio_event_instance_oneshot("event:/sfx/misc/fileselect")
+				fmod_studio_event_instance_stop(other.mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+				fmod_studio_event_instance_stop(other.static_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 				global.savefile = filename
 				state = 2
 				

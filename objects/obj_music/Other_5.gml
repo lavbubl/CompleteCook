@@ -1,5 +1,5 @@
 if pillar_mu != noone
 {
-	audio_stop_sound(pillar_mu)
+	fmod_studio_event_instance_stop(pillar_mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT);
 	pillar_mu = noone
 }

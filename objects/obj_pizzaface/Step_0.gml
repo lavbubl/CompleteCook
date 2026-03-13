@@ -51,9 +51,9 @@ if (_move && place_meeting(x, y, playerid) && playerid.state != states.actor && 
 		image_index = 0
 		global.secret = false
 		if obj_music.mu != noone
-			audio_stop_sound(obj_music.mu)
+			fmod_studio_event_instance_stop(obj_music.mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 		if obj_music.secret_mu != noone
-			audio_stop_sound(obj_music.secret_mu)
+			fmod_studio_event_instance_stop(obj_music.secret_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 		fmod_studio_event_instance_oneshot_3d("event:/music/timesupsfx", x, y)
 		scr_sound(mu_timesup)
 	}

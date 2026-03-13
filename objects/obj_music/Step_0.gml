@@ -14,23 +14,14 @@ with obj_pillar
 
 if !isPanic
 {
-	/*if instance_exists(obj_pillar)
+	if instance_exists(obj_pillar)
 	{
-		if pillar_visible
-		{
-			if mu != noone
-				audio_sound_gain(mu, 0, 2000);
-			if pillar_mu != noone
-				audio_sound_gain(pillar_mu, 1, 1000);
-		}
-		else
-		{
-			if mu != noone
-				audio_sound_gain(mu, 1, 2000);
-			if pillar_mu != noone
-				audio_sound_gain(pillar_mu, 0, 1000);
-		}
-	}*/
+		pillar_volume = approach(pillar_volume, pillar_visible, 0.01)
+		if mu != noone
+			fmod_studio_event_instance_set_volume(mu, 1 - pillar_volume); //inverse, muted when pillar_volume is 1
+		if pillar_mu != noone
+			fmod_studio_event_instance_set_volume(pillar_mu, pillar_volume);
+	}
 	
 	if panic_mu != noone
 	{

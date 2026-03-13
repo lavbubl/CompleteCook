@@ -47,4 +47,5 @@ panic_music_initiated = false
 pinch_init = false
 lap2 = false
 lap2_init = false
+pillar_volume = 0
 prev_mu_path = ""

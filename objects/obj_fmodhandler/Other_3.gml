@@ -1,1 +1,2 @@
 fmod_studio_system_unload_all()
+fmod_studio_bus_stop_all_events(master_bus, FMOD_STUDIO_STOP_MODE.IMMEDIATE)

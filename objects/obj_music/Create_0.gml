@@ -1,20 +1,15 @@
-fmod_studio_event_instance_oneshot("event:/music/pizzatime")
-
-RoomMusic = function(_room, _song, _iscontinuous, _secretmusic = mu_secret, _loopstart = noone, _loopend = noone) constructor
+RoomMusic = function(_room, _song, _secretmusic = "event:/music/entrancesecret") constructor
 {
 	room_number = _room
 	song = _song
-	iscontinuous = _iscontinuous
 	secretmusic = _secretmusic
-	loopstart = _loopstart
-	loopend = _loopend
 }
 
 levelsongs = 
 [
-	new RoomMusic(tower_1, mu_hub, false, mu_secret, 2.1, 153.68),
-	new RoomMusic(entrance_1, mu_entrance, false, mu_entrance_secret, 51.18, 212.58),
-	new RoomMusic(boss_test, mu_pepperman, false)
+	new RoomMusic(tower_1, "event:/music/hub"),
+	new RoomMusic(entrance_1, "event:/music/entrance", "event:/music/entrancesecret"),
+	new RoomMusic(boss_test, "event:/music/pepperman")
 ]
 
 pauseIDS = function(pause = true)

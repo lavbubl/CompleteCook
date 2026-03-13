@@ -54,9 +54,7 @@ if (_move && place_meeting(x, y, playerid) && playerid.state != states.actor && 
 			audio_stop_sound(obj_music.mu)
 		if obj_music.secret_mu != noone
 			audio_stop_sound(obj_music.secret_mu)
-		fmod_studio_event_instance_oneshot("event:/sfx/misc/explosion")
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/timesupsfx", x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/music/timesupsfx", x, y)
 		scr_sound(mu_timesup)
 	}
 	

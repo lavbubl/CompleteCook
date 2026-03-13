@@ -22,6 +22,7 @@ global.doorshut = false
 fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
 fmod_studio_event_instance_oneshot("event:/sfx/misc/pillarimpact")
 fmod_studio_event_instance_oneshot("event:/sfx/misc/escaperumble")
+
 particle_create(x, y, particles.bang)
 repeat (3)
 {

@@ -109,7 +109,11 @@
     {"$GMFolder":"","%Name":"Tower","folderPath":"folders/Tile Sets/Tower.yy","name":"Tower","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "ForcedPrefabProjectReferences":[],
+  "ForcedPrefabProjectReferences":[
+    {"link":"io.gamemaker.gm_filter_ripples-1.0.0","name":"io.gamemaker.gm_filter_ripples-1.0.0","path":"io.gamemaker.gm_filter_ripples-1.0.0.yyp",},
+    {"link":"io.gamemaker.gm_filter_parallax-1.0.0","name":"io.gamemaker.gm_filter_parallax-1.0.0","path":"io.gamemaker.gm_filter_parallax-1.0.0.yyp",},
+    {"link":"io.gamemaker.gm_filter_heathaze-1.0.0","name":"io.gamemaker.gm_filter_heathaze-1.0.0","path":"io.gamemaker.gm_filter_heathaze-1.0.0.yyp",},
+  ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"gameframe.html","CopyToMask":-1,"filePath":"datafiles","name":"gameframe.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Master.bank","CopyToMask":-1,"filePath":"datafiles","name":"Master.bank","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -281,6 +285,7 @@
     {"id":{"name":"par_enemy","path":"objects/par_enemy/par_enemy.yy",},},
     {"id":{"name":"boss_test","path":"rooms/boss_test/boss_test.yy",},},
     {"id":{"name":"depth_test","path":"rooms/depth_test/depth_test.yy",},},
+    {"id":{"name":"enemy_extreme_mass","path":"rooms/enemy_extreme_mass/enemy_extreme_mass.yy",},},
     {"id":{"name":"entrance_1","path":"rooms/entrance_1/entrance_1.yy",},},
     {"id":{"name":"entrance_10","path":"rooms/entrance_10/entrance_10.yy",},},
     {"id":{"name":"entrance_2","path":"rooms/entrance_2/entrance_2.yy",},},
@@ -1158,6 +1163,7 @@
     {"roomId":{"name":"entrance_secret3","path":"rooms/entrance_secret3/entrance_secret3.yy",},},
     {"roomId":{"name":"entrance_secret1","path":"rooms/entrance_secret1/entrance_secret1.yy",},},
     {"roomId":{"name":"tile_test","path":"rooms/tile_test/tile_test.yy",},},
+    {"roomId":{"name":"enemy_extreme_mass","path":"rooms/enemy_extreme_mass/enemy_extreme_mass.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

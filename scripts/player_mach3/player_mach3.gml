@@ -63,7 +63,7 @@ function player_mach3()
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
-			fmod_studio_event_instance_start(machslideboost_snd)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboost", x, y)
 		}
 		
 		if (movespeed < 20 && p_move == xscale)

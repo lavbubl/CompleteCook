@@ -43,8 +43,8 @@ if isPanic
 	{
 		panic_music_initiated = true
 		fmod_studio_event_instance_release(mu)
-		fmod_studio_event_instance_stop(mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT);
-		fmod_studio_event_instance_stop(pillar_mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT);
+		fmod_studio_event_instance_stop(mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+		fmod_studio_event_instance_stop(pillar_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 		mu = noone
 		var _panic_event_ref = fmod_studio_system_get_event("event:/music/pizzatime")
 		panic_mu = fmod_studio_event_description_create_instance(_panic_event_ref)

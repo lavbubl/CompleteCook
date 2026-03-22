@@ -192,7 +192,6 @@ function player_sounds()
 			_mach_ix = 0
 		
 		fmod_studio_event_instance_set_parameter_by_name(mach_snd, "mach", _mach_ix)
-		fmod_studio_event_instance_set_3d_attributes(mach_snd, my_3d_attributes)
 	}
 	else if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STOPPED
 		fmod_studio_event_instance_stop(mach_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)

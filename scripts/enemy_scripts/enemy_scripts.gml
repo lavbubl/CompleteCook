@@ -191,6 +191,7 @@ function do_enemy_generics()
 			stun_timer = 180
 			obj_player.hitstun = 1
 			obj_player.prev_ix = obj_player.image_index
+			obj_player.image_speed = 0
 			particle_create(x, y, particles.bang)
 			create_effect(x, y, spr_cloudeffect)
 			repeat 4

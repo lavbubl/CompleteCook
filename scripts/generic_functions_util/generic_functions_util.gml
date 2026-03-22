@@ -357,6 +357,16 @@ function reset_level()
 		tauntcount: 0,
 		boss_name: "dummy"
 	}
+	if obj_music.mu != noone
+	{
+		fmod_studio_event_instance_stop(obj_music.mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
+		obj_music.mu = noone
+	}
+	if obj_music.secret_mu != noone
+	{
+		fmod_studio_event_instance_stop(obj_music.secret_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
+		obj_music.secret_mu = noone
+	}
 }
 
 function quick_ini_write_real(inistr, section, key, value)

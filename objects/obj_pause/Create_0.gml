@@ -60,10 +60,6 @@ baseoptions = [
 	}),
 	new create_pause_option("MAIN MENU",		optiontypes.hub,	3, function() {
 		do_unpause()
-		if obj_music.mu != noone
-			fmod_studio_event_instance_stop(obj_music.mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
-		if obj_music.secret_mu != noone
-			fmod_studio_event_instance_stop(obj_music.secret_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 		room_goto(mainmenu)
 		with obj_player
 		{
@@ -78,10 +74,6 @@ baseoptions = [
 	}),
 	new create_pause_option("RESTART LEVEL",	optiontypes.level,	2, function() {
 		do_unpause()
-		if obj_music.mu != noone
-			fmod_studio_event_instance_start(obj_music.mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE) //restart
-		if obj_music.secret_mu != noone
-			fmod_studio_event_instance_stop(obj_music.secret_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 		if global.start_room != noone
 		{
 			room_goto(global.start_room)
@@ -102,10 +94,6 @@ baseoptions = [
 	new create_pause_option("CHEF TASKS",		optiontypes.level,	8),
 	new create_pause_option("EXIT LEVEL",		optiontypes.level,	3, function() {
 		do_unpause()
-		if obj_music.mu != noone
-			fmod_studio_event_instance_stop(obj_music.mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
-		if obj_music.secret_mu != noone
-			fmod_studio_event_instance_stop(obj_music.secret_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 		with obj_player
 		{
 			spawn = noone

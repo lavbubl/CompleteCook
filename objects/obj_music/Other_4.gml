@@ -31,7 +31,7 @@ else
 		{
 			var currentSong = levelsongs[i];
 			
-			if (prev_mu_path != currentSong.song) && room == currentSong.room_number
+			if (prev_mu_path != currentSong.song || mu == noone) && room == currentSong.room_number
 			{
 				if mu != noone
 				{

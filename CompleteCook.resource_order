@@ -227,6 +227,7 @@
     {"name":"par_collision","order":6,"path":"objects/par_collision/par_collision.yy",},
     {"name":"boss_test","order":12,"path":"rooms/boss_test/boss_test.yy",},
     {"name":"depth_test","order":13,"path":"rooms/depth_test/depth_test.yy",},
+    {"name":"enemy_extreme_mass","order":16,"path":"rooms/enemy_extreme_mass/enemy_extreme_mass.yy",},
     {"name":"entrance_10","order":10,"path":"rooms/entrance_10/entrance_10.yy",},
     {"name":"entrance_2","order":1,"path":"rooms/entrance_2/entrance_2.yy",},
     {"name":"entrance_3","order":2,"path":"rooms/entrance_3/entrance_3.yy",},

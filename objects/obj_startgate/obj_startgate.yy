@@ -42,7 +42,7 @@
     {"$GMObjectProperty":"v2","%Name":"speed_array","filters":[],"listItems":[],"multiselect":false,"name":"speed_array","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[0.65, 0.75, 0.85]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"title_data","filters":[
         "GMSound",
-      ],"listItems":[],"multiselect":false,"name":"title_data","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[mu_title_john, 0, 0]","varType":4,},
+      ],"listItems":[],"multiselect":false,"name":"title_data","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[\"event:/music/titlecards/entrance\", 0, 0]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"rank_scores","filters":[],"listItems":[],"multiselect":false,"name":"rank_scores","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[16000, 8000, 4000, 2000]","varType":4,},
   ],
   "resourceType":"GMObject",

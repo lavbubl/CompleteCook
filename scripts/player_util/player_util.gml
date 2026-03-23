@@ -18,7 +18,7 @@ function do_groundpound()
 		else
 		{
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", x, y)
-			scr_sound_3d(sfx_shotgunshot, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/shotgunshot", x, y)
 			reset_anim(spr_player_shotgun_shootdown)
 			vsp = -11
 			with instance_create(x, y, obj_shotgunblast)
@@ -35,7 +35,7 @@ function do_grab()
 		if has_shotgun
 		{
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
-			scr_sound_3d(sfx_shotgunshot, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/shotgunshot", x, y)
 			with create_effect(x, y, spr_guneffect)
 			    image_xscale = other.xscale
 			state = states.shotgunshoot

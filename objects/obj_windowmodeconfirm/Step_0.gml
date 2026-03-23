@@ -6,7 +6,7 @@ right.update(global.keybinds.ui_right)
 if left.pressed || right.pressed
 {
 	confirm = !confirm
-	scr_sound(sfx_step)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 }
 
 if timer <= 1 || ui_deny.pressed || (ui_accept.pressed && !confirm)
@@ -22,7 +22,7 @@ if timer <= 1 || ui_deny.pressed || (ui_accept.pressed && !confirm)
 }
 else if ui_accept.pressed
 {
-	scr_sound(choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3))
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 	instance_destroy()
 }
 else

@@ -113,7 +113,7 @@ if state == states.ball
 
 if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the transfo youre changed to.
 {
-	scr_sound_3d(intransfo ? sfx_transfo : sfx_outtransfo, x, y)
+	fmod_studio_event_instance_oneshot_3d($"event:/sfx/player/{intransfo ? "transfo" : "outtransfo"}", x, y)
 	prev_transfo = intransfo
 }
 

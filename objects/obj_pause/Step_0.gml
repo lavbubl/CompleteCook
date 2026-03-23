@@ -29,7 +29,7 @@ var movev = -ui_input.up.pressed + ui_input.down.pressed
 
 if movev != 0
 {
-	scr_sound(sfx_step)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_pausemove")
 }
 

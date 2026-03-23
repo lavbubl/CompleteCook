@@ -59,7 +59,7 @@ for (var i = 0; i < array_length(tvs); i++)
 					image_index = 0
 					sprite_index = sprs.whitenoise
 					fmod_studio_event_instance_set_volume(other.static_snd, 1)
-					scr_sound(sfx_step)
+					fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 					break;
 				case 1:
 					var _image_number = sprite_get_number(sprite_index)

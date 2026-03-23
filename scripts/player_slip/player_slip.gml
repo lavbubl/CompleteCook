@@ -13,7 +13,7 @@ function player_slip()
 		{
 			sprite_index = spr_player_slipbanana1;
 			image_index = 3
-			scr_sound_3d(sfx_slip, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/slip", x, y)
 		}
 		if anim_ended() && abs(hsp) <= 2
 			state = states.normal
@@ -25,7 +25,7 @@ function player_slip()
 			sprite_index = spr_player_slipbanana2;
 			image_index = 0;
 			image_speed = 0.35;
-			scr_sound_3d(choose(sfx_slipend1, sfx_slipend2, sfx_slipend3), x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/slipend", x, y)
 		}
 		else
 		{
@@ -33,7 +33,7 @@ function player_slip()
 			movespeed = approach(movespeed, 0, 3)
 			sprite_index = spr_player_rockethitwall
 			particle_create(x, y + 43, particles.bang)
-			scr_sound_3d(asset_get_index($"sfx_sliphit{irandom_range(1, 8)}"), x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/sliphit", x, y)
 		}
 	}
 	if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_destroyable)
@@ -41,7 +41,7 @@ function player_slip()
 		xscale *= -1
 		sleep(1)
 		particle_create(x + 30, y, particles.bang)
-		scr_sound_3d(asset_get_index($"sfx_sliphit{irandom_range(1, 8)}"), x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/sliphit", x, y)
 		if sprite_index == spr_player_slipbanana1
 			movespeed = approach(movespeed, 0, 3)
 		sprite_index = spr_player_rockethitwall

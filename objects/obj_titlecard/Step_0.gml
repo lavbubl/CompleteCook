@@ -7,7 +7,7 @@ if state == 0
 		state++
 		alarm[0] = 190
 		if music != noone
-			scr_sound(music)
+			fmod_studio_event_instance_oneshot(music)
 	}
 }
 else

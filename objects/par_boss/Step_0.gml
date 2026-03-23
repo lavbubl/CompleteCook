@@ -71,11 +71,6 @@ for (var i = 0; i < ds_list_size(en_list); i++) {
 	}
 }
 
-if vulnerable && !audio_is_playing(sfx_vulnerable)
-	scr_sound(sfx_vulnerable, true)
-else if !vulnerable && audio_is_playing(sfx_vulnerable)
-	audio_stop_sound(sfx_vulnerable)
-
 ds_list_destroy(en_list)
 break_destroyables()
 collide()

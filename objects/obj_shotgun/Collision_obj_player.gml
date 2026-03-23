@@ -1,7 +1,7 @@
 if other.state == states.grab || other.state == states.punch
 {
-	fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/breametalkblock", x, y)
-	scr_sound_3d(sfx_shotgunload, x, y)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/breakblock", x, y)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/player/shotgunload", x, y)
 	with other
 	{
 		reset_anim(spr_player_shotgun_pickup)

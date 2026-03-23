@@ -50,6 +50,19 @@ else
 				break;
 			}
 		}
+		
+		if mu != noone
+		{
+			var _s = noone
+			for (var i = 0; i < array_length(levelmusicstates); i++) 
+			{
+				var currentState = levelmusicstates[i];
+				if room == currentState[0]
+					_s = currentState[1]
+			}
+			if _s != noone
+				fmod_studio_event_instance_set_parameter_by_name(mu, "music_state", _s)
+		}
 
 		if instance_exists(obj_pillar)
 		{

@@ -84,8 +84,7 @@ function player_grab()
 	{
 		if !grounded
 		{
-			var _snd = scr_sound_3d(sfx_rollgetup, x, y)
-			audio_sound_set_track_position(_snd, 0.4)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/grabcancel", x, y)
 			reset_anim(spr_player_suplexcancel)
 			state = states.jump
 		}

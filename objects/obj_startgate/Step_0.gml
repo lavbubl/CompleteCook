@@ -28,7 +28,7 @@ if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && k
 	}
 	
 	if obj_music.mu != noone
-		audio_sound_gain(obj_music.mu, 0, 2000)
+		fmod_studio_event_instance_stop(obj_music.mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 }
 
 var flick = false

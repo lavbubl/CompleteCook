@@ -1,4 +1,4 @@
-RoomMusic = function(_room, _song, _secretmusic = "event:/music/entrancesecret") constructor
+RoomMusic = function(_room, _song, _secretmusic = "event:/music/medievalsecret") constructor
 {
 	room_number = _room
 	song = _song
@@ -9,7 +9,14 @@ levelsongs =
 [
 	new RoomMusic(tower_1, "event:/music/hub"),
 	new RoomMusic(entrance_1, "event:/music/entrance", "event:/music/entrancesecret"),
+	new RoomMusic(dm_1, "event:/music/medieval"),
 	new RoomMusic(boss_test, "event:/music/pepperman")
+]
+
+levelmusicstates = 
+[
+	[dm_1, 0], //set music_state to 0 at room dm_1
+	[dm_2, 1], //set music_state to 1 at room dm_2
 ]
 
 pauseIDS = function(pause = true)

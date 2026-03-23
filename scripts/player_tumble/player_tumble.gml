@@ -38,7 +38,7 @@ function player_tumble() //ball is in its own state, player_ball()
 		movespeed = 0
 		state = states.bump
 		reset_anim(spr_player_wallsplat)
-		scr_sound_3d(sfx_splat, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/splat", x, y)
 	}
 	
 	if (grounded && vsp > 0)

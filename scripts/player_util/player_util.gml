@@ -280,7 +280,7 @@ function do_hurt(obj = noone)
 					spr_sausagecollect, 
 					spr_pineapplecollect
 				)
-			
+				
 				with create_debris(x, y, spr)
 				{
 					hsp = random_range(-10, 10)

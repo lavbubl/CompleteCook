@@ -21,7 +21,7 @@ function tv_expression(spr)
 			alarm[0] = 120
 			expr_sprite = spr
 			if spr == spr_tv_collect && irandom(100) >= 50
-				scr_sound_pitched(choose(v_pep_shuk, v_pep_paranoid, v_pep_paParanoid), 0.9, 1.1)
+				fmod_studio_event_instance_oneshot("event:/sfx/voice/player/collect")
 			break;
 		default:
 			state_togo = tv_states.expr

@@ -102,7 +102,7 @@ function player_mach2()
 	{
 		state = states.bump
 		reset_anim(spr_player_wallsplat)
-		scr_sound_3d(sfx_splat, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/splat", x, y)
 	}
 	
 	do_grab()

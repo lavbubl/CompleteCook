@@ -55,7 +55,7 @@ function player_grab()
 		hsp = 0
 		movespeed = 0
 		vsp = -5
-		scr_sound_3d(sfx_splat, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/splat", x, y)
 		create_effect(x + (16 * xscale), y, spr_bumpeffect)
 	}
 	

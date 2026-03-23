@@ -135,7 +135,10 @@ getup_snd = fmod_studio_event_description_create_instance(_getup_event_ref)
 var _sjumprelease_event_ref = fmod_studio_system_get_event("event:/sfx/player/superjumprelease")
 sjumprelease_snd = fmod_studio_event_description_create_instance(_sjumprelease_event_ref)
 
-followingsnds = [mach_snd, grab_snd, getup_snd, sjumprelease_snd] //what am i doing
+var _fireass_event_ref = fmod_studio_system_get_event("event:/sfx/player/fireass")
+fireass_snd = fmod_studio_event_description_create_instance(_fireass_event_ref)
+
+followingsnds = [mach_snd, grab_snd, getup_snd, sjumprelease_snd, fireass_snd] //what am i doing
 
 visual_size = 1
 secret_exit = false

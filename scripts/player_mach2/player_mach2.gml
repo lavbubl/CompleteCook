@@ -5,7 +5,7 @@ function player_mach2()
 	if (grounded && vsp >= 0)
 	{
 		if sprite_index == spr_playerN_spincancel
-			scr_sound_3d(sfx_N_machland, x, y)
+			//scr_sound_3d(sfx_N_machland, x, y)
 		if sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup
 			sprite_index = spr_player_mach2
 		if (!input.dash.check)
@@ -33,7 +33,10 @@ function player_mach2()
 			{
 				reset_anim(spr_player_machslideboost)
 				state = states.slide
-				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboost", x, y)
+				if obj_player.character == characters.peppino
+					fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboost", x, y)
+				else
+					fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboostN", x, y)
 			}
 		}
 		if movespeed < 12
@@ -119,7 +122,7 @@ function player_mach2()
 			wallbouncedampen += 2.55
 			state = states.wallbounce
 			sprite_index = spr_playerN_wallbounce
-			scr_sound_3d(sfx_N_wallkick, x, y)
+			//scr_sound_3d(sfx_N_wallkick, x, y)
 			particle_create(x, y, particles.noisebump)
 		}
 	}

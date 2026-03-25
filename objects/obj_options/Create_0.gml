@@ -67,7 +67,7 @@ list_arr = [
 			function(_val) {
 				if file_exists("globalsave.ini")
 					file_delete("globalsave.ini")
-				scr_sound(sfx_enemyprojectile)
+				//scr_sound(sfx_enemyprojectile)
 			})*/
 	],
 	[ //1 audio

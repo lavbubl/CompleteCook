@@ -1,6 +1,6 @@
 var isPanic = global.panic.active;
 
-levelsongs[1].song = (obj_player.character == characters.noise ? mu_entranceN : mu_entrance)
+levelsongs[1].song = (obj_player.character == characters.noise ? "event:/music/entranceN" : "event:/music/entrance")
 
 if (global.secret && secret_mu_to_play != noone)
 {

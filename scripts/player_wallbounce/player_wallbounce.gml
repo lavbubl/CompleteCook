@@ -23,7 +23,7 @@ function player_wallbounce()
 	else if vsp >= 0
 	{
 		flash = 8
-		scr_sound_3d(sfx_N_machland, x, y)
+		//scr_sound_3d(sfx_N_machland, x, y)
 		particle_create(x, y, particles.noisebump)
 		with create_effect(x, y, spr_crazyruneffect)
 		{
@@ -51,8 +51,8 @@ function player_wallbounce()
 	
 	do_taunt()
 	
-	if state != states.wallbounce
-		audio_stop_sound(sfx_N_wallkick)
+	//if state != states.wallbounce
+		//audio_stop_sound(sfx_N_wallkick)
 	
 	aftimg_timers.noise.do_it = true
 }

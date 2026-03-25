@@ -152,7 +152,7 @@ loop_sounds = {
 machNsnd = noone
 machNgroundsnd = noone
 
-var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //string path
+var _mach_event_ref = (obj_player.character == characters.noise ?  fmod_studio_system_get_event("event:/sfx/player/machN") : fmod_studio_system_get_event("event:/sfx/player/mach")) //string path
 mach_snd = fmod_studio_event_description_create_instance(_mach_event_ref)
 
 var _grab_event_ref = fmod_studio_system_get_event("event:/sfx/player/suplexdash")

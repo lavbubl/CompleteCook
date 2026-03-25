@@ -40,7 +40,7 @@ if abletoinput
 	{
 		char_offset = input.up.pressed ? -2 : 2
 		alarm[4] = 10
-		scr_sound(input.up.pressed ? sfx_box_1 : sfx_box_2)
+		//scr_sound(input.up.pressed ? sfx_box_1 : sfx_box_2)
 		with obj_player
 		{
 			if character == characters.peppino

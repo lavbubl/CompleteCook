@@ -46,7 +46,7 @@ if isPanic
 		fmod_studio_event_instance_stop(mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 		fmod_studio_event_instance_stop(pillar_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 		mu = noone
-		var _panic_event_ref = fmod_studio_system_get_event("event:/music/pizzatime")
+		var _panic_event_ref = (obj_player.character == characters.noise ?  fmod_studio_system_get_event("event:/music/pizzatimeN") : fmod_studio_system_get_event("event:/music/pizzatime"))
 		panic_mu = fmod_studio_event_description_create_instance(_panic_event_ref)
 		fmod_studio_event_instance_start(panic_mu)
 	}
@@ -66,7 +66,7 @@ if isPanic
 			panic_mu = noone
 		}
 		
-		var _panic_event_ref = fmod_studio_system_get_event("event:/music/lap2")
+		var _panic_event_ref = (obj_player.character == characters.noise ?  fmod_studio_system_get_event("event:/music/lap2N") : fmod_studio_system_get_event("event:/music/lap2"))
 		panic_mu = fmod_studio_event_description_create_instance(_panic_event_ref)
 		fmod_studio_event_instance_start(panic_mu)
 		

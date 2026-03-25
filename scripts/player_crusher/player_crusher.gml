@@ -45,7 +45,7 @@ function player_crusher()
 		}
 		
 		shake_camera(10, 30 / room_speed)
-		scr_sound_3d(sfx_groundpound, x, y)
+		//scr_sound_3d(sfx_groundpound, x, y)
 		reset_anim(spr_playerN_crusherland)
 	}
 	

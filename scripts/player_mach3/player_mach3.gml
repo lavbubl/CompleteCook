@@ -63,7 +63,10 @@ function player_mach3()
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
-			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboost", x, y)
+			if obj_player.character == characters.peppino
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboost", x, y)
+			else
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboostN", x, y)
 		}
 		
 		if (movespeed < 20 && p_move == xscale)
@@ -121,7 +124,7 @@ function player_mach3()
 			wallbouncedampen += 2.55
 			state = states.wallbounce
 			sprite_index = spr_playerN_wallbounce
-			scr_sound_3d(sfx_N_wallkick, x, y)
+			//scr_sound_3d(sfx_N_wallkick, x, y)
 			particle_create(x, y, particles.noisebump)
 		}
 	}

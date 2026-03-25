@@ -25,7 +25,7 @@ switch state
 		{
 			shake_camera()
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
-			audio_stop_sound(sfx_peppermanrun)
+			//audio_stop_sound(sfx_peppermanrun)
 			particle_create(x, y, particles.bang)
 			hurtplayer = false
 			stun_timer = 120

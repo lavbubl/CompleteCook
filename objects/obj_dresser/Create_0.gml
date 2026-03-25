@@ -1,3 +1,4 @@
+
 make_clothes_inst = function(_name, _desc, _pal_ix, _pattern = noone) constructor
 {
 	name = _name
@@ -131,5 +132,3 @@ switch obj_player.pal_select
 //hopefully theres a better way to map these
 
 alph = 0
-
-

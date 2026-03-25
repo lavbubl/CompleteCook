@@ -4,6 +4,8 @@ pal_swap_set(pal_combo, global.combo.wasted ? 1 : 2, false)
 draw_sprite(spr_tv_c_ghost, combo.ghost.image_index, x + combo.ghost.x, y + combo.ghost.y + 117)
 pal_swap_reset()
 
+if obj_player.character == characters.noise
+	pal_swap_set(pal_combobubble, 1, false)
 draw_sprite(spr_tv_c_bubble, 0, x + combo.x, y + combo.y + 117)
 
 var _tx = x + combo.x - 64
@@ -22,6 +24,7 @@ for (var i = num; i > 0; i--)
 	_tx -= 22
 	_ty -= 8
 }
+pal_swap_reset()
 
 draw_sprite(spr_tv_bg, 0, x, y)
 

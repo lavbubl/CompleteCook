@@ -28,8 +28,8 @@ function do_crusher()
 		state = states.crusher
 		input_buffers.jump = 0
 		vsp = -16
-		audio_stop_sound(sfx_N_crusher)
-		scr_sound_3d_on(myemitter, sfx_N_crusher)
+		//audio_stop_sound(sfx_N_crusher)
+		//scr_sound_3d_on(myemitter, sfx_N_crusher)
 		reset_anim(spr_playerN_crusher)
 	}
 }

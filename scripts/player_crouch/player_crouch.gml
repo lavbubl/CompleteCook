@@ -45,7 +45,7 @@ function player_crouch()
 		{
 			input_buffers.jump = 0
 			vsp = -8
-			scr_sound_3d(sfx_jump, x, y)
+			//scr_sound_3d(sfx_jump, x, y)
 		}
 	}
 	

@@ -548,21 +548,4 @@ function asset_player_reset(_letter)
 		spr_player_hurtjump = spr_playerN_jump
 		spr_player_machfreefall = spr_playerN_fall
 	}
-	
-	loop_sounds = {
-		mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == obj_player.spr_player_mach1 && obj_player.character == characters.peppino;}),
-		mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == obj_player.spr_player_mach2 && obj_player.character == characters.peppino;}),
-		mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return obj_player.sprite_index != obj_player.spr_player_crazyrun && obj_player.character == characters.peppino;}),
-		mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == obj_player.spr_player_crazyrun && obj_player.character == characters.peppino;}),
-		climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
-		groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
-		piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != obj_player.spr_player_piledriverland}),
-		superjumphold: new make_loop_sound(states.superjump, sfx_superjumphold, function() { return obj_player.sprite_index != obj_player.spr_player_superjump && obj_player.sprite_index != obj_player.spr_player_Sjumpcancelstart && obj_player.sprite_index != obj_player.spr_player_presentboxspring}, 
-			[0.64, 1.84]),
-		ball: new make_loop_sound(states.ball, sfx_ballroll, function() { return obj_player.sprite_index != obj_player.spr_player_ballend}),
-		spincancel: new make_loop_sound(states.mach2, sfx_N_airspin, function() { return obj_player.sprite_index == spr_playerN_spincancel;}),
-		wallbounce: new make_loop_sound(states.wallbounce, sfx_N_wallbounce),
-		tornadofast: new make_loop_sound(states.divebomb, sfx_N_tornadofast, function() { return obj_player.sprite_index == spr_playerN_divebombfall}),
-		tornadoslow: new make_loop_sound(states.divebomb, sfx_N_tornadoslow, function() { return obj_player.sprite_index != spr_playerN_divebombfall}),
-	}
 }

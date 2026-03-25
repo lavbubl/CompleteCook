@@ -29,7 +29,10 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 				{
 					var _pal = obj_player.pal_spr
 					var _tex = sprite_get_texture(_pal, 0)
-					quick_shader_set_uniform_f(shd_afterimage_noise, "pixel_x", obj_player.pal_select / sprite_get_width(_pal))
+					if obj_player.pal_select >= 12
+						quick_shader_set_uniform_f(shd_afterimage_noise, "pixel_x", (obj_player.pal_select) / sprite_get_width(_pal))
+					else
+						quick_shader_set_uniform_f(shd_afterimage_noise, "pixel_x", (obj_player.pal_select + 1) / sprite_get_width(_pal))
 					quick_shader_set_uniform_f(shd_afterimage_noise, "pixel_y", 1 / sprite_get_height(_pal))
 					texture_set_stage(shader_get_sampler_index(shd_afterimage_noise, "color_source"), _tex);
 				}

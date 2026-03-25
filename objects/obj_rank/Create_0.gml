@@ -7,12 +7,12 @@ depth = -8
 rank_score = 0
 rank_ix = 0
 rank_data = [
-	{sprite: spr_rankD},
-	{sprite: spr_rankC},
-	{sprite: spr_rankB},
-	{sprite: spr_rankA},
-	{sprite: spr_rankS},
-	{sprite: spr_rankP}
+	{sprite: asset_player_get("D", obj_player.charletter, "spr_rank")},
+	{sprite: asset_player_get("C", obj_player.charletter, "spr_rank")},
+	{sprite: asset_player_get("B", obj_player.charletter, "spr_rank")},
+	{sprite: asset_player_get("A", obj_player.charletter, "spr_rank")},
+	{sprite: asset_player_get("S", obj_player.charletter, "spr_rank")},
+	{sprite: asset_player_get("P", obj_player.charletter, "spr_rank")}
 ]
 
 sprite_index = obj_player.spr_player_lookdoor

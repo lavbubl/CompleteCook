@@ -4,9 +4,20 @@ function player_tumble() //ball is in its own state, player_ball()
 	
 	if !grounded 
 	{
-		vsp = 10
-		sprite_index = spr_player_dive
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
+		if character == characters.peppino && sprite_index != spr_player_dive
+		{
+			vsp = 10
+			sprite_index = spr_player_dive
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
+		}
+		else if character == characters.noise
+		{
+			movespeed = hsp
+			state = states.divebomb
+			vsp = 20
+			sprite_index = spr_playerN_divebombfall
+			exit;
+		}
 	}
 	else if grounded && sprite_index == spr_player_dive
 		reset_anim(spr_player_machroll)

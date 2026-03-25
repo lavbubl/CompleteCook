@@ -1,6 +1,12 @@
 // player related macros
 #macro p_move (-input.left.check + input.right.check)
 
+enum characters
+{
+	peppino,
+	noise
+}
+
 // initialize input
 input =
 {
@@ -53,8 +59,27 @@ player_states[states.fireass] = player_fireass;
 player_states[states.shotgunshoot] = player_shotgunshoot;
 player_states[states.ball] = player_ball;
 player_states[states.slip] = player_slip;
+player_states[states.divebomb] = player_divebomb;
+player_states[states.wallbounce] = player_wallbounce;
+player_states[states.crusher] = player_crusher;
 
 #endregion
+
+make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _is_3d = true) constructor
+{
+	state = _state
+	sound = _sound
+	sndid = noone
+	func = _func
+	looppoints = _looppoints
+	is_3d = _is_3d
+}
+
+character = characters.noise
+charletter = "N"
+pal_select = 1
+pattern_spr = pat_pizza
+asset_player_reset(charletter)
 
 spawn = "a"
 door_type = fade_types.none
@@ -68,11 +93,13 @@ xscale = 1
 jumpstop = false
 mach4mode = false
 wallspeed = 0
+wallbouncedampen = 0
 flash = 0
 
 aftimg_timers = {
 	mach: {timer: 0, effect: after_images.mach, resetpoint: 5, do_it: false},
-	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false}
+	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false},
+	noise: {timer: 0, effect: after_images.noise, resetpoint: 5, do_it: false}
 }
 
 /*ptcl_timers = {
@@ -122,6 +149,8 @@ loop_sounds = {
 		[0.64, 1.84]),
 	ball: new make_loop_sound(states.ball, "event:/sfx/player/ball", function() { return obj_player.sprite_index != spr_player_ballend}),
 }
+machNsnd = noone
+machNgroundsnd = noone
 
 var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //string path
 mach_snd = fmod_studio_event_description_create_instance(_mach_event_ref)
@@ -155,9 +184,6 @@ hasgerome = false
 fallingtimer = 0
 
 depth = -75
-
-pal_select = 1
-pattern_spr = pat_pizza
 
 input_buffers = {
 	jump: 0,

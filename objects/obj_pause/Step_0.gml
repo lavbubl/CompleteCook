@@ -19,7 +19,7 @@ else if inputbuffer > 0
 	inputbuffer--
 	exit;
 }
-	
+
 ui_input.up.update(global.keybinds.ui_up);
 ui_input.down.update(global.keybinds.ui_down);
 ui_input.accept.update(global.keybinds.ui_accept);

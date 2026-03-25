@@ -3,6 +3,7 @@ collide_init()
 vsp = -11
 depth = -5
 alarm[0] = 10
+sprite_index = asset_get_index("spr_beatbox" + obj_player.charletter)
 
 particle_create(x, y, particles.genericpoof)
 fmod_studio_event_instance_oneshot_3d("event:/sfx/player/breakdance", x, y)

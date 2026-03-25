@@ -45,7 +45,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 				break;
 			case particles.machcharge:
 				x = target.x
-				if target.sprite_index = spr_player_Sjumpcancel
+				if target.sprite_index = obj_player.spr_player_Sjumpcancel
 					x += 10 * target.xscale
 				y = target.y
 				image_xscale = target.xscale
@@ -59,7 +59,9 @@ for (var p = 0; p < array_length(particle_list); p++)
 					array_delete(other.particle_list, p, 1)
 				break;
 			default:
-				if anim_ended()
+				x += hsp
+				y += vsp
+				if anim_ended(image_index, image_number + image_speed)
 					array_delete(other.particle_list, p, 1)
 				break;
 		}

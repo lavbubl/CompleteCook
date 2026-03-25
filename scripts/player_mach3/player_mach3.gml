@@ -105,13 +105,24 @@ function player_mach3()
 	
 	if ((!grounded || scr_slope(x, y + 1)) && scr_hitwall(x + xscale, y))
 	{
+		if character == characters.peppino
 		{
 			wallspeed = movespeed
-			if (movespeed < 1)
+			if movespeed < 1
 				wallspeed = 1
 			else
 				movespeed = wallspeed
 			state = states.climbwall
+		}
+		else if character == characters.noise && !scr_goupwall()
+		{
+			movespeed = 0
+			vsp = -17 + wallbouncedampen
+			wallbouncedampen += 2.55
+			state = states.wallbounce
+			sprite_index = spr_playerN_wallbounce
+			scr_sound_3d(sfx_N_wallkick, x, y)
+			particle_create(x, y, particles.noisebump)
 		}
 	}
 	else if grounded && scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_metalblock)
@@ -150,6 +161,9 @@ function player_mach3()
 			reset_anim_on_end(spr_player_mach3)
 			break;
 	}
+	
+	if character == characters.noise
+		do_crusher()
 	
 	do_taunt()
 	

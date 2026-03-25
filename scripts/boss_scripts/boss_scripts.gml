@@ -62,7 +62,7 @@ function do_vulnerability()
 	{
 		if obj_player.instakill || obj_player.state == states.grab
 		{
-			with (obj_player)
+			with obj_player
 			{
 				if (state == states.mach3)
 					reset_anim(spr_player_mach3hit)

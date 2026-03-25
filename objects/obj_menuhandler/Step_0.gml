@@ -1,6 +1,8 @@
 // update input
 input.left.update(global.keybinds.ui_left);
 input.right.update(global.keybinds.ui_right);
+input.up.update(global.keybinds.ui_up);
+input.down.update(global.keybinds.ui_down);
 input.grab.update(global.keybinds.grab);
 input.accept.update(global.keybinds.ui_accept);
 input.deny.update(special_keybind_deny);
@@ -34,6 +36,32 @@ if abletoinput
 		instance_create(0, 0, obj_options)
 	else if input.grab.pressed
 		instance_create(0, 0, obj_quitgame)
+	if input.up.pressed || input.down.pressed
+	{
+		char_offset = input.up.pressed ? -2 : 2
+		alarm[4] = 10
+		scr_sound(input.up.pressed ? sfx_box_1 : sfx_box_2)
+		with obj_player
+		{
+			if character == characters.peppino
+			{
+				character = characters.noise
+				charletter = "N"
+			}
+			else if character == characters.noise
+			{
+				character = characters.peppino
+				charletter = "P"
+			}
+			asset_player_reset(charletter)
+			with obj_tv
+			{
+				asset_tv_reset(other.charletter)
+				state = states.normal
+				sprite_index = spr_tv_idle
+			}
+		}
+	}
 }
 else
 	obj_menupeppino.painless = true

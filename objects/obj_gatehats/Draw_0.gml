@@ -9,9 +9,9 @@ for (var i = 0; i < array_length(hats_arr); i++)
 	if i < hats
 	{
 		var y2 = y1 + hats_arr[i][1];
-		if obj_player.pal_select == 12
-			pattern_draw(sprite_index, image_index, x1, y2, obj_player.pattern_spr, 1, 1, 0, c_white, image_alpha)
-		pal_swap_set(pal_peppino, obj_player.pal_select, false)
+		if obj_player.pal_select == 12 || obj_player.pal_select >= 20
+			pattern_draw(sprite_index, image_index, x1, y2, obj_player.pattern_spr, obj_player.pattern_colors, 1, 1, 0, c_white, image_alpha)
+		pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
 		draw_sprite_ext(sprite_index, image_index, x1, y2, 1, 1, 0, c_white, image_alpha);
 	}
 	xx++;

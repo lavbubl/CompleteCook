@@ -43,9 +43,22 @@ function player_grab()
 	
 	if (scr_hitwall(x + xscale, y) && !grounded)
 	{
-		wallspeed = 6
-		grabclimbbuffer = 10
-		state = states.climbwall
+		if character == characters.peppino
+		{
+			wallspeed = 6
+			grabclimbbuffer = 10
+			state = states.climbwall
+		}
+		else if character == characters.noise && !scr_goupwall()
+		{
+			movespeed = 0
+			vsp = -17 + wallbouncedampen
+			wallbouncedampen += 2.55
+			state = states.wallbounce
+			sprite_index = spr_playerN_wallbounce
+			scr_sound_3d(sfx_N_wallkick, x, y)
+			particle_create(x, y, particles.noisebump)
+		}
 	}
 	else if (scr_hitwall(x + xscale, y) && grounded)
 	{

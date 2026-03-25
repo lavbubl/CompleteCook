@@ -26,7 +26,7 @@ switch (state)
 			sprite_index = spr_tv_highcombo
 		else if global.combo.count >= 3
 			sprite_index = spr_tv_combo
-		else if sprite_index != spr_tv_idleangry && sprite_index != spr_tv_idlelook
+		else if sprite_index != spr_tv_idle1 && sprite_index != spr_tv_idle2
 			sprite_index = spr_tv_idle
 		
 		tv_do_transfos(p.state)
@@ -36,10 +36,10 @@ switch (state)
 		else if sprite_index == spr_tv_idle
 		{
 			idletimer = 240
-			reset_anim(choose(spr_tv_idleangry, spr_tv_idlelook))
+			reset_anim(choose(spr_tv_idle1, spr_tv_idle2))
 		}
 		
-		if anim_ended() && (sprite_index == spr_tv_idleangry || sprite_index == spr_tv_idlelook)
+		if anim_ended() && (sprite_index == spr_tv_idle1 || sprite_index == spr_tv_idle2)
 			sprite_index = spr_tv_idle
 		
 		if p.state == states.mach3
@@ -63,7 +63,7 @@ switch (state)
 		switch (sprite_index)
 		{
 			case spr_tv_mach3:
-				if (p.state != states.mach3 && p.state != states.climbwall && p.sprite_index != spr_player_machslideboost3)
+				if (p.state != states.mach3 && p.state != states.climbwall && p.sprite_index != p.spr_player_machslideboost3)
 					tv_expression(spr_tv_idle)
 				if (abs(obj_player.hsp) >= 16 && p.state == states.mach3)
 					tv_expression(spr_tv_mach4)

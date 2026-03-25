@@ -36,7 +36,10 @@ struct_foreach(aftimg_timers, function(_name, _data)
 
 
 if grounded
+{
 	coyote_time = 10
+	wallbouncedampen = 0
+}
 else if vsp < 0
 	coyote_time = 0
 
@@ -139,7 +142,7 @@ break_destroyables()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {
-	if (_data.timer > 0)
+	if _data.timer > 0
 		_data.timer--
 	else if _data.do_it
 	{

@@ -2,7 +2,8 @@ enum after_images
 {
 	mach,
 	blur,
-	solid_color
+	solid_color,
+	noise
 }
 
 aftimg_list = []

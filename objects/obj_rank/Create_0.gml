@@ -15,6 +15,8 @@ rank_data = [
 	{sprite: spr_rankP}
 ]
 
+sprite_index = obj_player.spr_player_lookdoor
+
 t_ystart = screen_h + 216
 var x_start = screen_w - 437
 var offset = 89

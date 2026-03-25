@@ -100,7 +100,7 @@ function do_scared()
 {
 	if scared_timer > 0
 		scared_timer--
-	else if (obj_player.state == states.mach3 || obj_player.sprite_index == spr_player_swingding) && abs(x - obj_player.x) < 400 && abs(y - obj_player.y) < 110 && state != states.hit && collision_line(x, y, obj_player.x, obj_player.y, obj_solid, false, true) == noone
+	else if (obj_player.state == states.mach3 || obj_player.sprite_index == obj_player.spr_player_swingding) && abs(x - obj_player.x) < 400 && abs(y - obj_player.y) < 110 && state != states.hit && collision_line(x, y, obj_player.x, obj_player.y, obj_solid, false, true) == noone
 	{
 		state = states.scared
 		hsp = 0
@@ -143,9 +143,9 @@ function do_enemy_generics()
 				func_todo()
 		}
 	})
-
+	
 	do_scared()
-
+	
 	grav = 0.5
 	if state == states.hit
 		grav = 0
@@ -215,7 +215,7 @@ function do_enemy_generics()
 				if !grounded
 					vsp = -6
 				
-				if (input.up.check)
+				if input.up.check
 				{
 					state = states.piledriver
 					dir = xscale

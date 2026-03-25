@@ -3,6 +3,9 @@ var c_pos = {
 	y: obj_camera.campos.y,
 }
 
+if sprite_index == spr_rankN_P || sprite_index == spr_rankN_P_loose
+	draw_sprite(bg_rankN_P, 0, screen_w / 2, screen_h / 2)
+
 if state == 0
 {
 	draw_set_alpha(white_fade_alpha)
@@ -11,10 +14,10 @@ if state == 0
 	draw_set_alpha(1)
 }
 
-if (state != 0 && state < 3)
+if state != 0 && state < 3
 {
-	pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr)
-	pal_swap_set(pal_peppino, obj_player.pal_select, false)
+	pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, obj_player.pattern_colors)
+	pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
 	draw_self()
 	pal_swap_reset()
 }

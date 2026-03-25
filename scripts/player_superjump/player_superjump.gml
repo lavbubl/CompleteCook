@@ -36,11 +36,11 @@ function player_superjump()
 	if (anim_ended() && sprite_index == spr_player_Sjumpcancelstart)
 	{
 		state = states.mach3
-		sprite_index = spr_player_Sjumpcancel
 		jumpstop = true
 		vsp = -4
 		flash = 8
 		movespeed = 12
+		sprite_index = spr_player_Sjumpcancel
 		image_speed = 0.35
 		with particle_create(x, y, particles.genericpoof, xscale, 1, spr_crazyruneffect)
 			depth = -150
@@ -50,7 +50,12 @@ function player_superjump()
 	{
 		vsp = -11 //its -12, but -11 makes it *feel* more like the original
 		sprite_index = spr_player_superjump
-		fmod_studio_event_instance_start(sjumprelease_snd)
+		if character != characters.noise
+			fmod_studio_event_instance_start(sjumprelease_snd)
+		else if character == characters.noise
+		{
+			fmod_studio_event_instance_start(sjumprelease_snd)
+		}
 		create_effect(x, y, spr_superjumpexplosion)
 	}
 	
@@ -70,10 +75,16 @@ function player_superjump()
 			}
 			create_effect(x, y, spr_cloudeffect)
 		}
-		movespeed = 0
+		
+		if character == characters.peppino
+			movespeed = 0
+		else if character == characters.noise && sprite_index != spr_player_presentboxspring
+			hsp = p_move * 3
 		
 		if (scr_solid(x, y - 1))
 		{
+			hsp = 0
+			movespeed = 0
 			state = states.bump
 			shake_camera(10, 30 / room_speed)
 			reset_anim(spr_player_ceilinghit)
@@ -86,9 +97,18 @@ function player_superjump()
 		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump && sprite_index != spr_player_presentboxspring
 		{
 			input_buffers.grab = 0
-			reset_anim(spr_player_Sjumpcancelstart)
-			fmod_studio_event_instance_stop(sjumprelease_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
-			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/superjumpcancel", x, y)
+			if character == characters.peppino
+			{
+				reset_anim(spr_player_Sjumpcancelstart)
+				fmod_studio_event_instance_stop(sjumprelease_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/superjumpcancel", x, y)
+			}
+			else if character == characters.noise
+			{
+				vsp = -5
+				input.up.check = false
+				do_spin_cancel()
+			}
 		}
 		
 		aftimg_timers.blur.do_it = true

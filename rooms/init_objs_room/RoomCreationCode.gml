@@ -31,6 +31,9 @@ enum states
 	shotgunshoot,
 	ball,
 	slip,
+	divebomb,
+	wallbounce,
+	crusher,
 	
 	//enemy states
 	hit,

@@ -5,9 +5,9 @@ for (var i = 0; i < array_length(tvs); i++)
 	with cur_tv
 	{
 		if pal_ix == 12
-			pattern_draw(sprite_index, image_index, x, y, pat_spr)
+			pattern_draw(sprite_index, image_index, x, y, pat_spr, obj_player.pattern_colors)
 			
-		pal_swap_set(pal_peppino, pal_ix, false)
+		pal_swap_set(obj_player.pal_spr, pal_ix, false)
 		if sprite_index != noone
 			draw_sprite(sprite_index, image_index, x, y)
 		shader_reset()
@@ -37,5 +37,8 @@ cc_draw_key_arr(63, 115, global.keybinds.grab)
 
 draw_sprite(spr_menupause, 0, 819, 84);
 cc_draw_key_arr(745, 65, special_keybind_deny)
+
+draw_sprite(obj_player.character == characters.noise ? spr_noiseicon : spr_pepicon, char_ix, 0, screen_h + char_offset)
+char_ix = wrap(3, char_ix + 0.15)
 
 draw_reset_color(1)

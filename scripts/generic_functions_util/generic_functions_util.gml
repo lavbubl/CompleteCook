@@ -15,6 +15,11 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
+function string_contains(_substr, _str)
+{
+	return string_count(_substr, _str) > 0
+}
+
 function string_convert_seconds_to_timer(_num, _hours = false, _thousandth = false)
 {
 	var _ms = string(floor((_num % 1) * (_thousandth ? 1000 : 10)))
@@ -318,6 +323,8 @@ function create_follower(_x, _y, spr_idle = noone, spr_move = noone, spr_panic =
 function reset_level()
 {
 	global.panic.active = false
+	global.secret = false
+	var _ln = global.level_data.level_name //dont reset the name
 	global.combo.count = 0
 	global.combo.timer = 0
 	global.score = 0

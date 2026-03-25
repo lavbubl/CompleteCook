@@ -7,6 +7,7 @@ if obj_player.state == states.backtohub
 	campos.y = obj_player.ystart - (screen_h / 2) - 50
 
 campos.x += cam_charge
+campos.y += cam_y_offset
 
 campos.x = clamp(campos.x, 0, room_width - screen_w)
 campos.y = clamp(campos.y, 0, room_height - screen_h)

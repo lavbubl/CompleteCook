@@ -2,7 +2,7 @@ function player_tumble() //ball is in its own state, player_ball()
 {
 	hsp = xscale * movespeed
 	
-	if !grounded && sprite_index != spr_player_dive
+	if !grounded 
 	{
 		vsp = 10
 		sprite_index = spr_player_dive
@@ -82,10 +82,10 @@ function player_tumble() //ball is in its own state, player_ball()
 	
 	if sprite_index == spr_player_dive && vsp < 10
 		vsp = 10
-		
+	
 	image_speed = movespeed / 20
 		
-	if sprite_index == spr_player_backslide && anim_ended()
+	if sprite_index == spr_playerP_backslide && anim_ended()
 		image_index = 2
 	
 	aftimg_timers.blur.do_it = true

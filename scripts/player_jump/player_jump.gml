@@ -128,5 +128,8 @@ function player_jump()
 			break;
 	}
 	
+	if character == characters.noise
+		do_crusher()
+	
 	do_taunt()
 }

@@ -70,12 +70,12 @@ function player_normal()
 	hsp = movespeed * xscale
 	
 	var idlegestures = [
-		spr_player_idlefrown, 
-		spr_player_idledance, 
-		spr_player_idlehand, 
-		spr_player_idlecareless, 
-		spr_player_idlewhat,
-		spr_player_idlebite
+		spr_player_idle1, 
+		spr_player_idle2, 
+		spr_player_idle3, 
+		spr_player_idle4, 
+		spr_player_idle5,
+		spr_player_idle6
 	]
 	
 	if p_move != 0
@@ -149,6 +149,13 @@ function player_normal()
 		dir = xscale
 		state = states.jump
 		reset_anim(default_fall)
+	}
+	
+	if character == characters.noise && ((input.up.check && input_buffers.jump > 0) || input.superjump.pressed) && vsp >= 0
+	{
+		input_buffers.jump = 0
+		state = states.superjump
+		reset_anim(spr_player_superjumpprep)
 	}
 	
 	if (coyote_time && input_buffers.jump > 0)

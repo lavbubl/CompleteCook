@@ -9,5 +9,18 @@ with obj_player
 	particle_create(x, y, particles.parry)
 }
 
+with par_enemy
+{
+	if enemy_can_die() && distance_to_object(other) <= 84
+	{
+		sprite_index = sprs.stun
+		alarm[0] = 5
+		do_enemygibs()
+		shake_camera(3, 3 / room_speed)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
+		particle_create(x, y, particles.parry)
+	}
+}
+
 fmod_studio_event_instance_oneshot_3d("event:/sfx/player/parry", x, y)
 instance_destroy()

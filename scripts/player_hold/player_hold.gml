@@ -33,7 +33,7 @@ function player_hold()
 		input_buffers.jump = 0
 		vsp = -12
 		jumpstop = false
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 		
 	if p_move != 0
@@ -56,8 +56,8 @@ function player_hold()
 		input_buffers.grab = 0
 		state = states.punchenemy
 		var str = $"spr_player_finishingblow{string(irandom_range(1, 5))}"
-		reset_anim(asset_get_index(str))
-		if (input.up.check)
+		reset_anim(variable_instance_get(self, str))
+		if input.up.check
 			reset_anim(spr_player_uppercutfinishingblow)
 	}
 }

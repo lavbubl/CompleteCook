@@ -41,7 +41,7 @@ if !saved_death
     sleep(5)
     particle_create(obj_player.x, obj_player.y, particles.bang)
 	shake_camera(20, 40 / room_speed)
-    scr_sound(sfx_breakmetal)
+    fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/breakmetal", x, y)
     ds_list_add(global.ds_saveroom, id)
 }
 

@@ -60,7 +60,7 @@ function player_normal()
 		else if sprite_index != spr_player_breakdance
 		{
 			particle_timer = 12
-			scr_sound_3d_pitched(sfx_step, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 			create_effect(x, y + 43, spr_cloudeffect)
 		}
 	}
@@ -70,12 +70,12 @@ function player_normal()
 	hsp = movespeed * xscale
 	
 	var idlegestures = [
-		spr_player_idlefrown, 
-		spr_player_idledance, 
-		spr_player_idlehand, 
-		spr_player_idlecareless, 
-		spr_player_idlewhat,
-		spr_player_idlebite
+		spr_player_idle1, 
+		spr_player_idle2, 
+		spr_player_idle3, 
+		spr_player_idle4, 
+		spr_player_idle5,
+		spr_player_idle6
 	]
 	
 	if p_move != 0
@@ -97,7 +97,7 @@ function player_normal()
 					reset_anim(idlegestures[irandom(5)])
 					idletimer = -4
 					if irandom(100) >= 50
-						scr_sound_pitched(choose(v_pep_bah, v_pep_alright, v_pep_alright_high, v_pep_paranoid, v_pep_paParanoid), 0.5, 1.5)
+						fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/player/idle", x, y)
 				}
 				
 				if (anim_ended() && idletimer == -4)
@@ -151,6 +151,13 @@ function player_normal()
 		reset_anim(default_fall)
 	}
 	
+	if character == characters.noise && ((input.up.check && input_buffers.jump > 0) || input.superjump.pressed) && vsp >= 0
+	{
+		input_buffers.jump = 0
+		state = states.superjump
+		reset_anim(spr_player_superjumpprep)
+	}
+	
 	if (coyote_time && input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0
@@ -159,7 +166,7 @@ function player_normal()
 		reset_anim(default_jump)
 		jumpstop = false
 		create_effect(x, y - 5, spr_highjumpcloud2)
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 	
 	do_grab() //note: intentional game design

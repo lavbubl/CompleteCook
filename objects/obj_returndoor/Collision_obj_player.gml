@@ -3,7 +3,7 @@ enter_door.update(global.keybinds.up);
 if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && enter_door.check && scr_can_enter_door(other.state))
 {
 	if !obj_fade.fade 
-		scr_sound(sfx_door)
+		fmod_studio_event_instance_oneshot("event:/sfx/misc/transition")
 	with other
 	{
 		reset_anim(spr_player_lookdoor)

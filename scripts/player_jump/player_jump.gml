@@ -25,7 +25,7 @@ function player_jump()
 		reset_anim(default_jump)
 		jumpstop = false
 		create_effect(x, y - 5, spr_highjumpcloud2)
-		scr_sound_3d(sfx_jump, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 	
 	hsp = movespeed * xscale
@@ -75,7 +75,7 @@ function player_jump()
 		{
 			state = states.normal
 			reset_anim(movespeed < 1 ? default_land : default_landmove)
-			scr_sound_3d_pitched(sfx_step, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 			create_effect(x, y, spr_landeffect)
 			if input.dash.check
 			{
@@ -90,7 +90,7 @@ function player_jump()
 			image_index = 0
 			state = states.bump
 			shake_camera()
-			scr_sound_3d(sfx_groundpound, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)
 		}
 	}
@@ -127,6 +127,9 @@ function player_jump()
 				image_index = image_number - 3
 			break;
 	}
+	
+	if character == characters.noise
+		do_crusher()
 	
 	do_taunt()
 }

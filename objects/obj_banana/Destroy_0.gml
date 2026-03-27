@@ -1,2 +1,2 @@
 create_debris(x, y, sprite_index)
-scr_sound_3d(sfx_otherbump, x, y)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/otherbump", x, y)

@@ -19,9 +19,10 @@ global.panic.timer = panic_time			//variable set in variable defenitions
 global.panic.timer_max = panic_time		//instead of a switch statement. sorry!
 global.doorshut = false
 
-scr_sound(sfx_killenemy)
-scr_sound(sfx_pillarimpact)
-scr_sound(sfx_escaperumble)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
+fmod_studio_event_instance_oneshot("event:/sfx/misc/pillarimpact")
+fmod_studio_event_instance_oneshot("event:/sfx/misc/escaperumble")
+
 particle_create(x, y, particles.bang)
 repeat (3)
 {

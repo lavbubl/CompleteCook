@@ -164,3 +164,34 @@ function meta_test_p_rank() {
 		deferred: false
 	}
 }
+
+
+function sh_switchchar (args) {
+	with obj_player
+	{
+		charletter = "P"
+		if character == characters.peppino
+		{
+			character = characters.noise
+			charletter = "N"
+		}
+		else if character == characters.noise
+			character = characters.peppino
+		
+		asset_player_reset(charletter)
+		with obj_tv
+		{
+			asset_tv_reset(other.charletter)
+			state = states.normal
+			sprite_index = spr_tv_idle
+		}
+	}
+}
+
+function meta_switchchar() {
+	return {
+		description: "Switch from Peppino to Noise and vice versa.",
+		hidden: false,
+		deferred: false
+	}
+}

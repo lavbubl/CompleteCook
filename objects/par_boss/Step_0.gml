@@ -24,8 +24,8 @@ switch state
 		if scr_solid(x + xscale, y)
 		{
 			shake_camera()
-			scr_sound_3d(sfx_groundpound, x, y)
-			audio_stop_sound(sfx_peppermanrun)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
+			//audio_stop_sound(sfx_peppermanrun)
 			particle_create(x, y, particles.bang)
 			hurtplayer = false
 			stun_timer = 120
@@ -70,11 +70,6 @@ for (var i = 0; i < ds_list_size(en_list); i++) {
 			instance_destroy()
 	}
 }
-
-if vulnerable && !audio_is_playing(sfx_vulnerable)
-	scr_sound(sfx_vulnerable, true)
-else if !vulnerable && audio_is_playing(sfx_vulnerable)
-	audio_stop_sound(sfx_vulnerable)
 
 ds_list_destroy(en_list)
 break_destroyables()

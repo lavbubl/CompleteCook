@@ -26,9 +26,9 @@ if follow_player
 {
 	hsp = 0
 	vsp = 0
-	with (obj_player)
+	with obj_player
 	{
-		switch (state)
+		switch state
 		{
 			case states.hold:
 				other.x = x
@@ -106,7 +106,7 @@ if follow_player
 		}
 		if (image_index >= image_number - 2 && sprite_index == spr_player_piledriverland)
 		{
-			with (other)
+			with other
 			{
 				do_enemygibs()
 				alarm[0] = 1
@@ -121,8 +121,8 @@ if follow_player
 		{
 			vsp = -6
 			shake_camera(3, 3 / room_speed)
-			scr_sound_3d(sfx_punch, x, y)
-			scr_sound_3d(sfx_killingblow, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", x, y)
 			with other
 			{
 				mask_index = mask_player_small
@@ -130,7 +130,7 @@ if follow_player
 				state = states.hit
 				hsp = other.xscale * 25
 				vsp = 0
-				if other.sprite_index == spr_player_uppercutfinishingblow
+				if other.sprite_index == other.spr_player_uppercutfinishingblow
 				{
 					hsp = 0
 					vsp = -25
@@ -151,13 +151,13 @@ for (var i = 0; i < ds_list_size(en_list); i++) {
 	if place_meeting(x, y, _id) && _id.state == states.hit && enemy_can_die()
 	{
 		instance_destroy()
-		scr_sound_3d(sfx_punch, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 	}
 }
 
 ds_list_destroy(en_list)
 
-if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supertaunt") && bbox_in_camera() && enemy_can_die()
+if string_contains("supertaunt", sprite_get_name(obj_player.sprite_index)) && bbox_in_camera() && enemy_can_die()
 {
 	if alarm[0] == -1
 		do_enemygibs()

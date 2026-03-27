@@ -17,12 +17,12 @@ function do_groundpound()
 		}
 		else
 		{
-			scr_sound_3d(sfx_killingblow, x, y)
-			scr_sound_3d(sfx_shotgunshot, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/shotgunshot", x, y)
 			reset_anim(spr_player_shotgun_shootdown)
 			vsp = -11
 			with instance_create(x, y, obj_shotgunblast)
-                sprite_index = spr_shotgunblast_down
+        		sprite_index = spr_shotgunblast_down
 		}
 	}
 }
@@ -34,13 +34,13 @@ function do_grab()
 		input_buffers.grab = 0
 		if has_shotgun
 		{
-			scr_sound_3d(sfx_killenemy, x, y)
-			scr_sound_3d(sfx_shotgunshot, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/shotgunshot", x, y)
 			with create_effect(x, y, spr_guneffect)
-			    image_xscale = other.xscale
+			  image_xscale = other.xscale
 			state = states.shotgunshoot
 			if grounded
-			    movespeed = 0
+			  movespeed = 0
 			reset_anim(spr_player_shotgun_shoot)
 			with instance_create(x + xscale * 46, (y + 6), obj_shotgunblast)
 				image_xscale = other.xscale
@@ -52,18 +52,25 @@ function do_grab()
 				movespeed = 8
 			state = states.grab
 			reset_anim(spr_player_suplexdash)
-			scr_sound_3d_on(myemitter, sfx_suplexdash)
+			fmod_studio_event_instance_start(grab_snd)
 			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 		}
 		else
 		{
-			vsp = grounded ? -14 : -10
+			if character == characters.peppino
+				vsp = grounded ? -14 : -10
+			else if character == characters.noise
+			{
+				vsp = -21
+				repeat 4
+					create_effect(x + irandom_range(-40, 40), y + irandom_range(-40, 40), spr_shineeffect)
+			}
 			hsp = abs(hsp) * xscale
 			state = states.punch
 			reset_anim(spr_player_uppercut)
 			image_speed = 0.35
 			create_effect(x, y, spr_highjumpcloud2)
-			scr_sound_3d_pitched(sfx_uppercut, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/uppercut", x, y)
 		}
 	}
 }
@@ -87,7 +94,7 @@ function do_taunt()
 			sprite_index = spr_player_taunt
 			image_index = random_range(0, image_number)
 			taunttimer = 20
-			scr_sound_3d_pitched(sfx_taunt, x, y, 0.94, 1.06)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/taunt", x, y)
 			instance_create(x, y, obj_parrybox)
 			
 			if (place_meeting(x, y, obj_exitgate) && global.panic.active && global.combo.timer > 0 && global.level_data.tauntcount <= 10)
@@ -106,7 +113,7 @@ function do_taunt()
 				global.level_data.tauntcount++
 				
 				array_push(obj_collect_got_visual.collects, c)
-				scr_sound_multiple(sfx_collect)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collect", x, y)
 				
 				with instance_create(x, y, obj_collect_number)
 					num = t_val
@@ -115,8 +122,8 @@ function do_taunt()
 		else
 		{
 			taunttimer = 20
-			scr_sound_3d(sfx_supertaunt, x, y)
-			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/supertaunt", x, y)
+			reset_anim(variable_instance_get(self, $"spr_player_supertaunt{irandom_range(1, 4)}"))
 			var spds = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
 			var i = 0
 			var spd = 20
@@ -135,6 +142,9 @@ function do_taunt()
 
 function player_sounds()
 {	
+	my_3d_attributes.position.x = x
+	my_3d_attributes.position.y = y
+	
 	struct_foreach(loop_sounds, function(_name, _data)
 	{
 		var _id = obj_player
@@ -146,47 +156,62 @@ function player_sounds()
 		
 		if (_id.state != _data.state) || _id.warping || hitstun > 0
 			do_play = false
+		
+		if do_play && _data.sndid == noone
+		{	
 			
-		if _data.is_3d
-		{
-			if (_data.sndid == noone && do_play && _id.myemitter != noone)
-			{
-				_data.sndid = scr_sound_3d_on(_id.myemitter, _data.sound, true)
-				
-				if _data.looppoints != noone
-				{
-					audio_sound_loop_start(_data.sndid, _data.looppoints[0])
-					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
-				}
-			}
-			else if (_data.sndid != noone && !do_play)
-			{
-				audio_stop_sound(_data.sndid)
-				_data.sndid = noone
-			}
+			var _event_ref = fmod_studio_system_get_event(_data.sound) //string path
+			_data.sndid = fmod_studio_event_description_create_instance(_event_ref)
+			fmod_studio_event_instance_start(_data.sndid)
+			fmod_studio_event_instance_release(_data.sndid)
 		}
-		else
+		
+		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_is_valid(_data.sndid)
+			fmod_studio_event_instance_set_3d_attributes(_data.sndid, _id.my_3d_attributes)
+		
+		if (_data.sndid != noone && !do_play)
 		{
-			if (_id.state == _data.state && do_play && _data.sndid == noone)
-			{
-				_data.sndid = scr_sound(_data.sound, true)
-				if struct_exists(_data, "looppoints")
-				{
-					audio_sound_loop_start(_data.sndid, _data.looppoints[0])
-					audio_sound_loop_end(_data.sndid, _data.looppoints[1])
-				}
-			}
-			else if (_data.sndid != noone && !do_play)
-			{
-				audio_stop_sound(_data.sndid)
-				_data.sndid = noone
-			}
+			fmod_studio_event_instance_stop(_data.sndid, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+			_data.sndid = noone
 		}
+		
 	})
 	
-	if (state != states.grab)
-		audio_stop_sound(sfx_suplexdash)
+	if state != states.grab
+		fmod_studio_event_instance_stop(grab_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+	
+	#region mach
+	
+	var _mach_states_arr = [states.mach2, states.mach3, states.climbwall]
+	
+	if array_contains(_mach_states_arr, state) && !(state == states.mach2 && (!grounded || sprite_index == spr_player_rollgetup)) && hitstun < 0
+	{
+		if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING && fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STARTING
+			fmod_studio_event_instance_start(mach_snd)
 		
+		var _mach_ix = 1
+		
+		if sprite_index == spr_player_crazyrun
+			_mach_ix = 3
+		else if state == states.mach3
+			_mach_ix = 2
+		else if sprite_index == spr_player_mach1
+			_mach_ix = 0
+		
+		fmod_studio_event_instance_set_parameter_by_name(mach_snd, "mach", _mach_ix)
+	}
+	else if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STOPPED
+		fmod_studio_event_instance_stop(mach_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+	
+	#endregion
+	
+	var _arr_len = array_length(followingsnds)
+	
+	for (var i = 0; i < _arr_len; i++)
+	{
+	    var _cur_snd = followingsnds[i]
+		fmod_studio_event_instance_set_3d_attributes(_cur_snd, my_3d_attributes)
+	}
 }
 
 function decrease_score(val)
@@ -224,7 +249,7 @@ function do_hurt(obj = noone)
 		sprite_index = facing ? spr_player_hurt : spr_player_hurtbehind
 		
 		if (obj.object_index == obj_outlet || obj.object_index == obj_pizzardelectricity)
-			scr_sound_3d(sfx_electricity, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/electricity", x, y)
 	}
 	else
 		sprite_index = spr_player_hurt
@@ -234,9 +259,9 @@ function do_hurt(obj = noone)
 	vsp = -12
 	i_frames = 100
 	
-	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/player/hurt", x, y)
 	if irandom(100) >= 50
-		scr_sound_pitched(choose(v_pep_hurt, v_pep_hurt2), 0.7, 1.3)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/player/hurt", x, y)
 	
 	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)
@@ -262,7 +287,7 @@ function do_hurt(obj = noone)
 					spr_sausagecollect, 
 					spr_pineapplecollect
 				)
-			
+				
 				with create_debris(x, y, spr)
 				{
 					hsp = random_range(-10, 10)
@@ -276,8 +301,10 @@ function do_hurt(obj = noone)
 		if global.hurtcounter % 10 == 0
 		{
 			var _name = "Peppino"
+			if character == characters.noise
+				_name = "The Noise"
 			with obj_tv
-				tv_expression(asset_get_index($"spr_tv_bighurt{irandom_range(1, 10)}"))
+				tv_expression(asset_get_index($"spr_tv{other.charletter}_bighurt{irandom_range(1, 10)}"))
 			do_tip($"\{s}You've hurt {_name} {global.hurtcounter} Times...")
 		}
 		else
@@ -308,14 +335,32 @@ function scr_hitwall(_x, _y)
 	return place_meeting(_x, _y, obj_solid) || behind_collision(_x, _y, obj_slope) || behind_collision(_x, _y, obj_sideplatform)
 }
 
+function scr_goupwall(_size = 32)
+{
+	if !scr_hitwall(x + sign(hsp), y - _size)
+	{
+		x += sign(hsp)
+		var _o = 0
+		while scr_solid(x, y)
+		{
+			y--
+			_o++
+		}
+		obj_camera.cam_y_offset = _o
+		return true;
+	}
+	else
+		return false;
+}
+
 function scr_can_enter_door(_state)
 {
 	return _state != states.taunt && 
-		   _state != states.tumble && 
-		   _state != states.ball && 
-		   _state != states.fireass && 
-		   _state != states.actor && 
-		   _state != states.bump;
+		  _state != states.tumble && 
+		  _state != states.ball && 
+		  _state != states.fireass && 
+		  _state != states.actor && 
+		  _state != states.bump;
 }
 
 function scr_can_uncrouch()
@@ -325,4 +370,182 @@ function scr_can_uncrouch()
 	var r = !scr_solid(x, y - 1)
 	mask_index = prevmask
 	return r;
+}
+
+//function for getting a sprite with the same name with a different character letter, make sure to name your sprites right!
+function asset_player_get(_action, _letter, _prefix = "spr_player")
+{
+	var _asset = asset_get_index(_prefix + _letter + "_" + _action)
+	if _asset != -1
+		return _asset;
+	else
+	{
+		_asset = asset_get_index(_prefix + "P_" + _action) //peppino is the default
+		return _asset; //will be -1 if invalid
+	}
+}
+
+function asset_player_reset(_letter)
+{
+	spr_player_idle = asset_player_get("idle", _letter)
+	spr_player_idle1 = asset_player_get("idle1", _letter)
+	spr_player_idle2 = asset_player_get("idle2", _letter)
+	spr_player_idle3 = asset_player_get("idle3", _letter)
+	spr_player_idle4 = asset_player_get("idle4", _letter)
+	spr_player_idle5 = asset_player_get("idle5", _letter)
+	spr_player_idle6 = asset_player_get("idle6", _letter)
+	spr_player_madidle = asset_player_get("madidle", _letter)
+	spr_player_rageidle = asset_player_get("rageidle", _letter)
+	spr_player_move = asset_player_get("move", _letter)
+	spr_player_madmove = asset_player_get("madmove", _letter)
+	spr_player_ragemove = asset_player_get("ragemove", _letter)
+	spr_player_backslide = asset_player_get("backslide", _letter)
+	spr_player_ball = asset_player_get("ball", _letter)
+	spr_player_ballend = asset_player_get("ballend", _letter)
+	spr_player_bodyslamfall = asset_player_get("bodyslamfall", _letter)
+	spr_player_bodyslamstart = asset_player_get("bodyslamstart", _letter)
+	spr_player_bodyslamland = asset_player_get("bodyslamland", _letter)
+	spr_player_bossdefeated = asset_player_get("bossdefeated", _letter)
+	spr_player_breakdance = asset_player_get("breakdance", _letter)
+	spr_player_bump = asset_player_get("bump", _letter)
+	spr_player_ceilinghit = asset_player_get("ceilinghit", _letter)
+	spr_player_climbwall = asset_player_get("climbwall", _letter)
+	spr_player_clingwall = asset_player_get("clingwall", _letter)
+	spr_player_crawl = asset_player_get("crawl", _letter)
+	spr_player_crazyrun = asset_player_get("crazyrun", _letter)
+	spr_player_crouch = asset_player_get("crouch", _letter)
+	spr_player_crouchdown = asset_player_get("crouchdown", _letter)
+	spr_player_crouchfall = asset_player_get("crouchfall", _letter)
+	spr_player_crouchslip = asset_player_get("crouchslip", _letter)
+	spr_player_dashpad = asset_player_get("dashpad", _letter)
+	spr_player_dead = asset_player_get("dead", _letter)
+	spr_player_defeat = asset_player_get("defeat", _letter)
+	spr_player_defeatland = asset_player_get("defeatland", _letter)
+	spr_player_dive = asset_player_get("dive", _letter)
+	spr_player_downpizzabox = asset_player_get("downpizzabox", _letter)
+	spr_player_entergate = asset_player_get("entergate", _letter)
+	spr_player_enterkeydoor = asset_player_get("enterkeydoor", _letter)
+	spr_player_facehurt = asset_player_get("facehurt", _letter)
+	spr_player_fall = asset_player_get("fall", _letter)
+	spr_player_fallface = asset_player_get("fallface", _letter)
+	spr_player_finishingblow1 = asset_player_get("finishingblow1", _letter)
+	spr_player_finishingblow2 = asset_player_get("finishingblow2", _letter)
+	spr_player_finishingblow3 = asset_player_get("finishingblow3", _letter)
+	spr_player_finishingblow4 = asset_player_get("finishingblow4", _letter)
+	spr_player_finishingblow5 = asset_player_get("finishingblow5", _letter)
+	spr_player_fireass = asset_player_get("fireass", _letter)
+	spr_player_fireassground = asset_player_get("fireassground", _letter)
+	spr_player_freefall = asset_player_get("freefall", _letter)
+	spr_player_freefallland = asset_player_get("freefallland", _letter)
+	spr_player_gottreasure = asset_player_get("gottreasure", _letter)
+	spr_player_grind = asset_player_get("grind", _letter)
+	spr_player_haulingfall = asset_player_get("haulingfall", _letter)
+	spr_player_haulingidle = asset_player_get("haulingidle", _letter)
+	spr_player_haulingjump = asset_player_get("haulingjump", _letter)
+	spr_player_haulingland = asset_player_get("haulingland", _letter)
+	spr_player_haulingmove = asset_player_get("haulingmove", _letter)
+	spr_player_haulingrise = asset_player_get("haulingrise", _letter)
+	spr_player_hurt = asset_player_get("hurt", _letter)
+	spr_player_hurtbehind = asset_player_get("hurtbehind", _letter)
+	spr_player_hurtidle = asset_player_get("hurtidle", _letter)
+	spr_player_hurtjump = asset_player_get("hurtjump", _letter)
+	spr_player_hurtmove = asset_player_get("hurtmove", _letter)
+	spr_player_jump = asset_player_get("jump", _letter)
+	spr_player_keyget = asset_player_get("keyget", _letter)
+	spr_player_kungfu1 = asset_player_get("kungfu1", _letter)
+	spr_player_kungfu2 = asset_player_get("kungfu2", _letter)
+	spr_player_kungfu3 = asset_player_get("kungfu3", _letter)
+	spr_player_ladder = asset_player_get("ladder", _letter)
+	spr_player_ladderdown = asset_player_get("ladderdown", _letter)
+	spr_player_laddermove = asset_player_get("laddermove", _letter)
+	spr_player_land = asset_player_get("land", _letter)
+	spr_player_landmove = asset_player_get("landmove", _letter)
+	spr_player_longjump = asset_player_get("longjump", _letter)
+	spr_player_lookdoor = asset_player_get("lookdoor", _letter)
+	spr_player_lungehit = asset_player_get("lungehit", _letter)
+	spr_player_mach1 = asset_player_get("mach1", _letter)
+	spr_player_mach2 = asset_player_get("mach2", _letter)
+	spr_player_mach2jump = asset_player_get("mach2jump", _letter)
+	spr_player_mach3 = asset_player_get("mach3", _letter)
+	spr_player_mach3hit = asset_player_get("mach3hit", _letter)
+	spr_player_mach3hitwall = asset_player_get("mach3hitwall", _letter)
+	spr_player_mach3jump = asset_player_get("mach3jump", _letter)
+	spr_player_machfreefall = asset_player_get("machfreefall", _letter)
+	spr_player_machroll = asset_player_get("machroll", _letter)
+	spr_player_machslideboost = asset_player_get("machslideboost", _letter)
+	spr_player_machslideboost3 = asset_player_get("machslideboost3", _letter)
+	spr_player_machslideboost3fall = asset_player_get("machslideboost3fall", _letter)
+	spr_player_machslideboostfall = asset_player_get("machslideboostfall", _letter)
+	spr_player_machslideend = asset_player_get("machslideend", _letter)
+	spr_player_machslidestart = asset_player_get("machslidestart", _letter)
+	spr_player_panic = asset_player_get("panic", _letter)
+	spr_player_parry1 = asset_player_get("parry1", _letter)
+	spr_player_parry2 = asset_player_get("parry2", _letter)
+	spr_player_parry3 = asset_player_get("parry3", _letter)
+	spr_player_piledriver = asset_player_get("piledriver", _letter)
+	spr_player_piledriverjump = asset_player_get("piledriverjump", _letter)
+	spr_player_piledriverland = asset_player_get("piledriverland", _letter)
+	spr_player_poundcancel1 = asset_player_get("poundcancel1", _letter)
+	spr_player_poundcancel2 = asset_player_get("poundcancel2", _letter)
+	spr_player_presentboxspring = asset_player_get("presentboxspring", _letter)
+	spr_player_rockethitwall = asset_player_get("rockethitwall", _letter)
+	spr_player_rollgetup = asset_player_get("rollgetup", _letter)
+	spr_player_scared = asset_player_get("scared", _letter)
+	spr_player_secondjump = asset_player_get("secondjump", _letter)
+	spr_player_secondjumploop = asset_player_get("secondjumploop", _letter)
+	spr_player_shotgun_crouch = asset_player_get("shotgun_crouch", _letter)
+	spr_player_shotgun_crouchfall = asset_player_get("shotgun_crouchfall", _letter)
+	spr_player_shotgun_crouchmove = asset_player_get("shotgun_crouchmove", _letter)
+	spr_player_shotgun_crouchstart = asset_player_get("shotgun_crouchstart", _letter)
+	spr_player_shotgun_fall = asset_player_get("shotgun_fall", _letter)
+	spr_player_shotgun_idle = asset_player_get("shotgun_idle", _letter)
+	spr_player_shotgun_jump = asset_player_get("shotgun_jump", _letter)
+	spr_player_shotgun_land = asset_player_get("shotgun_land", _letter)
+	spr_player_shotgun_move = asset_player_get("shotgun_move", _letter)
+	spr_player_shotgun_pickup = asset_player_get("shotgun_pickup", _letter)
+	spr_player_shotgun_shoot = asset_player_get("shotgun_shoot", _letter)
+	spr_player_shotgun_shootdown = asset_player_get("shotgun_shootdown", _letter)
+	spr_player_shotgun_shootdownland = asset_player_get("shotgun_shootdownland", _letter)
+	spr_player_Sjumpcancel = asset_player_get("Sjumpcancel", _letter)
+	spr_player_Sjumpcancelstart = asset_player_get("Sjumpcancelstart", _letter)
+	spr_player_slipbanana1 = asset_player_get("slipbanana1", _letter)
+	spr_player_slipbanana2 = asset_player_get("slipbanana2", _letter)
+	spr_player_stomp = asset_player_get("stomp", _letter)
+	spr_player_superjump = asset_player_get("superjump", _letter)
+	spr_player_superjumpflash = asset_player_get("superjumpflash", _letter)
+	spr_player_superjumpmove = asset_player_get("superjumpmove", _letter)
+	spr_player_superjumpprep = asset_player_get("superjumpprep", _letter)
+	spr_player_supertaunt1 = asset_player_get("supertaunt1", _letter)
+	spr_player_supertaunt2 = asset_player_get("supertaunt2", _letter)
+	spr_player_supertaunt3 = asset_player_get("supertaunt3", _letter)
+	spr_player_supertaunt4 = asset_player_get("supertaunt4", _letter)
+	spr_player_suplexbump = asset_player_get("suplexbump", _letter)
+	spr_player_suplexcancel = asset_player_get("suplexcancel", _letter)
+	spr_player_suplexdash = asset_player_get("suplexdash", _letter)
+	spr_player_suplexgrabjump = asset_player_get("suplexgrabjump", _letter)
+	spr_player_swingding = asset_player_get("swingding", _letter)
+	spr_player_swingdingend = asset_player_get("swingdingend", _letter)
+	spr_player_taunt = asset_player_get("taunt", _letter)
+	spr_player_timesup = asset_player_get("timesup", _letter)
+	spr_player_uppercut = asset_player_get("uppercut", _letter)
+	spr_player_uppercutfinishingblow = asset_player_get("uppercutfinishingblow", _letter)
+	spr_player_uppizzabox = asset_player_get("uppizzabox", _letter)
+	spr_player_walkfront = asset_player_get("walkfront", _letter)
+	spr_player_walljumpend = asset_player_get("walljumpend", _letter)
+	spr_player_walljumpstart = asset_player_get("walljumpstart", _letter)
+	spr_player_wallsplat = asset_player_get("wallsplat", _letter)
+	spr_player_winding = asset_player_get("winding", _letter)
+	pal_spr = asset_get_index("pal_player" + _letter)
+	pattern_colors = asset_get_index("pal_playerpattenrcolors" + _letter)
+	
+	sfx_superjumphold = asset_player_get("superjumphold", _letter, "sfx_")
+	sfx_machslideboost = asset_player_get("machslideboost", _letter, "sfx_")
+	sfx_break = asset_player_get("break", _letter, "sfx_")
+	sfx_jump = asset_player_get("jump", _letter, "sfx_")
+	
+	if character == characters.noise
+	{
+		spr_player_hurtjump = spr_playerN_jump
+		spr_player_machfreefall = spr_playerN_fall
+	}
 }

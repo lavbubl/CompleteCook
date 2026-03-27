@@ -17,11 +17,15 @@ switch (state)
 			alarm[0] = 220
 			alarm[2] = 630
 			
-			scr_sound(rank_data[rank_ix].song)
+			var _rank_ref = fmod_studio_system_get_event("event:/music/rank")
+			var _rank_mu = fmod_studio_event_description_create_instance(_rank_ref)
+			fmod_studio_event_instance_set_parameter_by_name(_rank_mu, "rank_mu_index", rank_ix)
+			fmod_studio_event_instance_start(_rank_mu)
+			fmod_studio_event_instance_release(_rank_mu)
 		}
 		break;
 	case 1:
-		obj_player.sprite_index = spr_player_idle
+		obj_player.sprite_index = obj_player.spr_player_idle
 		var tx = screen_w / 2
 		var ty = screen_h / 2
 		var dir = point_direction(x, y, tx, ty)
@@ -62,7 +66,7 @@ switch (state)
 				else
 				{
 					if y == other.t_ystart
-						scr_sound(sfx_spin)
+						fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/spin", screen_w / 2, screen_h / 2)
 					y -= 20
 					image_yscale = 1.2
 				}

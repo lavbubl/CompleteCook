@@ -5,7 +5,7 @@ with other
 		with other
 			reset_anim(spr_spring)
 		x = other.x
-		scr_sound_3d(sfx_superspring, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/superspring", x, y)
 		var follow_state = states.superjump
 		hsp = 0
 		movespeed = 0
@@ -27,7 +27,7 @@ with other
 			sprite_index = spr_player_rockethitwall
 			repeat 5
 				instance_create(other.x, other.y + 40, obj_bubbles)
-			scr_sound_3d(sfx_bottlepop, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/bottlepop", x, y)
 		}
 		var fe = create_followingeffect(spr_speedlines_vertical, follow_state)
 		if follow_state == states.superjump

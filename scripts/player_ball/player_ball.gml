@@ -41,8 +41,8 @@ function player_ball()
 		
 		if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_rattumbleblock)
 		{
-			reset_anim(spr_player_ballend) //bellend.,. heh
-			scr_sound_3d(sfx_ballhitwall, x, y)
+			reset_anim(spr_player_ballend)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/ballhitwall", x, y)
 			image_speed = 0
 			movespeed = -2
 			vsp = -3

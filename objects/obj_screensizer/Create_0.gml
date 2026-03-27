@@ -10,7 +10,7 @@ surface_resize(application_surface, screen_w, screen_h)
 
 lb_sprs = [bg_letterbox, bg_letterbox2, bg_letterbox3]
 
-depth = -999
+depth = -10000
 
 ini_open("globalsave.ini")
 

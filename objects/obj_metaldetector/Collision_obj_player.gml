@@ -11,8 +11,8 @@ with other
 		hsp = 0
 		vsp = random_range(-10, -14)
 	}
-
-	scr_sound_3d(sfx_outtransfo, x, y)
+	
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/player/outtransfo", x, y)
 	
 	if state == states.shotgunshoot
 		state = states.normal

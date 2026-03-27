@@ -1,3 +1,6 @@
+fmod_studio_bus_set_volume(pause_bus_music, global.option_music_volume)
+fmod_studio_bus_set_volume(pause_bus_sfx, global.option_sfx_volume)
+
 if !pause || room == mainmenu
 	exit;
 else if instance_exists(obj_shell)
@@ -16,7 +19,7 @@ else if inputbuffer > 0
 	inputbuffer--
 	exit;
 }
-	
+
 ui_input.up.update(global.keybinds.ui_up);
 ui_input.down.update(global.keybinds.ui_down);
 ui_input.accept.update(global.keybinds.ui_accept);
@@ -26,9 +29,8 @@ var movev = -ui_input.up.pressed + ui_input.down.pressed
 
 if movev != 0
 {
-	var _p = 0.26
-	scr_sound(sfx_step)
-	scr_sound_pitched(sfx_ui_pausemove, 1 - _p, 1 + _p)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_pausemove")
 }
 
 optionselected = wrap(array_length(options), optionselected + movev)

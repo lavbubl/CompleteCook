@@ -9,12 +9,12 @@ if is_array(special_keybind_deny)
 		array_delete(special_keybind_deny, _d_ix, 1)
 }
 
-show_debug_message(special_keybind_deny)
-
 input =
 {
 	left: new Input(global.keybinds.ui_left),
 	right: new Input(global.keybinds.ui_right),
+	up: new Input(global.keybinds.ui_up),
+	down: new Input(global.keybinds.ui_down),
 	grab: new Input(global.keybinds.grab),
 	accept: new Input(global.keybinds.ui_accept),
 	deny: new Input(special_keybind_deny)
@@ -52,18 +52,24 @@ for (var i = 0; i < array_length(tvs); i++)
 	}
 }
 
-static_snd = scr_sound(sfx_menustatic, true)
-audio_sound_gain(static_snd, 0, 0)
+var _event_ref = fmod_studio_system_get_event("event:/music/menu")
+mu = fmod_studio_event_description_create_instance(_event_ref)
+fmod_studio_event_instance_start(mu)
+fmod_studio_event_instance_release(mu)
 
-mu = scr_sound(mu_mainmenu, true)
-audio_sound_loop_start(mu, 0.1)
-audio_sound_loop_end(mu, 4.9)
+var _event_ref = fmod_studio_system_get_event("event:/sfx/misc/menustatic")
+static_snd = fmod_studio_event_description_create_instance(_event_ref)
+fmod_studio_event_instance_start(static_snd)
+fmod_studio_event_instance_release(static_snd)
+fmod_studio_event_instance_set_volume(static_snd, 0)
 
 cur_selected = 1
 state = 0
 menu_dark = true
 dark_state = 0
 optionsalpha = 0
+char_ix = 0
+char_offset = 0
 	
 function ini_menu_tv_inst(_x, _y, _sproff, _sprnoise, _sprselect, _sprconfirm, _filename) constructor
 {

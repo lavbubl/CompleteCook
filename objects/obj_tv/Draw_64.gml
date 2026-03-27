@@ -4,6 +4,8 @@ pal_swap_set(pal_combo, global.combo.wasted ? 1 : 2, false)
 draw_sprite(spr_tv_c_ghost, combo.ghost.image_index, x + combo.ghost.x, y + combo.ghost.y + 117)
 pal_swap_reset()
 
+if obj_player.character == characters.noise
+	pal_swap_set(pal_combobubble, 1, false)
 draw_sprite(spr_tv_c_bubble, 0, x + combo.x, y + combo.y + 117)
 
 var _tx = x + combo.x - 64
@@ -22,15 +24,36 @@ for (var i = num; i > 0; i--)
 	_tx -= 22
 	_ty -= 8
 }
+pal_swap_reset()
 
 draw_sprite(spr_tv_bg, 0, x, y)
 
-if obj_player.pal_select == 12
-	pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, image_xscale, image_yscale)
+if obj_player.pal_select == 12 || obj_player.pal_select >= 20
+	pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, obj_player.pattern_colors, image_xscale, image_yscale)
 
-pal_swap_set(pal_peppino, obj_player.pal_select, false)
+pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
 draw_self()
 pal_swap_reset()
 
 if state == tv_states.transition
 	draw_sprite(spr_tv_trans, t_index, x, y)
+
+if obj_player.character == characters.noise
+{
+	pal_swap_set(pal_tv, 1, false)
+	draw_sprite(sprite_index == spr_tv_off ? spr_tv_off : spr_tv_empty, image_index, x, y)
+	
+	if state == tv_states.transition
+		draw_sprite(spr_tv_trans, t_index, x, y)
+	pal_swap_reset()
+	
+	if sprite_index == spr_tvN_highcombo
+	{
+		if obj_player.pal_select == 12 || obj_player.pal_select >= 20
+			pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, obj_player.pattern_colors, image_xscale, image_yscale)
+
+		pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
+		draw_self()
+		pal_swap_reset()
+	}
+}

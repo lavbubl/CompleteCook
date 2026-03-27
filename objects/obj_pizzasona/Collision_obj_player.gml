@@ -8,7 +8,7 @@ if state == states.normal
 	with obj_tv
 		tv_expression(spr_tv_collect)
 	
-	scr_sound(sfx_collectbig)
+	fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/collectbig", x, y)
 	
 	sprite_index = throwspr;
 	image_index = 0;

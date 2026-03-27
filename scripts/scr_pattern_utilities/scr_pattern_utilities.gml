@@ -14,7 +14,7 @@ function pattern_set_colors(palette_sprite)
 	shader_set_uniform_f(texel_h, texture_get_texel_height(pal_tex))
 }
 
-function pattern_draw(_spr, _ix, _x, _y, _pattern_spr, _xscale = 1, _yscale = 1, _rot = 0, _col = c_white, _alpha = 1)
+function pattern_draw(_spr, _ix, _x, _y, _pattern_spr, _pattern_colors, _xscale = 1, _yscale = 1, _rot = 0, _col = c_white, _alpha = 1)
 {
 	if _pattern_spr == noone
 		exit;
@@ -32,7 +32,7 @@ function pattern_draw(_spr, _ix, _x, _y, _pattern_spr, _xscale = 1, _yscale = 1,
 	//Draw mask
 	gpu_set_colorwriteenable(false, false, false, false)
 	
-	pattern_set_colors(pal_peppatterncolors)
+	pattern_set_colors(_pattern_colors)
 	draw_sprite_ext(_spr, _ix, _x, _y, _xscale, _yscale, _rot, _col, _alpha)
 	shader_reset()
 	

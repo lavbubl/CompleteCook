@@ -2,11 +2,22 @@ function player_tumble() //ball is in its own state, player_ball()
 {
 	hsp = xscale * movespeed
 	
-	if !grounded && sprite_index != spr_player_dive
+	if !grounded 
 	{
-		vsp = 10
-		sprite_index = spr_player_dive
-		scr_sound_3d_pitched(sfx_dive, x, y, 1.3, 1.315)
+		if character == characters.peppino && sprite_index != spr_player_dive
+		{
+			vsp = 10
+			sprite_index = spr_player_dive
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
+		}
+		else if character == characters.noise
+		{
+			movespeed = hsp
+			state = states.divebomb
+			vsp = 20
+			sprite_index = spr_playerN_divebombfall
+			exit;
+		}
 	}
 	else if grounded && sprite_index == spr_player_dive
 		reset_anim(spr_player_machroll)
@@ -38,7 +49,7 @@ function player_tumble() //ball is in its own state, player_ball()
 		movespeed = 0
 		state = states.bump
 		reset_anim(spr_player_wallsplat)
-		scr_sound_3d(sfx_splat, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/splat", x, y)
 	}
 	
 	if (grounded && vsp > 0)
@@ -66,7 +77,7 @@ function player_tumble() //ball is in its own state, player_ball()
 			else
 				state = states.mach2
 			reset_anim(spr_player_rollgetup)
-			scr_sound_3d_on(myemitter, sfx_rollgetup)
+			fmod_studio_event_instance_start(getup_snd)
 		}
 		else
 		{
@@ -82,10 +93,10 @@ function player_tumble() //ball is in its own state, player_ball()
 	
 	if sprite_index == spr_player_dive && vsp < 10
 		vsp = 10
-		
+	
 	image_speed = movespeed / 20
 		
-	if sprite_index == spr_player_backslide && anim_ended()
+	if sprite_index == spr_playerP_backslide && anim_ended()
 		image_index = 2
 	
 	aftimg_timers.blur.do_it = true

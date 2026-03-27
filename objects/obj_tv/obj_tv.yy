@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_tv_idle",
-    "path":"sprites/spr_tv_idle/spr_tv_idle.yy",
+    "name":"spr_tvP_idle",
+    "path":"sprites/spr_tvP_idle/spr_tvP_idle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

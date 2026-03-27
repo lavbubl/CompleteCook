@@ -24,7 +24,7 @@ back_ix = _back_arr[list_ix] //get matching back index
 
 if ui_input.deny.pressed
 {
-	scr_sound(sfx_ui_back)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 	if back_ix <= -1
 	{
 		instance_destroy()
@@ -44,8 +44,6 @@ if ui_input.deny.pressed
 	}
 }
 
-var snd_select = choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3)
-
 cur_list = list_arr[list_ix]
 
 moving = false
@@ -58,7 +56,7 @@ var _prevos = optionselected
 optionselected = clamp(optionselected + movev, 0, array_length(cur_list) - 1)
 
 if _prevos != optionselected
-	scr_sound(sfx_step)
+	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 
 var cur_option = cur_list[optionselected]
 
@@ -69,7 +67,7 @@ switch cur_option.o_type
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		break;
 	case types.slider:
@@ -85,7 +83,7 @@ switch cur_option.o_type
 		if ui_input.accept.pressed
 		{
 			cur_option.func(cur_option.val)
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		break;
 	case types.multichoice:
@@ -93,10 +91,10 @@ switch cur_option.o_type
 		if ui_input.accept.pressed
 		{
 			cur_option.val[0] += 1
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		if moveh != 0
-			scr_sound(sfx_step)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 		
 		cur_option.val[0] = wrap(array_length(cur_option.val[1]), cur_option.val[0] + moveh)
 		if prev_val != cur_option.val[0]
@@ -123,24 +121,24 @@ switch cur_option.o_type
 			
 			list_ix = cur_option.val
 			optionselected = 0
-			scr_sound(snd_select)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 		}
 		break;
 }
 
 if list_ix == 1 && movev == 0 && optionselected >= 1 && optionselected <= 3 && moving
 {
-	if snd_frogscream == noone
-	{
-		snd_frogscream = scr_sound(v_option_frog, true)
-		audio_sound_loop_start(snd_frogscream, 0.40)
-		audio_sound_loop_end(snd_frogscream, 0.62)
-	}
-	if optionselected != 1
-		audio_sound_gain(snd_frogscream, optionselected == 3 ? global.option_sfx_volume : global.option_music_volume)
+	if fmod_studio_event_instance_get_playback_state(frog_snd) == FMOD_STUDIO_PLAYBACK_STATE.STOPPED
+		fmod_studio_event_instance_start(frog_snd)
+	
+	var _v = 1 //max volume, for the master volume slider
+	
+	if optionselected == 2
+		_v = global.option_music_volume
+	else if optionselected == 3
+		_v = global.option_sfx_volume
+	
+	fmod_studio_event_instance_set_volume(frog_snd, _v)
 }
 else
-{
-	audio_stop_sound(v_option_frog)
-	snd_frogscream = noone
-}
+	fmod_studio_event_instance_stop(frog_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)

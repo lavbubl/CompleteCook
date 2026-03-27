@@ -1,5 +1,5 @@
 with instance_create(x, y, obj_pizzardelectricity)
 	image_xscale = other.xscale
 
-scr_sound_3d(sfx_enemyprojectile, x, y)
-scr_sound_3d(sfx_electricity, x, y)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/enemyprojectile", x, y)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/electricity", x, y)

@@ -82,11 +82,21 @@ var r_pos = {
 
 if (prev_rank_ix != rank_ix)
 {
-    if (rank_ix > prev_rank_ix)
-		var snd = $"sfx_rankup{rank_ix}"
-	else
-		snd = $"sfx_rankdown{5 - rank_ix}"
-	scr_sound(asset_get_index(snd))
+	var _rank_snd_ix = rank_ix
+	var _snd_path = "event:/sfx/misc/rankup"
+	
+	if (rank_ix < prev_rank_ix)
+	{
+		_rank_snd_ix = 5 - rank_ix
+		_snd_path = "event:/sfx/misc/rankdown"
+	}
+	
+	var _event_ref = fmod_studio_system_get_event(_snd_path)
+	var _event_desc = fmod_studio_event_description_create_instance(_event_ref)
+	fmod_studio_event_instance_set_parameter_by_name(_event_desc, "rank", _rank_snd_ix)
+	fmod_studio_event_instance_start(_event_desc)
+	fmod_studio_event_instance_release(_event_desc)
+	
     rank_scale = 3
     prev_rank_ix = rank_ix
 }

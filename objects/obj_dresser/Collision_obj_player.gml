@@ -1,15 +1,15 @@
 if other.input.up.pressed
 {
 	clothes_selected++
-	if clothes_selected == array_length(clothes_arr)
+	if clothes_selected == array_length(clothes_arr[other.character])
 		clothes_selected = 0
 		
-	var palette = clothes_arr[clothes_selected].pal_ix
-	var pattern = clothes_arr[clothes_selected].pattern
+	var palette = clothes_arr[other.character][clothes_selected].pal_ix
+	var pattern = clothes_arr[other.character][clothes_selected].pattern
 	
 	with obj_player
 	{
-		scr_sound_3d_pitched(sfx_clothesswitch, x, y, 0.9, 1.1)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/clothesswitch", x, y)
 		
 		with instance_create(x, y, obj_enemycorpse)
 		{
@@ -18,7 +18,7 @@ if other.input.up.pressed
 			dopalette = true
             hsp = irandom_range(-5, 5)
             vsp = irandom_range(-6, -11)
-			sprite_index = spr_palettedresserdebris
+			sprite_index = asset_get_index("spr_palettedresserdebris" + other.charletter)
 			depth = -400
 		}
 		

@@ -11,7 +11,7 @@ with obj_player
 		hsp = 5 * -xscale
 		vsp = -5
 		grounded = false
-		scr_sound_3d(sfx_bumpwall, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/bump", x, y)
 		with other
 			reset_anim(sprs.bump)
 	}

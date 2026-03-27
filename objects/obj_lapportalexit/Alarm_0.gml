@@ -1,2 +1,2 @@
 reset_anim(spr_pizzaportalentrancestart)
-scr_sound_3d(sfx_secretexit, x, y)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/secretexit", x, y)

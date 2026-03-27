@@ -12,4 +12,4 @@ y = 197
 ystart = y
 depth = -300
 visible = hud_get_visible()
-scr_sound(sfx_comboend)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/comboend", x, y)

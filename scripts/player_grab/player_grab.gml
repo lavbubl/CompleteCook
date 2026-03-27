@@ -18,7 +18,7 @@ function player_grab()
 		vsp = -11
 		state = states.mach2
 		reset_anim(spr_player_longjump)
-		scr_sound_3d_on(myemitter, sfx_rollgetup)
+		fmod_studio_event_instance_start(getup_snd)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
@@ -28,7 +28,7 @@ function player_grab()
 		crouchslipbuffer = 25
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
-		scr_sound_3d(sfx_dive, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
@@ -43,9 +43,22 @@ function player_grab()
 	
 	if (scr_hitwall(x + xscale, y) && !grounded)
 	{
-		wallspeed = 6
-		grabclimbbuffer = 10
-		state = states.climbwall
+		if character == characters.peppino
+		{
+			wallspeed = 6
+			grabclimbbuffer = 10
+			state = states.climbwall
+		}
+		else if character == characters.noise && !scr_goupwall()
+		{
+			movespeed = 0
+			vsp = -17 + wallbouncedampen
+			wallbouncedampen += 2.55
+			state = states.wallbounce
+			sprite_index = spr_playerN_wallbounce
+			//scr_sound_3d(sfx_N_wallkick, x, y)
+			particle_create(x, y, particles.noisebump)
+		}
 	}
 	else if (scr_hitwall(x + xscale, y) && grounded)
 	{
@@ -55,7 +68,7 @@ function player_grab()
 		hsp = 0
 		movespeed = 0
 		vsp = -5
-		scr_sound_3d(sfx_splat, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/splat", x, y)
 		create_effect(x + (16 * xscale), y, spr_bumpeffect)
 	}
 	
@@ -84,8 +97,7 @@ function player_grab()
 	{
 		if !grounded
 		{
-			var _snd = scr_sound_3d(sfx_rollgetup, x, y)
-			audio_sound_set_track_position(_snd, 0.4)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/grabcancel", x, y)
 			reset_anim(spr_player_suplexcancel)
 			state = states.jump
 		}

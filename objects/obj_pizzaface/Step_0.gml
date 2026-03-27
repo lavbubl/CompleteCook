@@ -51,17 +51,19 @@ if (_move && place_meeting(x, y, playerid) && playerid.state != states.actor && 
 		image_index = 0
 		global.secret = false
 		if obj_music.mu != noone
-			audio_stop_sound(obj_music.mu)
+			fmod_studio_event_instance_stop(obj_music.mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 		if obj_music.secret_mu != noone
-			audio_stop_sound(obj_music.secret_mu)
-		scr_sound(sfx_explosion)
-		scr_sound(sfx_groundpound)
-		scr_sound(sfx_timesup)
-		scr_sound(mu_timesup)
+			fmod_studio_event_instance_stop(obj_music.secret_mu, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
+		fmod_studio_event_instance_oneshot("event:/music/timesup")
 	}
+	
 	room_goto(rm_timesup)
 	instance_destroy()
 }
 
 if maxspeed < 3 && image_alpha >= 1
 	maxspeed += 0.01
+
+attributes.position.x = x
+attributes.position.y = y
+fmod_studio_event_instance_set_3d_attributes(event_desc, attributes)

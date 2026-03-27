@@ -13,5 +13,5 @@ while _y < 100
 	_y += 20
 with (instance_create(_x, _y, obj_shakeanddie))
 	sprite_index = spr_pizzaface_dead
-scr_sound(sfx_explosion)
-scr_sound(sfx_groundpound)
+fmod_studio_event_instance_oneshot("event:/sfx/misc/explosion", x, y)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)

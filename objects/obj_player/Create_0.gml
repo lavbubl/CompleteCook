@@ -1,6 +1,12 @@
 // player related macros
 #macro p_move (-input.left.check + input.right.check)
 
+enum characters
+{
+	peppino,
+	noise
+}
+
 // initialize input
 input =
 {
@@ -53,8 +59,27 @@ player_states[states.fireass] = player_fireass;
 player_states[states.shotgunshoot] = player_shotgunshoot;
 player_states[states.ball] = player_ball;
 player_states[states.slip] = player_slip;
+player_states[states.divebomb] = player_divebomb;
+player_states[states.wallbounce] = player_wallbounce;
+player_states[states.crusher] = player_crusher;
 
 #endregion
+
+make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _is_3d = true) constructor
+{
+	state = _state
+	sound = _sound
+	sndid = noone
+	func = _func
+	looppoints = _looppoints
+	is_3d = _is_3d
+}
+
+character = characters.noise
+charletter = "N"
+pal_select = 1
+pattern_spr = pat_pizza
+asset_player_reset(charletter)
 
 spawn = "a"
 door_type = fade_types.none
@@ -68,11 +93,13 @@ xscale = 1
 jumpstop = false
 mach4mode = false
 wallspeed = 0
+wallbouncedampen = 0
 flash = 0
 
 aftimg_timers = {
 	mach: {timer: 0, effect: after_images.mach, resetpoint: 5, do_it: false},
-	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false}
+	blur: {timer: 0, effect: after_images.blur, resetpoint: 2, do_it: false},
+	noise: {timer: 0, effect: after_images.noise, resetpoint: 5, do_it: false}
 }
 
 /*ptcl_timers = {
@@ -111,18 +138,36 @@ make_loop_sound = function(_state, _sound, _func = noone, _looppoints = noone, _
 	is_3d = _is_3d
 }
 
+my_3d_attributes = new Fmod3DAttributes()
+my_3d_attributes.forward.z = 1
+my_3d_attributes.up.y = 1
+
 loop_sounds = {
-	mach1: new make_loop_sound(states.mach2, sfx_mach1, function() { return obj_player.sprite_index == spr_player_mach1;}),
-	mach2: new make_loop_sound(states.mach2, sfx_mach2, function() { return obj_player.sprite_index == spr_player_mach2;}),
-	mach3: new make_loop_sound(states.mach3, sfx_mach3, function() { return obj_player.sprite_index != spr_player_crazyrun;}),
-	mach4: new make_loop_sound(states.mach3, sfx_mach4, function() { return obj_player.sprite_index == spr_player_crazyrun;}),
-	climbwall: new make_loop_sound(states.climbwall, sfx_mach2),
-	groundpound: new make_loop_sound(states.groundpound, sfx_groundpoundloop),
-	piledriver: new make_loop_sound(states.piledriver, sfx_groundpoundloop, function() { return obj_player.sprite_index != spr_player_piledriverland}),
-	superjumphold: new make_loop_sound(states.superjump, sfx_superjumphold, function() { return obj_player.sprite_index != spr_player_superjump && obj_player.sprite_index != spr_player_Sjumpcancelstart && obj_player.sprite_index != spr_player_presentboxspring}, 
+	groundpound: new make_loop_sound(states.groundpound, "event:/sfx/player/groundpound"),
+	piledriver: new make_loop_sound(states.piledriver, "event:/sfx/player/groundpound", function() { return obj_player.sprite_index != spr_player_piledriverland}),
+	superjumphold: new make_loop_sound(states.superjump, "event:/sfx/player/superjumphold", function() { return obj_player.sprite_index != spr_player_superjump && obj_player.sprite_index != spr_player_Sjumpcancelstart && obj_player.sprite_index != spr_player_presentboxspring}, 
 		[0.64, 1.84]),
-	ball: new make_loop_sound(states.ball, sfx_ballroll, function() { return obj_player.sprite_index != spr_player_ballend}),
+	ball: new make_loop_sound(states.ball, "event:/sfx/player/ball", function() { return obj_player.sprite_index != spr_player_ballend}),
 }
+machNsnd = noone
+machNgroundsnd = noone
+
+var _mach_event_ref = (obj_player.character == characters.noise ?  fmod_studio_system_get_event("event:/sfx/player/machN") : fmod_studio_system_get_event("event:/sfx/player/mach")) //string path
+mach_snd = fmod_studio_event_description_create_instance(_mach_event_ref)
+
+var _grab_event_ref = fmod_studio_system_get_event("event:/sfx/player/suplexdash")
+grab_snd = fmod_studio_event_description_create_instance(_grab_event_ref)
+
+var _getup_event_ref = fmod_studio_system_get_event("event:/sfx/player/rollgetup")
+getup_snd = fmod_studio_event_description_create_instance(_getup_event_ref)
+
+var _sjumprelease_event_ref = fmod_studio_system_get_event("event:/sfx/player/superjumprelease")
+sjumprelease_snd = fmod_studio_event_description_create_instance(_sjumprelease_event_ref)
+
+var _fireass_event_ref = fmod_studio_system_get_event("event:/sfx/player/fireass")
+fireass_snd = fmod_studio_event_description_create_instance(_fireass_event_ref)
+
+followingsnds = [mach_snd, grab_snd, getup_snd, sjumprelease_snd, fireass_snd] //what am i doing
 
 visual_size = 1
 secret_exit = false
@@ -139,9 +184,6 @@ hasgerome = false
 fallingtimer = 0
 
 depth = -75
-
-pal_select = 1
-pattern_spr = pat_pizza
 
 input_buffers = {
 	jump: 0,

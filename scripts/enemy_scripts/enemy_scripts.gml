@@ -100,7 +100,7 @@ function do_scared()
 {
 	if scared_timer > 0
 		scared_timer--
-	else if (obj_player.state == states.mach3 || obj_player.sprite_index == spr_player_swingding) && abs(x - obj_player.x) < 400 && abs(y - obj_player.y) < 110 && state != states.hit && collision_line(x, y, obj_player.x, obj_player.y, obj_solid, false, true) == noone
+	else if (obj_player.state == states.mach3 || obj_player.sprite_index == obj_player.spr_player_swingding) && abs(x - obj_player.x) < 400 && abs(y - obj_player.y) < 110 && state != states.hit && collision_line(x, y, obj_player.x, obj_player.y, obj_solid, false, true) == noone
 	{
 		state = states.scared
 		hsp = 0
@@ -113,7 +113,7 @@ function do_scared()
 		scared_timer = 100
 		sprite_index = sprs.scared
 		if irandom(100) <= 5
-			scr_sound_3d_pitched(choose(v_rarescream1, v_rarescream2), x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/enemyrarescream", x, y)
 	}
 }
 
@@ -143,9 +143,9 @@ function do_enemy_generics()
 				func_todo()
 		}
 	})
-
+	
 	do_scared()
-
+	
 	grav = 0.5
 	if state == states.hit
 		grav = 0
@@ -173,7 +173,7 @@ function do_enemy_generics()
 			sprite_index = sprs.stun
 			
 			shake_camera()
-			scr_sound_3d(sfx_punch, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
 			particle_create(x, y, particles.parry)
 		
@@ -191,11 +191,12 @@ function do_enemy_generics()
 			stun_timer = 180
 			obj_player.hitstun = 1
 			obj_player.prev_ix = obj_player.image_index
+			obj_player.image_speed = 0
 			particle_create(x, y, particles.bang)
 			create_effect(x, y, spr_cloudeffect)
 			repeat 4
 				particle_create(x, y, particles.stars)
-			scr_sound_3d_pitched(sfx_bumpenemy, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/enemybump", x, y)
 		}
 		with obj_player
 		{
@@ -214,7 +215,7 @@ function do_enemy_generics()
 				if !grounded
 					vsp = -6
 				
-				if (input.up.check)
+				if input.up.check
 				{
 					state = states.piledriver
 					dir = xscale
@@ -230,7 +231,7 @@ function do_enemy_generics()
 				jumpstop = true
 				
 				create_effect(x, bbox_bottom, spr_stompeffect)
-				scr_sound_3d(sfx_stompenemy, x, y)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/stomp", x, y)
 				with (other)
 				{
 					xscale = -obj_player.xscale

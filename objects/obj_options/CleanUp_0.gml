@@ -1,0 +1,2 @@
+fmod_studio_event_instance_release(frog_snd)
+fmod_studio_event_instance_stop(frog_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)

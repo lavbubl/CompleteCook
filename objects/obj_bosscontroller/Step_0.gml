@@ -49,6 +49,4 @@ if opponent.hp <= 0 && instance_exists(target_obj)
 	}
 	
 	alarm[1] = 600
-	
-	scr_sound(mu_bossdefeat)
 }

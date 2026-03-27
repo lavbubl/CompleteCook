@@ -12,7 +12,7 @@ if (global.panic.active && !global.secret)
 		if !instance_exists(obj_pizzaface)
 		{
 			instance_create(obj_player.x, obj_player.y, obj_pizzaface)
-			scr_sound(sfx_pizzaface)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/pizzaface")
 		}
 	}
 

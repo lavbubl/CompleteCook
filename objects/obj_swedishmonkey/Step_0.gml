@@ -24,7 +24,7 @@ else if state == states.shoot
 	if cooldown == 0 && floor(image_index) == 15
 	{
 		cooldown = 200
-		scr_sound_3d(sfx_enemyprojectile, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/enemyprojectile", x, y)
 		if instance_exists(banana_id)
 			instance_destroy(banana_id)
 		with instance_create(x, y, obj_banana)

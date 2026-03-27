@@ -9,7 +9,7 @@ function player_backtohub()
             y += 20
             if y >= ystart
             {
-                scr_sound(sfx_groundpound)
+                fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
                 create_effect(x, y, spr_landeffect)
                 y = ystart
                 sprite_index = spr_player_rockethitwall

@@ -27,7 +27,7 @@ function player_piledriver()
 		shake_camera(20, 30 / room_speed)
 		create_effect(x, y + 2, spr_groundpoundeffect)
 		reset_anim(spr_player_piledriverland)
-		scr_sound_3d(sfx_groundpound, x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 	}
 	
 	if anim_ended() && sprite_index == spr_player_piledriverland

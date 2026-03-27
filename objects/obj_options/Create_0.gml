@@ -67,7 +67,7 @@ list_arr = [
 			function(_val) {
 				if file_exists("globalsave.ini")
 					file_delete("globalsave.ini")
-				scr_sound(sfx_enemyprojectile)
+				//scr_sound(sfx_enemyprojectile)
 			})*/
 	],
 	[ //1 audio
@@ -82,14 +82,14 @@ list_arr = [
 			function(_val) {
 				_val /= 100
 				global.option_music_volume = _val
-				audio_group_set_gain(ag_music, _val, 0)
+				fmod_studio_bus_set_volume(obj_fmodhandler.music_group, _val)
 				quick_ini_write_real("globalsave.ini", "options", "music_volume", _val)
 			}),
 		new add_option("SFX", types.slider, global.option_sfx_volume * 100,
 			function(_val) {
 				_val /= 100
 				global.option_sfx_volume = _val
-				audio_group_set_gain(ag_sfx, _val, 0)
+				fmod_studio_bus_set_volume(obj_fmodhandler.sfx_group, _val)
 				quick_ini_write_real("globalsave.ini", "options", "sfx_volume", _val)
 			}),
 		new add_option("UNFOCUSED MUTE", types.onoff, global.option_unfocus_mute, 
@@ -188,6 +188,7 @@ list_ix = 0
 back_ix = -1
 cur_list = list_arr[list_ix]
 
-snd_frogscream = noone
+var _frog_event_ref = fmod_studio_system_get_event("event:/sfx/misc/ui_frog")
+frog_snd = fmod_studio_event_description_create_instance(_frog_event_ref)
 
 //i could reduce the amount of new functions made here actually,,,, maybe tdp was right to have seperate functions for each type

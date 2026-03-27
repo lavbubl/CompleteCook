@@ -5,7 +5,7 @@ draw_flush()
 
 tex_list = []
 group_arr = ["Default", "texg_player", "texg_hud"]
-snd_group_arr = [[ag_sfx, false], [ag_music, false]]
+bank_arr = ["Master", "Master.strings", "Music", "SFX"]
 currentsndgroup = 0
 
 for (var i = 0; i < array_length(group_arr); i++)

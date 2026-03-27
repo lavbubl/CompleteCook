@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_techdiff_bg",
-    "path":"sprites/spr_techdiff_bg/spr_techdiff_bg.yy",
+    "name":"spr_techdiffP_bg",
+    "path":"sprites/spr_techdiffP_bg/spr_techdiffP_bg.yy",
   },
   "spriteMaskId":null,
   "visible":true,

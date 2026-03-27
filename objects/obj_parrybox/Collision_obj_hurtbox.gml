@@ -15,7 +15,7 @@ with other
 				sprite_index = sprs.stun
 				do_enemygibs()
 				shake_camera(3, 3 / room_speed)
-				scr_sound_3d(sfx_punch, x, y)
+				fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 				
 				alarm[0] = 5
 			}

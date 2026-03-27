@@ -12,7 +12,7 @@ if (ds_list_find_index(global.ds_saveroom, id) == -1)
     }
 	
 	sleep(5)
-    scr_sound_3d(choose(sfx_breakblock1, sfx_breakblock2), x, y)
+    fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/breakblock", x, y)
 	
 	ds_list_add(global.ds_saveroom, id)
 }

@@ -36,7 +36,10 @@ struct_foreach(aftimg_timers, function(_name, _data)
 
 
 if grounded
+{
 	coyote_time = 10
+	wallbouncedampen = 0
+}
 else if vsp < 0
 	coyote_time = 0
 
@@ -113,7 +116,7 @@ if state == states.ball
 
 if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the transfo youre changed to.
 {
-	scr_sound_3d(intransfo ? sfx_transfo : sfx_outtransfo, x, y)
+	fmod_studio_event_instance_oneshot_3d($"event:/sfx/player/{intransfo ? "transfo" : "outtransfo"}", x, y)
 	prev_transfo = intransfo
 }
 
@@ -139,7 +142,7 @@ break_destroyables()
 
 struct_foreach(aftimg_timers, function(_name, _data)
 {
-	if (_data.timer > 0)
+	if _data.timer > 0
 		_data.timer--
 	else if _data.do_it
 	{
@@ -158,7 +161,7 @@ if supertauntcount >= 10
 	supertauntcount = 10
 	if !supertauntshow
 	{
-		scr_sound(sfx_supertauntnotif)
+		fmod_studio_event_instance_oneshot("event:/sfx/player/supertauntnotif")
 		supertauntshow = true
 	}
 	

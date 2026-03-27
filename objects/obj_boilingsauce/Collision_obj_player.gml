@@ -1,14 +1,11 @@
-if !audio_is_playing(v_peppinoscream)
-{
-	scr_sound_pitched(v_peppinoscream)
-	scr_sound(sfx_fireass)
-}
-scr_sound(sfx_genericfire)
-	
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/genericfire", x, y)
+
 with other
 {
 	movespeed = hsp
-	reset_anim(spr_player_fireass)
 	state = states.fireass
 	vsp = -20
+	reset_anim(spr_player_fireass)
+	if fmod_studio_event_instance_get_playback_state(fireass_snd) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING
+		fmod_studio_event_instance_start(fireass_snd)
 }

@@ -19,6 +19,7 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		sprite_index: spr_null,
 		image_index: 0,
 		image_speed: 0.35,
+		image_number: 0,
 		x: _x,
 		y: _y,
 		image_xscale: _xscale,
@@ -27,6 +28,7 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		image_angle: 0,
 		image_alpha: 1,
 		depth: -10,
+		visible: true,
 		lifetime: -1,
 		type: p_type
 	}
@@ -37,7 +39,6 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		{
 			case particles.genericpoof:
 				sprite_index = spr_genericpoofeffect
-				image_speed = 0.35
 				depth = -100
 				break;
 			case particles.gib:
@@ -99,8 +100,6 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 	
 		if _sprite != noone
 			sprite_index = _sprite
-	
-		image_number = sprite_get_number(p.sprite_index)
 	}
 	
 	with (obj_particlecontroller)
@@ -130,7 +129,6 @@ function create_debris(_x, _y, sprite)
 function create_effect(_x, _y, sprite)
 {
 	var p = particle_create(_x, _y, particles.genericpoof, 1, 1, sprite)
-	p.image_number = sprite_get_number(sprite)
 	p.depth = 0
 	return p;
 }

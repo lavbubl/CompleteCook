@@ -1,6 +1,3 @@
-var spr_idle = isstick ? spr_stick_exitidle : spr_gustavo_exitidle
-var spr_fall = isstick ? spr_stick_exitfall : spr_gustavo_exitfall
-
 switch state
 {
 	case states.actor:

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"v_noise_scream",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":2.588,
+  "exportDir":"",
+  "name":"v_noise_scream",
+  "parent":{
+    "name":"Noise",
+    "path":"folders/Sounds/Voice/Noise.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"v_noise_scream.wav",
+  "volume":1.0,
+}

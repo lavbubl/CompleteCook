@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"v_pep_scream",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":2,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.2946713,
+  "exportDir":"",
+  "name":"v_pep_scream",
+  "parent":{
+    "name":"Peppino",
+    "path":"folders/Sounds/Voice/Peppino.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"v_pep_scream.wav",
+  "volume":1.0,
+}

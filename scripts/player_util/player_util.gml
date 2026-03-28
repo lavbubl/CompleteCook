@@ -295,8 +295,17 @@ function do_hurt(obj = noone)
 	i_frames = 100
 	
 	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
+	
+	if character == characters.noise
+		scr_sound_pitched(sfx_hurt_guitar, 0.9, 1.1)
+		
 	if irandom(100) >= 50
-		scr_sound_pitched(choose(v_pep_hurt, v_pep_hurt2), 0.7, 1.3)
+	{
+		var _snd = character == characters.peppino ? 
+			choose(v_pep_hurt, v_pep_hurt2) :
+			choose(v_noise_aow, v_noise_woag, v_noise_owowow)
+		scr_sound_pitched(_snd, 0.7, 1.3)
+	}
 	
 	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)

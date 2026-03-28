@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"v_noise_aow",
+  "audioGroupId":{
+    "name":"ag_sfx",
+    "path":"audiogroups/ag_sfx",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.556,
+  "exportDir":"",
+  "name":"v_noise_aow",
+  "parent":{
+    "name":"Noise",
+    "path":"folders/Sounds/Voice/Noise.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"v_noise_aow.wav",
+  "volume":1.0,
+}

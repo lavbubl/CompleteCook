@@ -21,7 +21,12 @@ function tv_expression(spr)
 			alarm[0] = 120
 			expr_sprite = spr
 			if spr == spr_tv_collect && irandom(100) >= 50
-				scr_sound_pitched(choose(v_pep_shuk, v_pep_paranoid, v_pep_paParanoid), 0.9, 1.1)
+			{
+				var _snd = obj_player.character == characters.peppino ? 
+					choose(v_pep_shuk, v_pep_paranoid, v_pep_paParanoid) :
+					choose(v_noise_woag, v_noise_woaow, v_noise_woag_high, v_noise_wowowoag)
+				scr_sound_pitched(_snd, 0.9, 1.1)
+			}
 			break;
 		default:
 			state_togo = tv_states.expr

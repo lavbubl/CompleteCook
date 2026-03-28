@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"v_pep_alright_high",
   "parent":{
-    "name":"Voice",
-    "path":"folders/Sounds/Voice.yy",
+    "name":"Peppino",
+    "path":"folders/Sounds/Voice/Peppino.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

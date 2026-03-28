@@ -97,9 +97,13 @@ function player_normal()
 					reset_anim(idlegestures[irandom(5)])
 					idletimer = -4
 					if irandom(100) >= 50
-						scr_sound_pitched(choose(v_pep_bah, v_pep_alright, v_pep_alright_high, v_pep_paranoid, v_pep_paParanoid), 0.5, 1.5)
+					{
+						var _snd = character == characters.peppino ? 
+							choose(v_pep_bah, v_pep_alright, v_pep_alright_high, v_pep_paranoid, v_pep_paParanoid) :
+							choose(v_noise_woag, v_noise_woaow, v_noise_woag_high, v_noise_wowowoag)
+						scr_sound_pitched(_snd, 0.5, 1.5)
+					}
 				}
-				
 				if (anim_ended() && idletimer == -4)
 				{
 					reset_anim(default_idle)

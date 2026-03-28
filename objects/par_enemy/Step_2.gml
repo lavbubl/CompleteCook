@@ -28,58 +28,6 @@ if follow_player
 	vsp = 0
 	with (obj_player)
 	{
-		switch (state)
-		{
-			case states.hold:
-				other.x = x
-				other.y = y - 64
-				other.xscale = -xscale
-				if sprite_index == spr_player_haulingrise
-					other.y += floor(image_number - image_index) * 10
-				break;
-			case states.piledriver:
-				other.x = x
-				other.y = y
-				other.yscale = -1
-				break;
-			case states.punchenemy:
-				var _dist_x = 60
-				var _dist_y = 20
-				other.x = x
-				other.y = y
-				with other //dont go into solids
-				{
-					if !scr_solid(x + (_dist_x * other.xscale), y)
-						x += _dist_x * other.xscale
-					else
-					{
-						repeat _dist_x 
-						{
-							if !scr_solid(x + other.xscale, y)
-								x += other.xscale
-							else
-								break;
-						}
-					}
-					if !scr_solid(x, y - _dist_y)
-						y -= _dist_y
-					else
-					{
-						repeat _dist_y
-						{
-							if !scr_solid(x, y - 1)
-								y--
-							else
-								break;
-						}
-					}
-				}
-				break;
-			case states.swingding:
-				other.x = x
-				other.y = y - 20
-				break;
-		}
 		other.state = states.grabbed
 		if input.down.check
 		{
@@ -139,6 +87,58 @@ if follow_player
 				particle_create(x, y, particles.parry)
 			}
 			global.combo.timer = 60
+		}
+		switch (state)
+		{
+			case states.hold:
+				other.x = x
+				other.y = y - 64
+				other.xscale = -xscale
+				if sprite_index == spr_player_haulingrise
+					other.y += floor(image_number - image_index) * 10
+				break;
+			case states.piledriver:
+				other.x = x
+				other.y = y
+				other.yscale = -1
+				break;
+			case states.punchenemy:
+				var _dist_x = 60
+				var _dist_y = 20
+				other.x = x
+				other.y = y
+				with other //dont go into solids
+				{
+					if !scr_solid(x + (_dist_x * other.xscale), y)
+						x += _dist_x * other.xscale
+					else
+					{
+						repeat _dist_x 
+						{
+							if !scr_solid(x + other.xscale, y)
+								x += other.xscale
+							else
+								break;
+						}
+					}
+					if !scr_solid(x, y - _dist_y)
+						y -= _dist_y
+					else
+					{
+						repeat _dist_y
+						{
+							if !scr_solid(x, y - 1)
+								y--
+							else
+								break;
+						}
+					}
+				}
+				break;
+			case states.swingding:
+				other.x = x
+				other.y = y - 20
+				break;
 		}
 	}
 }

@@ -77,7 +77,7 @@ function do_vulnerability()
 	
 			do_enemygibs()
 			create_effect(x, y, spr_bosshiteffect)
-			scr_sound_3d(sfx_punch, x, y)
+			scr_sound_3d_pitched(sfx_punch, x, y)
 		
 			obj_player.hitstun = 5
 			obj_player.prev_ix = obj_player.image_index

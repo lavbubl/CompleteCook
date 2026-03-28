@@ -173,7 +173,7 @@ function do_enemy_generics()
 			sprite_index = sprs.stun
 			
 			shake_camera()
-			scr_sound_3d(sfx_punch, x, y)
+			scr_sound_3d_pitched(sfx_punch, x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
 			particle_create(x, y, particles.parry)
 		

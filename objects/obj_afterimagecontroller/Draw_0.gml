@@ -7,9 +7,12 @@ for (var inst = 0; inst < array_length(aftimg_list); inst++)
 		switch (effect)
 		{
 			case after_images.blur:
-				if obj_player.pal_select == 12 || obj_player.pal_select >= 20
-					pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, obj_player.pattern_colors, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
-				pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
+				if player_sprite
+				{
+					if obj_player.pal_select == 12 || obj_player.pal_select >= 20
+						pattern_draw(sprite_index, image_index, x, y, obj_player.pattern_spr, obj_player.pattern_colors, image_xscale, image_yscale, image_angle, image_blend, image_alpha)
+					pal_swap_set(obj_player.pal_spr, obj_player.pal_select, false)
+				}
 				break;
 			case after_images.solid_color:
 				shader_set(shd_solidcolor)

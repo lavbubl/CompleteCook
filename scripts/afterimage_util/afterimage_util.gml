@@ -22,6 +22,7 @@ function afterimage_create(a_type)
 				break;
 			case after_images.blur:
 				image_alpha = 0.8
+				player_sprite = false
 				hsp = hsp
 				vsp = vsp
 				break;

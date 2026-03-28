@@ -146,7 +146,13 @@ struct_foreach(aftimg_timers, function(_name, _data)
 		_data.timer--
 	else if _data.do_it
 	{
-		afterimage_create(_data.effect)
+		if _data.effect == after_images.blur
+		{
+			with afterimage_create(_data.effect)
+				player_sprite = true
+		}
+		else
+			afterimage_create(_data.effect)
 		_data.timer = _data.resetpoint
 	}
 })

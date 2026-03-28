@@ -182,53 +182,10 @@ function player_sounds()
 				_data.sndid = noone
 			}
 		}
-		
-		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_is_valid(_data.sndid)
-			fmod_studio_event_instance_set_3d_attributes(_data.sndid, _id.my_3d_attributes)
-		
-		if (_data.sndid != noone && !do_play)
-		{
-			fmod_studio_event_instance_stop(_data.sndid, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
-			_data.sndid = noone
-		}
-		
 	})
 	
-	if state != states.grab
-		fmod_studio_event_instance_stop(grab_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
-	
-	#region mach
-	
-	var _mach_states_arr = [states.mach2, states.mach3, states.climbwall]
-	
-	if array_contains(_mach_states_arr, state) && !(state == states.mach2 && (!grounded || sprite_index == spr_player_rollgetup)) && hitstun < 0
-	{
-		if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING && fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STARTING
-			fmod_studio_event_instance_start(mach_snd)
-		
-		var _mach_ix = 1
-		
-		if sprite_index == spr_player_crazyrun
-			_mach_ix = 3
-		else if state == states.mach3
-			_mach_ix = 2
-		else if sprite_index == spr_player_mach1
-			_mach_ix = 0
-		
-		fmod_studio_event_instance_set_parameter_by_name(mach_snd, "mach", _mach_ix)
-	}
-	else if fmod_studio_event_instance_get_playback_state(mach_snd) != FMOD_STUDIO_PLAYBACK_STATE.STOPPED
-		fmod_studio_event_instance_stop(mach_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
-	
-	#endregion
-	
-	var _arr_len = array_length(followingsnds)
-	
-	for (var i = 0; i < _arr_len; i++)
-	{
-	    var _cur_snd = followingsnds[i]
-		fmod_studio_event_instance_set_3d_attributes(_cur_snd, my_3d_attributes)
-	}
+	if (state != states.grab)
+		audio_stop_sound(sfx_suplexdash)
 }
 
 function decrease_score(val)

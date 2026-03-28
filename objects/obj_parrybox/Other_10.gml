@@ -22,5 +22,5 @@ with par_enemy
 	}
 }
 
-scr_sound_3d_pitched(sfx_punch, x, y)
+scr_sound_3d_pitched(sfx_parry, x, y)
 instance_destroy()

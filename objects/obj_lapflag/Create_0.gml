@@ -1,3 +1,4 @@
+visible = hud_get_visible()
 y = -sprite_height
 down = true
 movespeed = 2

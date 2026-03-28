@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"player_sip",
+  "%Name":"player_slip",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"player_sip",
+  "name":"player_slip",
   "parent":{
     "name":"Player States",
     "path":"folders/Scripts/Player States.yy",

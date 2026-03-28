@@ -3,7 +3,7 @@ function player_punchenemy()
 	image_speed = 0.4
 	movespeed = 0
 	
-	var ixcheck = 5
+	var ixcheck = 4
 	if sprite_index == spr_player_swingdingend
 		ixcheck = 1
 	

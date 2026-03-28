@@ -12,8 +12,6 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"c4580e64-06fc-48db-b7c5-e37fbad1219f","name":"c4580e64-06fc-48db-b7c5-e37fbad1219f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"79d51b8d-396a-4b43-832a-38f2adfecc65","name":"79d51b8d-396a-4b43-832a-38f2adfecc65","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"2b150e5e-f722-4f21-ac3d-5808007c58ca","name":"2b150e5e-f722-4f21-ac3d-5808007c58ca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"798e101a-5efc-4d4b-9839-c3ce5776320b","name":"798e101a-5efc-4d4b-9839-c3ce5776320b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"1921589b-87b3-4237-87a2-da0c4e318240","name":"1921589b-87b3-4237-87a2-da0c4e318240","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
@@ -61,7 +59,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":13.0,
+    "length":11.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -80,12 +78,6 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c4580e64-06fc-48db-b7c5-e37fbad1219f","path":"sprites/spr_playerP_finishingblow1/spr_playerP_finishingblow1.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b20149e7-3b26-422c-8ee6-c0d3789a4ac1","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"79d51b8d-396a-4b43-832a-38f2adfecc65","path":"sprites/spr_playerP_finishingblow1/spr_playerP_finishingblow1.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"55a149cb-d4fc-4476-b1ae-cd07f6f90316","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2b150e5e-f722-4f21-ac3d-5808007c58ca","path":"sprites/spr_playerP_finishingblow1/spr_playerP_finishingblow1.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"2a36e34f-7e60-4eb9-beb9-60e54ce0f689","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},

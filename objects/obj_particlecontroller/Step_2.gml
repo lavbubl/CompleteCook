@@ -61,7 +61,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 			default:
 				x += hsp
 				y += vsp
-				if anim_ended(image_index, image_number + image_speed)
+				if anim_ended(image_index, image_number - image_speed)
 					array_delete(other.particle_list, p, 1)
 				break;
 		}

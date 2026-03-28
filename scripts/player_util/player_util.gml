@@ -1,6 +1,6 @@
-function anim_ended(_img_index = image_index, _img_number = image_number)
+function anim_ended(_img_index = image_index, _img_number = image_number - 1)
 {
-	return _img_index >= _img_number - 1;
+	return _img_index >= _img_number;
 }
 
 function do_groundpound()
@@ -247,7 +247,6 @@ function player_sounds()
 	
 	if state != states.grab
 		audio_stop_sound(sfx_suplexdash)
-		
 }
 
 function decrease_score(val)

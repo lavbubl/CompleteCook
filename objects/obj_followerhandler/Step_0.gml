@@ -1,7 +1,7 @@
 if followers == []
 	exit;
 
-var delay = 5
+var delay = 8
 
 if array_length(pos_array) > (array_length(followers) * delay) + 1
 	array_shift(pos_array)
@@ -25,9 +25,9 @@ for (var i = 0; i < array_length(followers); i++)
 		continue;
 	}
 	
-	var index_cal = (array_length(pos_array) - 1) - ((i + 1) * delay)
+	var index_cal = (array_length(pos_array)) - ((i + 1) * delay)
 	var pos_in_line = pos_array[max(index_cal, 0)]
-	var prev_pos_in_line = pos_array[max(index_cal - delay, 0)]
+	var prev_pos_in_line = pos_array[max(index_cal - 1, 0)]
 	
 	with follower
 	{

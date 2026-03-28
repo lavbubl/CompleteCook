@@ -60,7 +60,10 @@ for (var p = 0; p < array_length(particle_list); p++)
 				break;
 			default:
 				if anim_ended(image_index, image_number - image_speed)
+				{
+					image_index = image_number
 					array_delete(other.particle_list, p, 1)
+				}
 				break;
 		}
 	}

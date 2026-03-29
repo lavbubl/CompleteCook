@@ -1,24 +1,22 @@
-// declare input
-special_keybind_deny = variable_clone(global.keybinds.ui_deny) //special conflicting input removal
-
-if is_array(special_keybind_deny)
-{
-	var _d_ix = array_get_index(special_keybind_deny, ord("X"))
-
-	if _d_ix != -1
-		array_delete(special_keybind_deny, _d_ix, 1)
-}
-
-show_debug_message(special_keybind_deny)
+input_handler = new InputHandler(obj_inputcontroller.main_gamepad).AddInput(["ui_left", "ui_right", "grab", "ui_accept", "menuhandler_deny"]).Finalize();
 
 input =
 {
-	left: new Input(global.keybinds.ui_left),
-	right: new Input(global.keybinds.ui_right),
-	grab: new Input(global.keybinds.grab),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(special_keybind_deny)
+	left: false,
+	right: false,
+	grab: false,
+	accept: false,
+	deny: false
 };
+
+update_input = function()
+{
+    input.left = input_handler.get_input("ui_left");
+    input.right = input_handler.get_input("ui_right");
+    input.grab = input_handler.get_input("grab");
+    input.accept = input_handler.get_input("ui_accept");
+    input.deny = input_handler.get_input("menuhandler_deny");
+}
 
 tvs =  [new ini_menu_tv_inst(103, 0, 
 			spr_menutv1_off,

@@ -1,6 +1,6 @@
 // update input
-key_up.update(global.keybinds.up);
-key_down.update(global.keybinds.down);
+key_up = obj_player.input.up;
+key_down = obj_player.input.down;
 
 var up = key_up.check
 var down = key_down.check

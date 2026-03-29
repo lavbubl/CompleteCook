@@ -1,15 +1,10 @@
-// update input
-input.left.update(global.keybinds.ui_left);
-input.right.update(global.keybinds.ui_right);
-input.grab.update(global.keybinds.grab);
-input.accept.update(global.keybinds.ui_accept);
-input.deny.update(special_keybind_deny);
+update_input();
 
 var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_quitgame) && state == 0
 
 if menu_dark
 {
-	if keyboard_check_pressed(vk_anykey) && dark_state == 0
+	if input.accept.pressed && dark_state == 0
 	{
 		scr_sound(sfx_menulight)
 		audio_sound_loop_end(mu, audio_sound_length(mu_mainmenu))

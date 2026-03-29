@@ -1,14 +1,27 @@
 // declare input
-ui_input =
+input_handler = new InputHandler(obj_inputcontroller.main_gamepad).AddInput(["ui_up", "ui_down", "ui_accept", "ui_deny", "addbind", "clearbind", "resetallbinds"]).Finalize();
+
+ui_input = 
 {
-	up: new Input(global.keybinds.ui_up),
-	down: new Input(global.keybinds.ui_down),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(global.keybinds.ui_deny),
-	addbind: new Input("Z"),
-	clearbind: new Input("C"),
-	resetallbinds: new Input(vk_f1)
-};
+    up: false,
+    down: false,
+    accept: false,
+    deny: false,
+    addbind: false,
+    clearbind: false,
+    resetallbinds: false
+}
+
+update_input = function()
+{
+    ui_input.up = input_handler.get_input("ui_up");
+    ui_input.down = input_handler.get_input("ui_down");
+    ui_input.accept = input_handler.get_input("ui_accept");
+    ui_input.deny = input_handler.get_input("ui_deny");
+    ui_input.addbind = input_handler.get_input("addbind");
+    ui_input.clearbind = input_handler.get_input("clearbind");
+    ui_input.resetallbinds = input_handler.get_input("resetallbinds");
+}
 
 depth = -3000
 binds = [ 
@@ -26,8 +39,8 @@ binds = [
 	{input: global.keybinds.ui_right,		image_index: 2,		name: "Menu Right",		globalname: "ui_right",		defaultbind: vk_right},
 	{input: global.keybinds.ui_up,			image_index: 0,		name: "Menu Up",		globalname: "ui_up",		defaultbind: vk_up},
 	{input: global.keybinds.ui_down,		image_index: 1,		name: "Menu Down",		globalname: "ui_down",		defaultbind: vk_down},
-	{input: global.keybinds.ui_accept,		image_index: 7,		name: "Accept",			globalname: "ui_accept",	defaultbind: [vk_enter, vk_space, "Z"]},
-	{input: global.keybinds.ui_deny,		image_index: 8,		name: "Deny",			globalname: "ui_deny",		defaultbind: [vk_escape, vk_backspace, "X"]}
+	{input: global.keybinds.ui_accept,		image_index: 7,		name: "Accept",			globalname: "ui_accept",	defaultbind: "Z"},
+	{input: global.keybinds.ui_deny,		image_index: 8,		name: "Deny",			globalname: "ui_deny",		defaultbind: "X"}
 ] //dont mind these warnings
 
 c_x = 0

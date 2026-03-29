@@ -1,5 +1,6 @@
-// declare input
-key_up = new Input(global.keybinds.up);
-key_down = new Input(global.keybinds.down);
+key_up = false;
+key_down = false;
+
+
 
 live = 0

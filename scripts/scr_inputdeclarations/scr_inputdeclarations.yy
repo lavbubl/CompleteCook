@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_savesystem",
+  "%Name":"scr_inputdeclarations",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_savesystem",
+  "name":"scr_inputdeclarations",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"InputSystem",
+    "path":"folders/InputSystem.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

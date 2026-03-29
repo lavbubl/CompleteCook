@@ -210,29 +210,14 @@ function set_globals()
 	global.savestring = $"saves/saveData{global.savefile}.ini"
 	global.keybinds_filename = "keybinds.ccsav" //complete cook save :)
 	
-	global.keybinds = { //create keybind struct
-		left:			vk_left,
-		right:			vk_right,
-		up:				vk_up,
-		down:			vk_down,
-		dash:			vk_shift,
-		jump:			"Z",
-		grab:			"X",
-		taunt:			"C",
-		superjump:		vk_nokey,
-		groundpound:	vk_nokey,
-		ui_left:		vk_left,
-		ui_right:		vk_right,
-		ui_up:			vk_up,
-		ui_down:		vk_down,
-		ui_accept:		[vk_enter, vk_space, "Z"],
-		ui_deny:		[vk_escape, vk_backspace, "X"]
-	}
+	reset_binds();
 	
 	if !file_exists(global.keybinds_filename)
 	{
-		var keybindBuf = write_struct_to_buffer(global.keybinds) //store the struct as a buffer
+		var keybindBuf = buffer_create(buffer_grow, 1, 1) //store the struct as a buffer
 		
+        buffer_write(keybindBuf, buffer_text, json_stringify(global.keybinds));
+        
 		buffer_save(keybindBuf, global.keybinds_filename) //save the buffer externally
 		
 		buffer_delete(keybindBuf) //prevent memory leak
@@ -241,20 +226,76 @@ function set_globals()
 	{
 		try
 		{
-			var loadedBuf = buffer_load(global.keybinds_filename) //have the saved external buffer loaded
+			var loadedBuf = buffer_load(global.keybinds_filename);
+            var _json = buffer_read(loadedBuf, buffer_text); // read json file
+            buffer_delete(loadedBuf); // prevent memory leak
+            
+            var _new_binds = json_parse(_json);
+            
+            var _old_names = struct_get_names(global.keybinds);
+            var _new_names = struct_get_names(_new_binds);
+            
+            array_sort(_old_names, true);
+            array_sort(_new_names, true);
 			
-			global.keybinds = read_struct_from_buffer(loadedBuf) //parse the saved buffer as a struct, set the global keybinds to whats saved
-		
-			buffer_delete(loadedBuf) //prevent memory leak
+            if (!array_equals(_old_names, _new_names))
+                throw "Missing Save element!";
+            
+            struct_foreach(global.keybinds, function(_name, _value)
+            {
+                if (!is_array(_value))
+                    throw "Value is not an array!";
+            });
+            
+            //global.keybinds = _new_binds;
 		}
 		catch(_exception)
 		{
-			show_message("ERROR!\n\nKeybind data is corrupted, input set to defaults.")
-		    show_debug_message(_exception.longMessage);
-		    show_debug_message(_exception.script);
-		    show_debug_message(_exception.stacktrace);
+			show_message("ERROR!\n\nKeybind data is corrupted, input set to defaults.");
+            file_delete(global.keybinds_filename);
 		}
 	}
+    update_binds();
+    
+}
+
+function update_binds()
+{
+    struct_foreach(global.keybinds, function(_key, _value)
+    {
+        declare_input(_key, global.keybinds[$ _key]);
+    });
+}
+
+function reset_binds()
+{
+    global.keybinds = { //create keybind struct
+        left:			construct_input_array([vk_left], [stick_left_left, gp_padl]),
+        right:			construct_input_array([vk_right], [stick_left_right, gp_padr]),
+        up:				construct_input_array([vk_up], [stick_left_up, gp_padu]),
+        down:			construct_input_array([vk_down], [stick_left_down, gp_padd]),
+        dash:			construct_input_array([vk_shift], [gp_shoulderrb]),
+        jump:			construct_input_array([ord("Z")], [gp_face1]),
+        grab:			construct_input_array([ord("X")], [gp_face2]),
+        taunt:			construct_input_array([ord("C")], [gp_face4]),
+        superjump:		construct_input_array(),
+        groundpound:	construct_input_array(),
+        ui_left:		construct_input_array([vk_left], [stick_left_left, gp_padl]),
+        ui_right:		construct_input_array([vk_right], [stick_left_right, gp_padr]),
+        ui_up:			construct_input_array([vk_up], [stick_left_up, gp_padu]),
+        ui_down:		construct_input_array([vk_down], [stick_left_down, gp_padd]),
+        ui_accept:		construct_input_array([ord("Z"), vk_enter], [gp_face1]),
+        ui_deny:		construct_input_array([ord("X"), vk_escape, vk_backspace], [gp_face2]),
+        
+        // obj_keyconfig
+        addbind:        construct_input_array([ord("Z")], [gp_face1]),
+        clearbind:      construct_input_array([ord("C")], [gp_face2]),
+        resetallbinds:  construct_input_array([vk_f1], [gp_select]),
+        // obj_menuhandler
+        menuhandler_deny: construct_input_array([vk_escape, vk_backspace], [gp_start]),
+        // obj_pause
+        pause: construct_input_array([vk_escape], [gp_start])
+    }
 }
 
 function bbox_in_camera()

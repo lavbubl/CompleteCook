@@ -30,7 +30,7 @@ if follow_player
 		if obj_player.sprite_index == obj_player.spr_player_swingding
 		{
 			_x += pd_frame_offset[floor(obj_player.image_index)] * 24 * obj_player.xscale
-			if (obj_player.image_index > 5)
+			if (obj_player.image_index < 4)
 				depth = -210
 		}
 	}

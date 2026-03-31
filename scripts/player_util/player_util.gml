@@ -399,12 +399,12 @@ function scr_goupwall(_size = 32)
 
 function scr_can_enter_door(_state)
 {
-	return _state != states.taunt && 
-		  _state != states.tumble && 
-		  _state != states.ball && 
-		  _state != states.fireass && 
-		  _state != states.actor && 
-		  _state != states.bump;
+	return _state == states.normal ||
+		   _state == states.mach2 ||
+		   _state == states.mach3 ||
+		   _state == states.superjump ||
+		   _state == states.slide ||
+		   _state == states.divebomb
 }
 
 function scr_can_uncrouch()

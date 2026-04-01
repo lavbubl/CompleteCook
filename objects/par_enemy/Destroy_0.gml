@@ -18,5 +18,6 @@ if do_particles
 	scr_sound_3d(sfx_killenemy, x, y)
 	shake_camera(3, 3 / room_speed)
 	
-	ds_list_add(!escape ? global.ds_dead_enemies : global.ds_escapesaveroom, id)
+	if object_index != obj_pizzaboy
+		ds_list_add(!escape ? global.ds_dead_enemies : global.ds_escapesaveroom, id)
 }

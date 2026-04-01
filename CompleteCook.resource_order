@@ -342,6 +342,7 @@
     {"name":"mu_secret","order":14,"path":"sounds/mu_secret/mu_secret.yy",},
     {"name":"mu_timesup","order":16,"path":"sounds/mu_timesup/mu_timesup.yy",},
     {"name":"mu_title_john","order":17,"path":"sounds/mu_title_john/mu_title_john.yy",},
+    {"name":"sfx_backslide","order":127,"path":"sounds/sfx_backslide/sfx_backslide.yy",},
     {"name":"sfx_ballroll","order":1,"path":"sounds/sfx_ballroll/sfx_ballroll.yy",},
     {"name":"sfx_beatbox","order":13,"path":"sounds/sfx_beatbox/sfx_beatbox.yy",},
     {"name":"sfx_bossintro","order":2,"path":"sounds/sfx_bossintro/sfx_bossintro.yy",},

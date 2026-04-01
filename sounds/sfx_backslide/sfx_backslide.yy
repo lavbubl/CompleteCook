@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_breakblock2",
+  "%Name":"sfx_backslide",
   "audioGroupId":{
     "name":"ag_sfx",
     "path":"audiogroups/ag_sfx",
   },
   "bitDepth":1,
   "channelFormat":1,
-  "compression":2,
+  "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.764,
+  "duration":12.0,
   "exportDir":"",
-  "name":"sfx_breakblock2",
+  "name":"sfx_backslide",
   "parent":{
     "name":"SFX",
     "path":"folders/Sounds/SFX.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"sfx_breakblock2.wav",
-  "volume":1.0,
+  "soundFile":"sfx_backslide.wav",
+  "volume":0.15,
 }

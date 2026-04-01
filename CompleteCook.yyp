@@ -122,7 +122,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.221",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"CompleteCook",
   "resources":[
@@ -403,6 +403,7 @@
     {"id":{"name":"mu_secret","path":"sounds/mu_secret/mu_secret.yy",},},
     {"id":{"name":"mu_timesup","path":"sounds/mu_timesup/mu_timesup.yy",},},
     {"id":{"name":"mu_title_john","path":"sounds/mu_title_john/mu_title_john.yy",},},
+    {"id":{"name":"sfx_backslide","path":"sounds/sfx_backslide/sfx_backslide.yy",},},
     {"id":{"name":"sfx_ballhitwall","path":"sounds/sfx_ballhitwall/sfx_ballhitwall.yy",},},
     {"id":{"name":"sfx_ballroll","path":"sounds/sfx_ballroll/sfx_ballroll.yy",},},
     {"id":{"name":"sfx_beatbox","path":"sounds/sfx_beatbox/sfx_beatbox.yy",},},

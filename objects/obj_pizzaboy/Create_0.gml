@@ -1,12 +1,16 @@
 event_inherited()
 
-sprs.move = spr_forknight_move
-sprs.stun = spr_forknight_stun
-sprs.scared = spr_forknight_scared
-sprs.dead = spr_forknight_dead
-sprs.turn = spr_forknight_turn
+pizzaboy_normal = function() {
+	hsp = 0
+	movespeed = 0
+}
 
-do_turn = true
+state_struct.normal = {state: states.normal, func: pizzaboy_normal} //disable its movement
 
-if !escape
-	create_hurtbox()
+sprs.move = sprite_index
+sprs.stun = sprite_index
+sprs.scared = sprite_index
+sprs.dead = sprite_index
+sprs.turn = sprite_index
+
+add_combo = false

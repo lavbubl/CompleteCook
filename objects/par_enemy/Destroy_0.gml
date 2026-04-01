@@ -18,5 +18,6 @@ if do_particles
 	fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/kill", x, y)
 	shake_camera(3, 3 / room_speed)
 	
-	ds_list_add(!escape ? global.ds_dead_enemies : global.ds_escapesaveroom, id)
+	if object_index != obj_pizzaboy
+		ds_list_add(!escape ? global.ds_dead_enemies : global.ds_escapesaveroom, id)
 }

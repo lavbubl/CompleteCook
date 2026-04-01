@@ -121,6 +121,7 @@ loop_sounds = {
 	superjumphold: new make_loop_sound(states.superjump, "event:/sfx/player/superjumphold", function() { return obj_player.sprite_index != spr_player_superjump && obj_player.sprite_index != spr_player_Sjumpcancelstart && obj_player.sprite_index != spr_player_presentboxspring}, 
 		[0.64, 1.84]),
 	ball: new make_loop_sound(states.ball, "event:/sfx/player/ball", function() { return obj_player.sprite_index != spr_player_ballend}),
+	backslide: new make_loop_sound(states.tumble, "event:/sfx/player/backslide", function() { return obj_player.sprite_index != spr_player_crouchslip && grounded})
 }
 
 var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //string path

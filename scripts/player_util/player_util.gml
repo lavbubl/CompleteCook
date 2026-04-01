@@ -591,6 +591,7 @@ function asset_player_reset(_letter)
 	{
 		spr_player_hurtjump = spr_playerN_jump
 		spr_player_machfreefall = spr_playerN_fall
+		spr_player_freefallland = spr_playerN_bodyslamland
 	}
 	
 	loop_sounds = {
@@ -608,5 +609,6 @@ function asset_player_reset(_letter)
 		wallbounce: new make_loop_sound(states.wallbounce, sfx_N_wallbounce),
 		tornadofast: new make_loop_sound(states.divebomb, sfx_N_tornadofast, function() { return obj_player.sprite_index == spr_playerN_divebombfall}),
 		tornadoslow: new make_loop_sound(states.divebomb, sfx_N_tornadoslow, function() { return obj_player.sprite_index != spr_playerN_divebombfall}),
+		backslide: new make_loop_sound(states.tumble, sfx_backslide, function() { return obj_player.sprite_index != spr_player_crouchslip && grounded})
 	}
 }

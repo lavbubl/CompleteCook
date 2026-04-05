@@ -1,5 +1,7 @@
+input_handler = new InputHandler(obj_inputcontroller.main_gamepad).AddInput("up").Finalize();
+
 // initialize input variables.
-key_up = new Input(global.keybinds.up);
+key_up = false;
 
 bg_surf = -1
 image_speed = 0

@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.9260318,
+  "duration":3.9266667,
   "exportDir":"",
   "name":"sfx_collectbig",
   "parent":{

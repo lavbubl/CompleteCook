@@ -13,16 +13,11 @@ else if inputbuffer > 0
 }
 
 // update input
-//ui_input.left.update(global.keybinds.ui_left);
-//ui_input.right.update(global.keybinds.ui_right);
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
+update_input();
 
 #region pause and unpausing
 
-if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accept.pressed) || ui_input.deny.pressed) && pause)
+if ui_input.pause.pressed || (((optionselected == 0 && ui_input.accept.pressed) || ui_input.deny.pressed) && pause)
 {
 	if !pause
 	{
@@ -32,6 +27,7 @@ if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accep
 		instance_activate_object(obj_pause_angel)
 		instance_activate_object(obj_screensizer)
 		instance_activate_object(obj_shakytext)
+        instance_activate_object(obj_inputcontroller);
 		if global.option_timerspeedrun
 			instance_activate_object(obj_timer)
 		audio_pause_all()

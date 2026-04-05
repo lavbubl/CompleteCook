@@ -1,19 +1,31 @@
 // player related macros
 #macro p_move (-input.left.check + input.right.check)
 
+input_handler = new InputHandler(obj_inputcontroller.main_gamepad).AddInput(["left", "right", "up", "down", "jump", "grab", "dash", "taunt", "superjump", "groundpound"]).Finalize();
+
+
+
 // initialize input
 input =
 {
-	left: new Input(global.keybinds.left),
-	right: new Input(global.keybinds.right),
-	up: new Input(global.keybinds.up),
-	down: new Input(global.keybinds.down),
-	jump: new Input(global.keybinds.jump),
-	grab: new Input(global.keybinds.grab),
-	dash: new Input(global.keybinds.dash),
-	taunt: new Input(global.keybinds.taunt),
-	superjump: new Input(global.keybinds.superjump),
-	groundpound: new Input(global.keybinds.groundpound)
+	left: false,
+	right: false,
+	up: false,
+	down: false,
+	jump: false,
+	grab: false,
+	dash: false,
+	taunt: false,
+	superjump: false,
+	groundpound: false
+}
+
+update_input = function()
+{
+    struct_foreach(input, function(_name, _value)
+    {
+        input[$ _name] = input_handler.get_input(_name);
+    });
 }
 
 collide_init()

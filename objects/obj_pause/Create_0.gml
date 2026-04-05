@@ -20,16 +20,30 @@ create_pause_screen_asset = function(_spr, _startx = 0, _starty = 0, _endx = 0, 
 	image_yscale = _yscale
 }
 
+input_handler = new InputHandler(obj_inputcontroller.main_gamepad).AddInput(["ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_deny", "pause"]).Finalize();
+
 // declare input
 ui_input =
 {
-	left: new Input(global.keybinds.ui_left),
-	right: new Input(global.keybinds.ui_right),
-	up: new Input(global.keybinds.ui_up),
-	down: new Input(global.keybinds.ui_down),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(global.keybinds.ui_deny)
+	left: false,
+	right: false,
+	up: false,
+	down: false,
+	accept: false,
+	deny: false,
+    pause: false
 };
+
+update_input = function()
+{
+    ui_input.left = input_handler.get_input("ui_left");
+    ui_input.right = input_handler.get_input("ui_right");
+    ui_input.up = input_handler.get_input("ui_up");
+    ui_input.down = input_handler.get_input("ui_down");
+    ui_input.accept = input_handler.get_input("ui_accept");
+    ui_input.deny = input_handler.get_input("ui_deny");
+    ui_input.pause = input_handler.get_input("pause");
+}
 
 depth = 0
 

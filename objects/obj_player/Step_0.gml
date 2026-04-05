@@ -1,20 +1,10 @@
 // update all of the inputs
-// TODO: helper function?
 
 if !pausestopframe
 {
 	if !IS_DEBUG || !obj_shell.isOpen
 	{
-		input.left.update(global.keybinds.left);
-		input.right.update(global.keybinds.right);
-		input.up.update(global.keybinds.up);
-		input.down.update(global.keybinds.down);
-		input.jump.update(global.keybinds.jump);
-		input.grab.update(global.keybinds.grab);
-		input.dash.update(global.keybinds.dash);
-		input.taunt.update(global.keybinds.taunt);
-		input.superjump.update(global.keybinds.superjump);
-		input.groundpound.update(global.keybinds.groundpound);
+        update_input();
 	}
 	
 	input_buffers.grab = max(input_buffers.grab - 1, 0)

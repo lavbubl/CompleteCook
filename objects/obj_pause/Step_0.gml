@@ -1,5 +1,6 @@
 if !pause || room == mainmenu
 	exit;
+
 else if instance_exists(obj_shell)
 {
 	if obj_shell.isOpen
@@ -16,11 +17,9 @@ else if inputbuffer > 0
 	inputbuffer--
 	exit;
 }
-	
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
+
+// update input
+update_input();
 
 var movev = -ui_input.up.pressed + ui_input.down.pressed
 

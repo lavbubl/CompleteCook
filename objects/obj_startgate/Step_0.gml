@@ -1,5 +1,5 @@
 // update input
-key_up.update(global.keybinds.up);
+key_up = input_handler.get_input("up");
 
 if surface_exists(bg_surf)
 {

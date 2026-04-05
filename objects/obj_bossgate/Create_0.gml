@@ -1,5 +1,4 @@
-enter_door = new Input(global.keybinds.up);
-
+enter_door = false;
 
 bg_surf = -1
 image_speed = 0

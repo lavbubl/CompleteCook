@@ -1,7 +1,4 @@
-ui_accept.update(global.keybinds.ui_accept)
-ui_deny.update(global.keybinds.ui_deny)
-left.update(global.keybinds.ui_left)
-right.update(global.keybinds.ui_right)
+update_input();
 
 if left.pressed || right.pressed
 {

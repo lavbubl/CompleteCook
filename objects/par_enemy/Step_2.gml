@@ -20,6 +20,12 @@ switch (object_index)
 		else if (sprite_index != sprs.move && hurtbox_id != -4)
 			destroy_hurtbox()
 		break;
+	case obj_minijohn:
+		if (sprite_index == sprs.punch && hurtbox_id == -4)
+			create_hurtbox()
+		else if (sprite_index != sprs.punch && hurtbox_id != -4)
+			destroy_hurtbox()
+		break;
 }
 
 if follow_player

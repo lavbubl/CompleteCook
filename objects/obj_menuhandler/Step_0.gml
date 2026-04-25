@@ -24,7 +24,7 @@ optionsalpha = approach(optionsalpha, 1, 0.1)
 if abletoinput
 {
 	obj_menupeppino.painless = false
-	if input_check_pressed(special_keybind_deny, true)
+	if input_check_pressed(global.input_type == INPUT_TYPE.KEYBOARD ? vk_escape : gp_start, true)
 		instance_create(0, 0, obj_options)
 	else if input_check_pressed(INPUTS.grab)
 		instance_create(0, 0, obj_quitgame)
@@ -70,7 +70,8 @@ for (var i = 0; i < array_length(tvs); i++)
 					}
 					break;
 			}
-			if input_check_pressed(INPUTS.ui_accept) && other.state == 0 && abletoinput
+			var accept_bind = global.input_type == INPUT_TYPE.KEYBOARD ? INPUTS.ui_accept : INPUTS.jump
+			if input_check_pressed(accept_bind) && other.state == 0 && abletoinput
 			{
 				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)

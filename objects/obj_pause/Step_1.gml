@@ -14,7 +14,7 @@ else if inputbuffer > 0
 
 #region pause and unpausing
 
-if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && input_check_pressed(INPUTS.ui_accept)) || input_check_pressed(INPUTS.ui_deny)) && pause)
+if keyboard_check_pressed(vk_escape) || (gamepad_button_check_pressed(0, gp_start) && !pause) || (((optionselected == 0 && input_check_pressed(INPUTS.ui_accept)) || input_check_pressed(INPUTS.ui_deny)) && pause)
 {
 	if !pause
 	{

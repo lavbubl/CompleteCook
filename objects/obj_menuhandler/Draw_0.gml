@@ -36,6 +36,6 @@ draw_sprite(spr_menuquit, 0, 0, 0);
 cc_draw_key_arr(63, 115, global.keybinds.grab)
 
 draw_sprite(spr_menupause, 0, 819, 84);
-cc_draw_key_arr(745, 65, special_keybind_deny)
+cc_draw_key(745, 65, vk_escape)
 
 draw_reset_color(1)

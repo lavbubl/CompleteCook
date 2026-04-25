@@ -1,15 +1,4 @@
-// declare input
-special_keybind_deny = variable_clone(global.keybinds.ui_deny) //special conflicting input removal
-
-if is_array(special_keybind_deny)
-{
-	var _d_ix = array_get_index(special_keybind_deny, ord("X"))
-
-	if _d_ix != -1
-		array_delete(special_keybind_deny, _d_ix, 1)
-}
-
-show_debug_message(special_keybind_deny)
+special_keybind_deny = vk_escape
 
 tvs =  [new ini_menu_tv_inst(103, 0, 
 			spr_menutv1_off,

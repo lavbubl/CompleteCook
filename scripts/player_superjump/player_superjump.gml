@@ -17,7 +17,7 @@ function player_superjump()
 		  xscale = p_move
 	}
 	
-	var superjumpholding = input.up.check || input.superjump.check || !grounded
+	var superjumpholding = input_check(INPUTS.up) || input_check(INPUTS.superjump) || !grounded
 	
 	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
 	{
@@ -83,7 +83,7 @@ function player_superjump()
 		if (sprite_index != spr_player_Sjumpcancelstart)
 			vsp -= grav + 0.1
 		
-		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump && sprite_index != spr_player_presentboxspring
+		if (input_buffers.grab > 0 || input_check_pressed(INPUTS.dash)) && state != states.bump && sprite_index != spr_player_presentboxspring
 		{
 			input_buffers.grab = 0
 			reset_anim(spr_player_Sjumpcancelstart)

@@ -11,18 +11,12 @@ if inputbuffer > 0
 }
 
 // update input
-ui_input.left.update(global.keybinds.ui_left);
-ui_input.right.update(global.keybinds.ui_right);
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
 
 var _back_arr = [-1, 0, 0, 0, 0, 2] //array of indexes to get based on list index
 _back_arr[64] = 0
 back_ix = _back_arr[list_ix] //get matching back index
 
-if ui_input.deny.pressed
+if input_check_pressed(INPUTS.ui_deny)
 {
 	scr_sound(sfx_ui_back)
 	if back_ix <= -1
@@ -50,8 +44,8 @@ cur_list = list_arr[list_ix]
 
 moving = false
 
-var moveh = -ui_input.left.pressed + ui_input.right.pressed
-var movev = -ui_input.up.pressed + ui_input.down.pressed
+var moveh = -input_check_pressed(INPUTS.ui_left) + input_check_pressed(INPUTS.ui_right)
+var movev = -input_check_pressed(INPUTS.ui_up) + input_check_pressed(INPUTS.ui_down)
 
 var _prevos = optionselected
 
@@ -65,7 +59,7 @@ var cur_option = cur_list[optionselected]
 switch cur_option.o_type
 {
 	case types.onoff:
-		if ui_input.left.pressed || ui_input.right.pressed || ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_left) || input_check_pressed(INPUTS.ui_right) || input_check_pressed(INPUTS.ui_accept)
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
@@ -73,7 +67,7 @@ switch cur_option.o_type
 		}
 		break;
 	case types.slider:
-		var move = -ui_input.left.check + ui_input.right.check
+		var move = -input_check(INPUTS.ui_left) + input_check(INPUTS.ui_right)
 		cur_option.val = clamp(cur_option.val + move, 0, 100)
 		if move != 0
 		{
@@ -82,7 +76,7 @@ switch cur_option.o_type
 		}
 		break;
 	case types.func:
-		if ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_accept)
 		{
 			cur_option.func(cur_option.val)
 			scr_sound(snd_select)
@@ -90,7 +84,7 @@ switch cur_option.o_type
 		break;
 	case types.multichoice:
 		var prev_val = cur_option.val[0]
-		if ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_accept)
 		{
 			cur_option.val[0] += 1
 			scr_sound(snd_select)
@@ -103,7 +97,7 @@ switch cur_option.o_type
 			cur_option.func(cur_option.val)
 		break;
 	case types.change:
-		if ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_accept)
 		{
 			if list_ix == 0 || list_ix == 64 || cur_option.val == 0
 			{

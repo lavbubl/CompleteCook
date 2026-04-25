@@ -6,7 +6,7 @@ with obj_player
 	flash = 10
 	var ix = irandom_range(1, 3)
 	reset_anim(asset_get_index($"spr_player_parry{ix}"))
-	particle_create(x, y, particles.parry)
+	create_effect(x, y, spr_parryflash).depth = -100
 }
 
 with par_enemy
@@ -18,7 +18,7 @@ with par_enemy
 		do_enemygibs()
 		shake_camera(3, 3 / room_speed)
 		scr_sound_3d_pitched(sfx_punch, x, y)
-		particle_create(x, y, particles.parry)
+		create_effect(x, y, spr_parryflash).depth = -100
 	}
 }
 

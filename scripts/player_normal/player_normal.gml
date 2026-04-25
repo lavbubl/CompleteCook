@@ -114,7 +114,7 @@ function player_normal()
 	
 	image_speed = 0.35
 	
-	if input.taunt.check
+	if input_check(INPUTS.taunt)
 	{
 		if breakdance_secret.buffer < 10
 			breakdance_secret.buffer++
@@ -138,7 +138,7 @@ function player_normal()
 		breakdance_secret.spd = 0.25
 	}
 	
-	if (input.down.check || !scr_can_uncrouch())
+	if (input_check(INPUTS.down) || !scr_can_uncrouch())
 	{
 		reset_anim(!has_shotgun ? spr_player_crouchdown : spr_player_shotgun_crouchstart)
 		state = states.crouch
@@ -164,7 +164,7 @@ function player_normal()
 	
 	do_grab() //note: intentional game design
 	
-	if input.dash.check && !scr_hitwall(x + xscale, y)
+	if input_check(INPUTS.dash) && !scr_hitwall(x + xscale, y)
 	{
 		state = states.mach2
 		if (movespeed < 6)

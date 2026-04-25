@@ -6,7 +6,7 @@ function player_mach2()
 	{
 		if (sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup)
 			sprite_index = spr_player_mach2
-		if (!input.dash.check)
+		if (!input_check(INPUTS.dash))
 		{
 			if (movespeed < 8)
 			{
@@ -60,7 +60,7 @@ function player_mach2()
 			sprite_index != spr_player_longjump &&
 			sprite_index != spr_player_mach2jump)
 			reset_anim(spr_player_secondjump)
-		if (!jumpstop && !input.jump.check && vsp < 0)
+		if (!jumpstop && !input_check(INPUTS.jump) && vsp < 0)
 		{
 			jumpstop = true
 			vsp /= 10
@@ -77,7 +77,7 @@ function player_mach2()
 	
 	do_slope_momentum()
 	
-	if (input.down.check)
+	if (input_check(INPUTS.down))
 	{
 		state = states.tumble
 		if (grounded)

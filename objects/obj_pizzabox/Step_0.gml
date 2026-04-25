@@ -1,10 +1,3 @@
-// update input
-key_up.update(global.keybinds.up);
-key_down.update(global.keybinds.down);
-
-var up = key_up.check
-var down = key_down.check
-
 var livemax = 15
 
 if (live <= livemax)
@@ -14,7 +7,7 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 {
 	if (state != states.actor && other.live > livemax)
 	{
-		if ((down || state == states.groundpound) && place_meeting(x, y + 1, other) && other.image_yscale == 1)
+		if ((input_check(INPUTS.down) || state == states.groundpound) && place_meeting(x, y + 1, other) && other.image_yscale == 1)
 		{
 			dooryscale = 1
 			state = states.actor
@@ -25,7 +18,7 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 			reset_anim(spr_player_downpizzabox)
 			scr_sound(sfx_box)
 		}
-		else if ((up || state == states.superjump || state == states.climbwall) && place_meeting(x, y - 10, other) && other.image_yscale == -1)
+		else if ((input_check(INPUTS.up) || state == states.superjump || state == states.climbwall) && place_meeting(x, y - 10, other) && other.image_yscale == -1)
 		{
 			if state == states.climbwall
 				scr_sound_3d(sfx_groundpound, x, y)

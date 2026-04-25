@@ -1,18 +1,12 @@
-// update input
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
-ui_input.addbind.update("Z");
-ui_input.clearbind.update("C");
-ui_input.resetallbinds.update(vk_f1);
+var _prev_input_type = global.input_type
+global.input_type = INPUT_TYPE.KEYBOARD
 
 if !binding
-	selected = clamp(selected + (-ui_input.up.pressed + ui_input.down.pressed), -1, array_length(binds) - 1)
+	selected = clamp(selected + (-input_check_pressed(INPUTS.ui_up) + input_check_pressed(INPUTS.ui_down)), -1, array_length(binds) - 1)
 
 if selected == -1
 {
-	if ui_input.accept.pressed || ui_input.deny.pressed
+	if input_check_pressed(INPUTS.ui_accept) || input_check_pressed(INPUTS.ui_deny)
 		instance_destroy()
 	exit;
 }
@@ -42,20 +36,22 @@ if binding
 }
 else
 {
-	if ui_input.addbind.pressed
+	if keyboard_check_pressed(ord("Z"))
 		binding = true
-	else if ui_input.clearbind.pressed
+	else if keyboard_check_pressed(ord("C"))
 	{
 		global.keybinds[$ bindname] = vk_nokey
 		binds[selected].input = global.keybinds[$ bindname]
 	}
-	else if ui_input.resetallbinds.pressed
+	else if keyboard_check_pressed(vk_f1)
 	{
 		array_foreach(binds, function(_element) {
 			_element.input = _element.defaultbind
 			global.keybinds[$ _element.globalname] = _element.defaultbind
 		})
 	}
-	if ui_input.deny.pressed
+	if input_check_pressed(INPUTS.ui_deny)
 		instance_destroy()
 }
+
+global.input_type = _prev_input_type

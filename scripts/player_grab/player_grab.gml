@@ -5,13 +5,13 @@ function player_grab()
 	if (movespeed < 10)
 		movespeed += 0.5
 	
-	if (!input.jump.check && !jumpstop && vsp < 0.5)
+	if (!input_check(INPUTS.jump) && !jumpstop && vsp < 0.5)
 	{
 		vsp /= 20
 		jumpstop = true
 	}
 	
-	if (input_buffers.jump > 0 && !input.down.check && coyote_time)
+	if (input_buffers.jump > 0 && !input_check(INPUTS.down) && coyote_time)
 	{
 		input_buffers.jump = 0
 		jumpstop = false
@@ -22,7 +22,7 @@ function player_grab()
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
-	if (input.down.check && !input.jump.check && grounded)
+	if (input_check(INPUTS.down) && !input_check(INPUTS.jump) && grounded)
 	{
 		movespeed = 12
 		crouchslipbuffer = 25
@@ -35,7 +35,7 @@ function player_grab()
 	if (sprite_index == spr_player_suplexdash && !grounded)
 		reset_anim(spr_player_suplexgrabjump)
 	
-	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && input.dash.check)
+	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && input_check(INPUTS.dash))
 	{
 		state = states.mach2
 		sprite_index = spr_player_mach2
@@ -69,12 +69,12 @@ function player_grab()
 		case spr_player_suplexgrabjump:
 			if anim_ended()
 				image_index = 4
-			if (grounded && !input.dash.check && image_index >= 4)
+			if (grounded && !input_check(INPUTS.dash) && image_index >= 4)
 				state = states.normal
 			break;
 	}
 	
-	if anim_ended() && input.dash.check && sprite_index == spr_player_suplexdash
+	if anim_ended() && input_check(INPUTS.dash) && sprite_index == spr_player_suplexdash
 	{
 		state = states.mach2
 		sprite_index = spr_player_mach2

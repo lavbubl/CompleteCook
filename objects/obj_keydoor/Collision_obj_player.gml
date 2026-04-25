@@ -1,8 +1,6 @@
-enter_door.update(global.keybinds.up);
-
 var canenter = (ds_list_find_index(global.ds_saveroom, id) != -1 || other.haskey) && scr_can_enter_door(other.state)
 
-if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && enter_door.check && canenter)
+if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1 && input_check(INPUTS.up) && canenter)
 {
 	var enterspr = spr_player_enterkeydoor
 	

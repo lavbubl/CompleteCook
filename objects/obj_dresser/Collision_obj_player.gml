@@ -1,4 +1,4 @@
-if other.input.up.pressed
+if input_check_pressed(INPUTS.up)
 {
 	clothes_selected++
 	if clothes_selected == array_length(clothes_arr)

@@ -1,6 +1,3 @@
-// update input
-key_up.update(global.keybinds.up);
-
 if surface_exists(bg_surf)
 {
 	for (var i = 0; i < array_length(bg_parallax); i++) 
@@ -10,7 +7,7 @@ if surface_exists(bg_surf)
 	}
 }
 
-if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && key_up.check && obj_player.grounded)
+if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && input_check(INPUTS.up) && obj_player.grounded)
 {
 	with obj_player
 	{

@@ -5,7 +5,7 @@ function anim_ended(_img_index = image_index, _img_number = image_number - 1)
 
 function do_groundpound()
 {
-	if input.down.pressed || input.groundpound.pressed
+	if input_check_pressed(INPUTS.down) || input_check_pressed(INPUTS.groundpound)
 	{
 		freefallsmash = -14
 		dir = p_move
@@ -45,7 +45,7 @@ function do_grab()
 			with instance_create(x + xscale * 46, (y + 6), obj_shotgunblast)
 				image_xscale = other.xscale
 		}
-		else if (!input.up.check)
+		else if (!input_check(INPUTS.up))
 		{
 			movespeed = max(movespeed, 5)
 			if state == states.normal
@@ -70,7 +70,7 @@ function do_grab()
 
 function do_taunt()
 {
-	if input.taunt.pressed
+	if input_check_pressed(INPUTS.taunt)
 	{
 		prev = {
 			state: self.state,
@@ -82,7 +82,7 @@ function do_taunt()
 		particle_create(x, y, particles.taunt).image_xscale = xscale
 		state = states.taunt
 		
-		if !(input.up.check && supertauntshow)
+		if !(input_check(INPUTS.up) && supertauntshow)
 		{
 			sprite_index = spr_player_taunt
 			image_index = random_range(0, image_number)
@@ -237,8 +237,8 @@ function do_hurt(obj = noone)
 	if irandom(100) >= 50
 		scr_sound_pitched(choose(v_pep_hurt, v_pep_hurt2), 0.7, 1.3)
 	
-	particle_create(x, y, particles.parry)
 	particle_create(x, y, particles.bang)
+	create_effect(x, y, spr_parryflash).depth = -100
 	create_effect(x, y, spr_hurtstars)
 	
 	global.hurtcounter++

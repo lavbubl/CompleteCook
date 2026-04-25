@@ -55,7 +55,7 @@ function player_climbwall()
 	
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
 	
-	if (!input.dash.check && grabclimbbuffer <= 0)
+	if (!input_check(INPUTS.dash) && grabclimbbuffer <= 0)
 	{
 		state = states.jump
 		sprite_index = spr_player_fall

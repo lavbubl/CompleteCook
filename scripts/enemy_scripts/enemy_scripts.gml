@@ -156,13 +156,13 @@ function do_enemy_generics()
 	
 	if place_meeting(x, y, obj_player)
 	{
-		if obj_player.instakill && alarm[0] == -1 && !follow_player && obj_player.hitstun <= 0
+		if obj_player.instakill && alarm[0] == -1 && !follow_player
 		{
 			with obj_player
 			{
 				if state == states.mach3
 					reset_anim(spr_player_mach3hit)
-				if !grounded && input.jump.check && state != states.groundpound
+				if !grounded && input_check(INPUTS.jump) && state != states.groundpound
 				{
 					input_buffers.jump = 0
 					vsp = -11
@@ -175,10 +175,13 @@ function do_enemy_generics()
 			shake_camera()
 			scr_sound_3d_pitched(sfx_punch, x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
-			particle_create(x, y, particles.parry)
-		
-			obj_player.hitstun = 5
-			obj_player.prev_ix = obj_player.image_index
+			create_effect(x, y, spr_parryflash).depth = -100
+			
+			with obj_player
+			{
+				hitstun = 5
+				prev_ix = image_index
+			}
 			alarm[0] = 2
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
@@ -214,7 +217,7 @@ function do_enemy_generics()
 				if !grounded
 					vsp = -6
 				
-				if (input.up.check)
+				if input_check(INPUTS.up)
 				{
 					state = states.piledriver
 					dir = xscale
@@ -226,7 +229,7 @@ function do_enemy_generics()
 			{
 				if state == states.jump
 					reset_anim(spr_player_stomp)
-				vsp = input.jump.check ? -14 : -9
+				vsp = input_check(INPUTS.jump) ? -14 : -9
 				jumpstop = true
 				
 				create_effect(x, bbox_bottom, spr_stompeffect)

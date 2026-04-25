@@ -137,6 +137,7 @@
     {"name":"obj_hallway","order":1,"path":"objects/obj_hallway/obj_hallway.yy",},
     {"name":"obj_hudhpdebris","order":1,"path":"objects/obj_hudhpdebris/obj_hudhpdebris.yy",},
     {"name":"obj_hurtbox","order":4,"path":"objects/obj_hurtbox/obj_hurtbox.yy",},
+    {"name":"obj_inputhandler","order":17,"path":"objects/obj_inputhandler/obj_inputhandler.yy",},
     {"name":"obj_key","order":6,"path":"objects/obj_key/obj_key.yy",},
     {"name":"obj_keyconfig","order":12,"path":"objects/obj_keyconfig/obj_keyconfig.yy",},
     {"name":"obj_keydoor","order":6,"path":"objects/obj_keydoor/obj_keydoor.yy",},

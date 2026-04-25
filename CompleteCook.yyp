@@ -179,6 +179,7 @@
     {"id":{"name":"obj_hallway","path":"objects/obj_hallway/obj_hallway.yy",},},
     {"id":{"name":"obj_hudhpdebris","path":"objects/obj_hudhpdebris/obj_hudhpdebris.yy",},},
     {"id":{"name":"obj_hurtbox","path":"objects/obj_hurtbox/obj_hurtbox.yy",},},
+    {"id":{"name":"obj_inputhandler","path":"objects/obj_inputhandler/obj_inputhandler.yy",},},
     {"id":{"name":"obj_key","path":"objects/obj_key/obj_key.yy",},},
     {"id":{"name":"obj_keyconfig","path":"objects/obj_keyconfig/obj_keyconfig.yy",},},
     {"id":{"name":"obj_keydoor","path":"objects/obj_keydoor/obj_keydoor.yy",},},

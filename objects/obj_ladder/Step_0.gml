@@ -1,7 +1,7 @@
 with instance_place(x, y - 1, obj_player)
 {
-	var check_up = (input.up.check && place_meeting(x, y, obj_ladder))
-	var check_down = (input.down.check && place_meeting(x, y + 1, obj_ladder) && !place_meeting(x, y + 1, obj_solid) && state != states.tumble)
+	var check_up = (input_check(INPUTS.up) && place_meeting(x, y, obj_ladder))
+	var check_down = (input_check(INPUTS.down) && place_meeting(x, y + 1, obj_ladder) && !place_meeting(x, y + 1, obj_solid) && state != states.tumble)
 	if	(check_up || check_down) && 
 		state != states.ladder && 
 		state != states.taunt &&

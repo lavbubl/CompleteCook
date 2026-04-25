@@ -53,7 +53,7 @@ function player_mach3()
 	{
 		if (sprite_index == spr_player_Sjumpcancel)
 			sprite_index = spr_player_mach3
-		if (!input.dash.check && !dashpad)
+		if (!input_check(INPUTS.dash) && !dashpad)
 		{
 			reset_anim(spr_player_machslidestart)
 			state = states.slide
@@ -69,7 +69,7 @@ function player_mach3()
 		if (movespeed < 20 && p_move == xscale)
 			movespeed += mach4mode ? 0.1 : 0.025
 			
-		if (input.up.check || input.superjump.check) && !dashpad && vsp >= 0
+		if (input_check(INPUTS.up) || input_check(INPUTS.superjump)) && !dashpad && vsp >= 0
 		{
 			state = states.superjump
 			reset_anim(spr_player_superjumpprep)
@@ -77,7 +77,7 @@ function player_mach3()
 	}
 	else
 	{
-		if (!jumpstop && !input.jump.check && vsp < 0)
+		if (!jumpstop && !input_check(INPUTS.jump) && vsp < 0)
 		{
 			jumpstop = true
 			vsp /= 10
@@ -86,7 +86,7 @@ function player_mach3()
 	
 	do_slope_momentum()
 	
-	if (input.down.check)
+	if (input_check(INPUTS.down))
 	{
 		state = states.tumble
 		

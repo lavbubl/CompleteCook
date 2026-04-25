@@ -16,13 +16,8 @@ else if inputbuffer > 0
 	inputbuffer--
 	exit;
 }
-	
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
 
-var movev = -ui_input.up.pressed + ui_input.down.pressed
+var movev = -input_check_pressed(INPUTS.ui_up) + input_check_pressed(INPUTS.ui_down)
 
 if movev != 0
 {
@@ -35,7 +30,7 @@ optionselected = wrap(array_length(options), optionselected + movev)
 
 var cur_option = options[optionselected]
 
-if ui_input.accept.pressed && cur_option.o_func != undefined
+if input_check_pressed(INPUTS.ui_accept) && cur_option.o_func != undefined
 	cur_option.o_func()
 	
 if angel_timer > 0

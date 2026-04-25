@@ -1,7 +1,7 @@
-if obj_menuhandler.input.left.pressed || obj_menuhandler.input.right.pressed
+if input_check_pressed(INPUTS.ui_left) || input_check_pressed(INPUTS.ui_right)
 	quit = !quit
 
-if (obj_menuhandler.input.accept.pressed && !quit) || obj_menuhandler.input.deny.pressed
+if (input_check_pressed(INPUTS.ui_accept) && !quit) || input_check_pressed(INPUTS.ui_deny)
 	instance_destroy()
-else if obj_menuhandler.input.accept.pressed && quit
+else if input_check_pressed(INPUTS.ui_accept) && quit
 	game_end()

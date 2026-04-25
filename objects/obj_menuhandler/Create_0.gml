@@ -11,15 +11,6 @@ if is_array(special_keybind_deny)
 
 show_debug_message(special_keybind_deny)
 
-input =
-{
-	left: new Input(global.keybinds.ui_left),
-	right: new Input(global.keybinds.ui_right),
-	grab: new Input(global.keybinds.grab),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(special_keybind_deny)
-};
-
 tvs =  [new ini_menu_tv_inst(103, 0, 
 			spr_menutv1_off,
 			spr_menutv1_whitenoise,

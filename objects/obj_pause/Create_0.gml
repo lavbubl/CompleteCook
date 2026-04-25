@@ -20,17 +20,6 @@ create_pause_screen_asset = function(_spr, _startx = 0, _starty = 0, _endx = 0, 
 	image_yscale = _yscale
 }
 
-// declare input
-ui_input =
-{
-	left: new Input(global.keybinds.ui_left),
-	right: new Input(global.keybinds.ui_right),
-	up: new Input(global.keybinds.ui_up),
-	down: new Input(global.keybinds.ui_down),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(global.keybinds.ui_deny)
-};
-
 depth = 0
 
 create_image = false

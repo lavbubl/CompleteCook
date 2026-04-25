@@ -2,15 +2,34 @@
 
 	Quick usage tutorial:
 	
-	in the create event, construct the Input object like this:
-	key_up = new Input(global.keybinds.up);
+	The input functions in this script are designed for you to input a constant from the INPUTS
+	enum, so that keybinds can switch from global binds from keyboards to gamepads. Vice versa.
 	
-	if you want it to update with global.keybinds, run:
-	key_up.update(global.keybinds.up);
+	You can also input true for the 2nd argument for input checks, so that you can input an array
+	outside of global.bindslist, see the example of this functionality used in obj_menuhandler.
 	
-	the array can store multiple input keys, controller support is not implemented as of now.
-	
+	Refer to obj_inputhandler's creation code for many global variable definitions.
 */
+
+enum INPUTS
+{
+	left,
+	right,
+	up,
+	down,
+	dash,
+	jump,
+	grab,
+	taunt,
+	superjump,
+	groundpound,
+	ui_left,
+	ui_right,
+	ui_up,
+	ui_down,
+	ui_accept,
+	ui_deny
+}
 
 enum INPUT_TYPE
 {
@@ -19,214 +38,74 @@ enum INPUT_TYPE
 	MOUSE
 }
 
-/// @summary Initializes an input key.
-function Input(_keyname_array, _input_type = INPUT_TYPE.KEYBOARD, _device = 0) constructor
+/// @summary Get the bind from the INPUTS enum, use a single vk/gp constant/string or key arrays.
+function input_get_bind(_input_enum, _is_special_key = false)
 {
-	device = _device; // the gamepad to check.
-	type = _input_type;
-    input = []; // will contain all of the raw ASCII values.
+	var _bind_arr = _input_enum
 	
-	check = false;
-	pressed = false;
-	released = false;
-	
-	// function is called in step so keybinds get refreshed.
-	static update = function(_keyname_array)
+	if !_is_special_key
 	{
-		var _inputarr = [];
-		// process _keyname_array into ASCII values.
-		
-		if !is_array(_keyname_array) //if not an array, make it a single one
-			_keyname_array = [_keyname_array];
-		
-		for (var i = 0; i < array_length(_keyname_array); i++)
-		{
-		    var _keyname = _keyname_array[i];
-		    // see if its a number value or not.
-		    if (is_real(_keyname))
-		        array_push(_inputarr, _keyname);
-		    else if (is_string(_keyname))
-		        array_push(_inputarr, ord(_keyname));
-		}
-		if (!array_equals(input, _inputarr))
-			input = _inputarr;
-			
-		// since this uses an update method, we can actually just private all of the check methods and run them here.
-		
-		check = __check();
-		pressed = __pressed();
-		released = __released();
+		var _ix = 0 //keyboard
+		if global.input_type == INPUT_TYPE.CONTROLLER
+			_ix = 1
+		_bind_arr = global.bindslist[_input_enum][_ix]
 	}
-    
-	update(_keyname_array);
 	
-    // check methods
-    static __check = function()
-    {
-		switch (type)
-		{
-			case INPUT_TYPE.KEYBOARD:
-			{
-				for (var i = 0; i < array_length(input); i++)
-		        {
-					if input[i] == vk_nokey //making sure a blank key is invalid
-						continue;
-		            if (keyboard_check(input[i]))
-		                return true;
-		        }
-		        return false;
-			}
-			case INPUT_TYPE.CONTROLLER:
-			{
-				// TODO: handle controller input
-			}
-			case INPUT_TYPE.MOUSE:
-			{
-				for (var i = 0; i < array_length(input); i++)
-		        {
-		            if (mouse_check_button(input[i]))
-		                return true;
-		        }
-		        return false;
-			}
-		}
-
-    }
-    
-    static __pressed = function()
-    {
-		switch (type)
-		{
-			case INPUT_TYPE.KEYBOARD:
-			{
-				for (var i = 0; i < array_length(input); i++)
-		        {
-					if input[i] == vk_nokey
-						continue;
-		            if (keyboard_check_pressed(input[i]))
-		                return true;
-		        }
-		        return false;
-			}
-			case INPUT_TYPE.CONTROLLER:
-			{
-				// TODO: handle controller input
-			}
-			case INPUT_TYPE.MOUSE:
-			{
-				for (var i = 0; i < array_length(input); i++)
-		        {
-		            if (mouse_check_button_pressed(input[i]))
-		                return true;
-		        }
-		        return false;
-			}
-		}
-    }
-    
-    static __released = function()
-    { 
-		switch (type)
-		{
-			case INPUT_TYPE.KEYBOARD:
-			{
-				for (var i = 0; i < array_length(input); i++)
-		        {
-					if input[i] == vk_nokey
-						continue;
-		            if (keyboard_check_released(input[i]))
-		                return true;
-		        }
-		        return false;
-			}
-			case INPUT_TYPE.CONTROLLER:
-			{
-				// TODO: handle controller input
-			}
-			case INPUT_TYPE.MOUSE:
-			{
-				for (var i = 0; i < array_length(input); i++)
-		        {
-		            if (mouse_check_button_released(input[i]))
-		                return true;
-		        }
-		        return false;
-			}
-		}
-    }
+	if !is_array(_bind_arr) //if not an array, make it a single one
+		_bind_arr = [_bind_arr]
+	
+	for (var i = 0; i < array_length(_bind_arr); i++)
+	{
+	   if is_string(_bind_arr[i])
+	        _bind_arr[i] = ord(_bind_arr[i]);
+	}
+	
+	return _bind_arr;
 }
 
-
-/// @deprecated
-function get_input()
+/// @summary Checks if a bind is being held.
+function input_check(_input_enum, _is_special_key = false)
 {
-	/*var keybinds = {
-		left: vk_left,
-		right: vk_right,
-		up: vk_up,
-		down: vk_down,
-		jump: ord("Z"),
-		grab: ord("X"),
-		dash: vk_shift,
-		taunt: ord("C"),
-		ui_left: vk_left,
-		ui_right: vk_right,
-		ui_up: vk_up,
-		ui_down: vk_down,
-		ui_accept: [vk_enter, vk_space, ord("Z")],
-		ui_deny: [vk_backspace, vk_escape, ord("X")]
-	}*/
-	
-	key_left = setkey(global.keybinds.left)
-	key_right = setkey(global.keybinds.right)	
-	key_up = setkey(global.keybinds.up)
-	key_down = setkey(global.keybinds.down)	
-	key_jump = setkey(global.keybinds.jump)
-	key_grab = setkey(global.keybinds.grab)
-	key_dash = setkey(global.keybinds.dash)
-	key_taunt = setkey(global.keybinds.taunt)
-	
-	uikey_left = setkey(global.keybinds.ui_left)
-	uikey_right = setkey(global.keybinds.ui_right)
-	uikey_up = setkey(global.keybinds.ui_up)
-	uikey_down = setkey(global.keybinds.ui_down)
-	uikey_accept = setkey(global.keybinds.ui_accept)
-	uikey_deny = setkey(global.keybinds.ui_deny)
+	var _input = input_get_bind(_input_enum, _is_special_key)
+	for (var i = 0; i < array_length(_input); i++)
+	{
+		if _input[i] == vk_nokey //making sure a blank key is invalid
+			continue;
+		else if global.input_type == INPUT_TYPE.KEYBOARD
+			return keyboard_check(_input[i])
+		else if global.input_type == INPUT_TYPE.CONTROLLER
+			return gamepad_button_check(global.pad_device, _input[i])
+	}
 }
-/// @deprecated
-function setkey(keybind)
+
+/// @summary Checks if a bind was pressed.
+function input_check_pressed(_input_enum, _is_special_key = false)
 {
-	var k = {
-		down: false,
-		pressed: false,
-		released: false
-	}
-	
-	if is_array(keybind)
+	var _input = input_get_bind(_input_enum, _is_special_key)
+	for (var i = 0; i < array_length(_input); i++)
 	{
-		for (var i = 0; i < array_length(keybind); i++) {
-			var noneedtocheck = false
-			if keyboard_check(keybind[i])
-			{
-				k.down = true
-				noneedtocheck = true
-			}
-			if keyboard_check_pressed(keybind[i])
-				k.pressed = true
-			if keyboard_check_released(keybind[i])
-				k.released = true
-			
-			if noneedtocheck
-				break;
-		}
+		if _input[i] == vk_nokey
+			continue;
+		else if global.input_type == INPUT_TYPE.KEYBOARD
+			return keyboard_check_pressed(_input[i])
+		else if global.input_type == INPUT_TYPE.CONTROLLER
+			return gamepad_button_check_pressed(global.pad_device, _input[i])
 	}
-	else
+	return false;
+}
+
+/// @summary Checks if a bind was released.
+function input_check_released(_input_enum, _is_special_key = false)
+{
+	var _input = input_get_bind(_input_enum, _is_special_key)
+	for (var i = 0; i < array_length(_input); i++)
 	{
-		k = {
-			down: keyboard_check(keybind),
-			pressed: keyboard_check_pressed(keybind),
-			released: keyboard_check_released(keybind)
-		}
+		if _input[i] == vk_nokey
+			continue;
+		else if global.input_type == INPUT_TYPE.KEYBOARD
+			return keyboard_check_released(_input[i])
+		else if global.input_type == INPUT_TYPE.CONTROLLER
+			return gamepad_button_check_released(global.pad_device, _input[i])
 	}
-	return k
+	return false;
 }

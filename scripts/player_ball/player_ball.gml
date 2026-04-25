@@ -33,7 +33,7 @@ function player_ball()
 			input_buffers.jump = 0
 		}
 	
-		if !input.jump.check && !jumpstop && vsp < 0 && !grounded
+		if !input_check(INPUTS.jump) && !jumpstop && vsp < 0 && !grounded
 		{
 			jumpstop = true
 			vsp /= 10

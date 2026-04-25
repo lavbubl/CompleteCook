@@ -1,15 +1,3 @@
-// declare input
-ui_input =
-{
-	up: new Input(global.keybinds.ui_up),
-	down: new Input(global.keybinds.ui_down),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(global.keybinds.ui_deny),
-	addbind: new Input("Z"),
-	clearbind: new Input("C"),
-	resetallbinds: new Input(vk_f1)
-};
-
 depth = -3000
 binds = [ 
 	{input: global.keybinds.left,			image_index: 3,		name: "Left",			globalname: "left",			defaultbind: vk_left},
@@ -28,7 +16,7 @@ binds = [
 	{input: global.keybinds.ui_down,		image_index: 1,		name: "Menu Down",		globalname: "ui_down",		defaultbind: vk_down},
 	{input: global.keybinds.ui_accept,		image_index: 7,		name: "Accept",			globalname: "ui_accept",	defaultbind: [vk_enter, vk_space, "Z"]},
 	{input: global.keybinds.ui_deny,		image_index: 8,		name: "Deny",			globalname: "ui_deny",		defaultbind: [vk_escape, vk_backspace, "X"]}
-] //dont mind these warnings
+]
 
 c_x = 0
 offset = 0

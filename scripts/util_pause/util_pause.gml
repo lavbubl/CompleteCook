@@ -29,10 +29,8 @@ function do_unpause()
 	instance_activate_all()
 	audio_resume_all()
     
-    if (sprite_exists(pause_image))
-    {
+    if sprite_exists(pause_image)
         sprite_delete(pause_image);
-    }
     
 	with obj_music
 	{

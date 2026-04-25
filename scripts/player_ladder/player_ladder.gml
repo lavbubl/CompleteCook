@@ -1,6 +1,6 @@
 function player_ladder()
 {
-	var move_v = (-input.up.check + input.down.check)
+	var move_v = (-input_check(INPUTS.up) + input_check(INPUTS.down))
 	
 	
 	if move_v != 0

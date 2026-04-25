@@ -57,9 +57,9 @@ function player_tumble() //ball is in its own state, player_ball()
 	if crouchslipbuffer > 0
 		crouchslipbuffer--
 		
-	if (!input.down.check && grounded && vsp >= 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
+	if (!input_check(INPUTS.down) && grounded && vsp >= 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
 	{
-		if input.dash.check
+		if input_check(INPUTS.dash)
 		{
 			if movespeed >= 12
 				state = states.mach3

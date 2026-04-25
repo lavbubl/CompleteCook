@@ -69,10 +69,6 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 				vsp = random_range(12, -12)
 				image_angle = random_range(0, 360)
 				break;
-			case particles.parry:
-				sprite_index = spr_parryflash
-				depth = -230
-				break;
 			case particles.taunt:
 				sprite_index = spr_taunteffect
 				image_speed = 0.5

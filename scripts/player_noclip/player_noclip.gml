@@ -1,6 +1,6 @@
 function player_noclip()
 {
-	var v_move = -input.up.check + input.down.check
+	var v_move = -input_check(INPUTS.up) + input_check(INPUTS.down)
 	var s = keyboard_check(vk_shift) ? 2 : 1
 	
 	x += p_move * 5 * s
@@ -9,6 +9,6 @@ function player_noclip()
 	sprite_index = spr_player_idle
 	image_speed = 1
 	
-	if input.jump.pressed
+	if input_check_pressed(INPUTS.jump)
 		state = states.normal
 }

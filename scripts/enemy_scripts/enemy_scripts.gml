@@ -180,7 +180,8 @@ function do_enemy_generics()
 			with obj_player
 			{
 				hitstun = 5
-				prev_ix = image_index
+				prev_image_speed = image_speed
+				image_speed = 0
 			}
 			alarm[0] = 2
 		}

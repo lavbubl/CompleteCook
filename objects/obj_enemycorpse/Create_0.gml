@@ -1,5 +1,5 @@
-hsp = random_range(10, 12) * sign(x - obj_player.x)
-vsp = random_range(-10, -14)
+hsp = random_range(10, 18) * sign(x - obj_player.x)
+vsp = random_range(-10, -18)
 grav = 0.5
 dopalette = false
 pal_select = 0

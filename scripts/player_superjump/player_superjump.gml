@@ -17,7 +17,7 @@ function player_superjump()
 		  xscale = p_move
 	}
 	
-	var superjumpholding = input_check(INPUTS.up) || input_check(INPUTS.superjump) || !grounded
+	var superjumpholding = (input_check(INPUTS.up) && global.option_dirsuperjump) || input_check(INPUTS.superjump) || !grounded
 	
 	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
 	{

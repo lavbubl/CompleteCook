@@ -12,7 +12,7 @@ if inputbuffer > 0
 
 // update input
 
-var _back_arr = [-1, 0, 0, 0, 0, 2] //array of indexes to get based on list index
+var _back_arr = [-1, 0, 0, 0, 0, 2, 4] //array of indexes to get based on list index
 _back_arr[64] = 0
 back_ix = _back_arr[list_ix] //get matching back index
 

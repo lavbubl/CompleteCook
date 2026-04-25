@@ -164,6 +164,8 @@ function set_globals()
 	global.option_timer = ini_read_real("options", "timer", true)
 	global.option_timertype = ini_read_real("options", "timertype", true)
 	global.option_timerspeedrun = ini_read_real("options", "timerspeedrun", true)
+	global.option_dirsuperjump = ini_read_real("options", "dirsuperjump", true)
+	global.option_dirgroundpound = ini_read_real("options", "dirgroundpound", true)
 	ini_close()
 	
 	audio_group_set_gain(ag_music, global.option_music_volume)
@@ -381,6 +383,7 @@ function do_tip(_string, _alarm = 220)
 	{
 		str = _string
 		show = true
+		image_alpha = 0
 		alarm[0] = _alarm
 	}
 }

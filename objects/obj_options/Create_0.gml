@@ -150,20 +150,34 @@ list_arr = [
 				quick_ini_write_real("globalsave.ini", "options", "timerspeedrun", _val)
 			})
 	],
-	[ //4 keyboard
+	[ //4 controls
 		new add_option_back(),
-		new add_option("KEYBOARD", types.func, undefined,
-			function(_val) {
-				instance_create(x, y, obj_keyconfig)
-			}),
-		new add_option("CONTROLLER",		types.change, 64),
-		new add_option("RESET CONFIG",		types.change, 64)
+		new add_option("KEYBOARD",		types.change, 6),
+		new add_option("CONTROLLER",	types.change, 64),
+		new add_option("RESET CONFIG",	types.change, 64)
 	],
 	[ //5 video mode, val is in order of this list
 		new add_option_back(2),
 		new add_option("WINDOWED",		types.func,	0,	func_windowmode),
 		new add_option("FULLSCREEN",	types.func,	1,	func_windowmode),
 		new add_option("BORDERLESS",	types.func,	2,	func_windowmode)
+	],
+	[ //6 keyboard specific controls
+		new add_option_back(4),
+		new add_option("BINDING", types.func, undefined,
+			function(_val) {
+				instance_create(x, y, obj_keyconfig)
+			}),
+		new add_option("DIR. SUPERJUMP",	types.onoff, global.option_dirsuperjump,
+			function(_val) {
+				global.option_dirsuperjump = _val
+				quick_ini_write_real("globalsave.ini", "options", "dirsuperjump", _val)
+			}),
+		new add_option("DIR. GROUNDPOUND",	types.onoff, global.option_dirgroundpound,
+			function(_val) {
+				global.option_dirgroundpound = _val
+				quick_ini_write_real("globalsave.ini", "options", "dirgroundpound", _val)
+			}),
 	]
 ]
 

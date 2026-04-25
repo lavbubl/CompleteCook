@@ -5,7 +5,7 @@ function anim_ended(_img_index = image_index, _img_number = image_number - 1)
 
 function do_groundpound()
 {
-	if input_check_pressed(INPUTS.down) || input_check_pressed(INPUTS.groundpound)
+	if (input_check_pressed(INPUTS.down) && global.option_dirgroundpound) || input_check_pressed(INPUTS.groundpound)
 	{
 		freefallsmash = -14
 		dir = p_move

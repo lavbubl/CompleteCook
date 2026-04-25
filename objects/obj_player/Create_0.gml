@@ -73,6 +73,7 @@ ladderbuffer = 0
 has_shotgun = false
 intransfo = false
 prev_transfo = false
+prev_image_speed = 0.35
 
 prev = {
 	state: self.state,

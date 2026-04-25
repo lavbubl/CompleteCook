@@ -20,7 +20,6 @@ struct_foreach(aftimg_timers, function(_name, _data)
 	_data.do_it = false
 })
 
-
 if grounded
 	coyote_time = 10
 else if vsp < 0
@@ -39,7 +38,9 @@ if hitstun < 0
 else if hitstun >= 0
 {
 	hitstun--
-	image_index = prev_ix
+	image_speed = 0
+	if hitstun == -1
+		image_speed = prev_image_speed
 }
 
 if (state != states.normal)

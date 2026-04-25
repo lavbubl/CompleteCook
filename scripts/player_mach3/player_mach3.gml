@@ -49,7 +49,7 @@ function player_mach3()
 		sprite_index = spr_player_mach3
 	}
 	
-	if (grounded)
+	if grounded
 	{
 		if (sprite_index == spr_player_Sjumpcancel)
 			sprite_index = spr_player_mach3
@@ -69,7 +69,7 @@ function player_mach3()
 		if (movespeed < 20 && p_move == xscale)
 			movespeed += mach4mode ? 0.1 : 0.025
 			
-		if (input_check(INPUTS.up) || input_check(INPUTS.superjump)) && !dashpad && vsp >= 0
+		if ((input_check(INPUTS.up) && global.option_dirsuperjump) || input_check(INPUTS.superjump)) && !dashpad && vsp >= 0
 		{
 			state = states.superjump
 			reset_anim(spr_player_superjumpprep)

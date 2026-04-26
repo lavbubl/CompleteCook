@@ -153,7 +153,7 @@ list_arr = [
 	[ //4 controls
 		new add_option_back(),
 		new add_option("KEYBOARD",		types.change, 6),
-		new add_option("CONTROLLER",	types.change, 64),
+		new add_option("CONTROLLER",	types.change, 7),
 		new add_option("RESET CONFIG",	types.change, 64)
 	],
 	[ //5 video mode, val is in order of this list
@@ -178,6 +178,13 @@ list_arr = [
 				global.option_dirgroundpound = _val
 				quick_ini_write_real("globalsave.ini", "options", "dirgroundpound", _val)
 			}),
+	],
+	[ //7 gamepad specific controls
+		new add_option_back(4),
+		new add_option("BINDING", types.func, undefined,
+			function(_val) {
+				instance_create(x, y, obj_buttonconfig)
+			})
 	]
 ]
 

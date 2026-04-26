@@ -1,6 +1,8 @@
 draw_set_font(font)
 draw_set_align(align.h, align.v)
 
+depth = -4000
+
 var _x = x
 var _y = y
 var _mode = 0
@@ -44,6 +46,8 @@ else if align.v == fa_center || align.v == fa_middle
 var _suboffset = {}
 
 draw_set_align(fa_left, fa_top)
+draw_set_color(image_blend)
+draw_set_alpha(image_alpha)
 
 for (i = 1; i <= _len;)
 {
@@ -75,44 +79,44 @@ for (i = 1; i <= _len;)
 			switch _keyword
 			{
 				case "u":
-					_key_ord = global.keybinds.up
+					_key_ord = input_get_bind(INPUTS.up)
 					break;
 				case "l":
-					_key_ord = global.keybinds.left
+					_key_ord = input_get_bind(INPUTS.left)
 					break;
 				case "r":
-					_key_ord = global.keybinds.right
+					_key_ord = input_get_bind(INPUTS.right)
 					break;
 				case "d":
-					_key_ord = global.keybinds.down
+					_key_ord = input_get_bind(INPUTS.down)
 					break;
 				case "f":
-					_key_ord = dir == 1 ? global.keybinds.right : global.keybinds.left
+					_key_ord = dir == 1 ? input_get_bind(INPUTS.right) : input_get_bind(INPUTS.left)
 					break;
 				case "b":
-					_key_ord = dir == -1 ? global.keybinds.right : global.keybinds.left
+					_key_ord = dir == -1 ? input_get_bind(INPUTS.right) : input_get_bind(INPUTS.left)
 					break;
 				case "g":
-					_key_ord = global.keybinds.grab
+					_key_ord = input_get_bind(INPUTS.grab)
 					break;
 				case "m": //mach
 				case "ds": //dash
-					_key_ord = global.keybinds.dash
+					_key_ord = input_get_bind(INPUTS.dash)
 					break;
 				case "j":
-					_key_ord = global.keybinds.jump
+					_key_ord = input_get_bind(INPUTS.jump)
 					break;
 				/*case "s": unused
-					_key_ord = global.keybinds.shoot
+					_key_ord = input_get_bind(INPUTS.shoot
 					break;*/
 				case "t":
-					_key_ord = global.keybinds.taunt
+					_key_ord = input_get_bind(INPUTS.taunt)
 					break;
 				case "gp":
-					_key_ord = global.keybinds.groundpound
+					_key_ord = input_get_bind(INPUTS.groundpound)
 					break;
 				case "sj":
-					_key_ord = global.keybinds.superjump
+					_key_ord = input_get_bind(INPUTS.superjump)
 					break;
 			}
 			i += string_length(_keyword) + 2
@@ -176,3 +180,5 @@ for (i = 1; i <= _len;)
 			break;
 	}
 }
+
+draw_reset_color(1)

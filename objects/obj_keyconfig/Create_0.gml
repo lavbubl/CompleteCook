@@ -1,25 +1,43 @@
 depth = -3000
-binds = [ 
-	{input: global.keybinds.left,			image_index: 3,		name: "Left",			globalname: "left",			defaultbind: vk_left},
-	{input: global.keybinds.right,			image_index: 2,		name: "Right",			globalname: "right",		defaultbind: vk_right},
-	{input: global.keybinds.up,				image_index: 0,		name: "Up",				globalname: "up",			defaultbind: vk_up},
-	{input: global.keybinds.down,			image_index: 1,		name: "Down",			globalname: "down",			defaultbind: vk_down},
-	{input: global.keybinds.jump,			image_index: 4,		name: "Jump",			globalname: "jump",			defaultbind: "Z"},
-	{input: global.keybinds.grab,			image_index: 5,		name: "Grab",			globalname: "grab",			defaultbind: "X"},
-	{input: global.keybinds.dash,			image_index: 6,		name: "Dash",			globalname: "dash",			defaultbind: vk_shift},
-	{input: global.keybinds.taunt,			image_index: 7,		name: "Taunt",			globalname: "taunt",		defaultbind: "C"},
-	{input: global.keybinds.superjump,		image_index: 9,		name: "Superjump",		globalname: "superjump",	defaultbind: vk_nokey},
-	{input: global.keybinds.groundpound,	image_index: 10,	name: "Groundpound",	globalname: "groundpound",	defaultbind: vk_nokey},
-	{input: global.keybinds.ui_left,		image_index: 3,		name: "Menu Left",		globalname: "ui_left",		defaultbind: vk_left},
-	{input: global.keybinds.ui_right,		image_index: 2,		name: "Menu Right",		globalname: "ui_right",		defaultbind: vk_right},
-	{input: global.keybinds.ui_up,			image_index: 0,		name: "Menu Up",		globalname: "ui_up",		defaultbind: vk_up},
-	{input: global.keybinds.ui_down,		image_index: 1,		name: "Menu Down",		globalname: "ui_down",		defaultbind: vk_down},
-	{input: global.keybinds.ui_accept,		image_index: 7,		name: "Accept",			globalname: "ui_accept",	defaultbind: [vk_enter, vk_space, "Z"]},
-	{input: global.keybinds.ui_deny,		image_index: 8,		name: "Deny",			globalname: "ui_deny",		defaultbind: [vk_escape, vk_backspace, "X"]}
+
+bind = function(_bindname, _ix, _name, _defaultbind) constructor
+{
+	bindname = _bindname
+	image_index = _ix
+	name = _name
+	defaultbind = _defaultbind
+}
+
+binds = [
+	new bind("up",				0,		"",				vk_up),
+	new bind("down",			1,		"",				vk_down),
+	new bind("right",			2,		"",				vk_right),
+	new bind("left",			3,		"",				vk_left),
+	new bind("jump",			4,		"",				"Z"),
+	new bind("grab",			5,		"",				"X"),
+	new bind("dash",			6,		"",				vk_shift),
+	new bind("taunt",			7,		"",				"C"),
+	new bind("ui_start",		8,		"",				vk_escape),
+	new bind("superjump",		9,		"",				vk_nokey),
+	new bind("groundpound",		10,		"",				vk_nokey),
+	new bind("ui_up",			-1,		"MENU UP",		vk_up),
+	new bind("ui_down",			-1,		"MENU DOWN",	vk_down),
+	new bind("ui_right",		-1,		"MENU RIGHT",	vk_right),
+	new bind("ui_left",			-1,		"MENU LEFT",	vk_left),
+	new bind("ui_accept",		-1,		"CONFIRM",		[vk_enter, vk_space, "Z"]),
+	new bind("ui_deny",			-1,		"DENY",			[vk_escape, vk_backspace, "X"])
+]
+
+config_buttons = [
+	[INPUTS.bind_reset, " Reset binds"],
+	[INPUTS.bind_add,	" Add bind"],
+	[INPUTS.bind_clear, " Clear bindings"]
 ]
 
 c_x = 0
 offset = 0
 selected = 0
+back_selected_target = 0
 binding = false
+target_drawing_type = INPUT_TYPE.KEYBOARD
 //have to hardcode this so there's an order

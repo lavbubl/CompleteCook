@@ -29,13 +29,13 @@ if menu_dark
 		draw_sprite(bg_mainmenu_dark, 0, 0, 0)
 }
 
-draw_set_alpha(optionsalpha)
+draw_reset_color(optionsalpha)
 draw_set_align(fa_center, fa_middle)
 
 draw_sprite(spr_menuquit, 0, 0, 0);
-cc_draw_key_arr(63, 115, global.keybinds.grab)
+cc_draw_key_arr(63, 115, input_get_bind(INPUTS.grab))
 
 draw_sprite(spr_menupause, 0, 819, 84);
-cc_draw_key(745, 65, vk_escape)
+cc_draw_key_arr(745, 65, input_get_bind(INPUTS.ui_start))
 
 draw_reset_color(1)

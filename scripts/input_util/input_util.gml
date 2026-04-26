@@ -27,8 +27,12 @@ enum INPUTS
 	ui_right,
 	ui_up,
 	ui_down,
+	ui_start,
 	ui_accept,
-	ui_deny
+	ui_deny,
+	bind_reset,
+	bind_add,
+	bind_clear
 }
 
 enum INPUT_TYPE
@@ -51,7 +55,29 @@ function input_get_bind(_input_enum, _is_special_key = false)
 		var _ix = 0 //keyboard
 		if global.input_type == INPUT_TYPE.CONTROLLER
 			_ix = 1
-		_bind_arr = global.bindslist[_input_enum][_ix]
+		
+		var _name_list = ["left", //convert an INPUT constant to a name to find in global.bindslist
+						 "right",
+						 "up",
+						 "down",
+						 "dash",
+						 "jump",
+						 "grab",
+						 "taunt",
+						 "superjump",
+						 "groundpound",
+						 "ui_left",
+						 "ui_right",
+						 "ui_up",
+						 "ui_down",
+						 "ui_start",
+						 "ui_accept",
+						 "ui_deny",
+						 "bind_reset",
+						 "bind_add",
+						 "bind_clear"]
+		
+		_bind_arr = global.bindslist[$ _name_list[_input_enum]][_ix] //get the keyboard/controller button from its name
 	}
 	
 	if !is_array(_bind_arr) //if not an array, make it a single one
@@ -112,4 +138,27 @@ function input_check_released(_input_enum, _is_special_key = false)
 			return true;
 	}
 	return false;
+}
+
+/// @summary keyboard_check(vk_any) equivelant for gamepad
+function gamepad_check_any(_device = global.pad_device) //the equivelant just doesn't exist natively, so you have to do this
+{ 
+	for (var i = 0; i < array_length(global.axis_arr); i++) { //loop through every axis to see if its input is above half
+		if abs(gamepad_axis_value(_device, global.axis_arr[i])) >= 0.5 //Returns above 0.5 for drifting issues.
+			return true;
+	}
+	
+	for (var i = 0; i < array_length(global.button_arr); i++) { //loop through every axis to see if its input is above half
+		if gamepad_button_check(_device, global.button_arr[i]) //above 0.5, it returns true, 0.5 for drifting issues.
+			return true;
+	}
+}
+
+/// @summary Return the first button found in their array pressed.
+function gamepad_get_button(_device = global.pad_device) //same reason gamepad_check_any exists
+{
+	for (var i = 0; i < array_length(global.button_arr); i++) {
+		if gamepad_button_check(_device, global.button_arr[i])
+			return global.button_arr[i];
+	}
 }

@@ -210,53 +210,6 @@ function set_globals()
 	global.showcollisions = IS_DEBUG
 	global.savefile = "1"
 	global.savestring = $"saves/saveData{global.savefile}.ini"
-	global.keybinds_filename = "keybinds.ccsav" //complete cook save :)
-	
-	global.keybinds = { //create keybind struct
-		left:			vk_left,
-		right:			vk_right,
-		up:				vk_up,
-		down:			vk_down,
-		dash:			vk_shift,
-		jump:			"Z",
-		grab:			"X",
-		taunt:			"C",
-		superjump:		vk_nokey,
-		groundpound:	vk_nokey,
-		ui_left:		vk_left,
-		ui_right:		vk_right,
-		ui_up:			vk_up,
-		ui_down:		vk_down,
-		ui_accept:		[vk_enter, vk_space, "Z"],
-		ui_deny:		[vk_escape, vk_backspace, "X"]
-	}
-	
-	if !file_exists(global.keybinds_filename)
-	{
-		var keybindBuf = write_struct_to_buffer(global.keybinds) //store the struct as a buffer
-		
-		buffer_save(keybindBuf, global.keybinds_filename) //save the buffer externally
-		
-		buffer_delete(keybindBuf) //prevent memory leak
-	}
-	else
-	{
-		try
-		{
-			var loadedBuf = buffer_load(global.keybinds_filename) //have the saved external buffer loaded
-			
-			global.keybinds = read_struct_from_buffer(loadedBuf) //parse the saved buffer as a struct, set the global keybinds to whats saved
-		
-			buffer_delete(loadedBuf) //prevent memory leak
-		}
-		catch(_exception)
-		{
-			show_message("ERROR!\n\nKeybind data is corrupted, input set to defaults.")
-		    show_debug_message(_exception.longMessage);
-		    show_debug_message(_exception.script);
-		    show_debug_message(_exception.stacktrace);
-		}
-	}
 }
 
 function bbox_in_camera()

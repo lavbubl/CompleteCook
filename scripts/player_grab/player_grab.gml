@@ -35,10 +35,15 @@ function player_grab()
 	if (sprite_index == spr_player_suplexdash && !grounded)
 		reset_anim(spr_player_suplexgrabjump)
 	
-	if (grounded && sprite_index == spr_player_suplexgrabjump && image_index >= 4 && input_check(INPUTS.dash))
+	if (grounded && sprite_index == spr_player_suplexgrabjump_loop)
 	{
-		state = states.mach2
-		sprite_index = spr_player_mach2
+		if input_check(INPUTS.dash)
+		{
+			state = states.mach2
+			sprite_index = spr_player_mach2
+		}
+		else
+			state = states.normal
 	}
 	
 	if (scr_hitwall(x + xscale, y) && !grounded)
@@ -67,10 +72,7 @@ function player_grab()
 				state = states.normal
 			break;
 		case spr_player_suplexgrabjump:
-			if anim_ended()
-				image_index = 4
-			if (grounded && !input_check(INPUTS.dash) && image_index >= 4)
-				state = states.normal
+			reset_anim_on_end(spr_player_suplexgrabjump_loop)
 			break;
 	}
 	

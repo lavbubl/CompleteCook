@@ -1,5 +1,8 @@
 function player_slide() 
 {
+	var go_to_mach = false
+	var ismach2 = false
+	
 	hsp = movespeed * xscale
 	
 	movespeed = max(movespeed - 0.4, 0);
@@ -9,34 +12,25 @@ function player_slide()
 	{
 		case spr_player_machslideboost:
 		case spr_player_machslideboost3:
-			var ismach2 = sprite_index == spr_player_machslideboost
+			ismach2 = sprite_index == spr_player_machslideboost
 
 			if anim_ended()
 			{
 				if grounded
-				{
-					sprite_index = ismach2 ? spr_player_mach2 : spr_player_mach3
-					state = ismach2 ? states.mach2 : states.mach3
-					movespeed = ismach2 ? 8 : 12
-					xscale *= -1
-				}
+					go_to_mach = true
 				else
 					sprite_index = ismach2 ? spr_player_machslideboostfall : spr_player_machslideboost3fall
 			}
 			break
 		case spr_player_machslideboostfall:
 		case spr_player_machslideboost3fall:
-			var ismach2 = sprite_index == spr_player_machslideboostfall
-			
-			if (grounded)
-			{
-				sprite_index = ismach2 ? spr_player_machslideboost : spr_player_machslideboost3;
-				image_index = image_number - 1;
-			}
+			ismach2 = sprite_index == spr_player_machslideboostfall
+			go_to_mach = grounded
 			break
 		case spr_player_machslidestart:
-			if anim_ended()
-				image_index = image_number - 4
+		case spr_player_machslide_loop:
+			if sprite_index == spr_player_machslidestart && anim_ended()
+				reset_anim(spr_player_machslide_loop)
 			if scr_hitwall(x + xscale, y)
 			{
 				reset_anim(spr_player_wallsplat)
@@ -55,6 +49,14 @@ function player_slide()
 	{
 		with create_effect(x, y, spr_dashcloud)
 			image_xscale = other.xscale
+	}
+	
+	if go_to_mach
+	{
+		sprite_index = ismach2 ? spr_player_mach2 : spr_player_mach3
+		state = ismach2 ? states.mach2 : states.mach3
+		movespeed = ismach2 ? 8 : 12
+		xscale *= -1
 	}
 	
 	instakill = sprite_index == spr_player_machslideboost3;

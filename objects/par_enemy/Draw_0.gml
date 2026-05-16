@@ -30,7 +30,7 @@ if follow_player
 	}
 }
 
-if state == states.stun && stun_timer >= 100
+if state == states.stun && stun_timer > 100
 {
 	draw_sprite(spr_enemybird, bird_ix, x, y - 40)
 	bird_ix = wrap(sprite_get_number(spr_enemybird), bird_ix + 0.35)

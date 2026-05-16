@@ -1,7 +1,7 @@
 if ds_list_find_index(global.ds_saveroom, id) != -1
 	exit;
 
-instance_create_depth(screen_w / 2, 560, 0, obj_pizzatime)
+instance_create_depth(screen_w / 2, screen_h + sprite_get_height(spr_pizzatime), 0, obj_pizzatime)
 
 var p_id = instance_create(x, y, obj_enemycorpse)
 

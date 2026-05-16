@@ -3,7 +3,7 @@ function player_punchstun()
 	hsp = movespeed * xscale
 	movespeed = approach(movespeed, 0, 0.2)
 	
-	if round(image_index) == image_number - 1
+	if anim_ended()
 	{
 		image_index = image_number - 1
 		image_speed = 0

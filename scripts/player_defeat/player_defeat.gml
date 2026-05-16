@@ -3,7 +3,7 @@ function player_defeat()
 	hsp = xscale * movespeed
 	if grounded
 	{
-		if sprite_index == spr_player_defeat
+		if sprite_index != spr_player_defeatland && sprite_index != spr_player_defeatland_loop
 		{
 			image_speed = 0.35
 			reset_anim(spr_player_defeatland)
@@ -19,10 +19,10 @@ function player_defeat()
 		switch sprite_index
 		{
 			case spr_player_defeat:
-				image_index = 10
+				reset_anim(spr_player_defeat_loop)
 				break;
 			case spr_player_defeatland:
-				image_index = 3
+				reset_anim(spr_player_defeatland_loop)
 				break;
 		}
 	}

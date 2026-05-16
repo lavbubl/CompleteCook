@@ -1,3 +1,2 @@
-y -= 5
-if (y <= -50)
+if y <= -sprite_height
 	instance_destroy()

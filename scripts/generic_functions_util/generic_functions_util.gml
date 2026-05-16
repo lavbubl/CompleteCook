@@ -64,9 +64,9 @@ function reset_anim(spr)
 	image_index = 0;
 }
 
-function reset_anim_on_end(spr)
+function reset_anim_on_end(spr, _ix = image_index, _in = image_number - 1)
 {
-	if anim_ended()
+	if anim_ended(_ix, _in)
 		return reset_anim(spr);
 }
 
@@ -294,6 +294,8 @@ function reset_level()
 		hasgerome = false
 		supertauntcount = 0
 		supertauntshow = false
+		secret_cutscene = false
+		visual_size = 1
 	}
 	global.combo.wasted = false
 	global.doorshut = false

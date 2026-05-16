@@ -58,6 +58,7 @@ function player_mach2()
 			sprite_index != spr_player_walljumpstart && 
 			sprite_index != spr_player_walljumpend && 
 			sprite_index != spr_player_longjump &&
+			sprite_index != spr_player_longjump_loop &&
 			sprite_index != spr_player_mach2jump)
 			reset_anim(spr_player_secondjump)
 		if (!jumpstop && !input_check(INPUTS.jump) && vsp < 0)
@@ -124,9 +125,10 @@ function player_mach2()
 			reset_anim_on_end(spr_player_mach2)
 			break;
 		case spr_player_longjump:
+		case spr_player_longjump_loop:
 			image_speed = 0.4
-			if (anim_ended())
-				image_index = 10
+			if sprite_index == spr_player_longjump
+				reset_anim_on_end(spr_player_longjump_loop)
 			break;
 	}
 	do_taunt()

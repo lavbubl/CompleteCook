@@ -2,6 +2,7 @@ function player_crouch()
 {
 	var crouchspr = spr_player_crouch
 	var crouchdownspr = spr_player_crouchdown
+	var crouchjumpspr = spr_player_crouchjump
 	var crouchfallspr = spr_player_crouchfall
 	var crouchmovespr = spr_player_crawl
 	
@@ -9,9 +10,10 @@ function player_crouch()
 	{
 		crouchspr = spr_player_shotgun_crouch
 		crouchdownspr = spr_player_shotgun_crouchstart
+		crouchjumpspr = spr_player_shotgun_crouchjump
 		crouchfallspr = spr_player_shotgun_crouchfall
 		crouchmovespr = spr_player_shotgun_crouchmove
-	} //FUUUUUUUUUUUUUUUUCK
+	}
 	
 	if p_move != 0
 		xscale = p_move
@@ -20,11 +22,11 @@ function player_crouch()
 	
 	if !grounded
 	{
-		if sprite_index != crouchfallspr
-			reset_anim(crouchfallspr)
+		if sprite_index != crouchjumpspr && sprite_index != crouchfallspr
+			reset_anim(crouchjumpspr)
 		
-		if anim_ended()
-			image_index = crouchfallspr == spr_player_crouchfall ? image_number - 7 : image_number - 1
+		if sprite_index == crouchjumpspr
+			reset_anim_on_end(crouchfallspr)
 	}
 	else
 	{

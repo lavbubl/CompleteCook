@@ -1,7 +1,9 @@
 function player_backtohub()
 {
+	image_speed = 0.35
     hsp = 0
     movespeed = 0
+	
 	if (sprite_index == spr_player_slipbanana1)
     {
         if (y < ystart)

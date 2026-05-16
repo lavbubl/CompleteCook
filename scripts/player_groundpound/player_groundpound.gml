@@ -30,21 +30,16 @@ function player_groundpound()
 		particle_timer2 = 10
 	}
 	
-	if (anim_ended() && sprite_index == spr_player_bodyslamstart)
+	if anim_ended() && sprite_index == spr_player_bodyslamstart
 		sprite_index = spr_player_bodyslamfall
-	else if (anim_ended() && sprite_index == spr_player_shotgun_shootdown)
-		image_index = image_number - 3
-	/*
-	if (floor(image_index) == image_number - 1 && sprite_index == spr_shotgunjump1)
-		sprite_index = spr_shotgunjump3*/
+	else if sprite_index == spr_player_shotgun_shootdown
+		reset_anim_on_end(spr_player_shotgun_shootdown_loop)
 	
 	if (!grounded)
 	{
 		hsp = sprite_index != spr_player_rockethitwall ? p_move * movespeed : 0
 		if (p_move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
 			movespeed -= 0.05
-		//if (movespeed == 0)
-		//	momemtum = false
 		if (p_move != dir && p_move != 0)
 		{
 			dir = p_move
@@ -52,7 +47,7 @@ function player_groundpound()
 		}
 		if (p_move == 0)
 			movespeed = 0
-		//if ((p_move == 0 && momemtum == 0) || scr_solid(x + hsp, y))
+		
 		if (p_move != 0 && movespeed < 7)
 			movespeed += 0.25
 		if (movespeed > 7)
@@ -69,15 +64,6 @@ function player_groundpound()
 		freefallsmash++
 	else if (vsp < 0)
 		freefallsmash = -14
-	/*if (freefallsmash >= 10 && !instance_exists(superslameffectid))
-	{
-		with (instance_create(x, y, obj_superslameffect))
-		{
-			playerid = other.object_index
-			other.superslameffectid = id
-		}
-	}*/
-	//if (grounded && vsp > 0 && (freefallsmash < 10 || !place_meeting(x, y + vsp, obj_metalblock)) && !place_meeting(x, y + 1, obj_destructibles) && !place_meeting(x, y + vsp, obj_destructibles) && !place_meeting(x, y + vsp + 6, obj_destructibles))
 	if (grounded && vsp >= 0)
 	{
 		if scr_slope(x, y + 1)

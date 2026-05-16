@@ -119,12 +119,10 @@ function player_jump()
 			reset_anim_on_end(spr_player_shotgun_fall)
 			break;
 		case spr_player_stomp:
-			if anim_ended()
-				image_index = image_number - 3
+			reset_anim_on_end(spr_player_stomp_loop)
 			break;
 		case spr_player_hurtjump:
-			if anim_ended()
-				image_index = image_number - 3
+			reset_anim_on_end(spr_player_hurtjump_fall)
 			break;
 	}
 	

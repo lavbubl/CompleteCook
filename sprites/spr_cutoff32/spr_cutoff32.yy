@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_cutoff32",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":41,
-  "bbox_left":0,
-  "bbox_right":31,
+  "bbox_left":1,
+  "bbox_right":30,
   "bbox_top":31,
   "collisionKind":1,
   "collisionTolerance":0,

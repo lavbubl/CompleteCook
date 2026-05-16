@@ -33,7 +33,7 @@ function player_superjump()
 			sprite_index = spr_player_superjumpflash
 	}
 	
-	if (anim_ended() && sprite_index == spr_player_Sjumpcancelstart)
+	if anim_ended() && sprite_index == spr_player_Sjumpcancelstart
 	{
 		state = states.mach3
 		sprite_index = spr_player_Sjumpcancel

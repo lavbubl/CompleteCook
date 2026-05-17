@@ -11,7 +11,7 @@ var c = {
 
 array_push(obj_collect_got_visual.collects, c)
 
-with instance_create(x, y, obj_collect_number)
+with instance_create(x + 16, y, obj_collect_number)
 	num = other.val
 
 instance_destroy()

@@ -2,7 +2,7 @@ if !hud_get_visible()
 	exit;
 
 draw_set_font(global.smallnumberfont)
-draw_set_halign(fa_center)
+draw_set_align(fa_center, fa_bottom)
 draw_reset_color(1)
 
 if flash

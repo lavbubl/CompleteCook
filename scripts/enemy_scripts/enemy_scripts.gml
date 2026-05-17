@@ -168,14 +168,21 @@ function do_enemy_generics()
 					vsp = -11
 					jumpstop = false
 				}
+				
+				repeat 3
+				{
+					particle_create(x, y, particles.gib)
+					particle_create(x, y, particles.stars)
+				}
 			}
-			
-			sprite_index = sprs.stun
 			
 			shake_camera()
 			scr_sound_3d_pitched(sfx_punch, x, y)
 			create_effect(x, y, spr_kungfueffect).depth = -100
 			create_effect(x, y, spr_parryflash).depth = -100
+			
+			sprite_index = sprs.stun
+			y -= 20
 			
 			with obj_player
 			{
@@ -183,7 +190,8 @@ function do_enemy_generics()
 				prev_image_speed = image_speed
 				image_speed = 0
 			}
-			alarm[0] = 2
+			
+			alarm[0] = 3
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{
@@ -201,11 +209,13 @@ function do_enemy_generics()
 				particle_create(x, y, particles.stars)
 			scr_sound_3d_pitched(sfx_bumpenemy, x, y)
 		}
+		
 		with obj_player
 		{
 			if state == states.grab && other.state != states.hit && other.alarm[0] == -1 //alarm == -1 means not hitstunned
 			{
 				other.follow_player = true
+				other.state = states.stun
 				other.sprite_index = other.sprs.stun
 				reset_anim(spr_player_haulingrise)
 				state = states.hold

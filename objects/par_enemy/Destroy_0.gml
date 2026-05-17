@@ -11,7 +11,7 @@ if do_particles
 		obj_levelcontroller.killed_enemy = true
 	}
 	
-	particle_create(x, y, particles.bang)
+	particle_create(x, y + 20, particles.bang)
 	particle_create(x, y, particles.genericpoof)
 	repeat 3
 		particle_create(x, y, particles.yellowstar)

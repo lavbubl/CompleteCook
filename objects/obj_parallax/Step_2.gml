@@ -85,16 +85,16 @@ for (var i = 0; i < array_length(l); i++)
 			layer_y(bg_id, (camera_pos.y * 0.2) + (bg_scroll.y * layer_get_vspeed(bg_id)))
 			break;
 		case "Foregrounds_1":
-			layer_x(bg_id, camera_pos.x * -0.15)
-			layer_y(bg_id, camera_pos.y * -0.15)
+			layer_x(bg_id, offsets[i].x + camera_pos.x * -0.15)
+			layer_y(bg_id, offsets[i].y + camera_pos.y * -0.15)
 			break;
 		case "Foregrounds_2":
-			layer_x(bg_id, camera_pos.x * -0.25)
-			layer_y(bg_id, camera_pos.y * -0.25)
+			layer_x(bg_id, offsets[i].x + camera_pos.x * -0.25)
+			layer_y(bg_id, offsets[i].y + camera_pos.y * -0.25)
 			break;
 		case "Foregrounds_3":
-			layer_x(bg_id, camera_pos.x * -0.35)
-			layer_y(bg_id, camera_pos.y * -0.35)
+			layer_x(bg_id, offsets[i].x + camera_pos.x * -0.35)
+			layer_y(bg_id, offsets[i].y + camera_pos.y * -0.35)
 			break;
         case "Foregrounds_Ground1":
             layer_x(bg_id, camera_pos.x * -0.15)

@@ -29,8 +29,8 @@ function player_slide()
 			break
 		case spr_player_machslidestart:
 		case spr_player_machslide_loop:
-			if sprite_index == spr_player_machslidestart && anim_ended()
-				reset_anim(spr_player_machslide_loop)
+			if sprite_index == spr_player_machslidestart
+				reset_anim_on_end(spr_player_machslide_loop)
 			if scr_hitwall(x + xscale, y)
 			{
 				reset_anim(spr_player_wallsplat)

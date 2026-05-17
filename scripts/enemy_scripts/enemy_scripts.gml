@@ -156,7 +156,7 @@ function do_enemy_generics()
 	
 	if place_meeting(x, y, obj_player)
 	{
-		if obj_player.instakill && alarm[0] == -1 && !follow_player && obj_player.hitstun <= 0
+		if obj_player.instakill && alarm[0] == -1 && !follow_player
 		{
 			with obj_player
 			{

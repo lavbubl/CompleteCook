@@ -37,7 +37,7 @@ function player_grab()
 	
 	if (grounded && sprite_index == spr_player_suplexgrabjump_loop)
 	{
-		if input_check(INPUTS.dash)
+		if input.dash.check
 		{
 			state = states.mach2
 			sprite_index = spr_player_mach2

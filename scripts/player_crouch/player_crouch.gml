@@ -18,7 +18,7 @@ function player_crouch()
 	if p_move != 0
 		xscale = p_move
 	hsp = p_move * 4
-	image_speed = 0.4
+	image_speed = 0.45
 	
 	if !grounded
 	{
@@ -31,7 +31,10 @@ function player_crouch()
 	else
 	{
 		if sprite_index == crouchfallspr
+		{
 			reset_anim(crouchdownspr)
+			scr_sound_3d_pitched(sfx_step, x, y)
+		}
 		
 		if sprite_index == crouchdownspr
 			reset_anim_on_end(crouchspr)
@@ -48,5 +51,9 @@ function player_crouch()
 	}
 	
 	if !input_check(INPUTS.down) && scr_can_uncrouch() && grounded && vsp >= 0
+	{
+		if p_move = 0
+			sprite_index = crouchdownspr	
 		state = states.normal
+	}
 }

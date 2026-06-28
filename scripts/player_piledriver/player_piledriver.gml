@@ -60,8 +60,8 @@ function player_piledriver()
 				with create_effect(x, y, spr_piledrivereffect)
 					depth = -150
 			}
-			if !particle_contains_sprite(spr_groundpoundcharge)
-				create_followingeffect(spr_groundpoundcharge, states.groundpound, xscale)
+			if !instance_exists(obj_groundpoundcharge)
+				instance_create(x, y, obj_groundpoundcharge)
 			particle_timer = 15
 		}
 	}

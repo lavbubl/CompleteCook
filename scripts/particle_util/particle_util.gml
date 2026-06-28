@@ -38,8 +38,9 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		switch (p_type)
 		{
 			case particles.genericpoof:
+				if sprite_index = spr_genericpoofeffect
+					depth = -100
 				sprite_index = spr_genericpoofeffect
-				depth = -100
 				break;
 			case particles.gib:
 			case particles.stars:

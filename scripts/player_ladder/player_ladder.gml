@@ -47,7 +47,7 @@ function player_ladder()
 	if input_buffers.jump > 0
 	{
 		input_buffers.jump = 0
-		vsp = -12
+		vsp = input_check(INPUTS.down) ? 5 : -9
 		state = states.jump
 		reset_anim(spr_player_jump)
 		jumpstop = false

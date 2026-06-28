@@ -26,7 +26,7 @@ if input_check_pressed(INPUTS.ui_deny)
 	}
 	else
 	{
-		optionselected = 0
+		optionselected = settingselected
 		list_ix = back_ix
 		if list_ix == 0
 		{
@@ -50,6 +50,9 @@ var movev = -input_check_pressed(INPUTS.ui_up) + input_check_pressed(INPUTS.ui_d
 var _prevos = optionselected
 
 optionselected = clamp(optionselected + movev, 0, array_length(cur_list) - 1)
+
+if list_ix = 0 
+	settingselected = clamp(settingselected + movev, 0, array_length(cur_list) - 1)
 
 if _prevos != optionselected
 	scr_sound(sfx_step)
@@ -117,6 +120,8 @@ switch cur_option.o_type
 			
 			list_ix = cur_option.val
 			optionselected = 0
+			if list_ix = 0
+				optionselected = settingselected
 			scr_sound(snd_select)
 		}
 		break;

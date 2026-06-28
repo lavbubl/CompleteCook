@@ -91,9 +91,9 @@ switch (combo.state)
 			combo.state++
 		break;
 	case 0:
-		combo.vsp += 0.5
 		combo.y += combo.vsp
-		if (combo.y >= 20)
+		combo.vsp += 0.5
+		if (combo.y > 20)
 			combo.state++
 		break;
 	case 1:
@@ -110,16 +110,22 @@ switch (combo.state)
 		if (global.combo.timer >= 30)
 			resetpoint = 0
 		else if (global.combo.timer >= 15)
-			resetpoint = 3
+			resetpoint = 1
 		else
-			resetpoint = 7
-		combo.vsp += 0.25
-		combo.y += combo.vsp
-		if (combo.y > 0)
+			resetpoint = 2
+		if global.combo.timer < 30
 		{
-			combo.y = -resetpoint
-			combo.vsp = 0
+			combo.y += combo.vsp
+			if (combo.vsp < 20)
+				combo.vsp += 0.5
+			if (combo.y > 0)
+			{
+				combo.y = 0
+				combo.vsp = -resetpoint
+			}
 		}
+		else
+			combo.y = approach(combo.y, 0, 10);
 		break;
 }
 

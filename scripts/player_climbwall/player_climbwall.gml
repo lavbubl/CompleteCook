@@ -21,6 +21,7 @@ function player_climbwall()
 		vsp = 0
 		if (wallspeed < 6)
 			wallspeed = 6
+		railmovespeed = 0
 		if (wallspeed >= 6 && wallspeed < 12)
 		{
 			state = states.mach2
@@ -59,9 +60,10 @@ function player_climbwall()
 	{
 		state = states.jump
 		sprite_index = spr_player_fall
-		movespeed = -6
+		movespeed = 0
+		railmovespeed = 6;
+        raildir = -xscale;
 		jumpstop = false
-		momentum = true
 		dir = xscale
 	}
 	if (input_buffers.jump > 0)

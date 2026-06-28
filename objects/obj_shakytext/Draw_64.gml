@@ -4,7 +4,7 @@ draw_set_align(align.h, align.v)
 depth = -4000
 
 var _x = x
-var _y = y
+var _y = y - (global.panic.active && !global.secret ? 88 : 28)
 var _mode = 0
 var _len = string_length(str)
 var _keyword_arr = ["[u]", "[l]", "[r]", "[d]", "[f]", "[b]", "[g]", "[m]", "[ds]", "[j]", "[t]", "[gp]", "[sj]", "{n}", "{u}", "{s}", ]

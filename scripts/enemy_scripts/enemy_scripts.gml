@@ -22,7 +22,7 @@ function enemy_normal()
 		
 		if anim_ended() && particle_timer <= 0
 		{
-			create_effect(x, bbox_bottom, spr_cloudeffect)
+			create_effect(x - (xscale * 20), bbox_bottom, spr_cloudeffect)
 			particle_timer = 4
 		}
 		
@@ -191,7 +191,7 @@ function do_enemy_generics()
 				image_speed = 0
 			}
 			
-			alarm[0] = 3
+			alarm[0] = 5
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{

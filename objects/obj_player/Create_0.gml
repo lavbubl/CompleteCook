@@ -47,6 +47,8 @@ wasclimbingwall = false
 coyote_time = 0
 movespeed = 0
 state = states.normal
+railmovespeed = 0
+raildir = 1
 image_speed = 0.35
 prevstate = state
 xscale = 1
@@ -125,7 +127,7 @@ haskey = false
 hasgerome = false
 fallingtimer = 0
 
-depth = -75
+depth = -7
 
 pal_select = 1
 pattern_spr = pat_pizza

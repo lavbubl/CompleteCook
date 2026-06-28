@@ -1,9 +1,10 @@
 hsp = random_range(10, 18) * sign(x - obj_player.x)
 vsp = random_range(-10, -18)
-grav = 0.5
+grav = 0.4
 dopalette = false
 pal_select = 0
 pattern_spr = noone
+buffer = 10
 image_xscale = obj_player.x > x ? 1 : -1
 depth = -200
 alarm[0] = 5

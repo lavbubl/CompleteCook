@@ -14,7 +14,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 				x += hsp
 				y += vsp
 				if vsp < 20
-					vsp += 0.5
+					vsp += 0.4
 				if y > room_height
 					array_delete(other.particle_list, p, 1)
 				break;

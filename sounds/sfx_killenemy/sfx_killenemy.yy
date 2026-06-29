@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sfx_killenemy.ogg",
-  "volume":0.8,
+  "volume":0.7,
 }

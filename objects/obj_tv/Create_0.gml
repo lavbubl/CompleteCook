@@ -17,6 +17,7 @@ state_togo = tv_states.expr
 state = tv_states.off
 idletimer = 240
 t_index = 0
+drawncombo = 0
 
 combo = {
 	state: 0,

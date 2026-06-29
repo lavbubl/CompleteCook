@@ -81,4 +81,4 @@ if (seconds < 10)
 else
 	seconds = string(seconds)
 
-draw_text(x, y, string_concat(minutes, ":", seconds))
+draw_text(x, y + 2, string_concat(minutes, ":", seconds))

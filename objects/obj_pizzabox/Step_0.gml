@@ -47,4 +47,4 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 	}
 }
 
-depth = (obj_player.sprite_index == spr_player_uppizzabox || obj_player.sprite_index == spr_player_downpizzabox) ? -1000 : 50
+depth = (obj_player.sprite_index == spr_player_uppizzabox || obj_player.sprite_index == spr_player_downpizzabox) ? -10 : 50

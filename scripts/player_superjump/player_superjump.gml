@@ -1,6 +1,10 @@
 function player_superjump() 
 {
-	hsp = xscale * movespeed
+	if (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index == spr_player_superjumpleft)
+		hsp = p_move * movespeed
+	else
+		hsp = xscale * movespeed
+	
 	image_speed = 0.35
 	
 	if (sprite_index == spr_player_superjumpprep || sprite_index == spr_player_superjumpflash)
@@ -17,17 +21,20 @@ function player_superjump()
 		  xscale = p_move
 	}
 	
-	var superjumpholding = (input_check(INPUTS.up) && global.option_dirsuperjump) || input_check(INPUTS.superjump) || !grounded
+	var superjumpholding = ((input_check(INPUTS.up) && global.option_dirsuperjump) || input_check(INPUTS.superjump) || !grounded && scr_can_uncrouch()) || !scr_can_uncrouch()
 	
-	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
+	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index = spr_player_superjumpleft))
 	{
 		var absMove = abs(p_move);
-		movespeed = !place_meeting(x + xscale, y, obj_solid) ? absMove * 2 : 0;
+		movespeed = absMove * 2
 
-		if absMove
+		if p_move != 0
 		{
-			xscale = p_move
-			sprite_index = spr_player_superjumpmove
+			if input_check(INPUTS.right)
+				sprite_index = (xscale = 1) ? spr_player_superjumpright : spr_player_superjumpleft
+			
+			if input_check(INPUTS.left)
+				sprite_index = (xscale = -1) ? spr_player_superjumpright : spr_player_superjumpleft
 		}
 		else
 			sprite_index = spr_player_superjumpflash
@@ -46,9 +53,9 @@ function player_superjump()
 			depth = -150
 	}
 	
-	if (sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !superjumpholding && !scr_solid(x, y - 1))
+	if (sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !superjumpholding)
 	{
-		vsp = -11 //its -12, but -11 makes it *feel* more like the original
+		vsp = -12
 		sprite_index = spr_player_superjump
 		scr_sound_3d_on(myemitter, sfx_superjumprelease)
 		create_effect(x, y, spr_superjumpexplosion)

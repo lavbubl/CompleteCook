@@ -34,6 +34,7 @@ if follow_player
 			if (grounded && state == states.hold)
 			{
 				state = states.normal
+				instakill = false
 				with other
 				{
 					follow_player = false

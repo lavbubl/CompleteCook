@@ -8,6 +8,6 @@ sprs = {
 	move: noone,
 	taunt: noone
 }
-depth = -11
+depth = -1
 while scr_solid(x, y)
     y--

@@ -1,6 +1,7 @@
 depth = -100
 
 optionselected = 0
+settingselected = 0
 inputbuffer = 0
 bg_inc = 0
 bg_ix = 0

@@ -1,4 +1,4 @@
-if !pause || room == mainmenu
+if !pause || room == mainmenu || instance_exists(obj_titlecard)
 	exit;
 else if instance_exists(obj_shell)
 {

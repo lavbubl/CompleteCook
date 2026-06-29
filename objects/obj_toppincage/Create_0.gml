@@ -1,6 +1,6 @@
 snd = noone
 
-depth = -1
+depth = 0
 image_speed = 0.35
 
 enum toppin_enum {
@@ -11,4 +11,4 @@ enum toppin_enum {
 	pineapple
 }
 
-help_ix = 0
+help_ix = 1

@@ -70,8 +70,13 @@ if (idletimer > 0 && state == states.normal)
 	idletimer--
 
 if (i_frames > 0 && state != states.hurt)
+{
 	i_frames--
-
+	if (alarm[5] = -1 || alarm[5] = 0) && (alarm[6] = 0 || alarm[6] = -1)
+		alarm[5] = 3;
+}
+else if i_frames <= 0
+	image_alpha = 1
 var sjumpprep = (state == states.superjump && sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancelstart)
 if (state == states.tumble || state == states.ball || state == states.crouch || sjumpprep)
 	mask_index = mask_player_small
@@ -172,3 +177,8 @@ uparrow.visible = state != states.actor &&
 	place_meeting(x, y, obj_door))))
 
 player_sounds()
+
+if (state == states.mach3 || state == states.mach2 || state == states.tumble)
+	railmovespeed = approach(railmovespeed, 0, 0.1);
+else
+	railmovespeed = approach(railmovespeed, 0, 0.5);

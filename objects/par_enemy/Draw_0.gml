@@ -1,4 +1,4 @@
-depth = -50
+depth = -1
 
 var _x = x
 var _y = y
@@ -19,14 +19,14 @@ if follow_player
 		{
 			_x += pd_frame_offset[floor(obj_player.image_index)] * 8 * obj_player.xscale
 			if (obj_player.image_index > 5)
-				depth = -210
+				depth = -8
 		}
 	}
 	else if obj_player.sprite_index == spr_player_swingding
 	{
 		_x += pd_frame_offset[floor(obj_player.image_index)] * 24 * obj_player.xscale
 		if (obj_player.image_index < 4)
-			depth = -210
+			depth = -8
 	}
 }
 

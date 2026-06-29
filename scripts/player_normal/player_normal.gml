@@ -39,18 +39,20 @@ function player_normal()
 		}
 	}
 	
+	if dir != xscale
+	{
+		movespeed = 2
+		dir = xscale
+	}
+	
 	if p_move != 0
 	{
-		if dir != xscale
-		{
-			movespeed = 0
-			dir = xscale
-		}
 		xscale = p_move
 		if !place_meeting(x + p_move, y, obj_solid)
 		{
-			movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
-			if (floor(movespeed) == 8)
+			if movespeed < 8
+			movespeed += 0.5
+			else if (floor(movespeed) == 8)
 				movespeed = 6
 		}
 		else
@@ -66,6 +68,9 @@ function player_normal()
 	}
 	else
 		movespeed = 0
+	
+	if (movespeed > 8)
+        movespeed -= 0.1;
 	
 	hsp = movespeed * xscale
 	
@@ -122,7 +127,15 @@ function player_normal()
 		{
 			sprite_index = spr_player_breakdance
 			breakdance_secret.spd = approach(breakdance_secret.spd, 0.6, 0.005)
-			image_speed = breakdance_secret.spd
+			if p_move != 0
+			{
+				if movespeed > 3
+					image_speed = (movespeed < 6) ? 0.45 : 0.6
+				else
+					image_speed = 0.35
+			}
+			else
+				image_speed = breakdance_secret.spd
 		}
 		
 		if breakdance_secret.spd >= 0.5
@@ -158,7 +171,7 @@ function player_normal()
 		state = states.jump
 		reset_anim(default_jump)
 		jumpstop = false
-		create_effect(x, y - 5, spr_highjumpcloud2)
+		create_effect(x, y, spr_highjumpcloud2)
 		scr_sound_3d(sfx_jump, x, y)
 	}
 	
@@ -181,8 +194,8 @@ function player_normal()
 		case spr_player_hurtmove:
 		case spr_player_madmove:
 		case spr_player_ragemove:
-			if movespeed > 6
-	            image_speed = 0.6;
+			if movespeed > 3
+				image_speed = (movespeed < 6) ? 0.45 : 0.6
 			break;
 		case spr_player_machslideend:
 		case spr_player_land:

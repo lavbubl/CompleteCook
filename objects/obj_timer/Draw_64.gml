@@ -18,7 +18,7 @@ switch global.option_timertype
 		draw_text(x - ((string_length(_ftstr) - 1) * _w), y, _ftstr)
 		break;
 	case 2:
-		draw_text(x - ((string_length(_ftstr) - 1) * _w), y, _ftstr)
-		draw_text(x - ((string_length(_ltstr) - 1) * _w), y - string_height("A"), _ltstr)
+		draw_text(x - ((string_length(_ftstr) - 1) * _w), y - string_height("A"), _ftstr)
+		draw_text(x - ((string_length(_ltstr) - 1) * _w), y, _ltstr)
 		break;
 }

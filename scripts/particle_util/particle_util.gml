@@ -38,9 +38,11 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		switch (p_type)
 		{
 			case particles.genericpoof:
-				if sprite_index == spr_null //if its ran through particle_create and not create_effect
+				if sprite_index == spr_null //default effect
+				{
 					depth = -100
-				sprite_index = spr_genericpoofeffect
+					sprite_index = spr_genericpoofeffect
+				}
 				break;
 			case particles.gib:
 			case particles.stars:

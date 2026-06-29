@@ -13,10 +13,10 @@ enum particles {
 	text
 }
 
-function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noone)
+function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = spr_null)
 {
 	var p = {
-		sprite_index: spr_null,
+		sprite_index: _sprite,
 		image_index: 0,
 		image_speed: 0.35,
 		image_number: 0,
@@ -27,8 +27,10 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 		image_blend: c_white,
 		image_angle: 0,
 		image_alpha: 1,
-		depth: -10,
+		depth: 0,
 		visible: true,
+		hsp: 0,
+		vsp: 0,
 		lifetime: -1,
 		type: p_type
 	}
@@ -96,9 +98,11 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = noo
 				image_index = irandom(sprite_get_number(spr_notes))
 				break;
 		}
-	
+		
 		if _sprite != noone
 			sprite_index = _sprite
+	
+		image_number = sprite_get_number(p.sprite_index)
 	}
 	
 	with (obj_particlecontroller)
@@ -121,14 +125,13 @@ function particle_contains_sprite(sprite)
 function create_debris(_x, _y, sprite)
 {
 	var p = particle_create(_x, _y, particles.gib, 1, 1, sprite)
-	p.image_index = irandom_range(0, sprite_get_number(sprite) - 1)
+	p.image_index = irandom_range(0, p.image_number - 1)
 	return p;
 }
 
 function create_effect(_x, _y, sprite)
 {
 	var p = particle_create(_x, _y, particles.genericpoof, 1, 1, sprite)
-	p.depth = 0
 	return p;
 }
 

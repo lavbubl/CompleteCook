@@ -28,7 +28,7 @@ function do_unpause()
 		audio_stop_sound(mu_pause)
 	instance_activate_all()
 	audio_resume_all()
-    
+	
     if sprite_exists(pause_image)
         sprite_delete(pause_image);
     

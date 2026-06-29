@@ -20,11 +20,11 @@ function player_mach2()
 				scr_sound_3d(sfx_break, x, y)
 			}
 		}
-		if (p_move != 0 && p_move != xscale && grounded)
+		if (P_MOVE != 0 && P_MOVE != xscale && grounded)
 		{
 			if (movespeed < 8)
 			{
-				xscale = p_move
+				xscale = P_MOVE
 				movespeed = 6
 			}
 			else
@@ -67,18 +67,28 @@ function player_mach2()
 			vsp /= 10
 		}
 	}
-	if (input_buffers.jump > 0 && coyote_time) 
+	
+	if input_buffers.jump > 0
 	{
-		input_buffers.jump = 0
-		jumpstop = false
-		vsp = -11
-		scr_sound_3d(sfx_jump, x, y)
-		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
+		if SJUMPHELD && grounded
+		{
+			input_buffers.jump = 0
+			state = states.superjump
+			reset_anim(spr_player_superjumpprep)
+		}
+		else if coyote_time
+		{
+			input_buffers.jump = 0
+			jumpstop = false
+			vsp = -11
+			scr_sound_3d(sfx_jump, x, y)
+			particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
+		}
 	}
 	
 	do_slope_momentum()
 	
-	if (input_check(INPUTS.down))
+	if (input_direction_check(INPUTS.down))
 	{
 		state = states.tumble
 		if (grounded)

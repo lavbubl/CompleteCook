@@ -1,5 +1,9 @@
 // player related macros
-#macro p_move (-input_check(INPUTS.left) + input_check(INPUTS.right))
+#macro P_MOVE (-input_direction_check(INPUTS.left) + input_direction_check(INPUTS.right))
+#macro SJUMPDIR (global.input_type == INPUT_TYPE.KEYBOARD ? global.option_dirsuperjump : global.option_joysuperjump)
+#macro GPOUNDDIR (global.input_type == INPUT_TYPE.KEYBOARD ? global.option_dirgroundpound : global.option_joygroundpound)
+#macro SJUMPHELD (((input_check(INPUTS.up) || gamepad_axis_value(global.pad_device, gp_axislv) <= min(-0.8 + global.option_dzsuperjump, -0.01)) && SJUMPDIR) || input_check(INPUTS.superjump))
+#macro CROUCHHELD ((input_check(INPUTS.down) || gamepad_axis_value(global.pad_device, gp_axislv) >= max(0.8 - global.option_dzcrouchwalk, 0.01)) && GPOUNDDIR)
 
 collide_init()
 
@@ -126,7 +130,6 @@ flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
-
 depth = -7
 
 pal_select = 1

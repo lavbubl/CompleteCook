@@ -1,4 +1,4 @@
-if input_check_pressed(INPUTS.ui_left) || input_check_pressed(INPUTS.ui_right)
+if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right)
 	quit = !quit
 
 if (input_check_pressed(INPUTS.ui_accept) && !quit) || input_check_pressed(INPUTS.ui_deny)

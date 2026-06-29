@@ -142,23 +142,231 @@ function input_check_released(_input_enum, _is_special_key = false)
 
 /// @summary keyboard_check(vk_any) equivelant for gamepad
 function gamepad_check_any(_device = global.pad_device) //the equivelant just doesn't exist natively, so you have to do this
-{ 
-	for (var i = 0; i < array_length(global.axis_arr); i++) { //loop through every axis to see if its input is above half
-		if abs(gamepad_axis_value(_device, global.axis_arr[i])) >= 0.5 //Returns above 0.5 for drifting issues.
+{
+	for (var i = 0; i < array_length(global.button_arr); i++) { //loop through every axis to see if its input is above half
+		if gamepad_button_check(_device, global.button_arr[i])
 			return true;
 	}
-	
+}
+
+/// @summary keyboard_check_pressed(vk_any) equivelant for gamepad
+function gamepad_check_pressed_any(_device = global.pad_device)
+{
 	for (var i = 0; i < array_length(global.button_arr); i++) { //loop through every axis to see if its input is above half
-		if gamepad_button_check(_device, global.button_arr[i]) //above 0.5, it returns true, 0.5 for drifting issues.
+		if gamepad_button_check_pressed(_device, global.button_arr[i])
+			return true;
+	}
+}
+
+/// @summary keyboard_check_pressed(vk_any) equivelant for gamepad
+function gamepad_check_released_any(_device = global.pad_device)
+{
+	for (var i = 0; i < array_length(global.button_arr); i++) { //loop through every axis to see if its input is above half
+		if gamepad_button_check_released(_device, global.button_arr[i])
 			return true;
 	}
 }
 
 /// @summary Return the first button found in their array pressed.
-function gamepad_get_button(_device = global.pad_device) //same reason gamepad_check_any exists
+function gamepad_get_button(_device = global.pad_device)
 {
 	for (var i = 0; i < array_length(global.button_arr); i++) {
 		if gamepad_button_check(_device, global.button_arr[i])
 			return global.button_arr[i];
 	}
+}
+
+/*
+function gamepad_axis_check(_axis, _device = global.pad_device) {
+	if global.input_type != INPUT_TYPE.CONTROLLER
+		return false;
+	
+	switch _axis
+	{
+		case gp_axislh:
+			return abs(gamepad_axis_value(_device, gp_axislh)) > global.option_dzhorizontal;
+		case gp_axislv:
+			return abs(gamepad_axis_value(_device, gp_axislv)) > global.option_dzvertical;
+		case gp_axisrh:
+			return abs(gamepad_axis_value(_device, gp_axisrh)) > global.option_dzhorizontal;
+		case gp_axisrv:
+			return abs(gamepad_axis_value(_device, gp_axisrv)) > global.option_dzvertical;
+	}
+}
+
+function gamepad_axis_check_pressed(_axis, _device = global.pad_device) {
+	if global.input_type != INPUT_TYPE.CONTROLLER
+		return false;
+	
+	static _prev_held = false
+	static _axis_held = {
+		lh: false,
+		lv: false,
+		rh: false,
+		rv: false
+	}
+	
+	switch _axis
+	{
+		case gp_axislh:
+			_prev_held = _axis_held.lh
+			_axis_held.lh = abs(gamepad_axis_value(_device, gp_axislh)) > global.option_dzhorizontal
+			return _axis_held.lh && !_prev_held; //pressed
+		case gp_axislv:
+			_prev_held = _axis_held.lv
+			_axis_held.lv = abs(gamepad_axis_value(_device, gp_axislv)) > global.option_dzvertical
+			return _axis_held.lv && !_prev_held;
+		case gp_axisrh:
+			_prev_held = _axis_held.rh
+			_axis_held.rh = abs(gamepad_axis_value(_device, gp_axisrh)) > global.option_dzhorizontal
+			return _axis_held.rh && !_prev_held;
+		case gp_axisrv:
+			_prev_held = _axis_held.rv
+			_axis_held.rv = abs(gamepad_axis_value(_device, gp_axisrv)) > global.option_dzvertical
+			return _axis_held.rv && !_prev_held;
+	}
+}
+
+function gamepad_axis_check_released(_axis, _device = global.pad_device) {
+	if global.input_type != INPUT_TYPE.CONTROLLER
+		return false;
+	
+	static _prev_held = false
+	static _axis_held = {
+		lh: false,
+		lv: false,
+		rh: false,
+		rv: false
+	}
+	
+	switch _axis
+	{
+		case gp_axislh:
+			_prev_held = _axis_held.lh
+			_axis_held.lh = abs(gamepad_axis_value(_device, gp_axislh)) > global.option_dzhorizontal
+			return !_axis_held.lh && _prev_held; //released
+		case gp_axislv:
+			_prev_held = _axis_held.lv
+			_axis_held.lv = abs(gamepad_axis_value(_device, gp_axislv)) > global.option_dzvertical
+			return !_axis_held.lv && _prev_held;
+		case gp_axisrh:
+			_prev_held = _axis_held.rh
+			_axis_held.rh = abs(gamepad_axis_value(_device, gp_axisrh)) > global.option_dzhorizontal
+			return !_axis_held.rh && _prev_held;
+		case gp_axisrv:
+			_prev_held = _axis_held.rv
+			_axis_held.rv = abs(gamepad_axis_value(_device, gp_axisrv)) > global.option_dzvertical
+			return !_axis_held.rv && _prev_held;
+	}
+}
+*/
+
+/// @param direction INPUTS.left, etc, and ui variants
+function input_direction_check(_dir, _device = global.pad_device) {
+	var _axis_check = false
+	
+	if global.input_type == INPUT_TYPE.CONTROLLER
+	{
+		switch _dir
+		{
+			case INPUTS.left:
+			case INPUTS.ui_left:
+				_axis_check = gamepad_axis_value(_device, gp_axislh) < -global.option_dzhorizontal
+			case INPUTS.right:
+			case INPUTS.ui_right:
+				_axis_check = gamepad_axis_value(_device, gp_axislh) > global.option_dzhorizontal
+			case INPUTS.up:
+			case INPUTS.ui_up:
+				_axis_check = gamepad_axis_value(_device, gp_axislv) < -global.option_dzvertical
+			case INPUTS.down:
+			case INPUTS.ui_down:
+				_axis_check = gamepad_axis_value(_device, gp_axislv) > global.option_dzvertical
+		}
+	}
+	
+	return input_check(_dir) || _axis_check;
+}
+
+/// @param direction INPUTS.left, etc, and ui variants
+function input_direction_check_pressed(_dir, _device = global.pad_device) {
+	var _axis_check = false
+	
+	static _prev_held = false
+	static _axis_held = {
+		left: false,
+		right: false,
+		up: false,
+		down: false
+	}
+	
+	if global.input_type == INPUT_TYPE.CONTROLLER
+	{
+		switch _dir
+		{
+			case INPUTS.left:
+			case INPUTS.ui_left:
+				_prev_held = _axis_held.left
+				_axis_held.left = gamepad_axis_value(_device, gp_axislh) < -global.option_dzvertical
+				_axis_check = _axis_held.left && !_prev_held
+			case INPUTS.right:
+			case INPUTS.ui_right:
+				_prev_held = _axis_held.right
+				_axis_held.right = gamepad_axis_value(_device, gp_axislh) > global.option_dzvertical
+				_axis_check = _axis_held.right && !_prev_held
+			case INPUTS.up:
+			case INPUTS.ui_up:
+				_prev_held = _axis_held.up
+				_axis_held.up = gamepad_axis_value(_device, gp_axislv) < -global.option_dzvertical
+				_axis_check = _axis_held.up && !_prev_held
+			case INPUTS.down:
+			case INPUTS.ui_down:
+				_prev_held = _axis_held.down
+				_axis_held.down = gamepad_axis_value(_device, gp_axislv) > global.option_dzvertical
+				_axis_check = _axis_held.down && !_prev_held
+		}
+	}
+	
+	return input_check_pressed(_dir) || _axis_check;
+}
+
+/// @param direction INPUTS.left, etc, and ui variants
+function input_direction_check_released(_dir, _device = global.pad_device) {
+	var _axis_check = false
+	
+	static _prev_held = false
+	static _axis_held = {
+		left: false,
+		right: false,
+		up: false,
+		down: false
+	}
+	
+	if global.input_type == INPUT_TYPE.CONTROLLER
+	{
+		switch _dir
+		{
+			case INPUTS.left:
+			case INPUTS.ui_left:
+				_prev_held = _axis_held.left
+				_axis_held.left = gamepad_axis_value(_device, gp_axislh) < -global.option_dzvertical
+				_axis_check = !_axis_held.left && _prev_held
+			case INPUTS.right:
+			case INPUTS.ui_right:
+				_prev_held = _axis_held.right
+				_axis_held.right = gamepad_axis_value(_device, gp_axislh) > global.option_dzvertical
+				_axis_check = !_axis_held.right && _prev_held
+			case INPUTS.up:
+			case INPUTS.ui_up:
+				_prev_held = _axis_held.up
+				_axis_held.up = gamepad_axis_value(_device, gp_axislv) < -global.option_dzvertical
+				_axis_check = !_axis_held.up && _prev_held
+			case INPUTS.down:
+			case INPUTS.ui_down:
+				_prev_held = _axis_held.down
+				_axis_held.down = gamepad_axis_value(_device, gp_axislv) > global.option_dzvertical
+				_axis_check = !_axis_held.down && _prev_held
+		}
+	}
+	
+	return input_check_released(_dir) || _axis_check;
 }

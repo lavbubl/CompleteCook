@@ -32,13 +32,13 @@ function player_jump()
 	
 	hsp += (railmovespeed * raildir)
 	
-	if p_move == -xscale || movespeed >= 0
+	if P_MOVE == -xscale || movespeed >= 0
 		momentum = false
 	
-	if (p_move != 0)
+	if (P_MOVE != 0)
 	{
 		movespeed = approach(movespeed, 6, 0.5)
-		xscale = p_move
+		xscale = P_MOVE
 		if dir != xscale
 		{
 			movespeed = 0
@@ -47,7 +47,7 @@ function player_jump()
 	}
 	else if momentum
 		movespeed = approach(movespeed, 0, 0.5)
-	else if (p_move == 0)
+	else if (P_MOVE == 0)
 		movespeed = 0
 		
 	if movespeed >= 0
@@ -88,9 +88,8 @@ function player_jump()
 		}
 		else
 		{
-			reset_anim(sprite_index == spr_player_fallface ? spr_player_bodyslamland : spr_player_freefallland)
-			image_index = 0
 			state = states.bump
+			reset_anim(spr_player_bodyslamland)
 			shake_camera()
 			scr_sound_3d(sfx_groundpound, x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)

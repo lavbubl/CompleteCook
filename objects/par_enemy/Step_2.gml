@@ -29,7 +29,7 @@ if follow_player
 	with (obj_player)
 	{
 		other.state = states.grabbed
-		if input_check(INPUTS.down)
+		if input_direction_check(INPUTS.down)
 		{
 			if (grounded && state == states.hold)
 			{

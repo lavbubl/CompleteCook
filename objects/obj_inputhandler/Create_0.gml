@@ -32,6 +32,8 @@ global.bindslist = { //keyboard binds					gamepad binds
 	bind_clear:		["C",								gp_face4],
 }
 
+global.bindlist_defaults = variable_clone(global.bindslist)
+
 global.keybinds_filename = "keybinds.json"
 
 var _file = undefined
@@ -89,9 +91,10 @@ global.button_arr = [gp_face1, gp_face2, gp_face3, gp_face4, //every button cons
 
 #region Keycode definition
 
+global.keycodes = []
+
 #region Keyboard
 
-global.keycodes = []
 global.keycodes[0][ord("A")]			= "A"
 global.keycodes[0][ord("B")]			= "B"
 global.keycodes[0][ord("C")]			= "C"

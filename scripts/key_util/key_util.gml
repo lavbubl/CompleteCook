@@ -115,8 +115,6 @@ function cc_draw_gamepad_key(_x, _y, key, _prevfont, _prevalign, _prevcolor, _pr
 		key_str = global.keycodes[1][key]
 	catch(_e)
 		key_str = "Undefined"
-		
-	show_debug_message(key_str)
 	
 	var specialkeys = [ //make sure these comply with scr_keytostring's naming conventions
 		"Undefined",

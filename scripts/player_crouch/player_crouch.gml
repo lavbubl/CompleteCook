@@ -15,9 +15,9 @@ function player_crouch()
 		crouchmovespr = spr_player_shotgun_crouchmove
 	}
 	
-	if p_move != 0
-		xscale = p_move
-	hsp = p_move * 4
+	if P_MOVE != 0
+		xscale = P_MOVE
+	hsp = P_MOVE * 4
 	image_speed = 0.45
 	
 	if !grounded
@@ -40,19 +40,19 @@ function player_crouch()
 			reset_anim_on_end(crouchspr)
 		
 		if sprite_index != crouchdownspr
-			sprite_index = p_move != 0 ? crouchmovespr : crouchspr
+			sprite_index = P_MOVE != 0 ? crouchmovespr : crouchspr
 		
 		if (coyote_time && input_buffers.jump > 0 && scr_can_uncrouch())
 		{
 			input_buffers.jump = 0
-			vsp = -8 //-8 not -12
+			vsp = -8
 			scr_sound_3d(sfx_jump, x, y)
 		}
 	}
 	
-	if !input_check(INPUTS.down) && scr_can_uncrouch() && grounded && vsp >= 0
+	if !input_direction_check(INPUTS.down) && scr_can_uncrouch() && grounded && vsp >= 0
 	{
-		if p_move = 0
+		if P_MOVE = 0
 			sprite_index = crouchdownspr	
 		state = states.normal
 	}

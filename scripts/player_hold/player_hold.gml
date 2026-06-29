@@ -6,13 +6,13 @@ function player_hold()
 		dir = xscale
 	}
 	
-	if (p_move != 0)
+	if (P_MOVE != 0)
 	{
 		if (movespeed < 8)
 			movespeed += 0.5;
 		else if (floor(movespeed) == 8)
 			movespeed = 6;
-		xscale = p_move
+		xscale = P_MOVE
 	}
 	else
 		movespeed = 0
@@ -27,7 +27,7 @@ function player_hold()
 		if (sprite_index == spr_player_haulingjump || sprite_index == spr_player_haulingfall)
 			reset_anim(spr_player_haulingland)
 		if (sprite_index != spr_player_haulingland && sprite_index != spr_player_haulingrise)
-			sprite_index = p_move != 0 ? spr_player_haulingmove : spr_player_haulingidle
+			sprite_index = P_MOVE != 0 ? spr_player_haulingmove : spr_player_haulingidle
 	}
 	else
 	{
@@ -48,8 +48,8 @@ function player_hold()
 		scr_sound_3d(sfx_jump, x, y)
 	}
 		
-	if p_move != 0
-		xscale = p_move
+	if P_MOVE != 0
+		xscale = P_MOVE
 	
 	image_speed = 0.35
 	switch (sprite_index)
@@ -69,7 +69,7 @@ function player_hold()
 		state = states.punchenemy
 		var str = $"spr_player_finishingblow{string(irandom_range(1, 5))}"
 		reset_anim(asset_get_index(str))
-		if (input_check(INPUTS.up))
+		if (input_direction_check(INPUTS.up))
 			reset_anim(spr_player_uppercutfinishingblow)
 	}
 }

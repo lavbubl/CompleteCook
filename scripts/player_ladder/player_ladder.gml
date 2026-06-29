@@ -1,6 +1,6 @@
 function player_ladder()
 {
-	var move_v = (-input_check(INPUTS.up) + input_check(INPUTS.down))
+	var move_v = -input_direction_check(INPUTS.up) + input_direction_check(INPUTS.down)
 	
 	
 	if move_v != 0
@@ -47,7 +47,7 @@ function player_ladder()
 	if input_buffers.jump > 0
 	{
 		input_buffers.jump = 0
-		vsp = input_check(INPUTS.down) ? 5 : -9
+		vsp = input_direction_check(INPUTS.down) ? 5 : -9
 		state = states.jump
 		reset_anim(spr_player_jump)
 		jumpstop = false

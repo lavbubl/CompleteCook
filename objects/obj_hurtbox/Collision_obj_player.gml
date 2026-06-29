@@ -1,4 +1,4 @@
-if !instance_exists(follow_obj)
+if !instance_exists(follow_obj) || other.state == states.noclip
 	exit;
 	
 inactive = follow_obj.state == states.stun || follow_obj.state == states.scared || follow_obj.escape_frozen

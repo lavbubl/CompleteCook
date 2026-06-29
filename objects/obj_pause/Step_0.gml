@@ -17,7 +17,7 @@ else if inputbuffer > 0
 	exit;
 }
 
-var movev = -input_check_pressed(INPUTS.ui_up) + input_check_pressed(INPUTS.ui_down)
+var movev = -input_direction_check_pressed(INPUTS.ui_up) + input_direction_check_pressed(INPUTS.ui_down)
 
 if movev != 0
 {

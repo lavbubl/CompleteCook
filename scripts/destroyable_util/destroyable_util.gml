@@ -5,8 +5,8 @@ function break_destroyables()
 		y: y + vsp + sign(vsp)
 	}
 	
-	if object_index == obj_player && p_move != 0
-		d_pos.x = x + hsp + p_move
+	if object_index == obj_player && P_MOVE != 0
+		d_pos.x = x + hsp + P_MOVE
 	
 	var d_list = ds_list_create()
 	instance_place_list(d_pos.x, d_pos.y, obj_destroyable, d_list, false)

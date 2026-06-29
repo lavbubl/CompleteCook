@@ -1,4 +1,4 @@
-if input_check_pressed(INPUTS.ui_left) || input_check_pressed(INPUTS.ui_right)
+if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right)
 {
 	confirm = !confirm
 	scr_sound(sfx_step)

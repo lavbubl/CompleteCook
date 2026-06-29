@@ -5,10 +5,10 @@ function anim_ended(_img_index = image_index, _img_number = image_number - 1)
 
 function do_groundpound()
 {
-	if (input_check_pressed(INPUTS.down) && global.option_dirgroundpound) || input_check_pressed(INPUTS.groundpound)
+	if (input_check_pressed(INPUTS.down) && GPOUNDDIR) || input_check_pressed(INPUTS.groundpound)
 	{
 		freefallsmash = -14
-		dir = p_move
+		dir = P_MOVE
 		state = states.groundpound
 		if !has_shotgun
 		{
@@ -45,7 +45,7 @@ function do_grab()
 			with instance_create(x + xscale * 46, (y + 6), obj_shotgunblast)
 				image_xscale = other.xscale
 		}
-		else if (!input_check(INPUTS.up))
+		else if !input_direction_check(INPUTS.up)
 		{
 			movespeed = max(movespeed, 5)
 			if state == states.normal
@@ -82,7 +82,7 @@ function do_taunt()
 		particle_create(x, y, particles.taunt).image_xscale = xscale
 		state = states.taunt
 		
-		if !(input_check(INPUTS.up) && supertauntshow)
+		if !(input_direction_check(INPUTS.up) && supertauntshow)
 		{
 			sprite_index = spr_player_taunt
 			image_index = random_range(0, image_number)
@@ -184,7 +184,7 @@ function player_sounds()
 		}
 	})
 	
-	if (state != states.grab)
+	if state != states.grab
 		audio_stop_sound(sfx_suplexdash)
 }
 
@@ -307,13 +307,34 @@ function scr_hitwall(_x, _y)
 	return place_meeting(_x, _y, obj_solid) || behind_collision(_x, _y, obj_slope) || behind_collision(_x, _y, obj_sideplatform)
 }
 
+function scr_goupwall(_size = 32)
+{
+	if !scr_hitwall(x + sign(hsp), y - _size)
+	{
+		x += sign(hsp)
+		var _o = 0
+		while scr_solid(x, y)
+		{
+			y--
+			_o++
+		}
+		obj_camera.cam_y_offset = _o
+		return true;
+	}
+	else
+		return false;
+}
+
 function scr_can_enter_door(_state)
 {
-	return _state == states.normal ||
-		   _state == states.mach2 ||
-		   _state == states.mach3 ||
-		   _state == states.superjump ||
-		   _state == states.slide
+	var _states = [states.taunt,
+					  states.tumble,
+					  states.ball,
+					  states.fireass,
+					  states.actor,
+					  states.bump]
+	
+	return !array_contains(_states, _state);
 }
 
 function scr_can_uncrouch()
@@ -323,4 +344,10 @@ function scr_can_uncrouch()
 	var r = !scr_solid(x, y - 1)
 	mask_index = prevmask
 	return r;
+}
+
+//the asset name minus its number, how many entires there are, and an optional starting point, like 0 instead of 1
+function asset_get_variation(_name, _len, _start = 1)
+{
+	return asset_get_index(string_concat(_name, irandom_range(_start, _len)));
 }

@@ -14,8 +14,8 @@ function player_groundpound()
 					with create_effect(x, y, spr_piledrivereffect)
 						depth = -150
 				}
-				if !instance_exists(obj_groundpoundcharge)
-					instance_create(x, y, obj_groundpoundcharge)
+				if !particle_contains_sprite(spr_groundpoundcharge)
+					create_followingeffect(spr_groundpoundcharge, states.groundpound, xscale)
 				particle_timer = 15
 			}
 		}
@@ -37,28 +37,28 @@ function player_groundpound()
 	
 	if (!grounded)
 	{
-		hsp = sprite_index != spr_player_rockethitwall ? p_move * movespeed : 0
-		if (p_move != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
+		hsp = sprite_index != spr_player_rockethitwall ? P_MOVE * movespeed : 0
+		if (P_MOVE != xscale && !place_meeting(x + xscale, y, obj_solid) && movespeed != 0)
 			movespeed -= 0.05
-		if (p_move != dir && p_move != 0)
+		if (P_MOVE != dir && P_MOVE != 0)
 		{
-			dir = p_move
+			dir = P_MOVE
 			movespeed = 0
 		}
-		if (p_move == 0)
+		if (P_MOVE == 0)
 			movespeed = 0
 		
-		if (p_move != 0 && movespeed < 7)
+		if (P_MOVE != 0 && movespeed < 7)
 			movespeed += 0.25
 		if (movespeed > 7)
 			movespeed -= 0.05
-		if (place_meeting(x + p_move, y, obj_solid))
+		if (place_meeting(x + P_MOVE, y, obj_solid))
 		{
 			hsp = 0
 			movespeed = 0
 		}
-		if (p_move != 0 && sprite_index != spr_player_poundcancel1 && sprite_index != spr_player_rockethitwall)
-			xscale = p_move
+		if (P_MOVE != 0 && sprite_index != spr_player_poundcancel1 && sprite_index != spr_player_rockethitwall)
+			xscale = P_MOVE
 	}
 	if (vsp > 0)
 		freefallsmash++

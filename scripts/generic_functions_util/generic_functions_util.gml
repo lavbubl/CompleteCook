@@ -15,6 +15,11 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
+function string_contains(_substr, _str)
+{
+	return string_count(_substr, _str) > 0
+}
+
 function string_convert_seconds_to_timer(_num, _hours = false, _thousandth = false)
 {
 	var _ms = string(floor((_num % 1) * (_thousandth ? 1000 : 10)))
@@ -164,12 +169,22 @@ function set_globals()
 	global.option_timer = ini_read_real("options", "timer", true)
 	global.option_timertype = ini_read_real("options", "timertype", true)
 	global.option_timerspeedrun = ini_read_real("options", "timerspeedrun", true)
-	global.option_dirsuperjump = ini_read_real("options", "dirsuperjump", true)
+	global.option_dirsuperjump = ini_read_real("options", "dirsuperjump", true) //keyboard
 	global.option_dirgroundpound = ini_read_real("options", "dirgroundpound", true)
+	global.option_joysuperjump = ini_read_real("options", "joysuperjump", true) //joystick
+	global.option_joygroundpound = ini_read_real("options", "joygroundpound", true)
+	global.option_dzgeneral = ini_read_real("options", "dzgeneral", 0.4)
+	global.option_dzhorizontal = ini_read_real("options", "dzhorizontal", 0.1)
+	global.option_dzvertical = ini_read_real("options", "dzvertical", 0.1)
+	global.option_dzbutton = ini_read_real("options", "dzbutton", 0.15)
+	global.option_dzsuperjump = ini_read_real("options", "dzsuperjump", 0.85)
+	global.option_dzcrouchwalk = ini_read_real("options", "dzcrouchwalk", 0.65)
 	ini_close()
 	
 	audio_group_set_gain(ag_music, global.option_music_volume)
 	audio_group_set_gain(ag_sfx, global.option_sfx_volume)
+	gamepad_set_axis_deadzone(global.pad_device, global.option_dzgeneral)
+	gamepad_set_button_threshold(global.pad_device, global.option_dzbutton)
 	
 	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
@@ -297,6 +312,7 @@ function reset_level()
 		hasgerome = false
 		supertauntcount = 0
 		supertauntshow = false
+		secret_exit = false
 		secret_cutscene = false
 		visual_size = 1
 	}
@@ -327,6 +343,15 @@ function quick_ini_write_real(inistr, section, key, value)
 	ini_open(inistr)
 	ini_write_real(section, key, value)
 	ini_close()
+}
+
+function quick_ini_read_real(inistr, section, key, defaul)
+{
+	var r
+	ini_open(inistr)
+	r = ini_read_real(section, key, defaul)
+	ini_close()
+	return r;
 }
 
 function gpu_set_blendmode_normal_fixed()

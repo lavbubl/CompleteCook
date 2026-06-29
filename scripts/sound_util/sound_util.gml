@@ -51,6 +51,15 @@ function scr_sound_3d_on(emitter, snd, loop = false)
 	return played_snd;
 }
 
+function scr_sound_3d_pitched_on(emitter, snd, pitch_start = 0.95, pitch_end = 1.05, loop = false)
+{
+	var g = 1
+	
+	var played_snd = audio_play_sound_on(emitter, snd, loop, 1, g, 0, random_range(pitch_start, pitch_end))
+	
+	return played_snd;
+}
+
 function scr_sound_3d_pitched(snd, x, y, pitch_start = 0.95, pitch_end = 1.05, loop = false)
 {
 	var g = 1

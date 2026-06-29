@@ -143,9 +143,9 @@ function do_enemy_generics()
 				func_todo()
 		}
 	})
-
+	
 	do_scared()
-
+	
 	grav = 0.5
 	if state == states.hit
 		grav = 0
@@ -228,7 +228,7 @@ function do_enemy_generics()
 				if !grounded
 					vsp = -6
 				
-				if input_check(INPUTS.up)
+				if input_direction_check(INPUTS.up)
 				{
 					state = states.piledriver
 					dir = xscale

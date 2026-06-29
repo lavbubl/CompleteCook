@@ -135,7 +135,6 @@
     {"name":"obj_gotolevel","order":1,"path":"objects/obj_gotolevel/obj_gotolevel.yy",},
     {"name":"obj_grindrail","order":2,"path":"objects/obj_grindrail/obj_grindrail.yy",},
     {"name":"obj_grindrailslope","order":3,"path":"objects/obj_grindrailslope/obj_grindrailslope.yy",},
-    {"name":"obj_groundpoundcharge","order":13,"path":"objects/obj_groundpoundcharge/obj_groundpoundcharge.yy",},
     {"name":"obj_hallway","order":1,"path":"objects/obj_hallway/obj_hallway.yy",},
     {"name":"obj_hudhpdebris","order":1,"path":"objects/obj_hudhpdebris/obj_hudhpdebris.yy",},
     {"name":"obj_hurtbox","order":4,"path":"objects/obj_hurtbox/obj_hurtbox.yy",},

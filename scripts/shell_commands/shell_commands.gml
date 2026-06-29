@@ -14,6 +14,8 @@ function sh_panic (args) {
 	global.panic.active = args[1]
 	global.panic.timer = args[2]
 	global.panic.timer_max = args[2]
+	
+	instance_create(0, 0, obj_pillarflash)
 }
 
 function meta_panic() {
@@ -154,6 +156,14 @@ function sh_test_p_rank (args) {
 	global.combo.count = max(global.combo.count, 100)
 	global.combo.timer = 60
 	global.level_data.lap2 = true
+	global.level_data.toppins = {
+		shroom: true,
+		cheese: true,
+		tomato: true,
+		sausage: true,
+		pineapple: true,
+		bacon: true
+	}
 	sh_panic(["", "true", 5000])
 }
 

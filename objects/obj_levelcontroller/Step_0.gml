@@ -2,7 +2,7 @@ global.combo.timer = clamp(global.combo.timer, 0, 60)
 
 if obj_player.state != states.actor && obj_fade.fade = false
 	global.combo.timer = approach(global.combo.timer, 0, 0.15)
-	
+
 global.combo.timer = max(global.combo.timer, 0)
 
 if (global.combo.count != prev_combo_count)

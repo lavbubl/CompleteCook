@@ -11,7 +11,7 @@ function player_grab()
 		jumpstop = true
 	}
 	
-	if (input_buffers.jump > 0 && !input_check(INPUTS.down) && coyote_time)
+	if (input_buffers.jump > 0 && !input_direction_check(INPUTS.down) && coyote_time)
 	{
 		input_buffers.jump = 0
 		jumpstop = false
@@ -22,7 +22,7 @@ function player_grab()
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
-	if (input_check(INPUTS.down) && !input_check(INPUTS.jump) && grounded)
+	if (input_direction_check(INPUTS.down) && !input_check(INPUTS.jump) && grounded)
 	{
 		movespeed = 12
 		crouchslipbuffer = 25
@@ -82,7 +82,7 @@ function player_grab()
 		sprite_index = spr_player_mach2
 	}
 	
-	if p_move != 0 && p_move != xscale
+	if P_MOVE != 0 && P_MOVE != xscale
 	{
 		if !grounded
 		{
@@ -97,7 +97,7 @@ function player_grab()
 	}
 	
 	if state == states.normal
-		dir = p_move
+		dir = P_MOVE
 	
 	aftimg_timers.blur.do_it = true
 }

@@ -1,4 +1,4 @@
-if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && input_check(INPUTS.up) && obj_player.grounded)
+if (place_meeting(x, y, obj_player) && scr_can_enter_door(obj_player.state) && input_direction_check(INPUTS.up) && obj_player.grounded)
 {
 	with obj_player
 	{

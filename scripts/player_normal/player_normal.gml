@@ -22,8 +22,7 @@ function player_normal()
 		default_idle = spr_player_madidle
 		default_move = spr_player_madmove
 	}
-	
-	if winding >= 1800
+	else if winding >= 1800
 		default_idle = spr_player_winding
 	
 	if global.panic.active
@@ -34,8 +33,6 @@ function player_normal()
 		{
 			default_idle = spr_player_hurtidle
 			default_move = spr_player_hurtmove
-			default_jump = spr_player_hurtjump
-			default_fall = spr_player_hurtjump
 		}
 	}
 	
@@ -45,10 +42,15 @@ function player_normal()
 		dir = xscale
 	}
 	
-	if p_move != 0
+	if P_MOVE != 0
 	{
-		xscale = p_move
-		if !place_meeting(x + p_move, y, obj_solid)
+		if dir != xscale
+		{
+			movespeed = 0
+			dir = xscale
+		}
+		xscale = P_MOVE
+		if !place_meeting(x + P_MOVE, y, obj_solid)
 		{
 			if movespeed < 8
 			movespeed += 0.5
@@ -83,12 +85,12 @@ function player_normal()
 		spr_player_idlebite
 	]
 	
-	if p_move != 0
+	if P_MOVE != 0
 		idletimer = 120
 	
 	if (breakdance_secret.buffer < 10)
 	{
-		if p_move != 0
+		if P_MOVE != 0
 		{
 			if (sprite_index != spr_player_landmove && sprite_index != spr_player_shotgun_land)
 				sprite_index = default_move
@@ -127,7 +129,7 @@ function player_normal()
 		{
 			sprite_index = spr_player_breakdance
 			breakdance_secret.spd = approach(breakdance_secret.spd, 0.6, 0.005)
-			if p_move != 0
+			if P_MOVE != 0
 			{
 				if movespeed > 3
 					image_speed = (movespeed < 6) ? 0.45 : 0.6
@@ -151,7 +153,7 @@ function player_normal()
 		breakdance_secret.spd = 0.25
 	}
 	
-	if (input_check(INPUTS.down) || !scr_can_uncrouch())
+	if (input_direction_check(INPUTS.down) || !scr_can_uncrouch())
 	{
 		reset_anim(!has_shotgun ? spr_player_crouchdown : spr_player_shotgun_crouchstart)
 		state = states.crouch

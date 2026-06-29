@@ -1,6 +1,3 @@
-// update all of the inputs
-// TODO: helper function?
-
 if !pausestopframe
 {	
 	input_buffers.grab = max(input_buffers.grab - 1, 0)

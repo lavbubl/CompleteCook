@@ -15,7 +15,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 				y += vsp
 				if vsp < 20
 					vsp += 0.4
-				if y > room_height
+				if y > room_height * 2
 					array_delete(other.particle_list, p, 1)
 				break;
 			case particles.hurtstar:
@@ -59,6 +59,8 @@ for (var p = 0; p < array_length(particle_list); p++)
 					array_delete(other.particle_list, p, 1)
 				break;
 			default:
+				x += hsp
+				y += vsp
 				if anim_ended(image_index, image_number)
 					array_delete(other.particle_list, p, 1)
 				break;

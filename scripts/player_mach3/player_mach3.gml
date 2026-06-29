@@ -59,17 +59,17 @@ function player_mach3()
 			state = states.slide
 			scr_sound_3d(sfx_break, x, y)
 		}
-		if (p_move != 0 && p_move != xscale && !dashpad)
+		if (P_MOVE != 0 && P_MOVE != xscale && !dashpad)
 		{
 			reset_anim(spr_player_machslideboost3)
 			state = states.slide
 			scr_sound_3d_on(myemitter, sfx_machslideboost)
 		}
 		
-		if (movespeed < 20 && p_move == xscale)
+		if (movespeed < 20 && P_MOVE == xscale)
 			movespeed += mach4mode ? 0.1 : 0.025
 			
-		if ((input_check(INPUTS.up) && global.option_dirsuperjump) || input_check(INPUTS.superjump)) && !dashpad && vsp >= 0
+		if (SJUMPHELD && !dashpad && vsp >= 0)
 		{
 			state = states.superjump
 			reset_anim(spr_player_superjumpprep)
@@ -86,7 +86,7 @@ function player_mach3()
 	
 	do_slope_momentum()
 	
-	if (input_check(INPUTS.down))
+	if (input_direction_check(INPUTS.down))
 	{
 		state = states.tumble
 		

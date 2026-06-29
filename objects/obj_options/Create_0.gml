@@ -1,5 +1,4 @@
 depth = -100
-
 optionselected = 0
 settingselected = 0
 inputbuffer = 0
@@ -53,31 +52,23 @@ list_arr = [
 		new add_option("VIDEO",		types.change,	2),
 		new add_option("GAME",		types.change,	3),
 		new add_option("CONTROLS",	types.change,	4),
-		/*new add_option("RESET ALL CONFIG",	types.func, undefined,	
-			function(_val) {
-				if file_exists("globalsave.ini")
-					file_delete("globalsave.ini")
-				scr_sound(sfx_enemyprojectile)
-			})*/
 	],
 	[ //1 audio
 		new add_option_back(),
-		new add_option("MASTER", types.slider, global.option_master_volume * 100,	
+		new add_option("MASTER", types.slider, global.option_master_volume,	
 			function(_val) {
-				_val /= 100
+				
 				global.option_master_volume = _val
 				quick_ini_write_real("globalsave.ini", "options", "master_volume", _val)
 			}),
-		new add_option("MUSIC", types.slider, global.option_music_volume * 100,	
+		new add_option("MUSIC", types.slider, global.option_music_volume,	
 			function(_val) {
-				_val /= 100
 				global.option_music_volume = _val
 				audio_group_set_gain(ag_music, _val, 0)
 				quick_ini_write_real("globalsave.ini", "options", "music_volume", _val)
 			}),
-		new add_option("SFX", types.slider, global.option_sfx_volume * 100,
+		new add_option("SFX", types.slider, global.option_sfx_volume,
 			function(_val) {
-				_val /= 100
 				global.option_sfx_volume = _val
 				audio_group_set_gain(ag_sfx, _val, 0)
 				quick_ini_write_real("globalsave.ini", "options", "sfx_volume", _val)
@@ -155,7 +146,58 @@ list_arr = [
 		new add_option_back(),
 		new add_option("KEYBOARD",		types.change, 6),
 		new add_option("CONTROLLER",	types.change, 7),
-		new add_option("RESET CONFIG",	types.change, 64)
+		new add_option("RESET CONFIG",	types.func,	  8,
+			function(_val) { //horribly hardcoded but whatever
+				file_delete(global.keybinds_filename)
+				
+				global.bindslist = variable_clone(global.bindlist_defaults)
+				
+				ini_open("globalsave.ini")
+				
+				global.option_dirsuperjump = true
+				ini_write_real("options", "dirsuperjump", true)
+				list_arr[6][2].val = true 
+				
+				global.option_dirgroundpound = true
+				ini_write_real("options", "dirgroundpound", true)
+				list_arr[6][3].val = true
+				
+				global.option_joysuperjump = true
+				ini_write_real("options", "joysuperjump", true)
+				list_arr[7][3].val = true
+				
+				global.option_joygroundpound = true
+				ini_write_real("options", "joygroundpound", true)
+				list_arr[7][4].val = true
+				
+				global.option_dzgeneral = 0.4
+				ini_write_real("options", "dzgeneral", 0.4)
+				list_arr[8][1].val = 0.4
+				
+				global.option_dzhorizontal = 0.1
+				ini_write_real("options", "dzhorizontal", 0.1)
+				list_arr[8][2].val = 0.1
+				
+				global.option_dzvertical = 0.1
+				ini_write_real("options", "dzvertical", 0.1)
+				list_arr[8][3].val = 0.1
+				
+				global.option_dzbutton = 0.15
+				ini_write_real("options", "dzbutton", 0.15)
+				list_arr[8][4].val = 0.15
+				
+				global.option_dzsuperjump = 0.85
+				ini_write_real("options", "dzsuperjump", 0.85)
+				list_arr[8][5].val = 0.85
+				
+				global.option_dzcrouchwalk = 0.65
+				ini_write_real("options", "dzcrouchwalk", 0.65)
+				list_arr[8][6].val = 0.65
+				
+				ini_close()
+				
+				do_tip("{u}Configuration resetted!")
+			}),
 	],
 	[ //5 video mode, val is in order of this list
 		new add_option_back(2),
@@ -165,16 +207,16 @@ list_arr = [
 	],
 	[ //6 keyboard specific controls
 		new add_option_back(4),
-		new add_option("BINDING", types.func, undefined,
+		new add_option("BINDINGS", types.func, undefined,
 			function(_val) {
 				instance_create(x, y, obj_keyconfig)
 			}),
-		new add_option("DIR. SUPERJUMP",	types.onoff, global.option_dirsuperjump,
+		new add_option("DIR. SUPERJUMP", types.onoff, global.option_dirsuperjump,
 			function(_val) {
 				global.option_dirsuperjump = _val
 				quick_ini_write_real("globalsave.ini", "options", "dirsuperjump", _val)
 			}),
-		new add_option("DIR. GROUNDPOUND",	types.onoff, global.option_dirgroundpound,
+		new add_option("DIR. GROUNDPOUND", types.onoff, global.option_dirgroundpound,
 			function(_val) {
 				global.option_dirgroundpound = _val
 				quick_ini_write_real("globalsave.ini", "options", "dirgroundpound", _val)
@@ -182,10 +224,56 @@ list_arr = [
 	],
 	[ //7 gamepad specific controls
 		new add_option_back(4),
-		new add_option("BINDING", types.func, undefined,
+		new add_option("BINDINGS", types.func, undefined,
 			function(_val) {
 				instance_create(x, y, obj_buttonconfig)
-			})
+			}),
+		new add_option("DEADZONES", types.change, 8),
+		new add_option("JOYSTICK SUPERJUMP", types.onoff, global.option_joysuperjump,
+			function(_val) {
+				global.option_joysuperjump = _val
+				quick_ini_write_real("globalsave.ini", "options", "joysuperjump", _val)
+			}),
+		new add_option("JOYSTICK GROUNDPOUND", types.onoff, global.option_joygroundpound,
+			function(_val) {
+				global.option_joygroundpound = _val
+				quick_ini_write_real("globalsave.ini", "options", "joygroundpound", _val)
+			}),
+	],
+	[ //8 gamepad deadzones
+		new add_option_back(7),
+		new add_option("GENERAL DEADZONE", types.slider, global.option_dzgeneral,	
+			function(_val) {
+				global.option_dzgeneral = _val
+				quick_ini_write_real("globalsave.ini", "options", "dzgeneral", _val)
+				gamepad_set_axis_deadzone(global.pad_device, _val)
+			}),
+		new add_option("HORIZ. DEADZONE", types.slider, global.option_dzhorizontal,	
+			function(_val) {
+				global.option_dzhorizontal = _val
+				quick_ini_write_real("globalsave.ini", "options", "dzhorizontal", _val)
+			}),
+		new add_option("VERT. DEADZONE", types.slider, global.option_dzvertical,	
+			function(_val) {
+				global.option_dzvertical = _val
+				quick_ini_write_real("globalsave.ini", "options", "dzvertical", _val)
+			}),
+		new add_option("PRESS DEADZONE", types.slider, global.option_dzbutton,	
+			function(_val) {
+				global.option_dzbutton = _val
+				quick_ini_write_real("globalsave.ini", "options", "dzbutton", _val)
+				gamepad_set_button_threshold(global.pad_device, _val)
+			}),
+		new add_option("SUPERJUMP WALK DZ", types.slider, global.option_dzsuperjump,	
+			function(_val) {
+				global.option_dzsuperjump = _val
+				quick_ini_write_real("globalsave.ini", "options", "dzsuperjump", _val)
+			}),
+		new add_option("CROUCH WALK DZ", types.slider, global.option_dzcrouchwalk,	
+			function(_val) {
+				global.option_dzcrouchwalk = _val
+				quick_ini_write_real("globalsave.ini", "options", "dzcrouchwalk", _val)
+			}),
 	]
 ]
 

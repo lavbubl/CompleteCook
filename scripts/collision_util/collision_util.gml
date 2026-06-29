@@ -339,7 +339,8 @@ function behind_collision(_x, _y, obj_type)
 {
 	var master = id
 	
-	for (var i = 0; i < instance_number(par_collision); i++) 
+	var _num = instance_number(par_collision)
+	for (var i = 0; i < _num; i++) 
 	{
 		var _id = instance_find(par_collision, i)
 		with (instance_place(_x, _y, _id))

@@ -44,8 +44,8 @@ cur_list = list_arr[list_ix]
 
 moving = false
 
-var moveh = -input_check_pressed(INPUTS.ui_left) + input_check_pressed(INPUTS.ui_right)
-var movev = -input_check_pressed(INPUTS.ui_up) + input_check_pressed(INPUTS.ui_down)
+var moveh = -input_direction_check_pressed(INPUTS.ui_left) + input_direction_check_pressed(INPUTS.ui_right)
+var movev = -input_direction_check_pressed(INPUTS.ui_up) + input_direction_check_pressed(INPUTS.ui_down)
 
 var _prevos = optionselected
 
@@ -62,7 +62,7 @@ var cur_option = cur_list[optionselected]
 switch cur_option.o_type
 {
 	case types.onoff:
-		if input_check_pressed(INPUTS.ui_left) || input_check_pressed(INPUTS.ui_right) || input_check_pressed(INPUTS.ui_accept)
+		if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right) || input_check_pressed(INPUTS.ui_accept)
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
@@ -70,7 +70,7 @@ switch cur_option.o_type
 		}
 		break;
 	case types.slider:
-		var move = -input_check(INPUTS.ui_left) + input_check(INPUTS.ui_right)
+		var move = -input_direction_check(INPUTS.ui_left) + input_direction_check(INPUTS.ui_right)
 		cur_option.val = clamp(cur_option.val + move, 0, 100)
 		if move != 0
 		{

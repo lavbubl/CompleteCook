@@ -1,3 +1,4 @@
+depth = -10
 if image_alpha > 0
 {
 	draw_set_color(c_black)

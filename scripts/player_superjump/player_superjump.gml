@@ -1,7 +1,7 @@
 function player_superjump() 
 {
 	if (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index == spr_player_superjumpleft)
-		hsp = p_move * movespeed
+		hsp = P_MOVE * movespeed
 	else
 		hsp = xscale * movespeed
 	
@@ -17,23 +17,23 @@ function player_superjump()
 	{
 		image_speed = 0.5
 		vsp = 0
-		if (p_move != 0)
-		  xscale = p_move
+		if (P_MOVE != 0)
+		  xscale = P_MOVE
 	}
 	
-	var superjumpholding = ((input_check(INPUTS.up) && global.option_dirsuperjump) || input_check(INPUTS.superjump) || !grounded && scr_can_uncrouch()) || !scr_can_uncrouch()
+	var superjumpholding = SJUMPHELD || !grounded || scr_can_uncrouch()
 	
 	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index = spr_player_superjumpleft))
 	{
-		var absMove = abs(p_move);
+		var absMove = abs(P_MOVE);
 		movespeed = absMove * 2
 
-		if p_move != 0
+		if P_MOVE != 0
 		{
-			if input_check(INPUTS.right)
+			if input_direction_check(INPUTS.right)
 				sprite_index = (xscale = 1) ? spr_player_superjumpright : spr_player_superjumpleft
 			
-			if input_check(INPUTS.left)
+			if input_direction_check(INPUTS.left)
 				sprite_index = (xscale = -1) ? spr_player_superjumpright : spr_player_superjumpleft
 		}
 		else
@@ -79,7 +79,7 @@ function player_superjump()
 		}
 		movespeed = 0
 		
-		if (scr_solid(x, y - 1))
+		if scr_solid(x, y - 1)
 		{
 			state = states.bump
 			shake_camera(10, 30 / room_speed)

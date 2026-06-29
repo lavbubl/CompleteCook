@@ -9,9 +9,9 @@ function player_ball()
 		if grounded
 		{
 			var movespeed_target = 10
-			if p_move == xscale
+			if P_MOVE == xscale
 				movespeed_target += 2
-			else if p_move == -xscale
+			else if P_MOVE == -xscale
 				movespeed_target -= 2
 			movespeed = approach(movespeed, movespeed_target, 0.25)
 		}

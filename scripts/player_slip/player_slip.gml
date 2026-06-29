@@ -36,7 +36,7 @@ function player_slip()
 			scr_sound_3d(asset_get_index($"sfx_sliphit{irandom_range(1, 8)}"), x, y)
 		}
 	}
-	if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_destroyable)
+	if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_destroyable) && scr_can_uncrouch()
 	{
 		xscale *= -1
 		sleep(1)

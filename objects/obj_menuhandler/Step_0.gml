@@ -15,7 +15,7 @@ if menu_dark
 }
 
 if state == 0 && abletoinput
-	cur_selected = clamp(cur_selected + (-input_check_pressed(INPUTS.ui_left) + input_check_pressed(INPUTS.ui_right)), 1, array_length(tvs))
+	cur_selected = clamp(cur_selected + (-input_direction_check_pressed(INPUTS.ui_left) + input_direction_check_pressed(INPUTS.ui_right)), 1, array_length(tvs))
 
 obj_menupeppino.cur_selected = self.cur_selected
 

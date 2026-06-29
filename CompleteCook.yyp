@@ -177,7 +177,6 @@
     {"id":{"name":"obj_gotolevel","path":"objects/obj_gotolevel/obj_gotolevel.yy",},},
     {"id":{"name":"obj_grindrail","path":"objects/obj_grindrail/obj_grindrail.yy",},},
     {"id":{"name":"obj_grindrailslope","path":"objects/obj_grindrailslope/obj_grindrailslope.yy",},},
-    {"id":{"name":"obj_groundpoundcharge","path":"objects/obj_groundpoundcharge/obj_groundpoundcharge.yy",},},
     {"id":{"name":"obj_hallway","path":"objects/obj_hallway/obj_hallway.yy",},},
     {"id":{"name":"obj_hudhpdebris","path":"objects/obj_hudhpdebris/obj_hudhpdebris.yy",},},
     {"id":{"name":"obj_hurtbox","path":"objects/obj_hurtbox/obj_hurtbox.yy",},},

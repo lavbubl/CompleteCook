@@ -66,6 +66,7 @@ function player_climbwall()
 		jumpstop = false
 		dir = xscale
 	}
+	
 	if (input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0

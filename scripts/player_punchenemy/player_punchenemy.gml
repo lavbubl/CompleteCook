@@ -16,9 +16,9 @@ function player_punchenemy()
 	{
 		sprite_index = spr_player_fall
 		state = states.normal
-		movespeed = -abs(hsp)
+		railmovespeed = 4
+        raildir = -xscale
 		jumpstop = true
-		momentum = true
 		dir = xscale
 	}
 	

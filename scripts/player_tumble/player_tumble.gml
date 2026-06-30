@@ -83,7 +83,7 @@ function player_tumble() //ball is in its own state, player_ball()
 	if sprite_index == spr_player_dive && vsp < 10
 		vsp = 10
 	
-	image_speed = movespeed / 20
+	image_speed = sprite_index == spr_player_crouchslip || sprite_index == spr_player_machroll || sprite_index == spr_player_ball ? abs(movespeed) / 15 : 0.35
 		
 	if sprite_index == spr_player_backslide && anim_ended()
 		reset_anim(spr_player_backslide_loop)

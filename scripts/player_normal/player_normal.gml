@@ -44,11 +44,6 @@ function player_normal()
 	
 	if P_MOVE != 0
 	{
-		if dir != xscale
-		{
-			movespeed = 0
-			dir = xscale
-		}
 		xscale = P_MOVE
 		if !place_meeting(x + P_MOVE, y, obj_solid)
 		{
@@ -74,7 +69,7 @@ function player_normal()
 	if (movespeed > 8)
         movespeed -= 0.1;
 	
-	hsp = movespeed * xscale
+	hsp = (P_MOVE * movespeed) + (railmovespeed * raildir)
 	
 	var idlegestures = [
 		spr_player_idlefrown, 
@@ -104,7 +99,7 @@ function player_normal()
 					reset_anim(idlegestures[irandom(5)])
 					idletimer = -4
 					if irandom(100) >= 50
-						scr_sound_pitched(choose(v_pep_bah, v_pep_alright, v_pep_alright_high, v_pep_paranoid, v_pep_paParanoid), 0.5, 1.5)
+						scr_sound_pitched(choose(v_pep_bah, v_pep_alright, v_pep_alright_high, v_pep_paranoid, v_pep_paParanoid), 0.55, 1.45)
 				}
 				
 				if (anim_ended() && idletimer == -4)
@@ -207,6 +202,8 @@ function player_normal()
 			break;
 		case spr_player_landmove:
 			reset_anim_on_end(default_move);
+			if movespeed > 3
+				image_speed = (movespeed < 6) ? 0.45 : 0.6
 			break;
 	}
 	

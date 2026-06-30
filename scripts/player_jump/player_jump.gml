@@ -24,32 +24,42 @@ function player_jump()
 		vsp = -11
 		reset_anim(default_jump)
 		jumpstop = false
-		create_effect(x, y - 5, spr_highjumpcloud2)
+		create_effect(x, y, spr_highjumpcloud2)
 		scr_sound_3d(sfx_jump, x, y)
 	}
 	
-	hsp = movespeed * xscale
+	if (!momentum)
+        hsp = P_MOVE * movespeed
+    else
+        hsp = xscale * movespeed
 	
 	hsp += (railmovespeed * raildir)
 	
 	if P_MOVE == -xscale || movespeed >= 0
 		momentum = false
 	
+	if dir != xscale
+	{
+		movespeed = 2
+		dir = xscale
+	}
+		
 	if (P_MOVE != 0)
 	{
-		movespeed = approach(movespeed, 6, 0.5)
+		if (movespeed < 8)
+            movespeed += 0.5
+        else if (floor(movespeed) == 8)
+            movespeed = 6
 		xscale = P_MOVE
-		if dir != xscale
-		{
-			movespeed = 0
-			dir = xscale
-		}
 	}
 	else if momentum
 		movespeed = approach(movespeed, 0, 0.5)
 	else if (P_MOVE == 0)
 		movespeed = 0
-		
+	
+	if (movespeed > 8)
+        movespeed -= 0.1
+	
 	if movespeed >= 0
 		momentum = false
 	

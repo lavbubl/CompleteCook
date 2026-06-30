@@ -31,6 +31,7 @@ function player_mach3()
 			with create_effect(x, y, spr_crazyruneffect)
 			{
 				image_xscale = other.xscale
+				image_speed = 0.5
 				depth = -150
 			}
 		}

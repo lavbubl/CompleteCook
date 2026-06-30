@@ -64,7 +64,12 @@ function player_piledriver()
 					depth = -150
 			}
 			if !particle_contains_sprite(spr_groundpoundcharge)
-				_pdeffect = create_followingeffect(spr_groundpoundcharge, states.groundpound, xscale).depth = -100
+				_pdeffect = create_followingeffect(spr_groundpoundcharge, states.piledriver, 1)
+			with _pdeffect
+			{
+				depth = -100
+				image_speed = 0.35
+			}
 			particle_timer = 15
 		}
 	}

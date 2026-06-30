@@ -93,7 +93,7 @@ if follow_player
 		{
 			case states.hold:
 				other.x = x
-				other.y = y - 64
+				other.y = y - 65
 				other.xscale = -xscale
 				if sprite_index == spr_player_haulingrise
 					other.y += floor(image_number - image_index) * 10

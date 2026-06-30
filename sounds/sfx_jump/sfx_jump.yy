@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.84668934,
+  "duration":0.8466667,
   "exportDir":"",
   "name":"sfx_jump",
   "parent":{

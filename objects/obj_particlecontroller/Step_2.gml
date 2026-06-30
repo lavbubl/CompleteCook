@@ -46,7 +46,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 			case particles.machcharge:
 				x = target.x
 				if target.sprite_index = spr_player_Sjumpcancel
-					x += 10 * target.xscale
+					x += 20 * target.xscale
 				y = target.y
 				image_xscale = target.xscale
 				if target.state != statetofollow || (target.state == states.normal && global.combo.count < 25)

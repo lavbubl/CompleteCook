@@ -9,18 +9,21 @@ function player_hold()
 	if (P_MOVE != 0)
 	{
 		if (movespeed < 8)
-			movespeed += 0.5;
+			movespeed += 0.5
 		else if (floor(movespeed) == 8)
-			movespeed = 6;
+			movespeed = 6
 		xscale = P_MOVE
 	}
 	else
 		movespeed = 0
 		
 	if (movespeed > 6)
-		movespeed -= 0.1;
+		movespeed -= 0.1
 	
-	hsp = movespeed * xscale
+	if (sprite_index != spr_player_swingding)
+		hsp = P_MOVE * movespeed
+	else
+		hsp = xscale * movespeed
 	
 	if grounded
 	{

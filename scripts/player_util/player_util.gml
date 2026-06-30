@@ -237,7 +237,7 @@ function do_hurt(obj = noone)
 	
 	scr_sound_pitched(sfx_hurt, 0.9, 1.1)
 	if irandom(100) >= 50
-		scr_sound_pitched(choose(v_pep_hurt, v_pep_hurt2), 0.7, 1.3)
+		scr_sound(choose(v_pep_hurt, v_pep_hurt2))
 	
 	particle_create(x, y, particles.bang)
 	create_effect(x, y, spr_parryflash).depth = -100

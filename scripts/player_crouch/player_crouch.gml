@@ -18,7 +18,8 @@ function player_crouch()
 	if P_MOVE != 0
 		xscale = P_MOVE
 	hsp = P_MOVE * 4
-	image_speed = 0.45
+	
+	image_speed = sprite_index == crouchjumpspr || sprite_index == crouchfallspr ? 0.35 : 0.45
 	
 	if !grounded
 	{

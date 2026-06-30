@@ -169,7 +169,7 @@ if supertauntcount >= 10
 	}
 }
 
-uparrow.visible = state != states.actor &&
+uparrow.visible = state == states.normal &&
 	(place_meeting(x, y, obj_dresser) ||
 	(scr_can_enter_door(state) &&
 	(place_meeting(x, y, obj_startgate) ||

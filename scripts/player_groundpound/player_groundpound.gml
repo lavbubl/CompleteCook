@@ -15,7 +15,13 @@ function player_groundpound()
 						depth = -150
 				}
 				if !particle_contains_sprite(spr_groundpoundcharge)
-					create_followingeffect(spr_groundpoundcharge, states.groundpound, xscale)
+				{	
+					with create_followingeffect(spr_groundpoundcharge, states.groundpound, 1)
+					{
+						depth = -100
+						image_speed = 0.35
+					}
+				}
 				particle_timer = 15
 			}
 		}

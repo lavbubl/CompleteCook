@@ -76,6 +76,12 @@ for (var i = 0; i < array_length(followers); i++)
 		
 		if sprite_index != sprs.taunt
 			image_index = wrap(sprite_get_number(sprite_index), image_index + 0.35)
+		
+		if !obj_fade.fade && obj_fade.image_alpha > 1
+		{
+			x = obj_player.x
+			y = obj_player.y
+		}
 	}
 }
 

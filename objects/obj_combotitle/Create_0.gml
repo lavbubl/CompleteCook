@@ -2,9 +2,11 @@ title_index = 0
 title = 0
 alarm[0] = 120
 image_speed = 0
+alarm[1] = 3
 depth = -100
 visible = hud_get_visible()
 x = 832
 y = 290
 very = false
+afterimages = array_create(0)
 scr_sound(choose(sfx_comboup1, sfx_comboup2, sfx_comboup4))

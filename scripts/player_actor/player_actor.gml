@@ -12,6 +12,7 @@ function player_actor()
 				particle_timer = 14
 				scr_sound_3d_pitched(sfx_step, x, y)
 			}
+			image_speed = 0.35
 			break;
 		case spr_player_timesup:
 			if anim_ended()

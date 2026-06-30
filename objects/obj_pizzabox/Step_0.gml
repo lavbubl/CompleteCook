@@ -27,7 +27,7 @@ with instance_place(x, y - (image_yscale * 16), obj_player)
 			hsp = 0
 			vsp = 0
 			movespeed = 0
-			y = other.bbox_bottom - 1
+			y = other.bbox_bottom - 8
 			image_speed = 0.35
 			reset_anim(spr_player_uppizzabox)
 			scr_sound(sfx_box)

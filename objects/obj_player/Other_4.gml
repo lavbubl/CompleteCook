@@ -73,7 +73,7 @@ else
 					{
 						if place_meeting(x, y - 1, obj_pizzabox)
 							y += 10
-						state = states.normal
+						state = states.crouch
 					}
 					break;
 			}

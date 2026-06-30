@@ -131,7 +131,7 @@ flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
-depth = -7
+depth = -8
 
 pal_select = 1
 pattern_spr = pat_pizza

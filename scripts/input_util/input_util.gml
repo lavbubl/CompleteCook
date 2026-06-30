@@ -272,15 +272,19 @@ function input_direction_check(_dir, _device = global.pad_device) {
 			case INPUTS.left:
 			case INPUTS.ui_left:
 				_axis_check = gamepad_axis_value(_device, gp_axislh) < -global.option_dzhorizontal
+				break;
 			case INPUTS.right:
 			case INPUTS.ui_right:
 				_axis_check = gamepad_axis_value(_device, gp_axislh) > global.option_dzhorizontal
+				break;
 			case INPUTS.up:
 			case INPUTS.ui_up:
 				_axis_check = gamepad_axis_value(_device, gp_axislv) < -global.option_dzvertical
+				break;
 			case INPUTS.down:
 			case INPUTS.ui_down:
 				_axis_check = gamepad_axis_value(_device, gp_axislv) > global.option_dzvertical
+				break;
 		}
 	}
 	
@@ -308,21 +312,25 @@ function input_direction_check_pressed(_dir, _device = global.pad_device) {
 				_prev_held = _axis_held.left
 				_axis_held.left = gamepad_axis_value(_device, gp_axislh) < -global.option_dzhorizontal
 				_axis_check = _axis_held.left && !_prev_held
+				break;
 			case INPUTS.right:
 			case INPUTS.ui_right:
 				_prev_held = _axis_held.right
 				_axis_held.right = gamepad_axis_value(_device, gp_axislh) > global.option_dzhorizontal
 				_axis_check = _axis_held.right && !_prev_held
+				break;
 			case INPUTS.up:
 			case INPUTS.ui_up:
 				_prev_held = _axis_held.up
 				_axis_held.up = gamepad_axis_value(_device, gp_axislv) < -global.option_dzvertical
 				_axis_check = _axis_held.up && !_prev_held
+				break;
 			case INPUTS.down:
 			case INPUTS.ui_down:
 				_prev_held = _axis_held.down
 				_axis_held.down = gamepad_axis_value(_device, gp_axislv) > global.option_dzvertical
 				_axis_check = _axis_held.down && !_prev_held
+				break;
 		}
 	}
 	
@@ -350,21 +358,25 @@ function input_direction_check_released(_dir, _device = global.pad_device) {
 				_prev_held = _axis_held.left
 				_axis_held.left = gamepad_axis_value(_device, gp_axislh) < -global.option_dzhorizontal
 				_axis_check = !_axis_held.left && _prev_held
+				break;
 			case INPUTS.right:
 			case INPUTS.ui_right:
 				_prev_held = _axis_held.right
 				_axis_held.right = gamepad_axis_value(_device, gp_axislh) > global.option_dzhorizontal
 				_axis_check = !_axis_held.right && _prev_held
+				break;
 			case INPUTS.up:
 			case INPUTS.ui_up:
 				_prev_held = _axis_held.up
 				_axis_held.up = gamepad_axis_value(_device, gp_axislv) < -global.option_dzvertical
 				_axis_check = !_axis_held.up && _prev_held
+				break;
 			case INPUTS.down:
 			case INPUTS.ui_down:
 				_prev_held = _axis_held.down
 				_axis_held.down = gamepad_axis_value(_device, gp_axislv) > global.option_dzvertical
 				_axis_check = !_axis_held.down && _prev_held
+				break;
 		}
 	}
 	

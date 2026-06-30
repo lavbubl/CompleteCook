@@ -10,7 +10,7 @@
   "compression":2,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.7746712,
+  "duration":0.77466667,
   "exportDir":"",
   "name":"sfx_pillarspawn",
   "parent":{

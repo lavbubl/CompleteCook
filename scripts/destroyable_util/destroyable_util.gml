@@ -8,6 +8,9 @@ function break_destroyables()
 	if object_index == obj_player && P_MOVE != 0
 		d_pos.x = x + hsp + P_MOVE
 	
+	if state == states.climbwall
+		d_pos.y = y + vsp - 2
+	
 	var d_list = ds_list_create()
 	instance_place_list(d_pos.x, d_pos.y, obj_destroyable, d_list, false)
 	

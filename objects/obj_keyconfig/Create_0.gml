@@ -24,14 +24,16 @@ binds = [
 	new bind("ui_down",			-1,		"MENU DOWN",	vk_down),
 	new bind("ui_right",		-1,		"MENU RIGHT",	vk_right),
 	new bind("ui_left",			-1,		"MENU LEFT",	vk_left),
-	new bind("ui_accept",		-1,		"CONFIRM",		[vk_enter, vk_space, "Z"]),
-	new bind("ui_deny",			-1,		"DENY",			[vk_escape, vk_backspace, "X"])
+	new bind("ui_confirm",		-1,		"CONFIRM",		["Z", vk_space]),
+	new bind("ui_back",			-1,		"BACK",			["X", vk_escape]),
+	new bind("ui_quit",			-1,		"QUIT",			"X"),
+	new bind("ui_delete",		-1,		"DELETE",		"C")
 ]
 
 config_buttons = [
 	[INPUTS.bind_reset, " Reset binds"],
-	[INPUTS.bind_add,	" Add bind"],
-	[INPUTS.bind_clear, " Clear bindings"]
+	[INPUTS.ui_confirm,	" Add bind"],
+	[INPUTS.ui_delete,  " Clear bindings"]
 ]
 
 c_x = 0

@@ -99,10 +99,10 @@ function particle_create(_x, _y, p_type, _xscale = 1, _yscale = 1, _sprite = spr
 				break;
 		}
 		
-		if _sprite != noone
+		if _sprite != spr_null
 			sprite_index = _sprite
-	
-		image_number = sprite_get_number(p.sprite_index)
+		
+		image_number = sprite_get_number(sprite_index)
 	}
 	
 	with (obj_particlecontroller)

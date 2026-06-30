@@ -28,11 +28,11 @@ enum INPUTS
 	ui_up,
 	ui_down,
 	ui_start,
-	ui_accept,
-	ui_deny,
-	bind_reset,
-	bind_add,
-	bind_clear
+	ui_confirm,
+	ui_back,
+	ui_quit,
+	ui_delete,
+	bind_reset
 }
 
 enum INPUT_TYPE
@@ -57,25 +57,25 @@ function input_get_bind(_input_enum, _is_special_key = false)
 			_ix = 1
 		
 		var _name_list = ["left", //convert an INPUT constant to a name to find in global.bindslist
-						 "right",
-						 "up",
-						 "down",
-						 "dash",
-						 "jump",
-						 "grab",
-						 "taunt",
-						 "superjump",
-						 "groundpound",
-						 "ui_left",
-						 "ui_right",
-						 "ui_up",
-						 "ui_down",
-						 "ui_start",
-						 "ui_accept",
-						 "ui_deny",
-						 "bind_reset",
-						 "bind_add",
-						 "bind_clear"]
+						  "right",
+						  "up",
+						  "down",
+						  "dash",
+						  "jump",
+						  "grab",
+						  "taunt",
+						  "superjump",
+						  "groundpound",
+						  "ui_left",
+						  "ui_right",
+						  "ui_up",
+						  "ui_down",
+						  "ui_start",
+						  "ui_confirm",
+						  "ui_back",
+						  "ui_quit",
+						  "ui_delete",
+						  "bind_reset"]
 		
 		_bind_arr = global.bindslist[$ _name_list[_input_enum]][_ix] //get the keyboard/controller button from its name
 	}

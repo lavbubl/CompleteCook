@@ -21,7 +21,7 @@ function player_superjump()
 		  xscale = P_MOVE
 	}
 	
-	var superjumpholding = SJUMPHELD || !grounded || scr_can_uncrouch()
+	var superjumpholding = SJUMPHELD || !grounded || !scr_can_uncrouch()
 	
 	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index = spr_player_superjumpleft))
 	{

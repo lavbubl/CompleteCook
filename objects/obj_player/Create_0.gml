@@ -60,6 +60,7 @@ jumpstop = false
 mach4mode = false
 wallspeed = 0
 flash = 0
+tauntinv = false
 
 aftimg_timers = {
 	mach: {timer: 0, effect: after_images.mach, resetpoint: 5, do_it: false},

@@ -18,7 +18,7 @@ if !binding
 
 	if selected == -1
 	{
-		if input_check_pressed(INPUTS.ui_accept) || input_check_pressed(INPUTS.ui_deny)
+		if input_check_pressed(INPUTS.ui_confirm) || input_check_pressed(INPUTS.ui_back)
 			instance_destroy()
 		else if input_direction_check_pressed(INPUTS.ui_right)
 		{
@@ -70,6 +70,6 @@ else
 			global.bindslist[$ binds[i].bindname][1] = binds[i].defaultbind
 		}
 	}
-	if input_check_pressed(INPUTS.ui_deny)
+	if input_check_pressed(INPUTS.ui_back)
 		instance_destroy()
 }

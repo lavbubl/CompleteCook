@@ -289,4 +289,7 @@ cur_list = list_arr[list_ix]
 
 snd_frogscream = noone
 
+if instance_exists(obj_menuhandler)
+	audio_sound_gain(obj_menuhandler.static_snd, 0)
+
 //i could reduce the amount of new functions made here actually,,,, maybe tdp was right to have seperate functions for each type

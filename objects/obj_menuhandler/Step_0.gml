@@ -1,4 +1,4 @@
-var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_quitgame) && state == 0
+var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_quitgame) && !instance_exists(obj_deletesave) && state == 0 && buffer <= 0
 
 if menu_dark
 {
@@ -24,13 +24,27 @@ optionsalpha = approach(optionsalpha, 1, 0.1)
 if abletoinput
 {
 	obj_menupeppino.painless = false
-	if input_check_pressed(global.input_type == INPUT_TYPE.KEYBOARD ? vk_escape : gp_start, true)
+	if input_check_pressed(INPUTS.ui_start)
+	{
 		instance_create(0, 0, obj_options)
-	else if input_check_pressed(INPUTS.grab)
+		abletoinput = false
+	}
+	else if input_check_pressed(INPUTS.ui_quit)
+	{
 		instance_create(0, 0, obj_quitgame)
+		abletoinput = false
+	}
+	else if input_check_pressed(INPUTS.ui_delete) && tvs[cur_selected - 1].save_exists
+	{
+		instance_create(0, 0, obj_deletesave)
+		abletoinput = false
+	}
 }
 else
+{
 	obj_menupeppino.painless = true
+	buffer--
+}
 
 for (var i = 0; i < array_length(tvs); i++) 
 {
@@ -40,11 +54,14 @@ for (var i = 0; i < array_length(tvs); i++)
 	{
 		with cur_tv
 		{
-			obj_menupeppino.p_ix = pal_ix 
+			global.savefile = filename
+			
+			obj_menupeppino.p_ix = pal_ix
 			obj_menupeppino.p_spr = pat_spr
 			
-			obj_player.pal_select = pal_ix 
+			obj_player.pal_select = pal_ix
 			obj_player.pattern_spr = pat_spr
+			
 			switch state
 			{
 				case 0:
@@ -57,28 +74,26 @@ for (var i = 0; i < array_length(tvs); i++)
 					break;
 				case 1:
 					var _image_number = sprite_get_number(sprite_index)
-					if (save_exists) {
-						if (floor(image_index) == _image_number - 1) {
+					if save_exists
+					{
+						if (floor(image_index) == _image_number - 1)
+						{
 							state++
 							reset_anim(sprs.selected)
 							audio_sound_gain(other.static_snd, 0, 0)
 						}
 					}
-					else {
-						if (floor(image_index) == _image_number - 1)
-							image_index = 2
-					}
+					else if (floor(image_index) == _image_number - 1)
+						image_index = 2
 					break;
 			}
-			var accept_bind = global.input_type == INPUT_TYPE.KEYBOARD ? INPUTS.ui_accept : INPUTS.jump
-			if input_check_pressed(accept_bind) && other.state == 0 && abletoinput
+			if input_check_pressed(INPUTS.ui_confirm) && other.state == 0 && abletoinput
 			{
 				audio_stop_sound(sfx_menustatic)
 				reset_anim(sprs.confirm)
 				scr_sound(sfx_collectbig)
 				scr_sound(choose(sfx_fileselect1, sfx_fileselect2, sfx_fileselect3))
 				audio_stop_sound(mu_mainmenu)
-				global.savefile = filename
 				state = 2
 				
 				with obj_menupeppino

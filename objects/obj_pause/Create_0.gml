@@ -76,6 +76,7 @@ baseoptions = [
 				door_type = fade_types.door
 				hsp = 0
 				vsp = 0
+				xscale = 1
 			}
 		}
 		else

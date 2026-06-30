@@ -181,6 +181,7 @@ function set_globals()
 	global.option_dzcrouchwalk = ini_read_real("options", "dzcrouchwalk", 0.65)
 	ini_close()
 	
+	global.pad_device = 0
 	audio_group_set_gain(ag_music, global.option_music_volume)
 	audio_group_set_gain(ag_sfx, global.option_sfx_volume)
 	gamepad_set_axis_deadzone(global.pad_device, global.option_dzgeneral)
@@ -294,6 +295,7 @@ function reset_level()
 	global.combo.count = 0
 	global.combo.timer = 0
 	global.score = 0
+	global.boss_room = false
 	ds_list_clear(global.ds_dead_enemies)
 	ds_list_clear(global.ds_escapesaveroom)
 	ds_list_clear(global.ds_saveroom)
@@ -301,6 +303,7 @@ function reset_level()
 	with obj_comboend
 		comboscore = 0
 	instance_destroy(obj_pizzatime)
+	instance_destroy(obj_toppincollected)
 	obj_followerhandler.followers = []
 	obj_levelcontroller.killed_enemy = false
 	obj_timer.level_timer = 0
@@ -369,4 +372,24 @@ function do_tip(_string, _alarm = 220)
 		image_alpha = 0
 		alarm[0] = _alarm
 	}
+}
+
+function draw_pause_icon(_ix, _x, _y, _alpha)
+{
+	var _offsets = [
+		[-20, -12],
+		[5, -15],
+		[-10, 0],
+		[-10, 0],
+		[0, 0],
+		[0, 0],
+		[0, 0],
+		[8, 8],
+		[0, -12],
+	]
+	
+	_x += irandom_range(-1, 1)
+	_y += irandom_range(-1, 1)
+	
+	draw_sprite_ext(spr_pause_icons, _ix, _x + _offsets[_ix][0], _y + _offsets[_ix][1], 1, 1, 0, c_white, _alpha)
 }

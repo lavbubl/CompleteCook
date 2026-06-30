@@ -34,7 +34,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 				y = target.y
 				if anim_ended()
 					image_speed = 0
-				if (target.taunttimer < 1 || target.state != states.taunt)
+				if target.taunttimer < 1 || target.state != states.taunt
 					array_delete(other.particle_list, p, 1)
 				break;
 			case particles.sparks:

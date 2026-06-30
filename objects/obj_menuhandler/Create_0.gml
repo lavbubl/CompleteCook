@@ -1,5 +1,3 @@
-special_keybind_deny = vk_escape
-
 tvs =  [new ini_menu_tv_inst(103, 0, 
 			spr_menutv1_off,
 			spr_menutv1_whitenoise,
@@ -44,6 +42,7 @@ state = 0
 menu_dark = true
 dark_state = 0
 optionsalpha = 0
+buffer = 0
 	
 function ini_menu_tv_inst(_x, _y, _sproff, _sprnoise, _sprselect, _sprconfirm, _filename) constructor
 {
@@ -66,3 +65,5 @@ function ini_menu_tv_inst(_x, _y, _sproff, _sprnoise, _sprselect, _sprconfirm, _
 }
 
 depth = -100
+
+per = 0

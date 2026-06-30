@@ -7,8 +7,6 @@ if gamepad_is_connected(0)
 	show_debug_message("controller found")
 }
 
-global.pad_device = 0
-
 global.bindslist = { //keyboard binds					gamepad binds
 	left:			[vk_left,							gp_padl], //replace the controller section with global.gamepadbinds.#
 	right:			[vk_right,							gp_padr],
@@ -25,11 +23,11 @@ global.bindslist = { //keyboard binds					gamepad binds
 	ui_up:			[vk_up,								gp_padu],
 	ui_down:		[vk_down,							gp_padd],
 	ui_start:		[vk_escape,							gp_start],
-	ui_accept:		[[vk_enter, vk_space, "Z"],			[gp_face1, gp_start]],
-	ui_deny:		[[vk_escape, vk_backspace, "X"],	gp_face3],
-	bind_reset:		[vk_f1,								gp_select],
-	bind_add:		["Z",								gp_face1],
-	bind_clear:		["C",								gp_face4],
+	ui_confirm:		[["Z", vk_space],					gp_face1],
+	ui_back:		[["X", vk_escape],					gp_face2],
+	ui_quit:		["X",								gp_face3],
+	ui_delete:		["C",								gp_face4],
+	bind_reset:		[vk_f1,								gp_select]
 }
 
 global.bindlist_defaults = variable_clone(global.bindslist)

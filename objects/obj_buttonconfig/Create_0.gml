@@ -16,8 +16,10 @@ binds = [
 	new bind("ui_down",			-1,		"MENU DOWN",	gp_padd),
 	new bind("ui_right",		-1,		"MENU RIGHT",	gp_padr),
 	new bind("ui_left",			-1,		"MENU LEFT",	gp_padl),
-	new bind("ui_accept",		-1,		"CONFIRM",		[gp_face1, gp_start]),
-	new bind("ui_deny",			-1,		"DENY",			gp_face3)
+	new bind("ui_confirm",		-1,		"CONFIRM",		gp_face1),
+	new bind("ui_back",			-1,		"BACK",			gp_face2),
+	new bind("ui_quit",			-1,		"QUIT",			gp_face3),
+	new bind("ui_delete",		-1,		"DELETE",		gp_face4)
 ]
 
 target_drawing_type = INPUT_TYPE.CONTROLLER

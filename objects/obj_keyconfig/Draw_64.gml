@@ -31,7 +31,7 @@ for (var i = 0; i < array_length(binds); i++)
 	var xo = screen_w - 64
 	if is_array(_bind)
 	{
-		for (var j = 0; j < array_length(_bind); j++) 
+		for (var j = array_length(_bind) - 1; j >= 0; j--) 
 		{
 			cc_draw_key(xo, yy, _bind[j])
 			xo -= 48

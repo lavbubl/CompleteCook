@@ -54,7 +54,7 @@ for (var i = 0; i < array_length(cur_list); i++)
 		case types.slider:
 			var _w = 200
 			var _x2 = screen_w - 150 - _w
-			var _x3 = lerp(_x2, _x2 + 200, option.val / 100)
+			var _x3 = lerp(_x2, _x2 + 200, option.val)
 			draw_sprite(spr_slider, 0, _x2, yy);
 			draw_sprite(list_ix == 1 ? spr_slidericon : spr_slidericon2, moving && optionselected == i, _x3, yy);
 			break;
@@ -67,7 +67,7 @@ for (var i = 0; i < array_length(cur_list); i++)
 	{
 		option.iconalpha = approach(option.iconalpha, optionselected == i, 0.2)
 		if option.iconalpha > 0
-			draw_sprite_ext(spr_pause_icons, option.icon_ix, sw + (string_width(option.o_name) / 2) + 50 + irandom_range(-1, 1), yy + irandom_range(-1, 1), 1, 1, 0, c_white, option.iconalpha)
+			draw_pause_icon(option.icon_ix, sw + (string_width(option.o_name) / 2) + 50, yy + (string_height(option.o_name) / 2) - 4, option.iconalpha)
 	}
 	
 	if _centered

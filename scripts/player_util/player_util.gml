@@ -87,6 +87,7 @@ function do_taunt()
 			sprite_index = spr_player_taunt
 			image_index = random_range(0, image_number)
 			taunttimer = 20
+			tauntinv = true
 			scr_sound_3d_pitched(sfx_taunt, x, y, 0.94, 1.06)
 			instance_create(x, y, obj_parrybox)
 			
@@ -115,6 +116,7 @@ function do_taunt()
 		else
 		{
 			taunttimer = 20
+			tauntinv = true
 			scr_sound_3d(sfx_supertaunt, x, y)
 			reset_anim(asset_get_index($"spr_player_supertaunt{irandom_range(1, 4)}"))
 			var spds = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
@@ -328,11 +330,13 @@ function scr_goupwall(_size = 32)
 function scr_can_enter_door(_state)
 {
 	var _states = [states.taunt,
-					  states.tumble,
-					  states.ball,
-					  states.fireass,
-					  states.actor,
-					  states.bump]
+				   states.tumble,
+				   states.ball,
+				   states.fireass,
+				   states.actor,
+				   states.bump,
+				   states.groundpound,
+				   states.backtohub]
 	
 	return !array_contains(_states, _state);
 }

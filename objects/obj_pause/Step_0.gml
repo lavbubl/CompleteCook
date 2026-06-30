@@ -30,7 +30,7 @@ optionselected = wrap(array_length(options), optionselected + movev)
 
 var cur_option = options[optionselected]
 
-if input_check_pressed(INPUTS.ui_accept) && cur_option.o_func != undefined
+if input_check_pressed(INPUTS.ui_confirm) && cur_option.o_func != undefined
 	cur_option.o_func()
 	
 if angel_timer > 0

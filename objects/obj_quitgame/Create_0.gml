@@ -1,3 +1,3 @@
 quit = false
 depth = -100
-image_speed = 0.125
+image_speed = 0.1

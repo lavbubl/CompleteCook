@@ -100,6 +100,9 @@ if intransfo || state == states.fireass
 if state == states.ball
 	instance_destroy(instance_place(x + hsp, y + vsp, obj_rattumbleblock))
 
+if state != states.taunt
+	tauntinv = false
+
 if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the transfo youre changed to.
 {
 	scr_sound_3d(intransfo ? sfx_transfo : sfx_outtransfo, x, y)

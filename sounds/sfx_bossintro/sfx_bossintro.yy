@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":4.14,
+  "duration":0.0,
   "exportDir":"",
   "name":"sfx_bossintro",
   "parent":{

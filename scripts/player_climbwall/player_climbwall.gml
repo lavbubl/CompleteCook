@@ -47,7 +47,7 @@ function player_climbwall()
 			}
 		}
 	}
-	else if scr_solid(x, y - 1)
+	else if scr_solid(x, y - 1) && !place_meeting(x, y - 1, obj_destroyable)
 	{
 		state = states.bump
 		reset_anim(spr_player_ceilinghit)

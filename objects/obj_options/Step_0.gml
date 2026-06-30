@@ -12,21 +12,26 @@ if inputbuffer > 0
 
 // update input
 
-var _back_arr = [-1, 0, 0, 0, 0, 2, 4, 4] //array of indexes to get based on list index
+var _back_arr = [-1, 0, 0, 0, 0, 2, 4, 4, 7] //array of indexes to get based on list index
 _back_arr[64] = 0
 back_ix = _back_arr[list_ix] //get matching back index
 
-if input_check_pressed(INPUTS.ui_deny)
+if input_check_pressed(INPUTS.ui_back)
 {
 	scr_sound(sfx_ui_back)
 	if back_ix <= -1
 	{
 		instance_destroy()
+		if instance_exists(obj_menuhandler)
+		{
+			with obj_menuhandler
+				audio_sound_gain(obj_menuhandler.static_snd, tvs[cur_selected - 1].state == 1 ? 1 : 0)
+		}
 		exit;
 	}
 	else
 	{
-		optionselected = settingselected
+		optionselected = 0
 		list_ix = back_ix
 		if list_ix == 0
 		{
@@ -34,6 +39,7 @@ if input_check_pressed(INPUTS.ui_deny)
 			bg_ix = 0
 			bg_alpha = 1
 			bg_spd = 0.1
+			optionselected = settingselected
 		}
 	}
 }
@@ -62,7 +68,7 @@ var cur_option = cur_list[optionselected]
 switch cur_option.o_type
 {
 	case types.onoff:
-		if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right) || input_check_pressed(INPUTS.ui_accept)
+		if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right) || input_check_pressed(INPUTS.ui_confirm)
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
@@ -71,7 +77,7 @@ switch cur_option.o_type
 		break;
 	case types.slider:
 		var move = -input_direction_check(INPUTS.ui_left) + input_direction_check(INPUTS.ui_right)
-		cur_option.val = clamp(cur_option.val + move, 0, 100)
+		cur_option.val = clamp(cur_option.val + (0.01 * move), 0, 1)
 		if move != 0
 		{
 			moving = true
@@ -79,7 +85,7 @@ switch cur_option.o_type
 		}
 		break;
 	case types.func:
-		if input_check_pressed(INPUTS.ui_accept)
+		if input_check_pressed(INPUTS.ui_confirm)
 		{
 			cur_option.func(cur_option.val)
 			scr_sound(snd_select)
@@ -87,7 +93,7 @@ switch cur_option.o_type
 		break;
 	case types.multichoice:
 		var prev_val = cur_option.val[0]
-		if input_check_pressed(INPUTS.ui_accept)
+		if input_check_pressed(INPUTS.ui_confirm)
 		{
 			cur_option.val[0] += 1
 			scr_sound(snd_select)
@@ -100,7 +106,7 @@ switch cur_option.o_type
 			cur_option.func(cur_option.val)
 		break;
 	case types.change:
-		if input_check_pressed(INPUTS.ui_accept)
+		if input_check_pressed(INPUTS.ui_confirm)
 		{
 			if list_ix == 0 || list_ix == 64 || cur_option.val == 0
 			{
@@ -108,7 +114,6 @@ switch cur_option.o_type
 				bg_ix = 0
 				bg_alpha = 1
 				bg_spd = 0.05
-				
 			}
 			if list_ix == 0
 			{

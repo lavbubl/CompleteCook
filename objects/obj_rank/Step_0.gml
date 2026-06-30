@@ -9,6 +9,7 @@ switch (state)
 			
 			obj_player.spawn = "a"
 			obj_player.visible = false
+			obj_player.depth = prev_player_depth
 			x = obj_player.x - obj_camera.campos.x
 			y = obj_player.y - obj_camera.campos.y
 			

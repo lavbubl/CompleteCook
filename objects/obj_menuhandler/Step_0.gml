@@ -2,7 +2,7 @@ var abletoinput = !instance_exists(obj_options) && !instance_exists(obj_quitgame
 
 if menu_dark
 {
-	if keyboard_check_pressed(vk_anykey) && dark_state == 0
+	if (keyboard_check_pressed(vk_anykey) || gamepad_check_pressed_any(global.pad_device)) && dark_state == 0
 	{
 		scr_sound(sfx_menulight)
 		audio_sound_loop_end(mu, audio_sound_length(mu_mainmenu))

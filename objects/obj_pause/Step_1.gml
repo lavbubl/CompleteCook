@@ -14,7 +14,7 @@ else if inputbuffer > 0
 
 #region pause and unpausing
 
-if (input_check_pressed(INPUTS.ui_start) && !pause) || (((optionselected == 0 && input_check_pressed(INPUTS.ui_confirm)) || input_check_pressed(INPUTS.ui_back)) && pause)
+if (input_check_pressed(INPUTS.ui_start) && !pause) || (((optionselected == 0 && input_check_pressed(INPUTS.ui_confirm)) || input_check_pressed(INPUTS.ui_start) || input_check_pressed(INPUTS.ui_back)) && pause)
 {
 	if !pause
 	{

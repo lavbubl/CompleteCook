@@ -318,6 +318,7 @@ function reset_level()
 		secret_exit = false
 		secret_cutscene = false
 		visual_size = 1
+		movespeed = 0
 	}
 	global.combo.wasted = false
 	global.doorshut = false

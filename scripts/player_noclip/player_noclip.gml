@@ -8,6 +8,7 @@ function player_noclip()
 	
 	sprite_index = spr_player_idle
 	image_speed = 1
+	visible = true
 	
 	if input_check_pressed(INPUTS.jump)
 		state = states.normal

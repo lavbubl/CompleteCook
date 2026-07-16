@@ -1,4 +1,4 @@
-if input_check_pressed(INPUTS.up)
+if input_direction_check_pressed(INPUTS.up)
 {
 	clothes_selected++
 	if clothes_selected == array_length(clothes_arr)

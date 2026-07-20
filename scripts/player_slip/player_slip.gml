@@ -36,7 +36,7 @@ function player_slip()
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/sliphit", x, y)
 		}
 	}
-	if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_destroyable)
+	if scr_hitwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_destroyable) && scr_can_uncrouch()
 	{
 		xscale *= -1
 		sleep(1)

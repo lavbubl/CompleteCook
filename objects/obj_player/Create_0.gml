@@ -1,20 +1,9 @@
 // player related macros
-#macro p_move (-input.left.check + input.right.check)
-
-// initialize input
-input =
-{
-	left: new Input(global.keybinds.left),
-	right: new Input(global.keybinds.right),
-	up: new Input(global.keybinds.up),
-	down: new Input(global.keybinds.down),
-	jump: new Input(global.keybinds.jump),
-	grab: new Input(global.keybinds.grab),
-	dash: new Input(global.keybinds.dash),
-	taunt: new Input(global.keybinds.taunt),
-	superjump: new Input(global.keybinds.superjump),
-	groundpound: new Input(global.keybinds.groundpound)
-}
+#macro P_MOVE (-input_direction_check(INPUTS.left) + input_direction_check(INPUTS.right))
+#macro SJUMPDIR (global.input_type == INPUT_TYPE.KEYBOARD ? global.option_dirsuperjump : global.option_joysuperjump)
+#macro GPOUNDDIR (global.input_type == INPUT_TYPE.KEYBOARD ? global.option_dirgroundpound : global.option_joygroundpound)
+#macro SJUMPHELD (((input_check(INPUTS.up) || gamepad_axis_value(global.pad_device, gp_axislv) <= min(-0.8 + global.option_dzsuperjump, -0.01)) && SJUMPDIR) || input_check(INPUTS.superjump))
+#macro CROUCHHELD ((input_check(INPUTS.down) || gamepad_axis_value(global.pad_device, gp_axislv) >= max(0.8 - global.option_dzcrouchwalk, 0.01)) && GPOUNDDIR)
 
 collide_init()
 
@@ -62,6 +51,8 @@ wasclimbingwall = false
 coyote_time = 0
 movespeed = 0
 state = states.normal
+railmovespeed = 0
+raildir = 1
 image_speed = 0.35
 prevstate = state
 xscale = 1
@@ -69,6 +60,7 @@ jumpstop = false
 mach4mode = false
 wallspeed = 0
 flash = 0
+tauntinv = false
 
 aftimg_timers = {
 	mach: {timer: 0, effect: after_images.mach, resetpoint: 5, do_it: false},
@@ -88,6 +80,7 @@ ladderbuffer = 0
 has_shotgun = false
 intransfo = false
 prev_transfo = false
+prev_image_speed = 0.35
 
 prev = {
 	state: self.state,
@@ -154,8 +147,7 @@ flamecloud_buffer = 0
 haskey = false
 hasgerome = false
 fallingtimer = 0
-
-depth = -75
+depth = -8
 
 pal_select = 1
 pattern_spr = pat_pizza

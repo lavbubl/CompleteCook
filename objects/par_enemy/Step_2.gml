@@ -29,11 +29,12 @@ if follow_player
 	with (obj_player)
 	{
 		other.state = states.grabbed
-		if input.down.check
+		if input_direction_check(INPUTS.down)
 		{
 			if (grounded && state == states.hold)
 			{
 				state = states.normal
+				instakill = false
 				with other
 				{
 					follow_player = false
@@ -84,7 +85,7 @@ if follow_player
 					vsp = -25
 				}
 				do_enemygibs()
-				particle_create(x, y, particles.parry)
+				create_effect(x, y, spr_parryflash).depth = -100
 			}
 			global.combo.timer = 60
 		}
@@ -92,7 +93,7 @@ if follow_player
 		{
 			case states.hold:
 				other.x = x
-				other.y = y - 64
+				other.y = y - 65
 				other.xscale = -xscale
 				if sprite_index == spr_player_haulingrise
 					other.y += floor(image_number - image_index) * 10
@@ -163,8 +164,9 @@ if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supe
 		do_enemygibs()
 	state = states.stun
 	stun_timer = 2
+	addsupertaunt = false
 	sprite_index = sprs.stun
-	alarm[0] = 999
+	alarm[0] = 33 //the frames a typical super taunt takes, 11 / 0.35 rounded + 2 as a failsafe
 }
 
 if alarm[0] >= 0

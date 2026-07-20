@@ -5,13 +5,13 @@ function player_grab()
 	if (movespeed < 10)
 		movespeed += 0.5
 	
-	if (!input.jump.check && !jumpstop && vsp < 0.5)
+	if (!input_check(INPUTS.jump) && !jumpstop && vsp < 0.5)
 	{
 		vsp /= 20
 		jumpstop = true
 	}
 	
-	if (input_buffers.jump > 0 && !input.down.check && coyote_time)
+	if (input_buffers.jump > 0 && !input_direction_check(INPUTS.down) && coyote_time)
 	{
 		input_buffers.jump = 0
 		jumpstop = false
@@ -22,7 +22,7 @@ function player_grab()
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	
-	if (input.down.check && !input.jump.check && grounded)
+	if (input_direction_check(INPUTS.down) && !input_check(INPUTS.jump) && grounded)
 	{
 		movespeed = 12
 		crouchslipbuffer = 25
@@ -37,7 +37,7 @@ function player_grab()
 	
 	if (grounded && sprite_index == spr_player_suplexgrabjump_loop)
 	{
-		if input.dash.check
+		if input_check(INPUTS.dash)
 		{
 			state = states.mach2
 			sprite_index = spr_player_mach2
@@ -76,13 +76,13 @@ function player_grab()
 			break;
 	}
 	
-	if anim_ended() && input.dash.check && sprite_index == spr_player_suplexdash
+	if anim_ended() && input_check(INPUTS.dash) && sprite_index == spr_player_suplexdash
 	{
 		state = states.mach2
 		sprite_index = spr_player_mach2
 	}
 	
-	if p_move != 0 && p_move != xscale
+	if P_MOVE != 0 && P_MOVE != xscale
 	{
 		if !grounded
 		{
@@ -96,7 +96,7 @@ function player_grab()
 	}
 	
 	if state == states.normal
-		dir = p_move
+		dir = P_MOVE
 	
 	aftimg_timers.blur.do_it = true
 }

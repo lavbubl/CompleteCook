@@ -1,0 +1,1 @@
+image_speed = global.panic.active ? 0.2 : 0

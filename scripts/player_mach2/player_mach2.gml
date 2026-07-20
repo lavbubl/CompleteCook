@@ -6,7 +6,7 @@ function player_mach2()
 	{
 		if (sprite_index != spr_player_mach1 && sprite_index != spr_player_rollgetup)
 			sprite_index = spr_player_mach2
-		if (!input.dash.check)
+		if (!input_check(INPUTS.dash))
 		{
 			if (movespeed < 8)
 			{
@@ -20,21 +20,21 @@ function player_mach2()
 				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/break", x, y)
 			}
 		}
-		if (p_move != 0 && p_move != xscale && grounded)
+		if P_MOVE != 0 && P_MOVE != xscale && grounded
 		{
-			if (movespeed < 8)
+			if movespeed < 8
 			{
-				xscale = p_move
+				xscale = P_MOVE
 				movespeed = 6
 			}
 			else
 			{
-				reset_anim(spr_player_machslideboost)
 				state = states.slide
 				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/machslideboost", x, y)
+				reset_anim(spr_player_machslideboost)
 			}
 		}
-		if (movespeed < 12)
+		if movespeed < 12
 			movespeed += 0.1
 		else
 		{
@@ -61,13 +61,14 @@ function player_mach2()
 			sprite_index != spr_player_longjump_loop &&
 			sprite_index != spr_player_mach2jump)
 			reset_anim(spr_player_secondjump)
-		if (!jumpstop && !input.jump.check && vsp < 0)
+		if (!jumpstop && !input_check(INPUTS.jump) && vsp < 0)
 		{
 			jumpstop = true
 			vsp /= 10
 		}
 	}
-	if (input_buffers.jump > 0 && coyote_time) 
+	
+	if input_buffers.jump > 0 && coyote_time
 	{
 		input_buffers.jump = 0
 		jumpstop = false
@@ -78,7 +79,7 @@ function player_mach2()
 	
 	do_slope_momentum()
 	
-	if (input.down.check)
+	if input_direction_check(INPUTS.down)
 	{
 		state = states.tumble
 		if (grounded)

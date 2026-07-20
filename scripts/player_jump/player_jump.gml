@@ -24,37 +24,49 @@ function player_jump()
 		vsp = -11
 		reset_anim(default_jump)
 		jumpstop = false
-		create_effect(x, y - 5, spr_highjumpcloud2)
+		create_effect(x, y, spr_highjumpcloud2)
 		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 	
-	hsp = movespeed * xscale
+	if (!momentum)
+        hsp = P_MOVE * movespeed
+    else
+        hsp = xscale * movespeed
 	
-	if p_move == -xscale || movespeed >= 0
+	hsp += (railmovespeed * raildir)
+	
+	if P_MOVE == -xscale || movespeed >= 0
 		momentum = false
 	
-	if (p_move != 0)
+	if dir != xscale
 	{
-		movespeed = approach(movespeed, 6, 0.5)
-		xscale = p_move
-		if dir != xscale
-		{
-			movespeed = 0
-			dir = xscale
-		}
+		movespeed = 2
+		dir = xscale
+	}
+		
+	if (P_MOVE != 0)
+	{
+		if (movespeed < 8)
+            movespeed += 0.5
+        else if (floor(movespeed) == 8)
+            movespeed = 6
+		xscale = P_MOVE
 	}
 	else if momentum
 		movespeed = approach(movespeed, 0, 0.5)
-	else if (p_move == 0)
+	else if (P_MOVE == 0)
 		movespeed = 0
-		
+	
+	if (movespeed > 8)
+        movespeed -= 0.1
+	
 	if movespeed >= 0
 		momentum = false
 	
 	if place_meeting(x + hsp, y, obj_solid)
 		movespeed = 0
 	
-	if (!jumpstop && !input.jump.check && vsp < 0)
+	if (!jumpstop && !input_check(INPUTS.jump) && vsp < 0)
 	{
 		jumpstop = true
 		vsp /= 10
@@ -77,7 +89,7 @@ function player_jump()
 			reset_anim(movespeed < 1 ? default_land : default_landmove)
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 			create_effect(x, y, spr_landeffect)
-			if input.dash.check
+			if input_check(INPUTS.dash)
 			{
 				state = states.mach2
 				movespeed = max(movespeed, 6);
@@ -86,9 +98,8 @@ function player_jump()
 		}
 		else
 		{
-			reset_anim(sprite_index == spr_player_fallface ? spr_player_bodyslamland : spr_player_freefallland)
-			image_index = 0
 			state = states.bump
+			reset_anim(spr_player_bodyslamland)
 			shake_camera()
 			fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 			create_effect(x, y + 2, spr_groundpoundeffect)

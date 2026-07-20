@@ -7,7 +7,7 @@ fmod_studio_event_instance_start(event_desc)
 fmod_studio_event_instance_release(event_desc)
 fmod_studio_event_instance_set_3d_attributes(event_desc, attributes)
 
-depth = -1
+depth = 0
 image_speed = 0.35
 
 enum toppin_enum {
@@ -18,4 +18,4 @@ enum toppin_enum {
 	pineapple
 }
 
-help_ix = 0
+help_ix = 1

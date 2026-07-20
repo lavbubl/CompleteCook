@@ -1,4 +1,4 @@
-if room == mainmenu || room == rank_room ||  room == rm_timesup || instance_exists(obj_technicaldifficulty) || (instance_exists(obj_shell) && obj_shell.isOpen)
+if room == mainmenu || room == rank_room ||  room == rm_timesup || instance_exists(obj_titlecard) || instance_exists(obj_technicaldifficulty) || (instance_exists(obj_shell) && obj_shell.isOpen)
 	exit;
 
 if instance_exists(obj_options)
@@ -12,17 +12,9 @@ else if inputbuffer > 0
 	exit;
 }
 
-// update input
-//ui_input.left.update(global.keybinds.ui_left);
-//ui_input.right.update(global.keybinds.ui_right);
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
-
 #region pause and unpausing
 
-if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accept.pressed) || ui_input.deny.pressed) && pause)
+if (input_check_pressed(INPUTS.ui_start) && !pause) || (((optionselected == 0 && input_check_pressed(INPUTS.ui_confirm)) || input_check_pressed(INPUTS.ui_start) || input_check_pressed(INPUTS.ui_back)) && pause)
 {
 	if !pause
 	{
@@ -40,6 +32,9 @@ if keyboard_check_pressed(vk_escape) || (((optionselected == 0 && ui_input.accep
 			fmod_studio_bus_set_paused(buses[i], true)
 		}
 		fmod_studio_event_instance_start(pause_music)
+		instance_activate_object(obj_inputhandler)
+		if global.option_timerspeedrun
+			instance_activate_object(obj_timer)
 		cursor.x = -60
 		cursor.y = -300
 		options = []

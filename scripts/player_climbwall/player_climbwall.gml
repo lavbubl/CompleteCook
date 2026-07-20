@@ -21,6 +21,7 @@ function player_climbwall()
 		vsp = 0
 		if (wallspeed < 6)
 			wallspeed = 6
+		railmovespeed = 0
 		if (wallspeed >= 6 && wallspeed < 12)
 		{
 			state = states.mach2
@@ -46,7 +47,7 @@ function player_climbwall()
 			}
 		}
 	}
-	else if scr_solid(x, y - 1)
+	else if scr_solid(x, y - 1) && !place_meeting(x, y - 1, obj_destroyable)
 	{
 		state = states.bump
 		reset_anim(spr_player_ceilinghit)
@@ -55,15 +56,17 @@ function player_climbwall()
 	
 	grabclimbbuffer = approach(grabclimbbuffer, 0, 1)
 	
-	if (!input.dash.check && grabclimbbuffer <= 0)
+	if (!input_check(INPUTS.dash) && grabclimbbuffer <= 0)
 	{
 		state = states.jump
 		sprite_index = spr_player_fall
-		movespeed = -6
+		movespeed = 0
+		railmovespeed = 6;
+        raildir = -xscale;
 		jumpstop = false
-		momentum = true
 		dir = xscale
 	}
+	
 	if (input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0

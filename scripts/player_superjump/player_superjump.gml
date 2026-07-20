@@ -1,6 +1,10 @@
 function player_superjump() 
 {
-	hsp = xscale * movespeed
+	if (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index == spr_player_superjumpleft)
+		hsp = P_MOVE * movespeed
+	else
+		hsp = xscale * movespeed
+	
 	image_speed = 0.35
 	
 	if (sprite_index == spr_player_superjumpprep || sprite_index == spr_player_superjumpflash)
@@ -13,21 +17,24 @@ function player_superjump()
 	{
 		image_speed = 0.5
 		vsp = 0
-		if (p_move != 0)
-		  xscale = p_move
+		if (P_MOVE != 0)
+		  xscale = P_MOVE
 	}
 	
-	var superjumpholding = input.up.check || input.superjump.check || !grounded
+	var superjumpholding = SJUMPHELD || !grounded || !scr_can_uncrouch()
 	
-	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpmove))
+	if (superjumpholding && (sprite_index == spr_player_superjumpflash || sprite_index == spr_player_superjumpright || sprite_index = spr_player_superjumpleft))
 	{
-		var absMove = abs(p_move);
-		movespeed = !place_meeting(x + xscale, y, obj_solid) ? absMove * 2 : 0;
+		var absMove = abs(P_MOVE);
+		movespeed = absMove * 2
 
-		if absMove
+		if P_MOVE != 0
 		{
-			xscale = p_move
-			sprite_index = spr_player_superjumpmove
+			if input_direction_check(INPUTS.right)
+				sprite_index = (xscale = 1) ? spr_player_superjumpright : spr_player_superjumpleft
+			
+			if input_direction_check(INPUTS.left)
+				sprite_index = (xscale = -1) ? spr_player_superjumpright : spr_player_superjumpleft
 		}
 		else
 			sprite_index = spr_player_superjumpflash
@@ -46,9 +53,9 @@ function player_superjump()
 			depth = -150
 	}
 	
-	if (sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !superjumpholding && !scr_solid(x, y - 1))
+	if (sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancel && sprite_index != spr_player_Sjumpcancelstart && sprite_index != spr_player_superjumpprep && !superjumpholding)
 	{
-		vsp = -11 //its -12, but -11 makes it *feel* more like the original
+		vsp = -12
 		sprite_index = spr_player_superjump
 		fmod_studio_event_instance_start(sjumprelease_snd)
 		create_effect(x, y, spr_superjumpexplosion)
@@ -72,7 +79,7 @@ function player_superjump()
 		}
 		movespeed = 0
 		
-		if (scr_solid(x, y - 1))
+		if scr_solid(x, y - 1)
 		{
 			state = states.bump
 			shake_camera(10, 30 / room_speed)
@@ -83,7 +90,7 @@ function player_superjump()
 		if (sprite_index != spr_player_Sjumpcancelstart)
 			vsp -= grav + 0.1
 		
-		if (input_buffers.grab > 0 || input.dash.pressed) && state != states.bump && sprite_index != spr_player_presentboxspring
+		if (input_buffers.grab > 0 || input_check_pressed(INPUTS.dash)) && state != states.bump && sprite_index != spr_player_presentboxspring
 		{
 			input_buffers.grab = 0
 			reset_anim(spr_player_Sjumpcancelstart)

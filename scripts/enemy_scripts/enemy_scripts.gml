@@ -22,7 +22,7 @@ function enemy_normal()
 		
 		if anim_ended() && particle_timer <= 0
 		{
-			create_effect(x, bbox_bottom, spr_cloudeffect)
+			create_effect(x - (xscale * 20), bbox_bottom, spr_cloudeffect)
 			particle_timer = 4
 		}
 		
@@ -143,9 +143,9 @@ function do_enemy_generics()
 				func_todo()
 		}
 	})
-
+	
 	do_scared()
-
+	
 	grav = 0.5
 	if state == states.hit
 		grav = 0
@@ -162,7 +162,7 @@ function do_enemy_generics()
 			{
 				if state == states.mach3
 					reset_anim(spr_player_mach3hit)
-				if !grounded && input.jump.check && state != states.groundpound
+				if !grounded && input_check(INPUTS.jump) && state != states.groundpound
 				{
 					input_buffers.jump = 0
 					vsp = -11
@@ -191,7 +191,7 @@ function do_enemy_generics()
 				image_speed = 0
 			}
 			
-			alarm[0] = 3
+			alarm[0] = 5
 		}
 		else if (obj_player.state == states.mach2 || obj_player.state == states.tumble || obj_player.state == states.slide) && stun_timer < 165 && obj_player.hitstun <= 0
 		{
@@ -229,7 +229,7 @@ function do_enemy_generics()
 				if !grounded
 					vsp = -6
 				
-				if (input.up.check)
+				if input_direction_check(INPUTS.up)
 				{
 					state = states.piledriver
 					dir = xscale
@@ -241,7 +241,7 @@ function do_enemy_generics()
 			{
 				if state == states.jump
 					reset_anim(spr_player_stomp)
-				vsp = input.jump.check ? -14 : -9
+				vsp = input_check(INPUTS.jump) ? -14 : -9
 				jumpstop = true
 				
 				create_effect(x, bbox_bottom, spr_stompeffect)

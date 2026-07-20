@@ -4,9 +4,9 @@ function player_shotgunshoot()
 	hsp = xscale * movespeed
 	if scr_hitwall(x + hsp, y)
 		movespeed = 0
-	if p_move != 0
+	if P_MOVE != 0
 	{
-		if p_move == xscale
+		if P_MOVE == xscale
 			movespeed = approach(movespeed, 4, 0.25)
 		else
 			movespeed = approach(movespeed, -8, 0.2)
@@ -22,9 +22,9 @@ function player_shotgunshoot()
 			state = states.jump
 			reset_anim(spr_player_shotgun_fall)
 		}
-		if p_move == -xscale
+		if P_MOVE == -xscale
 		{
-			xscale = p_move
+			xscale = P_MOVE
 			dir = xscale
 			movespeed = abs(movespeed)
 		}

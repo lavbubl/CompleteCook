@@ -4,9 +4,8 @@ with obj_player
 	state = states.parry
 	movespeed = -8
 	flash = 10
-	var ix = irandom_range(1, 3)
-	reset_anim(asset_get_index($"spr_player_parry{ix}"))
-	particle_create(x, y, particles.parry)
+	reset_anim(asset_get_variation("spr_player_parry", 3))
+	create_effect(x, y, spr_parryflash).depth = -100
 }
 
 with par_enemy

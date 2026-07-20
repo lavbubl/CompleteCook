@@ -8,6 +8,12 @@ if image_index > sprite_get_number(spr_combotitles)
     image_index -= sprite_get_number(spr_combotitles)
     very = true
 }
+for (var i = 0; i < array_length(afterimages); i++)
+{
+    var b = afterimages[i]
+    draw_sprite_ext(b[2], b[3], b[0], b[1], image_xscale, image_yscale, image_angle, image_blend, b[4])
+    afterimages[i][4] -= 0.15
+}
 
 draw_sprite(sprite_index, image_index, x, y)
 

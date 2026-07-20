@@ -1,15 +1,10 @@
-ui_accept.update(global.keybinds.ui_accept)
-ui_deny.update(global.keybinds.ui_deny)
-left.update(global.keybinds.ui_left)
-right.update(global.keybinds.ui_right)
-
-if left.pressed || right.pressed
+if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right)
 {
 	confirm = !confirm
 	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 }
 
-if timer <= 1 || ui_deny.pressed || (ui_accept.pressed && !confirm)
+if timer <= 1 || input_check_pressed(INPUTS.ui_back) || (input_check_pressed(INPUTS.ui_confirm) && !confirm)
 {
 	if change
 	{
@@ -20,7 +15,7 @@ if timer <= 1 || ui_deny.pressed || (ui_accept.pressed && !confirm)
 	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 	instance_destroy()
 }
-else if ui_accept.pressed
+else if input_check_pressed(INPUTS.ui_confirm)
 {
 	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 	instance_destroy()

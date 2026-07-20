@@ -14,8 +14,8 @@ for (var p = 0; p < array_length(particle_list); p++)
 				x += hsp
 				y += vsp
 				if vsp < 20
-					vsp += 0.5
-				if y > room_height
+					vsp += 0.4
+				if y > room_height * 2
 					array_delete(other.particle_list, p, 1)
 				break;
 			case particles.hurtstar:
@@ -34,7 +34,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 				y = target.y
 				if anim_ended()
 					image_speed = 0
-				if (target.taunttimer < 1 || target.state != states.taunt)
+				if target.taunttimer < 1 || target.state != states.taunt
 					array_delete(other.particle_list, p, 1)
 				break;
 			case particles.sparks:
@@ -46,7 +46,7 @@ for (var p = 0; p < array_length(particle_list); p++)
 			case particles.machcharge:
 				x = target.x
 				if target.sprite_index = spr_player_Sjumpcancel
-					x += 10 * target.xscale
+					x += 20 * target.xscale
 				y = target.y
 				image_xscale = target.xscale
 				if target.state != statetofollow || (target.state == states.normal && global.combo.count < 25)
@@ -59,6 +59,8 @@ for (var p = 0; p < array_length(particle_list); p++)
 					array_delete(other.particle_list, p, 1)
 				break;
 			default:
+				x += hsp
+				y += vsp
 				if anim_ended(image_index, image_number)
 					array_delete(other.particle_list, p, 1)
 				break;

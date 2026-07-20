@@ -12,6 +12,7 @@ function player_actor()
 				particle_timer = 14
 				fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 			}
+			image_speed = 0.35
 			break;
 		case spr_player_timesup:
 			if anim_ended()

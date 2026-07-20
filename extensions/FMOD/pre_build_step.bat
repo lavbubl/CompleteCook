@@ -28,6 +28,7 @@ call %Utils% optionGetValue "gdkSdkPath" GDK_SDK_PATH
 call %Utils% optionGetValue "ps4SdkPath" PS4_SDK_PATH
 call %Utils% optionGetValue "ps5SdkPath" PS5_SDK_PATH
 call %Utils% optionGetValue "switchSdkPath" SWITCH_SDK_PATH
+call %Utils% optionGetValue "switch2SdkPath" SWITCH2_SDK_PATH
 
 :: Enable Studio?
 call %Utils% optionGetValue "enableStudio" ENABLE_STUDIO
@@ -172,6 +173,7 @@ exit /b 0
     :: Set building defaults
     set "CONFIGURATION=Release-AutoBuild"
     set "PLATFORM="
+    set "PLATFORM_PATH="
     set "LIBRARY_NAME="
     set "FMOD_SDK_PATH=%GDK_SDK_PATH%"
     
@@ -179,18 +181,52 @@ exit /b 0
     set "FilePath=%YYoutputFolder%\xbox-type.bin"
     set IsXboxOne=0
 
-    :: Read the file and check if it contains "XboxOne"
-    for /f "delims=" %%A in ('type "%FilePath%"') do (
-        if /i "%%A"=="XboxOne" (
-            set IsXboxOne=1
+    :: ------------------------------------------------------------
+    :: First preference: xbox-type.bin if it exists
+    :: ------------------------------------------------------------
+    if exist "%FilePath%" (
+        for /f "usebackq delims=" %%A in ("%FilePath%") do (
+            if /i "%%A"=="XboxOne" (
+                set "IsXboxOne=1"
+            ) else if /i "%%A"=="Scarlett" (
+                set "IsXboxOne=0"
+            )
         )
     )
 
+    :: ------------------------------------------------------------
+    :: Fallback: infer from YYtargetFile if IsXboxOne still unknown
+    :: ------------------------------------------------------------
+    if not defined IsXboxOne (
+        if defined YYtargetFile (
+            echo(%YYtargetFile% | findstr /i "xboxone-dev-pkg xboxone-pkg" >nul
+            if !errorlevel! == 0 (
+                set "IsXboxOne=1"
+            ) 
+            else (
+                echo(%YYtargetFile% | findstr /i "xboxseriesxs-dev-pkg xboxseriesxs-pkg" >nul
+                if !errorlevel! == 0 (
+                    set "IsXboxOne=0"
+                )
+            )
+        )
+    )
+
+    :: ------------------------------------------------------------
+    :: Final fallback if nothing matched
+    :: ------------------------------------------------------------
+    if not defined IsXboxOne (
+        echo Could not determine Xbox target. Defaulting to Scarlett.
+        set "IsXboxOne=0"
+    )
+
     :: Update default variables
-    if %IsXboxOne% == 1 (
+    if "%IsXboxOne%" == "1" (
+        set "PLATFORM_PATH=xboxone"
         set "PLATFORM=Gaming.Xbox.XboxOne.x64"
         set "LIBRARY_NAME=YYFMOD_xboxone.dll"
     ) else (
+        set "PLATFORM_PATH=scarlett"
         set "PLATFORM=Gaming.Xbox.Scarlett.x64"
         set "LIBRARY_NAME=YYFMOD_xboxseriesxs.dll"
     )
@@ -203,7 +239,7 @@ exit /b 0
     call %Utils% pathResolveExisting "%EXTENSION_DIR%" "%GDK_VS_PATH%" SOLUTION_PATH
 
     :: Build libraries
-    call "c:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\Tools\VsDevCmd.bat"
+    call "%YYPREF_visual_studio_path%" 
     msbuild "%SOLUTION_PATH%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:FmodSdkPath="%FMOD_SDK_PATH%"
 
     :: Extract the directory part from the full path
@@ -211,6 +247,26 @@ exit /b 0
 
     :: Copy libs to GML project
     call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\%LIBRARY_NAME%" "%EXTENSION_DIR%\%LIBRARY_NAME%"
+
+
+    :: Resolve SDK path
+    call %Utils% pathResolveExisting "%YYprojectDir%" "%GDK_SDK_PATH%" SDK_PATH
+    if errorlevel 1 (
+        exit /b 1
+    )
+
+    :: Library file paths
+    set "SDK_CORE_SOURCE=%SDK_PATH%\api\core\lib\%PLATFORM_PATH%\fmodL.dll"
+    set "SDK_STUDIO_SOURCE=%SDK_PATH%\api\studio\lib\%PLATFORM_PATH%\fmodstudioL.dll"
+
+    echo Copying Xbox (%PLATFORM_PATH%) dependencies
+    call %Utils% itemCopyTo "%SDK_CORE_SOURCE%" "%EXTENSION_DIR%\fmodL.dll"
+
+    if "%ENABLE_STUDIO_FLAG%"=="1" (
+        call %Utils% itemCopyTo "%SDK_STUDIO_SOURCE%" "%EXTENSION_DIR%\fmodstudioL.dll"
+    )
+
+
 exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
@@ -240,7 +296,7 @@ exit /b 0
     call %Utils% pathResolveExisting "%EXTENSION_DIR%" "%PS_VS_PATH%" SOLUTION_PATH
 
     :: Build libraries
-    call "c:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\Tools\VsDevCmd.bat"
+    call "%YYPREF_visual_studio_path%"
     msbuild "%SOLUTION_PATH%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:FmodSdkPath="%FMOD_SDK_PATH%"
 
     :: Extract the directory part from the full path
@@ -248,6 +304,18 @@ exit /b 0
 
     :: Copy libs to GML project
     call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\%LIBRARY_NAME%" "%EXTENSION_DIR%\%LIBRARY_NAME%"
+
+    :: Get library file paths
+    set "SDK_CORE_SOURCE=%FMOD_SDK_PATH%\api\core\lib\libfmodL.prx"
+    set "SDK_STUDIO_SOURCE=%FMOD_SDK_PATH%\api\studio\lib\libfmodstudioL.prx"
+
+    echo "Copying %YYPLATFORM_name% dependencies"
+    call %Utils% itemCopyTo "%SDK_CORE_SOURCE%" "%EXTENSION_DIR%\libfmodL.prx"
+
+    :: Copy studio libs if enabled
+    if %ENABLE_STUDIO_FLAG% == 1 (
+        call %Utils% itemCopyTo "%SDK_STUDIO_SOURCE%" "%EXTENSION_DIR%\libfmodstudioL.prx"
+    )
 exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
@@ -265,7 +333,7 @@ exit /b 0
     call %Utils% pathResolveExisting "%EXTENSION_DIR%" "%SWITCH_VS_PATH%" SOLUTION_PATH
 
     :: Build libraries
-    call "c:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\Tools\VsDevCmd.bat"
+    call "%YYPREF_visual_studio_path%"
     msbuild "%SOLUTION_PATH%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:FmodSdkPath="%FMOD_SDK_PATH%"
 
     :: Extract the directory part from the full path
@@ -274,5 +342,49 @@ exit /b 0
     :: Copy libs to GML project
     call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\YYFMOD.nro" "%EXTENSION_DIR%\YYFMOD.nro"
     call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\YYFMOD.nrr" "%EXTENSION_DIR%\YYFMOD.nrr"
+    call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\YYFMOD.nrs" "%EXTENSION_DIR%\YYFMOD.nrs"
 
 exit /b 0
+
+
+:: ----------------------------------------------------------------------------------------------------
+:setupSwitch2
+    :: Build Nintendo Switch 2 / Ounce native library using the extension option:
+    :: switch2SdkPath
+    set "CONFIGURATION=Release-AutoBuild"
+    set "PLATFORM=Ounce64"
+
+    if "%SWITCH2_SDK_PATH%"=="" (
+        call %Utils% logError "Extension option 'switch2SdkPath' is empty. Set it to the FMOD Switch 2 SDK path."
+        exit /b 1
+    )
+
+    :: Resolve the FMOD Switch 2 SDK path (must exist)
+    call %Utils% pathResolveExisting "%EXTENSION_DIR%" "%SWITCH2_SDK_PATH%" FMOD_SDK_PATH
+
+    :: Optional hash check. Matches Switch 1 behavior: currently bypassed/commented.
+    :: call %Utils% assertFileHashEquals "%FMOD_SDK_PATH%\api\core\lib\libfmodL.a" %SWITCH2_SDK_HASH% "%ERROR_SDK_HASH%"
+
+    :: Resolve the Switch2/Ounce solution path (must exist)
+    set "SWITCH2_VS_PATH=.\fmod_switch2\FMOD.sln"
+    call %Utils% pathResolveExisting "%EXTENSION_DIR%" "%SWITCH2_VS_PATH%" SOLUTION_PATH
+
+    :: Build libraries
+    call "%YYPREF_visual_studio_path%"
+    msbuild "%SOLUTION_PATH%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:FmodSdkPath="%FMOD_SDK_PATH%"
+
+    if errorlevel 1 (
+        call %Utils% logError "Switch2/Ounce FMOD native build failed."
+        exit /b 1
+    )
+
+    :: Extract the directory part from the full path
+    call %Utils% pathExtractDirectory "%SOLUTION_PATH%" SOLUTION_DIR
+
+    :: Copy libs to GML project
+    call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\YYFMOD.nro" "%EXTENSION_DIR%\YYFMOD.nro"
+    call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\YYFMOD.nrr" "%EXTENSION_DIR%\YYFMOD.nrr"
+    call %Utils% itemCopyTo "%SOLUTION_DIR%%PLATFORM%\%CONFIGURATION%\YYFMOD.nrs" "%EXTENSION_DIR%\YYFMOD.nrs"
+
+exit /b 0
+

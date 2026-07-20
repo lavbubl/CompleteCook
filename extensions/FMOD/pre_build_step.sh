@@ -15,6 +15,11 @@ setupmacOS() {
     :
 }
 
+setupMac() {
+    # Nothing to do here
+    :
+}
+
 # ----------------------------------------------------------------------------------------------------
 setupLinux() {
     # Nothing to do here
@@ -139,6 +144,22 @@ setupSwitch() {
     :
 }
 
+
+# ----------------------------------------------------------------------------------------------------
+setupSwitch2() {
+    if [[ -z "${SWITCH2_SDK_PATH:-}" ]]; then
+        logError "Extension option 'switch2SdkPath' is empty. Set it to the FMOD Switch 2 SDK path."
+    fi
+
+    pathResolveExisting "$YYprojectDir" "$SWITCH2_SDK_PATH" SDK_PATH
+
+    # Optional hash check. Matches Switch 1 behavior: currently bypassed/commented.
+    # assertFileHashEquals "$SDK_PATH/api/core/lib/libfmodL.a" "$SWITCH2_SDK_HASH" "$ERROR_SDK_HASH"
+
+    # Nothing else to do here on shell build path unless YoYo adds a non-Windows Switch2 pipeline.
+    :
+}
+
 # ######################################################################################
 # Script Logic
 
@@ -150,6 +171,8 @@ optionGetValue "versionStable" RUNTIME_VERSION_STABLE
 optionGetValue "versionBeta" RUNTIME_VERSION_BETA
 optionGetValue "versionDev" RUNTIME_VERSION_DEV
 optionGetValue "versionLTS" RUNTIME_VERSION_LTS
+
+optionGetValue "gmrtReady" GMRT_READY
 
 # SDK Version
 optionGetValue "sdkVersion" SDK_VERSION
@@ -170,8 +193,15 @@ fi
 # Error String
 ERROR_SDK_HASH="Invalid Steam SDK version, sha256 hash mismatch (expected v$SDK_VERSION)."
 
-# Checks IDE and Runtime versions
-versionLockCheck "$YYruntimeVersion" $RUNTIME_VERSION_STABLE $RUNTIME_VERSION_BETA $RUNTIME_VERSION_DEV $RUNTIME_VERSION_LTS
+# Verify if extension is GMRT ready
+if [[ ${YYTARGET_runtime:-} == "GMRT" ]]; then
+    if [[ ${GMRT_READY:-} != "True" ]]; then
+        logError "Extension is not compatible with GMRT runtime. Check for updated version."
+    fi
+else
+    # Checks IDE and Runtime versions
+    versionLockCheck "$YYruntimeVersion" $RUNTIME_VERSION_STABLE $RUNTIME_VERSION_BETA $RUNTIME_VERSION_DEV $RUNTIME_VERSION_LTS
+fi
 
 # Resolve the SDK path (must exist)
 pathResolveExisting "$YYprojectDir" "$SDK_PATH" SDK_PATH

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{b90b4e21-3caa-4f36-882c-07e1b9e3dd61}">
+		<property name="assetPath">
+			<value>sfx/sfx_ballhitwall/</value>
+		</property>
+	</object>
+</objects>

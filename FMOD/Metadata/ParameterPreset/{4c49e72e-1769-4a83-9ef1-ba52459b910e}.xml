@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{4c49e72e-1769-4a83-9ef1-ba52459b910e}">
+		<property name="name">
+			<value>lightson</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b180254c-5841-46fd-8c91-b579904220f1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{90b9cf1e-a7da-4e5f-9ad4-2c22dfdb62ad}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{90b9cf1e-a7da-4e5f-9ad4-2c22dfdb62ad}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

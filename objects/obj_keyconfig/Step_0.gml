@@ -4,7 +4,7 @@ if !binding
 
 	if input_direction_check_pressed(INPUTS.ui_up) || 
 	   input_direction_check_pressed(INPUTS.ui_down)
-		scr_sound(sfx_step)
+		fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 
 	if input_check_pressed(INPUTS.ui_up) && selected == -1
 		back_selected_target = 0
@@ -13,7 +13,7 @@ if !binding
 	{
 		back_selected_target = selected
 		selected = -1
-		scr_sound(sfx_step)
+		fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 	}
 
 	if selected == -1
@@ -23,7 +23,7 @@ if !binding
 		else if input_direction_check_pressed(INPUTS.ui_right)
 		{
 			selected = back_selected_target
-			scr_sound(sfx_step)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
 		}
 		exit;
 	}

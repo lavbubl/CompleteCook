@@ -5,6 +5,6 @@ var _bindjson = json_stringify(global.bindslist)
 file_text_write_string(_file, _bindjson)
 file_text_close(_file)
 
-scr_sound(choose(sfx_ui_accept1, sfx_ui_accept2, sfx_ui_accept3))
+fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 
 do_tip("{u}Controls saved!")

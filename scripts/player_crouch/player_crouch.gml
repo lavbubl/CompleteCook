@@ -34,7 +34,7 @@ function player_crouch()
 		if sprite_index == crouchfallspr
 		{
 			reset_anim(crouchdownspr)
-			scr_sound_3d_pitched(sfx_step, x, y)
+			fmod_studio_event_instance_oneshot_3d("event:/sfx/player/step", x, y)
 		}
 		
 		if sprite_index == crouchdownspr

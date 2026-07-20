@@ -92,7 +92,6 @@ for (var i = 0; i < array_length(tvs); i++)
 				fmod_studio_event_instance_oneshot("event:/sfx/misc/fileselect")
 				fmod_studio_event_instance_stop(other.mu, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
 				fmod_studio_event_instance_stop(other.static_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
-				global.savefile = filename
 				state = 2
 				
 				with obj_menupeppino
@@ -100,7 +99,7 @@ for (var i = 0; i < array_length(tvs); i++)
 					switch cur_selected
 					{
 						case 1:
-							sprite_icombondex = spr_titlepep_left
+							sprite_index = spr_titlepep_left
 							break;
 						case 2:
 							sprite_index = spr_titlepep_middle

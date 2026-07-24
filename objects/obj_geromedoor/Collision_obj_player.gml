@@ -8,7 +8,7 @@ if (other.bbox_bottom <= bbox_bottom + 1 && other.bbox_bottom >= bbox_bottom - 1
 	{
 		image_index++
 		other.hasgerome = false
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/unlock", x, y)
+		fmod_studio_event_instance_oneshot("event:/sfx/player/unlock")
 		ds_list_add(global.ds_saveroom, id)
 		instance_create(obj_player.x, obj_player.y, obj_geromeopendoor)
 	}

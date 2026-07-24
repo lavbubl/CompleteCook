@@ -147,6 +147,14 @@ function sleep(ms)
 		do {};
 }
 
+enum toppin_enum {
+	shroom,
+	cheese,
+	tomato,
+	sausage,
+	pineapple
+}
+
 function set_globals()
 {
 	global.combo = {

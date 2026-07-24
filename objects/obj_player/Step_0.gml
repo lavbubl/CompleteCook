@@ -30,6 +30,17 @@ prevstate = state
 if warping
 	exit;
 
+var _clip_states = [states.grab,
+					states.mach2,
+					states.mach3,
+					states.mach2]
+
+if array_contains(_clip_states, state) && grounded && place_meeting(x + hsp + xscale, y, obj_solid) && !place_meeting(x + hsp + xscale, y - 32, obj_solid) && !scr_slope(x, y + 1)
+{
+	y -= 32
+	obj_camera.cam_y_offset = 32
+}
+
 if hitstun < 0
     player_states[state](); // execute state code
 else if hitstun >= 0
@@ -108,6 +119,15 @@ if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the 
 	fmod_studio_event_instance_oneshot_3d($"event:/sfx/player/{intransfo ? "transfo" : "outtransfo"}", x, y)
 	prev_transfo = intransfo
 }
+
+var _rail_states = [states.normal,
+					states.jump,
+					states.mach3,
+					states.mach2,
+					states.tumble]
+
+if array_contains(_rail_states, state)
+	hsp += (railmovespeed * raildir)
 
 var prevhsp = hsp
 var prevvsp = vsp

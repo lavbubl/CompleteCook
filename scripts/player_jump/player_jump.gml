@@ -33,8 +33,6 @@ function player_jump()
     else
         hsp = xscale * movespeed
 	
-	hsp += (railmovespeed * raildir)
-	
 	if P_MOVE == -xscale || movespeed >= 0
 		momentum = false
 	

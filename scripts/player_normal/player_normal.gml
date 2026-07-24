@@ -69,7 +69,7 @@ function player_normal()
 	if (movespeed > 8)
         movespeed -= 0.1;
 	
-	hsp = (P_MOVE * movespeed) + (railmovespeed * raildir)
+	hsp = P_MOVE * movespeed
 	
 	var idlegestures = [
 		spr_player_idlefrown, 

@@ -5,7 +5,7 @@
 			<value>unlock</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{bee0ecb1-b8c0-45a4-b299-a625b80db3f3}</destination>
@@ -107,7 +107,6 @@
 	<object class="MixerBusEffectChain" id="{bef58e9f-a034-4224-810d-bd296a86279d}">
 		<relationship name="effects">
 			<destination>{47b79c91-1556-4229-bc35-9c4f99fc4a5e}</destination>
-			<destination>{4dc5ba8e-0277-40e6-962e-8859cb445fad}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{61b98c0f-fd00-4a40-955f-8874cbbf540f}" />
@@ -124,7 +123,7 @@
 			<value>6</value>
 		</property>
 		<property name="volume">
-			<value>-9</value>
+			<value>-5</value>
 		</property>
 		<property name="pitch">
 			<value>2.60000014</value>
@@ -138,20 +137,6 @@
 	</object>
 	<object class="MixerBusFader" id="{51103f2f-8c41-4813-b65b-0cf49cec6763}" />
 	<object class="MixerBusFader" id="{47b79c91-1556-4229-bc35-9c4f99fc4a5e}" />
-	<object class="SpatialiserEffect" id="{4dc5ba8e-0277-40e6-962e-8859cb445fad}">
-		<property name="minimumDistance">
-			<value>1.35000002</value>
-		</property>
-		<property name="maximumDistance">
-			<value>25</value>
-		</property>
-		<property name="extentMode">
-			<value>1</value>
-		</property>
-		<property name="soundSize">
-			<value>2000</value>
-		</property>
-	</object>
 	<object class="ADSRModulator" id="{bb28012a-9843-4635-b096-88b17172f0ba}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>volume</value>

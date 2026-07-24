@@ -7,6 +7,7 @@ if obj_player.state == states.backtohub
 	campos.y = obj_player.ystart - (screen_h / 2) - 50
 
 campos.x += cam_charge
+campos.y += cam_y_offset
 
 campos.x = clamp(campos.x, 0, room_width - screen_w)
 campos.y = clamp(campos.y, 0, room_height - screen_h)
@@ -21,6 +22,8 @@ if mag > 0 && global.option_screenshake
 }
 
 mag = max(mag - mag_decel, 0)
+
+cam_y_offset = approach(cam_y_offset, 0, 4)
 
 if !obj_player.secret_exit && obj_player.sprite_index != spr_pizzaportalend
 	camera_set_view_pos(view_camera[0], campos.x, campos.y)

@@ -155,7 +155,7 @@
 			<value>100</value>
 		</property>
 		<property name="wetLevel">
-			<value>4</value>
+			<value>5</value>
 		</property>
 	</object>
 </objects>

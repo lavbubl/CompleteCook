@@ -7,6 +7,6 @@ if ds_list_find_index(global.ds_saveroom, id) == -1
 	var val = 10
 	global.score += val
 	global.combo.timer = 60
-	with instance_create(x, y, obj_collect_number)
+	with instance_create(x + 16, y, obj_collect_number)
 		num = val
 }

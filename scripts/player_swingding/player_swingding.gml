@@ -16,6 +16,7 @@ function player_swingding()
 	if abs(hsp) <= 0
 	{
 		state = states.hold
+		instakill = false
 		sprite_index = spr_player_haulingidle
 		movespeed = 0
 	}

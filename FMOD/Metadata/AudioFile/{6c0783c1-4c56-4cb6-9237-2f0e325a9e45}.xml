@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{6c0783c1-4c56-4cb6-9237-2f0e325a9e45}">
+		<property name="assetPath">
+			<value>sfx/sfx_slipend1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.4333333333333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{04445ec4-1586-4e23-b46d-dab1018fb82d}</destination>
+		</relationship>
+	</object>
+</objects>

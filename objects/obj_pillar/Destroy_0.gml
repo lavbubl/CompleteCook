@@ -24,6 +24,7 @@ fmod_studio_event_instance_oneshot("event:/sfx/misc/pillarimpact")
 fmod_studio_event_instance_oneshot("event:/sfx/misc/escaperumble")
 
 particle_create(x, y, particles.bang)
+
 repeat (3)
 {
 	particle_create(x, y, particles.gib)

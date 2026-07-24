@@ -1,7 +1,7 @@
 fmod_studio_bus_set_volume(pause_bus_music, global.option_music_volume)
 fmod_studio_bus_set_volume(pause_bus_sfx, global.option_sfx_volume)
 
-if !pause || room == mainmenu
+if !pause || room == mainmenu || instance_exists(obj_titlecard)
 	exit;
 else if instance_exists(obj_shell)
 {
@@ -19,13 +19,8 @@ else if inputbuffer > 0
 	inputbuffer--
 	exit;
 }
-	
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
 
-var movev = -ui_input.up.pressed + ui_input.down.pressed
+var movev = -input_direction_check_pressed(INPUTS.ui_up) + input_direction_check_pressed(INPUTS.ui_down)
 
 if movev != 0
 {
@@ -37,7 +32,7 @@ optionselected = wrap(array_length(options), optionselected + movev)
 
 var cur_option = options[optionselected]
 
-if ui_input.accept.pressed && cur_option.o_func != undefined
+if input_check_pressed(INPUTS.ui_confirm) && cur_option.o_func != undefined
 	cur_option.o_func()
 	
 if angel_timer > 0

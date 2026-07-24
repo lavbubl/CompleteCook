@@ -1,13 +1,15 @@
 function player_piledriver()
 {
+	static _pdeffect = 0
+	
 	image_speed = vsp < 0 || sprite_index == spr_player_piledriverland ? 0.35 : 0.5
 	
-	if (p_move != 0)
+	if (P_MOVE != 0)
 		movespeed = approach(movespeed, 6, 0.2)
-	if (p_move == 0 || sprite_index == spr_player_piledriverland || p_move = -dir)
+	if (P_MOVE == 0 || sprite_index == spr_player_piledriverland || P_MOVE = -dir)
 		movespeed = 0
 		
-	dir = p_move
+	dir = P_MOVE
 	
 	hsp = movespeed * dir
 	if (grounded && sprite_index != spr_player_piledriverland && vsp >= 0)
@@ -24,6 +26,7 @@ function player_piledriver()
 			}
 		}
 		
+		_pdeffect.statetofollow = noone //kill this effect
 		shake_camera(20, 30 / room_speed)
 		create_effect(x, y + 2, spr_groundpoundeffect)
 		reset_anim(spr_player_piledriverland)
@@ -61,7 +64,12 @@ function player_piledriver()
 					depth = -150
 			}
 			if !particle_contains_sprite(spr_groundpoundcharge)
-				create_followingeffect(spr_groundpoundcharge, states.groundpound, xscale)
+				_pdeffect = create_followingeffect(spr_groundpoundcharge, states.piledriver, 1)
+			with _pdeffect
+			{
+				depth = -100
+				image_speed = 0.35
+			}
 			particle_timer = 15
 		}
 	}

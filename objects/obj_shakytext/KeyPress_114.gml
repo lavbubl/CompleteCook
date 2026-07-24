@@ -3,3 +3,7 @@ str = choose("hdjkhvkfdgbklfgkgh",
 	"{u}Press [j] to {s}JUMP!",
 	"{u}[u][l][r][d][f][b][g][m][ds][j][t][gp][sj]{n}N{u}U{s}S"
 )
+
+show = true
+alarm[0] = 9999
+image_alpha = 0

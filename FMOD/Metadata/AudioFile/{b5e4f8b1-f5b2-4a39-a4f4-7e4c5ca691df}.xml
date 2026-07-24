@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b5e4f8b1-f5b2-4a39-a4f4-7e4c5ca691df}">
+		<property name="assetPath">
+			<value>sfx/sfx_sliphit8.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.1773333333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{04445ec4-1586-4e23-b46d-dab1018fb82d}</destination>
+		</relationship>
+	</object>
+</objects>

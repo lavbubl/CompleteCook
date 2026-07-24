@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{056659ce-41ba-4540-a488-e0eefd9a22bf}">
+		<property name="assetPath">
+			<value>sfx/sfx_mach4.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.5493333333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{04445ec4-1586-4e23-b46d-dab1018fb82d}</destination>
+		</relationship>
+	</object>
+</objects>

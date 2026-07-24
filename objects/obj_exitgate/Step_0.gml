@@ -8,7 +8,7 @@ with instance_place(x, y, obj_player)
 		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/slam", x, y)
 		global.doorshut = true
 	}
-	else if (global.panic.active && input.up.check && grounded && scr_can_enter_door(state))
+	else if (global.panic.active && input_direction_check(INPUTS.up) && grounded && scr_can_enter_door(state))
 	{
 		global.panic.active = false
 		hsp = 0

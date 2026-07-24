@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{3f1b1567-227d-4d36-8394-fb49f6f37301}">
+		<property name="assetPath">
+			<value>sfx/sfx_ratdead.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.83333333333333337</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{04445ec4-1586-4e23-b46d-dab1018fb82d}</destination>
+		</relationship>
+	</object>
+</objects>

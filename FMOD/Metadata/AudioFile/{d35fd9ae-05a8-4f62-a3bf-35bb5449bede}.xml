@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{d35fd9ae-05a8-4f62-a3bf-35bb5449bede}">
+		<property name="assetPath">
+			<value>music/mu_timesup.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.1266666666666669</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{04445ec4-1586-4e23-b46d-dab1018fb82d}</destination>
+		</relationship>
+	</object>
+</objects>

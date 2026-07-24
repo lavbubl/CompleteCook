@@ -7,7 +7,7 @@ if (ds_list_find_index(global.ds_saveroom, id) == -1)
             hsp = random_range(-5, 5)
             vsp = random_range(-10, 10)
             image_speed = 0
-            image_index = random_range(0, (image_number - 1))
+            image_index = random_range(0, image_number - 1)
         }
     }
     sleep(5)

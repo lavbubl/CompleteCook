@@ -15,10 +15,10 @@ function player_punchenemy()
 	if anim_ended()
 	{
 		sprite_index = spr_player_fall
-		state = states.jump
-		movespeed = -abs(hsp)
+		state = states.normal
+		railmovespeed = 4
+        raildir = -xscale
 		jumpstop = true
-		momentum = true
 		dir = xscale
 	}
 	

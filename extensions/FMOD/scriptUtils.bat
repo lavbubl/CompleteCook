@@ -6,8 +6,7 @@ shift & goto :%~1
 :scriptInit
     set "LOG_LABEL=UNSET"
     set "LOG_LEVEL=-1"
-
-    call :assertPowerShellExecutionPolicy
+    set PSMODULEPATH=
 
     :: Get extension data
     call :pathExtractBase %SCRIPT_PATH% EXTENSION_NAME
@@ -27,26 +26,13 @@ shift & goto :%~1
     )
 exit /b 0
 
-:assertPowerShellExecutionPolicy
-    :: Check the execution policy of the powershell
-    for /f "delims=" %%i in ('powershell -Command "Get-ExecutionPolicy"') do set ExecutionPolicy=%%i
-
-    :: If the execution policy is set to 'Restricted' echo the appropriate message.
-    IF "!ExecutionPolicy!"=="Restricted" (
-        echo The execution of our extensions requires changing the PowerShell Execution Policy.
-        echo To do so, please run the following command in your PowerShell terminal:
-        echo     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-        exit 1
-    )
-exit /b 0
-
 :extensionGetVersion result
     :: Need to enabled delayed expansion
     setlocal enabledelayedexpansion
 
     set "result=!GMEXT_%EXTENSION_NAME%_version!"
     call :logInformation "Accessed extension version with value '%result%'."
-    
+
     :: Need to end local (to push into main scope)
     endlocal & set "%~1=%result%"
 exit /b 0
@@ -65,7 +51,7 @@ exit /b 0
 
 :: Converts a string to uppercase and stores it into a variable
 :toUpper str result
-    for /f "usebackq delims=" %%i in (`powershell.exe -Command "$str = '%~1'.ToUpper(); Write-Output $str"`) do set "%~2=%%i"
+    for /f "usebackq delims=" %%i in (`powershell -NoLogo -NoProfile -Command "$str = '%~1'.ToUpper(); Write-Output $str"`) do set "%~2=%%i"
     call :logInformation "Converted string '%~1' to uppercase."
 exit /b 0
 
@@ -75,7 +61,7 @@ exit /b 0
     call :logInformation "Extracted directory path from '%~1'."
 exit /b 0
 
-:: Extracts the parent folder path from a filepath. The input 'path\to\my\file.txt' must result in 'my' 
+:: Extracts the parent folder path from a filepath. The input 'path\to\my\file.txt' must result in 'my'
 :pathExtractBase fullpath result
     for %%I in ("%~dp1\.") do set "%~2=%%~nI%%~xI"
     call :logInformation "Extracted base name from '%~1'."
@@ -91,7 +77,7 @@ exit /b 0
     set "PS_BASEPATH=%~1"
     set "PS_RELATIVEPATH=%~2"
 
-    for /f "delims=" %%i in ('powershell -Command "$basePath = $env:PS_BASEPATH; $relativePath = $env:PS_RELATIVEPATH; Push-Location $basePath; $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($relativePath); Pop-Location;"') do set "result=%%i"
+    for /f "delims=" %%i in ('powershell -NoLogo -NoProfile -Command "$basePath = $env:PS_BASEPATH; $relativePath = $env:PS_RELATIVEPATH; Push-Location $basePath; $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($relativePath); Pop-Location;"') do set "result=%%i"
 
     :: Clean up environment variables
     set "PS_BASEPATH="
@@ -136,7 +122,7 @@ exit /b 0
     :: Check if the source path exists
     if not exist "!sourcePath!" (
         :: Log an error message if the source doesn't exist and exit with error code 1
-        call :logError "Failed to copy "!sourcePath!" to "!destPath!" (source doesn't exist)."
+        call :logError "Failed to copy '!sourcePath!' to '!destPath!' (source doesn't exist)."
         exit /b 1
     )
 
@@ -151,18 +137,18 @@ exit /b 0
         :: Check if the destination directory exists
         if not exist "!destDir!" (
             :: Log information about creating the destination directory
-            call :logInformation "Destination directory "!destDir!" does not exist. Creating it."
+            call :logInformation "Destination directory '!destDir!' does not exist. Creating it."
             :: Create the destination directory
             mkdir "!destDir!"
             :: Check if the directory creation was successful
             if !errorlevel! neq 0 (
                 :: Log an error message if the directory couldn't be created and exit with error code 1
-                call :logError "Failed to create destination directory ""!destDir!""."
+                call :logError "Failed to create destination directory '!destDir!'."
                 exit /b 1
             )
         )
         :: Log information about copying the file
-        call :logInformation "Copying file "!sourcePath!" to "!destPath!""
+        call :logInformation "Copying file '!sourcePath!' to '!destPath!'."
         :: Copy the file to the destination
         copy /Y "!sourcePath!" "!destPath!"
     )
@@ -170,12 +156,12 @@ exit /b 0
     :: Check if the copy operation was successful
     if !errorlevel! neq 0 (
         :: Log an error message if the copy failed and exit with error code 1
-        call :logError "Failed to copy "!sourcePath!" to "!destPath!"."
+        call :logError "Failed to copy '!sourcePath!' to '!destPath!'."
         exit /b 1
     )
 
     :: Log information that the copy was successful
-    call :logInformation "Copied "!sourcePath!" to "!destPath!"."
+    call :logInformation "Copied '!sourcePath!' to '!destPath!'."
 
     :: End the local environment changes (delayed variable expansion)
     endlocal
@@ -211,7 +197,7 @@ exit /b 0
 
     :: Clean up environment variables
     set "PS_TARGET="
-    
+
     :: Check if the deletion operation succeeded
     if %errorlevel% neq 0 (
         call :logError "Failed to delete '%target%'."
@@ -221,13 +207,30 @@ exit /b 0
     call :logInformation "Deleted '%target%'."
 exit /b 0
 
+:: Clears the contents of a folder, creating it first if it doesn't exist (displays log messages)
+:itemClearDir targetPath
+
+    set "PS_TARGET=%~1"
+
+    powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Path $env:PS_TARGET -Force | Out-Null; Get-ChildItem -LiteralPath $env:PS_TARGET -Force | Remove-Item -Recurse -Force"
+
+    set "PS_TARGET="
+
+    if %errorlevel% neq 0 (
+        call :logError "Failed to clear directory '%~1'."
+        exit /b 1
+    )
+
+    call :logInformation "Cleared contents of directory '%~1'."
+exit /b 0
+
 :: Generates the SHA256 hash of a file and stores it into a variable (displays log messages)
 :fileGetHash filepath result
 
     :: Set environment variables for target
     set "PS_FILEPATH=%~1"
 
-    for /f "usebackq delims=" %%i in (`powershell -Command "(Get-FileHash -Path $env:PS_FILEPATH -Algorithm SHA256).Hash"`) do set "%~2=%%i"
+    for /f "usebackq delims=" %%i in (`powershell -NoLogo -NoProfile -Command "(Get-FileHash -Path $env:PS_FILEPATH -Algorithm SHA256).Hash"`) do set "%~2=%%i"
 
     :: Clean up environment variables
     set "PS_FILEPATH="
@@ -242,8 +245,8 @@ exit /b 0
     set "PS_SRCFILE=%~1"
     set "PS_DESTFOLDER=%~2"
 
-    powershell -Command "if (!(Test-Path $env:PS_DESTFOLDER)) { New-Item -ItemType Directory -Path $env:PS_DESTFOLDER }"
-    powershell -Command "$ErrorActionPreference = 'Stop'; Expand-Archive -Path $env:PS_SRCFILE -DestinationPath $env:PS_DESTFOLDER"
+    powershell -NoLogo -NoProfile -Command "if (!(Test-Path $env:PS_DESTFOLDER)) { New-Item -ItemType Directory -Path $env:PS_DESTFOLDER }"
+    powershell -NoLogo -NoProfile -Command "$ErrorActionPreference = 'Stop'; Expand-Archive -Path $env:PS_SRCFILE -DestinationPath $env:PS_DESTFOLDER"
 
     :: Clean up environment variables
     set "PS_SRCFILE="
@@ -265,7 +268,7 @@ exit /b 0
     set "PS_SRCFOLDER=%~1"
     set "PS_DESTFILE=%~2"
 
-    powershell -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Force"
+    powershell -NoLogo -NoProfile -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Force"
 
     :: Check if the compression operation succeeded
     if %errorlevel% neq 0 (
@@ -287,7 +290,7 @@ exit /b 0
     set "PS_SRCFOLDER=%~1"
     set "PS_DESTFILE=%~2"
 
-    powershell -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Update"
+    powershell -NoLogo -NoProfile -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Update"
 
     :: Check if the compression operation succeeded
     if %errorlevel% neq 0 (
@@ -305,8 +308,8 @@ exit /b 0
 :: Extracts a specified part of a version string and stores it into a variable (displays log messages)
 :versionExtract version part result
     :: Use PowerShell to extract the specified part of the version string
-    for /f "usebackq delims=" %%i in (`powershell -Command "$version = New-Object Version '%~1'; Write-Output $version.%~2"`) do set "%~3=%%i"
-    
+    for /f "usebackq delims=" %%i in (`powershell -NoLogo -NoProfile -Command "$version = New-Object Version '%~1'; Write-Output $version.%~2"`) do set "%~3=%%i"
+
     :: Need to enabled delayed expansion
     setlocal enabledelayedexpansion
     call :logInformation "Extracted part %~2 of version '%~1' with value '!%~3%!'."
@@ -331,7 +334,7 @@ exit /b 0
         :: LTS version
         set "runnerBuild=LTS"
         call :assertVersionRequired "%~1" "%~5" "The %%runnerBuild%% runtime version needs to be at least v%~5."
-        
+
     ) else (
         if %majorVersion% geq 2020 (
             if %minorVersion% geq 100 (

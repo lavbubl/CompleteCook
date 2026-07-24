@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{3575d995-28f5-42fe-a6e3-561e8e1ffef9}">
+		<property name="name">
+			<value>rank_mu_index</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b180254c-5841-46fd-8c91-b579904220f1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{2559d0ee-1cc9-435a-9633-707b9655ffce}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{2559d0ee-1cc9-435a-9633-707b9655ffce}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

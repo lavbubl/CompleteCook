@@ -6,7 +6,7 @@ if escape_frozen
 	{
 		with create_effect(x, y - 20, spr_pillarenemyspawner)
 			image_speed = 0.5
-		alarm[1] = 16
+		alarm[1] = 10
 	}
 	
 	exit;

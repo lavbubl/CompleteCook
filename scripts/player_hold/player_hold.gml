@@ -1,27 +1,42 @@
 function player_hold()
 {
-	if (p_move != 0)
+	if dir != xscale
 	{
-		movespeed = approach(movespeed, 6, 0.5)
-		xscale = p_move
+		movespeed = 2
+		dir = xscale
+	}
+	
+	if (P_MOVE != 0)
+	{
+		if (movespeed < 8)
+			movespeed += 0.5
+		else if (floor(movespeed) == 8)
+			movespeed = 6
+		xscale = P_MOVE
 	}
 	else
 		movespeed = 0
 		
-	hsp = movespeed * xscale
+	if (movespeed > 6)
+		movespeed -= 0.1
+	
+	if (sprite_index != spr_player_swingding)
+		hsp = P_MOVE * movespeed
+	else
+		hsp = xscale * movespeed
 	
 	if grounded
 	{
 		if (sprite_index == spr_player_haulingjump || sprite_index == spr_player_haulingfall)
 			reset_anim(spr_player_haulingland)
 		if (sprite_index != spr_player_haulingland && sprite_index != spr_player_haulingrise)
-			sprite_index = p_move != 0 ? spr_player_haulingmove : spr_player_haulingidle
+			sprite_index = P_MOVE != 0 ? spr_player_haulingmove : spr_player_haulingidle
 	}
 	else
 	{
 		if (sprite_index != spr_player_haulingjump && sprite_index != spr_player_haulingfall)
 			reset_anim(spr_player_haulingjump)
-		if (!jumpstop && !input.jump.check && vsp < 0)
+		if (!jumpstop && !input_check(INPUTS.jump) && vsp < 0)
 		{
 			jumpstop = true
 			vsp /= 10
@@ -36,8 +51,8 @@ function player_hold()
 		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 		
-	if p_move != 0
-		xscale = p_move
+	if P_MOVE != 0
+		xscale = P_MOVE
 	
 	image_speed = 0.35
 	switch (sprite_index)
@@ -57,7 +72,7 @@ function player_hold()
 		state = states.punchenemy
 		var str = $"spr_player_finishingblow{string(irandom_range(1, 5))}"
 		reset_anim(asset_get_index(str))
-		if (input.up.check)
+		if (input_direction_check(INPUTS.up))
 			reset_anim(spr_player_uppercutfinishingblow)
 	}
 }

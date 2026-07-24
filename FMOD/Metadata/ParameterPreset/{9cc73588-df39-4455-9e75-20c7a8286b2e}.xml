@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{9cc73588-df39-4455-9e75-20c7a8286b2e}">
+		<property name="name">
+			<value>pinch</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b180254c-5841-46fd-8c91-b579904220f1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8f08e6ea-1e1b-452f-914b-bd47f46c980d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8f08e6ea-1e1b-452f-914b-bd47f46c980d}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

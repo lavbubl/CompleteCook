@@ -5,18 +5,19 @@
 /// @returns {string}
 function fmod_path_bundle(_file)
 {
-	if (os_type == os_switch)
+	if (os_type == os_switch || os_type == os_switch2)
 	{
 		if (GM_build_type == "exe")
 			return $"rom:/{working_directory}{_file}";
 		else
 			return $"host:/{working_directory}{_file}";
 	}
-	else if (os_type == os_android) {
+	else if (os_type == os_android)
+	{
 		return $"file:///android_asset/{_file}";
 	}
 	
-	return $"{working_directory}{_file}"
+	return $"{working_directory}{_file}";
 }
 
 /// @param {string} file
@@ -124,6 +125,8 @@ function fmod_handle_async_events()
 	var _buffer_address = buffer_get_address(_async_buffer);
 	var _buffer_size = buffer_get_size(_async_buffer);
 	
+	buffer_poke(_async_buffer, 0, buffer_u8, BUFFER_UNDEFINED);
+	
 	var _size = fmod_fetch_callbacks(_buffer_address, _buffer_size);
 	
 	// This is a special case that signals the runner that the buffer size needs to be increased.
@@ -134,6 +137,8 @@ function fmod_handle_async_events()
 	
 	buffer_seek(_async_buffer, buffer_seek_start, 0);
 	var _map_array = ext_buffer_unpack(_async_buffer, true);
+	
+	if (is_undefined(_map_array)) return 0;
 	
 	var _array_size = array_length(_map_array);
 	for (var _i = 0; _i < _array_size; _i++) {
@@ -2521,7 +2526,7 @@ function fmod_studio_system_get_parameter_by_id(_parameter_id)
 /// @param {struct.FmodStudioParameterId} parameter_id
 /// @param {real} value
 /// @param {bool} ignore_seek_speed
-function fmod_studio_system_set_parameter_by_id(_parameter_id, _value, _ignore_seek_speed)
+function fmod_studio_system_set_parameter_by_id(_parameter_id, _value, _ignore_seek_speed = false)
 {
 	var _args = [
 		// [ value, forced_type ]

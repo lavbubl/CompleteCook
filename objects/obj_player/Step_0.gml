@@ -1,29 +1,12 @@
-// update all of the inputs
-// TODO: helper function?
-
 if !pausestopframe
-{
-	if !IS_DEBUG || !obj_shell.isOpen
-	{
-		input.left.update(global.keybinds.left);
-		input.right.update(global.keybinds.right);
-		input.up.update(global.keybinds.up);
-		input.down.update(global.keybinds.down);
-		input.jump.update(global.keybinds.jump);
-		input.grab.update(global.keybinds.grab);
-		input.dash.update(global.keybinds.dash);
-		input.taunt.update(global.keybinds.taunt);
-		input.superjump.update(global.keybinds.superjump);
-		input.groundpound.update(global.keybinds.groundpound);
-	}
-	
+{	
 	input_buffers.grab = max(input_buffers.grab - 1, 0)
 	input_buffers.jump = max(input_buffers.jump - 1, 0)
 
-	if input.grab.pressed
+	if input_check_pressed(INPUTS.grab)
 		input_buffers.grab = 15
 	
-	if input.jump.pressed
+	if input_check_pressed(INPUTS.jump)
 		input_buffers.jump = 15
 }
 else
@@ -33,7 +16,6 @@ struct_foreach(aftimg_timers, function(_name, _data)
 {
 	_data.do_it = false
 })
-
 
 if grounded
 	coyote_time = 10
@@ -53,7 +35,9 @@ if hitstun < 0
 else if hitstun >= 0
 {
 	hitstun--
-	image_index = prev_ix
+	image_speed = 0
+	if hitstun == -1
+		image_speed = prev_image_speed
 }
 
 if (state != states.normal)
@@ -72,19 +56,24 @@ winding = clamp(winding + _windincrease, 0, 2000)
 
 if coyote_time > 0
 	coyote_time--
-	
+
 if flash > 0
 	flash--
-	
+
 if (state != states.jump && state != states.taunt)
 	fallingtimer = 0
-	
+
 if (idletimer > 0 && state == states.normal)
 	idletimer--
 
 if (i_frames > 0 && state != states.hurt)
+{
 	i_frames--
-
+	if (alarm[5] = -1 || alarm[5] = 0) && (alarm[6] = 0 || alarm[6] = -1)
+		alarm[5] = 3;
+}
+else if i_frames <= 0
+	image_alpha = 1
 var sjumpprep = (state == states.superjump && sprite_index != spr_player_superjump && sprite_index != spr_player_presentboxspring && sprite_index != spr_player_Sjumpcancelstart)
 if (state == states.tumble || state == states.ball || state == states.crouch || sjumpprep)
 	mask_index = mask_player_small
@@ -94,7 +83,7 @@ else
 grav = 0.5
 if state == states.ladder
 	grav = 0
-	
+
 if (y > room_height + 300 || y < -800) && state != states.actor && state != states.backtohub
 {
 	shake_camera()
@@ -110,6 +99,9 @@ if intransfo || state == states.fireass
 
 if state == states.ball
 	instance_destroy(instance_place(x + hsp, y + vsp, obj_rattumbleblock))
+
+if state != states.taunt
+	tauntinv = false
 
 if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the transfo youre changed to.
 {
@@ -177,7 +169,7 @@ if supertauntcount >= 10
 	}
 }
 
-uparrow.visible = state != states.actor &&
+uparrow.visible = state == states.normal &&
 	(place_meeting(x, y, obj_dresser) ||
 	(scr_can_enter_door(state) &&
 	(place_meeting(x, y, obj_startgate) ||
@@ -185,3 +177,8 @@ uparrow.visible = state != states.actor &&
 	place_meeting(x, y, obj_door))))
 
 player_sounds()
+
+if (state == states.mach3 || state == states.mach2 || state == states.tumble)
+	railmovespeed = approach(railmovespeed, 0, 0.1);
+else
+	railmovespeed = approach(railmovespeed, 0, 0.5);

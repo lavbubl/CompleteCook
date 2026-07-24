@@ -1,25 +1,3 @@
-// declare input
-special_keybind_deny = variable_clone(global.keybinds.ui_deny) //special conflicting input removal
-
-if is_array(special_keybind_deny)
-{
-	var _d_ix = array_get_index(special_keybind_deny, ord("X"))
-
-	if _d_ix != -1
-		array_delete(special_keybind_deny, _d_ix, 1)
-}
-
-show_debug_message(special_keybind_deny)
-
-input =
-{
-	left: new Input(global.keybinds.ui_left),
-	right: new Input(global.keybinds.ui_right),
-	grab: new Input(global.keybinds.grab),
-	accept: new Input(global.keybinds.ui_accept),
-	deny: new Input(special_keybind_deny)
-};
-
 tvs =  [new ini_menu_tv_inst(103, 0, 
 			spr_menutv1_off,
 			spr_menutv1_whitenoise,
@@ -68,7 +46,8 @@ state = 0
 menu_dark = true
 dark_state = 0
 optionsalpha = 0
-
+buffer = 0
+	
 function ini_menu_tv_inst(_x, _y, _sproff, _sprnoise, _sprselect, _sprconfirm, _filename) constructor
 {
 	x = _x
@@ -90,3 +69,5 @@ function ini_menu_tv_inst(_x, _y, _sproff, _sprnoise, _sprselect, _sprconfirm, _
 }
 
 depth = -100
+
+per = 0

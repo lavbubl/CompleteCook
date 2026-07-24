@@ -1,3 +1,3 @@
 pos_array = []
 followers = []
-depth = -20
+depth = -6

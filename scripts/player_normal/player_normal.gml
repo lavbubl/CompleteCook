@@ -22,8 +22,7 @@ function player_normal()
 		default_idle = spr_player_madidle
 		default_move = spr_player_madmove
 	}
-	
-	if winding >= 1800
+	else if winding >= 1800
 		default_idle = spr_player_winding
 	
 	if global.panic.active
@@ -34,23 +33,23 @@ function player_normal()
 		{
 			default_idle = spr_player_hurtidle
 			default_move = spr_player_hurtmove
-			default_jump = spr_player_hurtjump
-			default_fall = spr_player_hurtjump
 		}
 	}
 	
-	if p_move != 0
+	if dir != xscale
 	{
-		if dir != xscale
+		movespeed = 2
+		dir = xscale
+	}
+	
+	if P_MOVE != 0
+	{
+		xscale = P_MOVE
+		if !place_meeting(x + P_MOVE, y, obj_solid)
 		{
-			movespeed = 0
-			dir = xscale
-		}
-		xscale = p_move
-		if !place_meeting(x + p_move, y, obj_solid)
-		{
-			movespeed = approach(movespeed, 8, movespeed > 8 ? 0.1 : 0.5)
-			if (floor(movespeed) == 8)
+			if movespeed < 8
+			movespeed += 0.5
+			else if (floor(movespeed) == 8)
 				movespeed = 6
 		}
 		else
@@ -67,7 +66,10 @@ function player_normal()
 	else
 		movespeed = 0
 	
-	hsp = movespeed * xscale
+	if (movespeed > 8)
+        movespeed -= 0.1;
+	
+	hsp = (P_MOVE * movespeed) + (railmovespeed * raildir)
 	
 	var idlegestures = [
 		spr_player_idlefrown, 
@@ -78,12 +80,12 @@ function player_normal()
 		spr_player_idlebite
 	]
 	
-	if p_move != 0
+	if P_MOVE != 0
 		idletimer = 120
 	
 	if (breakdance_secret.buffer < 10)
 	{
-		if p_move != 0
+		if P_MOVE != 0
 		{
 			if (sprite_index != spr_player_landmove && sprite_index != spr_player_shotgun_land)
 				sprite_index = default_move
@@ -114,7 +116,7 @@ function player_normal()
 	
 	image_speed = 0.35
 	
-	if input.taunt.check
+	if input_check(INPUTS.taunt)
 	{
 		if breakdance_secret.buffer < 10
 			breakdance_secret.buffer++
@@ -122,7 +124,15 @@ function player_normal()
 		{
 			sprite_index = spr_player_breakdance
 			breakdance_secret.spd = approach(breakdance_secret.spd, 0.6, 0.005)
-			image_speed = breakdance_secret.spd
+			if P_MOVE != 0
+			{
+				if movespeed > 3
+					image_speed = (movespeed < 6) ? 0.45 : 0.6
+				else
+					image_speed = 0.35
+			}
+			else
+				image_speed = breakdance_secret.spd
 		}
 		
 		if breakdance_secret.spd >= 0.5
@@ -138,7 +148,7 @@ function player_normal()
 		breakdance_secret.spd = 0.25
 	}
 	
-	if (input.down.check || !scr_can_uncrouch())
+	if (input_direction_check(INPUTS.down) || !scr_can_uncrouch())
 	{
 		reset_anim(!has_shotgun ? spr_player_crouchdown : spr_player_shotgun_crouchstart)
 		state = states.crouch
@@ -158,13 +168,13 @@ function player_normal()
 		state = states.jump
 		reset_anim(default_jump)
 		jumpstop = false
-		create_effect(x, y - 5, spr_highjumpcloud2)
+		create_effect(x, y, spr_highjumpcloud2)
 		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/jump", x, y)
 	}
 	
 	do_grab() //note: intentional game design
 	
-	if input.dash.check && !scr_hitwall(x + xscale, y)
+	if input_check(INPUTS.dash) && !scr_hitwall(x + xscale, y)
 	{
 		state = states.mach2
 		if (movespeed < 6)
@@ -181,8 +191,8 @@ function player_normal()
 		case spr_player_hurtmove:
 		case spr_player_madmove:
 		case spr_player_ragemove:
-			if movespeed > 6
-	            image_speed = 0.6;
+			if movespeed > 3
+				image_speed = (movespeed < 6) ? 0.45 : 0.6
 			break;
 		case spr_player_machslideend:
 		case spr_player_land:
@@ -192,6 +202,8 @@ function player_normal()
 			break;
 		case spr_player_landmove:
 			reset_anim_on_end(default_move);
+			if movespeed > 3
+				image_speed = (movespeed < 6) ? 0.45 : 0.6
 			break;
 	}
 	

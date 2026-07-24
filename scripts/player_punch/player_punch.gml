@@ -1,6 +1,6 @@
 function player_punch()
 {
-	hsp = approach(hsp, p_move * 4, 0.4)
+	hsp = approach(hsp, P_MOVE * 4, 0.4)
 	image_speed = anim_ended() ? 0 : 0.4;
 	
 	if vsp < 0
@@ -11,9 +11,12 @@ function player_punch()
 	else if grounded
 	{
 		state = states.normal
-		reset_anim(p_move == 0 ? spr_player_land : spr_player_landmove)
+		reset_anim(P_MOVE == 0 ? spr_player_land : spr_player_landmove)
 		movespeed = abs(hsp)
-		if p_move != 0
-			xscale = p_move	
+		if P_MOVE != 0
+		{
+			xscale = P_MOVE
+			dir = P_MOVE
+		}
 	}
 }

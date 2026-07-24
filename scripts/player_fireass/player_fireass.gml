@@ -17,14 +17,14 @@ function player_fireass()
 			create_effect(x, y + 40, spr_cloudeffect)
 		}
 		hsp = movespeed
-		if p_move != 0
+		if P_MOVE != 0
 		{
-			if (p_move == xscale)
+			if (P_MOVE == xscale)
 				movespeed = approach(movespeed, (xscale * 8), 0.5)
 			else
 				movespeed = approach(movespeed, 0, 0.5)
 			if (movespeed <= 0)
-				xscale = p_move
+				xscale = P_MOVE
 		}
 		else
 			movespeed = approach(movespeed, 0, 0.1)

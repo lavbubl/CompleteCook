@@ -15,6 +15,11 @@ function wave(from, to, duration, offset, timer = current_time)
 	return from + _wave + sin((((timer * 0.001) + duration * offset) / duration) * (pi * 2)) * _wave;
 }
 
+function string_contains(_substr, _str)
+{
+	return string_count(_substr, _str) > 0
+}
+
 function string_convert_seconds_to_timer(_num, _hours = false, _thousandth = false)
 {
 	var _ms = string(floor((_num % 1) * (_thousandth ? 1000 : 10)))
@@ -164,8 +169,23 @@ function set_globals()
 	global.option_timer = ini_read_real("options", "timer", true)
 	global.option_timertype = ini_read_real("options", "timertype", true)
 	global.option_timerspeedrun = ini_read_real("options", "timerspeedrun", true)
+	global.option_dirsuperjump = ini_read_real("options", "dirsuperjump", true) //keyboard
+	global.option_dirgroundpound = ini_read_real("options", "dirgroundpound", true)
+	global.option_joysuperjump = ini_read_real("options", "joysuperjump", true) //joystick
+	global.option_joygroundpound = ini_read_real("options", "joygroundpound", true)
+	global.option_dzgeneral = ini_read_real("options", "dzgeneral", 0.4)
+	global.option_dzhorizontal = ini_read_real("options", "dzhorizontal", 0.1)
+	global.option_dzvertical = ini_read_real("options", "dzvertical", 0.1)
+	global.option_dzbutton = ini_read_real("options", "dzbutton", 0.15)
+	global.option_dzsuperjump = ini_read_real("options", "dzsuperjump", 0.85)
+	global.option_dzcrouchwalk = ini_read_real("options", "dzcrouchwalk", 0.65)
 	ini_close()
 	
+	global.pad_device = 0
+	audio_group_set_gain(ag_music, global.option_music_volume)
+	audio_group_set_gain(ag_sfx, global.option_sfx_volume)
+	gamepad_set_axis_deadzone(global.pad_device, global.option_dzgeneral)
+	gamepad_set_button_threshold(global.pad_device, global.option_dzbutton)
 	pal_swap_init_system(shd_pal_swapper, shd_pal_swapper, shd_pal_swapper) //cool
 	global.ds_dead_enemies = ds_list_create()
 	global.ds_escapesaveroom = ds_list_create()
@@ -205,53 +225,6 @@ function set_globals()
 	global.showcollisions = IS_DEBUG
 	global.savefile = "1"
 	global.savestring = $"saves/saveData{global.savefile}.ini"
-	global.keybinds_filename = "keybinds.ccsav" //complete cook save :)
-	
-	global.keybinds = { //create keybind struct
-		left:			vk_left,
-		right:			vk_right,
-		up:				vk_up,
-		down:			vk_down,
-		dash:			vk_shift,
-		jump:			"Z",
-		grab:			"X",
-		taunt:			"C",
-		superjump:		vk_nokey,
-		groundpound:	vk_nokey,
-		ui_left:		vk_left,
-		ui_right:		vk_right,
-		ui_up:			vk_up,
-		ui_down:		vk_down,
-		ui_accept:		[vk_enter, vk_space, "Z"],
-		ui_deny:		[vk_escape, vk_backspace, "X"]
-	}
-	
-	if !file_exists(global.keybinds_filename)
-	{
-		var keybindBuf = write_struct_to_buffer(global.keybinds) //store the struct as a buffer
-		
-		buffer_save(keybindBuf, global.keybinds_filename) //save the buffer externally
-		
-		buffer_delete(keybindBuf) //prevent memory leak
-	}
-	else
-	{
-		try
-		{
-			var loadedBuf = buffer_load(global.keybinds_filename) //have the saved external buffer loaded
-			
-			global.keybinds = read_struct_from_buffer(loadedBuf) //parse the saved buffer as a struct, set the global keybinds to whats saved
-		
-			buffer_delete(loadedBuf) //prevent memory leak
-		}
-		catch(_exception)
-		{
-			show_message("ERROR!\n\nKeybind data is corrupted, input set to defaults.")
-		    show_debug_message(_exception.longMessage);
-		    show_debug_message(_exception.script);
-		    show_debug_message(_exception.stacktrace);
-		}
-	}
 }
 
 function bbox_in_camera()
@@ -321,10 +294,15 @@ function reset_level()
 	global.combo.count = 0
 	global.combo.timer = 0
 	global.score = 0
+	global.boss_room = false
 	ds_list_clear(global.ds_dead_enemies)
 	ds_list_clear(global.ds_escapesaveroom)
 	ds_list_clear(global.ds_saveroom)
 	quick_ini_write_real(global.savestring, "General", "file_timer", obj_timer.file_timer)
+	with obj_comboend
+		comboscore = 0
+	instance_destroy(obj_pizzatime)
+	instance_destroy(obj_toppincollected)
 	obj_followerhandler.followers = []
 	obj_levelcontroller.killed_enemy = false
 	obj_timer.level_timer = 0
@@ -336,8 +314,10 @@ function reset_level()
 		hasgerome = false
 		supertauntcount = 0
 		supertauntshow = false
+		secret_exit = false
 		secret_cutscene = false
 		visual_size = 1
+		movespeed = 0
 	}
 	global.combo.wasted = false
 	global.doorshut = false
@@ -378,6 +358,15 @@ function quick_ini_write_real(inistr, section, key, value)
 	ini_close()
 }
 
+function quick_ini_read_real(inistr, section, key, defaul)
+{
+	var r
+	ini_open(inistr)
+	r = ini_read_real(section, key, defaul)
+	ini_close()
+	return r;
+}
+
 function gpu_set_blendmode_normal_fixed()
 {
 	gpu_set_blendmode_ext_sepalpha(bm_src_alpha, bm_inv_src_alpha, bm_src_alpha, bm_dest_alpha)
@@ -390,6 +379,27 @@ function do_tip(_string, _alarm = 220)
 	{
 		str = _string
 		show = true
+		image_alpha = 0
 		alarm[0] = _alarm
 	}
+}
+
+function draw_pause_icon(_ix, _x, _y, _alpha)
+{
+	var _offsets = [
+		[-20, -12],
+		[5, -15],
+		[-10, 0],
+		[-10, 0],
+		[0, 0],
+		[0, 0],
+		[0, 0],
+		[8, 8],
+		[0, -12],
+	]
+	
+	_x += irandom_range(-1, 1)
+	_y += irandom_range(-1, 1)
+	
+	draw_sprite_ext(spr_pause_icons, _ix, _x + _offsets[_ix][0], _y + _offsets[_ix][1], 1, 1, 0, c_white, _alpha)
 }

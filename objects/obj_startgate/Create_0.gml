@@ -1,6 +1,3 @@
-// initialize input variables.
-key_up = new Input(global.keybinds.up);
-
 bg_surf = -1
 image_speed = 0
 depth = 20

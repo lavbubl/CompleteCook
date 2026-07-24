@@ -15,7 +15,7 @@ var num = string_length(str)
 var w = string_width(str)
 var xx = x - (w / 2)
 
-var ty = ystart + 7
+var ty = ystart
 
 for (var i = 0; i < num; i++)
 {

@@ -1,4 +1,4 @@
-visible = global.option_timer && global.option_showhud
+visible = global.option_timer && global.option_showhud && !instance_exists(obj_titlecard)
 
 var s = 0.016666666666666666;
 

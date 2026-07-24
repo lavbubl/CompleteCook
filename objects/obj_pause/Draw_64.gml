@@ -29,7 +29,7 @@ if pause_alpha > 0
 		
 		draw_set_font(global.bignumber_font)
 		draw_set_align(fa_right, fa_middle)
-		draw_text(screen_w - 192, screen_h - 132, $"{global.level_data.secret_count}/3");
+		draw_text(screen_w - 187, screen_h - 128, $"{global.level_data.secret_count}/3");
 	}
 	
 	draw_set_font(global.generic_font)
@@ -47,11 +47,11 @@ if pause_alpha > 0
 		var selected = optionselected == i
 		var option = options[i]
 		var str = $"{option.o_name}"
-		var yy = sh + ((s + pad) * i) - pad / 2
+		var yy = sh + ((s + pad) * i) - pad / 2 - 4
 		option.iconalpha = approach(option.iconalpha, selected ? 1 : 0, 0.2)
 		draw_set_color(selected ? c_white : c_grey)
 		draw_text(sw, yy, str)//placeholder spritre
-		draw_sprite_ext(spr_pause_icons, option.icon_index, sw + (string_width(str) / 2) + 50 + irandom_range(-1, 1), yy + irandom_range(-1, 1), 1, 1, 0, c_white, min(pause_alpha, option.iconalpha))
+		draw_pause_icon(option.icon_index, sw + (string_width(str) / 2) + 50, yy + 12, min(pause_alpha, option.iconalpha))
 		//THIS IS SO FUCKING LONG I HATE EVRRYTHINGFBVSTBYIGYBYSBISUNBYBIO
 	}
 	

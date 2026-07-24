@@ -11,23 +11,22 @@ if inputbuffer > 0
 }
 
 // update input
-ui_input.left.update(global.keybinds.ui_left);
-ui_input.right.update(global.keybinds.ui_right);
-ui_input.up.update(global.keybinds.ui_up);
-ui_input.down.update(global.keybinds.ui_down);
-ui_input.accept.update(global.keybinds.ui_accept);
-ui_input.deny.update(global.keybinds.ui_deny);
 
-var _back_arr = [-1, 0, 0, 0, 0, 2] //array of indexes to get based on list index
+var _back_arr = [-1, 0, 0, 0, 0, 2, 4, 4, 7] //array of indexes to get based on list index
 _back_arr[64] = 0
 back_ix = _back_arr[list_ix] //get matching back index
 
-if ui_input.deny.pressed
+if input_check_pressed(INPUTS.ui_back)
 {
 	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 	if back_ix <= -1
 	{
 		instance_destroy()
+		if instance_exists(obj_menuhandler)
+		{
+			with obj_menuhandler
+				audio_sound_gain(obj_menuhandler.static_snd, tvs[cur_selected - 1].state == 1 ? 1 : 0)
+		}
 		exit;
 	}
 	else
@@ -40,6 +39,7 @@ if ui_input.deny.pressed
 			bg_ix = 0
 			bg_alpha = 1
 			bg_spd = 0.1
+			optionselected = settingselected
 		}
 	}
 }
@@ -48,12 +48,15 @@ cur_list = list_arr[list_ix]
 
 moving = false
 
-var moveh = -ui_input.left.pressed + ui_input.right.pressed
-var movev = -ui_input.up.pressed + ui_input.down.pressed
+var moveh = -input_direction_check_pressed(INPUTS.ui_left) + input_direction_check_pressed(INPUTS.ui_right)
+var movev = -input_direction_check_pressed(INPUTS.ui_up) + input_direction_check_pressed(INPUTS.ui_down)
 
 var _prevos = optionselected
 
 optionselected = clamp(optionselected + movev, 0, array_length(cur_list) - 1)
+
+if list_ix = 0 
+	settingselected = clamp(settingselected + movev, 0, array_length(cur_list) - 1)
 
 if _prevos != optionselected
 	fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_step")
@@ -63,7 +66,7 @@ var cur_option = cur_list[optionselected]
 switch cur_option.o_type
 {
 	case types.onoff:
-		if ui_input.left.pressed || ui_input.right.pressed || ui_input.accept.pressed
+		if input_direction_check_pressed(INPUTS.ui_left) || input_direction_check_pressed(INPUTS.ui_right) || input_check_pressed(INPUTS.ui_confirm)
 		{
 			cur_option.val = !cur_option.val
 			cur_option.func(cur_option.val)
@@ -71,8 +74,8 @@ switch cur_option.o_type
 		}
 		break;
 	case types.slider:
-		var move = -ui_input.left.check + ui_input.right.check
-		cur_option.val = clamp(cur_option.val + move, 0, 100)
+		var move = -input_direction_check(INPUTS.ui_left) + input_direction_check(INPUTS.ui_right)
+		cur_option.val = clamp(cur_option.val + (0.01 * move), 0, 1)
 		if move != 0
 		{
 			moving = true
@@ -80,7 +83,7 @@ switch cur_option.o_type
 		}
 		break;
 	case types.func:
-		if ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_confirm)
 		{
 			cur_option.func(cur_option.val)
 			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
@@ -88,7 +91,7 @@ switch cur_option.o_type
 		break;
 	case types.multichoice:
 		var prev_val = cur_option.val[0]
-		if ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_confirm)
 		{
 			cur_option.val[0] += 1
 			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
@@ -101,7 +104,7 @@ switch cur_option.o_type
 			cur_option.func(cur_option.val)
 		break;
 	case types.change:
-		if ui_input.accept.pressed
+		if input_check_pressed(INPUTS.ui_confirm)
 		{
 			if list_ix == 0 || list_ix == 64 || cur_option.val == 0
 			{
@@ -109,7 +112,6 @@ switch cur_option.o_type
 				bg_ix = 0
 				bg_alpha = 1
 				bg_spd = 0.05
-				
 			}
 			if list_ix == 0
 			{
@@ -122,6 +124,8 @@ switch cur_option.o_type
 			list_ix = cur_option.val
 			optionselected = 0
 			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
+			if list_ix = 0
+				optionselected = settingselected
 		}
 		break;
 }

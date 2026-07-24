@@ -53,13 +53,13 @@ function player_tumble() //ball is in its own state, player_ball()
 		else
 			particle_timer--
 	}
-		
+	
 	if crouchslipbuffer > 0
 		crouchslipbuffer--
 		
-	if (!input.down.check && grounded && vsp >= 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
+	if (!input_direction_check(INPUTS.down) && grounded && vsp >= 0 && state != states.bump && scr_can_uncrouch() && crouchslipbuffer <= 0)
 	{
-		if input.dash.check
+		if input_check(INPUTS.dash)
 		{
 			if movespeed >= 12
 				state = states.mach3
@@ -82,8 +82,8 @@ function player_tumble() //ball is in its own state, player_ball()
 	
 	if sprite_index == spr_player_dive && vsp < 10
 		vsp = 10
-		
-	image_speed = movespeed / 20
+	
+	image_speed = sprite_index == spr_player_crouchslip || sprite_index == spr_player_machroll || sprite_index == spr_player_ball ? abs(movespeed) / 15 : 0.35
 		
 	if sprite_index == spr_player_backslide && anim_ended()
 		reset_anim(spr_player_backslide_loop)

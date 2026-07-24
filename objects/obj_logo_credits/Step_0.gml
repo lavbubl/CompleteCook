@@ -7,3 +7,9 @@ else
 		room_goto(init_objs_room)
 	fade_alpha = min(fade_alpha + _speed, 1)
 }
+
+if keyboard_check(vk_anykey) || gamepad_check_any()
+{
+	fade_alpha = 1
+	nextroom = true
+}

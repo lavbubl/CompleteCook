@@ -28,7 +28,7 @@ function player_grab()
 		crouchslipbuffer = 25
 		state = states.tumble
 		sprite_index = spr_player_crouchslip
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/dive", x, y)
+		fmod_studio_event_instance_oneshot_3d("event:/sfx/player/crouchslip", x, y)
 		particle_create(x, y, particles.genericpoof, xscale, 1, spr_jumpdust)
 	}
 	

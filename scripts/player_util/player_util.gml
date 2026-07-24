@@ -256,7 +256,7 @@ function do_hurt(obj = noone)
 	
 	fmod_studio_event_instance_oneshot_3d("event:/sfx/player/hurt", x, y)
 	if irandom(100) >= 50
-		fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/player/hurt", x, y)
+		fmod_studio_event_instance_start(voice_hurt_snd)
 	
 	particle_create(x, y, particles.bang)
 	create_effect(x, y, spr_parryflash).depth = -100

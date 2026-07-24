@@ -48,5 +48,3 @@ else
 	fmod_system_init(_max_channels, _flags_core)
 	show_debug_message("fmod_system_init: " + string(fmod_last_result()))
 }
-
-alarm[0] = 1

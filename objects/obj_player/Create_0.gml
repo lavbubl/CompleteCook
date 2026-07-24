@@ -117,8 +117,10 @@ loop_sounds = {
 	backslide: new make_loop_sound(states.tumble, "event:/sfx/player/backslide", function() { return obj_player.sprite_index != spr_player_crouchslip && grounded})
 }
 
-var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //string path
+var _mach_event_ref = fmod_studio_system_get_event("event:/sfx/player/mach") //Special mach sound, check the .fspro for more details
 mach_snd = fmod_studio_event_description_create_instance(_mach_event_ref)
+
+#region Player sounds that follow the player and don't loop
 
 var _grab_event_ref = fmod_studio_system_get_event("event:/sfx/player/suplexdash")
 grab_snd = fmod_studio_event_description_create_instance(_grab_event_ref)
@@ -132,7 +134,22 @@ sjumprelease_snd = fmod_studio_event_description_create_instance(_sjumprelease_e
 var _fireass_event_ref = fmod_studio_system_get_event("event:/sfx/player/fireass")
 fireass_snd = fmod_studio_event_description_create_instance(_fireass_event_ref)
 
-followingsnds = [mach_snd, grab_snd, getup_snd, sjumprelease_snd, fireass_snd] //what am i doing
+#region voices
+
+var _idle_event_ref = fmod_studio_system_get_event("event:/sfx/voice/player/idle")
+voice_idle_snd = fmod_studio_event_description_create_instance(_idle_event_ref)
+
+var _collect_event_ref = fmod_studio_system_get_event("event:/sfx/voice/player/collect")
+voice_collect_snd = fmod_studio_event_description_create_instance(_collect_event_ref)
+
+var _hurt_event_ref = fmod_studio_system_get_event("event:/sfx/voice/player/hurt")
+voice_hurt_snd = fmod_studio_event_description_create_instance(_hurt_event_ref)
+
+#endregion
+
+#endregion
+
+followingsnds = [mach_snd, grab_snd, getup_snd, sjumprelease_snd, fireass_snd, voice_idle_snd, voice_collect_snd, voice_hurt_snd] //what am i doing
 
 visual_size = 1
 secret_exit = false

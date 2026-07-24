@@ -11,11 +11,7 @@ if !collected
 	}
 	alarm[0] = 150
 	
-	if obj_music.mu != noone
-		audio_sound_gain(obj_music.mu, 0.5, 250)
-	
-	if obj_music.panic_mu != noone
-		audio_sound_gain(obj_music.panic_mu, 0.5, 250)
+	fmod_studio_system_set_parameter_by_name("sideline", 1)
 	
 	collected = true
 }

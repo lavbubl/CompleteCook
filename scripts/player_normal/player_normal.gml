@@ -99,7 +99,7 @@ function player_normal()
 					reset_anim(idlegestures[irandom(5)])
 					idletimer = -4
 					if irandom(100) >= 50
-						fmod_studio_event_instance_oneshot_3d("event:/sfx/voice/player/idle", x, y)
+						fmod_studio_event_instance_start(voice_idle_snd)
 				}
 				
 				if (anim_ended() && idletimer == -4)

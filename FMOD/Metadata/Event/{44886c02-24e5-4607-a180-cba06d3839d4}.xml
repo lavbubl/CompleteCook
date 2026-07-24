@@ -120,9 +120,18 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{44cfba5b-e147-4bd1-9b49-35ba981873d1}">
-		<property name="pitch">
-			<value>2.20000005</value>
+		<property name="startOffset">
+			<value>6</value>
 		</property>
+		<property name="volume">
+			<value>-9</value>
+		</property>
+		<property name="pitch">
+			<value>2.60000014</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{c4aa18c1-50c9-4966-b558-26d3bef9d995}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{1f391422-f116-4565-82d8-93ead37d3bf1}</destination>
 		</relationship>
@@ -151,16 +160,42 @@
 			<value>-80</value>
 		</property>
 		<property name="attackTime">
-			<value>380</value>
+			<value>680</value>
 		</property>
 		<property name="attackShape">
 			<value>-1.00000048</value>
 		</property>
 		<property name="holdTime">
-			<value>0</value>
+			<value>480</value>
 		</property>
 		<property name="decayTime">
+			<value>1400</value>
+		</property>
+		<property name="decayShape">
+			<value>0.728825212</value>
+		</property>
+		<property name="sustainValue">
+			<value>-80</value>
+		</property>
+		<property name="releaseTime">
 			<value>0</value>
+		</property>
+		<property name="releaseShape">
+			<value>0.4212358</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
+	<object class="ADSRModulator" id="{c4aa18c1-50c9-4966-b558-26d3bef9d995}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>40</value>
 		</property>
 		<property name="releaseTime">
 			<value>0</value>

@@ -30,6 +30,17 @@ prevstate = state
 if warping
 	exit;
 
+var _clip_states = [states.grab,
+					states.mach2,
+					states.mach3,
+					states.mach2]
+
+if array_contains(_clip_states, state) && grounded && place_meeting(x + hsp + xscale, y, obj_solid) && !place_meeting(x + hsp + xscale, y - 32, obj_solid) && !scr_slope(x, y + 1)
+{
+	y -= 32
+	obj_camera.cam_y_offset = 32
+}
+
 if hitstun < 0
     player_states[state](); // execute state code
 else if hitstun >= 0
@@ -84,7 +95,7 @@ grav = 0.5
 if state == states.ladder
 	grav = 0
 
-if (y > room_height + 300 || y < -800) && state != states.actor && state != states.backtohub
+if (y > room_height + 300 || y < -800) && !place_meeting(x, y, obj_vhallway) && state != states.actor && state != states.backtohub
 {
 	shake_camera()
 	instance_create(0, 0, obj_technicaldifficulty)
@@ -108,6 +119,15 @@ if prev_transfo != intransfo //to cancel this sound, just make prev_transfo the 
 	scr_sound_3d(intransfo ? sfx_transfo : sfx_outtransfo, x, y)
 	prev_transfo = intransfo
 }
+
+var _rail_states = [states.normal,
+					states.jump,
+					states.mach3,
+					states.mach2,
+					states.tumble]
+
+if array_contains(_rail_states, state)
+	hsp += (railmovespeed * raildir)
 
 var prevhsp = hsp
 var prevvsp = vsp

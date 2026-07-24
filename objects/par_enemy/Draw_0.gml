@@ -19,17 +19,16 @@ if follow_player
 		{
 			_x += pd_frame_offset[floor(obj_player.image_index)] * 8 * obj_player.xscale
 			if (obj_player.image_index > 5)
-				depth = -8
+				depth = obj_player.depth - 1
 		}
 	}
 	else if obj_player.sprite_index == spr_player_swingding
 	{
 		_x += pd_frame_offset[floor(obj_player.image_index)] * 24 * obj_player.xscale
 		if (obj_player.image_index < 4)
-			depth = -8
+			depth = obj_player.depth - 1
 	}
 }
-
 
 draw_sprite_ext(sprite_index, image_index, _x, _y, xscale - (warp * xscale), yscale + warp, image_angle, image_blend, image_alpha)
 

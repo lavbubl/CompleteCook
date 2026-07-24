@@ -1,12 +1,6 @@
 /// @description Input initialization
 global.input_type = INPUT_TYPE.KEYBOARD
 
-if gamepad_is_connected(0)
-{
-	global.input_type = INPUT_TYPE.CONTROLLER
-	show_debug_message("controller found")
-}
-
 global.bindslist = { //keyboard binds					gamepad binds
 	left:			[vk_left,							gp_padl], //replace the controller section with global.gamepadbinds.#
 	right:			[vk_right,							gp_padr],
@@ -54,8 +48,6 @@ else
 		var sorted_json = struct_get_names(_parsed_json)
 		array_sort(sorted_binds, true)
 		array_sort(sorted_json, true)
-		show_debug_message(sorted_binds)
-		show_debug_message(sorted_json)
 		if !array_equals(sorted_binds, sorted_json) //alphabetically sorted bindslist to check matching
 		{
 			_file = file_text_open_write(global.keybinds_filename)
@@ -76,8 +68,6 @@ else
 }
 
 file_text_close(_file)
-
-global.axis_arr = [gp_axislh, gp_axislv, gp_axisrh, gp_axisrv] //the joysticks
 
 global.button_arr = [gp_face1, gp_face2, gp_face3, gp_face4, //every button constant
 					 gp_shoulderl, gp_shoulderlb, gp_shoulderr, gp_shoulderrb,

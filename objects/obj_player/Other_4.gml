@@ -86,5 +86,8 @@ else
 other.xstart = other.x
 other.ystart = other.y
 	
-if state = states.backtohub
+if state == states.backtohub
 	y -= screen_h * 2
+	
+if state == states.hold
+	state = states.normal

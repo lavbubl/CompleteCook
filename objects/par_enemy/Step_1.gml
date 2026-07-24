@@ -6,6 +6,7 @@ if (ds_list_find_index(global.ds_dead_enemies, id) != -1 || ds_list_find_index(g
 }
 
 var _margin = 400
+
 if (x > room_width + _margin ||
 	x < -_margin ||
 	y > room_height + _margin ||

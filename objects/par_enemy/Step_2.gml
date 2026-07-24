@@ -102,6 +102,10 @@ if follow_player
 				other.x = x
 				other.y = y
 				other.yscale = -1
+				
+				if y > room_height
+					instance_destroy(other)
+				
 				break;
 			case states.punchenemy:
 				var _dist_x = 60

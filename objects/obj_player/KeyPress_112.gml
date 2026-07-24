@@ -1,2 +1,5 @@
-x = xstart
-y = ystart
+if IS_DEBUG
+{
+	x = xstart
+	y = ystart
+}

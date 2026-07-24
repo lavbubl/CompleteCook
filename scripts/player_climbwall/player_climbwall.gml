@@ -70,12 +70,13 @@ function player_climbwall()
 	if (input_buffers.jump > 0)
 	{
 		input_buffers.jump = 0
-		reset_anim(spr_player_walljumpstart)
 		movespeed = 10
+		railmovespeed = 0
 		state = states.mach2
 		vsp = -11
 		xscale *= -1
 		jumpstop = false
+		reset_anim(spr_player_walljumpstart)
 		scr_sound_3d(sfx_jump, x, y)
 	}
 	

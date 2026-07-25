@@ -3,7 +3,7 @@ var _pad_x = 100
 draw_set_color(c_white)
 draw_set_font(global.generic_font)
 
-var _sw = screen_w / 2
+var _sw = SCREEN_WIDTH / 2
 
 draw_set_align(fa_center, fa_top)
 var _timer_str = "CONFIRM SETTINGS\nREVERTING IN " + string(ceil(timer / 60)) + "..."

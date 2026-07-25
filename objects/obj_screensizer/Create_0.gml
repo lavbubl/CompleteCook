@@ -6,7 +6,7 @@ enum windowmode
 }
 
 gui_surf = noone
-surface_resize(application_surface, screen_w, screen_h)
+surface_resize(application_surface, SCREEN_WIDTH, SCREEN_HEIGHT)
 
 lb_sprs = [bg_letterbox, bg_letterbox2, bg_letterbox3]
 

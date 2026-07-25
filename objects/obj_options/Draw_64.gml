@@ -26,8 +26,8 @@ var s = string_height("M") + (list_ix == 0 ? 16 : 10)
 
 var sw = 150
 if _centered
-	sw = screen_w / 2
-var sh = (screen_h / 2) - ((s * array_length(cur_list)) / 2) + 16
+	sw = SCREEN_WIDTH / 2
+var sh = (SCREEN_HEIGHT / 2) - ((s * array_length(cur_list)) / 2) + 16
 
 var yy = sh
 
@@ -53,7 +53,7 @@ for (var i = 0; i < array_length(cur_list); i++)
 			break;
 		case types.slider:
 			var _w = 200
-			var _x2 = screen_w - 150 - _w
+			var _x2 = SCREEN_WIDTH - 150 - _w
 			var _x3 = lerp(_x2, _x2 + 200, option.val)
 			draw_sprite(spr_slider, 0, _x2, yy);
 			draw_sprite(list_ix == 1 ? spr_slidericon : spr_slidericon2, moving && optionselected == i, _x3, yy);
@@ -73,7 +73,7 @@ for (var i = 0; i < array_length(cur_list); i++)
 	if _centered
 		draw_text(sw, yy, option.o_name + _val_str)
 	else
-		draw_text(screen_w - sw, yy, _val_str)
+		draw_text(SCREEN_WIDTH - sw, yy, _val_str)
 	
 	yy += s
 }

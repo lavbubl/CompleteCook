@@ -40,5 +40,5 @@ if angel_timer > 0
 else
 {
 	angel_timer = irandom_range(60, 480)
-	instance_create(irandom_range(0, screen_w), screen_h - 100, obj_pause_angel)
+	instance_create(irandom_range(0, SCREEN_WIDTH), SCREEN_HEIGHT - 100, obj_pause_angel)
 }

@@ -31,7 +31,7 @@ repeat player.maxhp
 	curhp++
 }
 
-xx = screen_w - padding - (dist * (opponent.rows - 1))
+xx = SCREEN_WIDTH - padding - (dist * (opponent.rows - 1))
 yy = padding
 xo = xx
 
@@ -63,7 +63,7 @@ if fade_alpha > 0
 {
 	draw_set_color(c_black)
 	draw_set_alpha(fade_alpha)
-	draw_rectangle(0, 0, screen_w, screen_h, false)
+	draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false)
 	draw_set_color(c_white)
 	draw_set_alpha(1)
 	

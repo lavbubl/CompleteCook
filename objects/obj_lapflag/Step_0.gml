@@ -6,4 +6,4 @@ if (down && y >= ty && alarm[0] == -1)
 else if (!down && y <= ty)
 	instance_destroy()
 
-x = screen_w / 2;
+x = SCREEN_WIDTH / 2;

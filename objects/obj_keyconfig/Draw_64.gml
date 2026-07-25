@@ -6,7 +6,7 @@ draw_set_font(global.generic_font)
 
 draw_set_color(selected == -1 ? c_white : c_gray)
 draw_set_align(fa_left, fa_top)
-draw_text((screen_w / 2) - 250, h + 8, "BACK")
+draw_text((SCREEN_WIDTH / 2) - 250, h + 8, "BACK")
 draw_set_color(c_white)
 
 var _prev_input_type = global.input_type
@@ -14,7 +14,7 @@ global.input_type = target_drawing_type
 
 for (var i = 0; i < array_length(binds); i++) 
 {
-	var xx = (screen_w / 2) - 60
+	var xx = (SCREEN_WIDTH / 2) - 60
 	var yy = (i + 1) * h - offset
 	var cur_key = binds[i]
 	
@@ -28,7 +28,7 @@ for (var i = 0; i < array_length(binds); i++)
 		draw_text(xx, yy + 8, cur_key.name)
 	
 	var _bind = global.bindslist[$ cur_key.bindname][target_drawing_type == INPUT_TYPE.KEYBOARD ? 0 : 1]
-	var xo = screen_w - 64
+	var xo = SCREEN_WIDTH - 64
 	if is_array(_bind)
 	{
 		for (var j = array_length(_bind) - 1; j >= 0; j--) 
@@ -48,14 +48,14 @@ if binding
 	draw_set_color(c_black)
 	draw_set_alpha(0.5)
 	
-	draw_rectangle(0, 0, screen_w, screen_h, false)
+	draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false)
 	
 	draw_set_font(global.generic_font)
 	draw_set_alpha(1)
 	draw_set_color(c_white)
 	draw_set_align(fa_center, fa_middle)
 	
-	draw_text(screen_w / 2, screen_h / 2, "PRESS A KEY TO BIND")
+	draw_text(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, "PRESS A KEY TO BIND")
 }
 
 global.input_type = _prev_input_type
@@ -63,7 +63,7 @@ global.input_type = _prev_input_type
 draw_set_font(global.creditsfont)
 draw_set_align(fa_left, fa_top)
 xx = 32
-yy = screen_h - 240
+yy = SCREEN_HEIGHT - 240
 
 for (i = 0; i < array_length(config_buttons); i++) {
     var _cur_button = config_buttons[i]

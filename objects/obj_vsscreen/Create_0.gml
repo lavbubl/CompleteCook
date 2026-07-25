@@ -2,14 +2,14 @@ var offset = 400
 
 player = {
 	x: -offset,
-	y: screen_h,
+	y: SCREEN_HEIGHT,
 	sprite_index: spr_bossportrait_peppino,
 	shadow_sprite: spr_bossportrait_peppinoshadow,
 	title_sprite: spr_bosstitle_peppino
 }
 boss = {
-	x: screen_w + offset,
-	y: screen_h,
+	x: SCREEN_WIDTH + offset,
+	y: SCREEN_HEIGHT,
 	sprite_index: spr_bossportrait_pepperman,
 	title_sprite: spr_bosstitle_pepperman
 }

@@ -19,8 +19,8 @@ barfill_x = 0
 bar_surface = noone
 showtime_buffer = 0
 
-xstart = screen_w / 2
-ystart = screen_h - 76
+xstart = SCREEN_WIDTH / 2
+ystart = SCREEN_HEIGHT - 76
 x = xstart
 y = ystart + 212
 

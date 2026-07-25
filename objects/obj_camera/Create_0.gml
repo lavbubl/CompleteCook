@@ -3,6 +3,7 @@ mag_decel = 0.5
 cam_charge = 0
 info_visible = false
 cam_y_offset = 0
+constant_y_offset = 50
 
 campos = {
 	x: 0,

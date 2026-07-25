@@ -29,7 +29,7 @@ opponent = {
 
 state = 0
 
-circ_surf = surface_create(screen_w, screen_h)
+circ_surf = surface_create(SCREEN_WIDTH, SCREEN_HEIGHT)
 circ_goaway = true
 circ_size = 100
 

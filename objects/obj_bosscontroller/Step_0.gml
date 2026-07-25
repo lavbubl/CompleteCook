@@ -3,7 +3,7 @@ visible = hud_get_visible(false)
 if circ_goaway && surface_exists(circ_surf)
 {
 	var spd = 10
-	var target_size = screen_w * 2
+	var target_size = SCREEN_WIDTH * 2
 	if circ_size < target_size
 		circ_size = approach(circ_size, target_size, spd)
 	else

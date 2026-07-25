@@ -27,8 +27,8 @@ switch (state)
 		break;
 	case 1:
 		obj_player.sprite_index = spr_player_idle
-		var tx = screen_w / 2
-		var ty = screen_h / 2
+		var tx = SCREEN_WIDTH / 2
+		var ty = SCREEN_HEIGHT / 2
 		var dir = point_direction(x, y, tx, ty)
 		var lx = lengthdir_x(2, dir)
 		var ly = lengthdir_y(2, dir)
@@ -54,7 +54,7 @@ switch (state)
 			
 			with cur_toppin
 			{
-				if y <= screen_h
+				if y <= SCREEN_HEIGHT
 				{
 					with other
 					{
@@ -62,12 +62,12 @@ switch (state)
 						if toppin_ix == array_length(toppins) - 1
 							alarm[3] = 40
 					}
-					y = screen_h
+					y = SCREEN_HEIGHT
 				}
 				else
 				{
 					if y == other.t_ystart
-						fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/spin", screen_w / 2, screen_h / 2)
+						fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/spin", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 					y -= 20
 					image_yscale = 1.2
 				}

@@ -1,5 +1,5 @@
 shake_camera(2, 3 / room_speed)
-fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", screen_w / 2, screen_h / 2)
+fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/killingblow", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 results[result_ix][2] = true
 result_ix++

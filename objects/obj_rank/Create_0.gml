@@ -17,8 +17,8 @@ rank_data = [
 	{sprite: spr_rankP}
 ]
 
-t_ystart = screen_h + 216
-var x_start = screen_w - 437
+t_ystart = SCREEN_HEIGHT + 216
+var x_start = SCREEN_WIDTH - 437
 var offset = 89
 
 toppins = []

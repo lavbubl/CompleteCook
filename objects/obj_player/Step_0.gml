@@ -185,7 +185,7 @@ if supertauntcount >= 10
 	else if (state == states.normal || state == states.jump || state == states.mach2 || state == states.mach3)
 	{
 		supertauntbuffer = 4;
-		create_effect(x + irandom_range(-25, 25), y + irandom_range(-10, 35), asset_get_index($"spr_supertauntspark{irandom_range(1, 5)}")).depth = -150	
+		create_effect(x + irandom_range(-25, 25), y + irandom_range(-10, 35), asset_get_index($"spr_supertauntspark{irandom_range(1, 5)}")).depth = -100	
 	}
 }
 

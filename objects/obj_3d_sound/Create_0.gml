@@ -1,6 +1,6 @@
 global.sound_3d = {
-	falloff_ref_dist: screen_w / 2,
-	falloff_max_dist: screen_w * 1.5,
+	falloff_ref_dist: SCREEN_WIDTH / 2,
+	falloff_max_dist: SCREEN_WIDTH * 1.5,
 	falloff_factor: 1
 }
 

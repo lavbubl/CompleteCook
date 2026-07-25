@@ -5,9 +5,9 @@ switch state
 {
 	case states.actor:
 		visible = false
-		y = min(camera_get_view_y(view_camera[0]) - 100, ystart - (screen_h / 2))
+		y = min(camera_get_view_y(view_camera[0]) - 100, ystart - (SCREEN_HEIGHT / 2))
 		
-		if (abs(x - obj_player.x) <= screen_w / 2 && global.panic.active)
+		if (abs(x - obj_player.x) <= SCREEN_WIDTH / 2 && global.panic.active)
 		{
 			state = states.jump
 			sprite_index = spr_fall

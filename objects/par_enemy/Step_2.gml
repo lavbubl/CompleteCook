@@ -165,6 +165,7 @@ if string_starts_with(sprite_get_name(obj_player.sprite_index), "spr_player_supe
 	state = states.stun
 	stun_timer = 2
 	addsupertaunt = false
+	add_combo = false
 	sprite_index = sprs.stun
 	alarm[0] = 33 //the frames a typical super taunt takes, 11 / 0.35 rounded + 2 as a failsafe
 }

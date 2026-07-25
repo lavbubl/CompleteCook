@@ -1,5 +1,5 @@
-fmod_3d_attributes.attributes.position.x = camera_get_view_x(view_camera[0]) + (screen_w / 2)
-fmod_3d_attributes.attributes.position.y = camera_get_view_y(view_camera[0]) + (screen_h / 2)
+fmod_3d_attributes.attributes.position.x = camera_get_view_x(view_camera[0]) + (SCREEN_WIDTH / 2)
+fmod_3d_attributes.attributes.position.y = camera_get_view_y(view_camera[0]) + (SCREEN_HEIGHT / 2)
 
 if (USE_FMOD_STUDIO) {
 	/*

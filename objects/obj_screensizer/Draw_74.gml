@@ -1,5 +1,5 @@
 if !surface_exists(gui_surf)
-	gui_surf = surface_create(screen_w, screen_h)
+	gui_surf = surface_create(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 surface_set_target(gui_surf)
 draw_clear_alpha(c_black, 0)

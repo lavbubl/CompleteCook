@@ -7,7 +7,7 @@ if state == 0
 {
 	draw_set_alpha(white_fade_alpha)
 	draw_set_color(c_white)
-	draw_rectangle(c_pos.x, c_pos.y, c_pos.x + screen_w, c_pos.y + screen_h, false)
+	draw_rectangle(c_pos.x, c_pos.y, c_pos.x + SCREEN_WIDTH, c_pos.y + SCREEN_HEIGHT, false)
 	draw_set_alpha(1)
 }
 
@@ -23,7 +23,7 @@ if state >= 2
 {
 	draw_set_alpha(brown_alpha)
 	draw_set_color(make_color_rgb(216, 144, 96))
-	draw_rectangle(0, 0, screen_w, screen_h, false)
+	draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false)
 	draw_set_alpha(1)
 	
 	shader_set(shd_rank_brown)

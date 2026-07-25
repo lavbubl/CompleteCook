@@ -238,7 +238,7 @@ function set_globals()
 function bbox_in_camera()
 {
 	return rectangle_in_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, 
-		obj_camera.campos.x, obj_camera.campos.y, obj_camera.campos.x + screen_w, obj_camera.campos.y + screen_h);
+		obj_camera.campos.x, obj_camera.campos.y, obj_camera.campos.x + SCREEN_WIDTH, obj_camera.campos.y + SCREEN_HEIGHT);
 }
 
 function check_p_rank()

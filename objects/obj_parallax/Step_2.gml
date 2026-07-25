@@ -13,6 +13,17 @@ for (var i = 0; i < array_length(l); i++)
 	var _lay_name = layer_get_name(bg_id)
 	switch (_lay_name)
 	{
+		case "Assets_BG1":
+			layer_x(bg_id, camera_pos.x * 0.05)
+			layer_y(bg_id, camera_pos.y * 0.05)
+			break;
+		case "Assets_BG2":
+			layer_x(bg_id, camera_pos.x * 0.1)
+			layer_y(bg_id, camera_pos.y * 0.1)
+			break;
+		case "Assets_stillBG":
+			layer_x(bg_id, camera_pos.x * 0.1)
+			break;
 		case "Backgrounds_1":
 			layer_x(bg_id, offsets[i].x + (camera_pos.x * 0.25))
 			layer_y(bg_id, offsets[i].y + (camera_pos.y * 0.25))
@@ -50,26 +61,26 @@ for (var i = 0; i < array_length(l); i++)
             break;
         case "Backgrounds_stillfit":
 			var _spr = layer_background_get_sprite(layer_background_get_id(bg_id))
-			var _dist_x = camera_pos.x / (room_width - screen_w)
-			var _dist_y = camera_pos.y / (room_height - screen_h)
-			layer_x(bg_id, camera_pos.x - (_dist_x * max(sprite_get_width(_spr) - screen_w, 0)))
-			layer_y(bg_id, camera_pos.y - (_dist_y * max(sprite_get_height(_spr) - screen_h, 0)))
+			var _dist_x = camera_pos.x / (room_width - SCREEN_WIDTH)
+			var _dist_y = camera_pos.y / (room_height - SCREEN_HEIGHT)
+			layer_x(bg_id, camera_pos.x - (_dist_x * max(sprite_get_width(_spr) - SCREEN_WIDTH, 0)))
+			layer_y(bg_id, camera_pos.y - (_dist_y * max(sprite_get_height(_spr) - SCREEN_HEIGHT, 0)))
             break;
 		case "Backgrounds_stillH":
 			var _spr = layer_background_get_sprite(layer_background_get_id(bg_id))
-			var _dist = camera_pos.y / (room_height - screen_h)
+			var _dist = camera_pos.y / (room_height - SCREEN_HEIGHT)
 			layer_x(bg_id, camera_pos.x)
-			layer_y(bg_id, camera_pos.y - (_dist * max(sprite_get_height(_spr) - screen_h, 0)))
+			layer_y(bg_id, camera_pos.y - (_dist * max(sprite_get_height(_spr) - SCREEN_HEIGHT, 0)))
 			break;
 		case "Backgrounds_stillH1":
 		case "Backgrounds_stillH2":
 		case "Backgrounds_stillH3":
 		case "Backgrounds_stillH4":
 			var _spr = layer_background_get_sprite(layer_background_get_id(bg_id))
-			var _dist = camera_pos.y / (room_height - screen_h)
+			var _dist = camera_pos.y / (room_height - SCREEN_HEIGHT)
 			var _factor = stillHfactors[$ _lay_name]
 			layer_x(bg_id, camera_pos.x * _factor)
-			layer_y(bg_id, camera_pos.y - (_dist * max(sprite_get_height(_spr) - screen_h, 0) * (1 - _factor)))
+			layer_y(bg_id, camera_pos.y - (_dist * max(sprite_get_height(_spr) - SCREEN_HEIGHT, 0) * (1 - _factor)))
 			break;
 		case "Backgrounds_scroll":
 		case "Backgrounds_scroll1":
@@ -100,5 +111,13 @@ for (var i = 0; i < array_length(l); i++)
             layer_x(bg_id, camera_pos.x * -0.15)
             layer_y(bg_id, room_height - sprite_get_height(layer_background_get_sprite(layer_background_get_id(bg_id))))
             break;
+		case "Assets_FG1":
+			layer_x(bg_id, camera_pos.x * -0.05)
+			layer_y(bg_id, camera_pos.y * -0.05)
+			break;
+		case "Assets_FG2":
+			layer_x(bg_id, camera_pos.x * -0.1)
+			layer_y(bg_id, camera_pos.y * -0.1)
+			break;
 	}
 }

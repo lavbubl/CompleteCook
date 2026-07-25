@@ -7,6 +7,6 @@ image_alpha = approach(image_alpha, show ? 1 : 0, show ? 0.05 : 0.01)
 
 if locked_pos
 {
-	x = screen_w / 2
-	y = screen_h - 50
+	x = SCREEN_WIDTH / 2
+	y = SCREEN_HEIGHT - 50
 }

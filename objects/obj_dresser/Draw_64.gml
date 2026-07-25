@@ -8,8 +8,8 @@ if alph > 0
 	var name = clothes_arr[clothes_selected].name
 	var desc = clothes_arr[clothes_selected].description
 	
-	draw_text(screen_w / 2, screen_h - 50 - string_height("M"), name)
-	draw_text(screen_w / 2, screen_h - 50, desc)
+	draw_text(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50 - string_height("M"), name)
+	draw_text(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50, desc)
 	
 	draw_set_alpha(1)
 }

@@ -12,8 +12,8 @@ switch state
 			state++
 		break;
 	case 2:
-		if round(boss.x) >= screen_w + 10
-			boss.x = lerp(boss.x, screen_w, 0.1)
+		if round(boss.x) >= SCREEN_WIDTH + 10
+			boss.x = lerp(boss.x, SCREEN_WIDTH, 0.1)
 		else
 		{
 			state++

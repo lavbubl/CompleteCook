@@ -114,9 +114,9 @@ cursor = {
 }
 
 screen_assets = [
-	new create_pause_screen_asset(spr_pause_border, -160, screen_h + 188, 0, screen_h), //left border
-	new create_pause_screen_asset(spr_pause_border, screen_w + 160, screen_h + 188, screen_w, screen_h, -1), //right border
-	new create_pause_screen_asset(spr_pause_vines, screen_w / 2, -117, screen_w / 2, 0), //vines
+	new create_pause_screen_asset(spr_pause_border, -160, SCREEN_HEIGHT + 188, 0, SCREEN_HEIGHT), //left border
+	new create_pause_screen_asset(spr_pause_border, SCREEN_WIDTH + 160, SCREEN_HEIGHT + 188, SCREEN_WIDTH, SCREEN_HEIGHT, -1), //right border
+	new create_pause_screen_asset(spr_pause_vines, SCREEN_WIDTH / 2, -117, SCREEN_WIDTH / 2, 0), //vines
 ]
 
 angel_timer = 240

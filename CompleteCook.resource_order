@@ -225,6 +225,7 @@
     {"name":"obj_windowmodeconfirm","order":14,"path":"objects/obj_windowmodeconfirm/obj_windowmodeconfirm.yy",},
     {"name":"par_boss","order":1,"path":"objects/par_boss/par_boss.yy",},
     {"name":"par_collision","order":6,"path":"objects/par_collision/par_collision.yy",},
+    {"name":"asset_test","order":19,"path":"rooms/asset_test/asset_test.yy",},
     {"name":"boss_test","order":12,"path":"rooms/boss_test/boss_test.yy",},
     {"name":"depth_test","order":13,"path":"rooms/depth_test/depth_test.yy",},
     {"name":"dm_2","order":1,"path":"rooms/dm_2/dm_2.yy",},

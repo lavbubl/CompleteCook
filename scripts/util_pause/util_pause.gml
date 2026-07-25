@@ -1,6 +1,6 @@
 function make_pause_image()
 {
-	var surface = surface_create(screen_w, screen_h)
+	var surface = surface_create(SCREEN_WIDTH, SCREEN_HEIGHT)
 	
 	surface_set_target(surface)
 	
@@ -13,7 +13,7 @@ function make_pause_image()
 	
 	surface_reset_target()
 	
-	var s = sprite_create_from_surface(surface, 0, 0, screen_w, screen_h, false, false, 0, 0)
+	var s = sprite_create_from_surface(surface, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false, 0, 0)
 	
 	surface_free(surface)
 	

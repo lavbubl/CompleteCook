@@ -2,7 +2,7 @@ draw_set_color(c_white)
 
 if pause
 {
-	draw_rectangle(0, 0, screen_w, screen_h, false)
+	draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false)
 	draw_sprite(pause_image, 0, 0, 0)
 }
 
@@ -11,25 +11,25 @@ pause_alpha = approach(pause_alpha, pause ? 1 : 0, 0.1)
 if pause_alpha > 0
 {
 	draw_set_alpha(pause_alpha - 0.5)
-	draw_rectangle(0, 0, screen_w, screen_h, false)
+	draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false)
 
 	draw_set_alpha(pause_alpha)
 	
 	if global.in_level
 	{
 		var tx = 180
-		var ty = screen_h - 179
+		var ty = SCREEN_HEIGHT - 179
 		
 		var t_ix = global.level_data.treasure
 		
 		draw_sprite(spr_treasurepodium, 0, tx, ty)
 		draw_sprite(spr_pause_treasuretext, t_ix, tx, ty)
 		
-		draw_sprite(spr_secretportal, 0, screen_w - 132, screen_h - 124);
+		draw_sprite(spr_secretportal, 0, SCREEN_WIDTH - 132, SCREEN_HEIGHT - 124);
 		
 		draw_set_font(global.bignumber_font)
 		draw_set_align(fa_right, fa_middle)
-		draw_text(screen_w - 187, screen_h - 128, $"{global.level_data.secret_count}/3");
+		draw_text(SCREEN_WIDTH - 187, SCREEN_HEIGHT - 128, $"{global.level_data.secret_count}/3");
 	}
 	
 	draw_set_font(global.generic_font)
@@ -39,8 +39,8 @@ if pause_alpha > 0
 	
 	var pad = 16
 	var len = array_length(options)
-	var sw = screen_w / 2
-	var sh = (screen_h / 2) - (((s * len) + (pad * (len - 1))) / 2)	
+	var sw = SCREEN_WIDTH / 2
+	var sh = (SCREEN_HEIGHT / 2) - (((s * len) + (pad * (len - 1))) / 2)	
 
 	for (var i = 0; i < len; i++) 
 	{
@@ -61,7 +61,7 @@ if pause_alpha > 0
 	
 	sw -= (string_width(str) / 2)
 	
-	var cx = pause ? sw - 60 : screen_w / 2
+	var cx = pause ? sw - 60 : SCREEN_WIDTH / 2
 	var cy = pause ? sh + ((s + pad) * optionselected) : 0
 	
 	with cursor

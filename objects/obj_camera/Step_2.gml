@@ -1,16 +1,16 @@
 campos = {
-	x: obj_player.x - (screen_w / 2),
-	y: obj_player.y - (screen_h / 2) - 50,
+	x: obj_player.x - (SCREEN_WIDTH / 2),
+	y: obj_player.y - (SCREEN_HEIGHT / 2) - constant_y_offset,
 }
 
 if obj_player.state == states.backtohub
-	campos.y = obj_player.ystart - (screen_h / 2) - 50
+	campos.y = obj_player.ystart - (SCREEN_HEIGHT / 2) - 50
 
 campos.x += cam_charge
 campos.y += cam_y_offset
 
-campos.x = clamp(campos.x, 0, room_width - screen_w)
-campos.y = clamp(campos.y, 0, room_height - screen_h)
+campos.x = clamp(campos.x, 0, room_width - SCREEN_WIDTH)
+campos.y = clamp(campos.y, 0, room_height - SCREEN_HEIGHT)
 
 if global.panic.active && !global.secret
 	mag = 1

@@ -1,3 +1,5 @@
+depth = -50
+
 for (var i = 0; i < array_length(postdraw_list); i++) 
 {
 	var p_id = postdraw_list[i]

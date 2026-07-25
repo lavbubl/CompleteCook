@@ -1,7 +1,7 @@
 visible = hud_get_visible()
 
-xstart = screen_w / 2
-ystart = screen_h - 76
+xstart = SCREEN_WIDTH / 2
+ystart = SCREEN_HEIGHT - 76
 
 if (global.panic.active && !global.secret)
 {

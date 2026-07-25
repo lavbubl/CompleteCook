@@ -6,8 +6,8 @@ if surface_exists(bg_surf)
 	
 	draw_clear(c_black)
 	
-	var xx = ((obj_camera.campos.x + (screen_w / 2)) - x) * scroll_spd
-	var yy = ((obj_camera.campos.y + (screen_h / 2)) - y + 170) * scroll_spd
+	var xx = ((obj_camera.campos.x + (SCREEN_WIDTH / 2)) - x) * scroll_spd
+	var yy = ((obj_camera.campos.y + (SCREEN_HEIGHT / 2)) - y + 170) * scroll_spd
 	
 	draw_sprite_tiled(door_bg, 0, xx, yy)
 	

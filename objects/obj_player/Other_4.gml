@@ -87,4 +87,4 @@ other.xstart = other.x
 other.ystart = other.y
 	
 if state = states.backtohub
-	y -= screen_h * 2
+	y -= SCREEN_HEIGHT * 2

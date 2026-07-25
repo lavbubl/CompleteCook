@@ -6,7 +6,7 @@ enum tv_states {
 }
 
 image_speed = 0.35
-x = screen_w - 115
+x = SCREEN_WIDTH - 115
 y = 80
 depth = -200
 xstart = x

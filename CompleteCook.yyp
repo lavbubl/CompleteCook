@@ -276,6 +276,7 @@
     {"id":{"name":"par_boss","path":"objects/par_boss/par_boss.yy",},},
     {"id":{"name":"par_collision","path":"objects/par_collision/par_collision.yy",},},
     {"id":{"name":"par_enemy","path":"objects/par_enemy/par_enemy.yy",},},
+    {"id":{"name":"asset_test","path":"rooms/asset_test/asset_test.yy",},},
     {"id":{"name":"boss_test","path":"rooms/boss_test/boss_test.yy",},},
     {"id":{"name":"depth_test","path":"rooms/depth_test/depth_test.yy",},},
     {"id":{"name":"entrance_1","path":"rooms/entrance_1/entrance_1.yy",},},
@@ -1180,6 +1181,7 @@
     {"roomId":{"name":"entrance_secret3","path":"rooms/entrance_secret3/entrance_secret3.yy",},},
     {"roomId":{"name":"entrance_secret1","path":"rooms/entrance_secret1/entrance_secret1.yy",},},
     {"roomId":{"name":"tile_test","path":"rooms/tile_test/tile_test.yy",},},
+    {"roomId":{"name":"asset_test","path":"rooms/asset_test/asset_test.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

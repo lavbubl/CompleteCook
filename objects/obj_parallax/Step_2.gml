@@ -13,6 +13,17 @@ for (var i = 0; i < array_length(l); i++)
 	var _lay_name = layer_get_name(bg_id)
 	switch (_lay_name)
 	{
+		case "Assets_BG1":
+			layer_x(bg_id, camera_pos.x * 0.05)
+			layer_y(bg_id, camera_pos.y * 0.05)
+			break;
+		case "Assets_BG2":
+			layer_x(bg_id, camera_pos.x * 0.1)
+			layer_y(bg_id, camera_pos.y * 0.1)
+			break;
+		case "Assets_stillBG":
+			layer_x(bg_id, camera_pos.x * 0.1)
+			break;
 		case "Backgrounds_1":
 			layer_x(bg_id, offsets[i].x + (camera_pos.x * 0.25))
 			layer_y(bg_id, offsets[i].y + (camera_pos.y * 0.25))
@@ -100,5 +111,13 @@ for (var i = 0; i < array_length(l); i++)
             layer_x(bg_id, camera_pos.x * -0.15)
             layer_y(bg_id, room_height - sprite_get_height(layer_background_get_sprite(layer_background_get_id(bg_id))))
             break;
+		case "Assets_FG1":
+			layer_x(bg_id, camera_pos.x * -0.05)
+			layer_y(bg_id, camera_pos.y * -0.05)
+			break;
+		case "Assets_FG2":
+			layer_x(bg_id, camera_pos.x * -0.1)
+			layer_y(bg_id, camera_pos.y * -0.1)
+			break;
 	}
 }

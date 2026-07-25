@@ -136,9 +136,6 @@
 		<property name="pitch">
 			<value>1.43999994</value>
 		</property>
-		<relationship name="modulators">
-			<destination>{9757d44e-1d2e-4db4-96a4-9b2a0c95a96d}</destination>
-		</relationship>
 	</object>
 	<object class="AutomationPoint" id="{6a94705a-a45a-40b7-82c4-c100a0788338}">
 		<property name="position">
@@ -157,11 +154,6 @@
 		</property>
 		<property name="value">
 			<value>1</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{9757d44e-1d2e-4db4-96a4-9b2a0c95a96d}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>pitch</value>
 		</property>
 	</object>
 </objects>

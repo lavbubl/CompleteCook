@@ -145,7 +145,7 @@
 			<value>-80</value>
 		</property>
 		<property name="attackTime">
-			<value>680</value>
+			<value>560</value>
 		</property>
 		<property name="attackShape">
 			<value>-1.00000048</value>

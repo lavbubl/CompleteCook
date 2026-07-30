@@ -1,0 +1,34 @@
+{
+  "frames": 2,
+  "removeback": false,
+  "smooth": false,
+  "offset": {
+    "x": 81,
+    "y": 37
+  },
+  "bbox": {
+    "mode": "auto",
+    "left": 255,
+    "top": 255,
+    "right": 255,
+    "bottom": 255
+  },
+  "speed": {
+    "type": "per_game_frame",
+    "fps": 1
+  },
+  "nineslice": {
+    "enabled": false,
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "tile_mode": {
+      "left": "stretch",
+      "top": "stretch",
+      "right": "stretch",
+      "bottom": "stretch",
+      "center": "stretch"
+    }
+  }
+}

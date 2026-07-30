@@ -5,6 +5,7 @@ image_speed = 0
 alarm[1] = 3
 depth = -100
 visible = hud_get_visible()
+sprite_index = langspr_combotitles
 x = 832
 y = 290
 very = false

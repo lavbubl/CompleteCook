@@ -7,7 +7,8 @@ if do_particles
 	if add_combo
 	{
 		global.combo.count++
-		obj_player.supertauntcount++
+		if addsupertaunt
+			obj_player.supertauntcount++
 		obj_levelcontroller.killed_enemy = true
 	}
 	

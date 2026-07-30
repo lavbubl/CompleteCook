@@ -4,7 +4,7 @@ pal_swap_set(pal_combo, global.combo.wasted ? 1 : 2, false)
 draw_sprite(spr_tv_c_ghost, combo.ghost.image_index, x + combo.ghost.x, y + combo.ghost.y + 117)
 pal_swap_reset()
 
-draw_sprite(spr_tv_c_bubble, 0, x + combo.x, y + combo.y + 117)
+draw_sprite(langspr_tv_c_bubble, 0, x + combo.x, y + combo.y + 117)
 
 var _tx = x + combo.x - 64
 var _ty = y + combo.y + 108

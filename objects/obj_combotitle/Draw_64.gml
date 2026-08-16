@@ -3,9 +3,9 @@ if (title_index >= 2)
     title_index = frac(title_index)
 
 image_index = title * 2 + title_index
-if image_index > sprite_get_number(langspr_combotitles)
+if image_index > sprite_get_number(sprite_index)
 {
-    image_index -= sprite_get_number(langspr_combotitles)
+    image_index -= sprite_get_number(sprite_index)
     very = true
 }
 for (var i = 0; i < array_length(afterimages); i++)

@@ -152,11 +152,17 @@ instance_place_list(x, y, par_enemy, en_list, false)
 
 for (var i = 0; i < ds_list_size(en_list); i++) {
     var _id = ds_list_find_value(en_list, i)
+	var _prev_mask = mask_index
+	var _id_prev_mask = _id.mask_index
+	mask_index = sprite_index
+	_id.mask_index = _id.sprite_index
 	if place_meeting(x, y, _id) && _id.state == states.hit && enemy_can_die()
 	{
 		instance_destroy()
 		fmod_studio_event_instance_oneshot_3d("event:/sfx/misc/punch", x, y)
 	}
+	mask_index = _prev_mask
+	_id.mask_index = _id_prev_mask
 }
 
 ds_list_destroy(en_list)

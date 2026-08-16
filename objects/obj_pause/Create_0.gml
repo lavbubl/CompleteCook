@@ -42,12 +42,12 @@ optiontypes = { //enum thats actually a struct
 }
 
 baseoptions = [
-	new create_pause_option("RESUME",			optiontypes.both,	0), //blank func field, when this is selected its actually resumed in the [EVENT]
-	new create_pause_option("OPTIONS",			optiontypes.both,	1, function() {
+	new create_pause_option("pause_resume",			optiontypes.both,	0), //blank func field, when this is selected its actually resumed in the [EVENT]
+	new create_pause_option("pause_options",			optiontypes.both,	1, function() {
 		instance_create(0, 0, obj_options)
 		fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
 	}),
-	new create_pause_option("MAIN MENU",		optiontypes.hub,	3, function() {
+	new create_pause_option("pause_main_menu",		optiontypes.hub,	3, function() {
 		do_unpause()
 		room_goto(mainmenu)
 		with obj_player
@@ -61,7 +61,7 @@ baseoptions = [
 		}
 		reset_level()
 	}),
-	new create_pause_option("RESTART LEVEL",	optiontypes.level,	2, function() {
+	new create_pause_option("pause_restart",	optiontypes.level,	2, function() {
 		do_unpause()
 		if global.start_room != noone
 		{
@@ -81,8 +81,8 @@ baseoptions = [
 			show_debug_message("start room was unset")
 		reset_level()
 	}),
-	new create_pause_option("CHEF TASKS",		optiontypes.level,	8),
-	new create_pause_option("EXIT LEVEL",		optiontypes.level,	3, function() {
+	new create_pause_option("pause_chef_tasks",		optiontypes.level,	8),
+	new create_pause_option("pause_exit",		optiontypes.level,	3, function() {
 		do_unpause()
 		with obj_player
 		{

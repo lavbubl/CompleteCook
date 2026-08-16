@@ -17,17 +17,19 @@ if instance_exists(obj_keyconfig) || instance_exists(obj_windowmodeconfirm)
 
 var _centered = list_ix == 0 || list_ix == 64
 
-draw_set_align(_centered ? fa_center : fa_left, fa_top)
+draw_set_align(fa_center, fa_top)
 draw_set_font(global.generic_font)
 
 cur_list = list_arr[list_ix]
 
-var s = string_height("M") + (list_ix == 0 ? 16 : 10)
+var s = string_height("M") + (list_ix == 0 ? 8 : 0)
 
 var sw = 150
+
 if _centered
 	sw = SCREEN_WIDTH / 2
-var sh = (SCREEN_HEIGHT / 2) - ((s * array_length(cur_list)) / 2) + 16
+
+var sh = (SCREEN_HEIGHT / 2) - ((s * array_length(cur_list)) / 2) + 8
 
 var yy = sh
 
@@ -39,7 +41,7 @@ for (var i = 0; i < array_length(cur_list); i++)
 
 	if !_centered
 	{
-		draw_set_align(_centered ? fa_center : fa_left, fa_top)
+		draw_set_halign(fa_left)
 		draw_text(sw, yy, option.o_name)
 		draw_set_halign(fa_right)
 	}
@@ -67,11 +69,11 @@ for (var i = 0; i < array_length(cur_list); i++)
 	{
 		option.iconalpha = approach(option.iconalpha, optionselected == i, 0.2)
 		if option.iconalpha > 0
-			draw_pause_icon(option.icon_ix, sw + (string_width(option.o_name) / 2) + 50, yy + (string_height(option.o_name) / 2) - 4, option.iconalpha)
+			draw_pause_icon(option.icon_ix, sw + (string_width(option.o_name) / 2) + 50, yy + (string_height(option.o_name) / 2), option.iconalpha)
 	}
 	
 	if _centered
-		draw_text(sw, yy, option.o_name + _val_str)
+		draw_text(sw, yy + 8, option.o_name + _val_str)
 	else
 		draw_text(SCREEN_WIDTH - sw, yy, _val_str)
 	

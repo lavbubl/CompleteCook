@@ -4,7 +4,7 @@ if menu_dark
 {
 	if (keyboard_check_pressed(vk_anykey) || gamepad_check_pressed_any(global.pad_device)) && dark_state == 0
 	{
-		fmod_studio_event_instance_oneshot("event:/sfx/misc/menulight")
+		fmod_studio_event_instance_oneshot("event:/sfx/misc/menu/lighton")
 		alarm[1] = 80
 		alarm[2] = 50
 		fmod_studio_event_instance_set_parameter_by_name(mu, "lightson", true)

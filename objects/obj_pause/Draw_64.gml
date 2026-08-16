@@ -46,18 +46,17 @@ if pause_alpha > 0
 	{
 		var selected = optionselected == i
 		var option = options[i]
-		var str = $"{option.o_name}"
+		var str = global.language_text_map[? option.o_name]
 		var yy = sh + ((s + pad) * i) - pad / 2 - 4
 		option.iconalpha = approach(option.iconalpha, selected ? 1 : 0, 0.2)
 		draw_set_color(selected ? c_white : c_grey)
 		draw_text(sw, yy, str)//placeholder spritre
 		draw_pause_icon(option.icon_index, sw + (string_width(str) / 2) + 50, yy + 12, min(pause_alpha, option.iconalpha))
-		//THIS IS SO FUCKING LONG I HATE EVRRYTHINGFBVSTBYIGYBYSBISUNBYBIO
 	}
 	
 	option = options[optionselected]
 	
-	str = $"{option.o_name}"
+	str = global.language_text_map[? option.o_name]
 	
 	sw -= (string_width(str) / 2)
 	

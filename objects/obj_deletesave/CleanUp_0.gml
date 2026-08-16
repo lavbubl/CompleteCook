@@ -1,2 +1,3 @@
-audio_stop_sound(bomb_snd)
+fmod_studio_event_instance_release(bomb_snd)
+fmod_studio_event_instance_stop(bomb_snd, FMOD_STUDIO_STOP_MODE.IMMEDIATE)
 obj_menuhandler.buffer = 2

@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_combotitles",
+    "path":"sprites/spr_combotitles/spr_combotitles.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

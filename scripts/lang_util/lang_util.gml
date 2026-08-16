@@ -1,13 +1,28 @@
 enum languages
 {
 	english,
-	spanish
+	latam_spanish
 }
 
-#macro langspr_tv_c_bubble lang_sprite_get(spr_tv_c_bubble)
-#macro langspr_combotitles lang_sprite_get(spr_combotitles)
+#region Global initialization
 
-global.language = languages.spanish
+global.language = languages.latam_spanish
+
+global.language_text_map = ds_map_create()
+
+global.language_sprites = [spr_tv_c_bubble,
+						  spr_combotitles,
+						  spr_combovery,
+						  spr_comboend,
+						  spr_menustatus,
+						  spr_menupause,
+						  spr_menuquit,
+						  spr_menudelete,
+						  spr_menustatus_judgement]
+
+global.language_sprite_backups_english = []
+
+for (var i = 0; i < array_length(global.language_sprites); i++) { global.language_sprite_backups_english[global.language_sprites[i]] = sprite_duplicate(global.language_sprites[i]) }
 
 global.language_json_map_bboxmode = ds_map_create()
 
@@ -28,6 +43,8 @@ ds_map_add(global.language_json_map_tilemode, "mirror", nineslice_mirror)
 ds_map_add(global.language_json_map_tilemode, "blank", nineslice_blank)
 ds_map_add(global.language_json_map_tilemode, "hide", nineslice_hide)
 
+#endregion
+
 function lang_init()
 {
 	var _language_folder = ""
@@ -35,34 +52,57 @@ function lang_init()
 	switch global.language
 	{
 		case languages.english:
-			return;
-		case languages.spanish:
-			_language_folder = "Spanish"
+			_language_folder = "English"
+			break;
+		case languages.latam_spanish:
+			_language_folder = "Latam Español"
+			break;
 	}
 	
 	global.language_directory = working_directory + "Language\\" + _language_folder + "\\"
 	
 	show_debug_message("Loading language assets from directory " + global.language_directory)
 	
-	global.language_sprites = []
+	lang_text_apply()
 	
-	var _sprites = [spr_tv_c_bubble,
-					spr_combotitles]
-	
-	for (var i = 0; i < array_length(_sprites); i++)
-	{
-		var _cur_sprite = _sprites[i]
-		var _name = sprite_get_name(_cur_sprite)
-		
-		global.language_sprites[_cur_sprite] = lang_sprite_load(_name)
+	for (var i = 0; i < array_length(global.language_sprites); i++)
+	{ 
+		var _loaded_sprite = lang_sprite_load(global.language_sprites[i])
+		sprite_assign(global.language_sprites[i], _loaded_sprite) 
+		sprite_delete(_loaded_sprite)
 	}
 }
 
+#region Text Functions
+
+function lang_text_apply()
+{
+	var _buffer = buffer_load(global.language_directory + "Text.json")
+	
+	if _buffer == -1
+	{
+		show_debug_message("Could not find text map, not applied. Strings may be undefined and not show.")
+		return;
+	}
+	
+	show_debug_message("Found and applied text map.")
+	var _string_map = buffer_read(_buffer, buffer_text)
+	global.language_text_map = json_decode(_string_map)
+	buffer_delete(_buffer)
+}
+
+#endregion
+
 #region Sprite Functions
 
-function lang_sprite_load(_sprite_name)
+function lang_sprite_load(_sprite)
 {
-	var _default_sprite = asset_get_index(_sprite_name)
+	var _default_sprite = global.language_sprite_backups_english[_sprite]
+	
+	if global.language == languages.english
+		return sprite_duplicate(_default_sprite);
+	
+	var _sprite_name = sprite_get_name(_sprite)
 	
 	var _path = global.language_directory + "Sprites\\" + _sprite_name
 	
@@ -87,9 +127,11 @@ function lang_sprite_load(_sprite_name)
 		if file_exists(_path + ".json")
 		{
 			show_debug_message("Attatched JSON file found, setting up data")
-			
-			var _json_file = file_text_read_string(file_text_open_read(_path + ".json"));
+
+			var _buff = buffer_load(_path + ".json")
+			var _json_file = buffer_read(_buff, buffer_text)
 			var _sprite_data = json_parse(_json_file)
+			buffer_delete(_buff)
 			
 			if struct_exists(_sprite_data, "frames")
 				_frames = _sprite_data.frames
@@ -173,21 +215,21 @@ function lang_sprite_load(_sprite_name)
 			}
 		}
 		
-		var _sprite = sprite_add(_path + ".png", _frames, _removeback, _smooth, _offset_x, _offset_y)
+		var _lang_sprite = sprite_add(_path + ".png", _frames, _removeback, _smooth, _offset_x, _offset_y)
 		
-		sprite_set_bbox_mode(_sprite, _bbox_mode)
-		sprite_set_bbox(_sprite, _bbox_left, _bbox_top, _bbox_right, _bbox_bottom)
-		sprite_set_speed(_sprite, _speed_fps, _speed_type)
-		sprite_set_nineslice(_sprite, _nineslice)
+		sprite_set_bbox_mode(_lang_sprite, _bbox_mode)
+		sprite_set_bbox(_lang_sprite, _bbox_left, _bbox_top, _bbox_right, _bbox_bottom)
+		sprite_set_speed(_lang_sprite, _speed_fps, _speed_type)
+		sprite_set_nineslice(_lang_sprite, _nineslice)
 		
 		show_debug_message("Sprite loaded")
 		
-		return _sprite;
+		return _lang_sprite;
 	}
 	else
 	{
 		show_debug_message("Failed to load. Falling back to default sprite")
-		return _default_sprite;
+		return sprite_duplicate(_default_sprite);
 	}
 }
 

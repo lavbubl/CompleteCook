@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{7f268801-7e21-483e-adb1-b1d8a94ef171}">
 		<property name="name">
-			<value>menulight</value>
+			<value>lighton</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{8ebcabe8-b1b3-4776-bba5-0b4ddcd22829}</destination>
+			<destination>{5a73b637-8567-4e35-81e6-84d68583deba}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{415c9fc8-b25a-44a5-a633-90927582566a}</destination>

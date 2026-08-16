@@ -35,7 +35,7 @@ mu = fmod_studio_event_description_create_instance(_event_ref)
 fmod_studio_event_instance_start(mu)
 fmod_studio_event_instance_release(mu)
 
-var _event_ref = fmod_studio_system_get_event("event:/sfx/misc/menustatic")
+var _event_ref = fmod_studio_system_get_event("event:/sfx/misc/menu/static")
 static_snd = fmod_studio_event_description_create_instance(_event_ref)
 fmod_studio_event_instance_start(static_snd)
 fmod_studio_event_instance_release(static_snd)

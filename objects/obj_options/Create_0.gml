@@ -291,6 +291,6 @@ var _frog_event_ref = fmod_studio_system_get_event("event:/sfx/misc/ui_frog")
 frog_snd = fmod_studio_event_description_create_instance(_frog_event_ref)
 
 if instance_exists(obj_menuhandler)
-	audio_sound_gain(obj_menuhandler.static_snd, 0)
+	fmod_studio_event_instance_set_volume(obj_menuhandler.static_snd, 0)
 
 //i could reduce the amount of new functions made here actually,,,, maybe tdp was right to have seperate functions for each type

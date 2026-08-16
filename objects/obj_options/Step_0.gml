@@ -25,7 +25,7 @@ if input_check_pressed(INPUTS.ui_back)
 		if instance_exists(obj_menuhandler)
 		{
 			with obj_menuhandler
-				audio_sound_gain(obj_menuhandler.static_snd, tvs[cur_selected - 1].state == 1 ? 1 : 0)
+				fmod_studio_event_instance_set_volume(static_snd, tvs[cur_selected - 1].state == 1 ? 1 : 0)
 		}
 		exit;
 	}

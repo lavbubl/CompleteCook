@@ -1,0 +1,8 @@
+{
+    "pause_resume": "RESUME",
+    "pause_options": "OPTIONS",
+    "pause_restart": "RESTART LEVEL",
+    "pause_exit": "EXIT LEVEL",
+    "pause_main_menu": "MAIN MENU",
+    "pause_chef_tasks": "CHEF TASKS"
+}

@@ -30,4 +30,6 @@ gpu_set_texfilter(false)
 gpu_set_blendmode_normal_fixed()
 
 draw_set_font(fnt_caption)
-gameframe_draw()
+
+if gameframe_alpha > 0
+	gameframe_draw()

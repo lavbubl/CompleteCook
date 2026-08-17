@@ -55,19 +55,12 @@ if binding
 	draw_set_color(c_white)
 	draw_set_align(fa_center, fa_middle)
 	
-	draw_text(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, "PRESS A KEY TO BIND")
+	draw_text(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, text_option_press_any)
 }
 
 global.input_type = _prev_input_type
 
 draw_set_font(global.creditsfont)
-draw_set_align(fa_left, fa_top)
-xx = 32
-yy = SCREEN_HEIGHT - 240
+draw_set_align(fa_left, fa_bottom)
 
-for (i = 0; i < array_length(config_buttons); i++) {
-    var _cur_button = config_buttons[i]
-	cc_draw_key(xx, yy, input_get_bind(_cur_button[0])[0])
-	draw_text(xx + 32, yy, _cur_button[1])
-	yy += 80
-}
+cc_draw_text(32, SCREEN_HEIGHT - 40, text_option_binding)

@@ -17,10 +17,10 @@ draw_set_color(c_red)
 draw_text(x, y - 32, _str)
 
 draw_set_color(quit ? c_white : c_gray)
-draw_text(x - 100, y + 32, "YES")
+draw_text(x - 100, y + 32, text_option_yes)
 
 draw_set_color(quit ? c_gray : c_white)
-draw_text(x + 100, y + 32, "NO")
+draw_text(x + 100, y + 32, text_option_no)
 
 var _offset = string_width(_str) / 2 + 70
 

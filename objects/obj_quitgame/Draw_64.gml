@@ -17,9 +17,9 @@ draw_sprite(sprite_index, image_index, x + 210, y)
 draw_text(x, y - 32, "EXIT THE GAME")
 
 draw_set_color(quit ? c_white : c_gray)
-draw_text(x - 100, y + 32, "YES")
+draw_text(x - 100, y + 32, text_option_yes)
 
 draw_set_color(quit ? c_gray : c_white)
-draw_text(x + 100, y + 32, "NO")
+draw_text(x + 100, y + 32, text_option_no)
 
 draw_set_color(c_white)

@@ -7,4 +7,4 @@ file_text_close(_file)
 
 fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_back")
 
-do_tip("{u}Controls saved!")
+do_tip(text_option_controls_saved)

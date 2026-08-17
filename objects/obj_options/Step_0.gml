@@ -146,3 +146,5 @@ if list_ix == 1 && movev == 0 && optionselected >= 1 && optionselected <= 3 && m
 }
 else
 	fmod_studio_event_instance_stop(frog_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
+
+list_arr[3][4].val[1] = [text_option_timer_level, text_option_timer_save, text_option_timer_levelsave] // Define the timer type text

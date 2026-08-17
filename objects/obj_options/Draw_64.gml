@@ -22,7 +22,9 @@ draw_set_font(global.generic_font)
 
 cur_list = list_arr[list_ix]
 
-var s = string_height("M") + (list_ix == 0 ? 8 : 0)
+var _str_h = string_height("M")
+
+var s = _str_h + (list_ix == 0 ? 8 : 0)
 
 var sw = 150
 
@@ -38,11 +40,19 @@ for (var i = 0; i < array_length(cur_list); i++)
 	draw_set_color(optionselected == i ? c_white : c_gray)
 	
 	var option = cur_list[i]
+	
+	var _name = global.language_text_map[? option.o_name]
 
 	if !_centered
 	{
 		draw_set_halign(fa_left)
-		draw_text(sw, yy, option.o_name)
+		
+		if string_height(_name) > _str_h
+			draw_set_font(global.smallerfont)
+		
+		draw_text(sw, yy, _name)
+		draw_set_font(global.generic_font)
+		
 		draw_set_halign(fa_right)
 	}
 	
@@ -51,7 +61,7 @@ for (var i = 0; i < array_length(cur_list); i++)
 	switch option.o_type
 	{
 		case types.onoff:
-			_val_str = option.val == true ? "ON" : "OFF"
+			_val_str = option.val == true ? text_option_on : text_option_off
 			break;
 		case types.slider:
 			var _w = 200
@@ -67,15 +77,24 @@ for (var i = 0; i < array_length(cur_list); i++)
 	
 	if list_ix == 0
 	{
+		draw_text(sw, yy + 8, _name)
+		
 		option.iconalpha = approach(option.iconalpha, optionselected == i, 0.2)
 		if option.iconalpha > 0
-			draw_pause_icon(option.icon_ix, sw + (string_width(option.o_name) / 2) + 50, yy + (string_height(option.o_name) / 2), option.iconalpha)
+			draw_pause_icon(option.icon_ix, sw + (string_width(_name) / 2) + 50, yy + (string_height(_name) / 2), option.iconalpha)
 	}
-	
-	if _centered
-		draw_text(sw, yy + 8, option.o_name + _val_str)
 	else
+	{	
+		if string_height(_val_str) > _str_h
+			draw_set_font(global.smallerfont)
+		
 		draw_text(SCREEN_WIDTH - sw, yy, _val_str)
+		
+		s = max(_str_h, string_height(_name), string_height(_val_str))
+		
+		draw_set_font(global.generic_font)
+		
+	}
 	
 	yy += s
 }

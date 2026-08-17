@@ -198,6 +198,8 @@ uparrow.visible = state == states.normal &&
 
 player_sounds()
 
+global.cc_text_direction = sign(xscale)
+
 if (state == states.mach3 || state == states.mach2 || state == states.tumble)
 	railmovespeed = approach(railmovespeed, 0, 0.1);
 else

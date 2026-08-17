@@ -12,9 +12,9 @@ draw_text(_sw, 190, _timer_str)
 var _y = 220 + string_height(_timer_str)
 
 draw_set_color(confirm ? c_white : c_gray)
-draw_text(_sw - _pad_x, _y, "YES")
+draw_text(_sw - _pad_x, _y, text_option_yes)
 
 draw_set_color(confirm ? c_gray : c_white)
-draw_text(_sw + _pad_x, _y, "NO")
+draw_text(_sw + _pad_x, _y, text_option_no)
 
 draw_reset_color()

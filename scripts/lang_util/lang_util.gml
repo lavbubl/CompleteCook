@@ -4,6 +4,21 @@ enum languages
 	latam_spanish
 }
 
+#macro text_option_on global.language_text_map[? "option_on"]
+#macro text_option_off global.language_text_map[? "option_off"]
+#macro text_option_yes global.language_text_map[? "option_yes"]
+#macro text_option_no global.language_text_map[? "option_no"]
+#macro text_option_none global.language_text_map[? "option_none"]
+
+#macro text_option_timer_level global.language_text_map[? "option_timer_level"]
+#macro text_option_timer_save global.language_text_map[? "option_timer_save"]
+#macro text_option_timer_levelsave global.language_text_map[? "option_timer_levelsave"]
+
+#macro text_option_binding global.language_text_map[? "option_binding_tip"]
+#macro text_option_controls_saved global.language_text_map[? "option_controls_saved"]
+#macro text_option_controls_reset global.language_text_map[? "option_controls_resetted"]
+#macro text_option_press_any global.language_text_map[? "option_press_any"]
+
 #region Global initialization
 
 global.language = languages.latam_spanish

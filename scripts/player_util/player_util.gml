@@ -161,7 +161,7 @@ function player_sounds()
 			fmod_studio_event_instance_release(_data.sndid)
 		}
 		
-		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_is_valid(_data.sndid)
+		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_get_playback_state(_data.sndid) == FMOD_STUDIO_PLAYBACK_STATE.PLAYING
 			fmod_studio_event_instance_set_3d_attributes(_data.sndid, _id.my_3d_attributes)
 		
 		if (_data.sndid != noone && !do_play)

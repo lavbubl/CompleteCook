@@ -30,12 +30,6 @@ binds = [
 	new bind("ui_delete",		-1,		"DELETE",		"C")
 ]
 
-config_buttons = [
-	[INPUTS.bind_reset, " Reset binds"],
-	[INPUTS.ui_confirm,	" Add bind"],
-	[INPUTS.ui_delete,  " Clear bindings"]
-]
-
 c_x = 0
 offset = 0
 selected = 0

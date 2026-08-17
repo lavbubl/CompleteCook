@@ -58,11 +58,11 @@ if binding
 }
 else
 {
-	if input_check_pressed(config_buttons[1][0])
+	if input_check_pressed(INPUTS.ui_confirm)
 		binding = true
-	else if input_check_pressed(config_buttons[2][0])
+	else if input_check_pressed(INPUTS.ui_delete)
 		global.bindslist[$ _bindname][0] = vk_nokey
-	else if input_check_pressed(config_buttons[0][0])
+	else if input_check_pressed(INPUTS.bind_reset)
 	{
 		for (var i = 0; i < array_length(binds); i++)
 		{

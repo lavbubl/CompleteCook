@@ -12,7 +12,7 @@ bg_inc--
 if bg_inc <= -400
 	bg_inc = 0 - (-400 + bg_inc)
 
-if instance_exists(obj_keyconfig) || instance_exists(obj_windowmodeconfirm)
+if !execute_code
 	exit;
 
 var _centered = list_ix == 0 || list_ix == 64

@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"HUD",
-    "path":"folders/Sprites/HUD.yy",
+    "name":"Option Menu",
+    "path":"folders/Sprites/HUD/Option Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

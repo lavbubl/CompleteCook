@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"HUD",
-    "path":"folders/Objects/HUD.yy",
+    "name":"Option Menu",
+    "path":"folders/Sprites/HUD/Option Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -23,4 +23,7 @@ else if (array_length(events_list) > 0)
 	alarm[0] = 1
 }
 else
+{
+	lang_load()
 	room_goto(logo_credits)
+}

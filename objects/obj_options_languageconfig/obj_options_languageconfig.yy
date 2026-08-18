@@ -1,20 +1,23 @@
 {
   "$GMObject":"",
-  "%Name":"obj_buttonconfig",
+  "%Name":"obj_options_languageconfig",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_buttonconfig",
+  "name":"obj_options_languageconfig",
   "overriddenProperties":[],
   "parent":{
     "name":"Essentials",
     "path":"folders/Objects/Essentials.yy",
   },
   "parentObjectId":{
-    "name":"obj_keyconfig",
-    "path":"objects/obj_keyconfig/obj_keyconfig.yy",
+    "name":"par_options_config",
+    "path":"objects/par_options_config/par_options_config.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -33,7 +36,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_lang_flags",
+    "path":"sprites/spr_lang_flags/spr_lang_flags.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

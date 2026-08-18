@@ -1,4 +1,6 @@
-/// @description save the new struct to the json file
+/// @description Save the new struct to the json file
+
+event_inherited()
 
 var _file = file_text_open_write(global.keybinds_filename)
 var _bindjson = json_stringify(global.bindslist)

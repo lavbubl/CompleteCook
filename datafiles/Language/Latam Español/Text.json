@@ -1,4 +1,10 @@
 {
+    "menu_loading": "CARGANDO...",
+    "menu_delete": "MANTÉN PARA\nBORRAR EL GUARDADO %",
+    "menu_controller_disconnected": "CONTROL DESCONECTADO \n\nPRESIONA % PARA CONTINUAR",
+    "menu_exit": "¿SALIR DEL JUEGO?",
+    "menu_skip": "[c] Omitir",
+    
     "pause_resume": "CONTINUAR",
     "pause_options": "OPCIONES",
     "pause_restart": "REINICIAR NIVEL",
@@ -83,12 +89,6 @@
 
     "option_keyboard_superjump": "SUPERSALTO CON DIR.",
     "option_keyboard_groundpound": "GOLPE DE CUERPO CON DIR.",
-
-    "menu_delete": "MANTÉN PARA\nBORRAR EL GUARDADO %",
-    "menu_controller_disconnected": "CONTROL DESCONECTADO \n\nPRESIONA % PARA CONTINUAR",
-    "menu_exit": "¿SALIR DEL JUEGO?",
-    "menu_skip": "[c] Omitir",
-    "menu_loading": "CARGANDO...",
 
     "peppinohurt": "{s}Dañaste a Peppino % veces.../"
 }

@@ -1,3 +1,5 @@
+event_inherited()
+
 depth = -3000
 
 timer = 300 // 5 seconds

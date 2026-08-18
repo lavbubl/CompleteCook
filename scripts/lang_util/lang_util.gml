@@ -4,6 +4,8 @@ enum languages
 	latam_spanish
 }
 
+#macro text_menu_loading global.language_text_map[? "menu_loading"]
+
 #macro text_option_on global.language_text_map[? "option_on"]
 #macro text_option_off global.language_text_map[? "option_off"]
 #macro text_option_yes global.language_text_map[? "option_yes"]
@@ -21,7 +23,11 @@ enum languages
 
 #region Global initialization
 
-global.language = languages.latam_spanish
+ini_open("globalsave.ini")
+
+global.language = ini_read_real("options", "language", languages.english)
+
+ini_close()
 
 global.language_text_map = ds_map_create()
 
@@ -60,7 +66,7 @@ ds_map_add(global.language_json_map_tilemode, "hide", nineslice_hide)
 
 #endregion
 
-function lang_init()
+function lang_load()
 {
 	var _language_folder = ""
 	
@@ -246,14 +252,6 @@ function lang_sprite_load(_sprite)
 		show_debug_message("Failed to load. Falling back to default sprite")
 		return sprite_duplicate(_default_sprite);
 	}
-}
-
-function lang_sprite_get(_sprite)
-{
-	if global.language == languages.english
-		return _sprite;
-	else
-		return global.language_sprites[_sprite];
 }
 
 #endregion

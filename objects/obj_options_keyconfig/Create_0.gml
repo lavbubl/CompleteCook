@@ -1,3 +1,5 @@
+event_inherited()
+
 depth = -3000
 
 bind = function(_bindname, _ix, _name, _defaultbind) constructor

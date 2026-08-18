@@ -1,4 +1,10 @@
 {
+    "menu_loading": "LOADING...",
+    "menu_delete": "HOLD TO DELETE SAVE %",
+    "menu_controller_disconnected": "CONTROLLER DISCONNECTED\n\nPRESS % TO CONTINUE",
+    "menu_exit": "EXIT THE GAME?",
+    "menu_skip": "[c] Skip",
+
     "pause_resume": "RESUME",
     "pause_options": "OPTIONS",
     "pause_restart": "RESTART LEVEL",
@@ -84,5 +90,4 @@
 
     "option_keyboard_superjump": "DIR. SUPERJUMP",
     "option_keyboard_groundpound": "DIR. GROUNDPOUND"
-
 }

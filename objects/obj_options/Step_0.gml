@@ -1,4 +1,6 @@
-if instance_exists(obj_keyconfig) || instance_exists(obj_windowmodeconfirm)
+list_arr[3][5].val[1] = [text_option_timer_level, text_option_timer_save, text_option_timer_levelsave] // Define the timer type text
+
+if !execute_code
 {
 	inputbuffer = 2
 	exit;
@@ -128,6 +130,13 @@ switch cur_option.o_type
 				optionselected = settingselected
 		}
 		break;
+	case types.config:
+		if input_check_pressed(INPUTS.ui_confirm)
+		{
+			instance_create(0, 0, cur_option.val)
+			fmod_studio_event_instance_oneshot("event:/sfx/misc/ui_accept")
+		}
+		break;
 }
 
 if list_ix == 1 && movev == 0 && optionselected >= 1 && optionselected <= 3 && moving
@@ -146,5 +155,3 @@ if list_ix == 1 && movev == 0 && optionselected >= 1 && optionselected <= 3 && m
 }
 else
 	fmod_studio_event_instance_stop(frog_snd, FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT)
-
-list_arr[3][4].val[1] = [text_option_timer_level, text_option_timer_save, text_option_timer_levelsave] // Define the timer type text

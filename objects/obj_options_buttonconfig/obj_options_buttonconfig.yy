@@ -1,18 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"Object153",
+  "%Name":"obj_options_buttonconfig",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Object153",
+  "name":"obj_options_buttonconfig",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Essentials",
+    "path":"folders/Objects/Essentials.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_options_keyconfig",
+    "path":"objects/obj_options_keyconfig/obj_options_keyconfig.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_combotitles",
-    "path":"sprites/spr_combotitles/spr_combotitles.yy",
+    "name":"spr_fontbutton_special",
+    "path":"sprites/spr_fontbutton_special/spr_fontbutton_special.yy",
   },
   "spriteMaskId":null,
   "visible":true,

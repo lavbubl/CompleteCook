@@ -13,7 +13,8 @@ types = {
 	onoff: 1,
 	func: 2,
 	multichoice: 3, //val is array of [index, array of choices]
-	change: 4
+	change: 4,
+	config: 5
 }
 
 add_option = function(_name, _type, _val, _func = noone) constructor
@@ -34,7 +35,7 @@ add_option_back = function(_target_list = 0) constructor //back button for subli
 
 func_windowmode = function(_mode)
 {
-	with instance_create(0, 0, obj_windowmodeconfirm)
+	with instance_create(0, 0, obj_options_windowmodeconfirm)
 	{
 		prev_mode = global.option_windowmode
 		change = _mode != global.option_windowmode
@@ -110,8 +111,7 @@ list_arr = [
 	],
 	[ //3 game
 		new add_option_back(),
-		//wip section because controller and timer
-		//new add_option("LANGUAGE",			types.change, 64), theres no way in hell a fangame will have this. but ill leave this placeholder for keepssake incase it does
+		new add_option("option_lang", types.config, obj_options_languageconfig),
 		new add_option("option_vibration", types.onoff, global.option_rumble,
 			function(_val) {
 				global.option_rumble = _val
@@ -207,10 +207,7 @@ list_arr = [
 	],
 	[ //6 keyboard specific controls
 		new add_option_back(4),
-		new add_option("option_controller_binds", types.func, undefined,
-			function(_val) {
-				instance_create(x, y, obj_keyconfig)
-			}),
+		new add_option("option_controller_binds", types.config, obj_options_keyconfig),
 		new add_option("option_keyboard_superjump", types.onoff, global.option_dirsuperjump,
 			function(_val) {
 				global.option_dirsuperjump = _val
@@ -224,10 +221,7 @@ list_arr = [
 	],
 	[ //7 gamepad specific controls
 		new add_option_back(4),
-		new add_option("option_controller_binds", types.func, undefined,
-			function(_val) {
-				instance_create(x, y, obj_buttonconfig)
-			}),
+		new add_option("option_controller_binds", types.config, obj_options_buttonconfig),
 		new add_option("option_deadzone_title", types.change, 8),
 		new add_option("option_controller_superjump", types.onoff, global.option_joysuperjump,
 			function(_val) {
@@ -292,5 +286,7 @@ frog_snd = fmod_studio_event_description_create_instance(_frog_event_ref)
 
 if instance_exists(obj_menuhandler)
 	fmod_studio_event_instance_set_volume(obj_menuhandler.static_snd, 0)
+
+execute_code = true
 
 //i could reduce the amount of new functions made here actually,,,, maybe tdp was right to have seperate functions for each type

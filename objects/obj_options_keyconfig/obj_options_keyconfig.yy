@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"obj_keyconfig",
+  "%Name":"obj_options_keyconfig",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -8,13 +8,16 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_keyconfig",
+  "name":"obj_options_keyconfig",
   "overriddenProperties":[],
   "parent":{
     "name":"Essentials",
     "path":"folders/Objects/Essentials.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_options_config",
+    "path":"objects/par_options_config/par_options_config.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,7 +35,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_fontkey_special",
+    "path":"sprites/spr_fontkey_special/spr_fontkey_special.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

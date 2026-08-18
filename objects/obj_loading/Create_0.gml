@@ -22,5 +22,3 @@ events_max = 1
 
 alarm[0] = 20
 alarm[1] = 1 // Wait for obj_fmodhandler to init the system
-
-lang_init()

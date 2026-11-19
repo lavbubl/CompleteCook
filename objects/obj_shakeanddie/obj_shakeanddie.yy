@@ -10,8 +10,8 @@
   "name":"obj_shakeanddie",
   "overriddenProperties":[],
   "parent":{
-    "name":"Ememy",
-    "path":"folders/Objects/Ememy.yy",
+    "name":"Enemy",
+    "path":"folders/Objects/Enemy.yy",
   },
   "parentObjectId":null,
   "persistent":false,

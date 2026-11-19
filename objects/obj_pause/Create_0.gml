@@ -78,7 +78,7 @@ baseoptions = [
 			}
 		}
 		else
-			show_debug_message("start room was unset")
+			show_debug_message("Start room was unset")
 		reset_level()
 	}),
 	new create_pause_option("pause_chef_tasks",		optiontypes.level,	8),

@@ -5,8 +5,9 @@ enum windowmode
 	borderless
 }
 
+gameframe_init()
+
 gui_surf = noone
-surface_resize(application_surface, SCREEN_WIDTH, SCREEN_HEIGHT)
 
 lb_sprs = [bg_letterbox, bg_letterbox2, bg_letterbox3]
 
@@ -21,23 +22,20 @@ global.option_res_strings = ["480X270", "960X540", "1024X576", "1280X720", "1600
 global.option_chosen_res = ini_read_real("options", "chosen_res", 1)
 global.option_texturefilter = ini_read_real("options", "texturefilter", 1)
 
-display_reset(0, ini_read_real("options", "vsync", 1))
-
 ini_close()
 
-var _split = string_split(global.option_res_strings[global.option_chosen_res], "X")
-
-window_set_size(real(_split[0]), real(_split[1]))
-
 if global.option_windowmode == windowmode.fullscreen
-	gameframe_set_fullscreen(global.option_windowmode == windowmode.fullscreen)
+	gameframe_set_fullscreen(1)
 else if global.option_windowmode == windowmode.borderless
 	gameframe_set_fullscreen(2)
-
-window_center()
+else
+{
+	var _split = string_split(global.option_res_strings[global.option_chosen_res], "X")
+	window_set_size(real(_split[0]), real(_split[1]))
+	window_center()
+}
 
 application_surface_draw_enable(false)
 
-gameframe_init()
-
-display_set_gui_size(960, 540)
+surface_resize(application_surface, SCREEN_WIDTH, SCREEN_HEIGHT)
+display_set_gui_size(SCREEN_WIDTH, SCREEN_HEIGHT)

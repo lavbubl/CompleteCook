@@ -8,8 +8,8 @@
   "name":"obj_pizzaboy",
   "overriddenProperties":[],
   "parent":{
-    "name":"Ememy",
-    "path":"folders/Objects/Ememy.yy",
+    "name":"Enemy",
+    "path":"folders/Objects/Enemy.yy",
   },
   "parentObjectId":{
     "name":"par_enemy",

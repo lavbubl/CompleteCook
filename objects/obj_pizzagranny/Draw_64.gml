@@ -26,7 +26,7 @@ else
 draw_sprite_stretched(spr_tutorialbubble, 0, bubble.x, bubble.y, bubble.w, bubble.h)
 
 draw_set_font(global.tutorialfont)
-draw_set_align(fa_left, fa_top, c_black)
+draw_set_align(fa_left, fa_top)
 
 for (var i = 0; i < array_length(str_arr); i++) 
 {

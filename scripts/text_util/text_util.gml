@@ -1,4 +1,4 @@
-global.cc_text_direction = 1
+
 
 function cc_draw_text(_x, _y, _string)
 {
@@ -10,6 +10,10 @@ function cc_draw_text(_x, _y, _string)
 	var _formatted_str = _string
 	var _w_formated = 0
 	var _w_extra = 0
+	var _key_direction = 1
+	
+	if instance_exists(obj_player)
+		_key_direction = sign(obj_player.xscale)
 	
 	var _nl = string_pos("\n", _string)
 	if _nl != 0
@@ -96,10 +100,10 @@ function cc_draw_text(_x, _y, _string)
 						_key_ord = input_get_bind(INPUTS.down)
 						break;
 					case "f":
-						_key_ord = global.cc_text_direction == 1 ? input_get_bind(INPUTS.right) : input_get_bind(INPUTS.left)
+						_key_ord = _key_direction == 1 ? input_get_bind(INPUTS.right) : input_get_bind(INPUTS.left)
 						break;
 					case "b":
-						_key_ord = global.cc_text_direction == -1 ? input_get_bind(INPUTS.right) : input_get_bind(INPUTS.left)
+						_key_ord = _key_direction == -1 ? input_get_bind(INPUTS.right) : input_get_bind(INPUTS.left)
 						break;
 					case "g":
 						_key_ord = input_get_bind(INPUTS.grab)

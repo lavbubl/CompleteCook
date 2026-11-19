@@ -1,5 +1,5 @@
 {
-  "$GMExtension":"",
+  "$GMExtension":"v1",
   "%Name":"FMOD",
   "androidactivityinject":"",
   "androidclassname":"Fmod_Android",
@@ -559,8 +559,10 @@
     {"$GMExtensionFrameworkEntry":"","%Name":"libYYFMOD.xcframework","embed":0,"name":"libYYFMOD.xcframework","resourceType":"GMExtensionFrameworkEntry","resourceVersion":"2.0","weakReference":false,},
   ],
   "license":"",
+  "maccodeinjection":"",
   "maccompilerflags":"",
   "maclinkerflags":"",
+  "macProps":false,
   "macsourcedir":"",
   "name":"FMOD",
   "options":[

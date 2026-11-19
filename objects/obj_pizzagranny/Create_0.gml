@@ -16,8 +16,6 @@ bubble = {
 	h: text_height + padding
 }
 
-var h_start = bubble.h
-
 state = 0
 
 internal_y = bubble.y

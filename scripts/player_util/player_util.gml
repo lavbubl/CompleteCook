@@ -153,15 +153,14 @@ function player_sounds()
 			do_play = false
 		
 		if do_play && _data.sndid == noone
-		{	
-			
+		{
 			var _event_ref = fmod_studio_system_get_event(_data.sound) //string path
 			_data.sndid = fmod_studio_event_description_create_instance(_event_ref)
 			fmod_studio_event_instance_start(_data.sndid)
 			fmod_studio_event_instance_release(_data.sndid)
 		}
 		
-		if _data.is_3d && _data.sndid != noone && fmod_studio_event_instance_get_playback_state(_data.sndid) == FMOD_STUDIO_PLAYBACK_STATE.PLAYING
+		if _data.is_3d && _data.sndid != noone
 			fmod_studio_event_instance_set_3d_attributes(_data.sndid, _id.my_3d_attributes)
 		
 		if (_data.sndid != noone && !do_play)

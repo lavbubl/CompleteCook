@@ -1,5 +1,5 @@
 {
-  "$GMNotes":"v1",
+  "$GMNotes":"v2",
   "%Name":"Language Usage",
   "name":"Language Usage",
   "parent":{

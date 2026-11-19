@@ -1,5 +1,12 @@
 surface_reset_target()
 
+if global.option_texturefilter && 
+	!(
+		(window_get_width() == 960 && window_get_height() == 540) || //default res
+		(window_get_width() == 1920 && window_get_height() == 1080) //res x2
+	)
+	gpu_set_texfilter(global.option_texturefilter)
+
 var ratio = window_get_width() / window_get_height()
 
 if ratio != SCREEN_WIDTH / SCREEN_HEIGHT
@@ -11,13 +18,6 @@ draw_rectangle(-1, -1, SCREEN_WIDTH, SCREEN_HEIGHT, false)
 
 var screen_x = 0
 var screen_y = 0
-
-if global.option_texturefilter && 
-	!(
-		(window_get_width() == 960 && window_get_height() == 540) || //default res
-		(window_get_width() == 1920 && window_get_height() == 1080) //res x2
-	)
-	gpu_set_texfilter(global.option_texturefilter)
 
 draw_surface(application_surface, screen_x, screen_y)
 
@@ -31,5 +31,5 @@ gpu_set_blendmode_normal_fixed()
 
 draw_set_font(fnt_caption)
 
-if gameframe_alpha > 0
+if window_has_focus() && gameframe_alpha > 0
 	gameframe_draw()

@@ -1,5 +1,5 @@
 {
-  "$GMNotes":"v1",
+  "$GMNotes":"v2",
   "%Name":"Location of binds & Commands",
   "name":"Location of binds & Commands",
   "parent":{

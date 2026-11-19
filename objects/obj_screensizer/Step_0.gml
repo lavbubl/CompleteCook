@@ -1,6 +1,6 @@
-fmod_studio_bus_set_volume(obj_fmodhandler.master_bus, window_has_focus() || !global.option_unfocus_mute ? global.option_master_volume : 0)
-
 gameframe_update()
+
+fmod_studio_bus_set_volume(obj_fmodhandler.master_bus, window_has_focus() || !global.option_unfocus_mute ? global.option_master_volume : 0)
 
 if room == mainmenu && gameframe_get_fullscreen() && !obj_menupeppino.painless && !instance_exists(obj_options)
 	gameframe_set_window_cursor(cr_default)
